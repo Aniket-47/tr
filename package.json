@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "dev:config": "npm link ../ng-core-lib/dist/ng-design"
+    "dev:config": "npm link ../ng-core-lib/dist/ng-design",
+    "postinstall": "npm run dev:config"
   },
   "private": true,
   "dependencies": {
