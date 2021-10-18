@@ -60,6 +60,7 @@
     display: flex;
     justify-content: flex-start;
     width: 100%;
+    align-items: center;
     .action-item {
         flex-basis: 33.3%;
     }
@@ -92,4 +93,7 @@
         width: 50%;
         margin-right: 16px;
     }
+}
+.bg-light{
+    background: rgb(0 0 0 / 4%);
 }
