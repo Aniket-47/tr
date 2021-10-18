@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import {ComponentsModule, FeatureModule} from '@mucrest/ng-design';
+import { ComponentsModule, FeatureModule } from '@mucrest/ng-design';
 
 @NgModule({
   declarations: [
@@ -8,7 +8,9 @@ import {ComponentsModule, FeatureModule} from '@mucrest/ng-design';
   imports: [
     CommonModule,
     FeatureModule,
+    ComponentsModule
   ],
   providers: [],
+  exports: [ComponentsModule, FeatureModule]
 })
 export class TRModule { }
