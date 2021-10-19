@@ -17,6 +17,7 @@ import { MatButtonModule } from '@angular/material/button';
   declarations: [
     AppComponent,
     SettingsMenuComponent
+
   ],
   imports: [
     BrowserModule,
@@ -24,10 +25,12 @@ import { MatButtonModule } from '@angular/material/button';
     TRModule,
     AuthModule,
     AppRoutingModule,
+// mat imports
     MatTreeModule,
     MatIconModule,
     MatFormFieldModule,
     MatButtonModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

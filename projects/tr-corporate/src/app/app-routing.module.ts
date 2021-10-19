@@ -4,7 +4,7 @@ import { AuthModule } from './auth/auth.module';
 import { SettingsMenuComponent } from './settings-menu/settings-menu.component';
 
 const routes: Routes = [{
-  path:'auth',
+  path: 'auth',
   loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
 },
 {
