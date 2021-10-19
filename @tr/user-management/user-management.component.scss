@@ -1,6 +1,61 @@
+@import '~@mucrest/ng-design/assets/styles/0-plugins/plugins-dir';
 table.mat-table {
+    @include media-breakpoint-down(md) {
+        padding: 10px;
+        display: block;
+     }
     tr.mat-row {
         height: 80px;
+        @include media-breakpoint-down(md) {
+            height: auto !important;
+            border: 1px solid #EBEAED;
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            padding-bottom: 6rem;
+            margin-bottom: 1rem;
+            position: relative;
+            border-radius: 4px;
+         }
+         td.mat-cell {
+            @include media-breakpoint-down(md) {
+            vertical-align: top;
+            border: 0;
+             &:first-of-type {
+                padding-left: 10px;
+                padding-top: 10px;
+             }
+             &:nth-child(3) {
+                 position: absolute;
+                 left: 10px;
+                 bottom: 10px;
+             }
+             &:nth-child(4) {
+                position: absolute;
+                left: 55px;
+                bottom: 70px;
+             }
+             &:nth-child(5) {
+                position: absolute;
+                right: 10px;
+                bottom: 10px;
+            }
+            &:nth-child(6) {
+                position: absolute;
+                left: 55px;
+                bottom: 50px;
+            }
+            &:last-child {
+                padding-right: 0;
+                text-align: right;
+            }
+            }
+         }
+    }
+    tr.mat-header-row {
+        @include media-breakpoint-down(md) {
+            display: none;
+         }
     }
     .mat-header-cell {
         font-size: 14px;
@@ -20,55 +75,12 @@ table.mat-table {
     .user-info {
         display: flex;
         align-items: center;
+        @include media-breakpoint-down(md) { 
+            margin-top: .5rem;
+        }
         .user-img {
             margin-right: 1rem;
         }
     }
 }
-.role {
-    font-size: 12px;
-    padding: 6px 8px;
-    border-radius: 4px;
-    &.success {
-        color: #00A46C;
-        background: rgba(20, 177, 59, 0.1);
-    }
-    &.info {
-        color: #5542F6;
-        background: rgba(85, 66, 246, 0.1);
-    }
-}
-.status {
-    position: relative;
-    &::before {
-        content: '';
-        width: 6px;
-        height: 6px;
-        border-radius: 3px;
-        position: absolute;
-        left: -10px;
-        top: 5px;
-    }
-    &.success {
-        color: #00A46C;
-        &::before {
-            background: #00A46C;
-        }
-    }
-    &.warning {
-        color: #FFAE1F;
-        &::before {
-            background: #FFAE1F;
-        }
-    }
-    &.danger {
-        color: #FE6730;
-        &::before {
-            background: #FE6730;
-        }
-    }
-}
-.grey-text {
-    color: #84818A;
-    font-size: 13px;
-}
+
