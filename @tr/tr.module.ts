@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 import {ComponentsModule, FeatureModule} from '@mucrest/ng-design';
 import { MaterialModule } from 'projects/tr-corporate/src/app/material.moule';
 import { PermissionAccordionComponent } from './permission-accordion/permission-accordion.component';
+import { UserManagementComponent } from './user-management/user-management.component';
 
 @NgModule({
   declarations: [
   
-    PermissionAccordionComponent
+    PermissionAccordionComponent,
+       UserManagementComponent
   ],
   imports: [
     CommonModule,
@@ -15,7 +17,8 @@ import { PermissionAccordionComponent } from './permission-accordion/permission-
     MaterialModule
   ],
   exports:[
-    PermissionAccordionComponent
+    PermissionAccordionComponent,
+    UserManagementComponent
   ],
   providers: [],
 })
