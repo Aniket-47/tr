@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
@@ -14,13 +15,15 @@ export class AccountRoleComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
-
+  @ViewChild(MatSort)
+  sort!: MatSort;
   constructor() { }
 
   ngOnInit(): void {
   }
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 }
 
@@ -37,5 +40,11 @@ export interface PeriodicElement {
 const ELEMENT_DATA: PeriodicElement[] = [
   {role: 'Admin', users: '25 Users ', status: 'Active', lastupdated: '17 Apr 2021'},
   {role: 'Super Admin', users: '5 Users ', status: 'Inactive', lastupdated: '17 Apr 2021'},
-  {role: 'Super Admin', users: '3 Users ', status: 'Deactivated', lastupdated: '17 Apr 2021'},
+  {role: 'Relationship Manager', users: '3 Users ', status: 'Active', lastupdated: '17 Apr 2021'},
+  {role: 'Delivery Manager', users: '15 Users ', status: 'Active', lastupdated: '17 Apr 2021'},
+  {role: 'Business Manager', users: '5 Users ', status: 'Active', lastupdated: '17 Apr 2021'},
+  {role: 'Business Lead', users: '4 Users ', status: 'Active', lastupdated: '17 Apr 2021'},
+  {role: 'Vendor', users: '16 Users ', status: 'Inactive', lastupdated: '17 Apr 2021'},
+  {role: 'New Hire', users: '35 Users ', status: 'Active', lastupdated: '17 Apr 2021'},
+  {role: 'HR Manager', users: '10 Users ', status: 'Inactive', lastupdated: '17 Apr 2021'},
 ];
