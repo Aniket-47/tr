@@ -19,7 +19,6 @@
             &-title {
             font-size: 18px;
             align-items: center;
-            font-weight: 600;
             width: 50%;
         }
         &-description {
@@ -72,9 +71,12 @@
     display: block;
     font-size: 1rem;
     color: #378DF7;
-    font-weight: 400;
+    font-weight: 100;
+    margin-top: .4rem;
+    line-height: 13px;
     .mat-expansion-indicator {
         display: inline-block;
+        margin-left: .4rem;
     }
 }
 .role-list {
