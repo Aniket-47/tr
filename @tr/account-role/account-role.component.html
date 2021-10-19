@@ -1,0 +1,74 @@
+<div class="account-role">
+    <table mat-table [dataSource]="dataSource">
+  
+  
+  
+      <!-- Role Column -->
+      <ng-container matColumnDef="role">
+        <th mat-header-cell *matHeaderCellDef> Account Roles </th>
+        <td mat-cell *matCellDef="let element"> 
+          <mat-label class="role" [ngClass]="{
+          'success': element.role === 'Admin',
+          'info': element.role === 'Super Admin'
+        }">{{element.role}} </mat-label> </td>
+      </ng-container>
+  
+      <!-- Username Column -->
+      <ng-container matColumnDef="users">
+        <th mat-header-cell *matHeaderCellDef> Users </th>
+        <td mat-cell *matCellDef="let element"> <span class="mobile-only grey-text">Total Users :</span> {{element.users}} </td>
+      </ng-container>
+
+          <!-- Last Updated Column -->
+          <ng-container matColumnDef="lastupdated">
+            <th mat-header-cell *matHeaderCellDef> Last Edited </th>
+            <td mat-cell *matCellDef="let element"> <span class="mobile-only grey-text">Last Updated :</span> {{element.lastupdated}} </td>
+          </ng-container>
+\    
+      <!-- Status Column -->
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef> Status </th>
+        <td mat-cell *matCellDef="let element">
+          <mat-label class="status" [ngClass]="{
+            'success': element.status === 'Active',
+            'warning': element.status === 'Inactive',
+            'danger': element.status === 'Deactivated'
+          }">{{element.status}} </mat-label>
+          </td>
+      </ng-container>
+
+      <!-- Action Column -->
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef>  </th>
+        <td mat-cell *matCellDef="let element">         
+        <div class="cloud-only">
+        <button mat-icon-button>
+          <span class="icon-edit"></span>
+        </button>  
+        <button mat-icon-button>
+          <span class="icon-delete"></span>
+        </button>  
+        <button mat-icon-button>
+          <span class="icon-more"></span>
+        </button> 
+      </div>
+      <div class="mobile-only">
+        <button mat-icon-button [matMenuTriggerFor]="menu"><span class="icon-more"></span></button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item><span class="icon-edit"></span> Edit</button>
+          <button mat-menu-item><span class="icon-delete"></span> Delete</button>
+        </mat-menu>
+      </div>
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                   showFirstLastButtons 
+                   aria-label="Select page of periodic elements">
+    </mat-paginator>
+  </div>
+  

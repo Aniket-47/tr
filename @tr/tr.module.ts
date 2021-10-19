@@ -4,12 +4,14 @@ import {ComponentsModule, FeatureModule} from '@mucrest/ng-design';
 import { MaterialModule } from 'projects/tr-corporate/src/app/material.moule';
 import { PermissionAccordionComponent } from './permission-accordion/permission-accordion.component';
 import { UserManagementComponent } from './user-management/user-management.component';
+import { AccountRoleComponent } from './account-role/account-role.component';
 
 @NgModule({
   declarations: [
   
     PermissionAccordionComponent,
-       UserManagementComponent
+       UserManagementComponent,
+       AccountRoleComponent
   ],
   imports: [
     CommonModule,
@@ -18,7 +20,8 @@ import { UserManagementComponent } from './user-management/user-management.compo
   ],
   exports:[
     PermissionAccordionComponent,
-    UserManagementComponent
+    UserManagementComponent,
+    AccountRoleComponent
   ],
   providers: [],
 })
