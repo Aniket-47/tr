@@ -1,4 +1,28 @@
+<header>
+  <div class="page-header">
+    <div class="page-title">
+      <button mat-icon-button>
+        <span class="icon-back-arrow"></span>
+      </button>
+      <h2>User Management</h2>
+    </div>
+    <div class="page-action cloud-only">
+      <button mat-stroked-button color="primary">Export <span class="icon-down-arrow"></span></button>
+      <button mat-flat-button color="primary"><span class="icon-plus"></span> Add User </button>
+    </div>
+  </div>
+</header>
+
+
 <div class="user-management">
+  <div class="table-header">
+    <div class="table-info">2 users selected</div>
+    <div class="table-action cloud-only">
+      <button mat-stroked-button color="primary">Active <span class="icon-down-arrow"></span></button>
+      <button mat-stroked-button color="primary">Admin <span class="icon-down-arrow"></span></button>
+      <button mat-stroked-button color="primary"><span class="black">Shot By:</span> Added to Jobs <span class="icon-down-arrow"></span></button>
+    </div>
+  </div>
     <table mat-table [dataSource]="dataSource">
   
       <!-- Position Column -->
@@ -91,4 +115,12 @@
                    aria-label="Select page of periodic elements">
     </mat-paginator>
   </div>
-  
+  <div class="floating-button page-action  mobile-only">    
+    <div class="more-float-action-btn" [class.active]="toggle">
+      <button mat-stroked-button color="primary">Export <span class="icon-down-arrow"></span></button>
+      <button mat-flat-button color="primary"><span class="icon-plus"></span> Add User </button>
+    </div>
+    <button mat-fab color="primary" (click)="toggleFab()">
+      <span [ngClass]="{'icon-plus': toggle === true, 'icon-more': toggle === false }"></span>
+    </button>
+  </div>

@@ -8,6 +8,7 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./user-management.component.scss']
 })
 export class UserManagementComponent implements OnInit, AfterViewInit {
+  toggle = false;
   displayedColumns: string[] = ['check', 'name', 'role', 'username', 'status', 'lastupdated', 'action'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
@@ -23,6 +24,9 @@ export class UserManagementComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+  }
+  toggleFab() {
+    this.toggle = !this.toggle;
   }
 }
 
