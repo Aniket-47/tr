@@ -1,3 +1,4 @@
+@import '~@mucrest/ng-design/assets/styles/0-plugins/plugins-dir';
 .role {
     font-size: 12px;
     padding: 6px 8px;
@@ -6,7 +7,7 @@
         width: 100%;
         display: block;
         text-align: center;
-        padding: 3px 8px !important;
+        padding: 3px 8px;
         }
     &.success {
         color: #00A46C;
@@ -88,4 +89,102 @@
     @include media-breakpoint-up(md) { 
         display: none;
      }
+}
+
+.page-action {
+    margin-left: auto;
+    .mat-button, .mat-icon-button, .mat-stroked-button, .mat-flat-button {
+        min-height: 42px;
+        line-height: 42px;
+        padding-left: 24px;
+        padding-right: 24px;
+        @include font-size(.9rem);
+        font-weight: 400;
+        .icon-plus {
+            @include margin-right(.5rem);
+        }
+      }
+    .mat-stroked-button {
+        color: #1F47F5;
+        border: 1px solid #EBEAED;
+        @include margin-right(1.5rem);
+        .icon-down-arrow {
+            @include font-size(.4rem);
+            @include margin-left(.5rem);
+        }
+    }
+}
+.floating-button {
+    position: fixed;
+    right: 2rem;
+    bottom: 2rem;
+    .mat-fab {
+    .mc-more_vert, .mc-plus {
+        font-size: 24px;
+        transform: rotate(90deg);
+        display: block;
+        transition: all 0.5s ease;
+        &::before {
+            color: #fff;
+        }
+    }
+    .mc-plus {
+        transform: rotate(45deg);
+    }
+}
+    .more-float-action-btn {
+        opacity: 0;
+        transition: all 0.5s ease;
+        visibility: hidden;
+        width: 160px;
+        height: 0;
+        overflow: hidden;
+        position: absolute;
+        bottom: 60px;
+        right: 0;
+        padding: 0.5rem;
+        background: #fff;
+        &.active {
+            opacity: 1;            
+            height: auto;
+            visibility: visible;
+        }
+        .mat-button-base {
+            width: 100%;
+            margin: .2rem;
+        }
+    }
+}
+.user-management {
+    .mat-icon-button {
+        font-size: 1rem;
+    }
+.mat-form-field {
+    &[appearance="outline"] {
+    @include font-size(.9rem);
+    font-weight: 400;
+    .mat-form-field-wrapper {
+        margin: 0;
+        padding: 0;
+    }
+    .mat-form-field-flex {
+        margin: 0;
+    }
+    .mat-form-field-outline {
+        top: 0;
+    }
+    .mat-form-field-infix {
+        padding: .9em 0;
+        margin: 0 ;
+        border: 0;
+    }
+    .mat-select-arrow-wrapper {
+        transform: translateY(0%);
+    }
+    &:first-child, &:nth-child(2) {
+        width: 130px;
+        @include margin-right(.9rem);
+    }
+}
+}
 }
