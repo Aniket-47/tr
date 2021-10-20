@@ -12,11 +12,19 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSelectModule} from '@angular/material/select';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatInputModule} from '@angular/material/input';
+
+import { SettingsMenuComponent } from './settings-menu/settings-menu.component';
+import { MatTreeModule } from '@angular/material/tree';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    SettingsMenuComponent
+
   ],
   imports: [
     BrowserModule,
@@ -27,7 +35,14 @@ import {MatMenuModule} from '@angular/material/menu';
     MatButtonModule,
     MatIconModule,
     MatMenuModule,
-    MatSelectModule
+    MatSelectModule,
+
+// mat imports
+    MatInputModule,
+    MatTreeModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
