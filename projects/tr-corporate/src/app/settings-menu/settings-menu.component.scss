@@ -2,8 +2,12 @@
   width: 250px;
   margin: 0 2em;
   padding: 1em;
-  box-shadow: 0px 0px 1px #b4b4b4;
+  box-shadow: 1px 0px 1px #dfdfdf
+}
 
+.mat-form-field {
+  width: 100%;
+  font-size: 0.85rem;
 }
 .example-container{
   position: fixed;
@@ -12,31 +16,25 @@
   background: white;
 }
 
-.settings__element{
-  overflow-y: scroll;
+.settings__element{ 
+  overflow-y: scroll; 
+  margin-top: 4em;
 }
 
-::ng-deep .mat-form-field {
-    .mat-form-field-underline {
-      background-color: transparent;
-  }
-}
-
-.example-tree-invisible{
-  display: none;
-}
+.example-tree-invisible{display: none;}
 
 .example-tree ul, .example-tree li {
   margin-top: 0;
   margin-bottom: 0;
   list-style-type: none;
 }
+.example-tree .mat-nested-tree-node div[role=group] { padding-left: 40px; }
 
-.example-tree .mat-nested-tree-node div[role=group] {
-  padding-left: 40px;
+.mc-tree-active{ color: #1F47F5;}
+
+
+.mat-tree-node{
+  &:hover{ cursor: pointer; }
+
+  span{ margin-left: 0.5em; }
 }
-
-// .mat-tree-node{
-//   font-size: 18px;
-//   color: #25364D;
-// }

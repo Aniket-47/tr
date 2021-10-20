@@ -11,9 +11,9 @@ interface FoodNode {
 
 const TREE_DATA: FoodNode[] = [
   {
-    name: 'Permission',
+    name: 'Permission Permission Permission',
     children: [
-      {name: 'User Management'},
+      {name: 'User Management User Management User Management'},
       {name: 'Account Role'},
     ],
     icon: 'search',
@@ -132,16 +132,28 @@ const TREE_DATA: FoodNode[] = [
 })
 export class SettingsMenuComponent implements OnInit {
 
+  activeNodeParent : string;
+  activeNodeChild : string;
+
   treeControl = new NestedTreeControl<FoodNode>(node => node.children);
   dataSource = new MatTreeNestedDataSource<FoodNode>();
 
   constructor() {
     this.dataSource.data = TREE_DATA;
+    this.activeNodeParent= "";
+    this.activeNodeChild= "";
   }
 
   hasChild = (_: number, node: FoodNode) => !!node.children && node.children.length > 0;
   
   ngOnInit(): void {
+  }
+
+  test(name:string)
+  {
+    this.activeNodeParent = name
+    console.log(this.activeNodeParent)
+    console.log("works")
   }
 
 }
