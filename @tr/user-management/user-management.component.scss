@@ -1,50 +1,5 @@
 @import '~@mucrest/ng-design/assets/styles/0-plugins/plugins-dir';
 
-.page-header {
-    display: flex;
-    align-items: center;
-    @include padding(2.3rem 10px 1.8rem);
-    .page-title {
-        display: flex;
-        align-items: center;
-        .mat-icon-button {
-            @include font-size(1.3rem);
-            @include margin-right(.3rem);
-        }
-        h2 {
-            margin: 0;
-            @include font-size(2.3rem);
-            font-weight: 400;
-        }
-    }
-  
-}
-.table-header {
-    display: flex;
-    align-items: center;
-    @include margin-bottom(.5rem);
-    padding: 0 10px;
-    .table-action {
-        margin-left: auto;
-        .mat-stroked-button {
-            color: #84818A;
-            font-weight: 400;
-            border: 1px solid #EBEAED;
-            @include margin-right(1rem);
-            &:last-child {
-                margin: 0
-            }
-            .icon-down-arrow {
-                color: #504F54;
-                @include font-size(.4rem);
-                @include margin-left(.5rem);
-            }
-            .black {
-                color: #504F54;
-            }
-        }
-    }
-}
 table.mat-table {
     @include media-breakpoint-down(md) {
         padding: 10px;
