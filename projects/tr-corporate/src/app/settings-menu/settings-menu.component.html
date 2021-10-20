@@ -11,7 +11,7 @@
         {{node.name}}
       </mat-tree-node>
       <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
-          <div class="mat-tree-node" matTreeNodeToggle (click)="activeNodeParent = node.name" [ngClass]="{ 'mc-tree-active': activeNodeParent === node.name}">
+          <div class="mat-tree-node" matTreeNodeToggle>
             <!-- <button mat-icon-button > -->
               <mat-icon class="mat-icon-rtl-mirror">
                 {{node.icon}}
@@ -26,5 +26,3 @@
     </mat-tree>
   </div>
 </div>
-
-<!-- style="color: rgb(150, 217, 243); word-break: break-all !important;" -->

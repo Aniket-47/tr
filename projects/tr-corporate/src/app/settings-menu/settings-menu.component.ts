@@ -2,18 +2,18 @@ import { NestedTreeControl } from '@angular/cdk/tree';
 import { Component, OnInit } from '@angular/core';
 import {MatTreeNestedDataSource} from '@angular/material/tree';
 
-interface FoodNode {
+interface SettingMenuOption {
   name: string;
   route?: string;
-  children?: FoodNode[];
+  children?: SettingMenuOption[];
   icon?: string;
 }
 
-const TREE_DATA: FoodNode[] = [
+const TREE_DATA: SettingMenuOption[] = [
   {
-    name: 'Permission Permission Permission',
+    name: 'Permission PermissionPermission',
     children: [
-      {name: 'User Management User Management User Management'},
+      {name: 'User Management UserManagement User Management'},
       {name: 'Account Role'},
     ],
     icon: 'search',
@@ -39,35 +39,35 @@ const TREE_DATA: FoodNode[] = [
     ],
     icon: 'reorder',
   },{
-    name: 'Permission',
+    name: 'Candidate Portal',
     children: [
       {name: 'User Management'},
       {name: 'Account Role'},
     ],
     icon: 'search',
   }, {
-    name: 'Templates',
+    name: 'Billing',
     children: [
       {name: 'User Management'},
       {name: 'Account Role'},
     ],
     icon: 'table_view',
   },{
-    name: 'Integration',
+    name: 'Vendor Portal',
     children: [
       {name: 'User Management'},
       {name: 'Account Role'},
     ],
     icon: 'done_outline',
   }, {
-    name: 'Configuration',
+    name: 'Employee Portal',
     children: [
       {name: 'User Management'},
       {name: 'Account Role'},
     ],
     icon: 'reorder',
   },{
-    name: 'Permission',
+    name: 'Career Guide',
     children: [
       {name: 'User Management'},
       {name: 'Account Role'},
@@ -135,8 +135,8 @@ export class SettingsMenuComponent implements OnInit {
   activeNodeParent : string;
   activeNodeChild : string;
 
-  treeControl = new NestedTreeControl<FoodNode>(node => node.children);
-  dataSource = new MatTreeNestedDataSource<FoodNode>();
+  treeControl = new NestedTreeControl<SettingMenuOption>(node => node.children);
+  dataSource = new MatTreeNestedDataSource<SettingMenuOption>();
 
   constructor() {
     this.dataSource.data = TREE_DATA;
@@ -144,7 +144,7 @@ export class SettingsMenuComponent implements OnInit {
     this.activeNodeChild= "";
   }
 
-  hasChild = (_: number, node: FoodNode) => !!node.children && node.children.length > 0;
+  hasChild = (_: number, node: SettingMenuOption) => !!node.children && node.children.length > 0;
   
   ngOnInit(): void {
   }
