@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SideMenuComponent } from './side-menu/side-menu.component';
 import { HeaderComponent } from './header/header.component';
+import { ComponentsModule } from '@mucrest/ng-design';
+import { MatButtonModule } from '@angular/material/button';
 
 
 
@@ -11,7 +13,12 @@ import { HeaderComponent } from './header/header.component';
     HeaderComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ComponentsModule,
+    MatButtonModule
+  ],
+  exports:[
+    HeaderComponent
   ]
 })
 export class LayoutModule { }
