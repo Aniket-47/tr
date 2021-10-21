@@ -7,9 +7,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddRoleComponent implements OnInit {
 
+  panelOpenState = false;
   constructor() { }
 
   ngOnInit(): void {
   }
+  step = 0;
+
+  setStep(index: number) {
+    this.step = index;
+  }
+
+  nextStep() {
+    this.step++;
+  }
+
+  prevStep() {
+    this.step--;
+  }
+  onEvent(event: any) {
+    event.stopPropagation();
+ }
+
 
 }

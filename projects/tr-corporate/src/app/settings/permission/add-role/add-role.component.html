@@ -1,1 +1,380 @@
-<p>add-role works!</p>
+<div class="accordion-container">
+    <mat-accordion>
+        <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+                <mat-slide-toggle color="green" [checked]="true" (click)="onEvent($event)"></mat-slide-toggle>
+                <div class="accordion-title">
+                    <div>Dashboard Builder</div>
+                    <div class="accordion-indicator">
+                        Show all 3 actions
+                        <span class="mat-expansion-indicator"></span>
+                    </div>
+                </div>            
+            </mat-panel-title>
+            <mat-panel-description (click)="onEvent($event)">
+                <div class="header-action">
+              <div class="action-item">
+                <mat-checkbox color="primary">Add</mat-checkbox>
+              </div>
+              <div class="action-item">
+                <mat-checkbox color="primary">View</mat-checkbox>
+              </div>
+              <div class="action-item">
+                <mat-checkbox color="primary">Delete</mat-checkbox>
+              </div>
+            </div>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div class="inner-content">
+            <mat-expansion-panel (opened)="panelOpenState = true"
+            (closed)="panelOpenState = false">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Manage Dashboard           
+                </mat-panel-title>
+                <mat-panel-description>
+                    <div class="header-action">
+                  <div class="action-item">
+                    <mat-checkbox color="primary"></mat-checkbox>
+                  </div>
+                  <div class="action-item">
+                    <mat-checkbox color="primary"></mat-checkbox>
+                  </div>
+                  <div class="action-item">
+                    <mat-checkbox color="primary"></mat-checkbox>
+                  </div>
+                </div>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <div class="role-list bg-light">
+                <div class="role-title">Dashboard Contents</div>
+                <div class="header-action">
+                    <div class="action-item">
+                      <mat-checkbox color="primary"></mat-checkbox>
+                    </div>
+                    <div class="action-item">
+                      <mat-checkbox color="primary"></mat-checkbox>
+                    </div>
+                    <div class="action-item">
+                      <mat-checkbox color="primary"></mat-checkbox>
+                    </div>
+                  </div>
+            </div>
+            </mat-expansion-panel>
+            <div class="role-list">
+                <div class="role-title">Add To Dashboard</div>
+                <div class="header-action">
+                    <div class="action-item">
+                      <mat-checkbox color="primary"></mat-checkbox>
+                    </div>
+                    <div class="action-item">
+                      <mat-checkbox color="primary"></mat-checkbox>
+                    </div>
+                    <div class="action-item">
+                      <mat-checkbox color="primary"></mat-checkbox>
+                    </div>
+                  </div>
+            </div>
+            <div class="role-list">
+                <div class="role-title">Dashboard Contents</div>
+                <div class="header-action">
+                    <div class="action-item">
+                      <mat-checkbox color="primary"></mat-checkbox>
+                    </div>
+                    <div class="action-item">
+                      <mat-checkbox color="primary"></mat-checkbox>
+                    </div>
+                    <div class="action-item">
+                      <mat-checkbox color="primary"></mat-checkbox>
+                    </div>
+                  </div>
+            </div>
+          </div>
+          
+        </mat-expansion-panel>
+      
+        <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+                <mat-slide-toggle color="green" [checked]="true"></mat-slide-toggle>
+                <div class="accordion-title">
+                    <div>Dashboard Module</div>
+                    <div class="accordion-indicator">
+                        Show all 15 actions
+                        <span class="mat-expansion-indicator"></span>
+                    </div>
+                </div>            
+            </mat-panel-title>
+            <mat-panel-description>
+                <div class="header-action">
+              <div class="action-item">
+                <mat-checkbox color="primary">Add</mat-checkbox>
+              </div>
+              <div class="action-item">
+                <mat-checkbox color="primary">View</mat-checkbox>
+              </div>
+              <div class="action-item">
+                <mat-checkbox color="primary">Delete</mat-checkbox>
+              </div>
+            </div>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div class="inner-content">
+            <mat-expansion-panel (opened)="panelOpenState = true"
+            (closed)="panelOpenState = false">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Manage Dashboard           
+                </mat-panel-title>
+                <mat-panel-description>
+                    <div class="header-action">
+                  <div class="action-item">
+                    <mat-checkbox color="primary"></mat-checkbox>
+                  </div>
+                  <div class="action-item">
+                    <mat-checkbox color="primary"></mat-checkbox>
+                  </div>
+                  <div class="action-item">
+                    <mat-checkbox color="primary"></mat-checkbox>
+                  </div>
+                </div>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <div class="role-list bg-light">
+                <div class="role-title">Dashboard Contents</div>
+                <div class="header-action">
+                    <div class="action-item">
+                      <mat-checkbox color="primary"></mat-checkbox>
+                    </div>
+                    <div class="action-item">
+                      <mat-checkbox color="primary"></mat-checkbox>
+                    </div>
+                    <div class="action-item">
+                      <mat-checkbox color="primary"></mat-checkbox>
+                    </div>
+                  </div>
+            </div>
+            </mat-expansion-panel>
+            <div class="role-list">
+                <div class="role-title">Add To Dashboard</div>
+                <div class="header-action">
+                    <div class="action-item">
+                      <mat-checkbox color="primary"></mat-checkbox>
+                    </div>
+                    <div class="action-item">
+                      <mat-checkbox color="primary"></mat-checkbox>
+                    </div>
+                    <div class="action-item">
+                      <mat-checkbox color="primary"></mat-checkbox>
+                    </div>
+                  </div>
+            </div>
+            <div class="role-list">
+                <div class="role-title">Dashboard Contents</div>
+                <div class="header-action">
+                    <div class="action-item">
+                      <mat-checkbox color="primary"></mat-checkbox>
+                    </div>
+                    <div class="action-item">
+                      <mat-checkbox color="primary"></mat-checkbox>
+                    </div>
+                    <div class="action-item">
+                      <mat-checkbox color="primary"></mat-checkbox>
+                    </div>
+                  </div>
+            </div>
+          </div>
+          
+        </mat-expansion-panel>
+      
+        <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+                <mat-slide-toggle color="green" [checked]="false"></mat-slide-toggle>
+                <div class="accordion-title">
+                    <div>Analytics</div>
+                    <div class="accordion-indicator">
+                        Show all 15 actions
+                        <span class="mat-expansion-indicator"></span>
+                    </div>
+                </div>            
+            </mat-panel-title>
+            <mat-panel-description>
+                <div class="header-action">
+              <div class="action-item">
+                <mat-checkbox color="primary">Add</mat-checkbox>
+              </div>
+              <div class="action-item">
+                <mat-checkbox color="primary">View</mat-checkbox>
+              </div>
+              <div class="action-item">
+                <mat-checkbox color="primary">Delete</mat-checkbox>
+              </div>
+            </div>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div class="inner-content">
+            <mat-expansion-panel (opened)="panelOpenState = true"
+            (closed)="panelOpenState = false">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Manage Dashboard           
+                </mat-panel-title>
+                <mat-panel-description>
+                    <div class="header-action">
+                  <div class="action-item">
+                    <mat-checkbox color="primary"></mat-checkbox>
+                  </div>
+                  <div class="action-item">
+                    <mat-checkbox color="primary"></mat-checkbox>
+                  </div>
+                  <div class="action-item">
+                    <mat-checkbox color="primary"></mat-checkbox>
+                  </div>
+                </div>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <div class="role-list">
+                <div class="role-title">Dashboard Contents</div>
+                <div class="header-action">
+                    <div class="action-item">
+                      <mat-checkbox color="primary"></mat-checkbox>
+                    </div>
+                    <div class="action-item">
+                      <mat-checkbox color="primary"></mat-checkbox>
+                    </div>
+                    <div class="action-item">
+                      <mat-checkbox color="primary"></mat-checkbox>
+                    </div>
+                  </div>
+            </div>
+            </mat-expansion-panel>
+            <div class="role-list">
+                <div class="role-title">Add To Dashboard</div>
+                <div class="header-action">
+                    <div class="action-item">
+                      <mat-checkbox color="primary"></mat-checkbox>
+                    </div>
+                    <div class="action-item">
+                      <mat-checkbox color="primary"></mat-checkbox>
+                    </div>
+                    <div class="action-item">
+                      <mat-checkbox color="primary"></mat-checkbox>
+                    </div>
+                  </div>
+            </div>
+            <div class="role-list">
+                <div class="role-title">Dashboard Contents</div>
+                <div class="header-action">
+                    <div class="action-item">
+                      <mat-checkbox color="primary"></mat-checkbox>
+                    </div>
+                    <div class="action-item">
+                      <mat-checkbox color="primary"></mat-checkbox>
+                    </div>
+                    <div class="action-item">
+                      <mat-checkbox color="primary"></mat-checkbox>
+                    </div>
+                  </div>
+            </div>
+          </div>
+          
+        </mat-expansion-panel>
+      
+        <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)" hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+                <mat-slide-toggle color="green" [checked]="true"></mat-slide-toggle>
+                <div class="accordion-title">
+                    <div>Other Operations</div>
+                    <div class="accordion-indicator">
+                        Show all 15 actions
+                        <span class="mat-expansion-indicator"></span>
+                    </div>
+                </div>            
+            </mat-panel-title>
+            <mat-panel-description>
+                <div class="header-action">
+              <div class="action-item">
+                <mat-checkbox color="primary">Add</mat-checkbox>
+              </div>
+              <div class="action-item">
+                <mat-checkbox color="primary">View</mat-checkbox>
+              </div>
+              <div class="action-item">
+                <mat-checkbox color="primary">Delete</mat-checkbox>
+              </div>
+            </div>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div class="inner-content">
+            <mat-expansion-panel (opened)="panelOpenState = true"
+            (closed)="panelOpenState = false">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Manage Dashboard           
+                </mat-panel-title>
+                <mat-panel-description>
+                    <div class="header-action">
+                  <div class="action-item">
+                    <mat-checkbox color="primary"></mat-checkbox>
+                  </div>
+                  <div class="action-item">
+                    <mat-checkbox color="primary"></mat-checkbox>
+                  </div>
+                  <div class="action-item">
+                    <mat-checkbox color="primary"></mat-checkbox>
+                  </div>
+                </div>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <div class="role-list">
+                <div class="role-title">Dashboard Contents</div>
+                <div class="header-action">
+                    <div class="action-item">
+                      <mat-checkbox color="primary"></mat-checkbox>
+                    </div>
+                    <div class="action-item">
+                      <mat-checkbox color="primary"></mat-checkbox>
+                    </div>
+                    <div class="action-item">
+                      <mat-checkbox color="primary"></mat-checkbox>
+                    </div>
+                  </div>
+            </div>
+            </mat-expansion-panel>
+            <div class="role-list">
+                <div class="role-title">Add To Dashboard</div>
+                <div class="header-action">
+                    <div class="action-item">
+                      <mat-checkbox color="primary"></mat-checkbox>
+                    </div>
+                    <div class="action-item">
+                      <mat-checkbox color="primary"></mat-checkbox>
+                    </div>
+                    <div class="action-item">
+                      <mat-checkbox color="primary"></mat-checkbox>
+                    </div>
+                  </div>
+            </div>
+            <div class="role-list">
+                <div class="role-title">Dashboard Contents</div>
+                <div class="header-action">
+                    <div class="action-item">
+                      <mat-checkbox color="primary"></mat-checkbox>
+                    </div>
+                    <div class="action-item">
+                      <mat-checkbox color="primary"></mat-checkbox>
+                    </div>
+                    <div class="action-item">
+                      <mat-checkbox color="primary"></mat-checkbox>
+                    </div>
+                  </div>
+            </div>
+          </div>
+          
+        </mat-expansion-panel>
+      
+      </mat-accordion>
+    </div>
