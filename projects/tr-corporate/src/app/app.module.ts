@@ -13,6 +13,8 @@ import { SettingsMenuComponent } from './settings-menu/settings-menu.component';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
+// import { MatExpansionModule } from '@angular/material/expansion';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { MatButtonModule } from '@angular/material/button';
     MatTreeModule,
     MatIconModule,
     MatFormFieldModule,
-    MatButtonModule
+    MatButtonModule,
+    // MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

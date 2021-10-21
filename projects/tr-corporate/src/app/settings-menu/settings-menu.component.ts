@@ -1,9 +1,10 @@
 import { NestedTreeControl } from '@angular/cdk/tree';
-import { Component, OnInit } from '@angular/core';
-import {MatTreeNestedDataSource} from '@angular/material/tree';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatTreeNestedDataSource } from '@angular/material/tree';
 
 interface SettingMenuOption {
   name: string;
+  expanded?: boolean;
   route?: string;
   children?: SettingMenuOption[];
   icon?: string;
@@ -12,6 +13,7 @@ interface SettingMenuOption {
 const TREE_DATA: SettingMenuOption[] = [
   {
     name: 'Permission PermissionPermission',
+    expanded: false,
     children: [
       {name: 'User Management UserManagement User Management'},
       {name: 'Account Role'},
@@ -19,6 +21,7 @@ const TREE_DATA: SettingMenuOption[] = [
     icon: 'search',
   }, {
     name: 'Templates',
+    expanded: false,
     children: [
       {name: 'User Management'},
       {name: 'Account Role'},
@@ -26,6 +29,7 @@ const TREE_DATA: SettingMenuOption[] = [
     icon: 'table_view',
   },{
     name: 'Integration',
+    expanded: false,
     children: [
       {name: 'User Management'},
       {name: 'Account Role'},
@@ -33,6 +37,7 @@ const TREE_DATA: SettingMenuOption[] = [
     icon: 'done_outline',
   }, {
     name: 'Configuration',
+    expanded: false,
     children: [
       {name: 'User Management'},
       {name: 'Account Role'},
@@ -40,6 +45,7 @@ const TREE_DATA: SettingMenuOption[] = [
     icon: 'reorder',
   },{
     name: 'Candidate Portal',
+    expanded: false,
     children: [
       {name: 'User Management'},
       {name: 'Account Role'},
@@ -47,6 +53,7 @@ const TREE_DATA: SettingMenuOption[] = [
     icon: 'search',
   }, {
     name: 'Billing',
+    expanded: false,
     children: [
       {name: 'User Management'},
       {name: 'Account Role'},
@@ -54,6 +61,7 @@ const TREE_DATA: SettingMenuOption[] = [
     icon: 'table_view',
   },{
     name: 'Vendor Portal',
+    expanded: false,
     children: [
       {name: 'User Management'},
       {name: 'Account Role'},
@@ -61,6 +69,7 @@ const TREE_DATA: SettingMenuOption[] = [
     icon: 'done_outline',
   }, {
     name: 'Employee Portal',
+    expanded: false,
     children: [
       {name: 'User Management'},
       {name: 'Account Role'},
@@ -68,6 +77,7 @@ const TREE_DATA: SettingMenuOption[] = [
     icon: 'reorder',
   },{
     name: 'Career Guide',
+    expanded: false,
     children: [
       {name: 'User Management'},
       {name: 'Account Role'},
@@ -75,6 +85,7 @@ const TREE_DATA: SettingMenuOption[] = [
     icon: 'search',
   }, {
     name: 'Templates',
+    expanded: false,
     children: [
       {name: 'User Management'},
       {name: 'Account Role'},
@@ -82,6 +93,7 @@ const TREE_DATA: SettingMenuOption[] = [
     icon: 'table_view',
   },{
     name: 'Integration',
+    expanded: false,
     children: [
       {name: 'User Management'},
       {name: 'Account Role'},
@@ -89,6 +101,7 @@ const TREE_DATA: SettingMenuOption[] = [
     icon: 'done_outline',
   }, {
     name: 'Configuration',
+    expanded: false,
     children: [
       {name: 'User Management'},
       {name: 'Account Role'},
@@ -96,6 +109,7 @@ const TREE_DATA: SettingMenuOption[] = [
     icon: 'reorder',
   },{
     name: 'Permission',
+    expanded: false,
     children: [
       {name: 'User Management'},
       {name: 'Account Role'},
@@ -103,6 +117,7 @@ const TREE_DATA: SettingMenuOption[] = [
     icon: 'search',
   }, {
     name: 'Templates',
+    expanded: false,
     children: [
       {name: 'User Management'},
       {name: 'Account Role'},
@@ -110,6 +125,7 @@ const TREE_DATA: SettingMenuOption[] = [
     icon: 'table_view',
   },{
     name: 'Integration',
+    expanded: false,
     children: [
       {name: 'User Management'},
       {name: 'Account Role'},
@@ -117,6 +133,7 @@ const TREE_DATA: SettingMenuOption[] = [
     icon: 'done_outline',
   }, {
     name: 'Configuration',
+    expanded: false,
     children: [
       {name: 'User Management'},
       {name: 'Account Role'},
@@ -131,11 +148,13 @@ const TREE_DATA: SettingMenuOption[] = [
   styleUrls: ['./settings-menu.component.scss']
 })
 export class SettingsMenuComponent implements OnInit {
+  @ViewChild ("tree")tree: any;
 
   activeNodeParent : string;
   activeNodeChild : string;
 
-  treeControl = new NestedTreeControl<SettingMenuOption>(node => node.children);
+  treeControl = new NestedTreeControl<SettingMenuOption>(node => node.
+    children);
   dataSource = new MatTreeNestedDataSource<SettingMenuOption>();
 
   constructor() {
@@ -149,11 +168,21 @@ export class SettingsMenuComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  test(name:string)
-  {
-    this.activeNodeParent = name
-    console.log(this.activeNodeParent)
-    console.log("works")
+  // test(name:string)
+  // {
+  //   this.activeNodeParent = name
+  //   console.log(this.activeNodeParent)
+  //   console.log("works")
+  // }
+
+  changeState(node: any) {
+    console.log(node);
+    
+    TREE_DATA.forEach(node => {
+      node.expanded = false;      
+    });
+    node.expanded = !node.expanded;
+    // this.tree.treeControl.collapseAll();
   }
 
 }
