@@ -14,7 +14,7 @@
         </ng-template>
 
         <div class="upper-sec__right">
-            <i class="fa fa-times" aria-hidden="true"></i>
+            <mat-icon class="close_icon">close</mat-icon>
         </div>
     </div>
 
@@ -29,11 +29,14 @@
         </div>
 
         <div class="about-user__right">
-            <button mat-button [matMenuTriggerFor]="menu">Active<mat-icon>expand_more</mat-icon></button>
-            <mat-menu #menu="matMenu">
-                <button mat-menu-item>Item 1</button>
-                <button mat-menu-item>Item 2</button>
-            </mat-menu>
+            <mat-form-field class="mat-form-field">
+                <mat-label>Admin</mat-label>
+                <mat-select matNativeControl>
+                    <mat-option value="Active">Active</mat-option>
+                    <mat-option value="Active">Active</mat-option>
+
+                </mat-select>
+            </mat-form-field>
 
         </div>
     </div>
@@ -55,7 +58,7 @@
                         <mat-icon class="mat-icon">person</mat-icon>
                         <div class="d-flex flex-column">
                             <mat-label>Name</mat-label>
-                            <span class="value">John Martin</span>
+                            <span class="value">John Watson</span>
                         </div>
                     </div>
 
@@ -168,7 +171,7 @@
                 </div>
             </div>
 
-            <div class="d-flex" style="margin: 15px 0;">
+            <div class="d-flex my-1">
                 <mat-icon>emoji_events</mat-icon>
                 <div>
                     <!-- <p class="label" style="color: gray;">User Role</p> -->
@@ -200,7 +203,7 @@
             </div>
 
             <div class="d-flex" style="margin: 15px 0;">
-                <mat-icon>markunread</mat-icon>
+                <mat-icon>work</mat-icon>
                 <div>
                     <!-- <p class="label" style="color: gray">Email</p> -->
                     <mat-label>Practice</mat-label><br>
