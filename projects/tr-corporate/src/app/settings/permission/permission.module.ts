@@ -7,6 +7,7 @@ import { ViewRoleComponent } from './view-role/view-role.component';
 import { AddRoleComponent } from './add-role/add-role.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { MaterialModule } from '@tr';
+import { MFilterComponent } from './m-filter/m-filter.component';
 
 
 
@@ -17,7 +18,8 @@ import { MaterialModule } from '@tr';
     ViewUserComponent,
     ViewRoleComponent,
     AddRoleComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    MFilterComponent
   ],
   imports: [
     CommonModule,
