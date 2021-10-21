@@ -168,13 +168,6 @@ export class SettingsMenuComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // test(name:string)
-  // {
-  //   this.activeNodeParent = name
-  //   console.log(this.activeNodeParent)
-  //   console.log("works")
-  // }
-
   changeState(node: any) {
     console.log(node);
     
@@ -182,7 +175,6 @@ export class SettingsMenuComponent implements OnInit {
       node.expanded = false;      
     });
     node.expanded = !node.expanded;
-    // this.tree.treeControl.collapseAll();
   }
 
 }
