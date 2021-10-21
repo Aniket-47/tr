@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddRoleComponent } from './add-role/add-role.component';
 import { MFilterComponent } from './m-filter/m-filter.component';
 import { UserManageComponent } from './user-manage/user-manage.component';
 import { ViewRoleComponent } from './view-role/view-role.component';
@@ -18,13 +19,18 @@ const routes: Routes = [
     component: MFilterComponent
   },
   {
+    path:'role',
+    component: AddRoleComponent
+  },
+  {
     path:'',
     pathMatch:'full',
     redirectTo: 'users'
   },
   {
     path:'**',
-    redirectTo:'users'
+    redirectTo:'users',
+    pathMatch:'full'
   }
 ];
 

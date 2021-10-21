@@ -4,6 +4,7 @@ import { SettingsComponent } from './settings.component';
 import { SettingsMenuComponent } from './settings-menu/settings-menu.component';
 import { MaterialModule } from '@tr';
 import { SettingsRoutingModule } from './settings-routing.module';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -15,6 +16,7 @@ import { SettingsRoutingModule } from './settings-routing.module';
   imports: [
     CommonModule,
     MaterialModule,
+    RouterModule,
     SettingsRoutingModule
   ]
 })

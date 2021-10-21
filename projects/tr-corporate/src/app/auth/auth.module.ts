@@ -19,9 +19,9 @@ import { LayoutModule } from '@tr';
   ],
   imports: [
     CommonModule,
-    AuthRoutingModule,
     FeatureModule,
-    LayoutModule
+    LayoutModule,
+    AuthRoutingModule
   ],
 })
 export class AuthModule { }
