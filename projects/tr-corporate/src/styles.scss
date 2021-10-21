@@ -35,7 +35,7 @@ $tr-corporate-theme: mat.define-light-theme((
 
 /* You can add global styles to this file, and also import other style files */
 @import '~@mucrest/ng-design/assets/theme';
-@import '~@mucrest/ng-design/assets/icon/style.css';
+@import '~@mucrest/ng-design/assets/icon/style.scss';
 @import 'assets/styles/style.scss';
 html, body { height: 100%; }
 body { margin: 0;font-family: 'Manrope', sans-serif;}
