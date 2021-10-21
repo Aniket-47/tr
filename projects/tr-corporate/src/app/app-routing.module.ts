@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddUserComponent } from './add-user/add-user.component';
 import { AuthModule } from './auth/auth.module';
-import { SettingsMenuComponent } from './settings-menu/settings-menu.component';
 
 const routes: Routes = [{
-  path: 'auth',
+  path:'auth',
   loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
 },
-{
-  path: 'settings',
-  component: SettingsMenuComponent
-}
+  {
+    path: 'adduser',
+    component: AddUserComponent
+  }
 ];
 
 @NgModule({

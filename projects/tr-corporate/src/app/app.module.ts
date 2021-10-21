@@ -13,11 +13,15 @@ import { SettingsMenuComponent } from './settings-menu/settings-menu.component';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
+import { AddUserComponent } from './add-user/add-user.component';
+import {MatSelectModule} from '@angular/material/select';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SettingsMenuComponent
+    SettingsMenuComponent,
+    AddUserComponent
 
   ],
   imports: [
@@ -32,7 +36,9 @@ import { MatButtonModule } from '@angular/material/button';
     MatTreeModule,
     MatIconModule,
     MatFormFieldModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSelectModule,
+    MatAutocompleteModule
   ],
   providers: [],
   bootstrap: [AppComponent]
