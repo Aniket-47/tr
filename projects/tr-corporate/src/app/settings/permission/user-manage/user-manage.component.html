@@ -1,1 +1,156 @@
-<p>user-manage works!</p>
+<header>
+    <div class="page-header">
+      <div class="page-title">
+        <button mat-icon-button>
+          <span class="mc-back-arrow"></span>
+        </button>
+        <h2>User Management</h2>
+      </div>
+      <div class="page-action cloud-only">
+        <button mat-stroked-button color="primary" [matMenuTriggerFor]="menu">Export <span class="mc-expand_more"></span></button>
+        <button mat-flat-button color="primary"><span class="mc-plus"></span> Add User </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>PDF</button>
+          <button mat-menu-item>Excel</button>
+          <button mat-menu-item>CSV</button>
+        </mat-menu>
+      </div>
+    </div>
+  </header>
+  
+  
+  <div class="user-management">
+    <div class="table-header">
+      <div class="table-info">2 users selected</div>
+      <div class="table-action cloud-only">
+        <mat-form-field appearance="outline">
+          <mat-select [(value)]="selectedStatus">
+            <mat-option *ngFor="let item of status" [value]="item.value">
+              {{item.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-select [(value)]="selectedRole">
+            <mat-option *ngFor="let item of role" [value]="item.value">
+              {{item.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-select [(value)]="selectedSort">
+            <mat-option *ngFor="let item of sort" [value]="item.value">
+              {{item.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+       
+      </div>
+    </div>
+      <table mat-table [dataSource]="dataSource">
+    
+        <!-- Position Column -->
+        <ng-container matColumnDef="check">
+          <th mat-header-cell *matHeaderCellDef> <mat-checkbox color="primary"></mat-checkbox></th>
+          <td mat-cell *matCellDef="let element"> <mat-checkbox color="primary"></mat-checkbox> </td>
+        </ng-container>
+    
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Full Name </th>
+          <td mat-cell *matCellDef="let element"> 
+            <div class="user-info">
+              <div class="user-img">
+                <img src="{{element.img}}" alt="">
+              </div>
+              <div>
+                <div>{{element.name}}</div>
+                <div>{{element.email}}</div>
+              </div>
+            </div>          
+             </td>
+        </ng-container>
+    
+        <!-- Role Column -->
+        <ng-container matColumnDef="role">
+          <th mat-header-cell *matHeaderCellDef> Role </th>
+          <td mat-cell *matCellDef="let element"> 
+            <mat-label class="role" [ngClass]="{
+            'success': element.role === 'Admin',
+            'info': element.role === 'Super Admin'
+          }">{{element.role}} </mat-label> </td>
+        </ng-container>
+    
+        <!-- Username Column -->
+        <ng-container matColumnDef="username">
+          <th mat-header-cell *matHeaderCellDef> Username </th>
+          <td mat-cell *matCellDef="let element"> <span class="mobile-only grey-text">User Name :</span> {{element.username}} </td>
+        </ng-container>
+  
+        <!-- Status Column -->
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef> Status </th>
+          <td mat-cell *matCellDef="let element">
+            <mat-label class="status" [ngClass]="{
+              'success': element.status === 'Active',
+              'warning': element.status === 'Inactive',
+              'danger': element.status === 'Deactivated'
+            }">{{element.status}} </mat-label>
+            </td>
+        </ng-container>
+  
+        <!-- Last Updated Column -->
+        <ng-container matColumnDef="lastupdated">
+          <th mat-header-cell *matHeaderCellDef> Last Updated </th>
+          <td mat-cell *matCellDef="let element"> <span class="mobile-only grey-text">Last Updated :</span> {{element.lastupdated}} </td>
+        </ng-container>
+  
+        <!-- Action Column -->
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef>  </th>
+          <td mat-cell *matCellDef="let element">         
+          <div class="cloud-only">
+          <button mat-icon-button>
+            <span class="mc-create"></span>
+          </button>  
+          <button mat-icon-button>
+            <span class="mc-delete"></span>
+          </button>  
+          <button mat-icon-button>
+            <span class="mc-more_horiz"></span>
+          </button> 
+        </div>
+        <div class="mobile-only">
+          <button mat-icon-button [matMenuTriggerFor]="menu"><span class="mc-more_vert"></span></button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item><span class="mc-create"></span> Edit</button>
+            <button mat-menu-item><span class="mc-delete"></span> Delete</button>
+          </mat-menu>
+        </div>
+          </td>
+        </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                     showFirstLastButtons 
+                     aria-label="Select page of periodic elements">
+      </mat-paginator>
+    </div>
+    <div class="floating-button page-action  mobile-only">    
+      <div class="more-float-action-btn" [class.active]="toggle">
+        <button mat-stroked-button color="primary" [matMenuTriggerFor]="menu">Export <span class="mc-expand_more"></span></button>
+        <button mat-flat-button color="primary"><span class="mc-plus"></span> Add User </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>PDF</button>
+          <button mat-menu-item>Excel</button>
+          <button mat-menu-item>CSV</button>
+        </mat-menu>
+      </div>
+      <button mat-fab color="primary" (click)="toggleFab()">
+        <span [ngClass]="{'mc-plus': toggle === true, 'mc-more_vert': toggle === false }"></span>
+      </button>
+    </div>
+  
