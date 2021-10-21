@@ -8,6 +8,24 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./user-management.component.scss']
 })
 export class UserManagementComponent implements OnInit, AfterViewInit {
+  toggle = false;
+  status = [
+    {value: '0', viewValue: 'Active'},
+    {value: '1', viewValue: 'Inactive'},
+    {value: '2', viewValue: 'Deactivated'}
+  ];
+  role = [
+    {value: '0', viewValue: 'Admin'},
+    {value: '1', viewValue: 'Super Admin'}
+  ];
+  sort = [
+    {value: '0', viewValue: 'Shot By: Added to Jobs'},
+    {value: '1', viewValue: 'Shot By: Added to Jobs'},
+    {value: '2', viewValue: 'Shot By: Added to Jobs'}
+  ];
+  selectedStatus = this.status[0].value;
+  selectedRole = this.role[0].value;
+  selectedSort = this.sort[0].value;
   displayedColumns: string[] = ['check', 'name', 'role', 'username', 'status', 'lastupdated', 'action'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
@@ -23,6 +41,9 @@ export class UserManagementComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+  }
+  toggleFab() {
+    this.toggle = !this.toggle;
   }
 }
 

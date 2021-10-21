@@ -9,6 +9,24 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./account-role.component.scss']
 })
 export class AccountRoleComponent implements OnInit, AfterViewInit {
+  toggle = false;
+  status = [
+    {value: '0', viewValue: 'Active'},
+    {value: '1', viewValue: 'Inactive'},
+    {value: '2', viewValue: 'Deactivated'}
+  ];
+  role = [
+    {value: '0', viewValue: 'Admin'},
+    {value: '1', viewValue: 'Super Admin'}
+  ];
+  sortby = [
+    {value: '0', viewValue: 'Shot By: Added to Jobs'},
+    {value: '1', viewValue: 'Shot By: Added to Jobs'},
+    {value: '2', viewValue: 'Shot By: Added to Jobs'}
+  ];
+  selectedStatus = this.status[0].value;
+  selectedRole = this.role[0].value;
+  selectedSort = this.sortby[0].value;
   displayedColumns: string[] = ['role', 'users', 'lastupdated', 'status', 'action'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
@@ -24,6 +42,9 @@ export class AccountRoleComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+  }
+  toggleFab() {
+    this.toggle = !this.toggle;
   }
 }
 

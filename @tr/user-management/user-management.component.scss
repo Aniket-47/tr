@@ -1,4 +1,5 @@
 @import '~@mucrest/ng-design/assets/styles/0-plugins/plugins-dir';
+
 table.mat-table {
     @include media-breakpoint-down(md) {
         padding: 10px;
