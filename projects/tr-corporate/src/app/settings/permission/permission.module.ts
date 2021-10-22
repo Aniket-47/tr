@@ -8,6 +8,9 @@ import { AddRoleComponent } from './add-role/add-role.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { MaterialModule } from '@tr';
 import { MFilterComponent } from './m-filter/m-filter.component';
+import { PermissionComponent } from './permission.component';
+import { RouterModule } from '@angular/router';
+import { PermissionRoutingModule } from './permission-routing.module';
 
 
 
@@ -19,11 +22,13 @@ import { MFilterComponent } from './m-filter/m-filter.component';
     ViewRoleComponent,
     AddRoleComponent,
     UserDetailComponent,
-    MFilterComponent
+    MFilterComponent,
+    PermissionComponent
   ],
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    PermissionRoutingModule
   ]
 })
 export class PermissionModule { }

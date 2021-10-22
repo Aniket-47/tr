@@ -1,0 +1,81 @@
+@import '~@mucrest/ng-design/assets/styles/0-plugins/plugins-dir';
+.account-role {
+table.mat-table {
+    @include media-breakpoint-down(md) {
+        padding: 10px;
+        display: block;       
+    }
+    ::ng-deep tbody {
+        @include media-breakpoint-down(md) {
+        display: block;
+       }
+    }
+    tr.mat-header-row {
+        @include media-breakpoint-down(md) {
+            display: none;
+         }
+    }
+    tr.mat-row {
+        height: 80px;
+        @include media-breakpoint-down(md) {
+            height: auto !important;
+            border: 1px solid #EBEAED;
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            padding-bottom: 9rem;
+            margin-bottom: 1rem;
+            position: relative;
+            border-radius: 4px;
+        }
+    }
+    .mat-header-cell {
+        font-size: 14px;
+        font-weight: 400;
+        color: #84818A;
+    }
+    td, th {
+        vertical-align: middle;
+        border-color: #EBEAED;        
+        &:last-child {
+            width: 150px;
+        }
+    }
+    @include media-breakpoint-down(md) {
+    td.mat-cell {
+        vertical-align: top;
+        border: 0;
+         &:first-of-type {
+            padding: 0px;
+            position: absolute;
+            bottom: 10px;
+            width: calc(100% - 20px);
+            right: 10px;
+         }
+         &:nth-child(2) {
+             position: absolute;
+             left: 10px;
+             top: 40px;
+         }
+         &:nth-child(3) {
+             position: absolute;
+             left: 10px;
+             top: 65px;
+         }
+         &:nth-child(4) {
+            position: absolute;
+            left: 20px;
+            top: 5px;
+         }
+        &:last-child {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            width: auto;
+            padding: 0;
+        }
+     }
+    }
+
+}
+}

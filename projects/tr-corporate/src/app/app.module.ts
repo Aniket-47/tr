@@ -5,6 +5,8 @@ import { MaterialModule } from '@tr';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AuthModule } from './auth/auth.module';
+// import { MaterialModule } from './material.moule';
 
 @NgModule({
   declarations: [
@@ -13,8 +15,10 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MaterialModule,
-    AppRoutingModule
+    // TRModule,
+    AuthModule,
+    AppRoutingModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
