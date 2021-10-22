@@ -2,22 +2,13 @@
   <button action mat-flat-button color="accent" routerLink="./register">Register</button>
   <button action mat-flat-button routerLink="./login" color="primary">Login</button>
 </tr-header>
-<div class="d-none d-md-flex">
-  <div class="row">
-    <div class="col col-4 left-panel p-0">
-      <img src="../../assets/images/shu-Corporate-background-checks-man-ticking-boxes-130944260-1500x1000.jpg" alt="">
-      <div class="mask"></div>
 
-    </div>
-    <div class="col col-8 right-panel my-auto">
-      <router-outlet></router-outlet>
-    </div>
+<div class="row m-0">
+  <div class="col-md-4 left-panel d-none d-md-flex p-0">
+    <img [src]="leftPanelImg">
+    <div class="mask"></div>
   </div>
-</div>
-
-
-<!-- <div class="d-block d-md-none">
-  <div class="logo m-4">
+  <div class="logo p-4 d-block d-md-none">
     <svg width="180" height="50" viewBox="0 0 102 21" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M22.0402 15.5904H23.6125V7.67016H26.6527V6.19572H19V7.67016H22.0402V15.5904Z" fill="black" />
       <path
@@ -57,5 +48,7 @@
       <circle cx="6.19615" cy="13.7846" r="6" transform="rotate(-60 6.19615 13.7846)" fill="#FF715A" />
     </svg>
   </div>
-  <router-outlet></router-outlet>
-</div> -->
+  <div class="col-12 col-md-8 right-panel my-auto">
+    <router-outlet></router-outlet>
+  </div>
+</div>
