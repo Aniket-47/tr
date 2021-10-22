@@ -5,8 +5,7 @@ import { MaterialModule } from '@tr';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AuthModule } from './auth/auth.module';
-// import { MaterialModule } from './material.moule';
+// import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +15,7 @@ import { AuthModule } from './auth/auth.module';
     BrowserModule,
     BrowserAnimationsModule,
     // TRModule,
-    AuthModule,
+    // AuthModule,
     AppRoutingModule,
     MaterialModule
   ],
