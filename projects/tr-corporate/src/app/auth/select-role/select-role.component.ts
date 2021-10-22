@@ -7,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SelectRoleComponent implements OnInit {
 
-  constructor() { }
+  stepperPages = ['Company Type', 'Register'];
+  currentStep = 0;
+constructor() { }
 
   ngOnInit(): void {
   }
