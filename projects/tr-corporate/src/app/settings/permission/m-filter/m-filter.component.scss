@@ -1,0 +1,42 @@
+/* list */
+.lists{
+    padding: 8px 0px;
+    background: #FFFFFF;
+    box-shadow: 0px 1px 24px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+.brd{
+    border-bottom: 1px solid rgb(236, 233, 233);
+
+    font-family: Manrope;
+    font-style: normal;
+    font-weight: 500 !important;
+    font-size: 14px !important;
+    line-height: 20px;
+    color: #25364D;
+
+}
+
+h2{
+    font-family: 'Manrope', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 32px;
+    /* identical to box height, or 133% */
+    letter-spacing: 0.2px;
+    /* Fill/Dark/Main Dark */
+    color: #25364D;
+}
+
+h6{
+    font-family: Manrope;
+    font-style: normal;
+    font-weight: 600 !important;
+    font-size: 16px !important;
+    line-height: 22px;
+    color: #504F54;
+}
+
+.card-rndd{background-color: rgb(252, 250, 250) !important; border-radius: 20px;}
+.fnt-sz{font-size: 35px !important; text-decoration: none;}
