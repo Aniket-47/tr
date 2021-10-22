@@ -7,7 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthComponent implements OnInit {
 
-  constructor() { }
+  leftPanelImg: string;
+  constructor() {
+    this.leftPanelImg = "../../assets/images/shu-Corporate-background-checks-man-ticking-boxes-130944260-1500x1000.jpg"
+  }
 
   ngOnInit(): void {
   }
