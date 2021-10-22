@@ -8,17 +8,27 @@ const routes: Routes = [
   {
     path: '',
     component: AuthComponent,
-    children: [
+    children:[
       {
-        path: 'register',
-        component: RegisterComponent
-      },
-      {
-        path: 'login',
+        path:'login',
         component: LoginComponent
       },
+      {
+        path:'register',
+        component:RegisterComponent
+      },
+      {
+        path:'',
+        pathMatch:'full',
+        redirectTo: 'login'
+      },
+      {
+        path:'**',
+        redirectTo:'login',
+        pathMatch:'full'
+      }
     ]
-  },
+  }
 ];
 
 @NgModule({

@@ -7,3 +7,9 @@
 body{
     font-family: Manrope;
 }
+@import 'assets/styles/style.scss';
+html, body { height: 100%; }
+body { 
+  margin: 0;
+  font-family: 'Manrope', sans-serif;
+}

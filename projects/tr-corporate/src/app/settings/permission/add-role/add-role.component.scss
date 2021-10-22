@@ -1,0 +1,104 @@
+.accordion-container {
+    padding: 10%;
+    .mat-expansion-panel {
+        box-shadow: none;
+        border: 1px solid #EBEAED;
+        margin-top: -1px;
+        border-radius: 0;
+        &:last-child {
+            border-bottom: 1px solid #EBEAED;
+        }
+        &.mat-expanded {
+            box-shadow: 0px 12px 16px rgba(0, 0, 0, 0.03);
+        }
+        ::ng-deep .mat-content {
+            overflow: inherit;
+        }
+        &-header {
+            height: 80px;
+            &-title {
+            font-size: 18px;
+            align-items: center;
+            width: 50%;
+        }
+        &-description {
+            width: 50%;
+        }
+        }
+        
+        ::ng-deep &-body {
+            padding: 0;
+            background: #fcfcfc;
+        }
+    }
+    
+    .inner-content {
+        .mat-expansion-panel {
+            border-left: 0;
+            border-right: 0;
+            box-shadow: none;
+            background: #fcfcfc;
+            &-header {
+                box-shadow: inset 0px 12px 16px rgb(0 0 0 / 3%);
+                border-bottom: 1px solid #EBEAED;
+                &-title {
+                    font-size: 1rem;
+                    font-weight: 400;
+                }
+            }
+            .role-list {
+                border-bottom: 1px solid #EBEAED;                
+            }
+        }
+    }
+.mat-slide-toggle {
+    margin-right: 1rem;
+}
+}
+.header-action {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    align-items: center;
+    .action-item {
+        flex-basis: 33.3%;
+    }
+}
+::ng-deep .mat-expansion-indicator {
+    display: none;
+}
+.accordion-indicator {
+    display: block;
+    font-size: 1rem;
+    color: #378DF7;
+    font-weight: 100;
+    margin-top: .4rem;
+    line-height: 13px;
+    .mat-expansion-indicator {
+        display: inline-block;
+        margin-left: .4rem;
+    }
+}
+.role-list {
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 24px;
+    border-bottom: 1px solid #EBEAED;
+    &:last-child {
+        border: 0;
+    }
+    .role-title {
+        width: 50%;
+        margin-right: 16px;
+        font-size: 1rem;
+    }
+    .header-action {
+        width: 50%;
+        margin-right: 16px;
+    }
+}
+.bg-light{
+    background: rgb(0 0 0 / 4%);
+}

@@ -1,0 +1,94 @@
+@import '~@mucrest/ng-design/assets/styles/0-plugins/plugins-dir';
+
+table.mat-table {
+    @include media-breakpoint-down(md) {
+        padding: 10px;
+        display: block;
+     }
+     ::ng-deep tbody {
+        @include media-breakpoint-down(md) {
+            display: block;
+        }
+     }
+    tr.mat-row {
+        height: 80px;
+        @include media-breakpoint-down(md) {
+            height: auto !important;
+            border: 1px solid #EBEAED;
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            padding-bottom: 6rem;
+            margin-bottom: 1rem;
+            position: relative;
+            border-radius: 4px;
+         }
+         td.mat-cell {
+            @include media-breakpoint-down(md) {
+            vertical-align: top;
+            border: 0;
+             &:first-of-type {
+                padding-left: 10px;
+                padding-top: 10px;
+             }
+             &:nth-child(3) {
+                 position: absolute;
+                 left: 10px;
+                 bottom: 10px;
+             }
+             &:nth-child(4) {
+                position: absolute;
+                left: 55px;
+                bottom: 70px;
+             }
+             &:nth-child(5) {
+                position: absolute;
+                right: 10px;
+                bottom: 10px;
+            }
+            &:nth-child(6) {
+                position: absolute;
+                left: 55px;
+                bottom: 50px;
+            }
+            &:last-child {
+                padding-right: 0;
+                text-align: right;
+                width: auto;
+                margin-left: auto;
+            }
+            }
+         }
+    }
+    tr.mat-header-row {
+        @include media-breakpoint-down(md) {
+            display: none;
+         }
+    }
+    .mat-header-cell {
+        font-size: 14px;
+        font-weight: 400;
+        color: #84818A;
+    }
+    td, th {
+        vertical-align: middle;
+        border-color: #EBEAED;
+        &:first-child {
+            width: 55px;
+        }
+        &:last-child {
+            width: 150px;
+        }
+    }
+    .user-info {
+        display: flex;
+        align-items: center;
+        @include media-breakpoint-down(md) { 
+            margin-top: .5rem;
+        }
+        .user-img {
+            margin-right: 1rem;
+        }
+    }
+}
+

@@ -2,6 +2,7 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "cli": {
     "analytics": false
+    // "analytics": "3d9f9317-e24e-40b5-81c8-913d4dfc1c9b"
   },
   "version": 1,
   "newProjectRoot": "projects",
@@ -94,6 +95,9 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "port": 4201
+          },
           "configurations": {
             "production": {
               "browserTarget": "tr-corporate:build:production"
@@ -128,6 +132,39 @@
             ],
             "scripts": []
           }
+        }
+      }
+    },
+    "tr":{
+      "root": "@tr",
+      "sourceRoot":"@tr/src",
+      "projectType": "application",
+      "prefix": "tr",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss",
+          "skipTests": true
+        },
+        "@schematics/angular:class": {
+          "skipTests": true
+        },
+        "@schematics/angular:directive": {
+          "skipTests": true
+        },
+        "@schematics/angular:guard": {
+          "skipTests": true
+        },
+        "@schematics/angular:interceptor": {
+          "skipTests": true
+        },
+        "@schematics/angular:pipe": {
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
+        },
+        "@schematics/angular:application": {
+          "strict": true
         }
       }
     }
