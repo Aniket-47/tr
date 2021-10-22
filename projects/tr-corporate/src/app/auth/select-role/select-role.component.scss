@@ -1,0 +1,76 @@
+@import "~@mucrest/ng-design/assets/styles/1-base/base-dir";
+
+@import "~@mucrest/ng-design/assets/styles/0-plugins/plugins-dir.scss";
+
+.select-role {
+  background: $white;
+  // padding: 2.3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 460px;
+  max-width: 786px;
+  width: 786px;
+  ::ng-deep .stepper .stepper-label {
+    color: black;
+  }
+  @include media-breakpoint-down(md) {
+    padding: 1.5rem;
+    background-color: transparent;
+    width: 100%;
+    // .logo {
+    //   display: block;
+    //   margin-bottom: 3rem;
+    // }
+  }
+  @include media-breakpoint-down(md) {
+    ::ng-deep .stepper .stepper-label {
+      font-size: smaller;
+    }
+  }
+
+  h2 {
+    @include font-size(2rem);
+    line-height: 2.5rem;
+    font-weight: 400;
+    color: $title;
+    margin-bottom: 1.5rem;
+  }
+
+  p {
+    color: $title;
+    margin-bottom: 1.5rem;
+    line-height: normal;
+    @include font-size(0.9rem);
+    @include media-breakpoint-down(md) {
+      order: 2;
+    }
+  }
+
+  .mat-form-field {
+    width: 100%;
+    font-size: 0.85rem;
+    &.mat-form-field-appearance-standard .mat-form-field-underline {
+      background-color: #ebeaed;
+    }
+  }
+
+  &-action {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @include media-breakpoint-down(md) {
+      flex-flow: column;
+    }
+
+    .btn-lg {
+      @include media-breakpoint-down(md) {
+        width: 100%;
+      }
+    }
+  }
+
+  a {
+    text-decoration: none;
+  }
+}

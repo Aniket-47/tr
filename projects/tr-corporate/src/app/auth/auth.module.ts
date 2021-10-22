@@ -6,8 +6,7 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './login/login.component';
 import { FPasswordComponent } from './f-password/f-password.component';
 import { SelectRoleComponent } from './select-role/select-role.component';
-import {FeatureModule} from '@mucrest/ng-design';
-import { LayoutModule } from '@tr';
+import { CardModule, LayoutModule, McModule } from '@tr';
 
 @NgModule({
   declarations: [
@@ -19,8 +18,9 @@ import { LayoutModule } from '@tr';
   ],
   imports: [
     CommonModule,
-    FeatureModule,
     LayoutModule,
+    McModule,
+    CardModule,
     AuthRoutingModule
   ],
 })

@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
   hide = true;
+  stepperPages = ['Company Type', 'Register'];
+  currentStep = 1;
   constructor() { }
 
   ngOnInit(): void {
