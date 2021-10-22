@@ -3,6 +3,25 @@
 @import "~@mucrest/ng-design/assets/styles/0-plugins/plugins-dir.scss";
 
 .register {
+  background: $white;
+  padding: 2.3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 460px;
+  max-width: 786px;
+  width: 786px;
+
+  @include media-breakpoint-down(md) {
+    padding: 1.5rem;
+    background-color: transparent;
+    width: 100%;
+    // .logo {
+    //   display: block;
+    //   margin-bottom: 3rem;
+    // }
+  }
+
   h2 {
     @include font-size(2rem);
     line-height: 2.5rem;
