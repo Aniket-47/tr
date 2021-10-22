@@ -5,13 +5,15 @@ import { HeaderComponent } from './header/header.component';
 import { ComponentsModule } from '@mucrest/ng-design';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
+import { MHeaderComponent } from './m-header/m-header.component';
 
 
 
 @NgModule({
   declarations: [
     SideMenuComponent,
-    HeaderComponent
+    HeaderComponent,
+    MHeaderComponent
   ],
   imports: [
     CommonModule,
@@ -20,7 +22,9 @@ import { RouterModule } from '@angular/router';
     MatButtonModule
   ],
   exports:[
-    HeaderComponent
+    SideMenuComponent,
+    HeaderComponent,
+    MHeaderComponent
   ]
 })
 export class LayoutModule { }
