@@ -1,0 +1,40 @@
+@import '~@mucrest/ng-design/assets/styles/1-base/base-dir';
+@import '~@mucrest/ng-design/assets/styles/0-plugins/plugins-dir.scss';
+.content-wrapper {
+    margin-left: $sidenav-width;
+    height: 100%;
+    top: 3.8rem;
+    position: fixed;
+    width: calc(100% - 4.375rem);
+    @include media-breakpoint-down(md) {
+        margin: 0;
+        width: 100%;
+     }
+    .mat-drawer.mat-drawer-side {
+        border-right: #EBEAED 1px solid;
+    }
+    .mat-drawer-container, ::ng-deep .mat-drawer-content {
+        height: 100%;
+        .sidenav-content {
+            padding: 0 2rem;
+            height: 100%;
+            position: relative;           
+            background: white;
+            @include media-breakpoint-down(md) {
+                padding: 0;
+             }
+        }
+    }
+}
+.togglebtn {
+    position: absolute;
+    left: 50px;
+    top: 12px;
+    font-size: 1.5rem;
+    z-index: 9999;
+    border: #EBEAED 1px solid;
+    background: #fff;
+    ::ng-deep .mat-button-wrapper>* {
+        vertical-align: top;
+    }
+}

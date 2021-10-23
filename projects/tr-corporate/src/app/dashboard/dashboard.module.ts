@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { DashabordComponent } from './dashabord.component';
 import { StatsComponent } from './stats/stats.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
-import { LayoutModule } from '@tr';
+import { LayoutModule, MaterialModule } from '@tr';
 import { ComponentsModule } from '@mucrest/ng-design';
 
 
@@ -18,7 +18,8 @@ import { ComponentsModule } from '@mucrest/ng-design';
     CommonModule,
     LayoutModule,
     ComponentsModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
+    MaterialModule
   ]
 })
 export class DashboardModule { }

@@ -13,7 +13,7 @@
         }
         h2 {
             margin: 0;
-            @include font-size(2.3rem);
+            @include font-size(2rem);
             font-weight: 400;
         }
     }
@@ -230,6 +230,9 @@
     &:first-child, &:nth-child(2) {
         width: 130px;
         @include margin-right(.9rem);
+    }
+    &:last-child {
+        width: 210px;
     }
 }
 }
