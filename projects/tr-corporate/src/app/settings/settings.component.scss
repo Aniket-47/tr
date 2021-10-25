@@ -3,7 +3,7 @@
 .content-wrapper {
     margin-left: $sidenav-width;
     height: 100%;
-    top: 3.8rem;
+    top: $header-height;
     position: fixed;
     width: calc(100% - 4.375rem);
     @include media-breakpoint-down(md) {

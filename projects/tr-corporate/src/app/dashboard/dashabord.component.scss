@@ -6,7 +6,7 @@ mc-side-navbar {
   }    
 }
 .border-bottom {
-    padding: 2rem 0;
+    padding: 1rem 0;
     border-bottom: 1px solid #E3E1E5;
     margin-bottom: 2rem;
     a {
@@ -20,7 +20,7 @@ mc-side-navbar {
     a {
         display: block;
         text-decoration: none;
-        font-size: 1.5rem;
+        font-size: 1.3rem;
         color: black;
         padding: .7rem 0;
         &.active {
@@ -41,16 +41,16 @@ mc-side-navbar {
     .user-avatar {
         background: #1F47F5;
         color: white;
-        width: 38px;
-        height: 38px;
-        border-radius: 38px;
-        line-height: 38px;
+        width: 30px;
+        height: 30px;
+        border-radius: 30px;
+        line-height: 30px;
         text-align: center;
         font-size: .8rem;
     }
     .user-name {
         color: #25364D;
-        font-size: 1rem;
+        font-size: 0.9rem;
         font-weight: 600;
         padding-left: .5rem;
         &::after {
@@ -78,4 +78,9 @@ mc-side-navbar {
             border-bottom: 0;
         }
     }
+}
+
+.header-icon{
+    font-size: 1.7rem;
+    padding: 0.2rem 0;
 }
