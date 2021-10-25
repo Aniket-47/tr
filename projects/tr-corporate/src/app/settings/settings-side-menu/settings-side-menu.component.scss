@@ -40,7 +40,22 @@
   padding-left: 40px;
 }
 
-// .mat-tree-node{
-//   font-size: 18px;
-//   color: #25364D;
-// }
+.icon {
+  font-size: 20px;
+  margin-right: 5px;
+}
+
+::ng-deep .mat-expansion-panel:not([class*=mat-elevation-z]) {
+  box-shadow: none;
+}
+
+.mat-expansion-panel-header {
+  padding: 0;
+}
+
+
+::ng-deep .mat-list-item .mat-list-item-content{
+  padding: 0 !important;
+}
+
+a{text-decoration: none;}
