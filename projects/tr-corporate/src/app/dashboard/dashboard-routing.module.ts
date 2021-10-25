@@ -17,13 +17,17 @@ const routes: Routes = [
         loadChildren: () => import('../settings/settings.module').then(m => m.SettingsModule)
       },
       {
+        path:'account',
+        loadChildren: () => import('../../../../../@tr/src/app/account/account.module').then(m => m.AccountModule)
+      },
+      {
         path:'',
         pathMatch:'full',
         redirectTo: ''
       },
       {
         path:'**',
-        pathMatch:''
+        redirectTo:''
       }
     ]
   }

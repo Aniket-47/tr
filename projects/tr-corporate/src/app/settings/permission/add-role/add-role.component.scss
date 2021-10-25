@@ -1,5 +1,8 @@
+@import '~@mucrest/ng-design/assets/styles/0-plugins/plugins-dir';
+.page-header {
+    @include padding-bottom(2.3rem);
+}
 .accordion-container {
-    padding: 10%;
     .mat-expansion-panel {
         box-shadow: none;
         border: 1px solid #EBEAED;
@@ -71,7 +74,6 @@
     display: block;
     font-size: 1rem;
     color: #378DF7;
-    font-weight: 100;
     margin-top: .4rem;
     line-height: 13px;
     .mat-expansion-indicator {
