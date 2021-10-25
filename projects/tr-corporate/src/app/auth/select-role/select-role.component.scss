@@ -18,10 +18,6 @@
     padding: 1.5rem;
     background-color: transparent;
     width: 100%;
-    // .logo {
-    //   display: block;
-    //   margin-bottom: 3rem;
-    // }
   }
   @include media-breakpoint-down(md) {
     ::ng-deep .stepper .stepper-label {
@@ -45,32 +41,5 @@
     @include media-breakpoint-down(md) {
       order: 2;
     }
-  }
-
-  .mat-form-field {
-    width: 100%;
-    font-size: 0.85rem;
-    &.mat-form-field-appearance-standard .mat-form-field-underline {
-      background-color: #ebeaed;
-    }
-  }
-
-  &-action {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    @include media-breakpoint-down(md) {
-      flex-flow: column;
-    }
-
-    .btn-lg {
-      @include media-breakpoint-down(md) {
-        width: 100%;
-      }
-    }
-  }
-
-  a {
-    text-decoration: none;
   }
 }
