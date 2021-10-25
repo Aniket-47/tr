@@ -55,6 +55,8 @@
                 &-title {
                     color: #3647E3;
                     font-size: 1rem;
+                    display: flex;
+                    align-items: center;
                     [class^=mc-], [class*=" mc-"] {
                         &::before {
                             color: #3647E3;
@@ -64,6 +66,8 @@
                 }
                ::ng-deep .mat-expansion-indicator::after {
                     color: #3647E3;
+                    vertical-align: top;
+                    margin-top: 2px;
                 }
             }
             ::ng-deep .mat-expansion-panel-body {

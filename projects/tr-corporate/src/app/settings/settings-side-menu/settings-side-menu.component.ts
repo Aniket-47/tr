@@ -127,8 +127,8 @@ const TREE_DATA: FoodNode[] = [
 
 @Component({
   selector: 'app-settings-menu',
-  templateUrl: './settings-menu.component.html',
-  styleUrls: ['./settings-menu.component.scss']
+  templateUrl: './settings-side-menu.component.html',
+  styleUrls: ['./settings-side-menu.component.scss']
 })
 export class SettingsMenuComponent implements OnInit {
 
