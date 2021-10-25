@@ -1,29 +1,29 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SettingsMenuComponent } from './settings-side-menu/settings-side-menu.component';
+import { SettingsSideMenuComponent } from './settings-side-menu/settings-side-menu.component';
 import { SettingsComponent } from './settings.component';
 
 const routes: Routes = [
   {
     path: '',
     component: SettingsComponent,
-    children:[
+    children: [
       {
-        path:'dashboard',
-        component: SettingsMenuComponent
+        path: 'dashboard',
+        component: SettingsSideMenuComponent
       },
       {
         path: 'permission',
         loadChildren: () => import('./permission/permission.module').then(m => m.PermissionModule)
       },
       {
-        path:'',
-        pathMatch:'full',
+        path: '',
+        pathMatch: 'full',
         redirectTo: 'dashboard'
       },
       {
-        path:'**',
-        redirectTo:'dashboard'
+        path: '**',
+        redirectTo: 'dashboard'
       }
     ]
   }

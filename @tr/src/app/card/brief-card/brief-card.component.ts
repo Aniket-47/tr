@@ -6,9 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./brief-card.component.scss']
 })
 export class BriefCardComponent implements OnInit {
-  break: boolean;
   constructor() {
-    this.break = false;
   }
 
   ngOnInit(): void {
