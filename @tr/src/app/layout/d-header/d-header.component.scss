@@ -3,3 +3,26 @@
     padding: 0.2rem 0;
     cursor: pointer;
 }
+.h-menu {
+    min-width: 30px;
+}
+.hamburger {
+    position: fixed;
+    top: .5rem;
+    left: .5rem;
+}
+.mat-drawer-container {
+    z-index: 999;
+    transition: all 0.5s ease;
+    &-has-open {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    .mat-drawer {
+        width: 80%;
+    }
+    }
+}

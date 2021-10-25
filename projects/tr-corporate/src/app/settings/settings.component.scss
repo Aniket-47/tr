@@ -3,7 +3,7 @@
 .content-wrapper {
     margin-left: $sidenav-width;
     height: 100%;
-    top: $header-height;
+    margin-top: $header-height;
     position: fixed;
     width: calc(100% - 4.375rem);
     @include media-breakpoint-down(md) {
@@ -37,4 +37,7 @@
     ::ng-deep .mat-button-wrapper>* {
         vertical-align: top;
     }
+    @include media-breakpoint-down(md) {
+        display: none;
+     }
 }

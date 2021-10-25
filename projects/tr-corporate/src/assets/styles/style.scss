@@ -13,7 +13,7 @@
         }
         h2 {
             margin: 0;
-            @include font-size(2rem);
+            @include font-size($fs-lg);
             font-weight: 400;
         }
     }
@@ -343,3 +343,4 @@
         }
     }
 }
+
