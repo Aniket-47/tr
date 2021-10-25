@@ -1,0 +1,86 @@
+mc-side-navbar {
+[class^="mc-"], [class*=" mc-"], [class^="mcf-"], [class*=" mcf-"] {
+    &::before {
+      color: black;
+    }
+  }    
+}
+.border-bottom {
+    padding: 1rem 0;
+    border-bottom: 1px solid #E3E1E5;
+    margin-bottom: 2rem;
+    a {
+        span {
+            &::before {
+                color: black;
+            }
+        }
+    }
+}
+    a {
+        display: block;
+        text-decoration: none;
+        font-size: 1.3rem;
+        color: black;
+        padding: .7rem 0;
+        &.active {
+            background: #1F47F5;
+            border-radius: 4px;
+            span {
+                &::before {
+                    color: white;
+                }
+            }
+        }    
+    }
+.user-dropdown {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 0;
+    .user-avatar {
+        background: #1F47F5;
+        color: white;
+        width: 30px;
+        height: 30px;
+        border-radius: 30px;
+        line-height: 30px;
+        text-align: center;
+        font-size: .8rem;
+    }
+    .user-name {
+        color: #25364D;
+        font-size: 0.9rem;
+        font-weight: 600;
+        padding-left: .5rem;
+        &::after {
+            font-family: 'mucrest' !important;
+            content: "\eacf";
+            color: #84818a;
+          }
+    }
+}
+::ng-deep .profile-dropdown+* .cdk-overlay-pane {
+    font-size: .8rem;
+    font-weight: 500;
+    .mat-menu-panel {
+        box-shadow: 0px 32px 72px rgba(50, 50, 93, 0.12), 0px 10px 15px rgba(0, 0, 0, 0.07), 0px -4px 16px rgba(0, 0, 0, 0.03);
+    }
+    button.mat-menu-item {
+        display: flex;
+        align-items: center;
+        border-bottom: #EBEAED 1px solid;
+        i {
+            font-size: 1.3rem;
+            padding-right: .8rem;
+        }
+        &:last-child {
+            border-bottom: 0;
+        }
+    }
+}
+
+.header-icon{
+    font-size: 1.7rem;
+    padding: 0.2rem 0;
+}

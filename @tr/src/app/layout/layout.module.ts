@@ -6,6 +6,7 @@ import { ComponentsModule } from '@mucrest/ng-design';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
 import { MHeaderComponent } from './m-header/m-header.component';
+import { DHeaderComponent } from './d-header/d-header.component';
 
 
 
@@ -13,7 +14,9 @@ import { MHeaderComponent } from './m-header/m-header.component';
   declarations: [
     SideMenuComponent,
     HeaderComponent,
-    MHeaderComponent
+    MHeaderComponent,
+    DHeaderComponent
+
   ],
   imports: [
     CommonModule,
@@ -24,7 +27,8 @@ import { MHeaderComponent } from './m-header/m-header.component';
   exports:[
     SideMenuComponent,
     HeaderComponent,
-    MHeaderComponent
+    MHeaderComponent,
+    DHeaderComponent
   ]
 })
 export class LayoutModule { }
