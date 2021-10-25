@@ -126,11 +126,11 @@ const TREE_DATA: FoodNode[] = [
 ];
 
 @Component({
-  selector: 'app-settings-menu',
-  templateUrl: './settings-menu.component.html',
-  styleUrls: ['./settings-menu.component.scss']
+  selector: 'app-settings-side-menu',
+  templateUrl: './settings-side-menu.component.html',
+  styleUrls: ['./settings-side-menu.component.scss']
 })
-export class SettingsMenuComponent implements OnInit {
+export class SettingsSideMenuComponent implements OnInit {
 
   treeControl = new NestedTreeControl<FoodNode>(node => node.children);
   dataSource = new MatTreeNestedDataSource<FoodNode>();
