@@ -178,6 +178,119 @@ export class SettingsSideMenuComponent implements OnInit {
       ],
       icon: 'mcf-book',
     },
+    {
+      name: 'Configuration',
+      children: [
+        {
+          name: 'User Management',
+          link: '/dashboard/settings/permission/users',
+        },
+        {
+          name: 'Account Role',
+          link: '/dashboard/settings/permission/users',
+        }
+      ],
+      icon: 'mc-settings_brightness',
+    },
+    {
+      name: 'Billing',
+      children: [
+        {
+          name: 'User Management',
+          link: '/dashboard/settings/permission/users',
+        },
+        {            
+          name: 'Account Role',
+          link: '/dashboard/settings/permission/users',
+        },
+      ],
+      icon: 'mc-money',
+    }, 
+    {
+      name: 'Candidate Portal',
+      children: [
+        {
+          name: 'User Management',
+          link: '/dashboard/settings/permission/users',
+        },
+        {
+          name: 'Account Role',
+          link: '/dashboard/settings/permission/users',
+        },
+      ],
+      icon: 'mcf-account_circle',
+    },{
+          name: 'Vendor Portal',
+          children: [
+            {name: 'User Management'},
+            {name: 'Account Role'},
+          ],
+          icon: 'mc-thumbs_up_down',
+        }, {
+          name: 'Employee Portal',
+          children: [
+      //       {name: 'User Management'},
+      //       {name: 'Account Role'},
+      //     ],
+      //     icon: 'mc-business_center',
+      //   },{
+      //     name: 'Career Guide',
+      //     children: [
+      //       {name: 'User Management'},
+      //       {name: 'Account Role'},
+      //     ],
+      //     icon: 'mc-file_present',
+      //   }, {
+      //     name: 'GDPR',
+      //     children: [
+            {name: 'User Management'},
+            {name: 'Account Role'},
+          ],
+          icon: 'mc-corporate_fare',
+        },{
+          name: 'Integration',
+          children: [
+            {name: 'User Management'},
+            {name: 'Account Role'},
+          ],
+          icon: 'done_outline',
+        }, {
+          name: 'Configuration',
+          children: [
+            {name: 'User Management'},
+            {name: 'Account Role'},
+          ],
+          icon: 'reorder',
+        },{
+          name: 'Permission',
+          children: [
+            {name: 'User Management'},
+            {name: 'Account Role'},
+          ],
+          icon: 'search',
+        }, {
+          name: 'Templates',
+          children: [
+            {name: 'User Management'},
+            {name: 'Account Role'},
+          ],
+          icon: 'table_view',
+        },{
+          name: 'Integration',
+          children: [
+            {name: 'User Management'},
+            {name: 'Account Role'},
+          ],
+          icon: 'done_outline',
+        }, {
+          name: 'Configuration',
+          children: [
+            {name: 'User Management'},
+            {name: 'Account Role'},
+          ],
+          icon: 'reorder',
+        },
+
   ]
 
   
