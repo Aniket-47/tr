@@ -1,7 +1,23 @@
- @import '~@mucrest/ng-design/assets/styles/1-base/variable';
- @import '~@mucrest/ng-design/assets/styles/0-plugins/plugins-dir';
-
-.icon-mc{
-  @include font-size($fs-lg);
+.dashboard-card {
+  @media screen and (max-width: 767px) {
+    padding: 0 15px 30px;
+  }
+  i {
+    &::before {
+      color: #1F47F5;
+    }
+  }
+  ::ng-deep .mc-card {
+    border: 1px solid #EBEAED;
+    box-shadow: none;
+    border-radius: 4px;
+    transition: all 0.5s ease;
+    &:hover {
+      border: 1px solid #1F47F5;
+      box-shadow: none;
+    }
+  }
+  ::ng-deep .mc-card-title {
+    margin: 1rem 0 0 ;
+  }
 }
-
