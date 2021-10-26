@@ -3,7 +3,7 @@
 .page-header {
     display: flex;
     align-items: center;
-    @include padding(2.3rem 10px 1.8rem);
+    @include padding(2.3rem 0 1.8rem);
     @include media-breakpoint-down(md) { 
         @include padding(1.5rem 10px 1rem);  
     }
@@ -26,7 +26,6 @@
     display: flex;
     align-items: center;
     @include margin-bottom(.5rem);
-    padding: 0 10px;
     .table-action {
         margin-left: auto;        
     }
@@ -171,6 +170,9 @@
     max-width: 990px;
     margin:  0 auto;
     padding-top: 5rem;
+    @include media-breakpoint-down(md) { 
+        padding: 5rem 1rem 0;
+    }
     .left-menu {
         .left-header {
             h2 {
@@ -185,9 +187,17 @@
         }
         .profile-link {
             @include padding-top(1rem);
+            @include media-breakpoint-down(md) { 
+                overflow-y: hidden;
+                overflow-x: auto;
+                display: flex;
+            }
             li {
                 padding: 0;
                 margin: 0 0 .2rem 0;
+                @include media-breakpoint-down(md) { 
+                    white-space: nowrap;
+                }
                 a {
                     display: block;
                     text-decoration: none;
@@ -198,12 +208,23 @@
                     align-items: center;
                     border-radius: 4px;
                     transition: all 0.5s ease;
+                    @include media-breakpoint-down(md) { 
+                        border-radius: 0;
+                    }
                     &.active, &:hover, &:focus {
                         background: #1F47F5;
                         color: #fff;
+                        @include media-breakpoint-down(md) { 
+                            color: #25364D;
+                            border-bottom: 2px solid #1F47F5;
+                            background-color: transparent;
+                        }
                         span {
                             &::before {
                                 color: #fff;
+                                @include media-breakpoint-down(md) { 
+                                    color: #25364D;
+                                }
                             }
                         }
                     }
@@ -224,9 +245,14 @@
         border-radius: 4px 4px 0 0;
         @include padding(2rem);
         display: flex;
-
+        @include media-breakpoint-down(md) { 
+            flex-direction: column;
+        }
         .profile-form {
             width: calc(100% - 210px);
+            @include media-breakpoint-down(md) { 
+                width: 100%;
+            }
             .mat-form-field {
                 width: 100%;
             }
@@ -234,6 +260,11 @@
         .profile-image {
             width: 183px;
             margin-left: auto;
+            @include media-breakpoint-down(md) { 
+                width: 100%;
+                margin-left: 0;
+                margin-top: 1rem;
+            }
             .img-container {
                 width: 183px;
                 height: 183px;
@@ -243,6 +274,10 @@
                 overflow: hidden;
                 overflow: hidden;
                 border: 1px solid rgba(255, 255, 255, 0.4);
+                @include media-breakpoint-down(md) {                     
+                    margin-left: auto;
+                    margin-right: auto;
+                }
                 img {
                     width: 100%;
                     height: 100%;
@@ -264,6 +299,9 @@
         @include padding(1.2rem 2rem);
         border-top: 1px solid #eee;
         display: flex;
+        @include media-breakpoint-down(md) { 
+            justify-content: center;
+        }
         .mat-button-base {
             font-weight: 400;
         }

@@ -4,20 +4,23 @@
 
 .register {
   background: $white;
-  // padding: 2.3rem;
+  padding: 2rem 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   min-height: 460px;
   max-width: 786px;
   width: 786px;
+  margin-top: $header-height;
   ::ng-deep .stepper .stepper-label {
     color: black;
+    font-size: 1rem;
   }
   @include media-breakpoint-down(md) {
-    padding: 1.5rem;
+    padding: 0;
     background-color: transparent;
     width: 100%;
+    margin:  0 auto;
     // .logo {
     //   display: block;
     //   margin-bottom: 3rem;
@@ -30,11 +33,11 @@
   }
 
   h2 {
-    @include font-size(2rem);
+    @include font-size($fs-lg);
     line-height: 2.5rem;
     font-weight: 400;
     color: $title;
-    margin-bottom: 1.5rem;
+    margin-bottom: .5rem;
   }
 
   p {
@@ -63,9 +66,11 @@
       flex-flow: column;
     }
 
-    .btn-lg {
+    .mat-flat-button {
       @include media-breakpoint-down(md) {
         width: 100%;
+        margin-top: .5rem;
+        margin-bottom: 1rem;
       }
     }
   }

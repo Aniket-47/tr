@@ -32,9 +32,9 @@
     }
 }
 .togglebtn {
-    position: absolute;
-    left: 6px;
-    top: 6px;
+    position: fixed;
+    left: 40px;
+    top: 47px;
     font-size: 1.5rem;
     z-index: 9999;
     border: #EBEAED 1px solid;
@@ -51,4 +51,7 @@
     right: 2px;
     top: 10px;
     font-size: 20px;
+    @include media-breakpoint-up(md) { 
+        display: none;
+     }
 }
