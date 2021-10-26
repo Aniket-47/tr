@@ -18,7 +18,4 @@ export class SettingsComponent implements OnInit {
       this.drawerMode = 'over';
     }
   }
-
-
-
 }

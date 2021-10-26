@@ -1,5 +1,6 @@
+@import '~@mucrest/ng-design/assets/styles/0-plugins/plugins-dir';
 mc-side-navbar {
-[class^="mc-"], [class*=" mc-"], [class^="mcf-"], [class*=" mcf-"] {
+.icon-mc,.icon-mcf {
     &::before {
       color: black;
     }
@@ -38,6 +39,9 @@ mc-side-navbar {
     align-items: center;
     cursor: pointer;
     padding: 0;
+    @include media-breakpoint-down(md) { 
+        display: none;
+     }
     .user-avatar {
         background: #1F47F5;
         color: white;

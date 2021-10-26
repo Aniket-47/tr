@@ -148,7 +148,7 @@ export class SettingsSideMenuComponent implements OnInit {
           link: "/dashboard/settings/permission/users",
         },
       ],
-      icon: 'mc-grading',
+      icon: 'icon-mc mc-grading',
     },
     {
       name: 'Templates',
@@ -162,7 +162,7 @@ export class SettingsSideMenuComponent implements OnInit {
           link: "/dashboard/settings/permission/users",
         },
       ],
-      icon: 'mcf-add_task',
+      icon: 'icon-mc mcf-add_task',
     },
     {
       name: 'Integration',
@@ -176,7 +176,7 @@ export class SettingsSideMenuComponent implements OnInit {
           link: "/dashboard/settings/permission/users",
         }
       ],
-      icon: 'mcf-book',
+      icon: 'icon-mcf mcf-book',
     },
   ]
 

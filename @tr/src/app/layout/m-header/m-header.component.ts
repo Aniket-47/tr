@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./m-header.component.scss']
 })
 export class MHeaderComponent implements OnInit {
-
+  panelOpenState = false;
   constructor() { }
 
   ngOnInit(): void {

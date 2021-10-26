@@ -1,1 +1,46 @@
-<p>m-header works!</p>
+<div class="mat-drawer-panel">
+    <div class="mat-drawer-panel-header">
+        <div class="user-avater">
+        <img class="circle" src="assets/img/profile.png">
+        </div>
+        <div class="user-info">
+        <span class="user-info__name">Daniel Jones</span>
+        <span class="user-info__email">daniel@gmail.com</span>
+        </div>
+        <button mat-icon-button color="theme" class="ml-auto">
+            <span class="mc-settings"></span>
+        </button>        
+  </div>
+  <div class="mat-drawer-panel-header-menu">
+    <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+                <span class="mc-layers"></span>
+               <span> Accounts</span>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="mat-drawer-panel-header-menu-item">
+            <a routerLink="" routerLinkActive=""><span class="mc-folder"></span> <span> Account 1 </span></a>
+            <a routerLink="" routerLinkActive="active"><span class="mc-folder"></span> <span> Account 2 </span></a>
+            <a routerLink="" routerLinkActive=""><span class="mc-folder"></span> <span> Account 3 </span></a>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+      
+  </div>
+  <div class="mat-drawer-panel-menu">
+    <a routerLink="" routerLinkActive=""><span class="mc-home"></span> <span>Home</span></a>
+    <a routerLink="" routerLinkActive=""><span class="mc-group"></span> <span>Candidates</span></a>
+    <a routerLink="" routerLinkActive=""><span class="mc-work_outline"></span> <span>Jobs</span></a>
+    <a routerLink="" routerLinkActive=""><span class="mc-inbox"></span> <span>Inbox</span></a>
+    <a routerLink="" routerLinkActive=""><span class="mc-insert_chart_outlined"></span> <span>Analytics</span></a>
+    <a routerLink="" routerLinkActive=""><span class="mc-sliders"></span> <span>configrations</span></a>
+  </div>
+  <div class="mat-drawer-panel-footer">
+    <a class="ml-auto">
+        <span class="mc-power_settings_new"></span> <span>Signout</span>
+    </a>
+  </div>
+</div>
