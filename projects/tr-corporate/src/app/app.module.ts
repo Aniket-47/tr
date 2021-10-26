@@ -16,7 +16,7 @@ import {MatListModule} from '@angular/material/list';
     BrowserAnimationsModule,
     // TRModule,
     // AuthModule,
-    MatListModule
+    MatListModule,
     MaterialModule,
     AppRoutingModule,
   ],
