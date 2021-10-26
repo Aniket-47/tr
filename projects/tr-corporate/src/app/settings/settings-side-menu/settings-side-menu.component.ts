@@ -1,19 +1,11 @@
-// import { NestedTreeControl } from '@angular/cdk/tree';
 import { Component, OnInit } from '@angular/core';
-// import { MatTreeNestedDataSource } from '@angular/material/tree';
-
-// interface FoodNode {
-//   name: string;
-//   route?: string;
-//   children?: FoodNode[];
-//   icon?: string;
-// }
 
 @Component({
   selector: 'app-settings-side-menu',
   templateUrl: './settings-side-menu.component.html',
   styleUrls: ['./settings-side-menu.component.scss']
 })
+
 export class SettingsSideMenuComponent implements OnInit {
 
   parents = [
@@ -43,7 +35,7 @@ export class SettingsSideMenuComponent implements OnInit {
           link: "/dashboard/settings/permission/users",
         },
       ],
-      icon: 'mcf-add_task',
+      icon: 'mcf-book',
     },
     {
       name: 'Integration',
@@ -57,7 +49,7 @@ export class SettingsSideMenuComponent implements OnInit {
           link: "/dashboard/settings/permission/users",
         }
       ],
-      icon: 'mcf-book',
+      icon: 'mcf-add_task',
     },
     {
       name: 'Configuration',
