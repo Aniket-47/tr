@@ -14,11 +14,11 @@ export class SettingsSideMenuComponent implements OnInit {
       child : [
         {
           name: 'User Management',
-          link: "/dashboard/settings/permission/users",
+          link: "./permission/users",
         },
         {
           name: 'Account Role',
-          link: "/dashboard/settings/permission/users",
+          link: "./permission/role",
         },
       ],
       icon: 'icon-mc mc-grading',
@@ -28,11 +28,11 @@ export class SettingsSideMenuComponent implements OnInit {
       child : [
         {
           name: 'Pepper',
-          link: "/dashboard/settings/permission/users",
+          link: "./permission/users",
         },
         {
           name: 'Salt',
-          link: "/dashboard/settings/permission/users",
+          link: "./permission/users",
         },
       ],
       icon: 'icon-mcf mcf-book',
@@ -42,11 +42,11 @@ export class SettingsSideMenuComponent implements OnInit {
       children: [
         {
           name: 'User Management',
-          link: "/dashboard/settings/permission/users",
+          link: "./permission/users",
         },
         {
           name: 'Account Role',
-          link: "/dashboard/settings/permission/users",
+          link: "./permission/users",
         }
       ],
       icon: 'icon-mcf mcf-add_task',
@@ -56,11 +56,11 @@ export class SettingsSideMenuComponent implements OnInit {
     //   children: [
     //     {
     //       name: 'User Management',
-    //       link: "/dashboard/settings/permission/users",
+    //       link: "./permission/users",
     //     },
     //     {
     //       name: 'Account Role',
-    //       link: "/dashboard/settings/permission/users",
+    //       link: "./permission/users",
     //     }
     //   ],
     //   icon: 'icon-mcf mcf-add_task',
@@ -70,11 +70,11 @@ export class SettingsSideMenuComponent implements OnInit {
     //   children: [
     //     {
     //       name: 'User Management',
-    //       link: "/dashboard/settings/permission/users",
+    //       link: "./permission/users",
     //     },
     //     {
     //       name: 'Account Role',
-    //       link: "/dashboard/settings/permission/users",
+    //       link: "./permission/users",
     //     }
     //   ],
     //   icon: 'icon-mcf mcf-add_task',
@@ -84,11 +84,11 @@ export class SettingsSideMenuComponent implements OnInit {
     //   children: [
     //     {
     //       name: 'User Management',
-    //       link: "/dashboard/settings/permission/users",
+    //       link: "./permission/users",
     //     },
     //     {
     //       name: 'Account Role',
-    //       link: "/dashboard/settings/permission/users",
+    //       link: "./permission/users",
     //     }
     //   ],
     //   icon: 'icon-mcf mcf-add_task',
@@ -98,11 +98,11 @@ export class SettingsSideMenuComponent implements OnInit {
       children: [
         {
           name: 'User Management',
-          link: "/dashboard/settings/permission/users",
+          link: "./permission/users",
         },
         {
           name: 'Account Role',
-          link: "/dashboard/settings/permission/users",
+          link: "./permission/users",
         }
       ],
       icon: 'icon-mcf mcf-add_task',
@@ -112,11 +112,11 @@ export class SettingsSideMenuComponent implements OnInit {
       children: [
         {
           name: 'User Management',
-          link: "/dashboard/settings/permission/users",
+          link: "./permission/users",
         },
         {
           name: 'Account Role',
-          link: "/dashboard/settings/permission/users",
+          link: "./permission/users",
         }
       ],
       icon: 'icon-mcf mcf-add_task',
@@ -126,11 +126,11 @@ export class SettingsSideMenuComponent implements OnInit {
       children: [
         {
           name: 'User Management',
-          link: "/dashboard/settings/permission/users",
+          link: "./permission/users",
         },
         {
           name: 'Account Role',
-          link: "/dashboard/settings/permission/users",
+          link: "./permission/users",
         }
       ],
       icon: 'icon-mcf mcf-add_task',
@@ -140,11 +140,11 @@ export class SettingsSideMenuComponent implements OnInit {
       children: [
         {
           name: 'User Management',
-          link: "/dashboard/settings/permission/users",
+          link: "./permission/users",
         },
         {
           name: 'Account Role',
-          link: "/dashboard/settings/permission/users",
+          link: "./permission/users",
         }
       ],
       icon: 'icon-mcf mcf-add_task',
@@ -154,11 +154,11 @@ export class SettingsSideMenuComponent implements OnInit {
       children: [
         {
           name: 'User Management',
-          link: '/dashboard/settings/permission/users',
+          link: './permission/users',
         },
         {
           name: 'Account Role',
-          link: '/dashboard/settings/permission/users',
+          link: './permission/users',
         }
       ],
       icon: 'icon-mc mc-settings_brightness',
@@ -168,11 +168,11 @@ export class SettingsSideMenuComponent implements OnInit {
       children: [
         {
           name: 'User Management',
-          link: '/dashboard/settings/permission/users',
+          link: './permission/users',
         },
         {            
           name: 'Account Role',
-          link: '/dashboard/settings/permission/users',
+          link: './permission/users',
         },
       ],
       icon: 'icon-mc mc-money',
@@ -182,11 +182,11 @@ export class SettingsSideMenuComponent implements OnInit {
       children: [
         {
           name: 'User Management',
-          link: '/dashboard/settings/permission/users',
+          link: './permission/users',
         },
         {
           name: 'Account Role',
-          link: '/dashboard/settings/permission/users',
+          link: './permission/users',
         },
       ],
       icon: 'icon-mcf mcf-account_circle',
@@ -196,11 +196,11 @@ export class SettingsSideMenuComponent implements OnInit {
       children: [
         {
           name: 'User Management',
-          link: "/dashboard/settings/permission/users",
+          link: "./permission/users",
         },
         {
           name: 'Account Role',
-          link: "/dashboard/settings/permission/users",
+          link: "./permission/users",
         },
       ],
       icon: 'icon-mc mc-thumbs_up_down',
@@ -210,11 +210,11 @@ export class SettingsSideMenuComponent implements OnInit {
       children: [
         {
           name: 'User Management',
-          link: "/dashboard/settings/permission/users",
+          link: "./permission/users",
         },
         {
           name: 'Account Role',
-          link: "/dashboard/settings/permission/users",
+          link: "./permission/users",
         },
       ],
       icon: 'icon-mcf mcf-card_travel',
@@ -224,11 +224,11 @@ export class SettingsSideMenuComponent implements OnInit {
       children: [
         {
           name: 'User Management',
-          link: "/dashboard/settings/permission/users",
+          link: "./permission/users",
         },
         {
           name: 'Account Role',
-          link: "/dashboard/settings/permission/users",
+          link: "./permission/users",
         },
       ],
       icon: 'icon-mcf mcf-file_present',
@@ -238,11 +238,11 @@ export class SettingsSideMenuComponent implements OnInit {
       children: [
         {
           name: 'User Management',
-          link: "/dashboard/settings/permission/users",
+          link: "./permission/users",
         },
         {
           name: 'Account Role',
-          link: "/dashboard/settings/permission/users",
+          link: "./permission/users",
         },
       ],
       icon: 'icon-mc mc-corporate_fare',

@@ -32,10 +32,14 @@
 .icon {
   font-size: 20px;
   margin-right: 5px;
+  &::before{
+    color: #1F47F5 !important;
+  }
 }
 
 .active{
   cursor: pointer;
+  color: #1F47F5 !important;
 }
 
 ::ng-deep .mat-expansion-panel:not([class*=mat-elevation-z]) {
