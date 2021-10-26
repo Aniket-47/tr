@@ -1,3 +1,4 @@
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NestedTreeControl } from '@angular/cdk/tree';
 import { Component, OnInit } from '@angular/core';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
@@ -190,11 +191,9 @@ export class SettingsSideMenuComponent implements OnInit {
 
   constructor() {
     // this.dataSource.data = TREE_DATA;
-  }
 
-  hasChild = (_: number, node: FoodNode) => !!node.children && node.children.length > 0;
-  
   ngOnInit(): void {
   }
+
 
 }
