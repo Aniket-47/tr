@@ -12,7 +12,7 @@ const routes: Routes = [
     component: UserManageComponent
   },
   {
-    path:'usersdetails',
+    path:'userdetail',
     component: UserDetailComponent
   },
   {
