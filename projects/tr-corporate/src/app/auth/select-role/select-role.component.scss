@@ -46,4 +46,10 @@
       order: 2;
     }
   }
+  ::ng-deep .mc-card {
+    margin-bottom: 1.6rem;
+    .mc-card-title {
+      margin: 0;
+    }
+  }
 }
