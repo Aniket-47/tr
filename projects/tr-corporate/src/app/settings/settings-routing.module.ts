@@ -10,6 +10,10 @@ const routes: Routes = [
     component: SettingsComponent,
     children:[
       {
+        path: 'settings-side-menu',
+        component: SettingsSideMenuComponent
+      },
+      {
         path:'dashboard',
         component: SettingsMenuComponent
       },
