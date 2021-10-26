@@ -3,32 +3,31 @@ import { RouterModule, Routes } from '@angular/router';
 import { SettingsMenuComponent } from './settings-menu/settings-menu.component';
 import { SettingsSideMenuComponent } from './settings-side-menu/settings-side-menu.component';
 import { SettingsComponent } from './settings.component';
+import { GenericGuardGuard } from '@tr/src/app/utility/services/routeGuards/generic-guard.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: SettingsComponent,
-    children:[
+    children: [
+      {
+        path: '',
+        component: SettingsMenuComponent,
+        canActivate: [GenericGuardGuard]
+      },
       {
         path: 'settings-side-menu',
         component: SettingsSideMenuComponent
       },
       {
-        path:'dashboard',
-        component: SettingsMenuComponent
-      },
-      {
         path: 'permission',
-        loadChildren: () => import('./permission/permission.module').then(m => m.PermissionModule)
+        loadChildren: () => import('./permission/permission.module').then(m => m.PermissionModule),
+        canActivate: [GenericGuardGuard]
       },
+
       {
-        path:'',
-        pathMatch:'full',
-        redirectTo: 'dashboard'
-      },
-      {
-        path:'**',
-        redirectTo:'dashboard'
+        path: '**',
+        redirectTo: ''
       }
     ]
   }
