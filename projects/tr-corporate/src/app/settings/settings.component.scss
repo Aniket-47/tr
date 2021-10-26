@@ -30,6 +30,10 @@
             transform: rotate(180deg);
         }    
     }
+
+    .sidenav{
+        overflow: hidden !important;
+    }
 }
 .togglebtn {
     position: fixed;

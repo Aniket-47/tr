@@ -3,5 +3,39 @@
 
 .icon-mc{
   @include font-size($fs-lg);
+  color: #1F47F5 !important;
+}
+
+
+.settings{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: .5rem;
+}
+
+.fxd{
+    //width: 248.5px !important;
+    //height: 162px !important;
+    width: 20%;
+    height: 200px;
+    margin: 20px;
+}
+
+.h-fnts{
+    font-style: normal;
+    font-weight: bold;
+    @include font-size($fs-default);
+    line-height: 22px;
+    //@include color($theme);
+}
+
+.p-fnts{
+    font-style: normal;
+    font-weight: 500;
+    @include font-size($fs-xs);
+    line-height: 20px;
+    //color: #84818A;
+    //@include color($black50);
 }
 
