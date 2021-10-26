@@ -2,8 +2,10 @@
 @import '~@mucrest/ng-design/assets/theme';
 
 @import 'assets/styles/style.scss';
+
+$font-family : 'Manrope', sans-serif;
 html, body { height: 100%; }
 body { 
   margin: 0;
-  font-family: 'Manrope', sans-serif;
+  font-family: $font-family;
 }

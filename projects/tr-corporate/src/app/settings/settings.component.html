@@ -1,15 +1,16 @@
 <div class="content-wrapper">
-    <mat-drawer-container class="example-container" autosize>
-      <mat-drawer #drawer class="example-sidenav" [mode]="drawerMode" >        
-          <app-settings-side-menu></app-settings-side-menu>
-        </mat-drawer>
-        
-        <div class="sidenav-content">           
+    <mat-drawer-container autosize>
+      <mat-drawer #drawer class="sidenav" [mode]="drawerMode" >        
+        <app-settings-side-menu></app-settings-side-menu>
+      </mat-drawer>        
+        <div class="sidenav-content">    
+          <button type="button" mat-icon-button (click)="drawer.toggle()" class="togglebtn">
+            <span class="icon-mc mc-keyboard_arrow_right"></span>
+          </button>         
+          <button type="button" mat-icon-button (click)="drawer.toggle()" class="mobile-only mobile-togglebtn">
+            <span class="icon-mc mc-filter_list"></span>
+          </button>         
             <router-outlet></router-outlet>
         </div>
       </mat-drawer-container>
-
 </div>
-<button type="button" mat-icon-button (click)="drawer.toggle()" class="togglebtn">
-  <span class="mc-keyboard_arrow_right"></span>
-</button>  

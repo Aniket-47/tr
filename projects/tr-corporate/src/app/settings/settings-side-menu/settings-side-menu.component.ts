@@ -21,7 +21,7 @@ export class SettingsSideMenuComponent implements OnInit {
           link: "/dashboard/settings/permission/users",
         },
       ],
-      icon: 'mc-grading',
+      icon: 'icon-mc mc-grading',
     },
     {
       name: 'Templates',
@@ -35,7 +35,7 @@ export class SettingsSideMenuComponent implements OnInit {
           link: "/dashboard/settings/permission/users",
         },
       ],
-      icon: 'mcf-book',
+      icon: 'icon-mcf mcf-book',
     },
     {
       name: 'Integration',
@@ -49,7 +49,105 @@ export class SettingsSideMenuComponent implements OnInit {
           link: "/dashboard/settings/permission/users",
         }
       ],
-      icon: 'mcf-add_task',
+      icon: 'icon-mcf mcf-add_task',
+    },
+    // {
+    //   name: 'Integration',
+    //   children: [
+    //     {
+    //       name: 'User Management',
+    //       link: "/dashboard/settings/permission/users",
+    //     },
+    //     {
+    //       name: 'Account Role',
+    //       link: "/dashboard/settings/permission/users",
+    //     }
+    //   ],
+    //   icon: 'icon-mcf mcf-add_task',
+    // },
+    // {
+    //   name: 'Integration',
+    //   children: [
+    //     {
+    //       name: 'User Management',
+    //       link: "/dashboard/settings/permission/users",
+    //     },
+    //     {
+    //       name: 'Account Role',
+    //       link: "/dashboard/settings/permission/users",
+    //     }
+    //   ],
+    //   icon: 'icon-mcf mcf-add_task',
+    // },
+    // {
+    //   name: 'Integration',
+    //   children: [
+    //     {
+    //       name: 'User Management',
+    //       link: "/dashboard/settings/permission/users",
+    //     },
+    //     {
+    //       name: 'Account Role',
+    //       link: "/dashboard/settings/permission/users",
+    //     }
+    //   ],
+    //   icon: 'icon-mcf mcf-add_task',
+    // },
+    {
+      name: 'Integration',
+      children: [
+        {
+          name: 'User Management',
+          link: "/dashboard/settings/permission/users",
+        },
+        {
+          name: 'Account Role',
+          link: "/dashboard/settings/permission/users",
+        }
+      ],
+      icon: 'icon-mcf mcf-add_task',
+    },
+    {
+      name: 'Integration',
+      children: [
+        {
+          name: 'User Management',
+          link: "/dashboard/settings/permission/users",
+        },
+        {
+          name: 'Account Role',
+          link: "/dashboard/settings/permission/users",
+        }
+      ],
+      icon: 'icon-mcf mcf-add_task',
+    },
+    {
+      name: 'Integration',
+      children: [
+        {
+          name: 'User Management',
+          link: "/dashboard/settings/permission/users",
+        },
+        {
+          name: 'Account Role',
+          link: "/dashboard/settings/permission/users",
+        }
+      ],
+      icon: 'icon-mcf mcf-add_task',
+    },
+    {
+      name: 'Integration',
+      children: [
+        {
+          name: 'User Management',
+          link: "/dashboard/settings/permission/users",
+        },
+        {
+          name: 'Account Role',
+          link: "/dashboard/settings/permission/users",
+        }
+      ],
+      icon: 'icon-mcf mcf-add_task',
     },
     {
       name: 'Configuration',
@@ -63,7 +161,7 @@ export class SettingsSideMenuComponent implements OnInit {
           link: '/dashboard/settings/permission/users',
         }
       ],
-      icon: 'mc-settings_brightness',
+      icon: 'icon-mc mc-settings_brightness',
     },
     {
       name: 'Billing',
@@ -77,7 +175,7 @@ export class SettingsSideMenuComponent implements OnInit {
           link: '/dashboard/settings/permission/users',
         },
       ],
-      icon: 'mc-money',
+      icon: 'icon-mc mc-money',
     }, 
     {
       name: 'Candidate Portal',
@@ -91,7 +189,7 @@ export class SettingsSideMenuComponent implements OnInit {
           link: '/dashboard/settings/permission/users',
         },
       ],
-      icon: 'mcf-account_circle',
+      icon: 'icon-mcf mcf-account_circle',
     },
     {
       name: 'Vendor Portal',
@@ -105,50 +203,50 @@ export class SettingsSideMenuComponent implements OnInit {
           link: "/dashboard/settings/permission/users",
         },
       ],
-      icon: 'mc-thumbs_up_down',
+      icon: 'icon-mc mc-thumbs_up_down',
     }, 
     {
-          name: 'Employee Portal',
-          children: [
-            {
-              name: 'User Management',
-              link: "/dashboard/settings/permission/users",
-            },
-            {
-              name: 'Account Role',
-              link: "/dashboard/settings/permission/users",
-            },
-          ],
-          icon: 'mc-business_center',
-      },
-      {
-        name: 'Career Guide',
-        children: [
-          {
-            name: 'User Management',
-            link: "/dashboard/settings/permission/users",
-          },
-          {
-            name: 'Account Role',
-            link: "/dashboard/settings/permission/users",
-          },
-        ],
-        icon: 'mcf-file_present',
-      }, 
-      {
-        name: 'GDPR',
-        children: [
-          {
-            name: 'User Management',
-            link: "/dashboard/settings/permission/users",
-          },
-          {
-            name: 'Account Role',
-            link: "/dashboard/settings/permission/users",
-          },
-        ],
-        icon: 'mc-corporate_fare',
-      }
+      name: 'Employee Portal',
+      children: [
+        {
+          name: 'User Management',
+          link: "/dashboard/settings/permission/users",
+        },
+        {
+          name: 'Account Role',
+          link: "/dashboard/settings/permission/users",
+        },
+      ],
+      icon: 'icon-mcf mcf-card_travel',
+    },
+    {
+      name: 'Career Guide',
+      children: [
+        {
+          name: 'User Management',
+          link: "/dashboard/settings/permission/users",
+        },
+        {
+          name: 'Account Role',
+          link: "/dashboard/settings/permission/users",
+        },
+      ],
+      icon: 'icon-mcf mcf-file_present',
+    }, 
+    {
+      name: 'GDPR',
+      children: [
+        {
+          name: 'User Management',
+          link: "/dashboard/settings/permission/users",
+        },
+        {
+          name: 'Account Role',
+          link: "/dashboard/settings/permission/users",
+        },
+      ],
+      icon: 'icon-mc mc-corporate_fare',
+    }
   ] 
 
   panelOpenState = false;
@@ -157,5 +255,6 @@ export class SettingsSideMenuComponent implements OnInit {
   
   ngOnInit(): void {
   }
+
 
 }

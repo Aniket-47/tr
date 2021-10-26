@@ -4,6 +4,9 @@
     display: flex;
     align-items: center;
     @include padding(2.3rem 10px 1.8rem);
+    @include media-breakpoint-down(md) { 
+        @include padding(1.5rem 10px 1rem);  
+    }
     .page-title {
         display: flex;
         align-items: center;
@@ -13,7 +16,7 @@
         }
         h2 {
             margin: 0;
-            @include font-size(2rem);
+            @include font-size($fs-lg);
             font-weight: 400;
         }
     }
@@ -25,24 +28,7 @@
     @include margin-bottom(.5rem);
     padding: 0 10px;
     .table-action {
-        margin-left: auto;
-        .mat-stroked-button {
-            color: #84818A;
-            font-weight: 400;
-            border: 1px solid #EBEAED;
-            @include margin-right(1rem);
-            &:last-child {
-                margin: 0
-            }
-            .icon-down-arrow {
-                color: #504F54;
-                @include font-size(.4rem);
-                @include margin-left(.5rem);
-            }
-            .black {
-                color: #504F54;
-            }
-        }
+        margin-left: auto;        
     }
 }
 .role {
@@ -139,68 +125,11 @@
 
 .page-action {
     margin-left: auto;
-    .mat-button, .mat-icon-button, .mat-stroked-button, .mat-flat-button {
-        min-height: 42px;
-        line-height: 42px;
-        padding-left: 24px;
-        padding-right: 24px;
-        @include font-size(.9rem);
-        font-weight: 400;
-        .icon-plus {
-            @include margin-right(.5rem);
-        }
-      }
-    .mat-stroked-button {
-        color: #1F47F5;
-        border: 1px solid #EBEAED;
-        @include margin-right(1.5rem);
-        .icon-down-arrow {
-            @include font-size(.4rem);
-            @include margin-left(.5rem);
-        }
-    }
+   .mat-stroked-button {
+    @include margin-right(1.5rem);
+   }    
 }
-.floating-button {
-    position: fixed;
-    right: 2rem;
-    bottom: 2rem;
-    .mat-fab {
-    .mc-more_vert, .mc-plus {
-        font-size: 24px;
-        transform: rotate(90deg);
-        display: block;
-        transition: all 0.5s ease;
-        &::before {
-            color: #fff;
-        }
-    }
-    .mc-plus {
-        transform: rotate(45deg);
-    }
-}
-    .more-float-action-btn {
-        opacity: 0;
-        transition: all 0.5s ease;
-        visibility: hidden;
-        width: 160px;
-        height: 0;
-        overflow: hidden;
-        position: absolute;
-        bottom: 60px;
-        right: 0;
-        padding: 0.5rem;
-        background: #fff;
-        &.active {
-            opacity: 1;            
-            height: auto;
-            visibility: visible;
-        }
-        .mat-button-base {
-            width: 100%;
-            margin: .2rem;
-        }
-    }
-}
+
 .user-management, .account-role {
     .mat-icon-button {
         font-size: 1rem;
@@ -343,3 +272,20 @@
         }
     }
 }
+
+//material expansion panel style reset
+.mat-expansion-panel-spacing {
+    margin: 0 !important;
+  }
+  
+  .mat-expansion-panel-body {
+    padding: 0 24px !important ;
+  }
+
+  .mat-list-base {
+    padding-top: 0 !important;
+  }
+
+  .mat-drawer-inner-container {
+    overflow: hidden !important;
+  }
