@@ -1,6 +1,7 @@
  @import '~@mucrest/ng-design/assets/styles/1-base/variable';
+ @import '~@mucrest/ng-design/assets/styles/0-plugins/plugins-dir';
 
 .icon-mc{
-  font-size: $fs-lg;
+  @include font-size($fs-lg);
 }
 
