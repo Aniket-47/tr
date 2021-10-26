@@ -273,3 +273,19 @@
     }
 }
 
+//material expansion panel style reset
+.mat-expansion-panel-spacing {
+    margin: 0 !important;
+  }
+  
+  .mat-expansion-panel-body {
+    padding: 0 24px !important ;
+  }
+
+  .mat-list-base {
+    padding-top: 0 !important;
+  }
+
+  .mat-drawer-inner-container {
+    overflow: hidden !important;
+  }

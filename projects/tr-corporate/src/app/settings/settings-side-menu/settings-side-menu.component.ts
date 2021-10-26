@@ -1,138 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { NestedTreeControl } from '@angular/cdk/tree';
-import { MatTreeNestedDataSource } from '@angular/material/tree';
-
-interface FoodNode {
-  name: string;
-  route?: string;
-  children?: FoodNode[];
-  icon?: string;
-}
-
-// const TREE_DATA: FoodNode[] = [
-//   {
-//     name: 'Permission',
-//     children: [
-//       {name: 'User Management'},
-//       {name: 'Account Role'},
-//     ],
-//     icon: 'mc-grading',
-//   }, {
-//     name: 'Templates',
-//     children: [
-//       {name: 'User Management'},
-//       {name: 'Account Role'},
-//     ],
-//     icon: 'mc-class',
-//   },{
-//     name: 'Integration',
-//     children: [
-//       {name: 'User Management'},
-//       {name: 'Account Role'},
-//     ],
-//     icon: 'mc-add-task',
-//   }, {
-//     name: 'Configuration',
-//     children: [
-//       {name: 'User Management'},
-//       {name: 'Account Role'},
-//     ],
-//     icon: 'mc-brightness_7',
-//   },{
-//     name: 'Billing',
-//     children: [
-//       {name: 'User Management'},
-//       {name: 'Account Role'},
-//     ],
-//     icon: 'mc-attach_money',
-//   }, {
-//     name: 'Candidate Portal',
-//     children: [
-//       {name: 'User Management'},
-//       {name: 'Account Role'},
-//     ],
-//     icon: 'mc-account_circle',
-//   },{
-//     name: 'Vendor Portal',
-//     children: [
-//       {name: 'User Management'},
-//       {name: 'Account Role'},
-//     ],
-//     icon: 'mc-thumbs_up_down',
-//   }, {
-//     name: 'Employee Portal',
-//     children: [
-//       {name: 'User Management'},
-//       {name: 'Account Role'},
-//     ],
-//     icon: 'mc-business_center',
-//   },{
-//     name: 'Career Guide',
-//     children: [
-//       {name: 'User Management'},
-//       {name: 'Account Role'},
-//     ],
-//     icon: 'mc-file_present',
-//   }, {
-//     name: 'GDPR',
-//     children: [
-//       {name: 'User Management'},
-//       {name: 'Account Role'},
-//     ],
-//     icon: 'mc-corporate_fare',
-//   },{
-//     name: 'Integration',
-//     children: [
-//       {name: 'User Management'},
-//       {name: 'Account Role'},
-//     ],
-//     icon: 'done_outline',
-//   }, {
-//     name: 'Configuration',
-//     children: [
-//       {name: 'User Management'},
-//       {name: 'Account Role'},
-//     ],
-//     icon: 'reorder',
-//   },{
-//     name: 'Permission',
-//     children: [
-//       {name: 'User Management'},
-//       {name: 'Account Role'},
-//     ],
-//     icon: 'search',
-//   }, {
-//     name: 'Templates',
-//     children: [
-//       {name: 'User Management'},
-//       {name: 'Account Role'},
-//     ],
-//     icon: 'table_view',
-//   },{
-//     name: 'Integration',
-//     children: [
-//       {name: 'User Management'},
-//       {name: 'Account Role'},
-//     ],
-//     icon: 'done_outline',
-//   }, {
-//     name: 'Configuration',
-//     children: [
-//       {name: 'User Management'},
-//       {name: 'Account Role'},
-//     ],
-//     icon: 'reorder',
-//   },
-// ];
-
-// const heroes = [];
-// const listItems = [];
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-settings-side-menu',
   templateUrl: './settings-side-menu.component.html',
   styleUrls: ['./settings-side-menu.component.scss']
 })
+
 export class SettingsSideMenuComponent implements OnInit {
 
   parents = [
@@ -141,11 +14,11 @@ export class SettingsSideMenuComponent implements OnInit {
       child : [
         {
           name: 'User Management',
-          link: "/dashboard/settings/permission/users",
+          link: "./permission/users",
         },
         {
           name: 'Account Role',
-          link: "/dashboard/settings/permission/users",
+          link: "./permission/role",
         },
       ],
       icon: 'icon-mc mc-grading',
@@ -155,42 +28,231 @@ export class SettingsSideMenuComponent implements OnInit {
       child : [
         {
           name: 'Pepper',
-          link: "/dashboard/settings/permission/users",
+          link: "./permission/users",
         },
         {
           name: 'Salt',
-          link: "/dashboard/settings/permission/users",
+          link: "./permission/users",
         },
       ],
-      icon: 'icon-mc mcf-add_task',
+      icon: 'icon-mcf mcf-book',
     },
     {
       name: 'Integration',
       children: [
         {
           name: 'User Management',
-          link: "/dashboard/settings/permission/users",
+          link: "./permission/users",
         },
         {
           name: 'Account Role',
-          link: "/dashboard/settings/permission/users",
+          link: "./permission/users",
         }
       ],
-      icon: 'icon-mcf mcf-book',
+      icon: 'icon-mcf mcf-add_task',
     },
-  ]
-
-  
+    // {
+    //   name: 'Integration',
+    //   children: [
+    //     {
+    //       name: 'User Management',
+    //       link: "./permission/users",
+    //     },
+    //     {
+    //       name: 'Account Role',
+    //       link: "./permission/users",
+    //     }
+    //   ],
+    //   icon: 'icon-mcf mcf-add_task',
+    // },
+    // {
+    //   name: 'Integration',
+    //   children: [
+    //     {
+    //       name: 'User Management',
+    //       link: "./permission/users",
+    //     },
+    //     {
+    //       name: 'Account Role',
+    //       link: "./permission/users",
+    //     }
+    //   ],
+    //   icon: 'icon-mcf mcf-add_task',
+    // },
+    // {
+    //   name: 'Integration',
+    //   children: [
+    //     {
+    //       name: 'User Management',
+    //       link: "./permission/users",
+    //     },
+    //     {
+    //       name: 'Account Role',
+    //       link: "./permission/users",
+    //     }
+    //   ],
+    //   icon: 'icon-mcf mcf-add_task',
+    // },
+    {
+      name: 'Integration',
+      children: [
+        {
+          name: 'User Management',
+          link: "./permission/users",
+        },
+        {
+          name: 'Account Role',
+          link: "./permission/users",
+        }
+      ],
+      icon: 'icon-mcf mcf-add_task',
+    },
+    {
+      name: 'Integration',
+      children: [
+        {
+          name: 'User Management',
+          link: "./permission/users",
+        },
+        {
+          name: 'Account Role',
+          link: "./permission/users",
+        }
+      ],
+      icon: 'icon-mcf mcf-add_task',
+    },
+    {
+      name: 'Integration',
+      children: [
+        {
+          name: 'User Management',
+          link: "./permission/users",
+        },
+        {
+          name: 'Account Role',
+          link: "./permission/users",
+        }
+      ],
+      icon: 'icon-mcf mcf-add_task',
+    },
+    {
+      name: 'Integration',
+      children: [
+        {
+          name: 'User Management',
+          link: "./permission/users",
+        },
+        {
+          name: 'Account Role',
+          link: "./permission/users",
+        }
+      ],
+      icon: 'icon-mcf mcf-add_task',
+    },
+    {
+      name: 'Configuration',
+      children: [
+        {
+          name: 'User Management',
+          link: './permission/users',
+        },
+        {
+          name: 'Account Role',
+          link: './permission/users',
+        }
+      ],
+      icon: 'icon-mc mc-settings_brightness',
+    },
+    {
+      name: 'Billing',
+      children: [
+        {
+          name: 'User Management',
+          link: './permission/users',
+        },
+        {            
+          name: 'Account Role',
+          link: './permission/users',
+        },
+      ],
+      icon: 'icon-mc mc-money',
+    }, 
+    {
+      name: 'Candidate Portal',
+      children: [
+        {
+          name: 'User Management',
+          link: './permission/users',
+        },
+        {
+          name: 'Account Role',
+          link: './permission/users',
+        },
+      ],
+      icon: 'icon-mcf mcf-account_circle',
+    },
+    {
+      name: 'Vendor Portal',
+      children: [
+        {
+          name: 'User Management',
+          link: "./permission/users",
+        },
+        {
+          name: 'Account Role',
+          link: "./permission/users",
+        },
+      ],
+      icon: 'icon-mc mc-thumbs_up_down',
+    }, 
+    {
+      name: 'Employee Portal',
+      children: [
+        {
+          name: 'User Management',
+          link: "./permission/users",
+        },
+        {
+          name: 'Account Role',
+          link: "./permission/users",
+        },
+      ],
+      icon: 'icon-mcf mcf-card_travel',
+    },
+    {
+      name: 'Career Guide',
+      children: [
+        {
+          name: 'User Management',
+          link: "./permission/users",
+        },
+        {
+          name: 'Account Role',
+          link: "./permission/users",
+        },
+      ],
+      icon: 'icon-mcf mcf-file_present',
+    }, 
+    {
+      name: 'GDPR',
+      children: [
+        {
+          name: 'User Management',
+          link: "./permission/users",
+        },
+        {
+          name: 'Account Role',
+          link: "./permission/users",
+        },
+      ],
+      icon: 'icon-mc mc-corporate_fare',
+    }
+  ] 
 
   panelOpenState = false;
 
-
-  treeControl = new NestedTreeControl<FoodNode>(node => node.children);
-  dataSource = new MatTreeNestedDataSource<FoodNode>();
-
   constructor() {}
-    // this.dataSource.data = TREE_DATA;
-
+  
   ngOnInit(): void {
   }
 
