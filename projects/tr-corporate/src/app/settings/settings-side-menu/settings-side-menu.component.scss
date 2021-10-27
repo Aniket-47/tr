@@ -1,3 +1,6 @@
+@import '~@mucrest/ng-design/assets/styles/1-base/variable';
+@import '~@mucrest/ng-design/assets/styles/0-plugins/plugins-dir';
+
 .settings-wrap{
   width: 250px;
   padding: 1em;
@@ -18,6 +21,9 @@
 
 .settings__element{
   overflow-y: scroll;
+  .mat-list{
+    cursor: pointer;
+  }
 }
 
 ::ng-deep .mat-form-field {
@@ -26,23 +32,22 @@
   }
 }
 
-.example-tree-invisible{
-  display: none;
-}
-
-.example-tree ul, .example-tree li {
-  margin-top: 0;
-  margin-bottom: 0;
-  list-style-type: none;
-}
-
-.example-tree .mat-nested-tree-node div[role=group] {
-  padding-left: 40px;
+::ng-deep .mat-expansion-panel-header-title{
+  @include font-size($fs-default);
+  font-weight: 400 !important;
 }
 
 .icon {
-  font-size: 20px;
-  margin-right: 5px;
+  @include font-size($fs-md);
+  @include margin-right(10px);
+  &::before{
+    color: #1F47F5 !important;
+  }
+}
+
+.active{
+  cursor: pointer;
+  color: #1F47F5 !important;
 }
 
 ::ng-deep .mat-expansion-panel:not([class*=mat-elevation-z]) {
@@ -58,4 +63,19 @@
   padding: 0 !important;
 }
 
-a{text-decoration: none;}
+// ::ng-deep .mat-list .mat-list-base{
+//   padding-top: 0
+// }
+
+.mat-expansion-panel-header.mat-expanded {
+  height: 20px !important;
+}
+
+.mat-expansion-panel-header{
+  font-family: 'Manrope', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+

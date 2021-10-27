@@ -33,6 +33,7 @@ table.mat-table {
         font-size: 14px;
         font-weight: 400;
         color: #84818A;
+        padding-left: 0;
     }
     td, th {
         vertical-align: middle;
@@ -40,6 +41,14 @@ table.mat-table {
         &:last-child {
             width: 150px;
         }
+    }
+    td.mat-cell {
+         &:first-of-type {
+             padding-left: 0;
+         }
+         &:last-child {
+             padding-right: 0;
+         }
     }
     @include media-breakpoint-down(md) {
     td.mat-cell {
