@@ -27,11 +27,11 @@ export class SettingsSideMenuComponent implements OnInit {
       name: 'Templates',
       child : [
         {
-          name: 'Pepper',
+          name: 'User Management',
           link: "./permission/users",
         },
         {
-          name: 'Salt',
+          name: 'Account Role',
           link: "./permission/users",
         },
       ],
@@ -39,63 +39,7 @@ export class SettingsSideMenuComponent implements OnInit {
     },
     {
       name: 'Integration',
-      children: [
-        {
-          name: 'User Management',
-          link: "./permission/users",
-        },
-        {
-          name: 'Account Role',
-          link: "./permission/users",
-        }
-      ],
-      icon: 'icon-mcf mcf-add_task',
-    },
-    // {
-    //   name: 'Integration',
-    //   children: [
-    //     {
-    //       name: 'User Management',
-    //       link: "./permission/users",
-    //     },
-    //     {
-    //       name: 'Account Role',
-    //       link: "./permission/users",
-    //     }
-    //   ],
-    //   icon: 'icon-mcf mcf-add_task',
-    // },
-    // {
-    //   name: 'Integration',
-    //   children: [
-    //     {
-    //       name: 'User Management',
-    //       link: "./permission/users",
-    //     },
-    //     {
-    //       name: 'Account Role',
-    //       link: "./permission/users",
-    //     }
-    //   ],
-    //   icon: 'icon-mcf mcf-add_task',
-    // },
-    // {
-    //   name: 'Integration',
-    //   children: [
-    //     {
-    //       name: 'User Management',
-    //       link: "./permission/users",
-    //     },
-    //     {
-    //       name: 'Account Role',
-    //       link: "./permission/users",
-    //     }
-    //   ],
-    //   icon: 'icon-mcf mcf-add_task',
-    // },
-    {
-      name: 'Integration',
-      children: [
+      child: [
         {
           name: 'User Management',
           link: "./permission/users",
@@ -109,7 +53,7 @@ export class SettingsSideMenuComponent implements OnInit {
     },
     {
       name: 'Integration',
-      children: [
+      child: [
         {
           name: 'User Management',
           link: "./permission/users",
@@ -123,7 +67,7 @@ export class SettingsSideMenuComponent implements OnInit {
     },
     {
       name: 'Integration',
-      children: [
+      child: [
         {
           name: 'User Management',
           link: "./permission/users",
@@ -137,7 +81,7 @@ export class SettingsSideMenuComponent implements OnInit {
     },
     {
       name: 'Integration',
-      children: [
+      child: [
         {
           name: 'User Management',
           link: "./permission/users",
@@ -151,7 +95,7 @@ export class SettingsSideMenuComponent implements OnInit {
     },
     {
       name: 'Configuration',
-      children: [
+      child: [
         {
           name: 'User Management',
           link: './permission/users',
@@ -165,7 +109,7 @@ export class SettingsSideMenuComponent implements OnInit {
     },
     {
       name: 'Billing',
-      children: [
+      child: [
         {
           name: 'User Management',
           link: './permission/users',
@@ -179,7 +123,7 @@ export class SettingsSideMenuComponent implements OnInit {
     }, 
     {
       name: 'Candidate Portal',
-      children: [
+      child: [
         {
           name: 'User Management',
           link: './permission/users',
@@ -193,7 +137,7 @@ export class SettingsSideMenuComponent implements OnInit {
     },
     {
       name: 'Vendor Portal',
-      children: [
+      child: [
         {
           name: 'User Management',
           link: "./permission/users",
@@ -207,7 +151,7 @@ export class SettingsSideMenuComponent implements OnInit {
     }, 
     {
       name: 'Employee Portal',
-      children: [
+      child: [
         {
           name: 'User Management',
           link: "./permission/users",
@@ -221,7 +165,7 @@ export class SettingsSideMenuComponent implements OnInit {
     },
     {
       name: 'Career Guide',
-      children: [
+      child: [
         {
           name: 'User Management',
           link: "./permission/users",
@@ -235,7 +179,7 @@ export class SettingsSideMenuComponent implements OnInit {
     }, 
     {
       name: 'GDPR',
-      children: [
+      child: [
         {
           name: 'User Management',
           link: "./permission/users",
@@ -255,6 +199,4 @@ export class SettingsSideMenuComponent implements OnInit {
   
   ngOnInit(): void {
   }
-
-
 }
