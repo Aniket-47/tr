@@ -39,6 +39,7 @@ mc-side-navbar {
     align-items: center;
     cursor: pointer;
     padding: 0;
+    height: 30px;
     @include media-breakpoint-down(md) { 
         display: none;
      }

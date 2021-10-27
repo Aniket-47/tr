@@ -10,6 +10,11 @@ table.mat-table {
             display: block;
         }
      }
+     .mat-header-cell {
+        &:first-of-type {
+            padding-left: 0;
+         }
+        }
     tr.mat-row {
         height: 80px;
         @include media-breakpoint-down(md) {
@@ -24,6 +29,12 @@ table.mat-table {
             border-radius: 4px;
          }
          td.mat-cell {
+            &:first-of-type {
+                padding-left: 0;
+             }
+             &:last-child {
+                padding-right: 0;
+             }
             @include media-breakpoint-down(md) {
             vertical-align: top;
             border: 0;

@@ -1,3 +1,6 @@
+@import '~@mucrest/ng-design/assets/styles/1-base/variable';
+@import '~@mucrest/ng-design/assets/styles/0-plugins/plugins-dir';
+
 .settings-wrap{
   width: 250px;
   padding: 1em;
@@ -40,6 +43,24 @@
     .mat-form-field-underline {
       background-color: transparent;
   }
+}
+
+::ng-deep .mat-expansion-panel-header-title{
+  @include font-size($fs-default);
+  font-weight: 400 !important;
+}
+
+.icon {
+  @include font-size($fs-md);
+  @include margin-right(10px);
+  &::before{
+    color: #1F47F5 !important;
+  }
+}
+
+.active{
+  cursor: pointer;
+  color: #1F47F5 !important;
 }
 
 ::ng-deep .mat-expansion-panel:not([class*=mat-elevation-z]) {
