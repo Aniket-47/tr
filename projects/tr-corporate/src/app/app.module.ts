@@ -6,6 +6,7 @@ import { MaterialModule } from '@tr';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {MatListModule} from '@angular/material/list';
+import { AdvanceSearchModule } from './advance-search/advance-search.module';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import {MatListModule} from '@angular/material/list';
     // AuthModule,
     MatListModule,
     MaterialModule,
+    AdvanceSearchModule,
     AppRoutingModule,
   ],
   providers: [],
