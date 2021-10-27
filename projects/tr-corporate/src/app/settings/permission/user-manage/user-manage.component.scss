@@ -2,7 +2,6 @@
 
 table.mat-table {
     @include media-breakpoint-down(md) {
-        padding: 10px;
         display: block;
      }
      ::ng-deep tbody {

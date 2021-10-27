@@ -21,7 +21,7 @@
             position: relative;           
             background: white;
             @include media-breakpoint-down(md) {
-                padding: 0;
+                padding: 0 1rem;
                 height: auto;
              }
         }
@@ -56,7 +56,7 @@
 }
 .mobile-togglebtn {
     position: absolute;
-    right: 2px;
+    right: 6px;
     top: 10px;
     font-size: 20px;
     @include media-breakpoint-up(md) { 
