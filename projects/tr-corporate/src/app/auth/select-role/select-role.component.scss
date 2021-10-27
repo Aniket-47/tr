@@ -24,7 +24,6 @@
     }
   }
 .role-container {
-  padding: 3rem 3rem 0;
   @include media-breakpoint-down(md) {
     padding: 0
   }
@@ -47,6 +46,7 @@
     }
   }
   ::ng-deep .mc-card {
+    min-height: 8.5rem;
     margin-bottom: 1.6rem;
     .mc-card-title {
       margin: 0;
