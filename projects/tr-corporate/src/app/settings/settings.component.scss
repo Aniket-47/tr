@@ -22,6 +22,7 @@
             background: white;
             @include media-breakpoint-down(md) {
                 padding: 0;
+                height: auto;
              }
         }
     }
