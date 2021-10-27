@@ -1,5 +1,5 @@
 <tr-d-header>
-  <span  [ngClass]="{'menu-active':colorActivation}">
+  <span class="action-icon" [ngClass]="{'menu-active':colorActivation}">
     <a routerLink="./" [matMenuTriggerFor]="notify" class="header-icon" (menuClosed)="colorActivation=false"  (menuOpened)="colorActivation=true">
       <span class="icon-mc mc-notifications" matBadge="3" matBadgePosition="after" matBadgeColor="accent"></span>
     </a>
