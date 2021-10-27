@@ -1,16 +1,16 @@
 <div class="register">
-  <mc-stepper [stepNames]="stepperPages" [currentStep]="currentStep" class="mx-auto mt-3"></mc-stepper>
-  <div class="card rndd border-0 mt-3 col-xl-10 mx-auto">
-    <div class="col-lg-10">
+  <mc-stepper [stepNames]="stepperPages" [currentStep]="currentStep" class="mx-auto"></mc-stepper>
+  <div class="card mt-5">
+    <div>
       <h2 class="text-dark">Your Personal Details</h2>
       <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ante commodo at pellentesque
         viverra eu gravida gravida. Placerat tellus urna ut congue egestas dui. Quisque lorem ornare nisi, amet lectus
         tellus..</p>
     </div>
     <form>
-      <div class="row row-cols-1 row-cols-lg-2 mt-4">
+      <div class="row row-cols-1 row-cols-lg-2">
         <div class="col-md-6">
-          <mat-form-field appearance="outline" class="w-100">
+          <mat-form-field appearance="outline">
             <mat-label>First Name</mat-label>
             <input matInput placeholder="xyz" ngModel name="firstName" #firstName="ngModel" required minlength="3"
               maxlength="20">
@@ -29,7 +29,7 @@
           </mat-form-field>
         </div>
         <div class="col-md-6">
-          <mat-form-field appearance="outline" class="w-100">
+          <mat-form-field appearance="outline">
             <mat-label>Middle Name</mat-label>
             <input matInput placeholder="xyz" ngModel name="middleName" #middleName="ngModel" required minlength="3"
               maxlength="20">
@@ -48,7 +48,7 @@
           </mat-form-field>
         </div>
         <div class="col-md-6">
-          <mat-form-field appearance="outline" class="w-100">
+          <mat-form-field appearance="outline">
             <mat-label>Last Name</mat-label>
             <input matInput placeholder="xyz" ngModel name="lastName" #lastName="ngModel" required minlength="3"
               maxlength="20">
@@ -67,7 +67,7 @@
           </mat-form-field>
         </div>
         <div class="col-md-6">
-          <mat-form-field appearance="outline" class="w-100">
+          <mat-form-field appearance="outline">
             <mat-label>Email Id (Official Email Id)</mat-label>
             <input type="email" matInput placeholder="pat@example.com" ngModel name="email" #email="ngModel" required
               email>
@@ -83,7 +83,7 @@
           </mat-form-field>
         </div>
         <div class="col-md-6 pr-4">
-          <mat-form-field appearance="outline" class="w-100">
+          <mat-form-field appearance="outline">
             <mat-label>Company Name</mat-label>
             <input matInput placeholder="xyz" ngModel name="company" #company="ngModel" required minlength="3"
               maxlength="50">
@@ -102,7 +102,7 @@
           </mat-form-field>
         </div>
         <div class="col-md-6 pr-5">
-          <mat-form-field class="example-full-width" appearance="outline" class="w-100">
+          <mat-form-field class="example-full-width" appearance="outline">
             <mat-label>Phone Number</mat-label>
             <!--<span matPrefix>+91</span>-->
             <input type="tel" matInput placeholder="000-000-0000" ngModel name="phno" #phno="ngModel" required>
@@ -110,7 +110,7 @@
           </mat-form-field>
         </div>
         <div class="col-md-6">
-          <mat-form-field appearance="outline" class="w-100">
+          <mat-form-field appearance="outline">
             <mat-label>Password</mat-label>
             <input placeholder="xyz" matInput [type]="hide ? 'password' : 'text'" ngModel name="password"
               #password="ngModel" required minlength="6" maxlength="12">
@@ -151,7 +151,7 @@
         </div>
       </div>
       <div class="d-flex justify-content-end register-action">
-        <button class="text-dark " mat-flat-button>Previous</button>
+        <button mat-stroked-button class="m-20">Previous</button>
         <button mat-flat-button color="primary">Register</button>
       </div>
     </form>

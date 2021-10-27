@@ -43,6 +43,9 @@
     z-index: 9999;
     border: #EBEAED 1px solid;
     background: #fff;
+    width: 34px;
+    height: 34px;
+    line-height: 34px;
     ::ng-deep .mat-button-wrapper>* {
         vertical-align: top;
     }

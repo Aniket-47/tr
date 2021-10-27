@@ -11,25 +11,11 @@
   min-height: 460px;
   max-width: 786px;
   width: 786px;
-  margin-top: $header-height;
-  ::ng-deep .stepper .stepper-label {
-    color: black;
-    font-size: 1rem;
-  }
   @include media-breakpoint-down(md) {
     padding: 0;
     background-color: transparent;
     width: 100%;
     margin:  0 auto;
-    // .logo {
-    //   display: block;
-    //   margin-bottom: 3rem;
-    // }
-  }
-  @include media-breakpoint-down(md) {
-    ::ng-deep .stepper .stepper-label {
-      font-size: smaller;
-    }
   }
 
   h2 {
@@ -77,5 +63,11 @@
 
   a {
     text-decoration: none;
+  }
+}
+.m-20 {
+  margin-right: 20px;
+  @include media-breakpoint-down(md) {
+    margin: 0;
   }
 }
