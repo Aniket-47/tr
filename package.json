@@ -3,12 +3,11 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "npm run dev:config && ng serve",
+    "start": "npm run dev:config && ng serve --host 0.0.0.0",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "dev:config": "npm link ../ng-core-lib/dist/ng-design",
-    "postinstall": "npm run dev:config"
+    "dev:config": "npm link ../ng-core-lib/dist/ng-design"
   },
   "private": true,
   "dependencies": {
@@ -22,6 +21,7 @@
     "@angular/platform-browser": "~12.2.0",
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
+    "@angular/service-worker": "~12.2.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
