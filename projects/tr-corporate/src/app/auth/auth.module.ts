@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { FPasswordComponent } from './f-password/f-password.component';
 import { SelectRoleComponent } from './select-role/select-role.component';
 import { CardModule, LayoutModule, McModule } from '@tr';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { CardModule, LayoutModule, McModule } from '@tr';
     RegisterComponent,
     LoginComponent,
     FPasswordComponent,
-    SelectRoleComponent
+    SelectRoleComponent,
+    ResetPasswordComponent
   ],
   imports: [
     CommonModule,
