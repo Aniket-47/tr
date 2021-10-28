@@ -9,7 +9,10 @@ export class DashabordComponent implements OnInit {
 
   date: any;
   hidden = false;
-  colorActivation?:boolean=false;
+  colorActivation = false;
+  msgColorActivation = false;
+  searchToggle = false;
+  // iconHidden = true;
 
   toggleBadgeVisibility() {
     this.hidden = !this.hidden;
@@ -21,9 +24,7 @@ export class DashabordComponent implements OnInit {
     this.date = new Date()
   }
 
-  // activeColor() {
-  //   this.colorActivation = true;
-  //   console.log(this.colorActivation);       
-  // }
-
+  toggleSearch() {
+    this.searchToggle = !this.searchToggle;
+  }  
 }

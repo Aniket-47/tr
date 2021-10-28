@@ -14,6 +14,11 @@ import { SearchComponent } from './search/search.component';
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    NotificationComponent,
+    MessageComponent,
+    SearchComponent
   ]
 })
 export class TrFeatureModule { }
