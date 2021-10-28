@@ -173,10 +173,10 @@ mc-side-navbar {
     width: 100%;
     height: 100%;
     &-has-open {
-    background: transparent;
-    z-index: 9999;
-    .mat-drawer {
-        max-width: 90%;
+        background: transparent;
+        z-index: 9999;
+        .mat-drawer {
+            max-width: 90%;
         }
     }
 }
