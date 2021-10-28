@@ -1,8 +1,7 @@
 @import '~@mucrest/ng-design/assets/styles/0-plugins/plugins-dir';
 .account-role {
 table.mat-table {
-    @include media-breakpoint-down(md) {
-        padding: 10px;
+    @include media-breakpoint-down(md) {       
         display: block;       
     }
     ::ng-deep tbody {

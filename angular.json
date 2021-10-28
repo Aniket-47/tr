@@ -51,14 +51,19 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "projects/tr-corporate/src/favicon.ico",
-              "projects/tr-corporate/src/assets"
+              "projects/tr-corporate/src/assets",
+              "projects/tr-corporate/src/manifest.webmanifest",
+              "projects/tr-corporate/src/manifest.webmanifest",
+              "projects/tr-corporate/src/manifest.webmanifest"
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "projects/tr-corporate/src/styles.scss"
             ],
             "scripts": [],
-            "preserveSymlinks": true
+            "preserveSymlinks": true,
+            "serviceWorker": true,
+            "ngswConfigPath": "projects/tr-corporate/ngsw-config.json"
           },
           "configurations": {
             "production": {
@@ -124,7 +129,10 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "projects/tr-corporate/src/favicon.ico",
-              "projects/tr-corporate/src/assets"
+              "projects/tr-corporate/src/assets",
+              "projects/tr-corporate/src/manifest.webmanifest",
+              "projects/tr-corporate/src/manifest.webmanifest",
+              "projects/tr-corporate/src/manifest.webmanifest"
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",

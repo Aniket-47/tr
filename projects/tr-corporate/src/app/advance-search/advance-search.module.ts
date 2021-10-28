@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DemoComponent } from './demo/demo.component';
+import { MaterialModule } from '@tr';
 
 
 
@@ -9,7 +10,8 @@ import { DemoComponent } from './demo/demo.component';
     DemoComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MaterialModule
   ],
   exports:[DemoComponent]
 })
