@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiDomain: 'http://alb-node-1684305291.ap-south-1.elb.amazonaws.com',
+  authApiBasePath: 'http://alb-node-1684305291.ap-south-1.elb.amazonaws.com/api/v1/',
 };
 
 /*
