@@ -5,7 +5,6 @@
 export const environment = {
   production: false,
   apiDomain: 'http://alb-node-1684305291.ap-south-1.elb.amazonaws.com',
-  authApiBasePath: 'http://alb-node-1684305291.ap-south-1.elb.amazonaws.com/api/v1',
 };
 
 /*
