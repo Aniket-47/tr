@@ -22,3 +22,13 @@ export interface Login_response {
   }
 
 }
+
+export interface Login_error {
+  error: boolean,
+  statuscode: number,
+  message: string,
+  data: {
+    route: string
+  }
+
+}
