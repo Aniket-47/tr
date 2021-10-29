@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 // Utility
@@ -8,7 +8,7 @@ import { api_routes, secure_api_routes } from '../../utility/configs/apiConfig';
 // Interfaces
 import { Login_request } from '../interfaces/login';
 import { Register_response, Register_error } from '../interfaces/register';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 
 @Injectable({
@@ -30,17 +30,18 @@ export class AuthService {
   }
 
   login(logindata: Login_request) {
-    return this.http.post<Login_request>(this.api_routes.LOGIN, logindata);
+    let headers = new HttpHeaders();
+    headers.append('clientuniqueid', 'abcd')
+    return this.http.post<Login_request>(this.api_routes.LOGIN, logindata, { headers: { 'clientuniqueid': 'abcd' } });
   }
 
   validateEmail(email: string) {
-    return this.http.post<string>(this.api_routes.VALIDATE_EMAIL, email, { observe: 'response' })
-      .pipe(
-        catchError((response) => {
-          return throwError({ ...response.error, status: response.status })
-        }),
-        map((response) => response.body as any)
-      );
+    return this.http.post<string>(this.api_routes.VALIDATE_EMAIL, { "email": email })
+    // .pipe(
+    //   catchError((response) => {
+    //     return throwError({ ...response.error, status: response.status })
+    //   })
+    // )
   }
 
 }

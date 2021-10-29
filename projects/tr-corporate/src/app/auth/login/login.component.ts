@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { ROUTE_CONFIGS } from '../../utility/configs/routerConfig';
 import { AuthService } from '../services/auth.service';
 
 // Interfaces
-import { EmailValidation_response } from './../interfaces/email-validation';
 
 @Component({
   selector: 'app-login',
@@ -14,22 +13,40 @@ import { EmailValidation_response } from './../interfaces/email-validation';
 export class LoginComponent implements OnInit {
   isFirstStep: boolean = true;
   emailValidationError: string | null = null;
-
-  constructor(private authServ: AuthService) { }
+  passwordValidationError: string | null = null;
+  email: string = "";
+  constructor(private authServ: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   isEmailExists(email: string) {
-    this.authServ.validateEmail(email).subscribe((res: EmailValidation_response) => {
-      if (res.status) {
+    this.email = email;
+    this.authServ.validateEmail(email).subscribe((res: any) => {
+      if (res.error) {
+        // on success
         this.isFirstStep = false;
+      }
+      else {
+        // manage error
+        this.emailValidationError = "Email does not exist"
       }
     })
   }
 
-  login() {
-
+  login(password: string) {
+    this.authServ.login({ "email": this.email, "password": password })
+      .subscribe((res: any) => {
+        // console.log(res);
+        if (res.error) {
+          // manage error
+          this.passwordValidationError = "Invalid Password"
+        }
+        else {
+          // on success
+          this.router.navigate([ROUTE_CONFIGS.DASHBOARD]);
+        }
+      })
   }
 
 

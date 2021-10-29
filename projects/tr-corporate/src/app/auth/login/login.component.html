@@ -1,2 +1,2 @@
 <!-- <p>login works!</p> -->
-<mc-login [signupLink]="'/auth/register'" [isFirstStep]="isFirstStep" [emailValidationError]="emailValidationError" (onEmailProvided)="isEmailExists($event)"> </mc-login>
+<mc-login [signupLink]="'/auth/register'" [isFirstStep]="isFirstStep" [emailValidationError]="emailValidationError" (onEmailProvided)="isEmailExists($event)" (onPasswordProvided)="login($event)"> </mc-login>
