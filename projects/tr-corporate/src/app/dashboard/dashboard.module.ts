@@ -5,7 +5,7 @@ import { StatsComponent } from './stats/stats.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { CardModule, LayoutModule, MaterialModule } from '@tr';
 import { ComponentsModule } from '@mucrest/ng-design';
-import { MatBadgeModule } from '@angular/material/badge';
+import { TrFeatureModule } from '@tr/src/app/tr-feature/tr-feature.module';
 
 
 
@@ -21,8 +21,8 @@ import { MatBadgeModule } from '@angular/material/badge';
     ComponentsModule,
     MaterialModule,   
     CardModule,
+    TrFeatureModule,
     DashboardRoutingModule,
-    MatBadgeModule
   ]
 })
 export class DashboardModule { }
