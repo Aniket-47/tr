@@ -7,7 +7,7 @@ export const ROUTE_CONFIGS = {
   SETTINGS_DASHBOARD: '/dashboard/settings'
 }
 
-export const routerPermission = {
+export const ROUTE_PERMISSION = {
     SETTINGS_DASHBOARD: true
 }
 
