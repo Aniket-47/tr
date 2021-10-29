@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./auth.component.scss']
 })
 export class AuthComponent implements OnInit {
-  stepperPages = ['Company Type', 'Register'];
+  stepperPages = ['Company Type', 'Register', 'Login'];
   currentStep = 1;
 
   leftPanelImg: string;
