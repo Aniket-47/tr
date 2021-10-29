@@ -88,8 +88,8 @@ mc-side-navbar {
 }
 
 .header-icon{
-    font-size: 1.5rem;
-    padding: 0.2rem 0;
+    @include font-size(1.8rem);
+    @include padding(0.2rem 0);
 }
 
 .notify-design{
