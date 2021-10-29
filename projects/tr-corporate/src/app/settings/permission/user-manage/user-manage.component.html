@@ -4,6 +4,7 @@
         <!-- <button mat-icon-button>
           <span class="mc-back-arrow"></span>
         </button> -->
+        <h5 class="mobile-only">Permissions</h5>
         <h2>User Management</h2>
       </div>
       <div class="page-action cloud-only">
@@ -62,10 +63,15 @@
             <div class="user-info">
               <div class="user-img">
                 <img src="{{element.img}}" alt="">
+                <mat-label class="status user-img-label" [ngClass]="{
+                  'success': element.status === 'Active',
+                  'warning': element.status === 'Inactive',
+                  'danger': element.status === 'Deactivated'
+                }"></mat-label>
               </div>
               <div>
-                <div>{{element.name}}</div>
-                <div>{{element.email}}</div>
+                <div class="name">{{element.name}}</div>
+                <div class="email">{{element.email}}</div>
               </div>
             </div>          
              </td>
@@ -84,7 +90,7 @@
         <!-- Username Column -->
         <ng-container matColumnDef="username">
           <th mat-header-cell *matHeaderCellDef> Username </th>
-          <td mat-cell *matCellDef="let element"> <span class="mobile-only grey-text">User Name :</span> {{element.username}} </td>
+          <td mat-cell *matCellDef="let element"> <span class="mobile-only grey-text">Name :</span> {{element.username}} </td>
         </ng-container>
   
         <!-- Status Column -->
@@ -102,7 +108,7 @@
         <!-- Last Updated Column -->
         <ng-container matColumnDef="lastupdated">
           <th mat-header-cell *matHeaderCellDef> Last Updated </th>
-          <td mat-cell *matCellDef="let element"> <span class="mobile-only grey-text">Last Updated :</span> {{element.lastupdated}} </td>
+          <td mat-cell *matCellDef="let element"> <span class="mobile-only grey-text">Updated :</span> {{element.lastupdated}} </td>
         </ng-container>
   
         <!-- Action Column -->
@@ -150,7 +156,7 @@
         </mat-menu>
       </div>
       <button mat-fab color="primary" (click)="toggleFab()">
-        <span [ngClass]="{'icon-mc mc-plus': toggle === true, 'icon-mc mc-more_vert': toggle === false }"></span>
+        <span class="icon-mc " [ngClass]="{'mc-plus': toggle === true, 'mc-more_vert': toggle === false }"></span>
       </button>
     </div>
   
