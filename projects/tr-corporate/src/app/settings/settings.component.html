@@ -11,6 +11,6 @@
         </div>
       </mat-drawer-container>            
     </div>
-    <button type="button" mat-icon-button (click)="drawer.toggle()" class="togglebtn">
-      <span class="icon-mc mc-keyboard_arrow_right"></span>
+    <button type="button" mat-icon-button  (click)="drawer.toggle() && togglePosition(drawer)" class="togglebtn">
+      <span class="icon-mc " [ngClass]="drawer.opened ? 'mc-keyboard_arrow_left': 'mc-keyboard_arrow_right'"></span>
     </button> 
