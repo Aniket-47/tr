@@ -33,10 +33,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
   @media (max-width: 767px) {
     padding: 0 .75rem;
     display: block;
     min-height: auto;
+  }
+}
+.auth-step {
+  display: flex;
+  justify-content: center;
+  margin-top: 6rem;
+  @media (max-width: 767px) {
+    margin-top: 1rem;
   }
 }
