@@ -22,7 +22,7 @@ table.mat-table {
             display: flex;
             flex-direction: row;
             width: 100%;
-            padding-bottom: 6rem;
+            padding-bottom: 3rem;
             margin-bottom: 1rem;
             position: relative;
             border-radius: 4px;
@@ -30,6 +30,9 @@ table.mat-table {
          td.mat-cell {
             &:first-of-type {
                 padding-left: 0;
+                @include media-breakpoint-down(md) {
+                    width: 40px;
+                }
              }
              &:last-child {
                 padding-right: 0;
@@ -43,23 +46,21 @@ table.mat-table {
              }
              &:nth-child(3) {
                  position: absolute;
-                 left: 10px;
+                 right: 10px;
                  bottom: 10px;
              }
              &:nth-child(4) {
                 position: absolute;
-                left: 55px;
-                bottom: 70px;
+                left: 15px;
+                bottom: 30px;
              }
              &:nth-child(5) {
-                position: absolute;
-                right: 10px;
-                bottom: 10px;
+                display: none;
             }
             &:nth-child(6) {
                 position: absolute;
-                left: 55px;
-                bottom: 50px;
+                left: 15px;
+                bottom: 10px;
             }
             &:last-child {
                 padding-right: 0;
@@ -99,6 +100,26 @@ table.mat-table {
         .user-img {
             margin-right: 1rem;
         }
+        .name {
+            @include rfs(1rem);
+        }
+        .email {
+            margin-top: .3rem;
+            color: rgba($color: $black, $alpha: 0.5);
+        }
     }
 }
-
+.user-img-label {
+    @include media-breakpoint-up(md) { 
+        display: none;
+    }
+    &::before {
+        width: 10px;
+        height: 10px;
+        border-radius: 10px;
+        position: absolute;
+        left: -15px;
+        top: 0px;
+        border: 2px solid #fff;
+    }
+}

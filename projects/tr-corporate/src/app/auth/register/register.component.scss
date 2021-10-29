@@ -4,10 +4,9 @@
 
 .register {
   background: $white;
-  padding: 2rem 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   min-height: 460px;
   max-width: 786px;
   width: 786px;
