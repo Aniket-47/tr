@@ -81,8 +81,7 @@ const matModules = [
   MatTooltipModule,
   MatPaginatorModule,
   MatSortModule,
-  MatTableModule,
-  BrowserAnimationsModule,
+  MatTableModule
 ]
 @NgModule({
   declarations: [],

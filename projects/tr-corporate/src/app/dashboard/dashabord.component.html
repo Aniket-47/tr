@@ -3,12 +3,20 @@
     <tr-m-header></tr-m-header>
   </mat-drawer>
   <tr-d-header>
+    <span class="search header-icon">
+      <span class="icon-mcf mcf-search" (click)="toggleSearch()"></span>
+      <tr-search *ngIf="searchToggle" class="searchPanel"></tr-search>
+    </span>
     <span class="action-icon" [ngClass]="{'menu-active':colorActivation}">
-      <a [matMenuTriggerFor]="notify" class="header-icon" (menuClosed)="colorActivation=false"  (menuOpened)="colorActivation=true">
+      <a routerLink="./" [matMenuTriggerFor]="notify" class="header-icon" (menuClosed)="colorActivation=false"  (menuOpened)="colorActivation=true">
         <span class="icon-mc mc-notifications" matBadge="3" matBadgePosition="after" matBadgeColor="accent"></span>
       </a>
     </span>
-      <a [matMenuTriggerFor]="message" class="header-icon"><span class="icon-mcf mcf-outgoing_mail"></span></a>
+    <span class="active-icon" [ngClass]="{'menu-active':msgColorActivation}">
+      <a routerLink="./" [matMenuTriggerFor]="message" class="header-icon" (menuClosed)="msgColorActivation=false" (menuOpened)="msgColorActivation=true">
+        <span class="icon-mcf mcf-outgoing_mail"></span>
+      </a>
+    </span>
       <a [matMenuTriggerFor]="menu" class="user-dropdown"><span class="user-avatar">MB</span><span class="user-name">Maxbert</span></a>
   <mat-menu #menu="matMenu" backdropClass="profile-dropdown">
     <button mat-menu-item><i class="icon-mc mc-person"></i> <span>Profile Settings</span></button>
@@ -115,6 +123,7 @@
       <a routerLink="./" class="active"><span class="icon-mc mc-sliders"></span></a>
     </div>
 </mc-side-navbar>
+<tr-search *ngIf="searchToggle" class="m-searchPanel"></tr-search>
 <router-outlet></router-outlet>
 
 <button type="button" mat-icon-button class="hamburger" (click)="drawer.toggle()">
