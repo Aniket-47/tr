@@ -1,17 +1,20 @@
 <div class="mat-drawer-panel">
-  <div class="mat-drawer-panel-header">
-    <div class="user-avater">
-      <img class="circle" src="assets/img/profile.png">
-    </div>
-    <div class="user-info">
-      <span class="user-info__name">Daniel Jones</span>
-      <span class="user-info__email">daniel@gmail.com</span>
-    </div>
-    <button mat-icon-button color="theme" class="ml-auto"><span class="icon-mc mc-settings"></span></button>        
+    <div class="mat-drawer-panel-header">
+        <div class="user-avater">
+        <img class="circle" src="assets/img/profile.png">
+        </div>
+        <div class="user-info">
+        <span class="user-info__name">Daniel Jones</span>
+        <span class="user-info__email">daniel@gmail.com</span>
+        </div>
+        <button mat-icon-button color="theme" class="ml-auto">
+            <span class="icon-mc mc-settings"></span>
+        </button>        
   </div>
   <div class="mat-drawer-panel-header-menu">
     <mat-accordion>
-        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
           <mat-expansion-panel-header>
             <mat-panel-title>
                 <span class="icon-mc mc-layers"></span>
@@ -24,17 +27,20 @@
             <a routerLink="" routerLinkActive=""><span class="icon-mc mc-folder"></span> <span> Account 3 </span></a>
           </div>
         </mat-expansion-panel>
-      </mat-accordion>      
+      </mat-accordion>
+      
   </div>
   <div class="mat-drawer-panel-menu">
     <a routerLink="" routerLinkActive=""><span class="icon-mc mc-home"></span> <span>Home</span></a>
     <a routerLink="" routerLinkActive=""><span class="icon-mc mc-group"></span> <span>Candidates</span></a>
     <a routerLink="" routerLinkActive=""><span class="icon-mc mc-work_outline"></span> <span>Jobs</span></a>
     <a routerLink="" routerLinkActive=""><span class="icon-mc mc-inbox"></span> <span>Inbox</span></a>
-    <a routerLink="" routerLinkActive=""><span class="icon-mc mc-insert_chart_outlined"></span><span>Analytics</span></a>
+    <a routerLink="" routerLinkActive=""><span class="icon-mc mc-insert_chart_outlined"></span> <span>Analytics</span></a>
     <a routerLink="" routerLinkActive=""><span class="icon-mc mc-sliders"></span> <span>configrations</span></a>
   </div>
   <div class="mat-drawer-panel-footer">
-    <a class="ml-auto"><span class="icon-mc mc-power_settings_new"></span><span>Signout</span></a>
+    <a class="ml-auto">
+        <span class="icon-mc mc-power_settings_new"></span> <span>Signout</span>
+    </a>
   </div>
 </div>
