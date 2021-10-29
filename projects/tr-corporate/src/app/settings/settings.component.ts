@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDrawer } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-settings',
@@ -17,5 +18,9 @@ export class SettingsComponent implements OnInit {
     if (this.innerWidth < 767) {
       this.drawerMode = 'over';
     }
+  }
+
+  togglePosition(e: MatDrawer){
+    console.log(e.opened)
   }
 }
