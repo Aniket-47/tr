@@ -14,8 +14,8 @@
   }
 
   .settings__element{
-    overflow-y: scroll;
-
+    max-height: 50vh;
+    overflow: auto;
     .mat-expansion-panel-header {
       padding: 0 0 0 8px;
 
