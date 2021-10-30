@@ -52,48 +52,6 @@ export class SettingsSideMenuComponent implements OnInit {
       icon: 'icon-mcf mcf-add_task',
     },
     {
-      name: 'Integration',
-      child: [
-        {
-          name: 'User Management',
-          link: "./permission/users",
-        },
-        {
-          name: 'Account Role',
-          link: "./permission/users",
-        }
-      ],
-      icon: 'icon-mcf mcf-add_task',
-    },
-    {
-      name: 'Integration',
-      child: [
-        {
-          name: 'User Management',
-          link: "./permission/users",
-        },
-        {
-          name: 'Account Role',
-          link: "./permission/users",
-        }
-      ],
-      icon: 'icon-mcf mcf-add_task',
-    },
-    {
-      name: 'Integration',
-      child: [
-        {
-          name: 'User Management',
-          link: "./permission/users",
-        },
-        {
-          name: 'Account Role',
-          link: "./permission/users",
-        }
-      ],
-      icon: 'icon-mcf mcf-add_task',
-    },
-    {
       name: 'Configuration',
       child: [
         {
@@ -177,62 +135,6 @@ export class SettingsSideMenuComponent implements OnInit {
       ],
       icon: 'icon-mcf mcf-file_present',
     }, 
-    {
-      name: 'GDPR',
-      child: [
-        {
-          name: 'User Management',
-          link: "./permission/users",
-        },
-        {
-          name: 'Account Role',
-          link: "./permission/users",
-        },
-      ],
-      icon: 'icon-mc mc-corporate_fare',
-    },
-    {
-      name: 'GDPR',
-      child: [
-        {
-          name: 'User Management',
-          link: "./permission/users",
-        },
-        {
-          name: 'Account Role',
-          link: "./permission/users",
-        },
-      ],
-      icon: 'icon-mc mc-corporate_fare',
-    },
-    {
-      name: 'GDPR',
-      child: [
-        {
-          name: 'User Management',
-          link: "./permission/users",
-        },
-        {
-          name: 'Account Role',
-          link: "./permission/users",
-        },
-      ],
-      icon: 'icon-mc mc-corporate_fare',
-    },
-    {
-      name: 'GDPR',
-      child: [
-        {
-          name: 'User Management',
-          link: "./permission/users",
-        },
-        {
-          name: 'Account Role',
-          link: "./permission/users",
-        },
-      ],
-      icon: 'icon-mc mc-corporate_fare',
-    },
     {
       name: 'GDPR',
       child: [
