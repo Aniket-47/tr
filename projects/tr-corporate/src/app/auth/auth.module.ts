@@ -8,6 +8,9 @@ import { FPasswordComponent } from './f-password/f-password.component';
 import { SelectRoleComponent } from './select-role/select-role.component';
 import { CardModule, LayoutModule, McModule } from '@tr';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from '../material.moule';
+import { RegisterSuccessComponent } from './r-success/r-success.component';
 
 @NgModule({
   declarations: [
@@ -16,10 +19,14 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     LoginComponent,
     FPasswordComponent,
     SelectRoleComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    RegisterSuccessComponent
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MaterialModule,
     LayoutModule,
     McModule,
     CardModule,

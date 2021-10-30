@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-select-role',
@@ -9,9 +10,13 @@ export class SelectRoleComponent implements OnInit {
 
   stepperPages = ['Company Type', 'Register'];
   currentStep = 0;
-constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
+  
+  roleHandler(roleType: string) {
+    this.router.navigateByUrl('auth/register');
   }
 
 }
