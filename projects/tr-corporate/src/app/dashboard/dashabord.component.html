@@ -3,6 +3,7 @@
     <tr-m-header></tr-m-header>
   </mat-drawer>
   <tr-d-header>
+    <span class="icon-mc mc-menu header-icon" m-brand (click)="drawer.toggle()"></span>
     <span class="search header-icon">
       <span class="icon-mcf mcf-search" (click)="toggleSearch()"></span>
       <tr-search *ngIf="searchToggle" class="searchPanel"></tr-search>
@@ -111,22 +112,23 @@
       </a>
     </div>
     <div top class="border-bottom side-nav-hvr">
-      <a routerLink="./"><span class="icon-mc mc-pie_chart_outlined"></span></a>
+      <a routerLink="./"><span class="icon-mc mc-home"></span></a>
       <a routerLink="./"><span class="icon-mcf mcf-work_outline"></span></a>
       <a routerLink="./"><span class="icon-mc mc-group"></span></a>
     </div>
     <div top class="side-nav-hvr">
-      <a routerLink="./" ><span class="icon-mcf mcf-calendar_today"></span></a>
-      <a routerLink="./" ><span class="icon-mc mc-inbox"></span></a>
+      <a routerLink="./"><span class="icon-mc mc-pie_chart_outlined"></span></a>
+      <!-- <a routerLink="./" ><span class="icon-mcf mcf-calendar_today"></span></a> -->
+      <!-- <a routerLink="./" ><span class="icon-mc mc-inbox"></span></a> -->
       <!-- <a routerLink="./"><span class="mc-multiline_chart"></span></a> -->
-      <a routerLink="./"><span class="icon-mc mc-multiline_chart"></span></a>
+      <!-- <a routerLink="./"><span class="icon-mc mc-multiline_chart"></span></a> -->
       <a routerLink="./" class="active"><span class="icon-mc mc-sliders"></span></a>
     </div>
   </mc-side-navbar>
   <tr-search *ngIf="searchToggle" class="m-searchPanel"></tr-search>
   <router-outlet></router-outlet>
 
-  <button type="button" mat-icon-button class="hamburger" (click)="drawer.toggle()">
+  <!-- <button type="button" mat-icon-button class="hamburger" (click)="drawer.toggle()">
     <span class="icon-mc mc-menu"></span>
-  </button>
+  </button> -->
 </mat-drawer-container>

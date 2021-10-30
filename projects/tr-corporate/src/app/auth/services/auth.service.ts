@@ -8,8 +8,7 @@ import { api_routes, secure_api_routes } from '../../utility/configs/apiConfig';
 // Interfaces
 import { Login_request } from '../interfaces/login';
 import { Register_response, Register_error } from '../interfaces/register';
-import { catchError, map, tap } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+import { Guid } from 'guid-typescript';
 
 @Injectable({
   providedIn: 'root'
@@ -30,18 +29,12 @@ export class AuthService {
   }
 
   login(logindata: Login_request) {
-    let headers = new HttpHeaders();
-    headers.append('clientuniqueid', 'abcd')
-    return this.http.post<Login_request>(this.api_routes.LOGIN, logindata, { headers: { 'clientuniqueid': 'abcd' } });
+    const guid = Guid.create();
+    return this.http.post<Login_request>(this.api_routes.LOGIN, logindata, { headers: { 'clientuniqueid': guid.toString() } });
   }
 
   validateEmail(email: string) {
     return this.http.post<string>(this.api_routes.VALIDATE_EMAIL, { "email": email })
-    // .pipe(
-    //   catchError((response) => {
-    //     return throwError({ ...response.error, status: response.status })
-    //   })
-    // )
   }
 
   passwordForget(email: any) {
