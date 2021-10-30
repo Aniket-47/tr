@@ -1,13 +1,14 @@
 import { createAction, props } from "@ngrx/store";
+import { USER_ACTIONS } from "../action.constants";
 import { Iuser } from "../interfaces/user";
 
 export const saveUserData = createAction(
-	"[USER] Save user data",
+	USER_ACTIONS.userDataAction,
 	props<{ data: Iuser }>()
 );
 
 export const setUserStatus = createAction(
-	"[USER] Save User status",
+	USER_ACTIONS.userStatusAction,
 	props<{ data: boolean }>()
 );
 

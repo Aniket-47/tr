@@ -9,7 +9,7 @@ import {
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AuthService } from '../services/auth.service';
-import { AuthFeatureState } from '../store/reducers';
+import { Iauth } from '../store/interface/auth';
 import { getCurrentStepper } from '../store/selectors/auth.selector';
 
 function passwordMatcher(c: AbstractControl): { [key: string]: boolean } | null {
@@ -57,7 +57,7 @@ export class RegisterComponent implements OnInit {
     private fb: FormBuilder, 
     private router: Router, 
     private authService: AuthService,
-    private store: Store<AuthFeatureState>) {}
+    private store: Store<Iauth>) {}
 
   ngOnInit(): void {
     this.store.select(getCurrentStepper).subscribe(data => {
