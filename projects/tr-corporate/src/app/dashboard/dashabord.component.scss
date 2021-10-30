@@ -117,7 +117,7 @@ mc-side-navbar {
 
 .action-icon, .active-icon, .search{
     padding: 0 5px;
-  
+    height: 40px;
     &:hover{
         background-color: ($black08);
         border-radius: 50%;
