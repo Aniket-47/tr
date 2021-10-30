@@ -12,6 +12,7 @@ export class FPasswordComponent implements OnInit, OnChanges {
 
   resMessage: string="";
   isLoading = false;
+  errorMessage = false;
 
   constructor(private authServ: AuthService) { }
 
@@ -32,10 +33,14 @@ export class FPasswordComponent implements OnInit, OnChanges {
   ])
 
   fpassword() {
+    this.resMessage = "";
     this.isLoading = true;
     this.emailFormControl.valid && this.authServ.passwordForget(this.emailFormControl.value)
       .subscribe((res: any) => {
         this.isLoading = false;
+        if(res.error) {
+          this.errorMessage = true;
+        }
         this.resMessage=res.message;        
       })
   }
