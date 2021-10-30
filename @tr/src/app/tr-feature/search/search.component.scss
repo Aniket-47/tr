@@ -5,6 +5,11 @@ div{
   display: flex;
   justify-content: flex-start;
   align-items: baseline;
+  position: fixed;
+  top: 4px;
+  right: 230px;
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: 5px;
 
   span{
     font-size: 12px;
@@ -25,6 +30,14 @@ div{
 
 @media screen and (max-width: 765px) {
   div{
+    border-radius: 0 0 5px 5px;
+    width: 90%;
+    box-shadow: 0px 0.6px 2px 0px grey;
+    margin: 46px auto 0;
+    position: absolute;
+    top: 1px;
+    right: 5vmax;
+    z-index: 1;
     span{
       font-size: 17px;
       font-weight: 400;
@@ -38,3 +51,5 @@ div{
     }
   }
 }
+
+        
