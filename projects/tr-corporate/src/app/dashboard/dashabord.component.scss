@@ -2,6 +2,11 @@
 @import '~@mucrest/ng-design/assets/styles/0-plugins/plugins-dir';
 
 mc-side-navbar {
+    /*& a:hover{
+        background-color: #4260e9;
+        color: #fff !important;   
+        border-radius: 4px;
+    }*/
 .icon-mc,.icon-mcf {
     &::before {
       color: black;
@@ -35,7 +40,23 @@ mc-side-navbar {
                 }
             }
         }    
+
+         
     }
+
+    // hover side menu
+    .side-nav-hvr a{
+        &:hover {
+            background-color: #3f60f5;
+            border-radius: 4px;
+            span {
+                &::before {
+                    color: white;
+                }
+            }
+        } 
+    }
+
 .user-dropdown {
     display: flex;
     align-items: center;
@@ -97,7 +118,7 @@ mc-side-navbar {
 }
 
 ::ng-deep .mat-menu-panel {
-    max-height: calc(100vh - 230px) !important;
+    max-height: 23vh !important;
 }
 
 .mat-badge-medium .mat-badge-content {
@@ -115,7 +136,7 @@ mc-side-navbar {
     top: -3px;
 }
 
-.action-icon, .active-icon{
+.action-icon, .active-icon, .search{
     padding: 0 5px;
   
     &:hover{
@@ -136,15 +157,16 @@ mc-side-navbar {
     span{
         position: relative;
         z-index: 1;
+        vertical-align: sub;
     }
   }
   
   .searchPanel {
-    position: absolute;
-    top: -3px;
-    left: -395px;
-    background: rgba(0, 0, 0, 0.03);
-    border-radius: 5px;
+    position: relative;
+    // top: -3px;
+    // left: -395px;
+    // background: rgba(0, 0, 0, 0.03);
+    // border-radius: 5px;
   }
   .m-searchPanel{display: none;}
   
@@ -153,7 +175,7 @@ mc-side-navbar {
     .searchPanel { display: none; }
     .m-searchPanel{
         border-radius: 0 0 5px 5px;
-        display: block;
+        display: flex;
         width: 90%;
         box-shadow: 0px 0.6px 2px 0px grey;
         margin: 46px auto 0;

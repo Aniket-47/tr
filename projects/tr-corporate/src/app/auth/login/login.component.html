@@ -1,4 +1,2 @@
 <!-- <p>login works!</p> -->
-<mc-login
- [signupLink]="'/auth/selectrole'"
-> </mc-login>
+<mc-login [signupLink]="'/auth/selectrole'" [isFirstStep]="isFirstStep" [emailValidationError]="emailValidationError" [isLoading]="isLoading" (onEmailProvided)="isEmailExists($event)" (onPasswordProvided)="login($event)"> </mc-login>

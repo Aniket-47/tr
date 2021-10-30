@@ -8,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
   animations: [
     trigger( 'fade', [
       transition ('void => *' , [
-        style({ backgroundColor: 'yellow' , opacity: 0 }),
-        animate(2000, style({ backgroundColor: 'white', opacity: 1 })),
+        style({opacity: 0 }),
+        animate(2000, style({opacity: 1 })),
       ]),
       transition('* => void' , [
         animate(2000, style({opacity:0}))
