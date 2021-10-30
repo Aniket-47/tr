@@ -4,7 +4,7 @@ import { DashabordComponent } from './dashabord.component';
 import { StatsComponent } from './stats/stats.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { CardModule, LayoutModule, MaterialModule } from '@tr';
-import { ComponentsModule } from '@mucrest/ng-design';
+import { ComponentsModule, McCardModule } from '@mucrest/ng-design';
 import { TrFeatureModule } from '@tr/src/app/tr-feature/tr-feature.module';
 
 
@@ -21,6 +21,7 @@ import { TrFeatureModule } from '@tr/src/app/tr-feature/tr-feature.module';
     MaterialModule,   
     CardModule,
     TrFeatureModule,
+    McCardModule,
     DashboardRoutingModule,
   ]
 })
