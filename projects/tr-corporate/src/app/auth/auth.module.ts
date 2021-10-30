@@ -11,6 +11,10 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterSuccessComponent } from './r-success/r-success.component';
 
+// store
+import { StoreModule } from '@ngrx/store';
+import { authReducer } from './store/reducers/auth.reducers';
+
 @NgModule({
   declarations: [
     AuthComponent,
@@ -26,6 +30,7 @@ import { RegisterSuccessComponent } from './r-success/r-success.component';
     ReactiveFormsModule,
     FormsModule,
     MaterialModule,
+    StoreModule.forFeature('auth', authReducer),
     LayoutModule,
     McModule,
     CardModule,

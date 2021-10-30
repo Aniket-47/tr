@@ -7,7 +7,10 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { AuthService } from '../services/auth.service';
+import { Iauth } from '../store/interface/auth';
+import { getCurrentStepper } from '../store/selectors/auth.selector';
 
 function passwordMatcher(c: AbstractControl): { [key: string]: boolean } | null {
   const passwordControl = c.get('password') as FormControl;
@@ -53,9 +56,13 @@ export class RegisterComponent implements OnInit {
   constructor(
     private fb: FormBuilder, 
     private router: Router, 
-    private authService: AuthService) {}
+    private authService: AuthService,
+    private store: Store<Iauth>) {}
 
   ngOnInit(): void {
+    this.store.select(getCurrentStepper).subscribe(data => {
+      console.log(data);
+    })
   }
 
   // getters
