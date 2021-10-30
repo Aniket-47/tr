@@ -44,7 +44,7 @@ export class AuthService {
     // )
   }
 
-  passwordForget(email: string) {
+  passwordForget(email: any) {
     return this.http.post<string>(this.api_routes.FORGOT_PASSWORD, { "email": email })
   }
 
