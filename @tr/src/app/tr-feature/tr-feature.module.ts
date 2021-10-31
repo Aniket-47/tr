@@ -4,6 +4,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NotificationComponent } from './notification/notification.component';
 import { MessageComponent } from './message/message.component';
 import { SearchComponent } from './search/search.component';
+import { McModule } from '../mc/mc.module';
+import { MaterialModule } from '../material/material.module';
 
 
 
@@ -14,7 +16,9 @@ import { SearchComponent } from './search/search.component';
     SearchComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MaterialModule,
+    McModule,
   ],
   exports: [
     NotificationComponent,
