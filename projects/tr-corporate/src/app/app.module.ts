@@ -13,7 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // Store
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { reducers } from '../app/utility/store/reducers';
+import { reducers } from './utility/store/reducers';
 
 @NgModule({
   declarations: [
