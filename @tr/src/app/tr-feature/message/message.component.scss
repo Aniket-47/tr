@@ -1,8 +1,37 @@
-.icon::before{
-    color: rgb(13, 216, 13);
-}
+// .icon::before{
+//     color: rgb(13, 216, 13);
+// }
 
-.btn-green{
-    background-color: rgb(13, 216, 13);
-    color: white;
-}
+// .btn-green{
+//     background-color: rgb(13, 216, 13);
+//     color: white;
+// }
+
+mc-brief-card{
+    .time{
+      text-align: right;
+    }
+  }
+
+  .subtitle{
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      font-size: 0.8rem;
+  }
+  
+  ::ng-deep .mc-card{
+    min-height: 0;
+  }
+  
+  ::ng-deep .mc-card-body, .mc-card-action, .mc-card-footer{
+    margin-top: 0;
+  }
+  
+  ::ng-deep .mc-card__header-details {
+    width: 85%;
+  }
+  
+  ::ng-deep .mc-card-title{
+    font-size: 1rem;
+  }

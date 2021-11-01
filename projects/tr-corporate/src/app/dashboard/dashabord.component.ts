@@ -7,7 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashabordComponent implements OnInit {
 
-  date: any;
   hidden = false;
   colorActivation = false;
   msgColorActivation = false;
@@ -19,9 +18,7 @@ export class DashabordComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-    this.date = new Date()
-  }
+  ngOnInit(): void { }
 
   toggleSearch() {
     this.searchToggle = !this.searchToggle;

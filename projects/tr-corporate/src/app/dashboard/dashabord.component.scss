@@ -113,10 +113,6 @@ mc-side-navbar {
     @include padding(0.2rem 0);
 }
 
-.notify-design{
-    @include margin(0 10px);
-}
-
 ::ng-deep .mat-menu-panel {
     max-height: 23vh !important;
 }
@@ -163,10 +159,6 @@ mc-side-navbar {
   
   .searchPanel {
     position: relative;
-    // top: -3px;
-    // left: -395px;
-    // background: rgba(0, 0, 0, 0.03);
-    // border-radius: 5px;
   }
   .m-searchPanel{display: none;}
   
