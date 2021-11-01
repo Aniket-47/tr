@@ -34,6 +34,7 @@ import { authReducer } from './store/reducers/auth.reducers';
     LayoutModule,
     McModule,
     CardModule,
+    MaterialModule,
     AuthRoutingModule
   ],
 })
