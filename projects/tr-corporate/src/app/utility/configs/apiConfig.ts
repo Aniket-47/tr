@@ -7,6 +7,7 @@ export const api_routes = {
   REGISTER: `${auth}/registration`,
   VERIFICATION: `${auth}/accountverification`,
   VALIDATE_EMAIL: `${auth}/validateemail`,
+  VALIDATE_ACCOUNT: `${auth}/accountverification`,
   LOGIN: `${auth}/login`,
   FORGOT_PASSWORD: `${auth}/forgotpassword`
 };
