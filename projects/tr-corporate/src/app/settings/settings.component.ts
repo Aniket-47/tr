@@ -1,14 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
-import { fadeAnimation } from '../animations';
 
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.scss'],
-  animations: [fadeAnimation],
-  host: { '[@fadeInAnimation]': '' }
+  styleUrls: ['./settings.component.scss']
 })
 export class SettingsComponent implements OnInit {
   showFiller = true;

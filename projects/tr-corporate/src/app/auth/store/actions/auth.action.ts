@@ -5,3 +5,8 @@ export const setStepper = createAction(
 	props<{ data: number }>()
 );
 
+export const setStepperShow = createAction(
+	"[Auth] Set stepper show",
+	props<{ data: boolean }>()
+);
+

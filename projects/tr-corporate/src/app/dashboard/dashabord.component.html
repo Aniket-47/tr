@@ -1,6 +1,14 @@
 <mat-drawer-container>
   <mat-drawer #drawer mode="over" [autoFocus]="false">
-    <tr-m-header></tr-m-header>
+    <tr-m-header>
+      <img class="circle" src="assets/img/profile.png" image>
+      <span name></span>
+      <span email></span>
+      <span account-lists>
+        <a *ngFor="let account of accountList">
+          <span class="icon-mc mc-folder"></span> <span> {{ account.name }} </span></a>
+      </span>
+    </tr-m-header>
   </mat-drawer>
   <tr-d-header>
     <span class="icon-mc mc-menu header-icon" m-brand (click)="drawer.toggle()"></span>
@@ -115,7 +123,8 @@
       </a>
     </div>
     <div top class="border-bottom side-nav-hvr">
-      <a routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><span class="icon-mc mc-home"></span></a>
+      <a routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><span
+          class="icon-mc mc-home"></span></a>
       <a routerLink="./"><span class="icon-mcf mcf-work_outline"></span></a>
       <a routerLink="./"><span class="icon-mc mc-group"></span></a>
     </div>

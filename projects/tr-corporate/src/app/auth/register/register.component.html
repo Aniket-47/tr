@@ -31,9 +31,9 @@
             <mat-label>Middle Name</mat-label>
             <input matInput placeholder="xyz" formControlName="middleName">
             <mat-error *ngIf="middleName.touched && !middleName.valid">
-              <span *ngIf="middleName.errors?.required">
+              <!-- <span *ngIf="middleName.errors?.required">
                 Middle Name is required
-              </span>
+              </span> -->
               <span *ngIf="!middleName.errors?.required && middleName.errors?.minlength">
                 Middle Name should be atleast 3letters
               </span>
@@ -148,7 +148,7 @@
       <div class="d-flex justify-content-between register-action">
         <span class="align-self-center">Already have an account ? <a href="#"> Sign In</a></span>
         <span>
-          <button mat-stroked-button class="m-20">Previous</button>
+          <button mat-stroked-button class="m-20" (click)="goToPrev()">Previous</button>
           <button mat-flat-button color="primary" (click)="registerHandler()" [disabled]="isLoading">
             <span *ngIf="!isLoading">Register</span>
             <mat-spinner *ngIf="isLoading" diameter="20" class="mx-auto"></mat-spinner>
