@@ -23,6 +23,14 @@ export class NotificationComponent implements OnInit {
     {
       icon: 'icon-mc mc-person',
       title : 'Roy tagged you'
+    },
+    {
+      icon: 'icon-mc mc-person',
+      title : 'Roy tagged you'
+    },
+    {
+      icon: 'icon-mc mc-person',
+      title : 'Roy tagged you'
     }
   ]
 
