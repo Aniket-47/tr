@@ -6,11 +6,12 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AuthService } from '../services/auth.service';
+import { setStepper } from '../store/actions/auth.action';
 import { Iauth } from '../store/interface/auth';
-import { getCurrentStepper } from '../store/selectors/auth.selector';
+import { getCurrentStepper, getStepper } from '../store/selectors/auth.selector';
 
 function passwordMatcher(c: AbstractControl): { [key: string]: boolean } | null {
   const passwordControl = c.get('password') as FormControl;
@@ -29,7 +30,7 @@ function passwordMatcher(c: AbstractControl): { [key: string]: boolean } | null 
 export class RegisterComponent implements OnInit {
   hide = true;
   isLoading = false;
-  stepperPages = ['Company Type', 'Register'];
+  stepperPages: string[] = [];
   currentStep = 1;
 
   // Form
@@ -40,7 +41,7 @@ export class RegisterComponent implements OnInit {
     ],
     middleName: [
       '',
-      [Validators.required, Validators.minLength(3), Validators.maxLength(20)],
+      [Validators.minLength(3), Validators.maxLength(20)],
     ],
     lastName: [
       '',
@@ -57,12 +58,13 @@ export class RegisterComponent implements OnInit {
     private fb: FormBuilder, 
     private router: Router, 
     private authService: AuthService,
+    private route: ActivatedRoute,
     private store: Store<Iauth>) {}
 
   ngOnInit(): void {
-    this.store.select(getCurrentStepper).subscribe(data => {
-      console.log(data);
-    })
+
+    this.store.select(getCurrentStepper).subscribe(data => this.currentStep = data);
+    this.store.select(getStepper).subscribe(data => this.stepperPages = data);
   }
 
   // getters
@@ -100,7 +102,9 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
+
     const { value } = this.registerForm;
+    const roleId = this.route.snapshot.paramMap.get('roleId');
     const payload = {
       firstname: value.firstName,
       middlename: value.middleName,
@@ -108,15 +112,18 @@ export class RegisterComponent implements OnInit {
       email: value.email,
       userpassword: value.password,
       name: value.company,
-      accounttypeid: 1
+      accounttypeid: roleId
     };
 
     this.isLoading = true;
     this.authService.register(payload).subscribe(res => {
       this.isLoading = false;
-      if(res) {
-        this.router.navigateByUrl('register-success');
-      }
-    }, (err) => this.isLoading = false )
+      if(res) this.router.navigateByUrl('register-success');
+    }, (err) => this.isLoading = false)
+  }
+
+  goToPrev() {
+    this.store.dispatch(setStepper({data: 0}));
+    this.router.navigateByUrl('auth/selectrole');
   }
 }

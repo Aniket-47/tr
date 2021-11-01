@@ -8,3 +8,13 @@ export const getCurrentStepper = createSelector(
     state => state.currentStepper
 );
 
+export const getStepper = createSelector(
+    getAuthState,
+    state => state.stepper
+);
+
+export const getRoles = createSelector(
+    getAuthState,
+    state => state.roles
+);
+
