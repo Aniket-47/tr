@@ -1,16 +1,16 @@
 <div class="content-wrapper">
-    <mat-drawer-container autosize>
-      <mat-drawer #drawer [mode]="drawerMode" >        
-        <app-settings-side-menu></app-settings-side-menu>
-      </mat-drawer>        
-        <div class="sidenav-content">        
-          <button type="button" mat-icon-button (click)="drawer.toggle()" class="mobile-togglebtn">
-            <span class="icon-mc mc-filter_list"></span>
-          </button>         
-            <router-outlet></router-outlet>
-        </div>
-      </mat-drawer-container>            
+  <mat-drawer-container autosize>
+    <mat-drawer #drawer [mode]="drawerMode">
+      <app-settings-side-menu></app-settings-side-menu>
+    </mat-drawer>
+    <div class="sidenav-content">
+      <button type="button" mat-icon-button (click)="drawer.toggle()" class="mobile-togglebtn">
+        <span class="icon-mc mc-filter_list"></span>
+      </button>
+      <router-outlet></router-outlet>
     </div>
-    <button type="button" mat-icon-button  (click)="drawer.toggle() && togglePosition(drawer)" class="togglebtn">
-      <span class="icon-mc " [ngClass]="drawer.opened ? 'mc-keyboard_arrow_left': 'mc-keyboard_arrow_right'"></span>
-    </button> 
+  </mat-drawer-container>
+</div>
+<button *ngIf="currentUrlPath!='/dashboard/settings'" type="button" mat-icon-button (click)="drawer.toggle()" class="togglebtn">
+  <span class="icon-mc " [ngClass]="drawer.opened ? 'mc-keyboard_arrow_left': 'mc-keyboard_arrow_right'"></span>
+</button>
