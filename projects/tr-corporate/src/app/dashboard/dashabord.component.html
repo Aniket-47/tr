@@ -4,7 +4,10 @@
       <img class="circle" src="assets/img/profile.png" image>
       <span name></span>
       <span email></span>
-      <span account-lists></span>
+      <span account-lists>
+        <a *ngFor="let account of accountList">
+          <span class="icon-mc mc-folder"></span> <span> {{ account.name }} </span></a>
+      </span>
     </tr-m-header>
   </mat-drawer>
   <tr-d-header>

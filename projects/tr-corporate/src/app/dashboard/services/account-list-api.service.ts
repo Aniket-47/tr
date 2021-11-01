@@ -13,8 +13,8 @@ import { AccountList_response } from '../interfaces/account-list';
   providedIn: 'root'
 })
 export class AccountListApiService {
-  api_routes;
-  secure_api_routes;
+  private api_routes;
+  private secure_api_routes;
   constructor(private http: HttpClient, private utilityServ: UtilityService) {
     this.api_routes = api_routes;
     this.secure_api_routes = secure_api_routes;
