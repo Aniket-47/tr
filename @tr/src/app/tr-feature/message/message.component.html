@@ -1,11 +1,4 @@
 <mc-brief-card *ngFor = 'let items of messages'>
-    <!-- <i class="icon-mcf mcf-check_circle_outline icon" msg-icon></i>
-    <p msg-title class="title">Congratulations</p>
-    <p msg-sub-title class="sub-title">
-        Your account has been sucessfully created with Talent Recruit. Please
-verify your email bu clicking on the verify button
-    </p>
-    <button msg-action mat-flat-button class="xs" class="btn-green">Verify</button> -->
     <div mc-card-logo [ngClass] ="items.icon"></div>
     <div mc-card-title> {{items.title}} </div>
     <div mc-card-subtitle class="subtitle"> {{items.subtitle}} </div>
