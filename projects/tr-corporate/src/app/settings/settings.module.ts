@@ -18,7 +18,6 @@ import { SettingsMenuComponent } from './settings-menu/settings-menu.component';
   imports: [
     CommonModule,
     MaterialModule,
-    RouterModule,
     CardModule,
     SettingsRoutingModule,
   ]
