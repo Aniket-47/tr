@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-settings',
@@ -10,7 +11,15 @@ export class SettingsComponent implements OnInit {
   showFiller = true;
   drawerMode: any;
   innerWidth: any;
-  constructor() { }
+
+  currentUrlPath: string;
+
+  constructor(private router: Router) {
+    this.currentUrlPath = router.url;
+    router.events.subscribe(res => {
+      this.currentUrlPath = router.url;
+    })
+  }
 
   ngOnInit(): void {
     this.drawerMode = 'side';
@@ -20,7 +29,6 @@ export class SettingsComponent implements OnInit {
     }
   }
 
-  togglePosition(e: MatDrawer){
-    console.log(e.opened)
-  }
+
+
 }
