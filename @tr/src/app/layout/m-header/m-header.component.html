@@ -1,11 +1,18 @@
 <div class="mat-drawer-panel">
     <div class="mat-drawer-panel-header">
         <div class="user-avater">
-        <img class="circle" src="assets/img/profile.png">
+          <ng-content select=[image]></ng-content>
+        <!-- <img class="circle" src="assets/img/profile.png"> -->
         </div>
         <div class="user-info">
-        <span class="user-info__name">Daniel Jones</span>
-        <span class="user-info__email">daniel@gmail.com</span>
+        <span class="user-info__name">
+          <!-- Daniel Jones -->
+          <ng-content select=[name]></ng-content>
+        </span>
+        <span class="user-info__email">
+          <!-- daniel@gmail.com -->
+          <ng-content select=[email]></ng-content>
+        </span>
         </div>
         <button mat-icon-button color="theme" class="ml-auto">
             <span class="icon-mc mc-settings"></span>
@@ -22,9 +29,8 @@
             </mat-panel-title>
           </mat-expansion-panel-header>
           <div class="mat-drawer-panel-header-menu-item">
-            <a routerLink="" routerLinkActive=""><span class="icon-mc mc-folder"></span> <span> Account 1 </span></a>
-            <a routerLink="" routerLinkActive="active"><span class="icon-mc mc-folder"></span> <span> Account 2 </span></a>
-            <a routerLink="" routerLinkActive=""><span class="icon-mc mc-folder"></span> <span> Account 3 </span></a>
+            <!-- <a routerLink="" routerLinkActive=""><span class="icon-mc mc-folder"></span> <span> {{items.account}} </span></a>> -->
+            <ng-content select=[account-lists]></ng-content>
           </div>
         </mat-expansion-panel>
       </mat-accordion>
