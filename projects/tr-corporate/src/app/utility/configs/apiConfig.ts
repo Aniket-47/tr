@@ -7,7 +7,8 @@ export const api_routes = {
   REGISTER: `${auth}/registration`,
   VERIFICATION: `${auth}/accountverification`,
   VALIDATE_EMAIL: `${auth}/validateemail`,
-  LOGIN: `${auth}/login`
+  LOGIN: `${auth}/login`,
+  FORGOT_PASSWORD: `${auth}/forgotpassword`
 };
 
 export const secure_api_routes = {
@@ -15,6 +16,5 @@ export const secure_api_routes = {
   REFRESH_TOKEN: `${auth}/token/$refreshToken`,
   LOGOUT_ALL: `${auth}/logout/all`,
   RESET_PASSWORD: `${auth}/resetpassword/$resetPassToken`,
-  FORGOT_PASSWORD: `${auth}/forgotpassword`,
   LOGOUT: `${auth}/logout`
 };
