@@ -37,6 +37,10 @@ export class AuthService {
     return this.http.post<string>(this.api_routes.VALIDATE_EMAIL, { "email": email })
   }
 
+  validateAccount(token: string) {
+    return this.http.post<string>(this.api_routes.VALIDATE_ACCOUNT, { "inviteKey": token })
+  }
+
   passwordForget(email: any) {
     return this.http.post<string>(this.api_routes.FORGOT_PASSWORD, { "email": email })
   }

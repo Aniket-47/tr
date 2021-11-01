@@ -3,8 +3,14 @@ import { Iauth } from "../interface/auth";
 
 const getAuthState = createFeatureSelector<Iauth>('auth');
  
-export const getCurrentStepper = createSelector(
+export const getStepper = createSelector(
     getAuthState,
-    state => state.currentStepper
+    state => state.stepper
+);
+
+
+export const getRoles = createSelector(
+    getAuthState,
+    state => state.roles
 );
 

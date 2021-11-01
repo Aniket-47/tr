@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LstorageService } from '@tr/src/app/utility/services/lstorage.service';
+import { LSkeys } from '../../utility/configs/app.constants';
 import { ROUTE_CONFIGS } from '../../utility/configs/routerConfig';
-import { BearerTokenService } from '../../utility/services/bearer-token.service';
 import { AuthService } from '../services/auth.service';
 
 // Interfaces
@@ -17,7 +18,7 @@ export class LoginComponent implements OnInit {
   passwordValidationError: string | null = null;
   email: string = "";
   isLoading: boolean = false;
-  constructor(private authServ: AuthService, private bearerTokenServ: BearerTokenService, private router: Router) { }
+  constructor(private authServ: AuthService, private lsServ: LstorageService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -52,7 +53,7 @@ export class LoginComponent implements OnInit {
         else {
           // on success
           this.isLoading = false;
-          this.bearerTokenServ.setBearerToken(res.data.accesstoken.token);
+          this.lsServ.store(LSkeys.BREARER_TOKEN, res.data.accesstoken.token);
           this.router.navigate([ROUTE_CONFIGS.DASHBOARD]);
         }
       })
