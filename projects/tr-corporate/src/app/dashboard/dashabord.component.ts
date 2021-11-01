@@ -7,7 +7,7 @@ import { AccountListApiService } from './services/account-list-api.service';
   styleUrls: ['./dashabord.component.scss']
 })
 export class DashabordComponent implements OnInit {
-
+  panelOpenState = false;
   date: any;
   hidden = false;
   colorActivation = false;
@@ -36,4 +36,8 @@ export class DashabordComponent implements OnInit {
   toggleSearch() {
     this.searchToggle = !this.searchToggle;
   }
+
+  onEvent(event: any) {
+    event.stopPropagation();
+ }
 }

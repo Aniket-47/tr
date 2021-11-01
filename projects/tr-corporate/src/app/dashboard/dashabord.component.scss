@@ -230,3 +230,31 @@ mc-side-navbar {
         width: 100%;
      }
     }
+
+    .user-dropdown-submenu {
+        .mat-expansion-panel-header {
+            border-bottom: #EBEAED 1px solid;
+            padding: 0 1rem;
+            .icon-mc {
+                padding-right: 1rem;
+                font-size: 1rem;
+            }
+            .mat-expansion-panel-header-title {
+                font-size: 14px;
+            }
+        }
+        ::ng-deep .mat-expansion-panel-body {
+            padding: 0 !important;
+        }
+        &-item {
+            border-bottom: #EBEAED 1px solid;
+            padding: 0 1rem;
+            a {
+                font-size: 14px;
+                .icon-mc {
+                    padding-right: 1rem;
+                    font-size: 1rem;
+                }
+            }
+        }
+    }

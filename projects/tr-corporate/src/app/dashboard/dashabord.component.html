@@ -31,6 +31,24 @@
     <a [matMenuTriggerFor]="menu" class="user-dropdown"><span class="user-avatar">MB</span><span
         class="user-name">Maxbert</span></a>
     <mat-menu #menu="matMenu" backdropClass="profile-dropdown">
+      <div class="user-dropdown-submenu" (click)="onEvent($event)">
+        <mat-accordion>
+            <mat-expansion-panel (opened)="panelOpenState = true"
+                                 (closed)="panelOpenState = false">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <span class="icon-mc mc-layers"></span>
+                   <span> Accounts</span>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class="user-dropdown-submenu-item">
+                <a routerLink="" routerLinkActive=""><span class="icon-mc mc-folder"></span> <span>Accounts 1</span></a>
+                <!-- <ng-content select=[account-lists]></ng-content> -->
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+          
+      </div>
       <button mat-menu-item><i class="icon-mc mc-person"></i> <span>Profile Settings</span></button>
       <button mat-menu-item><i class="icon-mc mc-switch_account"></i> <span>Accounts</span></button>
       <button mat-menu-item><i class="icon-mc mc-power_settings_new"></i> <span>Sign Out</span></button>

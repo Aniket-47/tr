@@ -27,9 +27,9 @@
     }
 
 .togglebtn {
-    position: relative;
-    left: -20px;
-    top: 10px;
+    position: fixed;
+    left: 54px;
+    top: 60px;
     font-size: 1.5rem;
     z-index: 9999;
     border: #EBEAED 1px solid;
@@ -37,7 +37,7 @@
     width: 30px;
     height: 30px;
     line-height: 30px;
-
+    border-radius: 0 16px 16px 0;
     ::ng-deep .mat-button-wrapper>* {
         vertical-align: top;
     }
