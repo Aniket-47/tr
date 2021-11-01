@@ -4,6 +4,7 @@ import { AddCandidateComponent } from './add-candidate/add-candidate.component';
 import { CandidateComponent } from './candidate.component';
 import { RouterModule } from '@angular/router';
 import { CandidatedRoutingModule } from './candidate-routing.module';
+import { MaterialModule } from '@tr';
 
 
 
@@ -14,7 +15,8 @@ import { CandidatedRoutingModule } from './candidate-routing.module';
   ],
   imports: [
     CommonModule,
-    CandidatedRoutingModule
+    CandidatedRoutingModule,
+    MaterialModule
   ]
 })
 export class CandidateModule { }
