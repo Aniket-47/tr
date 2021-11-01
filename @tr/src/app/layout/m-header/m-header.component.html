@@ -28,7 +28,7 @@
                <span> Accounts</span>
             </mat-panel-title>
           </mat-expansion-panel-header>
-          <div class="mat-drawer-panel-header-menu-item" *ngFor= 'let items of accountLists'>
+          <div class="mat-drawer-panel-header-menu-item">
             <!-- <a routerLink="" routerLinkActive=""><span class="icon-mc mc-folder"></span> <span> {{items.account}} </span></a>> -->
             <ng-content select=[account-lists]></ng-content>
           </div>
