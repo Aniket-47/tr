@@ -12,4 +12,16 @@ export class MHeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  accountLists = [
+    {
+      account: 'Account 1'
+    },
+    {
+      account: 'Account 2'
+    },
+    {
+      account: 'Account 3'
+    }
+  ]
+
 }
