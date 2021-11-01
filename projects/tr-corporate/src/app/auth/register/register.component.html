@@ -6,13 +6,12 @@
         viverra eu gravida gravida. Placerat tellus urna ut congue egestas dui. Quisque lorem ornare nisi, amet lectus
         tellus..</p>
     </div>
-    <form>
+    <form autocomplete="off" [formGroup]="registerForm" >
       <div class="row row-cols-1 row-cols-lg-2">
         <div class="col-md-6">
           <mat-form-field appearance="outline">
             <mat-label>First Name</mat-label>
-            <input matInput placeholder="xyz" ngModel name="firstName" #firstName="ngModel" required minlength="3"
-              maxlength="20">
+            <input matInput placeholder="xyz" formControlName="firstName">
             <mat-error *ngIf="firstName.touched && !firstName.valid">
               <span *ngIf="firstName.errors?.required">
                 First Name is required
@@ -30,8 +29,7 @@
         <div class="col-md-6">
           <mat-form-field appearance="outline">
             <mat-label>Middle Name</mat-label>
-            <input matInput placeholder="xyz" ngModel name="middleName" #middleName="ngModel" required minlength="3"
-              maxlength="20">
+            <input matInput placeholder="xyz" formControlName="middleName">
             <mat-error *ngIf="middleName.touched && !middleName.valid">
               <span *ngIf="middleName.errors?.required">
                 Middle Name is required
@@ -49,8 +47,7 @@
         <div class="col-md-6">
           <mat-form-field appearance="outline">
             <mat-label>Last Name</mat-label>
-            <input matInput placeholder="xyz" ngModel name="lastName" #lastName="ngModel" required minlength="3"
-              maxlength="20">
+            <input matInput placeholder="xyz" formControlName="lastName">
             <mat-error *ngIf="lastName.touched && !lastName.valid">
               <span *ngIf="lastName.errors?.required">
                 Last Name is required
@@ -68,8 +65,7 @@
         <div class="col-md-6">
           <mat-form-field appearance="outline">
             <mat-label>Email Id (Official Email Id)</mat-label>
-            <input type="email" matInput placeholder="pat@example.com" ngModel name="email" #email="ngModel" required
-              email>
+            <input type="email" matInput placeholder="pat@example.com" formControlName="email">
             <mat-error *ngIf="email.touched && !email.valid">
               <span *ngIf="email.errors?.required">
                 Email Id is required
@@ -84,8 +80,7 @@
         <div class="col-md-6 pr-4">
           <mat-form-field appearance="outline">
             <mat-label>Company Name</mat-label>
-            <input matInput placeholder="xyz" ngModel name="company" #company="ngModel" required minlength="3"
-              maxlength="50">
+            <input matInput placeholder="xyz" formControlName="company">
             <mat-error *ngIf="company.touched && !company.valid">
               <span *ngIf="company.errors?.required">
                 Company Name is required
@@ -104,15 +99,14 @@
           <mat-form-field class="example-full-width" appearance="outline">
             <mat-label>Phone Number</mat-label>
             <!--<span matPrefix>+91</span>-->
-            <input type="tel" matInput placeholder="000-000-0000" ngModel name="phno" #phno="ngModel" required>
+            <input type="tel" matInput placeholder="000-000-0000" formControlName="phone">
             <!-- <mat-icon class="text-muted h5" matSuffix>phone</mat-icon> -->
           </mat-form-field>
         </div>
         <div class="col-md-6">
           <mat-form-field appearance="outline">
             <mat-label>Password</mat-label>
-            <input placeholder="xyz" matInput [type]="hide ? 'password' : 'text'" ngModel name="password"
-              #password="ngModel" required minlength="6" maxlength="12">
+            <input placeholder="xyz" matInput [type]="hide ? 'password' : 'text'" formControlName="password">
             <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
               [attr.aria-pressed]="hide">
             </button>
@@ -133,8 +127,7 @@
         <div class="col-md-6">
           <mat-form-field appearance="outline" class="w-100 brd">
             <mat-label>Confirm Password</mat-label>
-            <input placeholder="xyz" matInput [type]="hide ? 'password' : 'text'" ngModel name="cnfPass"
-              #cnfPass="ngModel" required>
+            <input placeholder="xyz" matInput [type]="hide ? 'password' : 'text'" formControlName="cnfPass">
             <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
               [attr.aria-pressed]="hide">
             </button>
@@ -142,9 +135,12 @@
               <span *ngIf="cnfPass.errors?.required">
                 Confirm Password is required
               </span>
-              <span *ngIf="!cnfPass.errors?.required && (cnfPass.value!=password.value)">
-                Confirm Password doesn't match
+              <span *ngIf="registerForm.errors?.match">
+                Password does not match.
               </span>
+              <!-- <span *ngIf="!cnfPass.errors?.required && (cnfPass.value!=password.value)">
+                Confirm Password doesn't match
+              </span> -->
             </mat-error><!-- <mat-icon class="text-muted h5">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon> -->
           </mat-form-field>
         </div>
@@ -153,7 +149,10 @@
         <span class="align-self-center">Already have an account ? <a href="#"> Sign In</a></span>
         <span>
           <button mat-stroked-button class="m-20">Previous</button>
-          <button mat-flat-button color="primary" routerLink="/dashboard/settings">Register</button>
+          <button mat-flat-button color="primary" (click)="registerHandler()" [disabled]="isLoading">
+            <span *ngIf="!isLoading">Register</span>
+            <mat-spinner *ngIf="isLoading" diameter="20" class="mx-auto"></mat-spinner>
+          </button>
         </span>
       </div>
     </form>  

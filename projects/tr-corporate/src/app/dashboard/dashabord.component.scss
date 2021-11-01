@@ -2,6 +2,11 @@
 @import '~@mucrest/ng-design/assets/styles/0-plugins/plugins-dir';
 
 mc-side-navbar {
+    /*& a:hover{
+        background-color: #4260e9;
+        color: #fff !important;   
+        border-radius: 4px;
+    }*/
 .icon-mc,.icon-mcf {
     &::before {
       color: black;
@@ -35,7 +40,23 @@ mc-side-navbar {
                 }
             }
         }    
+
+         
     }
+
+    // hover side menu
+    .side-nav-hvr a{
+        &:hover {
+            background-color: #3f60f5;
+            border-radius: 4px;
+            span {
+                &::before {
+                    color: white;
+                }
+            }
+        } 
+    }
+
 .user-dropdown {
     display: flex;
     align-items: center;

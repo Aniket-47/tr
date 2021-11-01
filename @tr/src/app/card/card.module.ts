@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BriefCardComponent } from './brief-card/brief-card.component';
-import { McCardModule } from '@mucrest/ng-design';
 import { BriefNewlineCardComponent } from './brief-newline-card/brief-newline-card.component';
+import { McModule } from '../mc/mc.module';
 
 
 
@@ -13,7 +13,7 @@ import { BriefNewlineCardComponent } from './brief-newline-card/brief-newline-ca
   ],
   imports: [
     CommonModule,
-    McCardModule
+    McModule
   ],
   exports: [
     BriefCardComponent,
