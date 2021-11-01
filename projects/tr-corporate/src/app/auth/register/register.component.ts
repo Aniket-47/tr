@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -9,9 +9,8 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AuthService } from '../services/auth.service';
-import { setStepper } from '../store/actions/auth.action';
+import { setStepper, setStepperShow } from '../store/actions/auth.action';
 import { Iauth } from '../store/interface/auth';
-import { getCurrentStepper, getStepper } from '../store/selectors/auth.selector';
 
 function passwordMatcher(c: AbstractControl): { [key: string]: boolean } | null {
   const passwordControl = c.get('password') as FormControl;
@@ -27,11 +26,9 @@ function passwordMatcher(c: AbstractControl): { [key: string]: boolean } | null 
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent implements OnInit, OnDestroy {
   hide = true;
   isLoading = false;
-  stepperPages: string[] = [];
-  currentStep = 1;
 
   // Form
   registerForm: FormGroup = this.fb.group({
@@ -62,9 +59,13 @@ export class RegisterComponent implements OnInit {
     private store: Store<Iauth>) {}
 
   ngOnInit(): void {
+    this.store.dispatch(setStepperShow({data: true}));
+  }
 
-    this.store.select(getCurrentStepper).subscribe(data => this.currentStep = data);
-    this.store.select(getStepper).subscribe(data => this.stepperPages = data);
+  ngOnDestroy() {
+    // clear stepper value
+    this.store.dispatch(setStepperShow({data: false}));
+    this.store.dispatch(setStepper({data: 0}));
   }
 
   // getters

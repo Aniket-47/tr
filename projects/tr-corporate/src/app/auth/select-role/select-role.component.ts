@@ -1,27 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { setStepper } from '../store/actions/auth.action';
+import { setStepper, setStepperShow } from '../store/actions/auth.action';
 
 import { Iauth } from '../store/interface/auth';
-import { getCurrentStepper, getRoles, getStepper } from '../store/selectors/auth.selector';
+import { getRoles } from '../store/selectors/auth.selector';
 
 @Component({
   selector: 'app-select-role',
   templateUrl: './select-role.component.html',
   styleUrls: ['./select-role.component.scss']
 })
-export class SelectRoleComponent implements OnInit {
-  stepperPages: string[] = [];
-  currentStep = 0;
+export class SelectRoleComponent implements OnInit, OnDestroy {
   roles: any[]= [];
 
   constructor(private router: Router, private store: Store<Iauth>) { }
 
   ngOnInit(): void {
+    this.store.dispatch(setStepperShow({data: true}));
     this.store.select(getRoles).subscribe(roles => this.roles = roles);
-    this.store.select(getCurrentStepper).subscribe(data => this.currentStep = data);
-    this.store.select(getStepper).subscribe(data => this.stepperPages = data);
+  }
+  
+  ngOnDestroy() {
+    this.store.dispatch(setStepperShow({data: false}));
   }
   
   roleHandler(role: number) {

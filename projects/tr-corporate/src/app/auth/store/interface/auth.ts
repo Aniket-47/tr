@@ -1,5 +1,8 @@
 export interface Iauth {
-    currentStepper: number;
-	stepper: string[],
+    stepper: {
+        active: number;
+        stepList: string[],
+        showStepper: boolean;
+    },
     roles: {id: number, name: string}[]
 }
