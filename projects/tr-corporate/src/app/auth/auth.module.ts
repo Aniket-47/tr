@@ -6,8 +6,14 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './login/login.component';
 import { FPasswordComponent } from './f-password/f-password.component';
 import { SelectRoleComponent } from './select-role/select-role.component';
-import { CardModule, LayoutModule, McModule } from '@tr';
+import { CardModule, LayoutModule, MaterialModule, McModule } from '@tr';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RegisterSuccessComponent } from './r-success/r-success.component';
+
+// store
+import { StoreModule } from '@ngrx/store';
+import { authReducer } from './store/reducers/auth.reducers';
 
 @NgModule({
   declarations: [
@@ -16,13 +22,19 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     LoginComponent,
     FPasswordComponent,
     SelectRoleComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    RegisterSuccessComponent
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MaterialModule,
+    StoreModule.forFeature('auth', authReducer),
     LayoutModule,
     McModule,
     CardModule,
+    MaterialModule,
     AuthRoutingModule
   ],
 })

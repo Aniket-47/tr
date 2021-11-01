@@ -1,3 +1,4 @@
+@import '~@mucrest/ng-design/assets/styles/1-base/base-dir';
 .box-container {
   max-width: 320px;
   margin: auto;
@@ -13,7 +14,7 @@
       display: flex;
       align-items: center;
       mat-icon {
-        color: #1f47f5;
+        color: $theme;
         margin-right: 10px;
       }
     }

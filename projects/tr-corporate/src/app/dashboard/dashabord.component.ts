@@ -1,15 +1,20 @@
 import { Component, OnInit } from '@angular/core';
+import { fadeAnimation } from '../animations';
 
 @Component({
   selector: 'app-dashabord',
   templateUrl: './dashabord.component.html',
-  styleUrls: ['./dashabord.component.scss']
+  styleUrls: ['./dashabord.component.scss'],
+  animations: [fadeAnimation],
+  host: { '[@fadeInAnimation]': '' }
 })
 export class DashabordComponent implements OnInit {
 
   date: any;
   hidden = false;
-  colorActivation?:boolean=false;
+  colorActivation = false;
+  msgColorActivation = false;
+  searchToggle = false;
 
   toggleBadgeVisibility() {
     this.hidden = !this.hidden;
@@ -21,9 +26,7 @@ export class DashabordComponent implements OnInit {
     this.date = new Date()
   }
 
-  // activeColor() {
-  //   this.colorActivation = true;
-  //   console.log(this.colorActivation);       
-  // }
-
+  toggleSearch() {
+    this.searchToggle = !this.searchToggle;
+  }
 }
