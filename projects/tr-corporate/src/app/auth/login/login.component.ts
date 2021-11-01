@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
     this.email = email;
     this.isLoading = true;
     this.authServ.validateEmail(email).subscribe((res: any) => {
-      if (res.error) {
+      if (res.statusCode == 400) {
         // on success
         this.isFirstStep = false;
         this.isLoading = false;
@@ -37,25 +37,29 @@ export class LoginComponent implements OnInit {
         this.isLoading = false;
         this.emailValidationError = "Email does not exist"
       }
+    },
+    res_error => {
+      const {error} = res_error;
+      this.isLoading = false;
+      this.emailValidationError = error.message;
     })
   }
 
   login(password: string) {
     this.isLoading = true;
     this.authServ.login({ "email": this.email, "password": password })
-      .subscribe(res => {
-        // console.log(res);
-        if (res.error) {
-          // manage error
-          this.isLoading = false;
-          this.passwordValidationError = "Invalid Password"
-        }
-        else {
+      .subscribe((res:any) => {
+         console.log("Res ",res);
           // on success
           this.isLoading = false;
           this.lsServ.store(LSkeys.BREARER_TOKEN, res.data.accesstoken.token);
           this.router.navigate([ROUTE_CONFIGS.DASHBOARD]);
-        }
+      },
+      res_error =>{
+        console.log("Error ",res_error)
+        const {error} = res_error;
+        this.isLoading = false;
+        this.passwordValidationError = error.message;
       })
   }
 

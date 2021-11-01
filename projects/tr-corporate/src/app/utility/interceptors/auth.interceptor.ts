@@ -33,23 +33,23 @@ export class AuthInterceptor implements HttpInterceptor {
     }
 
     // Pass on the cloned request instead of the original request.
-    return next.handle(authReq).pipe((source) => this.handleAuthErrors(source));
+    return next.handle(authReq) //.pipe((source) => this.handleAuthErrors(source));
   }
 
 
 
-  handleAuthErrors(
-    source: Observable<HttpEvent<any>>,
-  ): Observable<HttpEvent<any>> {
-    return source.pipe(
-      catchError((error: HttpErrorResponse) => {
-        if (error.status === 401) {
-          this.router.navigate(['/auth/login']);
-          return EMPTY;
-        } else {
-          return throwError(error);
-        }
-      }),
-    )
-  }
+  // handleAuthErrors(
+  //   source: Observable<HttpEvent<any>>,
+  // ): Observable<HttpEvent<any>> {
+  //   return source.pipe(
+  //     catchError((error: HttpErrorResponse) => {
+  //       if (error.status === 401) {
+  //         this.router.navigate(['/auth/login']);
+  //         return EMPTY;
+  //       } else {
+  //         return throwError(error);
+  //       }
+  //     }),
+  //   )
+  // }
 }
