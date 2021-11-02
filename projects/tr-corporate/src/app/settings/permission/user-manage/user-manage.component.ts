@@ -55,7 +55,7 @@ export class UserManageComponent implements OnInit {
   }
 
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
   }
   toggleFab() {

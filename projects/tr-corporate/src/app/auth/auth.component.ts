@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { getStepper } from './store/selectors/auth.selector';
 import { Iauth } from './store/interface/auth';
-
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
@@ -29,5 +28,4 @@ export class AuthComponent implements OnInit {
       this.activeStepper = data.active;
     });
   }
-
 }

@@ -1,12 +1,24 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AccountComponent } from './account.component';
 import { ManageProfileComponent } from './manage-profile/manage-profile.component';
+import { OrganisationProfileComponent } from './organisation-profile/organisation-profile.component';
 
 const routes: Routes = [
   {
-    path: 'manage-profile',
-    component: ManageProfileComponent
-  },
+    path: '',
+    component: AccountComponent,
+    children: [
+      {
+        path: 'manage-profile',
+        component: ManageProfileComponent
+      },
+      {
+        path: 'organisation-profile',
+        component: OrganisationProfileComponent
+      },
+    ]
+  },  
   {
     path:'',
     pathMatch:'full',
