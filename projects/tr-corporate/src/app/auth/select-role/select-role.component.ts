@@ -1,22 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { setStepper, setStepperShow } from '../store/actions/auth.action';
+
+import { Iauth } from '../store/interface/auth';
+import { getRoles } from '../store/selectors/auth.selector';
 
 @Component({
   selector: 'app-select-role',
   templateUrl: './select-role.component.html',
   styleUrls: ['./select-role.component.scss']
 })
-export class SelectRoleComponent implements OnInit {
+export class SelectRoleComponent implements OnInit, OnDestroy {
+  roles: any[]= [];
 
-  stepperPages = ['Company Type', 'Register'];
-  currentStep = 0;
-  constructor(private router: Router) { }
+  constructor(private router: Router, private store: Store<Iauth>) { }
 
   ngOnInit(): void {
+    this.store.dispatch(setStepperShow({data: true}));
+    this.store.select(getRoles).subscribe(roles => this.roles = roles);
   }
   
-  roleHandler(roleType: string) {
-    this.router.navigateByUrl('auth/register');
+  ngOnDestroy() {
+    this.store.dispatch(setStepperShow({data: false}));
+  }
+  
+  roleHandler(role: number) {
+    const {id} = this.roles.find(e => e.id === role);
+    this.store.dispatch(setStepper({data: 1}));
+    this.router.navigate(['/auth/register', id]);
   }
 
 }

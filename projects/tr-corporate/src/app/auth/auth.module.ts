@@ -1,15 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AuthComponent } from './auth.component';
-import { RegisterComponent } from './register/register.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { AuthRoutingModule } from './auth-routing.module';
+import { CardModule, LayoutModule, MaterialModule, McModule } from '@tr';
+
+// components
 import { LoginComponent } from './login/login.component';
 import { FPasswordComponent } from './f-password/f-password.component';
 import { SelectRoleComponent } from './select-role/select-role.component';
-import { CardModule, LayoutModule, MaterialModule, McModule } from '@tr';
+import { AuthComponent } from './auth.component';
+import { RegisterComponent } from './register/register.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterSuccessComponent } from './r-success/r-success.component';
+import { VerifyAccountComponent } from './verify-account/verify-token.component';
 
 // store
 import { StoreModule } from '@ngrx/store';
@@ -23,7 +27,8 @@ import { authReducer } from './store/reducers/auth.reducers';
     FPasswordComponent,
     SelectRoleComponent,
     ResetPasswordComponent,
-    RegisterSuccessComponent
+    RegisterSuccessComponent,
+    VerifyAccountComponent
   ],
   imports: [
     CommonModule,
