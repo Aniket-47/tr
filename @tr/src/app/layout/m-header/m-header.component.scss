@@ -143,6 +143,9 @@
 
 .ml-auto {
     margin-left: auto;
+    &:hover{
+        cursor: pointer;
+    }
 }
 [class^=mc-], [class*=" mc-"] {
     font-size: 20px; 
