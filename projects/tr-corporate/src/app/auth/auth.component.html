@@ -1,5 +1,5 @@
 <tr-header class="d-none d-md-block">
-  <button action mat-flat-button color="accent" class="xs" routerLink="./register">Register</button>
+  <button action mat-flat-button color="accent" class="xs" routerLink="./selectrole">Register</button>
   <button action mat-flat-button color="primary" class="xs" routerLink="./login">Login</button>
 </tr-header>
 
@@ -49,9 +49,9 @@
     </svg>
   </div>
   <div class="col-12 col-md-8">
-    <mc-stepper [stepNames]="stepperPages" [currentStep]="currentStep" class="auth-step"></mc-stepper>
-    <div class="right-panel my-auto">
+    <mc-stepper [stepNames]="stepperPages" [currentStep]="activeStepper" class="auth-step" *ngIf="showStepper$ | async"></mc-stepper>
+    <div class="right-panel my-auto">     
     <router-outlet></router-outlet>
-  </div>
+    </div>
   </div>
 </div>

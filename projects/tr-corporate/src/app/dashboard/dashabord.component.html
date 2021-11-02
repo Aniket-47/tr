@@ -1,31 +1,57 @@
 <mat-drawer-container>
   <mat-drawer #drawer mode="over" [autoFocus]="false">
-    <tr-m-header></tr-m-header>
+    <tr-m-header>
+      <img class="circle" src="assets/img/profile.png" image>
+      <span name></span>
+      <span email></span>
+      <span account-lists>
+        <a *ngFor="let account of accountList">
+          <span class="icon-mc mc-folder"></span> <span> {{ account.name }} </span></a>
+      </span>
+    </tr-m-header>
   </mat-drawer>
   <tr-d-header>
     <span class="icon-mc mc-menu header-icon" m-brand (click)="drawer.toggle()"></span>
-    <span class="search header-icon">
-      <span class="icon-mcf mcf-search" (click)="toggleSearch()"></span>
-      <tr-search *ngIf="searchToggle" class="searchPanel"></tr-search>
-    </span>
-    <span class="action-icon" [ngClass]="{'menu-active':colorActivation}">
+    <tr-search class="searchPanel cloud-only"></tr-search>  
+    <div class="header-icon mobile-only">
+      <span class="icon-mcf mcf-search" (click)="toggleSearch()"></span>      
+    </div>
+    <div class="action-icon" [ngClass]="{'menu-active':colorActivation}">
       <a routerLink="./" [matMenuTriggerFor]="notify" class="header-icon" (menuClosed)="colorActivation=false"
         (menuOpened)="colorActivation=true">
         <span class="icon-mc mc-notifications" matBadge="3" matBadgePosition="after" matBadgeColor="accent"></span>
       </a>
-    </span>
-    <span class="active-icon" [ngClass]="{'menu-active':msgColorActivation}">
+    </div>
+    <div class="active-icon" [ngClass]="{'menu-active':msgColorActivation}">
       <a routerLink="./" [matMenuTriggerFor]="message" class="header-icon" (menuClosed)="msgColorActivation=false"
         (menuOpened)="msgColorActivation=true">
         <span class="icon-mcf mcf-outgoing_mail"></span>
       </a>
-    </span>
+    </div>
     <a [matMenuTriggerFor]="menu" class="user-dropdown"><span class="user-avatar">MB</span><span
         class="user-name">Maxbert</span></a>
     <mat-menu #menu="matMenu" backdropClass="profile-dropdown">
+      <div class="user-dropdown-submenu" (click)="onEvent($event)">
+        <mat-accordion>
+            <mat-expansion-panel (opened)="panelOpenState = true"
+                                 (closed)="panelOpenState = false">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <span class="icon-mc mc-layers"></span>
+                   <span> Accounts</span>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class="user-dropdown-submenu-item">
+                <a routerLink="" routerLinkActive=""><span class="icon-mc mc-folder"></span> <span>Accounts 1</span></a>
+                <!-- <ng-content select=[account-lists]></ng-content> -->
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+          
+      </div>
       <button mat-menu-item><i class="icon-mc mc-person"></i> <span>Profile Settings</span></button>
       <button mat-menu-item><i class="icon-mc mc-switch_account"></i> <span>Accounts</span></button>
-      <button mat-menu-item><i class="icon-mc mc-power_settings_new"></i> <span>Sign Out</span></button>
+      <button mat-menu-item (click)="logout()"><i class="icon-mc mc-power_settings_new"></i> <span>Sign Out</span></button>
     </mat-menu>
     <mat-menu #notify="matMenu" backdropClass="profile-dropdown">
       <tr-notification></tr-notification>
@@ -47,7 +73,8 @@
       </a>
     </div>
     <div top class="border-bottom side-nav-hvr">
-      <a routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><span class="icon-mc mc-home"></span></a>
+      <a routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><span
+          class="icon-mc mc-home"></span></a>
       <a routerLink="./"><span class="icon-mcf mcf-work_outline"></span></a>
       <a routerLink="./"><span class="icon-mc mc-group"></span></a>
     </div>
@@ -57,9 +84,12 @@
     </div>
   </mc-side-navbar>
   <tr-search *ngIf="searchToggle" class="m-searchPanel"></tr-search>
-  <router-outlet></router-outlet>
 
-  <!-- <button type="button" mat-icon-button class="hamburger" (click)="drawer.toggle()">
-    <span class="icon-mc mc-menu"></span>
-  </button> -->
+  <div *ngIf="searchToggle" (click)="toggleSearch()" class="close-search">
+    <span class="icon-mc mc-x"  ></span>
+  </div>    
+  <div class="content-wrapper">
+ 
+  <router-outlet></router-outlet>
+</div>
 </mat-drawer-container>

@@ -8,6 +8,8 @@ import { RegisterSuccessComponent } from './r-success/r-success.component';
 import { RegisterComponent } from './register/register.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { SelectRoleComponent } from './select-role/select-role.component';
+import { RegisterGuard } from './shared/register.guard';
+import { VerifyAccountComponent } from './verify-account/verify-token.component';
 
 const routes: Routes = [
   {
@@ -19,8 +21,9 @@ const routes: Routes = [
         component: LoginComponent
       },
       {
-        path: 'register',
-        component: RegisterComponent
+        path: 'register/:roleId',
+        component: RegisterComponent,
+        canActivate: [RegisterGuard]
       },
       {
         path: 'selectrole',
@@ -39,8 +42,8 @@ const routes: Routes = [
         component: RegisterSuccessComponent
       },
       {
-        path: 'verify',
-        component: MessageComponent
+        path: 'verify-account/:token',
+        component: VerifyAccountComponent
       },
       {
         path: '',

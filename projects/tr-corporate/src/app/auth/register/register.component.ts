@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -6,11 +6,11 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AuthService } from '../services/auth.service';
+import { setStepper, setStepperShow, setUserRole } from '../store/actions/auth.action';
 import { Iauth } from '../store/interface/auth';
-import { getCurrentStepper } from '../store/selectors/auth.selector';
 
 function passwordMatcher(c: AbstractControl): { [key: string]: boolean } | null {
   const passwordControl = c.get('password') as FormControl;
@@ -26,11 +26,9 @@ function passwordMatcher(c: AbstractControl): { [key: string]: boolean } | null 
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent implements OnInit, OnDestroy {
   hide = true;
   isLoading = false;
-  stepperPages = ['Company Type', 'Register'];
-  currentStep = 1;
 
   // Form
   registerForm: FormGroup = this.fb.group({
@@ -40,7 +38,7 @@ export class RegisterComponent implements OnInit {
     ],
     middleName: [
       '',
-      [Validators.required, Validators.minLength(3), Validators.maxLength(20)],
+      [Validators.minLength(3), Validators.maxLength(20)],
     ],
     lastName: [
       '',
@@ -57,12 +55,18 @@ export class RegisterComponent implements OnInit {
     private fb: FormBuilder, 
     private router: Router, 
     private authService: AuthService,
-    private store: Store<Iauth>) {}
+    private route: ActivatedRoute,
+    private store: Store<Iauth>) {
+      this.store.dispatch(setStepperShow({data: true}));
+    }
 
   ngOnInit(): void {
-    this.store.select(getCurrentStepper).subscribe(data => {
-      console.log(data);
-    })
+  }
+
+  ngOnDestroy() {
+    this.store.dispatch(setStepperShow({data: false}));
+    this.store.dispatch(setStepper({data: 0}));
+    this.store.dispatch(setUserRole({data: 0}));
   }
 
   // getters
@@ -100,7 +104,9 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
+
     const { value } = this.registerForm;
+    const roleId = this.route.snapshot.paramMap.get('roleId');
     const payload = {
       firstname: value.firstName,
       middlename: value.middleName,
@@ -108,15 +114,19 @@ export class RegisterComponent implements OnInit {
       email: value.email,
       userpassword: value.password,
       name: value.company,
-      accounttypeid: 1
+      accounttypeid: roleId
     };
 
     this.isLoading = true;
     this.authService.register(payload).subscribe(res => {
       this.isLoading = false;
-      if(res) {
-        this.router.navigateByUrl('register-success');
-      }
-    }, (err) => this.isLoading = false )
+      if(res) this.router.navigateByUrl('register-success');
+    }, (err) => this.isLoading = false)
+  }
+
+  goToPrev() {
+    this.store.dispatch(setStepper({data: 0}));
+    this.store.dispatch(setUserRole({data: 0}));
+    this.router.navigateByUrl('auth/selectrole');
   }
 }

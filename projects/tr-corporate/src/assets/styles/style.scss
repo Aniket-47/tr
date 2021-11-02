@@ -220,16 +220,16 @@
                         border-radius: 0;
                     }
                     &.active, &:hover, &:focus {
-                        background: #1F47F5;
-                        color: #fff;
+                        background: $theme;
+                        color: $white;
                         @include media-breakpoint-down(md) { 
                             color: #25364D;
-                            border-bottom: 2px solid #1F47F5;
+                            border-bottom: 2px solid $theme;
                             background-color: transparent;
                         }
                         span {
                             &::before {
-                                color: #fff;
+                                color: $white;
                                 @include media-breakpoint-down(md) { 
                                     color: #25364D;
                                 }
@@ -247,6 +247,9 @@
                 }
             }
         }
+    }
+    .organisation-info {
+        @include padding(2rem);
     }
     .profile-info {
         background: $white;
@@ -303,10 +306,7 @@
         }
     }
     .profile-action {
-        background: $white;
-        border-radius: 0 0 4px 4px;
-        @include padding(1.2rem 2rem);
-        border-top: 1px solid #eee;
+        @include padding-left(2rem);
         display: flex;
         @include media-breakpoint-down(md) { 
             justify-content: center;

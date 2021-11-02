@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { RouterConfigService } from '@tr/src/app/utility/services/routeGuards/router-config.service';
 import { ROUTE_PERMISSION, ROUTE_CONFIGS } from './utility/configs/routerConfig';
+import { RouterConfigService } from './utility/services/router-config.service';
 
 @Component({
   selector: 'app-root',

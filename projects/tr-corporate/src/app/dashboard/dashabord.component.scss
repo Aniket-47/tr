@@ -2,11 +2,6 @@
 @import '~@mucrest/ng-design/assets/styles/0-plugins/plugins-dir';
 
 mc-side-navbar {
-    /*& a:hover{
-        background-color: #4260e9;
-        color: #fff !important;   
-        border-radius: 4px;
-    }*/
 .icon-mc,.icon-mcf {
     &::before {
       color: black;
@@ -18,6 +13,17 @@ mc-side-navbar {
     border-bottom: 1px solid #E3E1E5;
     margin-bottom: 2rem;
     a {
+        margin-bottom: .5rem;
+        &.active {
+            background: $theme;
+            border-radius: 4px;
+            color: white;
+            span {
+                &::before {
+                    color: white;
+                }
+            }
+        } 
         span {
             &::before {
                 color: black;
@@ -31,9 +37,11 @@ mc-side-navbar {
         font-size: 1.3rem;
         color: black;
         padding: .7rem 0;
+        margin-bottom: .5rem;
         &.active {
-            background: #1F47F5;
+            background-color: $theme;
             border-radius: 4px;
+            color: white;
             span {
                 &::before {
                     color: white;
@@ -47,7 +55,7 @@ mc-side-navbar {
     // hover side menu
     .side-nav-hvr a{
         &:hover {
-            background-color: #3f60f5;
+            background-color: $theme;
             border-radius: 4px;
             span {
                 &::before {
@@ -63,12 +71,13 @@ mc-side-navbar {
     cursor: pointer;
     padding: 0;
     height: 30px;
+    margin: 0;
     @include media-breakpoint-down(md) { 
         display: none;
      }
     .user-avatar {
-        background: #1F47F5;
-        color: white;
+        background: $theme;
+        color: $white;
         width: 30px;
         height: 30px;
         border-radius: 30px;
@@ -111,6 +120,8 @@ mc-side-navbar {
 .header-icon{
     @include font-size(1.8rem);
     @include padding(0.2rem 0);
+    margin: 0;
+    padding: 0
 }
 
 ::ng-deep .mat-menu-panel {
@@ -135,6 +146,10 @@ mc-side-navbar {
 .action-icon, .active-icon, .search{
     padding: 0 5px;
     height: 40px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
     &:hover{
         background-color: ($black08);
         border-radius: 50%;
@@ -166,11 +181,23 @@ mc-side-navbar {
   
     .searchPanel { display: none; }
     .m-searchPanel{
-        border-radius: 0 0 5px 5px;
+        border-radius: 0;
         display: flex;
         width: 90%;
-        box-shadow: 0px 0.6px 2px 0px grey;
-        margin: 46px auto 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 999;
+        ::ng-deep .search-container {
+            background-color: $white;
+            box-shadow: none;
+            margin: 0;
+            width: 100%;
+            border-radius: 0;
+            position: relative;
+            left: 0;
+            top: 0;
+        }
     }
 }
 
@@ -182,7 +209,7 @@ mc-side-navbar {
     font-size: 1.5rem;
 }
 .mat-drawer-content {
-    background-color: #fff;
+    background-color: $white;
 }
 .mat-drawer-container {
     background-color: transparent;
@@ -196,3 +223,54 @@ mc-side-navbar {
     }
     }
 }
+
+.content-wrapper {
+    margin-left: $sidenav-width;
+    height: 100%;
+    margin-top: $header-height;
+    width: calc(100% - 4.375rem);
+    @include media-breakpoint-down(md) {
+        margin-left: 0;
+        width: 100%;
+     }
+    }
+
+    .user-dropdown-submenu {
+        .mat-expansion-panel-header {
+            border-bottom: #EBEAED 1px solid;
+            padding: 0 1rem;
+            .icon-mc {
+                padding-right: 1rem;
+                font-size: 1rem;
+            }
+            .mat-expansion-panel-header-title {
+                font-size: 14px;
+            }
+        }
+        ::ng-deep .mat-expansion-panel-body {
+            padding: 0 !important;
+        }
+        &-item {
+            border-bottom: #EBEAED 1px solid;
+            padding: 0 1rem;
+            a {
+                font-size: 14px;
+                .icon-mc {
+                    padding-right: 1rem;
+                    font-size: 1rem;
+                }
+            }
+        }
+    }
+    .close-search {
+        position: fixed;
+        right: 0;
+        top: 0;
+        z-index: 999;
+        background-color: $white;
+        width: 40px;
+        height: 56px;
+        line-height: 56px;
+        font-size: 1.5rem;
+        text-align: center;
+    }
