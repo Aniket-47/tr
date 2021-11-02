@@ -1,9 +1,9 @@
-<div class="content-wrapper">
+<div>
   <mat-drawer-container autosize>
     <mat-drawer #drawer [mode]="drawerMode">
       <app-settings-side-menu></app-settings-side-menu>
     </mat-drawer>
-    <div class="sidenav-content">
+    <div class="sidenav-content">    
       <button type="button" mat-icon-button (click)="drawer.toggle()" class="mobile-togglebtn">
         <span class="icon-mc mc-filter_list"></span>
       </button>
