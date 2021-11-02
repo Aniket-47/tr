@@ -4,5 +4,5 @@ export interface Iauth {
         stepList: string[],
         showStepper: boolean;
     },
-    roles: {id: number, name: string}[]
+    selectedRole: number
 }

@@ -6,10 +6,20 @@ export const selectAppState = (state: State) => state.user;
  
 export const getUserStatus = createSelector(
     selectAppState,
-  (state: Iuser) => state.isLoggedIn
+    (state: Iuser) => state.isLoggedIn
 );
 
-export const getUser = createSelector(
+export const getUserName = createSelector(
     selectAppState,
-  (state: Iuser) => state
+    (state: Iuser) => state.name
+);
+
+export const getDefaultAccountId = createSelector(
+    selectAppState,
+    (state: Iuser) => state.accountIDs.length ? state.accountIDs : []
+);
+
+export const getAccountIds = createSelector(
+  selectAppState,
+  (state: Iuser) => state.accountIDs
 );
