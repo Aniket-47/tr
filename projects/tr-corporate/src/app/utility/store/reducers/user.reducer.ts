@@ -3,20 +3,18 @@ import * as UserActions from "../actions/user.action";
 import { Iuser } from "../interfaces/user";
 
 export const initialState: Iuser = {
-	firstName: '',
-    middleName: '',
-	lastName: '',
+	name: '',
+	accountIDs: [],
 	isLoggedIn: false,
 };
 
 export const userReducer = createReducer(
 	initialState,
 
-	on(UserActions.saveUserData, (state, action) => {
-		const userData = action.data;
+	on(UserActions.saveUserName, (state, action) => {
 		return {
             ...state,
-            userData
+            name: action.data
 		};
 	}),
 

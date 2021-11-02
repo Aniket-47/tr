@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { userRoles } from '../shared/auth.data';
+import { userRoles } from '../../utility/configs/app.constants';
 import { setStepper, setStepperShow, setUserRole } from '../store/actions/auth.action';
 
 import { Iauth } from '../store/interface/auth';

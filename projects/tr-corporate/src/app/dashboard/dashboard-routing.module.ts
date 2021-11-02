@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AccountComponent } from './account/account.component';
 import { DashabordComponent } from './dashabord.component';
 import { StatsComponent } from './stats/stats.component';
 
@@ -20,7 +19,8 @@ const routes: Routes = [
       },
       {
         path: 'account',
-        component: AccountComponent,
+        loadChildren: () =>
+          import('../account/account.module').then((m) => m.AccountModule),
       },
       {
         path: '',

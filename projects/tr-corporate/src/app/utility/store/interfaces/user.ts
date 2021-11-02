@@ -1,6 +1,5 @@
 export interface Iuser {
-    firstName: string;
-    middleName: string;
-    lastName: string;
+    name: string;
+    accountIDs: string[];
     isLoggedIn: boolean;
 }
