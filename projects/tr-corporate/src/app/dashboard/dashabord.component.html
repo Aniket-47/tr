@@ -1,6 +1,6 @@
 <mat-drawer-container>
   <mat-drawer #drawer mode="over" [autoFocus]="false">
-    <tr-m-header>
+    <tr-m-header (logOutEvent)="logout()">
       <img class="circle" src="assets/img/profile.png" image>
       <span name></span>
       <span email></span>
