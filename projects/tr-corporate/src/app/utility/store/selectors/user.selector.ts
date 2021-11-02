@@ -19,7 +19,7 @@ export const getDefaultAccountId = createSelector(
     (state: Iuser) => state.accountIDs.length ? state.accountIDs : []
 );
 
-export const getDefaultAccountIds = createSelector(
+export const getAccountIds = createSelector(
   selectAppState,
   (state: Iuser) => state.accountIDs
 );

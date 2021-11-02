@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
 import { userRoles } from '../../utility/configs/app.constants';
+import { Iuser } from '../../utility/store/interfaces/user';
+import { State } from '../../utility/store/reducers';
+import { getDefaultAccountId } from '../../utility/store/selectors/user.selector';
 
 @Component({
   selector: 'app-manage-profile',
@@ -11,10 +15,16 @@ export class ManageProfileComponent implements OnInit {
   url: any;
   userForm!: FormGroup;
   roles = userRoles;
-  constructor(private fb: FormBuilder) { 
+  accountId!: string;
+  constructor(
+    private fb: FormBuilder,
+    private store: Store<State>) { 
+      this.store.select(getDefaultAccountId).subscribe(data => this.accountId = data[0]?.accountid);
+    
   }
 
   ngOnInit(): void {
+    this
     this.initForm();
   }
 
