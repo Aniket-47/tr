@@ -14,10 +14,11 @@ import { getRoles } from '../store/selectors/auth.selector';
 export class SelectRoleComponent implements OnInit, OnDestroy {
   roles: any[]= [];
 
-  constructor(private router: Router, private store: Store<Iauth>) { }
+  constructor(private router: Router, private store: Store<Iauth>) {
+    this.store.dispatch(setStepperShow({data: true}));
+   }
 
   ngOnInit(): void {
-    this.store.dispatch(setStepperShow({data: true}));
     this.store.select(getRoles).subscribe(roles => this.roles = roles);
   }
   

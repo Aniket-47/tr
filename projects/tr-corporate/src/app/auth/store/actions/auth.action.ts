@@ -1,7 +1,7 @@
 import { createAction, props } from "@ngrx/store";
 
 export const setStepper = createAction(
-	"[Auth] Save stepper",
+	"[Auth] Set stepper index",
 	props<{ data: number }>()
 );
 

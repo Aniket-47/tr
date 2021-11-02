@@ -56,10 +56,11 @@ export class RegisterComponent implements OnInit, OnDestroy {
     private router: Router, 
     private authService: AuthService,
     private route: ActivatedRoute,
-    private store: Store<Iauth>) {}
+    private store: Store<Iauth>) {
+      this.store.dispatch(setStepperShow({data: true}));
+    }
 
   ngOnInit(): void {
-    this.store.dispatch(setStepperShow({data: true}));
   }
 
   ngOnDestroy() {
