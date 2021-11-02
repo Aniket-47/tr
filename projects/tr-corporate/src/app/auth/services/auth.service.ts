@@ -9,6 +9,8 @@ import { api_routes, secure_api_routes } from '../../utility/configs/apiConfig';
 import { Login_request, Login_response } from '../interfaces/login';
 import { Register_response, Register_error } from '../interfaces/register';
 import { Guid } from 'guid-typescript';
+import { LstorageService } from '@tr/src/app/utility/services/lstorage.service';
+import { LSkeys } from '../../utility/configs/app.constants';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +18,7 @@ import { Guid } from 'guid-typescript';
 export class AuthService {
   api_routes;
   secure_api_routes;
-  constructor(private http: HttpClient, private utilityServ: UtilityService) {
+  constructor(private http: HttpClient, private utilityServ: UtilityService, private lsServ: LstorageService) {
     this.api_routes = api_routes;
     this.secure_api_routes = secure_api_routes;
   }
@@ -29,8 +31,9 @@ export class AuthService {
   }
 
   login(logindata: Login_request) {
-    const guid = Guid.create();
-    return this.http.post<Login_response>(this.api_routes.LOGIN, logindata, { headers: { 'clientuniqueid': guid.toString() } });
+    const guid = (Guid.create()).toString();
+    this.lsServ.store(LSkeys.DEVICE_GUID, guid);
+    return this.http.post<Login_response>(this.api_routes.LOGIN, logindata, { headers: { 'clientuniqueid': guid } });
   }
 
   validateEmail(email: string) {
