@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountListApiService } from './services/account-list-api.service';
+import { LogoutService } from './services/logout.service'
 
 @Component({
   selector: 'app-dashabord',
@@ -13,6 +14,7 @@ export class DashabordComponent implements OnInit {
   colorActivation = false;
   msgColorActivation = false;
   searchToggle = false;
+  resMsgLogout:string = "";
 
   accountList: [{ accountid: string; name: string; }] | null = null;
 
@@ -20,7 +22,7 @@ export class DashabordComponent implements OnInit {
     this.hidden = !this.hidden;
   }
 
-  constructor(private accountListApiServ: AccountListApiService) { }
+  constructor(private accountListApiServ: AccountListApiService, private logoutServ: LogoutService) { }
 
   ngOnInit(): void {
     this.date = new Date();
@@ -35,5 +37,13 @@ export class DashabordComponent implements OnInit {
 
   toggleSearch() {
     this.searchToggle = !this.searchToggle;
+  }
+
+  logout() {
+    this.resMsgLogout = "";
+    this.logoutServ.logout().subscribe((res: any) =>{
+      console.log("Moumita");
+      
+    })
   }
 }
