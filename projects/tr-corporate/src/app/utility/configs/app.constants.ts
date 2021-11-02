@@ -4,3 +4,8 @@ export const enum LSkeys {
   USER_NAME = "userName",
   DEVICE_GUID = "deviceGuid"
 }
+
+export const userRoles = [
+  { id: 1, name: 'Corporate' },
+  { id: 2, name: 'Staffing' },
+];

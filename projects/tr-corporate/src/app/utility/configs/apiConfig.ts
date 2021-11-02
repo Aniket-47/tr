@@ -22,5 +22,6 @@ export const secure_api_routes = {
   LOGOUT: `${auth}/logout`,
 
   // permission
-  ACCOUNT_LIST: `${auth}/user/account`
+  ACCOUNT_LIST: `${auth}/user/account`,
+  ACCOUNT:  `${auth}/account`,
 };
