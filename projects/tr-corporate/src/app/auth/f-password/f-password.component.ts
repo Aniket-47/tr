@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 
@@ -8,7 +8,7 @@ import { AuthService } from '../services/auth.service';
   templateUrl: './f-password.component.html',
   styleUrls: ['./f-password.component.scss']
 })
-export class FPasswordComponent implements OnInit, OnChanges{
+export class FPasswordComponent implements OnInit{
 
   resMessage: string="";
   isLoading = false;
@@ -17,16 +17,7 @@ export class FPasswordComponent implements OnInit, OnChanges{
   constructor(private authServ: AuthService) { }
 
   ngOnInit(): void {
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    for (const propName in changes) {
-      if (propName === "emailValidationError" && changes[propName].currentValue) {
-        this.emailFormControl.setErrors({ "emailValidationError": true });
-      }
-    }
-  }
-  
+  }  
 
   emailFormControl=new FormControl('',[
     Validators.required,
@@ -41,9 +32,7 @@ export class FPasswordComponent implements OnInit, OnChanges{
         this.isLoading = false;
        
         this.isError = res.error==='true'?true:false;
-        console.log(res);
-        
-      
+        this.emailFormControl.setErrors({'customError': true})
         this.resMessage=res.message;        
       })
   }
