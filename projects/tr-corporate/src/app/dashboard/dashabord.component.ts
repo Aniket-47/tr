@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { LstorageService } from '@tr/src/app/utility/services/lstorage.service';
+import { LSkeys } from '../utility/configs/app.constants';
 import { AccountListApiService } from './services/account-list-api.service';
-import { LogoutService } from './services/logout.service'
+import { LogoutService } from './services/logout.service';
+
 
 @Component({
   selector: 'app-dashabord',
@@ -22,7 +26,7 @@ export class DashabordComponent implements OnInit {
     this.hidden = !this.hidden;
   }
 
-  constructor(private accountListApiServ: AccountListApiService, private logoutServ: LogoutService) { }
+  constructor(private accountListApiServ: AccountListApiService, private logoutServ: LogoutService, private lsServ: LstorageService, private router: Router) { }
 
   ngOnInit(): void {
     this.date = new Date();
@@ -41,9 +45,12 @@ export class DashabordComponent implements OnInit {
 
   logout() {
     this.resMsgLogout = "";
-    this.logoutServ.logout().subscribe((res: any) =>{
-      console.log("Moumita");
-      
+    this.logoutServ.logout().subscribe(res =>{
+      if(res.error) {
+        this.lsServ.remove(LSkeys.BREARER_TOKEN);
+        this.router.navigate(["./"])
+      }
+
     })
   }
 }
