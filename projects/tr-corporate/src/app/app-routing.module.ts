@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuardGuard } from '@tr/src/app/utility/services/routeGuards/auth-guard.guard';
 import { DemoComponent } from './advance-search/demo/demo.component';
 import { AppComponent } from './app.component';
+import { AuthGuard } from './utility/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -11,33 +11,35 @@ const routes: Routes = [
     children: [
       {
         path: 'auth',
-        loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
-        // canActivate: [AuthGuardGuard]
+        loadChildren: () =>
+          import('./auth/auth.module').then((m) => m.AuthModule),
+        canActivate: [AuthGuard],
       },
       {
         path: 'dashboard',
-        loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule),
-        // canActivate: [AuthGuardGuard]
+        loadChildren: () =>
+          import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
+        canActivate: [AuthGuard],
       },
       {
         path: 'as',
-        component: DemoComponent
+        component: DemoComponent,
       },
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'auth'
+        redirectTo: 'auth',
       },
       {
         path: '**',
-        redirectTo: 'auth'
-      }
-    ]
-  }
+        redirectTo: 'auth',
+      },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

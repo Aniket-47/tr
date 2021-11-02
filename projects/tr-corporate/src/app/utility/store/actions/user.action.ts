@@ -1,15 +1,19 @@
 import { createAction, props } from "@ngrx/store";
-import { USER_ACTIONS } from "../action.constants";
-import { Iuser } from "../interfaces/user";
+import { UserActions } from "../action.constants";
 
-export const saveUserData = createAction(
-	USER_ACTIONS.userDataAction,
-	props<{ data: Iuser }>()
+export const saveUserName = createAction(
+	UserActions.USER_DATA_ACTION,
+	props<{ data: string }>()
 );
 
 export const setUserStatus = createAction(
-	USER_ACTIONS.userStatusAction,
+	UserActions.USER_STATUS_ACTION,
 	props<{ data: boolean }>()
 );
 
-export const removeUsers = createAction("[User] Remove Users");
+export const setUserAccounts = createAction(
+	UserActions.USER_ACCOUNTS_SET_ACTION,
+	props<{ data: { accountid: string; name: string; }[] }>()
+);
+
+export const removeUsers = createAction(UserActions.USER_REMOVE_ACTION);
