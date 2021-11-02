@@ -8,6 +8,9 @@ import { api_routes, secure_api_routes } from '../../utility/configs/apiConfig';
 // Interfaces
 import { Login_request, Login_response } from '../interfaces/login';
 import { Register_response, Register_error } from '../interfaces/register';
+import { ResetPassword_response, ResetPassword_request } from './../interfaces/reset-password';
+
+// Local storage
 import { Guid } from 'guid-typescript';
 import { LstorageService } from '@tr/src/app/utility/services/lstorage.service';
 import { LSkeys } from '../../utility/configs/app.constants';
@@ -22,7 +25,6 @@ export class AuthService {
     this.api_routes = api_routes;
     this.secure_api_routes = secure_api_routes;
   }
-
 
 
   register(registerdata: any) {
@@ -46,6 +48,11 @@ export class AuthService {
 
   passwordForget(email: any) {
     return this.http.post<string>(this.api_routes.FORGOT_PASSWORD, { "email": email })
+  }
+
+  passwordReset(token: string, data: ResetPassword_request) {
+    const apiUrl = this.utilityServ.urlReplace(this.api_routes.RESET_PASSWORD, token);
+    return this.http.put<ResetPassword_response>(apiUrl, data)
   }
 
 
