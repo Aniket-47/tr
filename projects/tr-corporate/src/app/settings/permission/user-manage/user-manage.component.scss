@@ -22,7 +22,7 @@ table.mat-table {
             display: flex;
             flex-direction: row;
             width: 100%;
-            padding-bottom: 3rem;
+            padding-bottom: 3.5rem;
             margin-bottom: 1rem;
             position: relative;
             border-radius: 4px;
@@ -120,6 +120,6 @@ table.mat-table {
         position: absolute;
         left: -15px;
         top: 0px;
-        border: 2px solid #fff;
+        border: 2px solid $white;
     }
 }

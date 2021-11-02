@@ -23,7 +23,7 @@
         font-size: 20px;
         margin-right: 5px;
         &::before{
-          color: #1F47F5 !important;
+          color: $theme !important;
         }
       }
     }
@@ -33,7 +33,7 @@
 
       .active{
         cursor: pointer;
-        color: #1F47F5 !important;
+        color: $theme !important;
       }
     }
   }
@@ -54,13 +54,13 @@
   @include font-size($fs-md);
   @include margin-right(10px);
   &::before{
-    color: #1F47F5 !important;
+    color: $theme !important;
   }
 }
 
 .active{
   cursor: pointer;
-  color: #1F47F5 !important;
+  color: $theme !important;
 }
 
 ::ng-deep .mat-expansion-panel:not([class*=mat-elevation-z]) {

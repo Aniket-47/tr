@@ -1,16 +1,6 @@
 @import '~@mucrest/ng-design/assets/styles/1-base/base-dir';
 @import '~@mucrest/ng-design/assets/styles/0-plugins/plugins-dir.scss';
 
-.content-wrapper {
-    margin-left: $sidenav-width;
-    height: 100%;
-    margin-top: $header-height;
-    position: fixed;
-    width: calc(100% - 4.375rem);
-    @include media-breakpoint-down(md) {
-        margin-left: 0;
-        width: 100%;
-     }
     .mat-drawer.mat-drawer-side {
         border-right: #EBEAED 1px solid;
     }
@@ -27,38 +17,27 @@
              }
         }
     }
-    ::ng-deep .mat-drawer-opened ~ .mat-drawer-content {
-        .togglebtn {
-            transform: rotate(180deg);
-        }    
-    }
+  
 
     .sidenav{
         overflow: hidden !important;
+        .togglebtn {
+            transform: rotate(180deg);
+        }  
     }
-}
+
 .togglebtn {
-    // position: fixed;
-    // left: 40px;
-    // top: 47px;
-    // font-size: 1.5rem;
-    // z-index: 9999;
-    // border: #EBEAED 1px solid;
-    // background: #fff;
-    // width: 34px;
-    // height: 34px;
-    // line-height: 34px;
     position: fixed;
-    left: 50px;
-    top: 78px;
+    left: 45px;
+    top: 60px;
     font-size: 1.5rem;
     z-index: 9999;
     border: #EBEAED 1px solid;
-    background: #fff;
+    background: $white;
     width: 30px;
     height: 30px;
     line-height: 30px;
-
+    border-radius: 16px;
     ::ng-deep .mat-button-wrapper>* {
         vertical-align: top;
     }

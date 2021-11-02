@@ -1,35 +1,43 @@
-<div class="profile-container">
-    <div class="row">
-        <div class="col-md-4">
-            <div class="left-menu">
-                <div class="left-header">
-                    <h2>Manage Profile</h2>
-                    <p>Update and manage your account</p>
-                </div>
-                <ul class="profile-link">
-                    <li><a href="#" class="active"><span class="icon-mc mc-person_pin"></span> <span>Organisation Profile</span></a></li>
-                    <li><a href="#"><span class="icon-mc mc-settings_applications"></span> <span>Personal Profile</span></a></li>
-                    <!-- <li><a href="#"><span class="mc-notifications"></span> <span>Notifications</span></a></li>
-                    <li><a href="#"><span class="mc-ic_plan"></span> <span>Plans</span></a></li>
-                    <li><a href="#"><span class="mc-help"></span> <span>Helpdesk</span></a></li> -->
-                </ul>
-            </div>
-        </div>
-        <div class="col-md-8">
+
             <div class="profile-info">
                     <div class="profile-form">
                         <div>
                             <mat-form-field appearance="standard">
-                                <mat-label>Full Name</mat-label>
-                                <input matInput placeholder="Placeholder" value="Maxbert Scolaski">
+                                <mat-label>First Name</mat-label>
+                                <input matInput placeholder="Placeholder" value="">
                               </mat-form-field>
                         </div>
                         <div>
                             <mat-form-field appearance="standard">
-                                <mat-label>Phone No</mat-label>
-                                <input matInput placeholder="">
+                                <mat-label>Middle Name</mat-label>
+                                <input matInput placeholder="Placeholder" value="">
                               </mat-form-field>
                         </div>
+                        <div>
+                            <mat-form-field appearance="standard">
+                                <mat-label>Last Name</mat-label>
+                                <input matInput placeholder="Placeholder" value="">
+                              </mat-form-field>
+                        </div>
+                        <div>
+                            <mat-form-field appearance="standard">
+                                <mat-label>Email Id (Official Email Id)</mat-label>
+                                <input matInput type="email" placeholder="Placeholder" value="">
+                              </mat-form-field>
+                        </div>
+                        <div class="account-type">
+                            <p>Account Type:</p>
+                            <mat-radio-group aria-label="Select an option">
+                                <mat-radio-button value="1" color="primary">Staffing And Recruiting</mat-radio-button>
+                                <mat-radio-button value="2" color="primary" class="mx-3 mt-3">Corporate</mat-radio-button>
+                              </mat-radio-group>
+                        </div>
+                        <!-- <div>
+                            <mat-form-field appearance="standard">
+                                <mat-label>Password</mat-label>
+                                <input matInput placeholder="" type="password">
+                              </mat-form-field>
+                        </div> -->
                     </div>
                         <div class="profile-image">
                             <div class="img-container">
@@ -46,6 +54,3 @@
                 <button mat-stroked-button>Cancel</button>
                 <button mat-flat-button color="primary">Save Changes</button>
             </div>
-        </div>
-    </div>
-</div>
