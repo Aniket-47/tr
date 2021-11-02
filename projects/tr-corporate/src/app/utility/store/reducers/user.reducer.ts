@@ -25,5 +25,12 @@ export const userReducer = createReducer(
 		};
 	}),
 
+	on(UserActions.setUserAccounts, (state, action) => {
+		return {
+            ...state,
+            accountIDs: action.data
+		};
+	}),
+
 	on(UserActions.removeUsers, () => initialState)
 );
