@@ -1,5 +1,5 @@
 <!-- <p>login works!</p> -->
-<mc-login [signupLink]="'/auth/selectrole'" [isFirstStep]="isFirstStep"
+<mc-login [signupLink]="'/auth/selectrole'" [forgotLink]="'/auth/f-password'" [isFirstStep]="isFirstStep"
   [passwordValidationError]="passwordValidationError" [emailValidationError]="emailValidationError"
   [isLoading]="isLoading" [userName]="userNmae" (onEmailProvided)="isEmailExists($event)"
   (onPasswordProvided)="login($event)" (changeAccount)="changeAccount()"> </mc-login>

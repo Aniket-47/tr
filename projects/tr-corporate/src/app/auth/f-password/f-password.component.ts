@@ -8,7 +8,7 @@ import { AuthService } from '../services/auth.service';
   templateUrl: './f-password.component.html',
   styleUrls: ['./f-password.component.scss']
 })
-export class FPasswordComponent implements OnInit {
+export class FPasswordComponent implements OnInit{
 
   resMessage: string="";
   isLoading = false;
@@ -17,8 +17,7 @@ export class FPasswordComponent implements OnInit {
   constructor(private authServ: AuthService) { }
 
   ngOnInit(): void {
-  }
-  
+  }  
 
   emailFormControl=new FormControl('',[
     Validators.required,
@@ -33,10 +32,10 @@ export class FPasswordComponent implements OnInit {
         this.isLoading = false;
        
         this.isError = res.error==='true'?true:false;
-        console.log(res);
-        
-      
+        this.emailFormControl.setErrors({'customError': true})
         this.resMessage=res.message;        
       })
   }
+
+  
 }
