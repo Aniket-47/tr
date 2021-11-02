@@ -5,6 +5,13 @@ export const enum LSkeys {
   DEVICE_GUID = "deviceGuid"
 }
 
+export const ValidationConstants = {
+  passwordStrategy: {
+    PASSWORD_MIN_LENGTH: 6,
+    PASSWORD_MAX_LENGTH: 15,
+    PASSWORD_PATTON: ""
+  }
+}
 export const userRoles = [
   { id: 1, name: 'Corporate' },
   { id: 2, name: 'Staffing' },
