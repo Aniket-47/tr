@@ -21,7 +21,8 @@ import { TrFeatureModule } from '@tr/src/app/tr-feature/tr-feature.module';
     MaterialModule,   
     CardModule,
     TrFeatureModule,
-    DashboardRoutingModule,
+    // McCardModule,
+    DashboardRoutingModule
   ]
 })
 export class DashboardModule { }

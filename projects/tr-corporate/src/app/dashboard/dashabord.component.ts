@@ -15,6 +15,7 @@ import { LogoutService } from './services/logout.service';
   styleUrls: ['./dashabord.component.scss']
 })
 export class DashabordComponent implements OnInit {
+
   panelOpenState = false;
   date: any;
   hidden = false;

@@ -53,81 +53,13 @@
       <button mat-menu-item><i class="icon-mc mc-switch_account"></i> <span>Accounts</span></button>
       <button mat-menu-item (click)="logout()"><i class="icon-mc mc-power_settings_new"></i> <span>Sign Out</span></button>
     </mat-menu>
-
     <mat-menu #notify="matMenu" backdropClass="profile-dropdown">
-      <button mat-menu-item>
-        <i class="icon-mc mc-person"></i>
-        <span class="notify-design">Twitter Notification</span>
-        <span>{{date|date : 'shortTime'}}</span>
-      </button>
-      <button mat-menu-item>
-        <i class="icon-mc mc-person"></i>
-        <span class="notify-design">Twitter Notification</span>
-        <span>{{date|date : 'shortTime'}}</span>
-      </button>
-      <button mat-menu-item>
-        <i class="icon-mc mc-person"></i>
-        <span class="notify-design">Twitter Notification</span>
-        <span>{{date|date : 'shortTime'}}</span>
-      </button>
-      <button mat-menu-item>
-        <i class="icon-mc mc-person"></i>
-        <span class="notify-design">Twitter Notification</span>
-        <span>{{date|date : 'shortTime'}}</span>
-      </button>
-      <button mat-menu-item>
-        <i class="icon-mc mc-person"></i>
-        <span class="notify-design">Twitter Notification</span>
-        <span>{{date|date : 'shortTime'}}</span>
-      </button>
-      <button mat-menu-item>
-        <i class="icon-mc mc-person"></i>
-        <span class="notify-design">Twitter Notification</span>
-        <span>{{date|date : 'shortTime'}}</span>
-      </button>
-      <button mat-menu-item>
-        <i class="icon-mc mc-person"></i>
-        <span class="notify-design">Twitter Notification</span>
-        <span>{{date|date : 'shortTime'}}</span>
-      </button>
+      <tr-notification></tr-notification>
     </mat-menu>
 
+
     <mat-menu #message="matMenu" backdropClass="profile-dropdown">
-      <button mat-menu-item>
-        <i class="icon-mc mc-person"></i>
-        <span class="notify-design">Message Notification</span>
-        <span>{{date|date : 'shortTime'}}</span>
-      </button>
-      <button mat-menu-item>
-        <i class="icon-mc mc-person"></i>
-        <span class="notify-design">Message Notification</span>
-        <span>{{date|date : 'shortTime'}}</span>
-      </button>
-      <button mat-menu-item>
-        <i class="icon-mc mc-person"></i>
-        <span class="notify-design">Message Notification</span>
-        <span>{{date|date : 'shortTime'}}</span>
-      </button>
-      <button mat-menu-item>
-        <i class="icon-mc mc-person"></i>
-        <span class="notify-design">Message Notification</span>
-        <span>{{date|date : 'shortTime'}}</span>
-      </button>
-      <button mat-menu-item>
-        <i class="icon-mc mc-person"></i>
-        <span class="notify-design">Message Notification</span>
-        <span>{{date|date : 'shortTime'}}</span>
-      </button>
-      <button mat-menu-item>
-        <i class="icon-mc mc-person"></i>
-        <span class="notify-design">Message Notification</span>
-        <span>{{date|date : 'shortTime'}}</span>
-      </button>
-      <button mat-menu-item>
-        <i class="icon-mc mc-person"></i>
-        <span class="notify-design">Message Notification</span>
-        <span>{{date|date : 'shortTime'}}</span>
-      </button>
+      <tr-message></tr-message>
     </mat-menu>
 
   </tr-d-header>
