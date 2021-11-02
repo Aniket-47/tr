@@ -46,7 +46,7 @@ export class DashabordComponent implements OnInit {
   logout() {
     this.resMsgLogout = "";
     this.logoutServ.logout().subscribe(res =>{
-      if(res.error) {
+      if(!res.error) {
         this.lsServ.remove(LSkeys.BREARER_TOKEN);
         this.router.navigate(["./"])
       }
