@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LstorageService } from '@tr/src/app/utility/services/lstorage.service';
+import { LSkeys } from '../../utility/configs/app.constants';
 import { ROUTE_CONFIGS } from '../../utility/configs/routerConfig';
 import { AuthService } from '../services/auth.service';
 
@@ -16,7 +18,7 @@ export class LoginComponent implements OnInit {
   passwordValidationError: string | null = null;
   email: string = "";
   isLoading: boolean = false;
-  constructor(private authServ: AuthService, private router: Router) { }
+  constructor(private authServ: AuthService, private lsServ: LstorageService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -25,7 +27,7 @@ export class LoginComponent implements OnInit {
     this.email = email;
     this.isLoading = true;
     this.authServ.validateEmail(email).subscribe((res: any) => {
-      if (res.error) {
+      if (res.statusCode == 400) {
         // on success
         this.isFirstStep = false;
         this.isLoading = false;
@@ -35,24 +37,29 @@ export class LoginComponent implements OnInit {
         this.isLoading = false;
         this.emailValidationError = "Email does not exist"
       }
+    },
+    res_error => {
+      const {error} = res_error;
+      this.isLoading = false;
+      this.emailValidationError = error.message;
     })
   }
 
   login(password: string) {
     this.isLoading = true;
     this.authServ.login({ "email": this.email, "password": password })
-      .subscribe((res: any) => {
-        // console.log(res);
-        if (res.error) {
-          // manage error
-          this.isLoading = false;
-          this.passwordValidationError = "Invalid Password"
-        }
-        else {
+      .subscribe((res:any) => {
+         console.log("Res ",res);
           // on success
           this.isLoading = false;
+          this.lsServ.store(LSkeys.BREARER_TOKEN, res.data.accesstoken.token);
           this.router.navigate([ROUTE_CONFIGS.DASHBOARD]);
-        }
+      },
+      res_error =>{
+        console.log("Error ",res_error)
+        const {error} = res_error;
+        this.isLoading = false;
+        this.passwordValidationError = error.message;
       })
   }
 
