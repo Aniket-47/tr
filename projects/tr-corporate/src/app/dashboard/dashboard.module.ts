@@ -6,6 +6,7 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { CardModule, LayoutModule, MaterialModule } from '@tr';
 import { ComponentsModule } from '@mucrest/ng-design';
 import { TrFeatureModule } from '@tr/src/app/tr-feature/tr-feature.module';
+import { AccountComponent } from './account/account.component';
 
 
 
@@ -13,6 +14,7 @@ import { TrFeatureModule } from '@tr/src/app/tr-feature/tr-feature.module';
   declarations: [
     DashabordComponent,
     StatsComponent,
+    AccountComponent,
   ],
   imports: [
     CommonModule,

@@ -9,7 +9,7 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AuthService } from '../services/auth.service';
-import { setStepper, setStepperShow } from '../store/actions/auth.action';
+import { setStepper, setStepperShow, setUserRole } from '../store/actions/auth.action';
 import { Iauth } from '../store/interface/auth';
 
 function passwordMatcher(c: AbstractControl): { [key: string]: boolean } | null {
@@ -64,9 +64,9 @@ export class RegisterComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    // clear stepper value
     this.store.dispatch(setStepperShow({data: false}));
     this.store.dispatch(setStepper({data: 0}));
+    this.store.dispatch(setUserRole({data: 0}));
   }
 
   // getters
@@ -126,6 +126,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   goToPrev() {
     this.store.dispatch(setStepper({data: 0}));
+    this.store.dispatch(setUserRole({data: 0}));
     this.router.navigateByUrl('auth/selectrole');
   }
 }

@@ -10,3 +10,8 @@ export const setStepperShow = createAction(
 	props<{ data: boolean }>()
 );
 
+export const setUserRole = createAction(
+	"[Auth] Set user role",
+	props<{ data: number }>()
+);
+

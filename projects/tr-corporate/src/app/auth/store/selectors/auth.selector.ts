@@ -18,8 +18,7 @@ export const getActiveStepperIndex = createSelector(
     state => state.stepper.active
 );
 
-export const getRoles = createSelector(
+export const getSelectedRole = createSelector(
     getAuthState,
-    state => state.roles
+    state => state.selectedRole
 );
-
