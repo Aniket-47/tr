@@ -7,18 +7,7 @@ interface Food {
 @Component({
   selector: 'tr-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss'],
-  animations: [
-    trigger( 'fade', [
-      transition ('void => *' , [
-        style({opacity: 0 }),
-        animate(2000, style({opacity: 1 })),
-      ]),
-      transition('* => void' , [
-        animate(2000, style({opacity:0}))
-      ]),
-    ]),
-  ],
+  styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
 

@@ -5,27 +5,25 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  position: absolute;
-  top: -20px;
-  right: 40px;
   background: rgba(0, 0, 0, 0.03);
   border-radius: 5px;
   width: 360px;
-  padding: .5rem;
+  padding: 0.5rem;
+  position: fixed;
+  left: 70px;
+  top: 7px;
  
  input {
    font-size: 1rem;
-   padding: 0 .5rem;
+   padding-left: 0.5rem;
  }
- .mat-form-field {
-   max-width: 100px;
-   padding-left: .5rem;
- }
+
  ::ng-deep {
    .mat-form-field-wrapper, .mat-form-field-infix, .mat-form-field-flex  {
    padding: 0;
    background-color: transparent;
    border: 0;
+   align-items: center;
  }
  .mat-form-field-underline, .mat-select-arrow-wrapper {
    display: none;
@@ -34,14 +32,10 @@
    max-width: fit-content;
  }
 }
-
-  span{
-    font-size: 12px;
-    padding: 0 5px;
-    box-shadow: 1px 0px #d6d6d6;
-    line-height: 2;
-    letter-spacing: 0.2px;
-  }  
+.icon-mcf {
+  font-size: 1.4rem;
+  display: block;
+} 
 
 }
 
