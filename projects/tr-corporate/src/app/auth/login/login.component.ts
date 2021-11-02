@@ -18,9 +18,19 @@ export class LoginComponent implements OnInit {
   passwordValidationError: string | null = null;
   email: string = "";
   isLoading: boolean = false;
-  constructor(private authServ: AuthService, private lsServ: LstorageService, private router: Router) { }
+  userNmae: string | null;
+  userEmail: string | null;
+
+  constructor(private authServ: AuthService, private lsServ: LstorageService, private router: Router) {
+    this.userNmae = lsServ.getItem(LSkeys.USER_NAME);
+    this.userEmail = lsServ.getItem(LSkeys.USER_EMAIL);
+  }
 
   ngOnInit(): void {
+
+    if (this.userEmail && this.userNmae)
+      this.isEmailExists(this.userEmail);
+
   }
 
   isEmailExists(email: string) {
@@ -38,30 +48,34 @@ export class LoginComponent implements OnInit {
         this.emailValidationError = "Email does not exist"
       }
     },
-    res_error => {
-      const {error} = res_error;
-      this.isLoading = false;
-      this.emailValidationError = error.message;
-    })
+      res_error => {
+        const { error } = res_error;
+        this.isLoading = false;
+        this.emailValidationError = error.message;
+      })
   }
 
   login(password: string) {
     this.isLoading = true;
     this.authServ.login({ "email": this.email, "password": password })
-      .subscribe((res:any) => {
-         console.log("Res ",res);
-          // on success
-          this.isLoading = false;
-          this.lsServ.store(LSkeys.BREARER_TOKEN, res.data.accesstoken.token);
-          this.router.navigate([ROUTE_CONFIGS.DASHBOARD]);
-      },
-      res_error =>{
-        console.log("Error ",res_error)
-        const {error} = res_error;
+      .subscribe((res: any) => {
+        console.log("Res ", res);
+        // on success
         this.isLoading = false;
-        this.passwordValidationError = error.message;
-      })
+        this.lsServ.store(LSkeys.BREARER_TOKEN, res.data.accesstoken.token);
+        this.router.navigate([ROUTE_CONFIGS.DASHBOARD]);
+      },
+        res_error => {
+          console.log("Error ", res_error)
+          const { error } = res_error;
+          this.isLoading = false;
+          this.passwordValidationError = error.message;
+        })
   }
 
+  changeAccount() {
+    this.isFirstStep = true;
+
+  }
 
 }
