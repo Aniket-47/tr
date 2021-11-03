@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit {
         console.log("Res ", res);
         // on success
         this.isLoading = false;
-        this.lsServ.store(LSkeys.BREARER_TOKEN, res.data.accesstoken.token);
+        this.lsServ.store(LSkeys.BEARER_TOKEN, res.data.accesstoken.token);
         this.router.navigate([ROUTE_CONFIGS.DASHBOARD]);
       },
         res_error => {
