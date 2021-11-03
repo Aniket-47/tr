@@ -17,13 +17,13 @@
       <span class="icon-mcf mcf-search" (click)="toggleSearch()"></span>
     </div>
     <div class="action-icon" [ngClass]="{'menu-active':colorActivation}">
-      <a routerLink="./" [matMenuTriggerFor]="notify" class="header-icon" (menuClosed)="colorActivation=false"
+      <a [matMenuTriggerFor]="notify" class="header-icon" (menuClosed)="colorActivation=false"
         (menuOpened)="colorActivation=true">
         <span class="icon-mc mc-notifications" matBadge="3" matBadgePosition="after" matBadgeColor="accent"></span>
       </a>
     </div>
     <div class="active-icon" [ngClass]="{'menu-active':msgColorActivation}">
-      <a routerLink="./" [matMenuTriggerFor]="message" class="header-icon" (menuClosed)="msgColorActivation=false"
+      <a [matMenuTriggerFor]="message" class="header-icon" (menuClosed)="msgColorActivation=false"
         (menuOpened)="msgColorActivation=true">
         <span class="icon-mcf mcf-outgoing_mail"></span>
       </a>
