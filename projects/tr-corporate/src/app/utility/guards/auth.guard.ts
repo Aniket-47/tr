@@ -15,17 +15,14 @@ import { RouterConfigService } from '../services/router-config.service';
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-  loggedin: boolean;
+  loggedin!: boolean;
 
   config: any;
   constructor(
     private router: Router,
-    configServ: RouterConfigService,
+    private configServ: RouterConfigService,
     private LsService: LstorageService
-  ) {
-    this.config = configServ.routerconfig;
-    this.loggedin = !!this.LsService.getItem(LSkeys.BREARER_TOKEN);
-  }
+  ) { }
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -34,6 +31,9 @@ export class AuthGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
+      this.config = this.configServ.routerconfig;
+      this.loggedin = !!this.LsService.getItem(LSkeys.BEARER_TOKEN);
+
     if (state.url.startsWith(this.config.DASHBOARD)) {
       if (this.loggedin) return true;
       else {
