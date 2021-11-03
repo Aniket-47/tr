@@ -7,7 +7,7 @@
   align-items: center;
   background: rgba(0, 0, 0, 0.03);
   border-radius: 5px;
-  width: 360px;
+  width: 450px;
   padding: 0.5rem;
   position: fixed;
   left: 70px;
@@ -15,7 +15,6 @@
  
  input {
    font-size: 1rem;
-   padding-left: 0.5rem;
  }
 
  ::ng-deep {
@@ -23,7 +22,7 @@
    padding: 0;
    background-color: transparent;
    border: 0;
-   align-items: center;
+   align-items: flex-end;
  }
  .mat-form-field-underline, .mat-select-arrow-wrapper {
    display: none;
@@ -49,7 +48,7 @@
     width: 90%;
     box-shadow: 0px 0.6px 2px 0px grey;
     margin: 46px auto 0;
-    padding: 1rem;
+    padding: .97rem;
     position: absolute;
     top: 12px;
     right: 5vmax;
@@ -61,7 +60,6 @@
 
     input {
       width: 100%;
-      padding: 0 15px;
       font-size: 17px;
     }
   }

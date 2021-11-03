@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { reduce } from 'rxjs/operators';
 
 @Component({
   selector: 'tr-message',
@@ -9,7 +8,7 @@ import { reduce } from 'rxjs/operators';
 export class MessageComponent implements OnInit {
 
   date: any;
-  
+
   constructor() { }
 
   ngOnInit(): void {
@@ -19,17 +18,17 @@ export class MessageComponent implements OnInit {
 
   messages = [
     {
-      icon: 'icon-mcf mcf-add_task',
+      icon: 'icon-mc mc-person',
       title: 'Message Notifications',
       subtitle: 'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.'
     },
     {
-      icon: 'icon-mcf mcf-settings ',
+      icon: 'icon-mc mc-person',
       title: 'Message Notifications',
       subtitle: 'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.'
     },
     {
-      icon: 'icon-mc mc-monetization_on',
+      icon: 'icon-mc mc-person',
       title: 'Message Notifications',
       subtitle: 'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.'
     }
