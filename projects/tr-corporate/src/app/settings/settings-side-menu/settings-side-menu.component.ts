@@ -151,6 +151,76 @@ export class SettingsSideMenuComponent implements OnInit {
         },
       ],
       icon: 'icon-mc mc-corporate_fare',
+    },
+    {
+      name: 'GDPR',
+      child: [
+        {
+          name: 'User Management',
+          link: "./permission/users",
+        },
+        {
+          name: 'Account Role',
+          link: "./permission/users",
+        },
+      ],
+      icon: 'icon-mc mc-corporate_fare',
+    },
+    {
+      name: 'GDPR',
+      child: [
+        {
+          name: 'User Management',
+          link: "./permission/users",
+        },
+        {
+          name: 'Account Role',
+          link: "./permission/users",
+        },
+      ],
+      icon: 'icon-mc mc-corporate_fare',
+    },
+    {
+      name: 'GDPR',
+      child: [
+        {
+          name: 'User Management',
+          link: "./permission/users",
+        },
+        {
+          name: 'Account Role',
+          link: "./permission/users",
+        },
+      ],
+      icon: 'icon-mc mc-corporate_fare',
+    },
+    {
+      name: 'GDPR',
+      child: [
+        {
+          name: 'User Management',
+          link: "./permission/users",
+        },
+        {
+          name: 'Account Role',
+          link: "./permission/users",
+        },
+      ],
+      icon: 'icon-mc mc-corporate_fare',
+    },
+    {
+      name: 'GDPR',
+      child: [
+        {
+          name: 'User Management',
+          link: "./permission/users",
+        },
+        {
+          name: 'Account Role',
+          link: "./permission/users",
+        },
+      ],
+      icon: 'icon-mc mc-corporate_fare',
     }
   ]
 

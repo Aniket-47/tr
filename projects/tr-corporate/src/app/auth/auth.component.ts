@@ -19,7 +19,7 @@ export class AuthComponent implements OnInit {
 
   constructor(
     private store: Store<Iauth>) {
-    this.leftPanelImg = "assets/images/shu-Corporate-background-checks-man-ticking-boxes-130944260-1500x1000.jpg";
+    this.leftPanelImg = "assets/images/auth_page.svg";
     this.showStepper$ = this.store.select(isActiveStepper);
   }
 
