@@ -12,18 +12,18 @@
   </mat-drawer>
   <tr-d-header>
     <span class="icon-mc mc-menu header-icon" m-brand (click)="drawer.toggle()"></span>
-    <tr-search class="searchPanel cloud-only"></tr-search>  
+    <tr-search class="searchPanel cloud-only"></tr-search>
     <div class="header-icon mobile-only">
-      <span class="icon-mcf mcf-search" (click)="toggleSearch()"></span>      
+      <span class="icon-mcf mcf-search" (click)="toggleSearch()"></span>
     </div>
     <div class="action-icon" [ngClass]="{'menu-active':colorActivation}">
-      <a routerLink="./" [matMenuTriggerFor]="notify" class="header-icon" (menuClosed)="colorActivation=false"
+      <a [matMenuTriggerFor]="notify" class="header-icon" (menuClosed)="colorActivation=false"
         (menuOpened)="colorActivation=true">
         <span class="icon-mc mc-notifications" matBadge="3" matBadgePosition="after" matBadgeColor="accent"></span>
       </a>
     </div>
     <div class="active-icon" [ngClass]="{'menu-active':msgColorActivation}">
-      <a routerLink="./" [matMenuTriggerFor]="message" class="header-icon" (menuClosed)="msgColorActivation=false"
+      <a [matMenuTriggerFor]="message" class="header-icon" (menuClosed)="msgColorActivation=false"
         (menuOpened)="msgColorActivation=true">
         <span class="icon-mcf mcf-outgoing_mail"></span>
       </a>
@@ -46,7 +46,7 @@
               </div>
             </mat-expansion-panel>
           </mat-accordion>
-          
+
       </div>
       <button mat-menu-item><i class="icon-mc mc-person"></i> <span>Profile Settings</span></button>
       <!-- <button mat-menu-item><i class="icon-mc mc-switch_account"></i> <span>Accounts</span></button> -->
@@ -86,9 +86,9 @@
 
   <div *ngIf="searchToggle" (click)="toggleSearch()" class="close-search">
     <span class="icon-mc mc-x"  ></span>
-  </div>    
+  </div>
   <div class="content-wrapper">
- 
+
     <router-outlet></router-outlet>
   </div>
 </mat-drawer-container>

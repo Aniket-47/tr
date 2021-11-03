@@ -6,7 +6,7 @@ mc-side-navbar {
     &::before {
       color: black;
     }
-  }    
+  }
 }
 .border-bottom {
     padding: 1rem 0;
@@ -23,7 +23,7 @@ mc-side-navbar {
                     color: white;
                 }
             }
-        } 
+        }
         span {
             &::before {
                 color: black;
@@ -47,9 +47,9 @@ mc-side-navbar {
                     color: white;
                 }
             }
-        }    
+        }
 
-         
+
     }
 
     // hover side menu
@@ -62,7 +62,7 @@ mc-side-navbar {
                     color: white;
                 }
             }
-        } 
+        }
     }
 
 .user-dropdown {
@@ -72,7 +72,7 @@ mc-side-navbar {
     padding: 0;
     height: 30px;
     margin: 0;
-    @include media-breakpoint-down(md) { 
+    @include media-breakpoint-down(md) {
         display: none;
      }
     .user-avatar {
@@ -124,9 +124,9 @@ mc-side-navbar {
     padding: 0
 }
 
-::ng-deep .mat-menu-panel {
-    max-height: 23vh !important;
-}
+// ::ng-deep .mat-menu-panel {
+//     max-height: 23vh !important;
+// }
 
 .mat-badge-medium .mat-badge-content {
     width: 14px;
@@ -153,32 +153,32 @@ mc-side-navbar {
     &:hover{
         background-color: ($black08);
         border-radius: 50%;
-    }    
+    }
   }
-  
+
   .menu-active{
     background-color: ($black08);
     border-radius: 50%;
   }
-  
+
   .search{
     position: relative;
     &:hover{ cursor: pointer; }
-  
+
     span{
         position: relative;
         z-index: 1;
         vertical-align: sub;
     }
   }
-  
+
   .searchPanel {
     position: relative;
   }
   .m-searchPanel{display: none;}
-  
+
   @media screen and (max-width: 765px) {
-  
+
     .searchPanel { display: none; }
     .m-searchPanel{
         border-radius: 0;
