@@ -1,5 +1,7 @@
 <div class="profile-info">
     <div class="profile-form" [formGroup]="userForm">
+        <fieldset class="fieldset">
+            <legend>Basic Information</legend>
         <div>
             <mat-form-field appearance="standard">
                 <mat-label>First Name</mat-label>
@@ -24,19 +26,35 @@
                 <input matInput type="email" placeholder="Placeholder" formControlName="email">
                 </mat-form-field>
         </div>
-        <div class="account-type">
-            <p>Account Type:</p>
+    </fieldset>
+        <fieldset class="fieldset account-type">
+            <legend>Account Type:</legend>
             <mat-radio-group aria-label="Select an option" formControlName="accType">
                 <mat-radio-button [value]="1" color="primary">Staffing And Recruiting</mat-radio-button>
                 <mat-radio-button [value]="2" color="primary" class="mx-3 mt-3">Corporate</mat-radio-button>
             </mat-radio-group>
-        </div>
-        <!-- <div>
-            <mat-form-field appearance="standard">
-                <mat-label>Password</mat-label>
-                <input matInput placeholder="" type="password">
-                </mat-form-field>
-        </div> -->
+        </fieldset>
+        <fieldset class="fieldset">
+            <legend>Change Password</legend>
+            <div>
+                <mat-form-field appearance="standard">
+                    <mat-label>Old Password</mat-label>
+                    <input matInput placeholder="" type="password">
+                  </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="standard">
+                    <mat-label>New Password</mat-label>
+                    <input matInput placeholder="" type="password">
+                  </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="standard">
+                    <mat-label>Confirm Password</mat-label>
+                    <input matInput placeholder="" type="password">
+                  </mat-form-field>
+            </div>
+        </fieldset>
     </div>
     <div class="profile-image">
         <div class="img-container">

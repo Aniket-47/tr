@@ -237,9 +237,14 @@ mc-side-navbar {
     }
 
     .user-dropdown-submenu {
+        .mat-expansion-panel:not([class*=mat-elevation-z]) {
+            box-shadow: none;
+        }
         .mat-expansion-panel-header {
             border-bottom: #EBEAED 1px solid;
             padding: 0 1rem;
+            box-shadow: none;
+            border-radius: 0;
             .icon-mc {
                 padding-right: 1rem;
                 font-size: 1rem;
