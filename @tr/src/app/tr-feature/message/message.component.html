@@ -1,6 +1,6 @@
-<mc-brief-card *ngFor = 'let items of messages' style="max-height: 3vh !important; min-width: 20vw !important;">
-    <div mc-card-logo [ngClass] ="items.icon"></div>
-    <div mc-card-title> {{items.title}} </div>
+<mc-brief-card *ngFor = 'let items of messages' class="message-design-card">
+    <div mc-card-logo [ngClass] ="items.icon" class="icon"></div>
+    <div mc-card-title class="title"> {{items.title}} </div>
     <div mc-card-subtitle class="subtitle"> {{items.subtitle}} </div>
-    <div mc-card-footer class="time"> {{date|date: 'shortTime'}} </div>
+    <div mc-card-subtitle class="time"> {{date|date: 'shortTime'}} </div>
 </mc-brief-card>

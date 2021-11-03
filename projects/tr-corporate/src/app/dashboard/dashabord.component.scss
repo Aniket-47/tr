@@ -275,7 +275,8 @@ mc-side-navbar {
         text-align: center;
     }
 
-.notificationCard{
-    max-height: 3vh !important; 
-    min-width: 20vw !important;
+::ng-deep .notificationCard{
+    .mat-menu-content{        
+        max-height: 40vh !important; 
+    }
 }

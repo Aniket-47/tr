@@ -1,31 +1,47 @@
 mc-brief-card{
+  .icon{
+    padding-top: 0.7rem;
+    margin-right: 1.8rem;
+  }
   .time{
-    text-align: right;
+    color: rgb(139, 139, 139);
+    font-size: 0.75rem;
   }
 
-  .subtitle{
+  .title, .subtitle{
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    font-size: 0.8rem;
     padding-bottom: 5px;
+  }
+  .subtitle{   
+    font-size: 0.8rem;
   }
 }
 
+::ng-deep .message-design-card{
+  .mc-card-body{
+    margin-top: 0 !important;
+  }
+  .mc-card-action{
+    margin-top: 0 !important;
+  }
+  .mc-card-footer{
+    margin-top: 0 !important;
+  }
   
+  .mc-card__header-details {
+    width: 80%;
+  }
   
-  // ::ng-deep .mc-card{
-  //   min-height: 0;
-  // }
-  
-  // ::ng-deep .mc-card-body, .mc-card-action, .mc-card-footer{
-  //   margin-top: 0;
-  // }
-  
-  // ::ng-deep .mc-card__header-details {
-  //   width: 85%;
-  // }
-  
-  // ::ng-deep .mc-card-title{
-  //   font-size: 1rem;
-  // }
+  .mc-card-title{
+    font-size: 0.9rem;
+  }
+
+  .mc-card{
+    min-height: 0;
+    &:hover{
+      background-color: rgba(130, 130, 130, 0.11);
+    }
+  }
+}
