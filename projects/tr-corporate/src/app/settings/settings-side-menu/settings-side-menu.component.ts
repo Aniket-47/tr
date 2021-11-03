@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
 @Component({
   selector: 'app-settings-side-menu',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class SettingsSideMenuComponent implements OnInit {
-
+  public config: PerfectScrollbarConfigInterface = {
+    suppressScrollX: true
+  };
   parents = [
     {
       name: 'Permission',

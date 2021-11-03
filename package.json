@@ -25,6 +25,7 @@
     "@ngrx/store": "^12.5.1",
     "@ngrx/store-devtools": "^12.5.1",
     "guid-typescript": "^1.0.9",
+    "ngx-perfect-scrollbar": "^10.1.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

@@ -20,10 +20,14 @@
 
       .icon {
         font-size: .8rem;
-        margin-right: 5px;
-        padding: 0.4rem;
+        margin-right: 0.5rem;
+        padding: 0;
         background-color: $theme-secondary;
         border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        line-height: 25px;
+        text-align: center;
         &::before{
           color: $white !important;
         }

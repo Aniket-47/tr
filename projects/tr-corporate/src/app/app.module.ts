@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MaterialModule } from '@tr';
 import { AdvanceSearchModule } from './advance-search/advance-search.module';
@@ -16,6 +16,13 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { reducers } from './utility/store/reducers';
 import { AuthInterceptor } from './utility/interceptors/auth.interceptor';
 import { BusyInterceptor } from './utility/interceptors/busy.interceptor';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+
+const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+  suppressScrollX: true
+};
 
 @NgModule({
   declarations: [
@@ -28,6 +35,7 @@ import { BusyInterceptor } from './utility/interceptors/busy.interceptor';
     AdvanceSearchModule,
     HttpClientModule,
     AppRoutingModule,
+    PerfectScrollbarModule,
     StoreModule.forRoot(reducers,{}),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
@@ -44,7 +52,12 @@ import { BusyInterceptor } from './utility/interceptors/busy.interceptor';
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: BusyInterceptor, multi: true },
+    {
+      provide: PERFECT_SCROLLBAR_CONFIG,
+      useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
+    }
   ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
