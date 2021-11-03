@@ -2,6 +2,7 @@ import { environment } from '../../../environments/environment';
 
 const basePath = environment.apiDomain + '/api/v1';
 const auth = basePath + '/auth';
+const master = basePath + '/master';
 
 export const api_routes = {
   // auth module
@@ -23,6 +24,18 @@ export const secure_api_routes = {
 
   // permission
   ACCOUNT_LIST: `${auth}/user/account`,
+<<<<<<< HEAD
+  ACCOUNT:  `${basePath}/account`,
+  USER: `${auth}/user`,
+  USER_UPDATE: `${auth}/user`,
+
+  //master
+  COUNTRY_LIST: `${master}/countries`,
+  STATE_LIST: `${master}/states`,
+  CITY_LIST: `${master}/cities`,
+  INDUSTRY_LIST: `${master}/industries`
+=======
   ACCOUNT: `${auth}/account`,
   USER_LIST: `${basePath}/account/userslist`,
+>>>>>>> 7dbff004f99db9ebf2073962a4482bf61de2fbd9
 };
