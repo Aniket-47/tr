@@ -18,7 +18,7 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor(private router: Router, private lsServ: LstorageService) { }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    const accessToken = this.lsServ.getItem(LSkeys.BREARER_TOKEN);
+    const accessToken = this.lsServ.getItem(LSkeys.BEARER_TOKEN);
     let authReq
 
     if (accessToken) {
