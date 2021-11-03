@@ -124,9 +124,9 @@ mc-side-navbar {
     padding: 0
 }
 
-::ng-deep .mat-menu-panel {
-    max-height: 23vh !important;
-}
+// ::ng-deep .mat-menu-panel {
+//     max-height: 23vh !important;
+// }
 
 .mat-badge-medium .mat-badge-content {
     width: 14px;
@@ -274,3 +274,8 @@ mc-side-navbar {
         font-size: 1.5rem;
         text-align: center;
     }
+
+.notificationCard{
+    max-height: 3vh !important; 
+    min-width: 20vw !important;
+}
