@@ -1,4 +1,5 @@
 @import '~@mucrest/ng-design/assets/styles/0-plugins/plugins-dir';
+
 header {
     position: sticky;
     top: 2.5rem;
@@ -8,9 +9,9 @@ header {
 .page-header {
     display: flex;
     align-items: center;
-    @include padding(2.3rem 0 1.8rem);
+    @include padding(0 0 1.8rem);
     @include media-breakpoint-down(md) { 
-        @include padding(1.3rem 0 1.3rem);  
+        @include padding(0 0 1.3rem);  
     }
     .page-title {
         display: flex;
@@ -137,12 +138,16 @@ header {
 
 .page-action {
     margin-left: auto;
+    .mat-form-field {
+        width: 130px;
+        margin-right: 0.9rem;
+    }
    .mat-stroked-button {
     @include margin-right(1.5rem);
    }    
 }
 
-.user-management, .account-role {
+.user-management, .account-role, .page-action  {
     .mat-icon-button {
         font-size: 1rem;
     }
@@ -180,13 +185,20 @@ header {
 }
 // profile
 .profile-container {
-    max-width: 990px;
-    margin:  0 auto;
-    padding-top: 5rem;
+    // max-width: 990px;
+    // margin:  0 auto;
+    height: 100%;
+    padding: 2rem 0 0 2rem;
     @include media-breakpoint-down(md) { 
         padding: 4rem 1rem 0;
     }
+    .row {
+        height: calc(100% - 2rem);
+    }
     .left-menu {
+        padding-right: 3rem;
+        border-right: 1px solid rgba(0, 0, 0, 0.1);
+        height: 100%;
         .left-header {
             h2 {
                 @include font-size(2rem);
@@ -207,7 +219,7 @@ header {
             }
             li {
                 padding: 0;
-                margin: 0 0 .2rem 0;
+                margin: 0 0 .5rem 0;
                 @include media-breakpoint-down(md) { 
                     white-space: nowrap;
                 }
@@ -224,7 +236,16 @@ header {
                     @include media-breakpoint-down(md) { 
                         border-radius: 0;
                     }
-                    &.active, &:hover, &:focus {
+                    &:hover {
+                        background: rgba($color: $theme, $alpha: 0.8);
+                        color: $white;
+                        span {
+                            &::before {
+                                color: $white;
+                            }
+                        }
+                    }
+                    &.active, &:focus {
                         background: $theme;
                         color: $white;
                         @include media-breakpoint-down(md) { 
@@ -358,4 +379,7 @@ header {
         background-color: $white;
         padding: 0 0.5rem;
     }
+}
+.mat-menu-panel {
+    min-width: 200px !important;
 }

@@ -6,20 +6,24 @@
       </button> -->
       <h5 class="mobile-only">Permissions</h5>
       <h2>Add New Role</h2>
-      <mat-form-field appearance="outline">
-        <mat-select [(value)]="selectedStatus">
-            <mat-option *ngFor="let item of status" [value]="item.value">
-                {{item.viewValue}}
-            </mat-option>
-            </mat-select>
-      </mat-form-field>
-      <mat-form-field appearance="standard">
-          <mat-label>Type New Role Name</mat-label>
-          <input matInput placeholder="Placeholder" value="">
-      </mat-form-field>
-      <button mat-flat-button color="primary"><span class="icon-mc mc-plus"></span> Add New Role </button>
-
     </div>
+      <div class="page-action cloud-only">
+        <mat-form-field appearance="outline">
+          <mat-select [(value)]="selectedStatus">
+              <mat-option *ngFor="let item of status" [value]="item.value">
+                  {{item.viewValue}}
+              </mat-option>
+              </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>New Role Name</mat-label>
+            <input matInput placeholder="Placeholder" value="">
+        </mat-form-field>
+        <button mat-flat-button color="primary">Submit </button>
+  
+      </div>
+      
+
 
   </div>
 </header>
@@ -28,7 +32,7 @@
         <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
           <mat-expansion-panel-header>
             <mat-panel-title>
-                <mat-slide-toggle color="green" [checked]="true" (click)="onEvent($event)"></mat-slide-toggle>
+               
                 <div class="accordion-title">
                     <div>Dashboard Builder</div>
                     <div class="accordion-indicator">
@@ -38,17 +42,8 @@
                 </div>            
             </mat-panel-title>
             <mat-panel-description (click)="onEvent($event)">
-                <div class="header-action">
-              <div class="action-item">
-                <mat-checkbox color="primary">Add</mat-checkbox>
-              </div>
-              <div class="action-item">
-                <mat-checkbox color="primary">View</mat-checkbox>
-              </div>
-              <div class="action-item">
-                <mat-checkbox color="primary">Delete</mat-checkbox>
-              </div>
-            </div>
+               
+            <mat-slide-toggle color="green" [checked]="true" (click)="onEvent($event)"></mat-slide-toggle>
             </mat-panel-description>
           </mat-expansion-panel-header>
           <div class="inner-content">
@@ -122,7 +117,7 @@
         <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
           <mat-expansion-panel-header>
             <mat-panel-title>
-                <mat-slide-toggle color="green" [checked]="true"></mat-slide-toggle>
+                
                 <div class="accordion-title">
                     <div>Dashboard Module</div>
                     <div class="accordion-indicator">
@@ -132,17 +127,7 @@
                 </div>            
             </mat-panel-title>
             <mat-panel-description>
-                <div class="header-action">
-              <div class="action-item">
-                <mat-checkbox color="primary">Add</mat-checkbox>
-              </div>
-              <div class="action-item">
-                <mat-checkbox color="primary">View</mat-checkbox>
-              </div>
-              <div class="action-item">
-                <mat-checkbox color="primary">Delete</mat-checkbox>
-              </div>
-            </div>
+              <mat-slide-toggle color="green" [checked]="true"></mat-slide-toggle>
             </mat-panel-description>
           </mat-expansion-panel-header>
           <div class="inner-content">
@@ -216,7 +201,7 @@
         <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
           <mat-expansion-panel-header>
             <mat-panel-title>
-                <mat-slide-toggle color="green" [checked]="false"></mat-slide-toggle>
+               
                 <div class="accordion-title">
                     <div>Analytics</div>
                     <div class="accordion-indicator">
@@ -226,17 +211,7 @@
                 </div>            
             </mat-panel-title>
             <mat-panel-description>
-                <div class="header-action">
-              <div class="action-item">
-                <mat-checkbox color="primary">Add</mat-checkbox>
-              </div>
-              <div class="action-item">
-                <mat-checkbox color="primary">View</mat-checkbox>
-              </div>
-              <div class="action-item">
-                <mat-checkbox color="primary">Delete</mat-checkbox>
-              </div>
-            </div>
+              <mat-slide-toggle color="green" [checked]="false"></mat-slide-toggle>
             </mat-panel-description>
           </mat-expansion-panel-header>
           <div class="inner-content">
@@ -310,7 +285,7 @@
         <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)" hideToggle>
           <mat-expansion-panel-header>
             <mat-panel-title>
-                <mat-slide-toggle color="green" [checked]="true"></mat-slide-toggle>
+                
                 <div class="accordion-title">
                     <div>Other Operations</div>
                     <div class="accordion-indicator">
@@ -320,17 +295,7 @@
                 </div>            
             </mat-panel-title>
             <mat-panel-description>
-                <div class="header-action">
-              <div class="action-item">
-                <mat-checkbox color="primary">Add</mat-checkbox>
-              </div>
-              <div class="action-item">
-                <mat-checkbox color="primary">View</mat-checkbox>
-              </div>
-              <div class="action-item">
-                <mat-checkbox color="primary">Delete</mat-checkbox>
-              </div>
-            </div>
+              <mat-slide-toggle color="green" [checked]="true"></mat-slide-toggle>
             </mat-panel-description>
           </mat-expansion-panel-header>
           <div class="inner-content">

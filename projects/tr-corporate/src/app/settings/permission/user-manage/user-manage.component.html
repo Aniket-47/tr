@@ -14,15 +14,15 @@
         <h2>User Management</h2>
       </div>
       <div class="page-action cloud-only">
-        <button mat-stroked-button color="primary" [matMenuTriggerFor]="menu">Export <span
-            class="icon-mc mc-expand_more"></span></button>
         <button mat-flat-button color="primary" (click)="addUserModal()"><span class="icon-mc mc-plus"></span> Add User
         </button>
+        <!-- <button mat-stroked-button color="primary" [matMenuTriggerFor]="menu">Export <span
+            class="icon-mc mc-expand_more"></span></button>        
         <mat-menu #menu="matMenu">
           <button mat-menu-item>PDF</button>
           <button mat-menu-item>Excel</button>
           <button mat-menu-item>CSV</button>
-        </mat-menu>
+        </mat-menu> -->
       </div>
     </div>
   </header>
@@ -31,7 +31,7 @@
   <div class="user-management">
     <div class="table-header">
       <div class="table-info">2 users selected</div>
-      <div class="table-action cloud-only">
+      <!-- <div class="table-action cloud-only">
         <mat-form-field appearance="outline">
           <mat-select [(value)]="selectedStatus">
             <mat-option *ngFor="let item of status" [value]="item.value">
@@ -54,7 +54,7 @@
           </mat-select>
         </mat-form-field>
 
-      </div>
+      </div> -->
     </div>
     <table mat-table [dataSource]="dataSource">
 

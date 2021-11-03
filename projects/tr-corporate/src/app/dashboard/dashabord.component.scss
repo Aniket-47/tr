@@ -226,10 +226,10 @@ mc-side-navbar {
 }
 
 .content-wrapper {
-    margin-left: $sidenav-width;
+    padding-left: $sidenav-width;
     height: 100%;
-    margin-top: $header-height;
-    width: calc(100% - 4.375rem);
+    padding-top: $header-height;
+    width: 100%;
     @include media-breakpoint-down(md) {
         margin-left: 0;
         width: 100%;
