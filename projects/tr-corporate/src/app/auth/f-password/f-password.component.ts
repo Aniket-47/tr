@@ -1,5 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { SnackBarService } from '../../utility/services/snack-bar.service';
 import { AuthService } from '../services/auth.service';
 
 
@@ -14,7 +15,9 @@ export class FPasswordComponent implements OnInit{
   isLoading = false;
   isError = false;
 
-  constructor(private authServ: AuthService) { }
+  constructor(
+    private authServ: AuthService,
+    private snackbar: SnackBarService) { }
 
   ngOnInit(): void {
   }  
@@ -32,8 +35,13 @@ export class FPasswordComponent implements OnInit{
         this.isLoading = false;
        
         this.isError = res.error==='true'?true:false;
-        this.emailFormControl.setErrors({'customError': true})
-        this.resMessage=res.message;        
+        this.resMessage=res.message;          
+        
+        if(!this.isError) {
+          this.snackbar.open(this.resMessage, "Okay", 0)
+        } else {
+          this.emailFormControl.setErrors({'customError': true})
+        }    
       })
   }
 
