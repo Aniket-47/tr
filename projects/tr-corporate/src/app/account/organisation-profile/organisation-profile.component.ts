@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import { SnackBarService } from '../../utility/services/snack-bar.service';
 import { State } from '../../utility/store/reducers';
 import { getDefaultAccountId } from '../../utility/store/selectors/user.selector';
 import { AccountService } from '../shared/account.service';
@@ -26,6 +27,7 @@ export class OrganisationProfileComponent implements OnInit {
 	constructor(
 		private fb: FormBuilder,
 		private accoutService: AccountService,
+		private snackbarServ: SnackBarService,
 		private store: Store<State>) {
 		this.store.select(getDefaultAccountId).subscribe(data => {
 			this.accountId = data[0]?.accountid;
@@ -52,6 +54,7 @@ export class OrganisationProfileComponent implements OnInit {
 			stateid: ['', [Validators.required]],
 			cityid: ['', [Validators.required]],
 			industryid: ['', [Validators.required]],
+			accounttype: ['', [Validators.required]]
 		});
 	}
 
@@ -93,8 +96,9 @@ export class OrganisationProfileComponent implements OnInit {
 					domain: data?.domain,
 					countryid: data?.countryid,
 					stateid: data?.stateid,
-					cityid: data?.cityid,
+					cityid: +data?.cityid,
 					industryid: data?.industryid,
+					accounttype: data?.accounttype
 				});
 			}
 		});
@@ -148,8 +152,13 @@ export class OrganisationProfileComponent implements OnInit {
 			countryname,
 			industryname
 		}
+
+		if (payload.shortname) delete payload.shortname;
 		this.isLoading = true;
-		this.accoutService.updateAccount(payload, this.accountId).subscribe(res => {
+		this.accoutService.updateAccount(payload, this.accountId).subscribe((res: any) => {
+			if (res?.error) {
+				this.snackbarServ.open(res?.message, "Ok");
+			} else this.snackbarServ.open('Successfully updated', "Ok");
 			this.isLoading = false;
 		}, (err) => this.isLoading = false)
 	}

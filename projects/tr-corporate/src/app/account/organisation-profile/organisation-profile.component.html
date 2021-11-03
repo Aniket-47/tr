@@ -77,13 +77,23 @@
         </mat-error>
       </mat-form-field>
     </div>
-    <div class="col-md-6"></div>
+    <div class="col-mg-6"></div>
   </div>
-</div>
-<div class="profile-action">
-  <button mat-stroked-button>Cancel</button>
-  <button mat-flat-button color="primary" (click)="saveOrgProfile()" [disabled]="isLoading">
-    <span *ngIf="!isLoading">Save Changes</span>
-    <mat-spinner diameter="20" *ngIf="isLoading"></mat-spinner>
-  </button>
-</div>
+  <div class="row mb-3">
+    <div class="col-md-12">
+      <div class="account-type">
+        <p>Account Type</p>
+        <mat-radio-group aria-label="Select an option" formControlName="accounttype">
+          <mat-radio-button [value]="'TXT_ACT_CORP'" color="primary">Staffing And Recruiting</mat-radio-button>
+          <mat-radio-button [value]="'TXT_ACT_STAFF'" color="primary" class="mx-3 mt-3">Corporate</mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+  </div>
+  <div class="profile-action">
+    <button mat-stroked-button>Cancel</button>
+    <button mat-flat-button color="primary" (click)="saveOrgProfile()" [disabled]="isLoading">
+      <span *ngIf="!isLoading">Save Changes</span>
+      <mat-spinner diameter="20" *ngIf="isLoading" class="mx-auto"></mat-spinner>
+    </button>
+  </div>

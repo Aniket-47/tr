@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Store } from '@ngrx/store';
 import { userRoles } from '../../utility/configs/app.constants';
-import { Iuser } from '../../utility/store/interfaces/user';
-import { State } from '../../utility/store/reducers';
-import { getDefaultAccountId } from '../../utility/store/selectors/user.selector';
+import { SnackBarService } from '../../utility/services/snack-bar.service';
 import { AccountService } from '../shared/account.service';
 
 @Component({
@@ -20,7 +17,8 @@ export class ManageProfileComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private accoutService: AccountService,) {
+    private accoutService: AccountService,
+    private snackbarServ: SnackBarService) {
   }
 
   ngOnInit(): void {
@@ -36,6 +34,7 @@ export class ManageProfileComponent implements OnInit {
           firstName: user?.firstname,
           middleName: user?.middlename,
           lastName: user?.lastname,
+          mobilenumber: user?.mobilenumber
         });
       }
     });
@@ -47,7 +46,7 @@ export class ManageProfileComponent implements OnInit {
       middleName: [''],
       lastName: ['', [Validators.required]],
       email: [''],
-      accType: [],
+      mobilenumber: ['', [Validators.minLength(10)]]
     });
   }
 
@@ -63,6 +62,9 @@ export class ManageProfileComponent implements OnInit {
   get email(): AbstractControl {
     return this.userForm.get('email') as FormControl;
   }
+  get mobilenumber(): AbstractControl {
+    return this.userForm.get('mobilenumber') as FormControl;
+  }
 
   updateUser() {
     const { value, invalid } = this.userForm;
@@ -77,11 +79,14 @@ export class ManageProfileComponent implements OnInit {
       firstname: value.firstName,
       middlename: value.middleName,
       lastname: value.lastname,
-      profileimagepath: this.url ? this.url : ''
+      profileimagepath: this.url ? this.url : '',
+      mobilenumber: value.mobilenumber
     }
     this.isLoading = true;
-    this.accoutService.updateUser(payload).subscribe(res => {
-      console.log(res);
+    this.accoutService.updateUser(payload).subscribe((res: any) => {
+      if (res?.error) {
+        this.snackbarServ.open(res?.message, "Ok");
+      } else this.snackbarServ.open('Successfully updated', "Ok");
       this.isLoading = false;
     }, (err) => this.isLoading = false)
   }

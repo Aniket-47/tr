@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { LstorageService } from '@tr/src/app/utility/services/lstorage.service';
@@ -26,7 +26,7 @@ export class DashabordComponent implements OnInit {
   msgColorActivation = false;
   searchToggle = false;
   resMsgLogout: string = "";
-  isLoading$: Observable<boolean>;
+  isLoading$!: Observable<boolean>;
 
   accountList: [{ accountid: string; name: string; }] | null = null;
 
@@ -40,10 +40,10 @@ export class DashabordComponent implements OnInit {
     private lsServ: LstorageService,
     private store: Store<State>,
     private router: Router) {
-    this.isLoading$ = this.store.select(getIsLoading);
   }
 
   ngOnInit(): void {
+    this.isLoading$ = this.store.select(getIsLoading);
     this.date = new Date();
 
     this.accountListApiServ.getAccountList().subscribe(res => {
