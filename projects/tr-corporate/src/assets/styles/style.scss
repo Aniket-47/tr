@@ -1,5 +1,10 @@
 @import '~@mucrest/ng-design/assets/styles/0-plugins/plugins-dir';
-
+header {
+    position: sticky;
+    top: $header-height;
+    background-color: $white;
+    z-index: 1;
+}
 .page-header {
     display: flex;
     align-items: center;
