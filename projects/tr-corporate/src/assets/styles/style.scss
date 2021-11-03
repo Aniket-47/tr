@@ -253,7 +253,7 @@ header {
             }
         }
     }
-    .organisation-info {
+    .organisation-info, .account-security {
         @include padding(2rem);
     }
     .profile-info {
@@ -349,3 +349,9 @@ header {
   .mat-drawer-inner-container {
     overflow: hidden !important;
   }
+
+  .fieldset {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 0 1rem;
+    border-radius: 4px;
+}

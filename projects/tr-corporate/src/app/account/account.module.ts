@@ -7,13 +7,15 @@ import { MaterialModule } from '@tr';
 import { OrganisationProfileComponent } from './organisation-profile/organisation-profile.component';
 import { ManageProfileComponent } from './manage-profile/manage-profile.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AccountSecurityComponent } from './account-security/account-security.component';
 
 
 @NgModule({
   declarations: [
     AccountComponent,
     OrganisationProfileComponent,
-    ManageProfileComponent
+    ManageProfileComponent,
+    AccountSecurityComponent
   ],
   imports: [
     CommonModule,
