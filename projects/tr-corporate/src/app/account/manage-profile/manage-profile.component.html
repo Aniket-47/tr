@@ -46,6 +46,7 @@
         </mat-error>
       </mat-form-field>
     </div>
+   
     <!-- <div class="account-type">
       <p>Account Type:</p>
       <mat-radio-group aria-label="Select an option" formControlName="accType">
@@ -72,7 +73,7 @@
   </div>
 </div>
 <div class="profile-action">
-  <button mat-stroked-button>Cancel</button>
+  <button mat-stroked-button>Reset</button>
   <button mat-flat-button color="primary" (click)="updateUser()" [disabled]="isLoading">
     <span *ngIf="!isLoading">Save Changes</span>
     <mat-spinner diameter="20" *ngIf="isLoading" class="mx-auto"></mat-spinner>

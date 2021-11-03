@@ -32,8 +32,11 @@
   }
   }
   i {
+    background-color: $theme-secondary;
+    padding: .4rem;
+    border-radius: 50%;
     &::before {
-      color: $theme;
+      color: $white;
     }
   }
 

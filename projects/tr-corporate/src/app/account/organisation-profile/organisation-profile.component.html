@@ -79,7 +79,7 @@
     </div>
     <div class="col-mg-6"></div>
   </div>
-  <div class="row mb-3">
+  <div class="row">
     <div class="col-md-12">
       <div class="account-type">
         <p>Account Type</p>
@@ -91,7 +91,7 @@
     </div>
   </div>
   <div class="profile-action">
-    <button mat-stroked-button>Cancel</button>
+    <button mat-stroked-button>Reset</button>
     <button mat-flat-button color="primary" (click)="saveOrgProfile()" [disabled]="isLoading">
       <span *ngIf="!isLoading">Save Changes</span>
       <mat-spinner diameter="20" *ngIf="isLoading" class="mx-auto"></mat-spinner>

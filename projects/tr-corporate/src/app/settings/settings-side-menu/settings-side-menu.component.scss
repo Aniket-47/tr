@@ -4,7 +4,7 @@
 .settings-wrap{
   width: 250px;
   padding: 1em;
-  box-shadow: 0px 0px 1px #b4b4b4;
+  height: 100%;
 
   .nav-search {
     position: sticky;
@@ -14,16 +14,18 @@
   }
 
   .settings__element{
-    max-height: 50vh;
     overflow: auto;
     .mat-expansion-panel-header {
       padding: 0 0 0 8px;
 
       .icon {
-        font-size: 20px;
+        font-size: .8rem;
         margin-right: 5px;
+        padding: 0.4rem;
+        background-color: $theme-secondary;
+        border-radius: 50%;
         &::before{
-          color: $theme !important;
+          color: $white !important;
         }
       }
     }
@@ -48,6 +50,7 @@
 ::ng-deep .mat-expansion-panel-header-title{
   @include font-size($fs-default);
   font-weight: 400 !important;
+  align-items: center;
 }
 
 .icon {
@@ -72,7 +75,7 @@
 }
 
 .mat-expansion-panel-header.mat-expanded {
-  height: 20px !important;
+  height: 48px !important;
 }
 
 .mat-expansion-panel-header{
