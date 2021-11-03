@@ -23,5 +23,6 @@ export const secure_api_routes = {
 
   // permission
   ACCOUNT_LIST: `${auth}/user/account`,
-  ACCOUNT:  `${auth}/account`,
+  ACCOUNT: `${auth}/account`,
+  USER_LIST: `${basePath}/account/userslist`,
 };
