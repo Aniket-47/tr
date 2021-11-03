@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { SnackBarService } from '../../utility/services/snack-bar.service';
 import { AuthService } from '../services/auth.service';
 
 
@@ -12,9 +13,10 @@ export class FPasswordComponent implements OnInit {
 
   resMessage: string = "";
   isLoading = false;
-  isError = false;
 
-  constructor(private authServ: AuthService) { }
+  constructor(
+    private authServ: AuthService,
+    private snackbar: SnackBarService) { }
 
   ngOnInit(): void {
   }
@@ -29,15 +31,22 @@ export class FPasswordComponent implements OnInit {
     if (this.emailFormControl.valid) {
       this.resMessage = "";
       this.isLoading = true;
-      this.emailFormControl.markAsTouched();
 
       this.authServ.passwordForget(this.emailFormControl.value)
         .subscribe(res => {
+
           this.isLoading = false;
 
-          this.isError = res.error;
-          this.emailFormControl.setErrors({ 'customError': true })
           this.resMessage = res.message;
+
+          console.log(res.error);
+
+          if (res.error==true) {
+            this.emailFormControl.setErrors({ 'customError': true })
+          }
+          else {
+            this.snackbar.open(this.resMessage, "Okay", 0)
+          }
         })
     }
 
