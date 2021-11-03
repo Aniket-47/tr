@@ -14,6 +14,7 @@ import { ResetPassword_response, ResetPassword_request } from './../interfaces/r
 import { Guid } from 'guid-typescript';
 import { LstorageService } from '@tr/src/app/utility/services/lstorage.service';
 import { LSkeys } from '../../utility/configs/app.constants';
+import { ForgotPassword_response } from '../interfaces/forgot-password';
 
 @Injectable({
   providedIn: 'root'
@@ -47,7 +48,7 @@ export class AuthService {
   }
 
   passwordForget(email: any) {
-    return this.http.post<string>(this.api_routes.FORGOT_PASSWORD, { "email": email })
+    return this.http.post<ForgotPassword_response>(this.api_routes.FORGOT_PASSWORD, { "email": email })
   }
 
   passwordReset(token: string, data: ResetPassword_request) {

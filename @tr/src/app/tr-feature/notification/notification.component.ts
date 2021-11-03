@@ -18,11 +18,11 @@ export class NotificationComponent implements OnInit {
   notifications_data = [
     {
       icon: 'icon-mc mc-person',
-      title : 'Twitter Notifications'
+      title : 'Twitter Notifications jss j s '
     },
     {
       icon: 'icon-mc mc-person',
-      title : 'Roy tagged you'
+      title : 'Roy tagged you uysus ushs '
     },
     {
       icon: 'icon-mc mc-person',

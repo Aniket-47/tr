@@ -24,6 +24,7 @@ export const secure_api_routes = {
 
   // permission
   ACCOUNT_LIST: `${auth}/user/account`,
+<<<<<<< HEAD
   ACCOUNT:  `${basePath}/account`,
   USER: `${auth}/user`,
   USER_UPDATE: `${auth}/user`,
@@ -33,4 +34,8 @@ export const secure_api_routes = {
   STATE_LIST: `${master}/states`,
   CITY_LIST: `${master}/cities`,
   INDUSTRY_LIST: `${master}/industries`
+=======
+  ACCOUNT: `${auth}/account`,
+  USER_LIST: `${basePath}/account/userslist`,
+>>>>>>> 7dbff004f99db9ebf2073962a4482bf61de2fbd9
 };
