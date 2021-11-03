@@ -215,6 +215,7 @@ mc-side-navbar {
     background-color: transparent;
     width: 100%;
     height: 100%;
+    overflow: inherit;
     &-has-open {
     background: transparent;
     z-index: 9999;
@@ -236,9 +237,14 @@ mc-side-navbar {
     }
 
     .user-dropdown-submenu {
+        .mat-expansion-panel:not([class*=mat-elevation-z]) {
+            box-shadow: none;
+        }
         .mat-expansion-panel-header {
             border-bottom: #EBEAED 1px solid;
             padding: 0 1rem;
+            box-shadow: none;
+            border-radius: 0;
             .icon-mc {
                 padding-right: 1rem;
                 font-size: 1rem;
@@ -269,7 +275,7 @@ mc-side-navbar {
         z-index: 999;
         background-color: $white;
         width: 40px;
-        height: 56px;
+        height: 55px;
         line-height: 56px;
         font-size: 1.5rem;
         text-align: center;
