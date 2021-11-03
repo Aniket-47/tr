@@ -6,6 +6,7 @@ mc-brief-card{
   .time{
     color: rgb(139, 139, 139);
     font-size: 0.75rem;
+    text-align: right;
   }
 
   .title, .subtitle{
@@ -44,4 +45,5 @@ mc-brief-card{
       background-color: rgba(130, 130, 130, 0.11);
     }
   }
+  
 }

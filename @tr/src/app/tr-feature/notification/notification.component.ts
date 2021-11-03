@@ -21,15 +21,15 @@ export class NotificationComponent implements OnInit {
       title : 'Twitter Notifications jss j s '
     },
     {
-      icon: 'icon-mc mc-person',
+      icon: 'icon-mc mc-grading',
       title : 'Roy tagged you uysus ushs '
     },
     {
-      icon: 'icon-mc mc-person',
+      icon: 'icon-mcf mcf-book',
       title : 'Roy tagged you'
     },
     {
-      icon: 'icon-mc mc-person',
+      icon: 'icon-mcf mcf-visibility',
       title : 'Roy tagged you'
     }
   ]
