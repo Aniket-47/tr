@@ -5,8 +5,6 @@ import { MatTableDataSource } from '@angular/material/table';
 import { UserListService } from '../services/user-list.service';
 import { State } from '../../../utility/store/reducers';
 import { getDefaultAccountId } from '../../../utility/store/selectors/user.selector';
-import { MatDialog } from '@angular/material/dialog';
-import { AddUserComponent } from '../add-user/add-user.component';
 
 const ELEMENT_DATA = [
   { img: './assets/img/user.jpg', name: 'Essie Ward', email: 'lu@sa.co.uk', role: 'Admin', username: 'Essic_Ward', status: 'Active', lastupdated: '17 Apr 2021' },
@@ -24,7 +22,7 @@ export class UserManageComponent implements OnInit {
   status = [
     { value: '0', viewValue: 'Active' },
     { value: '1', viewValue: 'Inactive' },
-    { value: '2', viewValue: 'Pending' }
+    { value: '2', viewValue: 'Deactivated' }
   ];
   role = [
     { value: '0', viewValue: 'Admin' },
@@ -38,21 +36,20 @@ export class UserManageComponent implements OnInit {
   selectedStatus = this.status[0].value;
   selectedRole = this.role[0].value;
   selectedSort = this.sort[0].value;
-  displayedColumns: string[] = ['check', 'name', 'role', 'email', 'status', 'lastupdated', 'action'];
+  displayedColumns: string[] = ['check', 'name', 'role', 'lastupdated', 'action'];
   dataSource!: MatTableDataSource<any>;
 
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
 
-  constructor(private userlistserv: UserListService, private store: Store<State>, public dialog: MatDialog) {
+  constructor(private userlistserv: UserListService, private store: Store<State>) {
     this.store.select(getDefaultAccountId)
       .subscribe(s => {
         if (s.length > 0) {
           this.userlistserv.getUserList(s[0].accountid).subscribe(res => {
             console.log(res);
             this.dataSource = new MatTableDataSource(res.data)
-            this.dataSource.paginator = this.paginator;
           });
         }
       })
@@ -63,15 +60,9 @@ export class UserManageComponent implements OnInit {
 
 
   ngAfterViewInit(): void {
+    this.dataSource.paginator = this.paginator;
   }
   toggleFab() {
     this.toggle = !this.toggle;
   }
-
-  addUserModal() {
-
-    const dialogRef = this.dialog.open(AddUserComponent)
-  }
-
-
 }

@@ -94,7 +94,7 @@ table.mat-table {
     .user-info {
         display: flex;
         align-items: center;
-        @include media-breakpoint-down(md) {
+        @include media-breakpoint-down(md) { 
             margin-top: .5rem;
         }
         .user-img {
@@ -110,7 +110,7 @@ table.mat-table {
     }
 }
 .user-img-label {
-    @include media-breakpoint-up(md) {
+    @include media-breakpoint-up(md) { 
         display: none;
     }
     &::before {
@@ -122,12 +122,4 @@ table.mat-table {
         top: 0px;
         border: 2px solid $white;
     }
-}
-
-
-
-// view/edit panel
-
-mat-drawer-container{
-background: none;
 }

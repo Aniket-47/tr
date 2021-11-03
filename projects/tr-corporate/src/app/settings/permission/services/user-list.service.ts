@@ -4,6 +4,9 @@ import { Injectable } from '@angular/core';
 import { api_routes, secure_api_routes } from '../../../utility/configs/apiConfig';
 import { UtilityService } from '../../../utility/services/utility.service';
 import { UserList_request } from '../interfaces/user-list';
+import { Store } from '@ngrx/store';
+import { State } from '../../../utility/store/reducers';
+import { getDefaultAccountId } from '../../../utility/store/selectors/user.selector';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +20,12 @@ export class UserListService {
   }
 
   getUserList(accountID: string) {
-    return this.http.get<UserList_request>(this.secure_api_routes.USER_LIST, { headers: { 'accountID': accountID } })
+    return this.http.get<any>(this.secure_api_routes.USER_LIST, { headers: { 'accountID': accountID } }).pipe(
+      map(res => {
+        const data = res.data.map((e: any) => ({ ...e, lastUpdated: e["last Updated"] }))
+        return { ...res, data }
+      })
+    )
   }
 
 }

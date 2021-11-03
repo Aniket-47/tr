@@ -1,10 +1,5 @@
 @import '~@mucrest/ng-design/assets/styles/0-plugins/plugins-dir';
-header {
-    position: sticky;
-    top: 2.5rem;
-    background-color: $white;
-    z-index:2;
-}
+
 .page-header {
     display: flex;
     align-items: center;
@@ -253,7 +248,7 @@ header {
             }
         }
     }
-    .organisation-info, .account-security {
+    .organisation-info {
         @include padding(2rem);
     }
     .profile-info {
@@ -349,9 +344,3 @@ header {
   .mat-drawer-inner-container {
     overflow: hidden !important;
   }
-
-  .fieldset {
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    padding: 0 1rem;
-    border-radius: 4px;
-}

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AccountSecurityComponent } from './account-security/account-security.component';
 import { AccountComponent } from './account.component';
 import { ManageProfileComponent } from './manage-profile/manage-profile.component';
 import { OrganisationProfileComponent } from './organisation-profile/organisation-profile.component';
@@ -17,10 +16,6 @@ const routes: Routes = [
       {
         path: 'organisation-profile',
         component: OrganisationProfileComponent
-      },  
-      {
-        path: 'account-security',
-        component: AccountSecurityComponent
       },  
       {
         path:'',
