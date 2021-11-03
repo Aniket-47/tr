@@ -8,14 +8,14 @@
             <h2>Account Role</h2>
         </div>
         <div class="page-action cloud-only">
-            <button mat-stroked-button color="primary" [matMenuTriggerFor]="menu">Export <span
-                    class="icon-mc mc-expand_more"></span></button>
-            <button mat-flat-button color="primary"><span class="icon-mc mc-plus"></span> Add User </button>
-            <mat-menu #menu="matMenu">
+            <!-- <button mat-stroked-button color="primary" [matMenuTriggerFor]="menu">Export <span
+                    class="icon-mc mc-expand_more"></span></button> -->
+            <button mat-flat-button color="primary"><span class="icon-mc mc-plus"></span> Add New Role </button>
+            <!-- <mat-menu #menu="matMenu">
                 <button mat-menu-item>PDF</button>
                 <button mat-menu-item>Excel</button>
                 <button mat-menu-item>CSV</button>
-            </mat-menu>
+            </mat-menu> -->
         </div>
     </div>
 </header>
@@ -24,7 +24,7 @@
 <div class="account-role">
     <div class="table-header">
         <!-- <div class="table-info">2 users selected</div> -->
-        <div class="table-action cloud-only">
+        <!-- <div class="table-action cloud-only">
             <mat-form-field appearance="outline">
                 <mat-select [(value)]="selectedStatus">
                     <mat-option *ngFor="let item of status" [value]="item.value">
@@ -47,7 +47,7 @@
                 </mat-select>
             </mat-form-field>
 
-        </div>
+        </div> -->
     </div>
     <table mat-table [dataSource]="dataSource" matSort>
         <!-- Role Column -->
@@ -128,14 +128,14 @@
 </div>
 <div class="floating-button page-action  mobile-only">
     <div class="more-float-action-btn" [class.active]="toggle">
-        <button mat-stroked-button color="primary" [matMenuTriggerFor]="menu">Export <span
-                class="icon-mc mc-expand_more"></span></button>
-        <button mat-flat-button color="primary"><span class="icon-mc mc-plus"></span> Add User </button>
-        <mat-menu #menu="matMenu">
+        <!-- <button mat-stroked-button color="primary" [matMenuTriggerFor]="menu">Export <span
+                class="icon-mc mc-expand_more"></span></button> -->
+        <button mat-flat-button color="primary"><span class="icon-mc mc-plus"></span> Add New Role </button>
+        <!-- <mat-menu #menu="matMenu">
             <button mat-menu-item>PDF</button>
             <button mat-menu-item>Excel</button>
             <button mat-menu-item>CSV</button>
-        </mat-menu>
+        </mat-menu> -->
     </div>
     <button mat-fab color="primary" (click)="toggleFab()">
         <span class="icon-mc " [ngClass]="{'mc-plus': toggle === true, 'mc-more_vert': toggle === false }"></span>
