@@ -40,7 +40,7 @@ export class FPasswordComponent implements OnInit {
           this.resMessage = res.message;
 
 
-          if (res.error === "true")
+          if (res.error)
             this.emailFormControl.setErrors({ 'customError': true });
 
           else
