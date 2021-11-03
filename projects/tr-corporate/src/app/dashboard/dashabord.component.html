@@ -33,24 +33,25 @@
     <mat-menu #menu="matMenu" backdropClass="profile-dropdown">
       <div class="user-dropdown-submenu" (click)="onEvent($event)">
         <mat-accordion>
-            <mat-expansion-panel (opened)="panelOpenState = true"
-                                 (closed)="panelOpenState = false">
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                    <span class="icon-mc mc-layers"></span>
-                   <span> Accounts</span>
-                </mat-panel-title>
-              </mat-expansion-panel-header>
-              <div class="user-dropdown-submenu-item" *ngFor="let account of accountList">
-                <a routerLink="" routerLinkActive=""><span class="icon-mc mc-folder"></span> <span>{{ account.name }}</span></a>
-              </div>
-            </mat-expansion-panel>
-          </mat-accordion>
+          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <span class="icon-mc mc-layers"></span>
+                <span> Accounts</span>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="user-dropdown-submenu-item" *ngFor="let account of accountList">
+              <a routerLink="" routerLinkActive=""><span class="icon-mc mc-folder"></span>
+                <span>{{ account.name }}</span></a>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
 
       </div>
       <button mat-menu-item><i class="icon-mc mc-person"></i> <span>Profile Settings</span></button>
       <!-- <button mat-menu-item><i class="icon-mc mc-switch_account"></i> <span>Accounts</span></button> -->
-      <button mat-menu-item (click)="logout()"><i class="icon-mc mc-power_settings_new"></i> <span>Sign Out</span></button>
+      <button mat-menu-item (click)="logout()"><i class="icon-mc mc-power_settings_new"></i> <span>Sign
+          Out</span></button>
     </mat-menu>
     <mat-menu #notify="matMenu" backdropClass="profile-dropdown">
       <tr-notification></tr-notification>
@@ -62,6 +63,7 @@
     </mat-menu>
 
   </tr-d-header>
+
   <mc-side-navbar>
     <div class="logo" top>
       <a routerLink="./">
@@ -85,10 +87,10 @@
   <tr-search *ngIf="searchToggle" class="m-searchPanel"></tr-search>
 
   <div *ngIf="searchToggle" (click)="toggleSearch()" class="close-search">
-    <span class="icon-mc mc-x"  ></span>
+    <span class="icon-mc mc-x"></span>
   </div>
   <div class="content-wrapper">
-
+    <mat-progress-bar mode="indeterminate" *ngIf="isLoading$ | async"></mat-progress-bar>
     <router-outlet></router-outlet>
   </div>
 </mat-drawer-container>
