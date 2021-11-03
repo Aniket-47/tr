@@ -34,7 +34,7 @@ const routes: Routes = [
         component: FPasswordComponent
       },
       {
-        path: 'r-password',
+        path: 'r-password/:token',
         component: ResetPasswordComponent
       },
       {

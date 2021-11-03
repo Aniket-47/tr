@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Output, EventEmitter } from '@angular/core';
+
 
 @Component({
   selector: 'tr-m-header',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MHeaderComponent implements OnInit {
   panelOpenState = false;
+
+  @Output() logOutEvent = new EventEmitter<"">();
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  mLogOut() {
+    this.logOutEvent.emit();    
   }
 
 }

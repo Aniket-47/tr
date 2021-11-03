@@ -11,7 +11,8 @@ export const api_routes = {
   VALIDATE_EMAIL: `${auth}/validateemail`,
   VALIDATE_ACCOUNT: `${auth}/accountverification`,
   LOGIN: `${auth}/login`,
-  FORGOT_PASSWORD: `${auth}/forgotpassword`
+  FORGOT_PASSWORD: `${auth}/forgotpassword`,
+  RESET_PASSWORD: `${auth}/resetpassword/$resetPassToken`,
 };
 
 export const secure_api_routes = {
@@ -19,7 +20,6 @@ export const secure_api_routes = {
   CHANGE_PASSWORD: `${auth}/changepassword`,
   REFRESH_TOKEN: `${auth}/token/$refreshToken`,
   LOGOUT_ALL: `${auth}/logout/all`,
-  RESET_PASSWORD: `${auth}/resetpassword/$resetPassToken`,
   LOGOUT: `${auth}/logout`,
 
   // permission
