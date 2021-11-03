@@ -11,21 +11,21 @@ export class SettingsSideMenuComponent implements OnInit {
   parents = [
     {
       name: 'Permission',
-      child : [
+      child: [
         {
           name: 'User Management',
           link: "./permission/users",
         },
         {
           name: 'Account Role',
-          link: "./permission/role",
+          link: "./permission/roles",
         },
       ],
       icon: 'icon-mc mc-grading',
     },
     {
       name: 'Templates',
-      child : [
+      child: [
         {
           name: 'User Management',
           link: "./permission/users",
@@ -72,13 +72,13 @@ export class SettingsSideMenuComponent implements OnInit {
           name: 'User Management',
           link: './permission/users',
         },
-        {            
+        {
           name: 'Account Role',
           link: './permission/users',
         },
       ],
       icon: 'icon-mc mc-money',
-    }, 
+    },
     {
       name: 'Candidate Portal',
       child: [
@@ -106,7 +106,7 @@ export class SettingsSideMenuComponent implements OnInit {
         },
       ],
       icon: 'icon-mc mc-thumbs_up_down',
-    }, 
+    },
     {
       name: 'Employee Portal',
       child: [
@@ -134,7 +134,7 @@ export class SettingsSideMenuComponent implements OnInit {
         },
       ],
       icon: 'icon-mcf mcf-file_present',
-    }, 
+    },
     {
       name: 'GDPR',
       child: [
@@ -149,12 +149,12 @@ export class SettingsSideMenuComponent implements OnInit {
       ],
       icon: 'icon-mc mc-corporate_fare',
     }
-  ] 
+  ]
 
   panelOpenState = false;
 
-  constructor() {}
-  
+  constructor() { }
+
   ngOnInit(): void {
   }
 }
