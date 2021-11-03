@@ -1,8 +1,8 @@
-<mat-drawer-container [hasBackdrop]="false">
+<!-- <mat-drawer-container [hasBackdrop]="false"> -->
 
-  <mat-drawer #drawer mode="over" position="end">
+  <!-- <mat-drawer #drawer mode="over" position="end">
     <app-user-detail></app-user-detail>
-  </mat-drawer>
+  </mat-drawer> -->
 
   <header>
     <div class="page-header">
@@ -138,10 +138,10 @@
               <span class="icon-mc mc-more_horiz"></span>
             </button>
             <mat-menu #tableMenu="matMenu">
-              <button mat-menu-item (click)="drawer.toggle()">
+              <button mat-menu-item>
                 <span class="icon-mc mc-visibility"></span> View
               </button>
-              <button mat-menu-item (click)="drawer.toggle()">
+              <button mat-menu-item>
                 <span class="icon-mc mc-create"></span> Edit
               </button>
               <button mat-menu-item routerLink="">
@@ -167,7 +167,7 @@
     </mat-paginator>
   </div>
 
-</mat-drawer-container>
+<!-- </mat-drawer-container> -->
 
 <!-- Mobile View -->
 <div class="floating-button page-action  mobile-only">

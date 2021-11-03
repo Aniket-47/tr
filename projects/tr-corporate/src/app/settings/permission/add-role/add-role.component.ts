@@ -28,6 +28,13 @@ export class AddRoleComponent implements OnInit {
     {img: 'https://data.1freewallpapers.com/download/lake-mountains-forest-landscape-nature-800x600.jpg'},
   ]
 
+  status = [
+    {value: '0', viewValue: 'Active'},
+    {value: '1', viewValue: 'Inactive'},
+    {value: '2', viewValue: 'Deactivated'}
+  ];
+  selectedStatus = this.status[0].value;
+  
   constructor() { }
 
   ngOnInit(): void {

@@ -6,6 +6,19 @@
       </button> -->
       <h5 class="mobile-only">Permissions</h5>
       <h2>Add New Role</h2>
+      <mat-form-field appearance="outline">
+        <mat-select [(value)]="selectedStatus">
+            <mat-option *ngFor="let item of status" [value]="item.value">
+                {{item.viewValue}}
+            </mat-option>
+            </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="standard">
+          <mat-label>Type New Role Name</mat-label>
+          <input matInput placeholder="Placeholder" value="">
+      </mat-form-field>
+      <button mat-flat-button color="primary"><span class="icon-mc mc-plus"></span> Add New Role </button>
+
     </div>
 
   </div>
