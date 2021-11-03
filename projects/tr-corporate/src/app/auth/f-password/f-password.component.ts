@@ -39,14 +39,13 @@ export class FPasswordComponent implements OnInit {
 
           this.resMessage = res.message;
 
-          console.log(res.error);
 
-          if (res.error==true) {
-            this.emailFormControl.setErrors({ 'customError': true })
-          }
-          else {
-            this.snackbar.open(this.resMessage, "Okay", 0)
-          }
+          if (res.error === "true")
+            this.emailFormControl.setErrors({ 'customError': true });
+
+          else
+            this.snackbar.open(this.resMessage, "Okay", 0);
+
         })
     }
 
