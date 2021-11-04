@@ -1,3 +1,13 @@
+
+  <mat-drawer-container autosize class="right-drawer">
+    <mat-drawer #drawer mode="over" class="drawer-container add-new-role-container" position="end">
+      <button mat-icon-button (click)="drawer.toggle()" class="close-btn">
+        <span class="icon-mc mc-x"></span>
+      </button>
+      <app-add-role></app-add-role>
+    </mat-drawer>
+
+
 <header>
   <div class="page-header">
     <div class="page-title">
@@ -10,7 +20,7 @@
         <div class="page-action cloud-only">
             <!-- <button mat-stroked-button color="primary" [matMenuTriggerFor]="menu">Export <span
                     class="icon-mc mc-expand_more"></span></button> -->
-            <button mat-flat-button color="primary"><span class="icon-mc mc-plus"></span> Add New Role </button>
+            <button mat-flat-button color="primary" (click)="drawer.toggle()"><span class="icon-mc mc-plus"></span> Add New Role </button>
             <!-- <mat-menu #menu="matMenu">
                 <button mat-menu-item>PDF</button>
                 <button mat-menu-item>Excel</button>
@@ -49,7 +59,8 @@
 
         </div> -->
     </div>
-    <table mat-table [dataSource]="dataSource" matSort>
+    <div class="table-container">
+      <table mat-table [dataSource]="dataSource" matSort>
         <!-- Role Column -->
         <ng-container matColumnDef="role">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Account Roles </th>
@@ -110,7 +121,7 @@
           </button>
         </div>
         <div class="mobile-only">
-          <button mat-icon-button [matMenuTriggerFor]="menu"><span class="icon-mc mc-more_vert"></span></button>
+          <button mat-icon-button [matMenuTriggerFor]="menu" class="right-btn"><span class="icon-mc mc-more_vert"></span></button>
           <mat-menu #menu="matMenu">
             <button mat-menu-item><span class="icon-mc mc-create"></span> Edit</button>
             <button mat-menu-item><span class="icon-mc mc-delete" *ngIf=""></span> Delete</button>
@@ -119,9 +130,11 @@
       </td>
     </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
+    </div>
+    
 
   <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
   </mat-paginator> -->
@@ -143,3 +156,5 @@
         <span class="icon-mc " [ngClass]="{'mc-plus': toggle === true, 'mc-more_vert': toggle === false }"></span>
     </button>
 </div>
+
+</mat-drawer-container>

@@ -28,11 +28,12 @@
             width: 50%;
             justify-content: flex-end;
             align-items: center;
+            margin-right: 0;
         }
         }
         
         ::ng-deep &-body {
-            padding: 0;
+            padding: 0 !important;
             background: #fcfcfc;
         }
     }
@@ -57,7 +58,7 @@
         }
     }
 .mat-slide-toggle {
-    margin-right: 1rem;
+    margin-left: auto;
 }
 }
 .header-action {
@@ -94,7 +95,7 @@
         border: 0;
     }
     .role-title {
-        width: 50%;
+        width: 100%;
         margin-right: 16px;
         font-size: 1rem;
     }
