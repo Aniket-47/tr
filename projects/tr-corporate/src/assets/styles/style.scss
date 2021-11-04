@@ -417,3 +417,8 @@ mat-drawer-container{
             background-color: transparent;
         }
     }
+
+.table-container{
+    height: calc(100vh - 280px);
+    overflow: auto;
+}
