@@ -1,9 +1,9 @@
 <!-- <mat-drawer-container [hasBackdrop]="false"> -->
 
-  <!-- <mat-drawer #drawer mode="over" position="end">
+<!-- <mat-drawer #drawer mode="over" position="end">
     <app-user-detail></app-user-detail>
   </mat-drawer> -->
-
+<div #modalRefElement>
   <header>
     <div class="page-header">
       <div class="page-title">
@@ -14,10 +14,11 @@
         <h2>User Management</h2>
       </div>
       <div class="page-action cloud-only">
-        <button mat-flat-button color="primary" (click)="addUserModal()"><span class="icon-mc  mc-user-plus"></span> Add User
+        <button mat-flat-button color="primary" (click)="addUserModal()"><span class="icon-mc  mc-user-plus"></span> Add
+          User
         </button>
         <!-- <button mat-stroked-button color="primary" [matMenuTriggerFor]="menu">Export <span
-            class="icon-mc mc-expand_more"></span></button>        
+            class="icon-mc mc-expand_more"></span></button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item>PDF</button>
           <button mat-menu-item>Excel</button>
@@ -114,7 +115,7 @@
           <mat-label class="status" [ngClass]="{
               'success': element.status === 'Active',
               'warning': element.status === 'Inactive',
-              'danger': element.status === 'Deactivated'
+              'danger': element.status === 'Pending'
             }">{{element.status}} </mat-label>
         </td>
       </ng-container>
@@ -138,13 +139,13 @@
               <span class="icon-mc mc-more_horiz"></span>
             </button>
             <mat-menu #tableMenu="matMenu">
-              <button mat-menu-item>
+              <button mat-menu-item (click)="editUserModal()">
                 <span class="icon-mc mc-visibility"></span> View
               </button>
-              <button mat-menu-item>
+              <button mat-menu-item (click)="editUserModal()">
                 <span class="icon-mc mc-create"></span> Edit
               </button>
-              <button mat-menu-item routerLink="">
+              <button mat-menu-item (click)="editUserModal()" routerLink="">
                 <span class="icon-mc mc-delete"></span> Delete
               </button>
             </mat-menu>
@@ -166,7 +167,7 @@
     <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
     </mat-paginator>
   </div>
-
+</div>
 <!-- </mat-drawer-container> -->
 
 <!-- Mobile View -->
@@ -174,7 +175,8 @@
   <div class="more-float-action-btn" [class.active]="toggle">
     <button mat-stroked-button color="primary" [matMenuTriggerFor]="menu">Export <span
         class="icon-mc mc-expand_more"></span></button>
-    <button mat-flat-button color="primary" (click)="addUserModal()"><span class="icon-mc  mc-user-plus"></span> Add User
+    <button mat-flat-button color="primary" (click)="addUserModal()"><span class="icon-mc  mc-user-plus"></span> Add
+      User
     </button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item>PDF</button>
