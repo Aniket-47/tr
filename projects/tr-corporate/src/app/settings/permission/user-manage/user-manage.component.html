@@ -1,9 +1,10 @@
-<!-- <mat-drawer-container [hasBackdrop]="false"> -->
 
-<!-- <mat-drawer #drawer mode="over" position="end">
-    <app-user-detail></app-user-detail>
-  </mat-drawer> -->
-<div #modalRefElement>
+  <mat-drawer-container autosize class="right-drawer">
+    <mat-drawer #drawer mode="over" class="drawer-container" position="end">
+      <p>Auto-resizing sidenav</p>
+    </mat-drawer>
+
+    <div class="example-sidenav-content">
   <header>
     <div class="page-header">
       <div class="page-title">
@@ -138,16 +139,18 @@
             <button mat-icon-button [matMenuTriggerFor]="tableMenu">
               <span class="icon-mc mc-more_horiz"></span>
             </button>
-            <mat-menu #tableMenu="matMenu">
-              <button mat-menu-item (click)="editUserModal()">
-                <span class="icon-mc mc-visibility"></span> View
+            <mat-menu #tableMenu="matMenu" backdropClass="profile-dropdown">
+              <div class="user-dropdown-submenu">
+              <button mat-menu-item (click)="drawer.toggle()">
+                <i class="icon-mc mc-visibility"></i> <span>View</span>
               </button>
-              <button mat-menu-item (click)="editUserModal()">
-                <span class="icon-mc mc-create"></span> Edit
+              <button mat-menu-item>
+                <i class="icon-mc mc-create"></i> <span>Edit</span>
               </button>
-              <button mat-menu-item (click)="editUserModal()" routerLink="">
-                <span class="icon-mc mc-delete"></span> Delete
+              <button mat-menu-item routerLink="">
+                <i class="icon-mc mc-delete"></i> <span>Delete</span>
               </button>
+              </div>
             </mat-menu>
           </div>
           <div class="mobile-only">
@@ -167,8 +170,6 @@
     <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
     </mat-paginator>
   </div>
-</div>
-<!-- </mat-drawer-container> -->
 
 <!-- Mobile View -->
 <div class="floating-button page-action  mobile-only">
@@ -188,3 +189,11 @@
     <span class="icon-mc " [ngClass]="{'mc-plus': toggle === true, 'mc-more_vert': toggle === false }"></span>
   </button>
 </div>
+
+
+
+
+
+  </div>
+
+</mat-drawer-container>
