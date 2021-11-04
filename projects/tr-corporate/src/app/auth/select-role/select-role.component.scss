@@ -51,4 +51,22 @@
       margin: 0;
     }
   }
+
+  ::ng-deep .mc-card:hover{
+    border: 1px solid #1F47F5;
+  }
+
+  .color-main-red{
+    color: #EE4540;
+  }
+  .color-main-red::before{
+    color: #EE4540;
+  }
+
+  .color-main-purple{
+    color: #0049E6;
+  }
+  .color-main-purple::before{
+    color: #0049E6;
+  }
 }
