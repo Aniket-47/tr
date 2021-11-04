@@ -231,6 +231,7 @@ mc-side-navbar {
     padding-top: $header-height;
     width: 100%;
     @include media-breakpoint-down(md) {
+        padding-left: 0;
         margin-left: 0;
         width: 100%;
      }
