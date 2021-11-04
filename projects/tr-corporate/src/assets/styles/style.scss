@@ -201,7 +201,7 @@ header {
         height: 100%;
         .left-header {
             h2 {
-                @include font-size(2rem);
+                @include font-size(1.7rem);
                 font-weight: 400;
                 @include margin-bottom(1rem);
             }

@@ -70,7 +70,7 @@ export class UserManageComponent implements OnInit {
 
   addUserModal() {
 
-    const dialogRef = this.dialog.open(AddUserComponent)
+    const dialogRef = this.dialog.open(AddUserComponent,{width: '50vw'})
   }
 
 
