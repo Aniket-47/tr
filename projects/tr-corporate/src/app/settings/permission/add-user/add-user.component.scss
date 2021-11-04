@@ -6,16 +6,11 @@
 .add-user{
     h2 {
         font-family: 'Manrope', sans-serif;
-        @include font-size(2rem);
-    
-        line-height: 2.5rem;
-    
-        font-weight: 400;
-    
-        color: $title;
-    
-        margin-bottom: 1.5rem;
-    
+        @include font-size(2rem);    
+        line-height: 2.5rem;    
+        font-weight: 400;    
+        color: $title;    
+        margin-bottom: 0;    
       }
     
       p {

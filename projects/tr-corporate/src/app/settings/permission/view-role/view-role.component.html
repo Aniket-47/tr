@@ -1,3 +1,10 @@
+
+  <mat-drawer-container autosize class="right-drawer">
+    <mat-drawer #drawer mode="over" class="drawer-container" position="end">
+      <p>Auto-resizing sidenav</p>
+    </mat-drawer>
+
+
 <header>
   <div class="page-header">
     <div class="page-title">
@@ -10,7 +17,7 @@
         <div class="page-action cloud-only">
             <!-- <button mat-stroked-button color="primary" [matMenuTriggerFor]="menu">Export <span
                     class="icon-mc mc-expand_more"></span></button> -->
-            <button mat-flat-button color="primary"><span class="icon-mc mc-plus"></span> Add New Role </button>
+            <button mat-flat-button color="primary" (click)="drawer.toggle()"><span class="icon-mc mc-plus"></span> Add New Role </button>
             <!-- <mat-menu #menu="matMenu">
                 <button mat-menu-item>PDF</button>
                 <button mat-menu-item>Excel</button>
@@ -143,3 +150,5 @@
         <span class="icon-mc " [ngClass]="{'mc-plus': toggle === true, 'mc-more_vert': toggle === false }"></span>
     </button>
 </div>
+
+</mat-drawer-container>
