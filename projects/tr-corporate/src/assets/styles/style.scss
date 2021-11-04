@@ -408,10 +408,10 @@ mat-drawer-container{
             position: fixed;
             right: 0px;
             top: 0px;
-            padding-top: 3.8rem;
+            padding-top: 5rem;
             padding-left: 1rem;
             padding-right: 1rem;
-            min-width: 350px;
+            width: 350px;
         }    
         .mat-drawer-backdrop.mat-drawer-shown {
             background-color: transparent;
@@ -421,4 +421,46 @@ mat-drawer-container{
 .table-container{
     height: calc(100vh - 280px);
     overflow: auto;
+}
+
+.add-new-role-container {
+    .page-header {
+            flex-direction: column;
+            padding-bottom: 0 !important;
+            align-items: flex-start;
+            .page-title {
+                margin-bottom: 1rem;
+            }
+    }
+    .page-action {
+        .mat-form-field[appearance=outline]:first-child, 
+        .mat-form-field[appearance=outline]:nth-child(2) {
+        width: 100%;
+        margin-bottom: 1rem;
+        margin-right: 0;
+    }
+    .mat-flat-button[color=primary] {
+        position: fixed;
+        bottom: 1rem;
+        right: 1rem;
+        width: calc(350px - 2rem);
+    }
+}
+.accordion-container {
+    height: calc(100vh - 300px);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.mat-expansion-panel-header {
+    padding: 0 1rem;
+}
+.mat-expansion-panel-header-title {
+    width: 100% !important;
+}
+.mat-expansion-panel-header-description {
+    margin-right: 0;
+}
+.mat-slide-toggle {
+    margin-right: 0 !important;
+}
 }

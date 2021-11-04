@@ -87,3 +87,13 @@ table.mat-table {
 
 }
 }
+.right-btn {
+    position: absolute;
+    right: 0;
+}
+.close-btn {
+    position: absolute;
+    top: 4rem;
+    z-index: 9;
+    right: 1rem;
+}
