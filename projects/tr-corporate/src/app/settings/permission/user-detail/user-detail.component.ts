@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-// mat Dialog
-import { MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-user-detail',
@@ -12,12 +10,10 @@ export class UserDetailComponent implements OnInit {
 
   edit: boolean = false;
 
-  constructor(private dialogRef: MatDialogRef<UserDetailComponent>) { }
+  constructor() { }
 
   ngOnInit(): void {
-    const matDialogConfig = new MatDialogConfig();
-    matDialogConfig.position = { right: `0px` };
-    this.dialogRef.updatePosition(matDialogConfig.position);
+
   }
 
 }

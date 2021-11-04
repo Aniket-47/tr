@@ -12,7 +12,6 @@ import { MatTableDataSource } from '@angular/material/table';
 // Mat modal
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AddUserComponent } from '../add-user/add-user.component';
-import { UserDetailComponent } from '../user-detail/user-detail.component';
 
 // Services
 import { UserListService } from '../services/user-list.service';
@@ -50,7 +49,6 @@ export class UserManageComponent implements OnInit {
   displayedColumns: string[] = ['check', 'name', 'role', 'email', 'status', 'lastupdated', 'action'];
   dataSource!: MatTableDataSource<any>;
   addUserModalRef!: MatDialogRef<AddUserComponent>;
-  editUserModalRef!: MatDialogRef<UserDetailComponent>;
 
 
   @ViewChild(MatPaginator)
@@ -85,8 +83,5 @@ export class UserManageComponent implements OnInit {
     this.addUserModalRef = this.dialog.open(AddUserComponent, { width: '50vw' })
   }
 
-  editUserModal() {
-    this.editUserModalRef = this.dialog.open(UserDetailComponent, { hasBackdrop: false, panelClass: "editUserModal" })
-  }
 
 }
