@@ -1,32 +1,33 @@
+<mat-drawer-container autosize class="right-drawer">
+  <mat-drawer #drawer mode="over" class="drawer-container" position="end">
+    <app-user-detail></app-user-detail>
+  </mat-drawer>
 
-  <mat-drawer-container autosize class="right-drawer">
-    <mat-drawer #drawer mode="over" class="drawer-container" position="end">
-      <p>Auto-resizing sidenav</p>
-    </mat-drawer>
-  
-    <div class="example-sidenav-content">
-  <header>
-    <div class="page-header">
-      <div class="page-title">
-        <!-- <button mat-icon-button>
+  <div class="example-sidenav-content">
+    <header>
+      <div class="page-header">
+        <div class="page-title">
+          <!-- <button mat-icon-button>
           <span class="mc-back-arrow"></span>
         </button> -->
-        <h5 class="mobile-only">Permissions</h5>
-        <h2>User Management</h2>
-      </div>
-      <div class="page-action cloud-only">
-        <button mat-flat-button color="primary" (click)="addUserModal()"><span class="icon-mc  mc-user-plus"></span> Add User
-        </button>
-        <!-- <button mat-stroked-button color="primary" [matMenuTriggerFor]="menu">Export <span
-            class="icon-mc mc-expand_more"></span></button>        
+          <h5 class="mobile-only">Permissions</h5>
+          <h2>User Management</h2>
+        </div>
+        <div class="page-action cloud-only">
+          <button mat-flat-button color="primary" (click)="addUserModal()"><span class="icon-mc  mc-user-plus"></span>
+            Add
+            User
+          </button>
+          <!-- <button mat-stroked-button color="primary" [matMenuTriggerFor]="menu">Export <span
+            class="icon-mc mc-expand_more"></span></button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item>PDF</button>
           <button mat-menu-item>Excel</button>
           <button mat-menu-item>CSV</button>
         </mat-menu> -->
+        </div>
       </div>
-    </div>
-  </header>
+    </header>
 
   <!-- Desktop view -->
   <div class="user-management">
@@ -174,7 +175,7 @@
 
 
 <!-- Mobile View -->
-<div class="floating-button page-action  mobile-only">
+<!-- <div class="floating-button page-action  mobile-only">
   <div class="more-float-action-btn" [class.active]="toggle">
     <button mat-stroked-button color="primary" [matMenuTriggerFor]="menu">Export <span
         class="icon-mc mc-expand_more"></span></button>
@@ -189,11 +190,35 @@
   <button mat-fab color="primary" (click)="toggleFab()">
     <span class="icon-mc " [ngClass]="{'mc-plus': toggle === true, 'mc-more_vert': toggle === false }"></span>
   </button>
-</div>
+</div> -->
 
 
+        <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
 
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
+      </mat-paginator>
+    </div> -->
 
+    <!-- Mobile View -->
+    <div class="floating-button page-action  mobile-only">
+      <div class="more-float-action-btn" [class.active]="toggle">
+        <button mat-stroked-button color="primary" [matMenuTriggerFor]="menu">Export <span
+            class="icon-mc mc-expand_more"></span></button>
+        <button mat-flat-button color="primary" (click)="addUserModal()"><span class="icon-mc  mc-user-plus"></span> Add
+          User
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>PDF</button>
+          <button mat-menu-item>Excel</button>
+          <button mat-menu-item>CSV</button>
+        </mat-menu>
+      </div>
+      <button mat-fab color="primary" (click)="toggleFab()">
+        <span class="icon-mc " [ngClass]="{'mc-plus': toggle === true, 'mc-more_vert': toggle === false }"></span>
+      </button>
+    </div>
 
   </div>
 
