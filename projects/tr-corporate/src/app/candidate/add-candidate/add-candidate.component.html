@@ -1,120 +1,31 @@
-<div class="container">
-    <div class="col-lg-12 mx-auto mt-5 pt-5">
-        <div class="card-rndd">
-            <div class="p-4">
-                <div class="d-flex">
-                    <mat-icon color="primary" class="me-2">person</mat-icon>
-                    <h2 class="align-self-center">Personal details</h2>
-                </div>
-    
-                <div class="mt-4">
-                    <img matBadge="15" matBadgeColor="warn" class="img-widt" src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-                    <!-- Include text description of the icon's meaning for screen-readers -->
-                    <span class="cdk-visually-hidden">
-                    Example with a home icon with overlaid badge showing the number 15
-                    </span>
-                </div>
-            </div>
-        
-            <div class="p-4">
+<div class="container mt-5 mb-3 pt-2">
+  <div class="card-rndd">
+    <div class="p-4">
+      <div class="d-flex">
+        <mat-icon color="primary" class="me-2">person</mat-icon>
+        <h2 class="align-self-center">Personal details</h2>
+    </div>
+
+    <div class="mt-4">
+        <div>
+          <mat-icon matBadge="15" matBadgeColor="warn" color="primary" style="font-size: 100px;">circle</mat-icon>
+          <!-- Include text description of the icon's meaning for screen-readers -->
+          <span class="cdk-visually-hidden">
+            Example with a home icon with overlaid badge showing the number 15
+          </span>
+        </div>
+        <!-- Include text description of the icon's meaning for screen-readers -->
+        <span class="cdk-visually-hidden">
+        Example with a home icon with overlaid badge showing the number 15
+        </span>
+    </div>
+
+      <div class="row">
+          <div class="col-lg-4 mt-2">
               <div class="row">
-                  <div class="col-lg-4">
-                        <label>First name</label>
-                      <div class="row">
-                          <div class="col-lg-4 mt-2">
-                            <mat-form-field appearance="outline" class="w-100">
-                                <mat-label>Within 50 ml</mat-label>
-                                <mat-select>
-                                  <mat-option *ngFor="let food of foods" [value]="food.value">
-                                    {{food.viewValue}}
-                                  </mat-option>
-                                </mat-select>
-                              </mat-form-field>
-                          </div>
-                          <div class="col-lg-8 mt-2">
-                            <mat-form-field appearance="outline" class="w-100">
-                                <mat-label>First name</mat-label>
-                                <input matInput placeholder="xyz">
-                                <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
-                            </mat-form-field>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-lg-4 mt-2">
-                    <label>Midle name</label>
+                  <div class="col-lg-3">
                     <mat-form-field appearance="outline" class="w-100">
-                        <mat-label>Midle name</mat-label>
-                        <input matInput placeholder="xyz">
-                        <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
-                    </mat-form-field>
-                  </div>
-                  <div class="col-lg-4 mt-2">
-                    <label>Last name</label>
-                    <mat-form-field appearance="outline" class="w-100">
-                        <mat-label>Last name</mat-label>
-                        <input matInput placeholder="xyz">
-                        <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
-                    </mat-form-field>
-                  </div>
-
-                  <div class="col-lg-4 mt-2">
-                    <label>First name</label>
-                    <mat-form-field appearance="outline" class="w-100">
-                        <mat-label>First name</mat-label>
-                        <input matInput placeholder="xyz">
-                        <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
-                    </mat-form-field>
-                  </div>
-                  <div class="col-lg-4">
-                    <label>First name</label>
-                    <div class="row">
-                        <div class="col-lg-4 mt-2">
-                            <mat-form-field appearance="outline" class="w-100">
-                                <mat-label>Within 50 ml</mat-label>
-                                <mat-select>
-                                <mat-option *ngFor="let food of foods" [value]="food.value">
-                                    {{food.viewValue}}
-                                </mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </div>
-                        <div class="col-lg-8 mt-2">
-                            <mat-form-field appearance="outline" class="w-100">
-                                <mat-label>First name</mat-label>
-                                <input matInput placeholder="xyz">
-                                <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
-                            </mat-form-field>
-                        </div>
-                    </div>
-                </div>
-                  <div class="col-lg-4 mt-4">
-                    <mat-form-field appearance="outline" class="w-100">
-                        <mat-label>Last name</mat-label>
-                        <input matInput placeholder="xyz">
-                        <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
-                    </mat-form-field>
-                  </div>
-
-                  <div class="col-lg-4 mt-2">
-                    <label>First name</label><br><br>
-                    <mat-radio-group aria-label="Select an option" class="mt-4">
-                        <mat-radio-button color="primary" class="me-3" value="1">Male</mat-radio-button>
-                        <mat-radio-button color="primary" class="me-3" value="2">Female</mat-radio-button>
-                        <mat-radio-button color="primary" value="3">Other</mat-radio-button>
-                      </mat-radio-group>
-                  </div>
-                  <div class="col-lg-4 mt-2">
-                    <label>Midle name</label>
-                    <mat-form-field appearance="outline" class="w-100">
-                        <mat-label>Midle name</mat-label>
-                        <input matInput placeholder="xyz">
-                        <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
-                    </mat-form-field>
-                  </div>
-                  <div class="col-lg-4 mt-2">
-                    <label>Last name</label>
-                    <mat-form-field appearance="outline" class="w-100">
-                        <mat-label>Within 50 ml</mat-label>
+                        <mat-label>Mr</mat-label>
                         <mat-select>
                           <mat-option *ngFor="let food of foods" [value]="food.value">
                             {{food.viewValue}}
@@ -122,175 +33,664 @@
                         </mat-select>
                       </mat-form-field>
                   </div>
-
-                  <div class="col-12 mt-2">
-                    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-                        <!-- Checkbox Column -->
-                        <ng-container matColumnDef="select">
-                          <th mat-header-cell *matHeaderCellDef>
-                            <mat-checkbox (change)="$event ? masterToggle() : null"
-                                          [checked]="selection.hasValue() && isAllSelected()"
-                                          [indeterminate]="selection.hasValue() && !isAllSelected()"
-                                          [aria-label]="checkboxLabel()">
-                            </mat-checkbox>
-                          </th>
-                          <td mat-cell *matCellDef="let row">
-                            <mat-checkbox (click)="$event.stopPropagation()"
-                                          (change)="$event ? selection.toggle(row) : null"
-                                          [checked]="selection.isSelected(row)"
-                                          [aria-label]="checkboxLabel(row)">
-                            </mat-checkbox>
-                          </td>
-                        </ng-container>
-                      
-                        <!-- Position Column -->
-                        <ng-container matColumnDef="position">
-                          <th mat-header-cell *matHeaderCellDef> No. </th>
-                          <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-                        </ng-container>
-                      
-                        <!-- Name Column -->
-                        <ng-container matColumnDef="name">
-                          <th mat-header-cell *matHeaderCellDef> Name </th>
-                          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-                        </ng-container>
-                      
-                        <!-- Weight Column -->
-                        <ng-container matColumnDef="weight">
-                          <th mat-header-cell *matHeaderCellDef> Weight </th>
-                          <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
-                        </ng-container>
-                      
-                        <!-- Symbol Column -->
-                        <ng-container matColumnDef="symbol">
-                          <th mat-header-cell *matHeaderCellDef> Symbol </th>
-                          <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-                        </ng-container>
-                      
-                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"
-                            (click)="selection.toggle(row)">
-                        </tr>
-                      </table>
-                  </div>
-
-                  <div class="col-lg-4 mt-2">
-                    <label>First name</label>
+                  <div class="col-lg-9">
                     <mat-form-field appearance="outline" class="w-100">
                         <mat-label>First name</mat-label>
-                        <input matInput placeholder="xyz">
-                        <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
-                    </mat-form-field>
-                  </div>
-                  <div class="col-lg-4 mt-2">
-                    <label>Last name</label>
-                    <mat-form-field appearance="outline" class="w-100">
-                        <mat-label>Within 50 ml</mat-label>
-                        <mat-select>
-                          <mat-option *ngFor="let food of foods" [value]="food.value">
-                            {{food.viewValue}}
-                          </mat-option>
-                        </mat-select>
-                      </mat-form-field>
-                  </div>
-                  <div class="col-lg-4 mt-2">
-                    <label>Last name</label>
-                    <mat-form-field appearance="outline" class="w-100">
-                        <mat-label>Within 50 ml</mat-label>
-                        <mat-select>
-                          <mat-option *ngFor="let food of foods" [value]="food.value">
-                            {{food.viewValue}}
-                          </mat-option>
-                        </mat-select>
-                      </mat-form-field>
-                  </div>
-
-                  <div class="col-lg-4 mt-2">
-                    <label>First name</label>
-                    <mat-form-field appearance="outline" class="w-100">
-                        <mat-label>First name</mat-label>
-                        <input matInput placeholder="xyz">
-                        <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
-                    </mat-form-field>
-                  </div>
-                  <div class="col-lg-8 mt-2">
-                    <label>Midle name</label>
-                    <mat-form-field appearance="outline" class="w-100">
-                        <mat-label>Midle name</mat-label>
-                        <input matInput placeholder="xyz">
-                        <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
-                    </mat-form-field>
-                  </div>
-
-                  <div class="col-12 mt-2">
-                    <label>Midle name</label>
-                    <mat-form-field appearance="outline" class="w-100">
-                        <mat-label>Midle name</mat-label>
-                        <input matInput placeholder="xyz">
-                        <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
-                    </mat-form-field>
-                  </div>
-                  <div class="col-12 mt-2">
-                    <label>Midle name</label>
-                    <mat-form-field appearance="outline" class="w-100">
-                        <mat-label>Midle name</mat-label>
-                        <input matInput placeholder="xyz">
-                        <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
-                    </mat-form-field>
-                  </div>
-
-                  <div class="col-lg-4 mt-2">
-                    <label>First name</label>
-                    <mat-form-field appearance="outline" class="w-100">
-                        <mat-label>First name</mat-label>
-                        <input matInput placeholder="xyz">
-                        <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
-                    </mat-form-field>
-                  </div>
-                  <div class="col-lg-4 mt-2">
-                    <label>Midle name</label>
-                    <mat-form-field appearance="outline" class="w-100">
-                        <mat-label>Midle name</mat-label>
-                        <input matInput placeholder="xyz">
-                        <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
-                    </mat-form-field>
-                  </div>
-                  <div class="col-lg-4 mt-2">
-                    <label>Last name</label>
-                    <mat-form-field appearance="outline" class="w-100">
-                        <mat-label>Last name</mat-label>
-                        <input matInput placeholder="xyz">
-                        <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
-                    </mat-form-field>
-                  </div>
-
-                  <div class="col-12 mt-2">
-                    <label>Midle name</label>
-                    <mat-form-field appearance="outline" class="w-100">
-                        <mat-label>Midle name</mat-label>
-                        <input matInput placeholder="xyz">
-                        <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
-                    </mat-form-field>
-                  </div>
-                  <div class="col-12 mt-2">
-                    <label>Midle name</label>
-                    <mat-form-field appearance="outline" class="w-100">
-                        <mat-label>Midle name</mat-label>
-                        <input matInput placeholder="xyz">
-                        <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
-                    </mat-form-field>
-                  </div>
-                  <div class="col-12 mt-2">
-                    <label>Midle name</label>
-                    <mat-form-field appearance="outline" class="w-100">
-                        <mat-label>Midle name</mat-label>
                         <input matInput placeholder="xyz">
                         <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
                     </mat-form-field>
                   </div>
               </div>
+          </div>
+          <div class="col-lg-4 mt-2">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Middle name</mat-label>
+                <input matInput placeholder="xyz">
+                <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
+            </mat-form-field>
+          </div>
+          <div class="col-lg-4 mt-2">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Last name</mat-label>
+                <input matInput placeholder="xyz">
+                <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-4 mt-2">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Email Address</mat-label>
+                <input matInput placeholder="Deinil@gmail.com">
+                <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
+            </mat-form-field>
+          </div>
+          <div class="col-lg-4 mt-2">
+            <div class="row">
+                <div class="col-lg-4">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>91</mat-label>
+                        <mat-select>
+                        <mat-option *ngFor="let food of foods" [value]="food.value">
+                            {{food.viewValue}}
+                        </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-lg-8">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Primary phone no</mat-label>
+                        <input matInput placeholder="xyz">
+                        <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
+                    </mat-form-field>
+                </div>
             </div>
         </div>
+          <div class="col-lg-4 mt-2">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Secondary phone no</mat-label>
+                <input matInput placeholder="xyz">
+                <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-4 mt-2">
+            <label>Gender</label><br><br>
+            <mat-radio-group aria-label="Select an option" class="mt-4">
+                <mat-radio-button color="primary" class="me-3" value="1">Male</mat-radio-button>
+                <mat-radio-button color="primary" class="me-3" value="2">Female</mat-radio-button>
+                <mat-radio-button color="primary" value="3">Other</mat-radio-button>
+              </mat-radio-group>
+          </div>
+          <div class="col-lg-4 mt-lg-2 mt-4">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Date of Birth</mat-label>
+                <input matInput [matDatepicker]="picker">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+
+                <input matInput placeholder="dd-mm-yy">
+            </mat-form-field>
+          </div>
+          <div class="col-lg-4 mt-2">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Age</mat-label>
+                <mat-select>
+                  <mat-option *ngFor="let food of foods" [value]="food.value">
+                    {{food.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+          </div>
+
+          <div class="col-12 mt-3 mb-4">
+            <div class="d-flex justify-content-between">
+              <span>Select language</span>
+              <a href="#">+ Add language</a>
+            </div>
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" class="mt-4">
+
+                <!-- Checkbox Column -->
+                <ng-container matColumnDef="select">
+                  <th mat-header-cell *matHeaderCellDef>
+                    <mat-checkbox color="primary" (change)="$event ? masterToggle() : null"
+                                  [checked]="selection.hasValue() && isAllSelected()"
+                                  [indeterminate]="selection.hasValue() && !isAllSelected()"
+                                  [aria-label]="checkboxLabel()">
+                    </mat-checkbox>
+                  </th>
+                  <td mat-cell *matCellDef="let row">
+                    <mat-checkbox color="primary" (click)="$event.stopPropagation()"
+                                  (change)="$event ? selection.toggle(row) : null"
+                                  [checked]="selection.isSelected(row)"
+                                  [aria-label]="checkboxLabel(row)">
+                    </mat-checkbox>
+                  </td>
+                </ng-container>
+              
+                <!-- Position Column -->
+                <ng-container matColumnDef="position">
+                  <th mat-header-cell *matHeaderCellDef> No. </th>
+                  <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+                </ng-container>
+              
+                <!-- Name Column -->
+                <ng-container matColumnDef="name">
+                  <th mat-header-cell *matHeaderCellDef> Name </th>
+                  <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                </ng-container>
+              
+                <!-- Weight Column -->
+                <ng-container matColumnDef="weight">
+                  <th mat-header-cell *matHeaderCellDef> Weight </th>
+                  <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+                </ng-container>
+              
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="symbol">
+                  <th mat-header-cell *matHeaderCellDef> Symbol </th>
+                  <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+                </ng-container>
+              
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+                    (click)="selection.toggle(row)">
+                </tr>
+              </table>
+          </div>
+
+          <div class="col-lg-4 mt-2">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Notice Period</mat-label>
+                <input matInput placeholder="xyz">
+                <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
+            </mat-form-field>
+          </div>
+          <div class="col-lg-4 mt-2">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Relocate</mat-label>
+                <mat-select>
+                  <mat-option *ngFor="let food of foods" [value]="food.value">
+                    {{food.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+          </div>
+          <div class="col-lg-4 mt-2">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Merital Status</mat-label>
+                <mat-select>
+                  <mat-option *ngFor="let food of foods" [value]="food.value">
+                    {{food.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+          </div>
+
+          <div class="col-lg-4 mt-2">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Source</mat-label>
+                <input matInput placeholder="xyz">
+                <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
+            </mat-form-field>
+          </div>
+          <div class="col-lg-8 mt-2">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Upload Resume</mat-label>
+                <input matInput placeholder="xyz">
+                <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
+            </mat-form-field>
+          </div>
+
+          <div class="col-12 mt-2">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Video Resume</mat-label>
+                <input matInput placeholder="xyz">
+                <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
+            </mat-form-field>
+          </div>
+          <div class="col-12 mt-2">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Work Autorization</mat-label>
+                <mat-chip-list #chipList aria-label="Fruit selection">
+                  <mat-chip *ngFor="let fruit of fruits" [selectable]="selectable"
+                           [removable]="removable" (removed)="remove(fruit)">
+                    {{fruit.name}}
+                    <button matChipRemove *ngIf="removable">
+                      <mat-icon>cancel</mat-icon>
+                    </button>
+                  </mat-chip>
+                  <input placeholder="New fruit..."
+                         [matChipInputFor]="chipList"
+                         [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                         [matChipInputAddOnBlur]="addOnBlur"
+                         (matChipInputTokenEnd)="add($event)">
+                </mat-chip-list>
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-4 mt-2">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>PAN Number</mat-label>
+                <input matInput placeholder="xyz">
+                <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
+            </mat-form-field>
+          </div>
+          <div class="col-lg-4 mt-2">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Aadhar Number</mat-label>
+                <input matInput placeholder="xyz">
+                <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
+            </mat-form-field>
+          </div>
+          <div class="col-lg-4 mt-2">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Passport Number</mat-label>
+                <input matInput placeholder="xyz">
+                <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
+            </mat-form-field>
+          </div>
+
+          <div class="col-12 mt-2">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Linkedin</mat-label>
+                <input matInput placeholder="xyz">
+                <mat-icon class="text-muted h5" matSuffix>linkedin</mat-icon>
+            </mat-form-field>
+          </div>
+          <div class="col-12 mt-2">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>facebook</mat-label>
+                <input matInput placeholder="xyz">
+                <mat-icon class="text-muted h5" matSuffix>linkedin</mat-icon>
+            </mat-form-field>
+          </div>
+          <div class="col-12 mt-2">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Twitter</mat-label>
+                <input matInput placeholder="xyz">
+                <mat-icon class="text-muted h5" matSuffix>linkedin</mat-icon>
+            </mat-form-field>
+          </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="card-rndd mt-5">
+    <div class="p-4">
+        <div class="d-flex justify-content-between">
+          <div class="d-flex">
+            <mat-icon color="primary" class="me-2">person</mat-icon>
+            <h2 class="align-self-center">Education</h2>
+          </div>
+          <a href="#">+ Add language</a>
+        </div>
+
+        <div class="d-sm-flex justify-content-between mt-4">
+          <div>
+            <h5>Bachelor's Degree in Computer Engineering at GCELT</h5>
+            <div class="d-flex mt-2">
+              <mat-icon color="primary" class="me-2">person</mat-icon>
+              <p class="align-self-center sml">January 2019 t August 2021</p>
+            </div>
+          </div>
+          <div class="align-self-center">
+            <a href="#"><mat-icon color="primary" class="me-2">edit</mat-icon></a>
+            <a href="#"><mat-icon color="primary" class="me-2">delete</mat-icon></a>
+          </div>
+        </div>
+        <mat-divider class="my-4"></mat-divider>
+
+        <div class="d-sm-flex justify-content-between mt-4">
+          <div>
+            <h5>Bachelor's Degree in Computer Engineering at GCELT</h5>
+            <div class="d-flex mt-2">
+              <mat-icon color="primary" class="me-2">person</mat-icon>
+              <p class="align-self-center sml">January 2019 t August 2021</p>
+            </div>
+          </div>
+          <div class="align-self-center">
+            <a href="#"><mat-icon color="primary" class="me-2">edit</mat-icon></a>
+            <a href="#"><mat-icon color="primary" class="me-2">delete</mat-icon></a>
+          </div>
+        </div>
+        <mat-divider class="my-4"></mat-divider><br>
+
+        <div class="brd-bottom">
+          <h2 class="pb-2">Add Education</h2>
+        </div>
+        <div class="row mt-4">
+          <div class="col-lg-4 mt-2">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Degree</mat-label>
+                <input matInput placeholder="xyz">
+                <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
+            </mat-form-field>
+          </div>
+          <div class="col-lg-4 mt-2">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>School/Institution</mat-label>
+                <input matInput placeholder="xyz">
+                <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
+            </mat-form-field>
+          </div>
+          <div class="col-lg-4 mt-2">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>University</mat-label>
+                <input matInput placeholder="xyz">
+                <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-4 mt-2">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>From</mat-label>
+                <input matInput placeholder="xyz">
+                <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
+            </mat-form-field>
+          </div>
+          <div class="col-lg-4 mt-2">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>To</mat-label>
+                <input matInput placeholder="xyz">
+                <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
+            </mat-form-field>
+            <mat-checkbox color="primary">Currently persuing</mat-checkbox>
+          </div>
+          <div class="col-lg-4 mt-2">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Percentage/CGPA</mat-label>
+                <input matInput placeholder="xyz">
+                <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-4 mt-2">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Location</mat-label>
+                <input matInput placeholder="xyz">
+                <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-end">
+          <button mat-stroked-button class="me-2">Cancel</button>
+          <button mat-stroked-button color="primary">Add Education</button>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <div class="card-rndd mt-5">
+      <div class="p-4">
+          <div class="d-flex justify-content-between">
+            <div class="d-flex">
+              <mat-icon color="primary" class="me-2">person</mat-icon>
+              <h2 class="align-self-center">Experience</h2>
+            </div>
+            <a href="#">+ Add language</a>
+          </div>
+  
+          <div class="d-sm-flex justify-content-between mt-4">
+            <div>
+              <h5>Bachelor's Degree in Computer Engineering at GCELT</h5>
+              <div class="d-flex mt-2">
+                <mat-icon color="primary" class="me-2">person</mat-icon>
+                <p class="align-self-center sml">January 2019 t August 2021</p>
+              </div>
+            </div>
+            <div class="align-self-center">
+              <a href="#"><mat-icon color="primary" class="me-2">edit</mat-icon></a>
+              <a href="#"><mat-icon color="primary" class="me-2">delete</mat-icon></a>
+            </div>
+          </div>
+          <mat-divider class="my-4"></mat-divider>
+  
+          <div class="d-sm-flex justify-content-between mt-4">
+            <div>
+              <h5>Bachelor's Degree in Computer Engineering at GCELT</h5>
+              <div class="d-flex mt-2">
+                <mat-icon color="primary" class="me-2">person</mat-icon>
+                <p class="align-self-center sml">January 2019 t August 2021</p>
+              </div>
+            </div>
+            <div class="align-self-center">
+              <a href="#"><mat-icon color="primary" class="me-2">edit</mat-icon></a>
+              <a href="#"><mat-icon color="primary" class="me-2">delete</mat-icon></a>
+            </div>
+          </div>
+          <mat-divider class="my-4"></mat-divider><br>
+  
+          <div class="brd-bottom">
+            <h2 class="pb-2">Add Experience</h2>
+          </div>
+          <div class="row mt-4">
+            <div class="col-lg-8 mt-2">
+              <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Job title</mat-label>
+                  <input matInput placeholder="xyz">
+                  <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
+              </mat-form-field>
+            </div>
+            <div class="col-lg-4 mt-2">
+              <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Company/Business name</mat-label>
+                  <input matInput placeholder="xyz">
+                  <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
+              </mat-form-field>
+            </div>
+
+            <div class="col-lg-4 mt-2">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Location</mat-label>
+                <mat-select>
+                  <mat-option *ngFor="let food of foods" [value]="food.value">
+                    {{food.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-lg-4 mt-2">
+              <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>From</mat-label>
+                  <input matInput placeholder="xyz">
+                  <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
+              </mat-form-field>
+            </div>
+            <div class="col-lg-4 mt-2">
+              <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>To</mat-label>
+                  <input matInput placeholder="xyz">
+                  <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
+              </mat-form-field>
+              <mat-checkbox color="primary">Currently Working</mat-checkbox>
+            </div>
+            <div class="col-12 mt-2">
+              <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Description</mat-label>
+                  <textarea matInput placeholder="Write Description here"></textarea>
+                  <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
+              </mat-form-field>
+            </div>
+          </div>
+  
+          <div class="d-flex justify-content-end">
+            <button mat-stroked-button class="me-2">Cancel</button>
+            <button mat-stroked-button color="primary">Add Experience</button>
+          </div>
+      </div>
+    </div>
+
+
+    <div class="card-rndd mt-5">
+      <div class="p-4">
+        <div class="d-flex">
+          <mat-icon color="primary" class="me-2">person</mat-icon>
+          <h2 class="align-self-center">Salary Details</h2>
+        </div>
+  
+          <div class="row mt-4">
+            <div class="col-lg-4 mt-2">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Current Salary</mat-label>
+                <mat-select>
+                  <mat-option *ngFor="let food of foods" [value]="food.value">
+                    {{food.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-lg-4 mt-2">
+              <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Company/Business name</mat-label>
+                  <input matInput placeholder="xyz">
+                  <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
+              </mat-form-field>
+            </div>
+            <div class="col-lg-4 mt-2">
+              <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Company/Business name</mat-label>
+                  <input matInput placeholder="xyz">
+                  <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
+              </mat-form-field>
+            </div>
+
+            <div class="col-lg-4 mt-2">
+              <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Fixed Salary</mat-label>
+                  <input matInput placeholder="xyz">
+                  <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
+              </mat-form-field>
+            </div>
+            <div class="col-lg-4 mt-2">
+              <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Variable Salary</mat-label>
+                  <input matInput placeholder="xyz">
+                  <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
+              </mat-form-field>
+            </div>
+            <div class="col-lg-4 mt-2">
+              <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Other Salary</mat-label>
+                  <input matInput placeholder="xyz">
+                  <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
+              </mat-form-field>
+            </div>
+
+            <div class="col-lg-4 mt-2">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Current Salary</mat-label>
+                <mat-select>
+                  <mat-option *ngFor="let food of foods" [value]="food.value">
+                    {{food.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-lg-4 mt-2">
+              <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Company/Business name</mat-label>
+                  <input matInput placeholder="xyz">
+                  <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
+              </mat-form-field>
+            </div>
+            <div class="col-lg-4 mt-2">
+              <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Company/Business name</mat-label>
+                  <input matInput placeholder="xyz">
+                  <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
+              </mat-form-field>
+            </div>
+          </div>
+      </div>
+    </div>
+
+
+    <div class="card-rndd mt-5">
+      <div class="p-4">
+        <div class="d-flex">
+          <mat-icon color="primary" class="me-2">person</mat-icon>
+          <h2 class="align-self-center">Skills</h2>
+        </div>
+
+          <div class="row mt-4">
+            <div class="col-lg-12 mt-2">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Add Skills</mat-label>
+                <mat-chip-list #chipList aria-label="Fruit selection">
+                  <mat-chip *ngFor="let fruit of fruits" [selectable]="selectable"
+                           [removable]="removable" (removed)="remove(fruit)">
+                    {{fruit.name}}
+                    <button matChipRemove *ngIf="removable">
+                      <mat-icon>cancel</mat-icon>
+                    </button>
+                  </mat-chip>
+                  <input placeholder="New fruit..."
+                         [matChipInputFor]="chipList"
+                         [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                         [matChipInputAddOnBlur]="addOnBlur"
+                         (matChipInputTokenEnd)="add($event)">
+                </mat-chip-list>
+            </mat-form-field>
+            </div>
+          </div>
+      </div>
+    </div>
+
+
+    <div class="card-rndd mt-5">
+      <div class="p-4">
+          <div class="d-flex justify-content-between">
+            <div class="d-flex">
+              <mat-icon color="primary" class="me-2">person</mat-icon>
+              <h2 class="align-self-center">Certificate</h2>
+            </div>
+            <a href="#">+ Add Certificate</a>
+          </div>
+  
+          <div class="d-sm-flex justify-content-between mt-4">
+            <div>
+              <h5>Bachelor's Degree in Computer Engineering at GCELT</h5>
+              <div class="d-flex mt-2">
+                <mat-icon color="primary" class="me-2">person</mat-icon>
+                <p class="align-self-center sml">January 2019 t August 2021</p>
+              </div>
+            </div>
+            <div class="align-self-center">
+              <a href="#"><mat-icon color="primary" class="me-2">edit</mat-icon></a>
+              <a href="#"><mat-icon color="primary" class="me-2">delete</mat-icon></a>
+            </div>
+          </div>
+          <mat-divider class="my-4"></mat-divider>
+  
+          <div class="d-sm-flex justify-content-between mt-4">
+            <div>
+              <h5>Bachelor's Degree in Computer Engineering at GCELT</h5>
+              <div class="d-flex mt-2">
+                <mat-icon color="primary" class="me-2">person</mat-icon>
+                <p class="align-self-center sml">January 2019 t August 2021</p>
+              </div>
+            </div>
+            <div class="align-self-center">
+              <a href="#"><mat-icon color="primary" class="me-2">edit</mat-icon></a>
+              <a href="#"><mat-icon color="primary" class="me-2">delete</mat-icon></a>
+            </div>
+          </div>
+          <mat-divider class="my-4"></mat-divider><br>
+  
+          <div class="brd-bottom">
+            <h2 class="pb-2">Add Certificate</h2>
+          </div>
+          <div class="row mt-4">
+            <div class="col-lg-8 mt-2">
+              <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Cource Name</mat-label>
+                  <input matInput placeholder="xyz">
+                  <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
+              </mat-form-field>
+            </div>
+            <div class="col-lg-4 mt-2">
+              <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Atach Certificate</mat-label>
+                  <input matInput placeholder="xyz">
+                  <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
+              </mat-form-field>
+            </div>
+          </div>
+  
+          <div class="d-flex justify-content-end">
+            <button mat-stroked-button class="me-2">Cancel</button>
+            <button mat-stroked-button color="primary">Add Certificate</button>
+          </div>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-end mt-4">
+      <button mat-stroked-button class="me-2">Cancel</button>
+      <button mat-flat-button color="primary">Add Candidate</button>
     </div>
 </div>

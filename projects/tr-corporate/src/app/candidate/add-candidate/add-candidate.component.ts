@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {SelectionModel} from '@angular/cdk/collections';
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatTableDataSource} from '@angular/material/table';
+import {MatChipInputEvent} from '@angular/material/chips';
 
-
+// table
 export interface PeriodicElement {
   name: string;
   position: number;
@@ -13,13 +15,17 @@ export interface PeriodicElement {
 const ELEMENT_DATA: PeriodicElement[] = [
   {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
   {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
 ];
 
+// select form
 interface Food {
   value: string;
   viewValue: string;
+}
+
+// cheaps
+export interface Fruit {
+  name: string;
 }
 
 @Component({
@@ -28,7 +34,7 @@ interface Food {
   styleUrls: ['./add-candidate.component.scss']
 })
 export class AddCandidateComponent implements OnInit {
-
+  // table
   displayedColumns: string[] = ['select', 'position', 'name', 'weight', 'symbol'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   selection = new SelectionModel<PeriodicElement>(true, []);
@@ -66,6 +72,38 @@ export class AddCandidateComponent implements OnInit {
     {value: 'pizza-1', viewValue: 'External'},
     {value: 'tacos-2', viewValue: 'Vendor'}
   ];
+
+
+  // cheaps
+  selectable = true;
+  removable = true;
+  addOnBlur = true;
+  readonly separatorKeysCodes = [ENTER, COMMA] as const;
+  fruits: Fruit[] = [
+    {name: 'Lemon'},
+    {name: 'Lime'},
+    {name: 'Apple'},
+  ];
+
+  add(event: MatChipInputEvent): void {
+    const value = (event.value || '').trim();
+
+    // Add our fruit
+    if (value) {
+      this.fruits.push({name: value});
+    }
+
+    // Clear the input value
+    event.chipInput!.clear();
+  }
+
+  remove(fruit: Fruit): void {
+    const index = this.fruits.indexOf(fruit);
+
+    if (index >= 0) {
+      this.fruits.splice(index, 1);
+    }
+  }
 
   ngOnInit(): void {
   }

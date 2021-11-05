@@ -44,7 +44,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-
+import {MatNativeDateModule} from '@angular/material/core'
 
 const matModules = [
   MatAutocompleteModule,
@@ -81,7 +81,9 @@ const matModules = [
   MatTooltipModule,
   MatPaginatorModule,
   MatSortModule,
-  MatTableModule
+  MatTableModule,
+  MatNativeDateModule,
+ 
 ]
 @NgModule({
   declarations: [],
