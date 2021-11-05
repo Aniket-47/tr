@@ -230,6 +230,7 @@ mc-side-navbar {
     height: 100%;
     padding-top: $header-height;
     width: 100%;
+    overflow: hidden;
     @include media-breakpoint-down(md) {
         padding-left: 0;
         margin-left: 0;
