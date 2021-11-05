@@ -1,6 +1,8 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import { Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { SnackBarService } from '../../utility/services/snack-bar.service';
 import { State } from '../../utility/store/reducers';
 import { getDefaultAccountId } from '../../utility/store/selectors/user.selector';
@@ -15,6 +17,8 @@ export class OrganisationProfileComponent implements OnInit {
 
 	accountId!: string;
 	orgProfileForm!: FormGroup;
+	shortNameValidation = new Subject();
+	resMessage: string = "";
 
 	// List
 	countries: { name: string, iso2: string }[] = [];
@@ -44,6 +48,16 @@ export class OrganisationProfileComponent implements OnInit {
 		this.initForm();
 		this.countryid.valueChanges.subscribe(c => { if (c) this.getStates(c)});
 		this.stateid.valueChanges.subscribe(s => { if (s) this.getCities(s) });
+
+		this.shortNameValidation
+				.pipe(
+						debounceTime(300), 
+						distinctUntilChanged())
+				.subscribe( val => {
+						// this.resMessage = val.message;
+						console.log(val);	
+						// this.shortname.setErrors({ 'customError': true });				
+				}) 
 	}
 
 	initForm() {
@@ -131,6 +145,12 @@ export class OrganisationProfileComponent implements OnInit {
 				this.industries = res.data;
 			}
 		});
+	}	
+
+	checkValidity() {
+		if(this.shortname.value.length > 4) {
+			this.shortNameValidation.next(this.shortname.value);
+		}
 	}
 
 	saveOrgProfile() {

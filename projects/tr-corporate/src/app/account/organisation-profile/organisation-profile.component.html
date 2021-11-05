@@ -12,9 +12,12 @@
     <div class="col-md-6">
       <mat-form-field appearance="standard">
         <mat-label>Short Name</mat-label>
-        <input matInput formControlName="shortname">
+        <input matInput formControlName="shortname" minlength="5" maxlength="15" (keyup)='checkValidity()'>
         <mat-error *ngIf="shortname.invalid && shortname.touched">
           <span *ngIf="shortname.errors?.required">This filed is required.</span>
+        </mat-error>
+        <mat-error *ngIf ="shortname.hasError('customErrors')">
+          {{resMessage}}
         </mat-error>
       </mat-form-field>
     </div>
