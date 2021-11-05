@@ -19,7 +19,7 @@
         <mat-label>New Role Name</mat-label>
         <input matInput placeholder="Placeholder" value="">
       </mat-form-field>
-      <button mat-flat-button color="primary">Submit </button>
+      <button mat-flat-button color="primary" (click)="submitHandler()">Submit </button>
 
     </div>
 
@@ -43,9 +43,9 @@
                 </div>
               </div>
             </mat-panel-title>
-            <mat-panel-description (click)="onEvent($event)">
+            <mat-panel-description>
 
-              <mat-slide-toggle color="green" formControlName="isOn" (click)="onEvent($event)"></mat-slide-toggle>
+              <mat-slide-toggle color="green" formControlName="isOn"></mat-slide-toggle>
             </mat-panel-description>
           </mat-expansion-panel-header>
 
@@ -58,16 +58,21 @@
                       {{eachLvl2.get('name')?.value}}
                     </mat-panel-title>
                     <mat-panel-description>
-                      <mat-slide-toggle color="green" formControlName="isOn" (click)="onEvent($event)">
+                      <mat-slide-toggle color="green" formControlName="isOn">
                       </mat-slide-toggle>
                     </mat-panel-description>
                   </mat-expansion-panel-header>
-                  <!-- <div class="role-list bg-light">
-                    <div class="role-title">Dashboard Contents</div>
-                    <div class="header-action">
-                      <mat-slide-toggle color="green" formControlName="isOn" (click)="onEvent($event)"></mat-slide-toggle>
-                    </div>
-                  </div> -->
+                  <ng-container *ngIf="eachLvl2.get('level3')">
+                    <ng-container formArrayName="level3">
+                      <div class="role-list bg-light"
+                        *ngFor="let eachLvl3 of getLvl3Array(i, l2)?.controls; let l3 = index" [formGroupName]="l3">
+                        <div class="role-title">{{eachLvl3.get('name')?.value}}</div>
+                        <div class="header-action">
+                          <mat-slide-toggle color="green" formControlName="isOn"></mat-slide-toggle>
+                        </div>
+                      </div>
+                    </ng-container>
+                  </ng-container>
                 </mat-expansion-panel>
               </ng-container>
             </ng-container>

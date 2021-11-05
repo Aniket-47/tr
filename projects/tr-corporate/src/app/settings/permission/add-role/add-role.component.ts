@@ -57,6 +57,10 @@ export class AddRoleComponent implements OnInit {
     return this.rightsArray.controls[index].get('level2') as FormArray;
   }
 
+  getLvl3Array(rightIndex: number, index: number) {
+    return this.getLvl2Array(rightIndex)?.controls[index].get('level3') as FormArray;
+  }
+
   buildRights(data: any) {
     this.rights = data?.roles[0]?.rights.map((e: any) => {
       let rightData: any = {
@@ -96,9 +100,7 @@ export class AddRoleComponent implements OnInit {
       });
     }
 
-    console.log(this.rightsForm);
     console.log(this.rightsForm.value);
-    console.log(this.rightsArray);
   }
 
   // form
@@ -130,6 +132,10 @@ export class AddRoleComponent implements OnInit {
 
   clearRightsForm() {
     this.rightsArray.clear();
+  }
+
+  submitHandler() {
+    console.log(this.rightsForm.value)
   }
 
   step = 0;
