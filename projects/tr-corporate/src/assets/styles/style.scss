@@ -416,9 +416,11 @@ mat-drawer-container{
             padding-right: 1rem;
             width: 350px;
         }
-        .mat-drawer-backdrop.mat-drawer-shown {
-            background-color: transparent;
+        .mat-drawer-backdrop.mat-drawer-shown {            
+            background-color: #ffffff94;
+            backdrop-filter: blur(1px);
         }
+
     }
 
 .table-container{
@@ -466,4 +468,16 @@ mat-drawer-container{
 .mat-slide-toggle {
     margin-right: 0 !important;
 }
+}
+
+.mat-paginator-container{
+  @include media-breakpoint-down(md) {
+    justify-content: flex-start !important;
+
+  }
+  .mat-paginator-range-label, .mat-paginator-page-size-label{
+    @include media-breakpoint-down(md) {
+      margin-left: 0px !important;
+    }
+  }
 }
