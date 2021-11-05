@@ -207,8 +207,10 @@ export class OrganisationProfileComponent implements OnInit, OnChanges {
   }
 
   checkShortNameAvailability(sName: any) {
+    this.isLoading = true;
     this.accoutService.getShortName(sName)
       .subscribe(res => {
+        this.isLoading = false;
         if (res.error && sName != this.currentShortName) {
           this.shortname.markAllAsTouched();
           this.resMessage = res.message;
