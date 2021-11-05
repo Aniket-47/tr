@@ -3,17 +3,21 @@
 
 .settings-wrap{
   width: 250px;
-  padding: 1em;
-  height: 100%;
+  padding: 0 1rem 1em;
 
   .nav-search {
     position: sticky;
     top: 0;
     background: white;
     z-index: 2;
+    padding-top: 1.8rem;
+    @include media-breakpoint-down(md) {
+      padding: 0.8rem;
+   }
   }
 
   .settings__element{
+    height: calc(100vh - #{$header-height});
     overflow: auto;
     .mat-expansion-panel-header {
       padding: 0 0 0 8px;
