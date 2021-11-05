@@ -285,12 +285,8 @@ mc-side-navbar {
 
 
     ::ng-deep .notificationCard{
-        .mc-card{
-            min-height: 0;
-        }
-
         .mat-menu-content{        
             max-height: 40vh !important; 
             padding-top: 0 !important;
-        }
+        }        
     }

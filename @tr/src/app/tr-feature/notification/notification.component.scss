@@ -45,43 +45,10 @@ mc-brief-card{
     margin-top: 0.3rem;
   }
 
-  mc-card{
+  .mc-card{
     min-height: 0;
     &:hover{
       background-color: rgba(130, 130, 130, 0.11);
     }
   }
 }
-
-// mc-brief-card{
-//   .time{
-//     text-align: right;
-//   }
-// }
-
-// ::ng-deep .mc-card{
-//   min-height: 0;
-// }
-
-// // ::ng-deep .mc-card-body, .mc-card-action, .mc-card-footer{
-// //   margin-top: 0 !important;
-// // }
-
-
-// ::ng-deep .mc-card-body{
-//   margin-top: 0 !important;
-// }
-// ::ng-deep .mc-card-action{
-//   margin-top: 0 !important;
-// }
-// ::ng-deep .mc-card-footer{
-//   margin-top: 0 !important;
-// }
-
-// ::ng-deep .mc-card__header-details {
-//   width: 85%;
-// }
-
-// ::ng-deep .mc-card-title{
-//   font-size: 1rem;
-// }

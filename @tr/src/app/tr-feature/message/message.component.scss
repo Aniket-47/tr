@@ -1,7 +1,14 @@
+@import '~@mucrest/ng-design/assets/styles/1-base/variable';
+@import '~@mucrest/ng-design/assets/styles/0-plugins/plugins-dir';
+
 mc-brief-card{
   .icon{
     padding-top: 0.7rem;
     margin-right: 1.8rem;
+
+    &::before{
+      color: $theme !important;
+    }
   }
   .time{
     color: rgb(139, 139, 139);
