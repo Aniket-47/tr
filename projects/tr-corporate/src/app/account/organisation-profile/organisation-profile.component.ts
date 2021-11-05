@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { SnackBarService } from '../../utility/services/snack-bar.service';
@@ -28,7 +28,8 @@ export class OrganisationProfileComponent implements OnInit {
 		private fb: FormBuilder,
 		private accoutService: AccountService,
 		private snackbarServ: SnackBarService,
-		private store: Store<State>) {
+		private store: Store<State>,
+		private cd: ChangeDetectorRef) {
 		this.store.select(getDefaultAccountId).subscribe(data => {
 			this.accountId = data[0]?.accountid;
 			if (this.accountId) {
@@ -41,7 +42,7 @@ export class OrganisationProfileComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.initForm();
-		this.countryid.valueChanges.subscribe(c => { if (c) this.getStates(c) });
+		this.countryid.valueChanges.subscribe(c => { if (c) this.getStates(c)});
 		this.stateid.valueChanges.subscribe(s => { if (s) this.getCities(s) });
 	}
 
@@ -99,7 +100,8 @@ export class OrganisationProfileComponent implements OnInit {
 					cityid: +data?.cityid,
 					industryid: data?.industryid,
 					accounttype: data?.accounttype
-				});
+				})
+				this.cd.markForCheck()
 			}
 		});
 	}
