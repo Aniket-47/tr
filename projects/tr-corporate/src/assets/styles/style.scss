@@ -481,3 +481,10 @@ mat-drawer-container{
     }
   }
 }
+.modal {
+  width: 600px;
+  @include media-breakpoint-down(md) {
+    width: 100%;
+    overflow: auto;
+  }
+}

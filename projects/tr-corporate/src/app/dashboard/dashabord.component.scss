@@ -121,7 +121,8 @@ mc-side-navbar {
     @include font-size(1.8rem);
     @include padding(0.2rem 0);
     margin: 0;
-    padding: 0
+    padding: 0;
+    cursor: pointer;
 }
 
 // ::ng-deep .mat-menu-panel {
@@ -175,7 +176,7 @@ mc-side-navbar {
   .searchPanel {
     position: relative;
   }
-  .m-searchPanel{display: none;}
+  .m-searchPanel, .close-search {display: none;}
 
   @media screen and (max-width: 765px) {
 
@@ -183,11 +184,19 @@ mc-side-navbar {
     .m-searchPanel{
         border-radius: 0;
         display: flex;
-        width: 90%;
+        width: 100%;
+        min-width: 100vw;
         position: fixed;
-        top: 0;
+        top: -60px;
+        right: 0;
         left: 0;
         z-index: 999;
+        transition: all 0.5s ease;
+        transform: translateY(-60px);
+        &.active {
+            top: 0;
+            transform: translateY(0);
+        }
         ::ng-deep .search-container {
             background-color: $white;
             box-shadow: none;
@@ -197,6 +206,26 @@ mc-side-navbar {
             position: relative;
             left: 0;
             top: 0;
+        }
+    }
+    .close-search {
+        display: block;
+        position: fixed;
+        right: 0;
+        top: -60px;
+        z-index: 999;
+        transform: translateY(-60px);
+        background-color: $white;
+        width: 40px;
+        height: 55px;
+        line-height: 56px;
+        font-size: 1.5rem;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.5s ease;
+        &.active {
+            top: 0;
+            transform: translateY(0);
         }
     }
 }
@@ -271,18 +300,7 @@ mc-side-navbar {
             }
         }
     }
-    .close-search {
-        position: fixed;
-        right: 0;
-        top: 0;
-        z-index: 999;
-        background-color: $white;
-        width: 40px;
-        height: 55px;
-        line-height: 56px;
-        font-size: 1.5rem;
-        text-align: center;
-    }
+  
 
 
     ::ng-deep .notificationCard{

@@ -91,7 +91,9 @@ export class UserManageComponent implements OnInit {
   }
 
   addUserModal() {
-    this.addUserModalRef = this.dialog.open(AddUserComponent, { width: '50vw' })
+    this.addUserModalRef = this.dialog.open(AddUserComponent, { 
+      autoFocus: false, panelClass: 'modal'
+    })
   }
 
 

@@ -52,10 +52,26 @@
 }
 .mobile-togglebtn {
     position: absolute;
+    right: 46px;
+    top: 10px;
+    font-size: 20px;
+    z-index: 2;
+    .icon-mc.mc-menu {
+        vertical-align: bottom;
+    }
+    @include media-breakpoint-up(md) { 
+        display: none;
+     }
+}
+.open-bottombtn {
+    position: absolute;
     right: 6px;
     top: 10px;
     font-size: 20px;
     z-index: 2;
+    .icon-mc {
+        vertical-align: bottom;
+    }
     @include media-breakpoint-up(md) { 
         display: none;
      }
