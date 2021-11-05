@@ -13,4 +13,8 @@ export class UserRoleService {
         return this.http.get<any>(secure_api_routes.USER_ROLES, { headers: { 'accountID': accountID } })
     }
 
+    getPermissions() {
+        return this.http.get('assets/dummy_fetch_update.json');
+    }
+
 }

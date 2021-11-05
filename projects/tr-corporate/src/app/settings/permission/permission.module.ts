@@ -30,7 +30,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     ReactiveFormsModule,
     MaterialModule,
-    PermissionRoutingModule
+    PermissionRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class PermissionModule { }
