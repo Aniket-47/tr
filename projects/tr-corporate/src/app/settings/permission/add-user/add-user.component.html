@@ -16,6 +16,10 @@
               <mat-label>First Name</mat-label>
               <input matInput formControlName="firstName" placeholder="xyz">
               <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
+              <mat-error *ngIf="firstName.invalid && firstName.touched">
+                <span *ngIf="firstName.errors?.required">First name is required.</span>
+              </mat-error>
+
             </mat-form-field>
           </div>
         </div>
@@ -37,15 +41,14 @@
             </mat-form-field>
           </div>
         </div>
-        <div class="col-md-6">
+        <!-- <div class="col-md-6">
           <div>
             <mat-form-field appearance="outline" class="w-100">
               <mat-label>User Name</mat-label>
               <input matInput formControlName="userName" placeholder="xyz">
-              <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
-            </mat-form-field>
+             </mat-form-field>
           </div>
-        </div>
+        </div> -->
         <div class="col-md-6">
           <div>
             <mat-form-field appearance="outline" class="w-100">
@@ -72,7 +75,7 @@
           <div>
             <mat-form-field appearance="outline" class="w-100">
               <mat-label>Designation</mat-label>
-              <mat-select>
+              <mat-select disabled>
                 <mat-option *ngFor="let food of foods" [value]="food.value">
                   {{food.viewValue}}
                 </mat-option>
@@ -84,7 +87,7 @@
           <div>
             <mat-form-field appearance="outline" class="w-100">
               <mat-label>Buisness Vertical</mat-label>
-              <mat-select>
+              <mat-select disabled>
                 <mat-option *ngFor="let food of foods" [value]="food.value">
                   {{food.viewValue}}
                 </mat-option>
@@ -96,7 +99,7 @@
           <div>
             <mat-form-field appearance="outline" class="w-100">
               <mat-label>Practice</mat-label>
-              <mat-select>
+              <mat-select disabled>
                 <mat-option *ngFor="let food of foods" [value]="food.value">
                   {{food.viewValue}}
                 </mat-option>
@@ -108,7 +111,7 @@
           <div>
             <mat-form-field appearance="outline" class="w-100">
               <mat-label>Location</mat-label>
-              <mat-select>
+              <mat-select disabled>
                 <mat-option *ngFor="let food of foods" [value]="food.value">
                   {{food.viewValue}}
                 </mat-option>
@@ -120,7 +123,7 @@
           <div>
             <mat-form-field appearance="outline" class="w-100">
               <mat-label>Reporting Manager</mat-label>
-              <mat-select>
+              <mat-select disabled>
                 <mat-option *ngFor="let food of foods" [value]="food.value">
                   {{food.viewValue}}
                 </mat-option>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 
@@ -35,9 +35,9 @@ export class AddUserComponent implements OnInit {
   // autocompleet
   myControl = new FormControl();
   options: User[] = [
-    { name: 'Mary' },
-    { name: 'Shelley' },
-    { name: 'Igor' }
+    { name: '' },
+    { name: '' },
+    { name: '' }
   ];
   filteredOptions: Observable<User[]> | undefined;
 
@@ -63,8 +63,32 @@ export class AddUserComponent implements OnInit {
 
   initForm() {
     this.addUserForm = this.fb.group({
-
+      firstName: ['', [Validators.required]],
+      middleName: [''],
+      lastName: ['', [Validators.required]],
+      email: [''],
+      userRole: [''],
     });
+  }
+
+  get firstName(): AbstractControl {
+    return this.addUserForm.get('firstName') as FormControl;
+  }
+  get middleName(): AbstractControl {
+    return this.addUserForm.get('middleName') as FormControl;
+  }
+  get lastName(): AbstractControl {
+    return this.addUserForm.get('lastName') as FormControl;
+  }
+  get email(): AbstractControl {
+    return this.addUserForm.get('email') as FormControl;
+  }
+  get userRole(): AbstractControl {
+    return this.addUserForm.get('userRole') as FormControl;
+  }
+
+  addUser(){
+
   }
 
 

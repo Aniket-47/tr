@@ -115,10 +115,14 @@
             <th mat-header-cell *matHeaderCellDef> Status </th>
             <td mat-cell *matCellDef="let element">
               <mat-label class="status" [ngClass]="{
-                'success': element.status === 'Active',
-                'warning': element.status === 'Inactive',
-                'danger': element.status === 'Deactivated'
-              }">{{element.status}} </mat-label>
+                'success': element.status == 1,
+                'warning': element.status == 2,
+                'danger': element.status == 3
+              }">
+                <span *ngIf="element.status == 1 ">Active</span>
+                <span *ngIf="element.status == 2 ">Inactive</span>
+                <span *ngIf="element.status == 3 ">Deactivated</span>
+              </mat-label>
             </td>
           </ng-container>
 
