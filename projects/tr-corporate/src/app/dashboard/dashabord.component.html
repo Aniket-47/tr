@@ -52,12 +52,12 @@
       <!-- <button mat-menu-item><i class="icon-mc mc-switch_account"></i> <span>Accounts</span></button> -->
       <button mat-menu-item (click)="logout()"><i class="icon-mc mc-power_settings_new"></i> <span>Sign Out</span></button>
     </mat-menu>
-    <mat-menu #notify="matMenu" backdropClass="profile-dropdown">
+    <mat-menu #notify="matMenu" backdropClass="profile-dropdown" class="notificationCard">
       <tr-notification></tr-notification>
     </mat-menu>
 
 
-    <mat-menu #message="matMenu" backdropClass="profile-dropdown">
+    <mat-menu #message="matMenu" backdropClass="profile-dropdown" class="notificationCard">
       <tr-message></tr-message>
     </mat-menu>
 
