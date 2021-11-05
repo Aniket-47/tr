@@ -11,6 +11,7 @@ import { MFilterComponent } from './m-filter/m-filter.component';
 import { PermissionComponent } from './permission.component';
 import { RouterModule } from '@angular/router';
 import { PermissionRoutingModule } from './permission-routing.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -28,7 +29,8 @@ import { PermissionRoutingModule } from './permission-routing.module';
   imports: [
     CommonModule,
     MaterialModule,
-    PermissionRoutingModule
+    PermissionRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class PermissionModule { }
