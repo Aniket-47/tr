@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+import { ValidationConstants } from '../../../utility/configs/app.constants';
 
 
 export interface User {
@@ -63,10 +64,35 @@ export class AddUserComponent implements OnInit {
 
   initForm() {
     this.addUserForm = this.fb.group({
-      firstName: ['', [Validators.required]],
-      middleName: [''],
-      lastName: ['', [Validators.required]],
-      email: [''],
+      firstName: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(ValidationConstants.userAccountStrategy.NAME_MIN_LENGTH),
+          Validators.maxLength(ValidationConstants.userAccountStrategy.NAME_MAX_LENGTH)
+        ],
+      ],
+      middleName: [
+        '',
+        [
+          Validators.minLength(ValidationConstants.userAccountStrategy.NAME_MIN_LENGTH),
+          Validators.maxLength(ValidationConstants.userAccountStrategy.NAME_MAX_LENGTH)
+        ],
+      ],
+      lastName: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(ValidationConstants.userAccountStrategy.NAME_MIN_LENGTH),
+          Validators.maxLength(ValidationConstants.userAccountStrategy.NAME_MAX_LENGTH)
+        ],
+      ],
+      email: ['',
+        [
+          Validators.required,
+          Validators.email
+        ]
+      ],
       userRole: [''],
     });
   }
@@ -87,7 +113,7 @@ export class AddUserComponent implements OnInit {
     return this.addUserForm.get('userRole') as FormControl;
   }
 
-  addUser(){
+  addUser() {
 
   }
 
