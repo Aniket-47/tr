@@ -24,6 +24,7 @@ export class LogoutService {
 
   logout(){
     const guid = this.lsServ.getItem(LSkeys.DEVICE_GUID) || "";
+    this.lsServ.remove(LSkeys.BEARER_TOKEN);
     return this.http.patch<Logout_response>(secure_api_routes.LOGOUT, {}, { headers: { 'clientuniqueid': guid } })
   }
 }
