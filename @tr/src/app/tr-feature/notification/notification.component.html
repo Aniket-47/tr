@@ -1,5 +1,11 @@
-<mc-brief-card *ngFor = 'let items of notifications_data'>
+<!-- <mc-brief-card *ngFor = 'let items of notifications_data'>
   <div mc-card-logo [ngClass]="items.icon"></div>
   <div mc-card-title> {{items.title}} </div>
   <div mc-card-footer class="time">{{date|date : 'shortTime'}}</div>
+</mc-brief-card> -->
+
+<mc-brief-card *ngFor = 'let items of notifications_data' class="notification-design-card">
+  <div mc-card-logo [ngClass]="items.icon" class="icon"></div>
+  <div mc-card-title class="title"> {{items.title}} </div>
+  <div mc-card-subtitle class="time">{{date|date : 'shortTime'}}</div>
 </mc-brief-card>
