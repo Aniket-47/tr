@@ -6,7 +6,7 @@
     flex-direction: column;
     min-width: 320px;
     @media screen and (max-width: 360px) {
-        min-width: 100%;
+        min-width: 285px;
     }
     &-header {
         display: flex;

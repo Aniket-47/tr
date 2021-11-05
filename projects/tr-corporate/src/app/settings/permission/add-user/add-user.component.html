@@ -5,16 +5,16 @@
         Add User
       </h2>
       <button mat-icon-button mat-dialog-close>
-        <i class="icon-mc mc-ic_close-2"></i>
+        <i class="icon-mc mc-x"></i>
       </button>
     </div>
-    <form>
+    <form [formGroup]="addUserForm">
       <div class="row row-cols-1 row-cols-lg-2 mt-4">
         <div class="col-md-6">
           <div>
             <mat-form-field appearance="outline" class="w-100">
               <mat-label>First Name</mat-label>
-              <input matInput placeholder="xyz">
+              <input matInput formControlName="firstName" placeholder="xyz">
               <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
             </mat-form-field>
           </div>
@@ -23,7 +23,7 @@
           <div>
             <mat-form-field appearance="outline" class="w-100">
               <mat-label>Middle Name</mat-label>
-              <input matInput placeholder="xyz">
+              <input matInput formControlName="middleName" placeholder="xyz">
               <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
             </mat-form-field>
           </div>
@@ -32,7 +32,7 @@
           <div>
             <mat-form-field appearance="outline" class="w-100">
               <mat-label>Last Name</mat-label>
-              <input matInput placeholder="xyz">
+              <input matInput formControlName="lastName" placeholder="xyz">
               <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
             </mat-form-field>
           </div>
@@ -41,7 +41,7 @@
           <div>
             <mat-form-field appearance="outline" class="w-100">
               <mat-label>User Name</mat-label>
-              <input matInput placeholder="xyz">
+              <input matInput formControlName="userName" placeholder="xyz">
               <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
             </mat-form-field>
           </div>
@@ -50,7 +50,7 @@
           <div>
             <mat-form-field appearance="outline" class="w-100">
               <mat-label>Email</mat-label>
-              <input type="email" matInput placeholder="pat@example.com">
+              <input type="email" matInput formControlName="email" placeholder="pat@example.com">
               <!--<mat-icon class="text-muted h5" matSuffix>email</mat-icon>-->
             </mat-form-field>
           </div>
@@ -59,7 +59,7 @@
           <div>
             <mat-form-field class="example-full-width" appearance="outline">
               <mat-label>User Role</mat-label>
-              <input type="text" matInput [matAutocomplete]="auto">
+              <input type="text" matInput formControlName="userRole" [matAutocomplete]="auto">
               <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
                 <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
                   {{option.name}}
@@ -131,7 +131,7 @@
       </div>
     </form>
     <div class="d-flex justify-content-end mt-2">
-      <button class="btn-lg text-dark ms-3" mat-flat-button>Cancel</button>
+      <button class="btn-lg text-dark ms-3" mat-flat-button>Reset</button>
       <button class="btn-lg ms-3" mat-flat-button color="primary">Invite</button>
     </div>
   </div>

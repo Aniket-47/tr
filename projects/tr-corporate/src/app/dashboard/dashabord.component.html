@@ -48,17 +48,16 @@
         </mat-accordion>
 
       </div>
-      <button mat-menu-item [routerLink]=""><i class="icon-mc mc-person"></i> <span>Manage Profile</span></button>
+      <button mat-menu-item [routerLink]="MANAGE_PROFILE_ROUTE"><i class="icon-mc mc-person"></i> <span>Manage Profile</span></button>
       <!-- <button mat-menu-item><i class="icon-mc mc-switch_account"></i> <span>Accounts</span></button> -->
-      <button mat-menu-item (click)="logout()"><i class="icon-mc mc-power_settings_new"></i> <span>Sign
-          Out</span></button>
+      <button mat-menu-item (click)="logout()"><i class="icon-mc mc-power_settings_new"></i> <span>Sign Out</span></button>
     </mat-menu>
-    <mat-menu #notify="matMenu" backdropClass="profile-dropdown">
+    <mat-menu #notify="matMenu" backdropClass="profile-dropdown" class="notificationCard">
       <tr-notification></tr-notification>
     </mat-menu>
 
 
-    <mat-menu #message="matMenu" backdropClass="profile-dropdown">
+    <mat-menu #message="matMenu" backdropClass="profile-dropdown" class="notificationCard">
       <tr-message></tr-message>
     </mat-menu>
 
@@ -74,14 +73,14 @@
       </a>
     </div>
     <div top class="border-bottom side-nav-hvr">
-      <a routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><span
+      <a routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" matTooltip="Home" matTooltipPosition='right'><span
           class="icon-mc mc-home"></span></a>
-      <a routerLink="./"><span class="icon-mcf mcf-work_outline"></span></a>
-      <a routerLink="./"><span class="icon-mc mc-group"></span></a>
+      <a matTooltip="Jobs" matTooltipPosition='right'><span class="icon-mcf mcf-work_outline"></span></a>
+      <a matTooltip="Candidates" matTooltipPosition='right'><span class="icon-mc mc-group"></span></a>
     </div>
     <div top class="side-nav-hvr">
-      <a routerLink="./"><span class="icon-mc mc-pie_chart_outlined"></span></a>
-      <a routerLink="/dashboard/settings" routerLinkActive="active"><span class="icon-mc mc-sliders"></span></a>
+      <a matTooltip="Analytics" matTooltipPosition='right'><span class="icon-mc mc-pie_chart_outlined"></span></a>
+      <a routerLink="/dashboard/settings" routerLinkActive="active" matTooltip="Settings" matTooltipPosition='right'><span class="icon-mc mc-sliders"  ></span></a>
     </div>
   </mc-side-navbar>
   <tr-search *ngIf="searchToggle" class="m-searchPanel"></tr-search>

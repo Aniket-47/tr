@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-user-detail',
   templateUrl: './user-detail.component.html',
@@ -7,11 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserDetailComponent implements OnInit {
 
-  edit:boolean = false;
+  edit: boolean = false;
 
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 }
