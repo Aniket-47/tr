@@ -124,25 +124,3 @@ table.mat-table {
     }
 }
 
-
-
-// view/edit panel
-
-mat-drawer-container{
-background: none;
-height: 100%;
-}
-.right-drawer {
-    .drawer-container {
-        position: fixed;
-        right: 0px;
-        top: 0px;
-        padding-top: 3.8rem;
-        padding-left: 1rem;
-        padding-right: 1rem;
-        min-width: 350px;
-    }
-    ::ng-deep .mat-drawer-backdrop.mat-drawer-shown {
-        background-color: transparent;
-    }
-}

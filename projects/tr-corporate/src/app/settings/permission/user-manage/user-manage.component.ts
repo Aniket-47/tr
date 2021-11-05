@@ -12,15 +12,26 @@ import { MatTableDataSource } from '@angular/material/table';
 // Mat modal
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AddUserComponent } from '../add-user/add-user.component';
+import { map } from 'rxjs/operators';
 
 // Services
 import { UserListService } from '../services/user-list.service';
 
-const ELEMENT_DATA = [
+const ELEMENT_DATA = {
+  data:[
   { img: './assets/img/user.jpg', name: 'Essie Ward', email: 'lu@sa.co.uk', role: 'Admin', username: 'Essic_Ward', status: 'Active', lastupdated: '17 Apr 2021' },
   { img: './assets/img/user.jpg', name: 'Jennifer', email: 'lu@sa.co.uk', role: 'Super Admin', username: 'Jenne', status: 'Inactive', lastupdated: '17 Apr 2021' },
   { img: './assets/img/user.jpg', name: 'Rocky Willam', email: 'lu@sa.co.uk', role: 'Super Admin', username: 'Rocky_w', status: 'Deactivated', lastupdated: '17 Apr 2021' },
-];
+  { img: './assets/img/user.jpg', name: 'Rocky Willam', email: 'lu@sa.co.uk', role: 'Super Admin', username: 'Rocky_w', status: 'Deactivated', lastupdated: '17 Apr 2021' },
+  { img: './assets/img/user.jpg', name: 'Rocky Willam', email: 'lu@sa.co.uk', role: 'Super Admin', username: 'Rocky_w', status: 'Deactivated', lastupdated: '17 Apr 2021' },
+  { img: './assets/img/user.jpg', name: 'Rocky Willam', email: 'lu@sa.co.uk', role: 'Super Admin', username: 'Rocky_w', status: 'Deactivated', lastupdated: '17 Apr 2021' },
+  { img: './assets/img/user.jpg', name: 'Rocky Willam', email: 'lu@sa.co.uk', role: 'Super Admin', username: 'Rocky_w', status: 'Deactivated', lastupdated: '17 Apr 2021' },
+  { img: './assets/img/user.jpg', name: 'Rocky Willam', email: 'lu@sa.co.uk', role: 'Super Admin', username: 'Rocky_w', status: 'Deactivated', lastupdated: '17 Apr 2021' },
+  { img: './assets/img/user.jpg', name: 'Rocky Willam', email: 'lu@sa.co.uk', role: 'Super Admin', username: 'Rocky_w', status: 'Deactivated', lastupdated: '17 Apr 2021' },
+  { img: './assets/img/user.jpg', name: 'Rocky Willam', email: 'lu@sa.co.uk', role: 'Super Admin', username: 'Rocky_w', status: 'Deactivated', lastupdated: '17 Apr 2021' },
+  { img: './assets/img/user.jpg', name: 'Rocky Willam', email: 'lu@sa.co.uk', role: 'Super Admin', username: 'Rocky_w', status: 'Deactivated', lastupdated: '17 Apr 2021' },
+
+]};
 @Component({
   selector: 'app-user-manage',
   templateUrl: './user-manage.component.html',
@@ -60,7 +71,7 @@ export class UserManageComponent implements OnInit {
     this.store.select(getDefaultAccountId)
       .subscribe(s => {
         if (s.length > 0) {
-          this.userlistserv.getUserList(s[0].accountid).subscribe(res => {
+          this.userlistserv.getUserList(s[0].accountid).pipe(map( _ => ELEMENT_DATA)).subscribe(res => {
             console.log(res);
             this.dataSource = new MatTableDataSource(res.data)
             this.dataSource.paginator = this.paginator;
