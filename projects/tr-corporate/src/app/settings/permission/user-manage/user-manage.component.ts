@@ -71,8 +71,8 @@ export class UserManageComponent implements OnInit {
     this.store.select(getDefaultAccountId)
       .subscribe(s => {
         if (s.length > 0) {
-          this.userlistserv.getUserList(s[0].accountid).pipe(map( _ => ELEMENT_DATA)).subscribe(res => {
-            console.log(res);
+          this.userlistserv.getUserList(s[0].accountid).subscribe(res => {
+            // console.log(res);
             this.dataSource = new MatTableDataSource(res.data)
             this.dataSource.paginator = this.paginator;
           });
