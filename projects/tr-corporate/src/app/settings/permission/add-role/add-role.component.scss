@@ -7,8 +7,7 @@
     align-items: flex-start;
 }
 .accordion-container {
-    @include margin-top(5rem);
-    
+    // @include margin-top(5rem);    
     .mat-expansion-panel {
         box-shadow: none;
         border: 1px solid #EBEAED;
