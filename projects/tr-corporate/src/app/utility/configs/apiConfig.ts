@@ -34,9 +34,9 @@ export const secure_api_routes = {
   STATE_LIST: `${master}/states`,
   CITY_LIST: `${master}/cities`,
   INDUSTRY_LIST: `${master}/industries`,
-  
+
   // ACCOUNT: `${auth}/account`,
   USER_LIST: `${account}/userslist`,
   USER_ROLES: `${account}/role`,
-  SHORT_NAME: `${account}/shortname`,
+  SHORT_NAME: `${account}/validateshortname`,
 };
