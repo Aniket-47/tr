@@ -1,8 +1,13 @@
 @import '~@mucrest/ng-design/assets/styles/0-plugins/plugins-dir';
 .page-header {
     @include padding-bottom(2.3rem);
+
+    flex-direction: column;
+    gap: 25px;
+    align-items: flex-start;
 }
 .accordion-container {
+    // @include margin-top(5rem);    
     .mat-expansion-panel {
         box-shadow: none;
         border: 1px solid #EBEAED;

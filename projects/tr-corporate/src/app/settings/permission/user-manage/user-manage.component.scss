@@ -108,6 +108,13 @@ table.mat-table {
             color: rgba($color: $black, $alpha: 0.5);
         }
     }
+
+    .table-container{
+        padding-left: 0.8rem !important;
+        @include media-breakpoint-up(md) {
+            padding: none;
+        }
+    }
 }
 .user-img-label {
     @include media-breakpoint-up(md) {

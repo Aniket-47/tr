@@ -1,3 +1,4 @@
+import { ShortName_response } from './../interfaces/short-name';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -48,4 +49,8 @@ export class AccountService {
     return this.http.get(url);
   }
 
+  getShortName(shortName: string) {
+    const url = `${secure_api_routes.SHORT_NAME}`;
+    return this.http.post<ShortName_response>(url, { 'shortname': shortName });
+  }
 }
