@@ -1,13 +1,13 @@
-export interface AddUser_request {
+export interface UpdateUser_request {
   firstname: string,
   middlename: string,
   lastname: string,
   email: string,
   roletypeid: number,
-  // accountroleid: string
+  accountroleid: string
 }
 
-export interface AddUser_response {
+export interface UpdateUser_response {
   error: boolean,
   statusCode: number,
   message: string,

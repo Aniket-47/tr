@@ -1,8 +1,12 @@
+import { AddUser_request } from './../interfaces/add-user';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { ValidationConstants } from '../../../utility/configs/app.constants';
+import { UserService } from '../services/user.service';
+import { SnackBarService } from '../../../utility/services/snack-bar.service';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 
 export interface User {
@@ -22,8 +26,8 @@ interface Food {
 export class AddUserComponent implements OnInit {
 
   addUserForm!: FormGroup;
-
-  constructor(private fb: FormBuilder,) { }
+  isLoading = false;
+  constructor(private fb: FormBuilder, private userServ: UserService, private snackBar: SnackBarService, public dialogRef: MatDialogRef<AddUserComponent>,) { }
 
   // selecter
   foods: Food[] = [
@@ -114,7 +118,31 @@ export class AddUserComponent implements OnInit {
   }
 
   addUser() {
-
+    this.isLoading = true;
+    // const payload: AddUser_request = {
+    //   firstname: this.firstName.value,
+    //   middlename: this.middleName.value,
+    //   lastname: this.lastName.value,
+    //   email: this.email.value,
+    //   roletypeid: this.userRole.value
+    // }
+    if (this.addUserForm.valid) {
+      this.userServ.createUser(this.addUserForm.value).subscribe(res => {
+        this.isLoading = false;
+        if (res.error) {
+          // error from api
+          this.snackBar.open(res.message);
+        }
+        else {
+          // success from api
+          this.snackBar.open(res.message);
+          setTimeout(() => {
+            this.dialogRef.close();
+            this.addUserForm.reset();
+          }, 4000)
+        }
+      })
+    }
   }
 
 
