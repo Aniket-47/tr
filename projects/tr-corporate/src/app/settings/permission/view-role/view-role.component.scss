@@ -1,4 +1,6 @@
 @import '~@mucrest/ng-design/assets/styles/0-plugins/plugins-dir';
+@import '~@mucrest/ng-design/assets/styles/1-base/variable';
+
 .account-role {
 table.mat-table {
     @include media-breakpoint-down(md) {       
@@ -96,4 +98,16 @@ table.mat-table {
     top: 4rem;
     z-index: 9;
     right: 1rem;
+}
+
+.add-new-role-btn-icon{
+    &::before{
+        color: $theme-secondary;
+        font-size: 1.2rem;
+    }
+}
+.close-btn{
+    position: absolute;
+    right: 1rem;
+    font-size: 1.3rem;
 }
