@@ -1,6 +1,20 @@
 @import '~@mucrest/ng-design/assets/styles/1-base/variable';
 @import '~@mucrest/ng-design/assets/styles/0-plugins/plugins-dir';
 
+img{
+  height: 120px;
+  @include margin(4rem 4rem 1rem);
+  @include padding(0 1rem);
+  display: flex;
+}
+p{
+  text-align: center;
+  letter-spacing: 1px;
+  font-size: 15px;
+  font-weight: 300;
+  @include margin(3rem 0);
+}
+
 mc-brief-card{
   .icon{
     padding-top: 0.3rem;
@@ -19,6 +33,19 @@ mc-brief-card{
   .time{
     color: rgb(139, 139, 139);
     font-size: 0.75rem;
+  }
+}
+
+.more-button{
+  width: 45%;
+  @include margin(0 auto);
+  @include padding(0.5rem 0);
+
+  button{
+    width: 100%;
+    font-size: 1rem;
+    color: #2a2af6;
+    text-decoration: underline;
   }
 }
 
