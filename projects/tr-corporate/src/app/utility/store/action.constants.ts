@@ -4,15 +4,25 @@ export const enum AppActions {
     APP_LOADER_ACTION = "[APP] Set app loader",
 }
 
-// user
+// Roles
+export const enum RolesActions {
+    USER_ROLES_ACTION = "[ROLES] Set user roles",
+}
+
+// User
 export const enum UserActions {
-    USER_DATA_ACTION = "[USER] Set user data",
+    USER_NAME_ACTION = "[USER] Set user name",
+    USER_FULLNAME_ACTION = "[USER] Set user full name",
+    USER_CITY_ACTION = "[USER] Set user city",
+    USER_STATE_ACTION = "[USER] Set user state",
+    USER_COUNTRY_ACTION = "[USER] Set user country",
     USER_STATUS_ACTION = "[USER] Set user login status",
     USER_ADDRESS_ACTION = "[USER] Set user address",
     USER_REMOVE_ACTION = "[USER] Remove user data",
+    USER_MOBILE_ACTION = "[USER] Set user mobile no",
 }
 
-// account
+// Account
 export const enum AccountActions {
     ACC_LIST_ACTION = "[ACCOUNT] Set account list",
     ACC_DETAILS_ACTION = "[ACCOUNT] Set account deatils",

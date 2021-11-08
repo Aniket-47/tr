@@ -28,8 +28,11 @@
         <span class="icon-mcf mcf-outgoing_mail"></span>
       </a>
     </div>
-    <a [matMenuTriggerFor]="menu" class="user-dropdown"><span class="user-avatar">MB</span><span
-        class="user-name">Maxbert</span></a>
+    <a [matMenuTriggerFor]="menu" class="user-dropdown">
+      <span class="icon-mcf mcf-account_circle" *ngIf="!userName"></span>
+      <span class="user-avatar" *ngIf="userName">{{userName.split('')[0] }}</span>
+      <span class="user-name">{{userName }}</span>
+    </a>
     <mat-menu #menu="matMenu" backdropClass="profile-dropdown">
       <div class="user-dropdown-submenu" (click)="onEvent($event)">
         <mat-accordion>
@@ -48,9 +51,11 @@
         </mat-accordion>
 
       </div>
-      <button mat-menu-item [routerLink]="MANAGE_PROFILE_ROUTE"><i class="icon-mc mc-person"></i> <span>Manage Profile</span></button>
+      <button mat-menu-item [routerLink]="MANAGE_PROFILE_ROUTE"><i class="icon-mc mc-person"></i> <span>Manage
+          Profile</span></button>
       <!-- <button mat-menu-item><i class="icon-mc mc-switch_account"></i> <span>Accounts</span></button> -->
-      <button mat-menu-item (click)="logout()"><i class="icon-mc mc-power_settings_new"></i> <span>Sign Out</span></button>
+      <button mat-menu-item (click)="logout()"><i class="icon-mc mc-power_settings_new"></i> <span>Sign
+          Out</span></button>
     </mat-menu>
     <mat-menu #notify="matMenu" backdropClass="profile-dropdown" class="notificationCard">
       <tr-notification></tr-notification>
@@ -73,14 +78,15 @@
       </a>
     </div>
     <div top class="border-bottom side-nav-hvr">
-      <a routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" matTooltip="Home" matTooltipPosition='right'><span
-          class="icon-mc mc-home"></span></a>
+      <a routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" matTooltip="Home"
+        matTooltipPosition='right'><span class="icon-mc mc-home"></span></a>
       <a matTooltip="Jobs" matTooltipPosition='right'><span class="icon-mcf mcf-work_outline"></span></a>
       <a matTooltip="Candidates" matTooltipPosition='right'><span class="icon-mc mc-group"></span></a>
     </div>
     <div top class="side-nav-hvr">
       <a matTooltip="Analytics" matTooltipPosition='right'><span class="icon-mc mc-pie_chart_outlined"></span></a>
-      <a routerLink="/dashboard/settings" routerLinkActive="active" matTooltip="Settings" matTooltipPosition='right'><span class="icon-mc mc-sliders"  ></span></a>
+      <a routerLink="/dashboard/settings" routerLinkActive="active" matTooltip="Settings"
+        matTooltipPosition='right'><span class="icon-mc mc-sliders"></span></a>
     </div>
   </mc-side-navbar>
   <tr-search class="m-searchPanel" [ngClass]="{'active': searchToggle}"></tr-search>

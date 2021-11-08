@@ -28,6 +28,59 @@ export const userReducer = createReducer(
 		};
 	}),
 
+
+	on(UserActions.setUserName, (state, action) => {
+		const { firstName, lastName, middleName } = action.data;
+		return {
+			...state,
+			firstName,
+			lastName,
+			middleName
+		};
+	}),
+
+
+	on(UserActions.setUserAddress, (state, action) => {
+		return {
+			...state,
+			address: action.data
+		};
+	}),
+
+	on(UserActions.setUserCity, (state, action) => {
+		const { cityId, cityName } = action.data;
+		return {
+			...state,
+			cityId,
+			cityName
+		};
+	}),
+
+	on(UserActions.setUserState, (state, action) => {
+		const { stateId, stateName } = action.data;
+		return {
+			...state,
+			stateId,
+			stateName
+		};
+	}),
+
+	on(UserActions.setUserCountry, (state, action) => {
+		const { countryId, countryName } = action.data;
+		return {
+			...state,
+			countryId,
+			countryName
+		};
+	}),
+
+	on(UserActions.setUserMobile, (state, action) => {
+		return {
+			...state,
+			mobileNumber: action.data
+		};
+	}),
+
 	on(UserActions.setUserStatus, (state, action) => {
 		return {
 			...state,

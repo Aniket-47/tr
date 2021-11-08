@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Form, FormArray, FormBuilder, FormGroup } from '@angular/forms';
-import { UserRoleService } from '../services/user-role.serbice';
+import { UserRoleService } from '../services/user-role.service';
 
 @Component({
   selector: 'app-add-role',

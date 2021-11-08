@@ -13,7 +13,7 @@ import { State } from '../../../utility/store/reducers';
 
 // Component
 import { AddRoleComponent } from '../add-role/add-role.component';
-import { UserRoleService } from '../services/user-role.serbice';
+import { UserRoleService } from '../services/user-role.service';
 import { getDefaultAccountId } from '../../../utility/store/selectors/account.selector';
 
 // table data
