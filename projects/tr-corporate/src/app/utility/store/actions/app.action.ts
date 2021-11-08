@@ -1,13 +1,13 @@
 import { createAction, props } from "@ngrx/store";
-import { APP_ACTIONS } from "../action.constants";
+import { AppActions } from "../action.constants";
 
 export const setAppTheme = createAction(
-	APP_ACTIONS.appThemeAction,
+	AppActions.APP_THEME_ACTION,
 	props<{ data: string }>()
 );
 
 export const setAppLoader = createAction(
-	APP_ACTIONS.appLoaderAction,
+	AppActions.APP_LOADER_ACTION,
 	props<{ data: boolean }>()
 );
 

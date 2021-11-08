@@ -19,7 +19,6 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
   imports: [
     CommonModule,
     MaterialModule,
-    RouterModule,
     CardModule,
     SettingsRoutingModule,
     PerfectScrollbarModule

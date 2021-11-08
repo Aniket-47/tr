@@ -3,7 +3,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 // ngrx
 import { State } from '../../../utility/store/reducers';
-import { getDefaultAccountId } from '../../../utility/store/selectors/user.selector';
+import { getDefaultAccountId } from '../../../utility/store/selectors/account.selector';
 
 // Mat table
 import { MatPaginator } from '@angular/material/paginator';
@@ -84,7 +84,7 @@ export class UserManageComponent implements OnInit {
   }
 
   addUserModal() {
-    this.addUserModalRef = this.dialog.open(AddUserComponent, { 
+    this.addUserModalRef = this.dialog.open(AddUserComponent, {
       autoFocus: false, panelClass: 'modal'
     })
   }

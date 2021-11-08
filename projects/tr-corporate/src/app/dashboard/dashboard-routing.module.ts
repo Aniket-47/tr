@@ -23,9 +23,13 @@ const routes: Routes = [
           import('../account/account.module').then((m) => m.AccountModule),
       },
       {
-        path: '',
-        pathMatch: 'full',
-        redirectTo: '',
+        path:'candidate',
+        loadChildren: () => import('../candidate/candidate.module').then(m => m.CandidateModule)
+      },
+      {
+        path:'',
+        pathMatch:'full',
+        redirectTo: ''
       },
       {
         path: '**',

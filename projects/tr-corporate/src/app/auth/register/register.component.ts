@@ -58,7 +58,12 @@ export class RegisterComponent implements OnInit, OnDestroy {
     ],
     email: ['', [Validators.required, Validators.email]],
     company: ['', [Validators.required]],
-    phone: ['', [Validators.required]],
+    phone: ['', 
+      [
+        Validators.required,
+        Validators.minLength(ValidationConstants.userAccountStrategy.PHONE_MIN_LENGTH)
+      ]
+    ],
     password: ['', [Validators.required]],
     cnfPass: ['', [Validators.required]],
   }, { validators: passwordMatcher });

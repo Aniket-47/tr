@@ -3,34 +3,88 @@ import * as UserActions from "../actions/user.action";
 import { Iuser } from "../interfaces/user";
 
 export const initialState: Iuser = {
-	name: '',
-	accountIDs: [],
 	isLoggedIn: false,
+	fullName: '',
+	firstName: '',
+	lastName: '',
+	middleName: '',
+	address: '',
+	cityId: '',
+	cityName: '',
+	countryId: '',
+	countryName: '',
+	mobileNumber: '',
+	stateId: '',
+	stateName: '',
 };
 
 export const userReducer = createReducer(
 	initialState,
 
-	on(UserActions.saveUserName, (state, action) => {
+	on(UserActions.setUserFullName, (state, action) => {
 		return {
-            ...state,
-            name: action.data
+			...state,
+			fullName: action.data
+		};
+	}),
+
+
+	on(UserActions.setUserName, (state, action) => {
+		const { firstName, lastName, middleName } = action.data;
+		return {
+			...state,
+			firstName,
+			lastName,
+			middleName
+		};
+	}),
+
+
+	on(UserActions.setUserAddress, (state, action) => {
+		return {
+			...state,
+			address: action.data
+		};
+	}),
+
+	on(UserActions.setUserCity, (state, action) => {
+		const { cityId, cityName } = action.data;
+		return {
+			...state,
+			cityId,
+			cityName
+		};
+	}),
+
+	on(UserActions.setUserState, (state, action) => {
+		const { stateId, stateName } = action.data;
+		return {
+			...state,
+			stateId,
+			stateName
+		};
+	}),
+
+	on(UserActions.setUserCountry, (state, action) => {
+		const { countryId, countryName } = action.data;
+		return {
+			...state,
+			countryId,
+			countryName
+		};
+	}),
+
+	on(UserActions.setUserMobile, (state, action) => {
+		return {
+			...state,
+			mobileNumber: action.data
 		};
 	}),
 
 	on(UserActions.setUserStatus, (state, action) => {
 		return {
-            ...state,
-            isLoggedIn: action.data
+			...state,
+			isLoggedIn: action.data
 		};
 	}),
-
-	on(UserActions.setUserAccounts, (state, action) => {
-		return {
-            ...state,
-            accountIDs: action.data
-		};
-	}),
-
-	on(UserActions.removeUsers, () => initialState)
 );
