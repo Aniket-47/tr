@@ -6,6 +6,7 @@ export const initialState: Iuser = {
 	name: '',
 	accountIDs: [],
 	isLoggedIn: false,
+	roles: []
 };
 
 export const userReducer = createReducer(
@@ -13,22 +14,22 @@ export const userReducer = createReducer(
 
 	on(UserActions.saveUserName, (state, action) => {
 		return {
-            ...state,
-            name: action.data
+			...state,
+			name: action.data
 		};
 	}),
 
 	on(UserActions.setUserStatus, (state, action) => {
 		return {
-            ...state,
-            isLoggedIn: action.data
+			...state,
+			isLoggedIn: action.data
 		};
 	}),
 
 	on(UserActions.setUserAccounts, (state, action) => {
 		return {
-            ...state,
-            accountIDs: action.data
+			...state,
+			accountIDs: action.data
 		};
 	}),
 
