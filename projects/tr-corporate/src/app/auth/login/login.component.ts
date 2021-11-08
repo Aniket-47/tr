@@ -59,14 +59,14 @@ export class LoginComponent implements OnInit {
     this.isLoading = true;
     this.authServ.login({ "email": this.email, "password": password })
       .subscribe((res: any) => {
-        console.log("Res ", res);
+        // console.log("Res ", res);
         // on success
         this.isLoading = false;
         this.lsServ.store(LSkeys.BEARER_TOKEN, res.data.accesstoken.token);
         this.router.navigate([ROUTE_CONFIGS.DASHBOARD]);
       },
         res_error => {
-          console.log("Error ", res_error)
+          // console.log("Error ", res_error)
           const { error } = res_error;
           this.isLoading = false;
           this.passwordValidationError = error.message;

@@ -4,207 +4,79 @@
       <!-- <button mat-icon-button>
         <span class="mc-back-arrow"></span>
       </button> -->
-      <h5 class="mobile-only">Permissions</h5>
-      <h2>Add New Role</h2>
+      <!-- <h5 class="mobile-only">Permissions</h5> -->
+      <h2>Create New Role</h2>
     </div>
-      <div class="page-action cloud-only">
-        <mat-form-field appearance="outline">
-          <mat-select [(value)]="selectedStatus">
-              <mat-option *ngFor="let item of status" [value]="item.value">
-                  {{item.viewValue}}
-              </mat-option>
-              </mat-select>
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-            <mat-label>New Role Name</mat-label>
-            <input matInput placeholder="Placeholder" value="">
-        </mat-form-field>
-        <button mat-flat-button color="primary">Submit </button>
-  
-      </div>
-      
+    <div class="page-action">
+      <mat-form-field appearance="outline">
+        <mat-select [(value)]="selectedStatus">
+          <mat-option *ngFor="let item of status" [value]="item.value">
+            {{item.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>New Role Name</mat-label>
+        <input matInput placeholder="Placeholder" value="">
+      </mat-form-field>
+      <button mat-flat-button color="primary" (click)="submitHandler()">Submit </button>
 
-
+    </div>
   </div>
 </header>
-<div class="accordion-container">
-    <mat-accordion>
+<div class="accordion-container" [formGroup]="rightsForm">
+  <ng-container formArrayName="rights">
+    <mat-accordion *ngIf="rightsArray.controls.length">
+      <ng-container *ngFor="let eachRight of rightsArray.controls; let i = index" [formGroupName]="i">
         <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
           <mat-expansion-panel-header>
             <mat-panel-title>
-               
-                <div class="accordion-title">
-                    <div>Dashboard Builder</div>
-                    <div class="accordion-indicator">
-                        Show all 3 actions
-                        <span class="mat-expansion-indicator"></span>
-                    </div>
-                </div>            
-            </mat-panel-title>
-            <mat-panel-description (click)="onEvent($event)">
-               
-            <mat-slide-toggle color="green" [checked]="true" (click)="onEvent($event)"></mat-slide-toggle>
-            </mat-panel-description>
-          </mat-expansion-panel-header>
-          <div class="inner-content">
-            <mat-expansion-panel (opened)="panelOpenState = true"
-            (closed)="panelOpenState = false">
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                    Manage Dashboard           
-                </mat-panel-title>
-                <mat-panel-description>
-                  <mat-slide-toggle color="green" [checked]="true" (click)="onEvent($event)"></mat-slide-toggle>
-                </mat-panel-description>
-              </mat-expansion-panel-header>
-              <div class="role-list bg-light">
-                <div class="role-title">Dashboard Contents</div>
-                  <mat-slide-toggle color="green" [checked]="true" (click)="onEvent($event)"></mat-slide-toggle>
-            </div>
-            </mat-expansion-panel>
-            <div class="role-list">
-                <div class="role-title">Add To Dashboard</div>
-                <mat-slide-toggle color="green" [checked]="true" (click)="onEvent($event)"></mat-slide-toggle>
-            </div>
-            <div class="role-list">
-                <div class="role-title">Dashboard Contents</div>
-                <mat-slide-toggle color="green" [checked]="true" (click)="onEvent($event)"></mat-slide-toggle>
-            </div>
-          </div>
-          
-        </mat-expansion-panel>
-      
-        <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-                
-                <div class="accordion-title">
-                    <div>Dashboard Module</div>
-                    <div class="accordion-indicator">
-                        Show all 15 actions
-                        <span class="mat-expansion-indicator"></span>
-                    </div>
-                </div>            
+
+              <div class="accordion-title">
+                <div>{{eachRight.get('name')?.value | titlecase}}</div>
+                <div class="accordion-indicator">
+                  Show all {{eachRight.get('level2')?.value.length}} permissions
+                  <span class="mat-expansion-indicator"></span>
+                </div>
+              </div>
             </mat-panel-title>
             <mat-panel-description>
-              <mat-slide-toggle color="green" [checked]="true"></mat-slide-toggle>
+
+              <mat-slide-toggle color="green" formControlName="isOn"></mat-slide-toggle>
             </mat-panel-description>
           </mat-expansion-panel-header>
-          <div class="inner-content">
-            <mat-expansion-panel (opened)="panelOpenState = true"
-            (closed)="panelOpenState = false">
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                    Manage Dashboard           
-                </mat-panel-title>
-                <mat-panel-description>
-                  <mat-slide-toggle color="green" [checked]="true" (click)="onEvent($event)"></mat-slide-toggle>
-                </mat-panel-description>
-              </mat-expansion-panel-header>
-              <div class="role-list bg-light">
-                <div class="role-title">Dashboard Contents</div>
-                <mat-slide-toggle color="green" [checked]="true" (click)="onEvent($event)"></mat-slide-toggle>
-            </div>
-            </mat-expansion-panel>
-            <div class="role-list">
-                <div class="role-title">Add To Dashboard</div>
-                <mat-slide-toggle color="green" [checked]="true" (click)="onEvent($event)"></mat-slide-toggle>
-            </div>
-            <div class="role-list">
-                <div class="role-title">Dashboard Contents</div>
-                <mat-slide-toggle color="green" [checked]="true" (click)="onEvent($event)"></mat-slide-toggle>
-            </div>
+
+          <div class="inner-content" *ngIf="eachRight.get('level2')">
+            <ng-container formArrayName="level2">
+              <ng-container *ngFor="let eachLvl2 of getLvl2Array(i)?.controls; let l2 = index" [formGroupName]="l2">
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      {{eachLvl2.get('name')?.value}}
+                    </mat-panel-title>
+                    <mat-panel-description>
+                      <mat-slide-toggle color="green" formControlName="isOn">
+                      </mat-slide-toggle>
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <ng-container *ngIf="eachLvl2.get('level3')">
+                    <ng-container formArrayName="level3">
+                      <div class="role-list bg-light"
+                        *ngFor="let eachLvl3 of getLvl3Array(i, l2)?.controls; let l3 = index" [formGroupName]="l3">
+                        <div class="role-title">{{eachLvl3.get('name')?.value}}</div>
+                        <div class="header-action">
+                          <mat-slide-toggle color="green" formControlName="isOn"></mat-slide-toggle>
+                        </div>
+                      </div>
+                    </ng-container>
+                  </ng-container>
+                </mat-expansion-panel>
+              </ng-container>
+            </ng-container>
           </div>
-          
+
         </mat-expansion-panel>
-      
-        <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-               
-                <div class="accordion-title">
-                    <div>Analytics</div>
-                    <div class="accordion-indicator">
-                        Show all 15 actions
-                        <span class="mat-expansion-indicator"></span>
-                    </div>
-                </div>            
-            </mat-panel-title>
-            <mat-panel-description>
-              <mat-slide-toggle color="green" [checked]="false"></mat-slide-toggle>
-            </mat-panel-description>
-          </mat-expansion-panel-header>
-          <div class="inner-content">
-            <mat-expansion-panel (opened)="panelOpenState = true"
-            (closed)="panelOpenState = false">
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                    Manage Dashboard           
-                </mat-panel-title>
-                <mat-panel-description>
-                  <mat-slide-toggle color="green" [checked]="true" (click)="onEvent($event)"></mat-slide-toggle>
-                </mat-panel-description>
-              </mat-expansion-panel-header>
-              <div class="role-list">
-                <div class="role-title">Dashboard Contents</div>
-                <mat-slide-toggle color="green" [checked]="true" (click)="onEvent($event)"></mat-slide-toggle>
-            </div>
-            </mat-expansion-panel>
-            <div class="role-list">
-                <div class="role-title">Add To Dashboard</div>
-                <mat-slide-toggle color="green" [checked]="true" (click)="onEvent($event)"></mat-slide-toggle>
-            </div>
-            <div class="role-list">
-                <div class="role-title">Dashboard Contents</div>
-                <mat-slide-toggle color="green" [checked]="true" (click)="onEvent($event)"></mat-slide-toggle>
-            </div>
-          </div>
-          
-        </mat-expansion-panel>
-      
-        <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)" hideToggle>
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-                
-                <div class="accordion-title">
-                    <div>Other Operations</div>
-                    <div class="accordion-indicator">
-                        Show all 15 actions
-                        <span class="mat-expansion-indicator"></span>
-                    </div>
-                </div>            
-            </mat-panel-title>
-            <mat-panel-description>
-              <mat-slide-toggle color="green" [checked]="true"></mat-slide-toggle>
-            </mat-panel-description>
-          </mat-expansion-panel-header>
-          <div class="inner-content">
-            <mat-expansion-panel (opened)="panelOpenState = true"
-            (closed)="panelOpenState = false">
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                    Manage Dashboard           
-                </mat-panel-title>
-                <mat-panel-description>
-                  <mat-slide-toggle color="green" [checked]="true" (click)="onEvent($event)"></mat-slide-toggle>
-                </mat-panel-description>
-              </mat-expansion-panel-header>
-              <div class="role-list">
-                <div class="role-title">Dashboard Contents</div>
-                <mat-slide-toggle color="green" [checked]="true" (click)="onEvent($event)"></mat-slide-toggle>
-            </div>
-            </mat-expansion-panel>
-            <div class="role-list">
-                <div class="role-title">Add To Dashboard</div>
-                <mat-slide-toggle color="green" [checked]="true" (click)="onEvent($event)"></mat-slide-toggle>
-            </div>
-            <div class="role-list">
-                <div class="role-title">Dashboard Contents</div>
-                <mat-slide-toggle color="green" [checked]="true" (click)="onEvent($event)"></mat-slide-toggle>
-            </div>
-          </div>
-          
-        </mat-expansion-panel>
-      
-      </mat-accordion>
-    </div>
+      </ng-container>
+    </mat-accordion>
+  </ng-container>
+</div>

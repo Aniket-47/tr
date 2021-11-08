@@ -1,4 +1,5 @@
 @import '~@mucrest/ng-design/assets/styles/0-plugins/plugins-dir';
+@import '~@mucrest/ng-design/assets/styles/1-base/variable';
 
 table.mat-table {
     @include media-breakpoint-down(md) {
@@ -108,6 +109,13 @@ table.mat-table {
             color: rgba($color: $black, $alpha: 0.5);
         }
     }
+
+    .table-container{
+        padding-left: 0.8rem !important;
+        @include media-breakpoint-up(md) {
+            padding: none;
+        }
+    }
 }
 .user-img-label {
     @include media-breakpoint-up(md) {
@@ -124,3 +132,34 @@ table.mat-table {
     }
 }
 
+.add-new-role-btn-icon{
+    &::before{
+        color: $theme-secondary;
+        font-size: 1rem;
+    }
+}
+
+    .blue{
+        color: $primary;
+        & i::before{
+            color: $primary;
+        }
+    }
+    .green{
+        color: $isComplete;
+        & i::before{
+            color: $isComplete;
+        }
+    }
+    .red{
+        color: $theme-secondary;
+        & i::before{
+            color: $theme-secondary;
+        }
+    }
+
+.close-btn{
+    position: absolute;
+    right: 1rem;
+    font-size: 1.3rem;
+}

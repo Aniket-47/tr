@@ -452,7 +452,7 @@ mat-drawer-container{
     }
 }
 .accordion-container {
-    height: calc(100vh - #{$header-height} + 100px);
+    height: 55vh;
     overflow-y: auto;
     overflow-x: hidden;
 }

@@ -8,7 +8,7 @@
   justify-content: flex-start;
   min-height: 460px;
   max-width: 786px;
-  // width: 786px;
+  width: 45vw;
   ::ng-deep .stepper .stepper-label {
     color: black;
   }
@@ -44,7 +44,7 @@
     }
   }
   ::ng-deep .mc-card {
-    min-height: 8.5rem;
+    min-height: 2.5rem;
     margin-bottom: 1.6rem;
     cursor: pointer;
     .mc-card-title {

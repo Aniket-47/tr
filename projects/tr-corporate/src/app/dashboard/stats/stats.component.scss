@@ -1,7 +1,13 @@
+@import '~@mucrest/ng-design/assets/styles/0-plugins/plugins-dir';
+
 img{
     height: 58vh;
     margin: 4rem auto;
     display: flex;
+    @include media-breakpoint-down(md) {
+        height: 25vh;
+        margin: 4rem auto;
+    }
 }
 
 .construction-title{

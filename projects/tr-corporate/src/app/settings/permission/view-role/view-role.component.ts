@@ -42,7 +42,7 @@ export interface Iroll {
   templateUrl: './view-role.component.html',
   styleUrls: ['./view-role.component.scss']
 })
-export class ViewRoleComponent implements AfterViewInit {
+export class ViewRoleComponent implements AfterViewInit, OnInit {
 
   toggle = false;
   status = [
@@ -78,13 +78,18 @@ export class ViewRoleComponent implements AfterViewInit {
     private router: Router,
     private store: Store<State>) { }
 
+  ngOnInit(){
+    this.store.select(getDefaultAccountId).subscribe(data => {
+      if (data[0]) this.loadUserRoles(data[0].accountid);
+    });
+  }
 
   ngAfterViewInit(): void {
     // this.dataSource.paginator = this.paginator;
     // this.dataSource.sort = this.sort;
-    this.store.select(getDefaultAccountId).subscribe(data => {
-      if (data[0]) this.loadUserRoles(data[0].accountid);
-    });
+    // this.store.select(getDefaultAccountId).subscribe(data => {
+    //   if (data[0]) this.loadUserRoles(data[0].accountid);
+    // });
   }
 
   resetPaging(): void {
