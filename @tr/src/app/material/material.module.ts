@@ -43,6 +43,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 
+import {MatNativeDateModule} from '@angular/material/core'
 
 const matModules = [
   MatAutocompleteModule,
@@ -80,6 +81,8 @@ const matModules = [
   MatPaginatorModule,
   MatSortModule,
   MatTableModule,
+  MatNativeDateModule,
+ 
 ]
 @NgModule({
   declarations: [],
