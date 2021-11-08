@@ -26,8 +26,10 @@
   }
   .about-user {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: flex-start;
+    // align-items: center;
+    gap: 1rem;
+    flex-direction: column;
     // padding: 15px 0;
     .about-user__left {
       display: flex;

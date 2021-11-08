@@ -1,7 +1,7 @@
 @import '~@mucrest/ng-design/assets/styles/0-plugins/plugins-dir';
 .page-header {
     @include padding-bottom(2.3rem);
-
+    padding-top: 0;
     flex-direction: column;
     gap: 25px;
     align-items: flex-start;

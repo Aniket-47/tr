@@ -4,10 +4,10 @@
       <!-- <button mat-icon-button>
         <span class="mc-back-arrow"></span>
       </button> -->
-      <h5 class="mobile-only">Permissions</h5>
-      <h2>Add New Role</h2>
+      <!-- <h5 class="mobile-only">Permissions</h5> -->
+      <h2>Create New Role</h2>
     </div>
-    <div class="page-action cloud-only">
+    <div class="page-action">
       <mat-form-field appearance="outline">
         <mat-select [(value)]="selectedStatus">
           <mat-option *ngFor="let item of status" [value]="item.value">
@@ -22,9 +22,6 @@
       <button mat-flat-button color="primary" (click)="submitHandler()">Submit </button>
 
     </div>
-
-
-
   </div>
 </header>
 <div class="accordion-container" [formGroup]="rightsForm">
