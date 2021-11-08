@@ -9,16 +9,15 @@ header {
 .page-header {
   display: flex;
   align-items: center;
-  @include padding(0 0 1.8rem);
+  @include padding(1rem 0 1.8rem);
   @include media-breakpoint-down(md) {
-    @include padding(0 0 1.3rem);
+    @include padding(1rem 0 1.3rem);
   }
   .page-title {
     display: flex;
     align-items: center;
-    @include padding(0 0 1.8rem);
-    @include media-breakpoint-down(md) { 
-        @include padding(1rem 0 1.3rem);  
+    @include media-breakpoint-down(md) {
+      display: block;
     }
     .mat-icon-button {
       @include font-size(1.3rem);
@@ -182,7 +181,7 @@ header {
         //     top: 0;
         //     padding-top: 0;
         // }
-        .mat-form-field-label {           
+        .mat-form-field-label {
             margin-top: 0;
         }
         .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
@@ -378,9 +377,9 @@ header {
   @include padding(0 10px 0 30px !important); //!important ;
 }
 
-//   .mat-drawer-inner-container {
-//     overflow: hidden !important;
-//   }
+.mat-list-base {
+  padding-top: 0 !important;
+}
 
 .mat-drawer-inner-container {
   overflow: hidden !important;
@@ -396,9 +395,8 @@ header {
   }
 }
 .mat-menu-panel {
-    min-width: 200px !important;
+  min-width: 200px !important;
 }
-
 
 // view/edit panel
 .mat-drawer-container {
@@ -417,10 +415,12 @@ mat-drawer-container{
             padding-left: 1rem;
             padding-right: 1rem;
             width: 350px;
-        }    
-        .mat-drawer-backdrop.mat-drawer-shown {
-            background-color: transparent;
         }
+        .mat-drawer-backdrop.mat-drawer-shown {            
+            background-color: #ffffff94;
+            backdrop-filter: blur(1px);
+        }
+
     }
 
 .table-container{
@@ -438,7 +438,7 @@ mat-drawer-container{
             }
     }
     .page-action {
-        .mat-form-field[appearance=outline]:first-child, 
+        .mat-form-field[appearance=outline]:first-child,
         .mat-form-field[appearance=outline]:nth-child(2) {
         width: 100%;
         margin-bottom: 1rem;
@@ -452,7 +452,7 @@ mat-drawer-container{
     }
 }
 .accordion-container {
-    height: calc(100vh - 300px);
+    height: calc(100vh - #{$header-height} + 100px);
     overflow-y: auto;
     overflow-x: hidden;
 }
@@ -468,4 +468,23 @@ mat-drawer-container{
 .mat-slide-toggle {
     margin-right: 0 !important;
 }
+}
+
+.mat-paginator-container{
+  @include media-breakpoint-down(md) {
+    justify-content: flex-start !important;
+
+  }
+  .mat-paginator-range-label, .mat-paginator-page-size-label{
+    @include media-breakpoint-down(md) {
+      margin-left: 0px !important;
+    }
+  }
+}
+.modal {
+  width: 600px;
+  @include media-breakpoint-down(md) {
+    width: 100%;
+    overflow: auto;
+  }
 }

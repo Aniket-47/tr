@@ -6,9 +6,9 @@
     }
     .mat-drawer-container, ::ng-deep .mat-drawer-content {
         height: 100%;
-        overflow: inherit;
+        overflow: auto;
         .sidenav-content {
-            padding: 2rem 2rem 0;
+            padding: 1.3rem 2rem 0;
             height: 100%;
             position: relative;           
             background: white;
@@ -52,10 +52,26 @@
 }
 .mobile-togglebtn {
     position: absolute;
+    right: 46px;
+    top: 10px;
+    font-size: 20px;
+    z-index: 2;
+    .icon-mc.mc-menu {
+        vertical-align: bottom;
+    }
+    @include media-breakpoint-up(md) { 
+        display: none;
+     }
+}
+.open-bottombtn {
+    position: absolute;
     right: 6px;
     top: 10px;
     font-size: 20px;
     z-index: 2;
+    .icon-mc {
+        vertical-align: bottom;
+    }
     @include media-breakpoint-up(md) { 
         display: none;
      }

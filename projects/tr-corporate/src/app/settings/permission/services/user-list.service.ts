@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { api_routes, secure_api_routes } from '../../../utility/configs/apiConfig';
 import { UtilityService } from '../../../utility/services/utility.service';
-import { UserList_request } from '../interfaces/user-list';
+import { UserList_response } from '../interfaces/user-list';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,7 @@ export class UserListService {
   }
 
   getUserList(accountID: string) {
-    return this.http.get<UserList_request>(this.secure_api_routes.USER_LIST, { headers: { 'accountID': accountID } })
+    return this.http.get<UserList_response>(this.secure_api_routes.USER_LIST, { headers: { 'accountID': accountID } })
   }
 
 }

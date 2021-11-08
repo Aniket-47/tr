@@ -17,7 +17,8 @@ import { map } from 'rxjs/operators';
 // Services
 import { UserListService } from '../services/user-list.service';
 
-const ELEMENT_DATA = [
+const ELEMENT_DATA = {
+  data:[
   { img: './assets/img/user.jpg', name: 'Essie Ward', email: 'lu@sa.co.uk', role: 'Admin', username: 'Essic_Ward', status: 'Active', lastupdated: '17 Apr 2021' },
   { img: './assets/img/user.jpg', name: 'Jennifer', email: 'lu@sa.co.uk', role: 'Super Admin', username: 'Jenne', status: 'Inactive', lastupdated: '17 Apr 2021' },
   { img: './assets/img/user.jpg', name: 'Rocky Willam', email: 'lu@sa.co.uk', role: 'Super Admin', username: 'Rocky_w', status: 'Deactivated', lastupdated: '17 Apr 2021' },
@@ -30,7 +31,7 @@ const ELEMENT_DATA = [
   { img: './assets/img/user.jpg', name: 'Rocky Willam', email: 'lu@sa.co.uk', role: 'Super Admin', username: 'Rocky_w', status: 'Deactivated', lastupdated: '17 Apr 2021' },
   { img: './assets/img/user.jpg', name: 'Rocky Willam', email: 'lu@sa.co.uk', role: 'Super Admin', username: 'Rocky_w', status: 'Deactivated', lastupdated: '17 Apr 2021' },
 
-];
+]};
 @Component({
   selector: 'app-user-manage',
   templateUrl: './user-manage.component.html',
@@ -71,7 +72,7 @@ export class UserManageComponent implements OnInit {
       .subscribe(s => {
         if (s.length > 0) {
           this.userlistserv.getUserList(s[0].accountid).subscribe(res => {
-            console.log(res);
+            // console.log(res);
             this.dataSource = new MatTableDataSource(res.data)
             this.dataSource.paginator = this.paginator;
           });
@@ -90,7 +91,9 @@ export class UserManageComponent implements OnInit {
   }
 
   addUserModal() {
-    this.addUserModalRef = this.dialog.open(AddUserComponent, { width: '50vw' })
+    this.addUserModalRef = this.dialog.open(AddUserComponent, { 
+      autoFocus: false, panelClass: 'modal'
+    })
   }
 
 
