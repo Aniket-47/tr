@@ -1,5 +1,5 @@
 export interface AccountList_response {
-  error: true,
+  error: boolean,
   statuscode: number,
   message: string,
   data: [
