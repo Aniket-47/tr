@@ -1,6 +1,15 @@
 export interface Iuser {
-    name: string;
-    accountIDs: { accountid: string; name: string; }[];
     isLoggedIn: boolean;
-    roles: any[],
+    fullName: string;
+    firstName: string;
+    lastName: string;
+    middleName: string;
+    address: string;
+    cityId: string;
+    cityName: string;
+    countryId: string;
+    countryName: string;
+    mobileNumber: string;
+    stateId: string;
+    stateName: string;
 }

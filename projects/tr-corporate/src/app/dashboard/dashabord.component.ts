@@ -5,8 +5,7 @@ import { LstorageService } from '@tr/src/app/utility/services/lstorage.service';
 import { Observable } from 'rxjs';
 import { LSkeys } from '../utility/configs/app.constants';
 import { ROUTE_CONFIGS } from '../utility/configs/routerConfig';
-import { setUserAccounts } from '../utility/store/actions/user.action';
-import { Iuser } from '../utility/store/interfaces/user';
+import { setAccountList } from '../utility/store/actions/account.action';
 import { State } from '../utility/store/reducers';
 import { getIsLoading } from '../utility/store/selectors/app.selector';
 import { AccountListApiService } from './services/account-list-api.service';
@@ -43,7 +42,7 @@ export class DashabordComponent implements OnInit {
     private store: Store<State>,
     private router: Router,
     private cd: ChangeDetectorRef) {
-      this.isLoading$ = this.store.select(getIsLoading);
+    this.isLoading$ = this.store.select(getIsLoading);
   }
 
   ngOnInit(): void {
@@ -52,7 +51,7 @@ export class DashabordComponent implements OnInit {
     this.accountListApiServ.getAccountList().subscribe(res => {
       if (!res.error) {
         this.accountList = res.data;
-        this.store.dispatch(setUserAccounts({ data: this.accountList }))
+        this.store.dispatch(setAccountList({ data: this.accountList }))
       }
     });
 

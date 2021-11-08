@@ -3,19 +3,28 @@ import * as UserActions from "../actions/user.action";
 import { Iuser } from "../interfaces/user";
 
 export const initialState: Iuser = {
-	name: '',
-	accountIDs: [],
 	isLoggedIn: false,
-	roles: []
+	fullName: '',
+	firstName: '',
+	lastName: '',
+	middleName: '',
+	address: '',
+	cityId: '',
+	cityName: '',
+	countryId: '',
+	countryName: '',
+	mobileNumber: '',
+	stateId: '',
+	stateName: '',
 };
 
 export const userReducer = createReducer(
 	initialState,
 
-	on(UserActions.saveUserName, (state, action) => {
+	on(UserActions.setUserFullName, (state, action) => {
 		return {
 			...state,
-			name: action.data
+			fullName: action.data
 		};
 	}),
 
@@ -25,13 +34,4 @@ export const userReducer = createReducer(
 			isLoggedIn: action.data
 		};
 	}),
-
-	on(UserActions.setUserAccounts, (state, action) => {
-		return {
-			...state,
-			accountIDs: action.data
-		};
-	}),
-
-	on(UserActions.removeUsers, () => initialState)
 );
