@@ -45,15 +45,19 @@
 }
 .auth-step {
   display: flex;
-  justify-content: center;
-  margin-top: 3rem;
+  justify-content: flex-start;
+  margin: 3rem auto 0;
+  width: 45vw;
   @media (max-width: 767px) {
     margin-top: 1rem;
   }
 }
 
 .logo {
-  text-align: center;
+  text-align: left;
+  width: 45vw;
+  margin: 0 auto;
+  padding: 1rem 0 0 0;
   svg{
   width: 14rem;
   height: 45px;

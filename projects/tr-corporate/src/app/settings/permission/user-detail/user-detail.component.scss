@@ -74,7 +74,7 @@
   }
   .mid-sec {
     padding: 1em 0;
-    max-height: 70vh;
+    max-height: 68vh;
     overflow: auto;
     .personal__details__heading {
       display: flex;
@@ -152,10 +152,12 @@
 
   .buttons {
     position: absolute;
-    left: 20px;
-    right: 20px;
-    bottom: 10px;
-    width: 90%;
+    left: 0;
+    right: 0;
+    bottom: 0px;
+    width: 100%;
+    background-color: $white;
+    padding: 0 1.4rem 10px;
     display: flex;
     justify-content: space-between;
     button {
