@@ -1,7 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { ROUTE_CONFIGS } from '../../utility/configs/routerConfig';
 import { AuthService } from '../services/auth.service';
+import { setStepper, setStepperShow } from '../store/actions/auth.action';
+import { Iauth } from '../store/interface/auth';
 
 @Component({
     selector: '',
@@ -32,7 +35,6 @@ import { AuthService } from '../services/auth.service';
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                height: 100vh;
             }
             
             .lds-ellipsis {
@@ -173,7 +175,10 @@ export class VerifyAccountComponent implements OnInit{
     isLoading = false;
     message = 'Verifying your account';
     isVerified = false;
-    constructor(private route: ActivatedRoute, private router: Router, private authService: AuthService) {}
+    constructor(private route: ActivatedRoute, private router: Router, private authService: AuthService,
+      private store: Store<Iauth>) {
+      this.store.dispatch(setStepperShow({ data: true }));
+    }
 
     ngOnInit(): void{
         const token = this.route.snapshot.paramMap.get('token');
@@ -184,11 +189,13 @@ export class VerifyAccountComponent implements OnInit{
                 this.message = res.message;
                 this.isVerified = true;
                 this.afterVerify();
+                this.store.dispatch(setStepper({ data: 3 }));
             }, (err) => {
                 this.isLoading = false
                 this.message = 'Account verification failed';
                 this.isVerified = false;
                 this.afterVerify()
+                this.store.dispatch(setStepper({ data: 3 }));
             })
         }
     }
@@ -196,5 +203,9 @@ export class VerifyAccountComponent implements OnInit{
     afterVerify(){
         setTimeout(() => this.router.navigate([ROUTE_CONFIGS.LOGIN])
         , 3000)
+    }
+
+    ngOnDestroy(){
+      this.store.dispatch(setStepperShow({ data: false }));
     }
 }

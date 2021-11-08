@@ -1,7 +1,12 @@
+import { AddUser_request } from './../interfaces/add-user';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+import { ValidationConstants } from '../../../utility/configs/app.constants';
+import { UserService } from '../services/user.service';
+import { SnackBarService } from '../../../utility/services/snack-bar.service';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 
 export interface User {
@@ -21,8 +26,8 @@ interface Food {
 export class AddUserComponent implements OnInit {
 
   addUserForm!: FormGroup;
-
-  constructor(private fb: FormBuilder,) { }
+  isLoading = false;
+  constructor(private fb: FormBuilder, private userServ: UserService, private snackBar: SnackBarService, public dialogRef: MatDialogRef<AddUserComponent>,) { }
 
   // selecter
   foods: Food[] = [
@@ -35,9 +40,9 @@ export class AddUserComponent implements OnInit {
   // autocompleet
   myControl = new FormControl();
   options: User[] = [
-    { name: 'Mary' },
-    { name: 'Shelley' },
-    { name: 'Igor' }
+    { name: '' },
+    { name: '' },
+    { name: '' }
   ];
   filteredOptions: Observable<User[]> | undefined;
 
@@ -63,8 +68,81 @@ export class AddUserComponent implements OnInit {
 
   initForm() {
     this.addUserForm = this.fb.group({
-
+      firstName: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(ValidationConstants.userAccountStrategy.NAME_MIN_LENGTH),
+          Validators.maxLength(ValidationConstants.userAccountStrategy.NAME_MAX_LENGTH)
+        ],
+      ],
+      middleName: [
+        '',
+        [
+          Validators.minLength(ValidationConstants.userAccountStrategy.NAME_MIN_LENGTH),
+          Validators.maxLength(ValidationConstants.userAccountStrategy.NAME_MAX_LENGTH)
+        ],
+      ],
+      lastName: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(ValidationConstants.userAccountStrategy.NAME_MIN_LENGTH),
+          Validators.maxLength(ValidationConstants.userAccountStrategy.NAME_MAX_LENGTH)
+        ],
+      ],
+      email: ['',
+        [
+          Validators.required,
+          Validators.email
+        ]
+      ],
+      userRole: [''],
     });
+  }
+
+  get firstName(): AbstractControl {
+    return this.addUserForm.get('firstName') as FormControl;
+  }
+  get middleName(): AbstractControl {
+    return this.addUserForm.get('middleName') as FormControl;
+  }
+  get lastName(): AbstractControl {
+    return this.addUserForm.get('lastName') as FormControl;
+  }
+  get email(): AbstractControl {
+    return this.addUserForm.get('email') as FormControl;
+  }
+  get userRole(): AbstractControl {
+    return this.addUserForm.get('userRole') as FormControl;
+  }
+
+  addUser() {
+    this.isLoading = true;
+    // const payload: AddUser_request = {
+    //   firstname: this.firstName.value,
+    //   middlename: this.middleName.value,
+    //   lastname: this.lastName.value,
+    //   email: this.email.value,
+    //   roletypeid: this.userRole.value
+    // }
+    if (this.addUserForm.valid) {
+      this.userServ.createUser(this.addUserForm.value).subscribe(res => {
+        this.isLoading = false;
+        if (res.error) {
+          // error from api
+          this.snackBar.open(res.message);
+        }
+        else {
+          // success from api
+          this.snackBar.open(res.message);
+          setTimeout(() => {
+            this.dialogRef.close();
+            this.addUserForm.reset();
+          }, 4000)
+        }
+      })
+    }
   }
 
 

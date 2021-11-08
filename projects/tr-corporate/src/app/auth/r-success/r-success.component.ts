@@ -1,4 +1,7 @@
-import {Component} from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
+import { Store } from '@ngrx/store';
+import { setStepper, setStepperShow } from '../store/actions/auth.action';
+import { Iauth } from '../store/interface/auth';
 
 @Component({
     selector: '',
@@ -80,7 +83,6 @@ import {Component} from '@angular/core';
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                height: 100vh;
             }
             .icon::before{
                 color: rgb(13, 216, 13);
@@ -92,6 +94,13 @@ import {Component} from '@angular/core';
     ]
 })
 
-export class RegisterSuccessComponent {
-    constructor() {}
+export class RegisterSuccessComponent implements OnDestroy{
+    constructor(private store: Store<Iauth>) {
+      this.store.dispatch(setStepperShow({ data: true }));
+      this.store.dispatch(setStepper({ data: 2 }));
+    }
+
+    ngOnDestroy(){
+      this.store.dispatch(setStepperShow({ data: false }));
+    }
 }

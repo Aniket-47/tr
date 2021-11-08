@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { ValidationConstants } from '../../utility/configs/app.constants';
 import { AuthService } from '../services/auth.service';
 import { setStepper, setStepperShow, setUserRole } from '../store/actions/auth.action';
 import { Iauth } from '../store/interface/auth';
@@ -34,39 +35,50 @@ export class RegisterComponent implements OnInit, OnDestroy {
   registerForm: FormGroup = this.fb.group({
     firstName: [
       '',
-      [Validators.required, Validators.minLength(3), Validators.maxLength(20)],
+      [
+        Validators.required,
+        Validators.minLength(ValidationConstants.userAccountStrategy.NAME_MIN_LENGTH),
+        Validators.maxLength(ValidationConstants.userAccountStrategy.NAME_MAX_LENGTH)
+      ],
     ],
     middleName: [
       '',
-      [Validators.minLength(3), Validators.maxLength(20)],
+      [
+        Validators.minLength(ValidationConstants.userAccountStrategy.NAME_MIN_LENGTH),
+        Validators.maxLength(ValidationConstants.userAccountStrategy.NAME_MAX_LENGTH)
+      ],
     ],
     lastName: [
       '',
-      [Validators.required, Validators.minLength(3), Validators.maxLength(20)],
+      [
+        Validators.required,
+        Validators.minLength(ValidationConstants.userAccountStrategy.NAME_MIN_LENGTH),
+        Validators.maxLength(ValidationConstants.userAccountStrategy.NAME_MAX_LENGTH)
+      ],
     ],
     email: ['', [Validators.required, Validators.email]],
     company: ['', [Validators.required]],
     phone: ['', [Validators.required]],
     password: ['', [Validators.required]],
     cnfPass: ['', [Validators.required]],
-  }, {validators: passwordMatcher});
+  }, { validators: passwordMatcher });
 
   constructor(
-    private fb: FormBuilder, 
-    private router: Router, 
+    private fb: FormBuilder,
+    private router: Router,
     private authService: AuthService,
     private route: ActivatedRoute,
     private store: Store<Iauth>) {
-      this.store.dispatch(setStepperShow({data: true}));
-    }
+    this.store.dispatch(setStepperShow({ data: true }));
+  }
 
   ngOnInit(): void {
   }
 
   ngOnDestroy() {
-    this.store.dispatch(setStepperShow({data: false}));
-    this.store.dispatch(setStepper({data: 0}));
-    this.store.dispatch(setUserRole({data: 0}));
+    this.store.dispatch(setStepperShow({ data: false }));
+    this.store.dispatch(setStepper({ data: 0 }));
+    this.store.dispatch(setUserRole({ data: 0 }));
   }
 
   // getters
@@ -120,13 +132,13 @@ export class RegisterComponent implements OnInit, OnDestroy {
     this.isLoading = true;
     this.authService.register(payload).subscribe(res => {
       this.isLoading = false;
-      if(res) this.router.navigateByUrl('register-success');
+      if (res) this.router.navigateByUrl('register-success');
     }, (err) => this.isLoading = false)
   }
 
   goToPrev() {
-    this.store.dispatch(setStepper({data: 0}));
-    this.store.dispatch(setUserRole({data: 0}));
+    this.store.dispatch(setStepper({ data: 0 }));
+    this.store.dispatch(setUserRole({ data: 0 }));
     this.router.navigateByUrl('auth/selectrole');
   }
 }
