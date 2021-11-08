@@ -1,4 +1,4 @@
-<div class="container mt-5 mb-3 pt-2">
+<div class="container-fluid height-fxd">
   <div class="card-rndd">
     <div class="p-4">
       <div class="d-flex">
@@ -21,9 +21,9 @@
     </div>
 
       <div class="row">
-          <div class="col-lg-4 mt-2">
+          <div class="col-xl-4 mt-2">
               <div class="row">
-                  <div class="col-lg-3">
+                  <div class="col-sm-3">
                     <mat-form-field appearance="outline" class="w-100">
                         <mat-label>Mr</mat-label>
                         <mat-select>
@@ -33,7 +33,7 @@
                         </mat-select>
                       </mat-form-field>
                   </div>
-                  <div class="col-lg-9">
+                  <div class="col-sm-9">
                     <mat-form-field appearance="outline" class="w-100">
                         <mat-label>First name</mat-label>
                         <input matInput placeholder="xyz">
@@ -64,9 +64,9 @@
                 <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
             </mat-form-field>
           </div>
-          <div class="col-lg-4 mt-2">
+          <div class="col-xl-4 mt-2">
             <div class="row">
-                <div class="col-lg-4">
+                <div class="col-sm-4">
                     <mat-form-field appearance="outline" class="w-100">
                         <mat-label>91</mat-label>
                         <mat-select>
@@ -76,7 +76,7 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
-                <div class="col-lg-8">
+                <div class="col-sm-8">
                     <mat-form-field appearance="outline" class="w-100">
                         <mat-label>Primary phone no</mat-label>
                         <input matInput placeholder="xyz">
@@ -107,8 +107,6 @@
                 <input matInput [matDatepicker]="picker">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
-
-                <input matInput placeholder="dd-mm-yy">
             </mat-form-field>
           </div>
           <div class="col-lg-4 mt-2">
@@ -214,11 +212,17 @@
             </mat-form-field>
           </div>
           <div class="col-lg-8 mt-2">
-            <mat-form-field appearance="outline" class="w-100">
+            <div class="d-flex">
+              <mat-form-field appearance="outline" class="w-100 border-rgt">
                 <mat-label>Upload Resume</mat-label>
-                <input matInput placeholder="xyz">
-                <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
-            </mat-form-field>
+                <input matInput placeholder="xyz" class="w-100 border-rgt">
+              </mat-form-field>
+              <span>
+                <button class="py-2 border-lft" mat-flat-button color="primary">
+                  <mat-icon>upload</mat-icon>
+                </button>
+              </span>
+            </div>
           </div>
 
           <div class="col-12 mt-2">
@@ -366,15 +370,17 @@
           <div class="col-lg-4 mt-2">
             <mat-form-field appearance="outline" class="w-100">
                 <mat-label>From</mat-label>
-                <input matInput placeholder="xyz">
-                <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
+                <input matInput [matDatepicker]="picker">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
           </div>
           <div class="col-lg-4 mt-2">
             <mat-form-field appearance="outline" class="w-100">
                 <mat-label>To</mat-label>
-                <input matInput placeholder="xyz">
-                <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
+                <input matInput [matDatepicker]="picker">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
             <mat-checkbox color="primary">Currently persuing</mat-checkbox>
           </div>
@@ -477,15 +483,17 @@
             <div class="col-lg-4 mt-2">
               <mat-form-field appearance="outline" class="w-100">
                   <mat-label>From</mat-label>
-                  <input matInput placeholder="xyz">
-                  <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
+                  <input matInput [matDatepicker]="picker">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
               </mat-form-field>
             </div>
             <div class="col-lg-4 mt-2">
               <mat-form-field appearance="outline" class="w-100">
                   <mat-label>To</mat-label>
-                  <input matInput placeholder="xyz">
-                  <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
+                  <input matInput [matDatepicker]="picker">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
               </mat-form-field>
               <mat-checkbox color="primary">Currently Working</mat-checkbox>
             </div>
@@ -674,11 +682,16 @@
               </mat-form-field>
             </div>
             <div class="col-lg-4 mt-2">
-              <mat-form-field appearance="outline" class="w-100">
+              <div class="d-flex">
+                <mat-form-field appearance="outline" class="w-100">
                   <mat-label>Atach Certificate</mat-label>
                   <input matInput placeholder="xyz">
-                  <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
-              </mat-form-field>
+                </mat-form-field>
+                <span>
+                  <button class="py-2 border-lft" mat-flat-button color="primary">
+                    <mat-icon>upload</mat-icon>
+                  </button>
+                </span>
             </div>
           </div>
   
@@ -689,7 +702,7 @@
       </div>
     </div>
 
-    <div class="d-flex justify-content-end mt-4">
+    <div class="d-flex justify-content-end mt-4 mb-5 pb-5">
       <button mat-stroked-button class="me-2">Cancel</button>
       <button mat-flat-button color="primary">Add Candidate</button>
     </div>
