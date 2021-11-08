@@ -8,30 +8,17 @@ import { getDefaultAccountId } from '../../../utility/store/selectors/user.selec
 // Mat table
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { SelectionModel } from '@angular/cdk/collections';
 
 // Mat modal
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AddUserComponent } from '../add-user/add-user.component';
-import { map } from 'rxjs/operators';
 
 // Services
+import { SnackBarService } from '../../../utility/services/snack-bar.service';
 import { UserListService } from '../services/user-list.service';
+import { UserService } from '../services/user.service';
 
-const ELEMENT_DATA = {
-  data:[
-  { img: './assets/img/user.jpg', name: 'Essie Ward', email: 'lu@sa.co.uk', role: 'Admin', username: 'Essic_Ward', status: 'Active', lastupdated: '17 Apr 2021' },
-  { img: './assets/img/user.jpg', name: 'Jennifer', email: 'lu@sa.co.uk', role: 'Super Admin', username: 'Jenne', status: 'Inactive', lastupdated: '17 Apr 2021' },
-  { img: './assets/img/user.jpg', name: 'Rocky Willam', email: 'lu@sa.co.uk', role: 'Super Admin', username: 'Rocky_w', status: 'Deactivated', lastupdated: '17 Apr 2021' },
-  { img: './assets/img/user.jpg', name: 'Rocky Willam', email: 'lu@sa.co.uk', role: 'Super Admin', username: 'Rocky_w', status: 'Deactivated', lastupdated: '17 Apr 2021' },
-  { img: './assets/img/user.jpg', name: 'Rocky Willam', email: 'lu@sa.co.uk', role: 'Super Admin', username: 'Rocky_w', status: 'Deactivated', lastupdated: '17 Apr 2021' },
-  { img: './assets/img/user.jpg', name: 'Rocky Willam', email: 'lu@sa.co.uk', role: 'Super Admin', username: 'Rocky_w', status: 'Deactivated', lastupdated: '17 Apr 2021' },
-  { img: './assets/img/user.jpg', name: 'Rocky Willam', email: 'lu@sa.co.uk', role: 'Super Admin', username: 'Rocky_w', status: 'Deactivated', lastupdated: '17 Apr 2021' },
-  { img: './assets/img/user.jpg', name: 'Rocky Willam', email: 'lu@sa.co.uk', role: 'Super Admin', username: 'Rocky_w', status: 'Deactivated', lastupdated: '17 Apr 2021' },
-  { img: './assets/img/user.jpg', name: 'Rocky Willam', email: 'lu@sa.co.uk', role: 'Super Admin', username: 'Rocky_w', status: 'Deactivated', lastupdated: '17 Apr 2021' },
-  { img: './assets/img/user.jpg', name: 'Rocky Willam', email: 'lu@sa.co.uk', role: 'Super Admin', username: 'Rocky_w', status: 'Deactivated', lastupdated: '17 Apr 2021' },
-  { img: './assets/img/user.jpg', name: 'Rocky Willam', email: 'lu@sa.co.uk', role: 'Super Admin', username: 'Rocky_w', status: 'Deactivated', lastupdated: '17 Apr 2021' },
-
-]};
 @Component({
   selector: 'app-user-manage',
   templateUrl: './user-manage.component.html',
@@ -59,22 +46,28 @@ export class UserManageComponent implements OnInit {
   selectedSort = this.sort[0].value;
   displayedColumns: string[] = ['check', 'name', 'role', 'email', 'status', 'lastupdated', 'action'];
   dataSource!: MatTableDataSource<any>;
+  selection = new SelectionModel<any>(true, []);
   addUserModalRef!: MatDialogRef<AddUserComponent>;
 
+  totalUsers!: number;
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
 
   @ViewChild('modalRefElement', { static: false }) modalRefElement!: ElementRef;
 
-  constructor(private userlistserv: UserListService, private store: Store<State>, public dialog: MatDialog) {
+  constructor(private userlistServ: UserListService, private userServ: UserService, private store: Store<State>, public dialog: MatDialog, private snackBar: SnackBarService) {
+    this.totalUsers = 0;
     this.store.select(getDefaultAccountId)
       .subscribe(s => {
         if (s.length > 0) {
-          this.userlistserv.getUserList(s[0].accountid).subscribe(res => {
+          this.userlistServ.getUserList(s[0].accountid).subscribe(res => {
             // console.log(res);
             this.dataSource = new MatTableDataSource(res.data)
             this.dataSource.paginator = this.paginator;
+
+            // set this to total users from api
+            this.totalUsers = res.data.length;
           });
         }
       })
@@ -94,5 +87,54 @@ export class UserManageComponent implements OnInit {
     this.addUserModalRef = this.dialog.open(AddUserComponent, { width: '50vw' })
   }
 
+
+  isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.length;
+    return numSelected === numRows;
+  }
+
+  masterToggle() {
+    if (this.isAllSelected()) {
+      this.selection.clear();
+      return;
+    }
+
+    this.selection.select(...this.dataSource.data);
+  }
+
+  checkboxLabel(row?: any): string {
+    if (!row) {
+      return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
+    }
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
+  }
+
+  deactivateUser(userID: string) {
+    // console.log(userID);
+
+    this.userServ.deactivateUser({ 'userID': userID }).subscribe(res => {
+      if (res.error) {
+        // error from api
+        this.snackBar.open(res.message);
+      }
+      else {
+        // success from api
+        this.snackBar.open(res.message);
+      }
+    })
+  }
+  deleteUser(userID: string) {
+    this.userServ.deleteUser({ 'userID': userID }).subscribe(res => {
+      if (res.error) {
+        // error from api
+        this.snackBar.open(res.message);
+      }
+      else {
+        // success from api
+        this.snackBar.open(res.message);
+      }
+    })
+  }
 
 }

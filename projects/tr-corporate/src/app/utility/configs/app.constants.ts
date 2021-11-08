@@ -10,6 +10,10 @@ export const ValidationConstants = {
     PASSWORD_MIN_LENGTH: 6,
     PASSWORD_MAX_LENGTH: 15,
     PASSWORD_PATTON: ""
+  },
+  userAccountStrategy:{
+    NAME_MIN_LENGTH: 3,
+    NAME_MAX_LENGTH: 20,
   }
 }
 export const userRoles = [

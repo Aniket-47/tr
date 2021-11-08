@@ -19,220 +19,280 @@
         <!-- <i class="icon-mc mc-x"></i> -->
     </div>
 
-    <div class="about-user my-1">
-        <div class="about-user__left">
-            <img src="https://img.freepik.com/free-photo/cheerful-curly-business-girl-wearing-glasses_176420-206.jpg?size=626&ext=jpg"
-                alt="" />
-            <div class="about-user__name">
-                <h4>John Watson</h4>
-                <span>john_watson</span>
-            </div>
-        </div>
+    <ng-template #editIcon>
+      <mat-icon>mode_edit</mat-icon>
+    </ng-template>
 
-        <div class="about-user__right">
-            <mat-form-field class="mat-form-field">
-                <mat-label>Admin</mat-label>
-                <mat-select matNativeControl>
-                    <mat-option value="Active">Active</mat-option>
-                    <mat-option value="Active">Active</mat-option>
+    <ng-template #editUserInfo>
+      <h4>edit user info</h4>
+    </ng-template>
 
-                </mat-select>
-            </mat-form-field>
+    <div class="upper-sec__right">
+      <mat-icon class="close_icon">close</mat-icon>
+    </div>
+  </div>
 
-        </div>
+  <div class="about-user my-1">
+    <div class="about-user__left">
+      <!-- <img src="https://img.freepik.com/free-photo/cheerful-curly-business-girl-wearing-glasses_176420-206.jpg?size=626&ext=jpg"
+                alt="" /> -->
+      <div class="about-user__name">
+        <h4>John Watson</h4>
+        <span>john_watson</span>
+      </div>
     </div>
 
-    <div class="mid-sec">
-        <div class="personal__details__heading">
-            <h3>User Details</h3>
-            <button mat-button color="primary" (click)="edit = !edit" *ngIf="!edit; else hideEditBtn">
-                Edit
-            </button>
-        </div>
-        <ng-template #hideEditBtn> </ng-template>
+    <div class="about-user__right">
+      <mat-label *ngIf="!edit">Admin</mat-label>
+      <mat-form-field class="mat-form-field" *ngIf="edit">
+        <mat-label>Admin</mat-label>
+        <mat-select matNativeControl>
+          <mat-option value="Active">Active</mat-option>
+          <mat-option value="Active">Active</mat-option>
 
+        </mat-select>
+      </mat-form-field>
 
-        <div *ngIf="!edit; else displayInput">
-            <div class="personal__details__content">
-                <div class="user_detail_list">
-                    <div class="common-div">
-                        <mat-icon class="mat-icon">person</mat-icon>
-                        <div class="d-flex flex-column">
-                            <mat-label>Name</mat-label>
-                            <span class="value">John Watson</span>
-                        </div>
-                    </div>
-
-                    <div class="common-div">
-                        <mat-icon class="mat-icon">markunread</mat-icon>
-                        <div class="d-flex flex-column">
-                            <mat-label>Email</mat-label>
-                            <span class="value">abc123@gmail.com</span>
-                        </div>
-                    </div>
-                    <div class="common-div">
-                        <!-- <i class="fa fa-google" style="color: gray; margin: 0 10px 0 5px" aria-hidden="true"></i> -->
-                        <mat-icon class="mat-icon">work</mat-icon>
-                        <div class="d-flex flex-column">
-                            <mat-label>User Role</mat-label>
-                            <span class="value">Super Admin</span>
-                        </div>
-                    </div>
-                    <div class="common-div">
-                        <mat-icon class="mat-icon">emoji_events</mat-icon>
-                        <div class="d-flex flex-column">
-                            <mat-label>Designation</mat-label>
-                            <span class="value">Admin</span>
-                        </div>
-                    </div>
-                    <div class="common-div">
-                        <mat-icon class="mat-icon">layers</mat-icon>
-                        <div class="d-flex flex-column">
-                            <mat-label>Business Vertical</mat-label>
-                            <span class="value">Dummy Business Vertical</span>
-                        </div>
-                    </div>
-                    <div class="common-div">
-                        <mat-icon class="mat-icon">work</mat-icon>
-                        <div class="d-flex flex-column">
-                            <mat-label>Practice</mat-label>
-                            <span class="value">Dummy Practice</span>
-                        </div>
-                    </div>
-                    <div class="common-div">
-                        <mat-icon class="mat-icon">local_phone</mat-icon>
-                        <div class="d-flex flex-column">
-                            <mat-label>Phone</mat-label>
-                            <span class="value">+91 9865487126</span>
-                        </div>
-                    </div>
-                    <div class="common-div">
-                        <mat-icon class="mat-icon">location_on</mat-icon>
-                        <div class="d-flex flex-column">
-                            <mat-label>Location</mat-label>
-                            <span class="value">Kolkata Park Street, Pin 700022</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <ng-template #displayInput>
-            <div class="my-3">
-
-                <mat-label>
-                    <mat-icon>person</mat-icon> Name
-                </mat-label><br>
-
-                <mat-form-field class="ms-4" appearance="outline">
-                    <mat-label>First Name</mat-label>
-                    <input matInput placeholder="First Name">
-                </mat-form-field>
-                <mat-form-field class="ms-4" appearance="outline">
-                    <mat-label>Middle Name</mat-label>
-                    <input matInput placeholder="Middle Name">
-                </mat-form-field>
-                <mat-form-field class="ms-4" appearance="outline">
-                    <mat-label>Last Name</mat-label>
-                    <input matInput placeholder="Last Name">
-                </mat-form-field>
-
-            </div>
-
-
-            <div class="my-3">
-                <mat-label>
-                    <mat-icon>markunread</mat-icon> Email
-                </mat-label><br>
-
-                <mat-form-field class="ms-4" appearance="outline">
-                    <mat-label>Email</mat-label>
-                    <input matInput placeholder="abc123@gmail.com">
-                </mat-form-field>
-            </div>
-
-            <div class="my-3">
-                <mat-label>
-                    <mat-icon>work</mat-icon>User Role
-                </mat-label>
-
-                <mat-form-field appearance="outline" class="ms-4">
-                    <mat-label>Super Admin</mat-label>
-                    <mat-select matNativeControl>
-                        <mat-option value="Active">Active</mat-option>
-                        <mat-option value="Active">Active</mat-option>
-
-                    </mat-select>
-                </mat-form-field>
-            </div>
-
-
-            <div class="my-3">
-                <mat-label>
-                    <mat-icon>emoji_events</mat-icon>Designation
-                </mat-label>
-
-
-                <mat-form-field appearance="outline" class="ms-4">
-                    <mat-label>Admin</mat-label>
-                    <mat-select matNativeControl>
-                        <mat-option value="Active">Active</mat-option>
-                        <mat-option value="Active">Active</mat-option>
-
-                    </mat-select>
-                </mat-form-field>
-            </div>
-
-            <div class="my-3">
-                <mat-label>
-                    <mat-icon>layers</mat-icon>Business Vertical
-                </mat-label><br>
-
-                <mat-form-field class="ms-4" appearance="outline">
-                    <mat-label>Dummy Business Vertical</mat-label>
-                    <input matInput placeholder="Dummy Business Vertical">
-                </mat-form-field>
-            </div>
-
-            <div class="my-3">
-                <mat-label>
-                    <mat-icon>work</mat-icon>Practice
-                </mat-label><br>
-
-                <mat-form-field class="ms-4" appearance="outline">
-                    <mat-label>Practice</mat-label>
-                    <input matInput placeholder="Dummy Practice">
-                </mat-form-field>
-            </div>
-
-            <div class="my-3">
-                <mat-label>
-                    <mat-icon>local_phone</mat-icon>Phone
-                </mat-label><br>
-
-                <mat-form-field class="ms-4" appearance="outline">
-                    <mat-label>Phone</mat-label>
-                    <input matInput placeholder="ex:- 9874563258">
-                </mat-form-field>
-            </div>
-
-            <div class="my-3">
-                <mat-label>
-                    <mat-icon>location_on</mat-icon>Location
-                </mat-label><br>
-
-                <mat-form-field class="ms-4" appearance="outline">
-                    <mat-label>Location</mat-label>
-                    <input matInput placeholder="Location">
-                </mat-form-field>
-            </div>
-
-
-            <div class="buttons">
-                <button mat-flat-button class="update-btn" color="primary">Update</button>
-                <button mat-stroked-button (click)="edit = !edit" class="cancel-btn">Cancel</button>
-            </div>
-        </ng-template>
     </div>
+  </div>
+
+  <div class="mid-sec">
+    <div class="personal__details__heading">
+      <h3>User Details</h3>
+      <button mat-button color="primary" (click)="edit = !edit" *ngIf="!edit; else hideEditBtn">
+        Edit
+      </button>
+    </div>
+    <ng-template #hideEditBtn> </ng-template>
+
+
+    <div *ngIf="!edit; else displayInput">
+      <div class="personal__details__content">
+        <div class="user_detail_list">
+          <div class="common-div">
+            <mat-icon class="mat-icon">person</mat-icon>
+            <div class="d-flex flex-column">
+              <mat-label>Name</mat-label>
+              <span class="value">{{ user.firstname+" "+user.middlename+" "+user.lastname }}</span>
+            </div>
+          </div>
+
+          <div class="common-div">
+            <mat-icon class="mat-icon">markunread</mat-icon>
+            <div class="d-flex flex-column">
+              <mat-label>Email</mat-label>
+              <span class="value">{{ user.email }}</span>
+            </div>
+          </div>
+          <div class="common-div">
+            <!-- <i class="fa fa-google" style="color: gray; margin: 0 10px 0 5px" aria-hidden="true"></i> -->
+            <mat-icon class="mat-icon">work</mat-icon>
+            <div class="d-flex flex-column">
+              <mat-label>User Role</mat-label>
+              <span class="value">{{ user.roletypeid }}</span>
+            </div>
+          </div>
+          <div class="common-div">
+            <mat-icon class="mat-icon">emoji_events</mat-icon>
+            <div class="d-flex flex-column">
+              <mat-label>Designation</mat-label>
+              <span class="value">{{ user.designation }}</span>
+            </div>
+          </div>
+          <div class="common-div">
+            <mat-icon class="mat-icon">layers</mat-icon>
+            <div class="d-flex flex-column">
+              <mat-label>Business Vertical</mat-label>
+              <span class="value">{{ user.businessVertical }}</span>
+            </div>
+          </div>
+          <div class="common-div">
+            <mat-icon class="mat-icon">work</mat-icon>
+            <div class="d-flex flex-column">
+              <mat-label>Practice</mat-label>
+              <span class="value">{{ user.practice }}</span>
+            </div>
+          </div>
+          <div class="common-div">
+            <mat-icon class="mat-icon">local_phone</mat-icon>
+            <div class="d-flex flex-column">
+              <mat-label>Phone</mat-label>
+              <span class="value">{{ user.phone }}</span>
+            </div>
+          </div>
+          <div class="common-div">
+            <mat-icon class="mat-icon">location_on</mat-icon>
+            <div class="d-flex flex-column">
+              <mat-label>Location</mat-label>
+              <span class="value">{{ user.location }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <ng-template #displayInput>
+
+      <form [formGroup]="editUserForm">
+        <div class="my-3">
+
+          <mat-label>
+            <mat-icon>person</mat-icon> Name
+          </mat-label><br>
+
+          <mat-form-field class="ms-4" appearance="outline">
+            <mat-label>First Name</mat-label>
+            <input matInput formControlName="firstName" placeholder="First Name">
+            <mat-error *ngIf="firstName.invalid && firstName.touched">
+              <span *ngIf="firstName.errors?.required">
+                First Name is required
+              </span>
+              <span *ngIf="!firstName.errors?.required && firstName.errors?.minlength">
+                First Name should be atleast 3 letters
+              </span>
+              <span *ngIf="firstName.errors?.maxlength">
+                First Name should be maximum of 20 letters
+              </span>
+            </mat-error>
+
+          </mat-form-field>
+          <mat-form-field class="ms-4" appearance="outline">
+            <mat-label>Middle Name</mat-label>
+            <input matInput formControlName="middleName" placeholder="Middle Name">
+            <mat-error *ngIf="middleName.invalid && middleName.touched">
+              <span *ngIf="middleName.errors?.minlength">
+                Middle Name should be atleast 3 letters
+              </span>
+              <span *ngIf="middleName.errors?.maxlength">
+                Middle Name should be maximum of 20 letters
+              </span>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="ms-4" appearance="outline">
+            <mat-label>Last Name</mat-label>
+            <input matInput formControlName="lastName" placeholder="Last Name">
+            <mat-error *ngIf="lastName.invalid && lastName.touched">
+              <span *ngIf="lastName.errors?.required">
+                Last Name is required
+              </span>
+              <span *ngIf="!lastName.errors?.required && lastName.errors?.minlength">
+                Last Name should be atleast 3 letters
+              </span>
+              <span *ngIf="lastName.errors?.maxlength">
+                Last Name should be maximum of 20 letters
+              </span>
+            </mat-error>
+          </mat-form-field>
+
+        </div>
+
+
+        <div class="my-3">
+          <mat-label>
+            <mat-icon>markunread</mat-icon> Email
+          </mat-label><br>
+
+          <mat-form-field class="ms-4" appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" placeholder="abc123@gmail.com">
+            <mat-error *ngIf="email.invalid && email.touched">
+              <span *ngIf="email.errors?.required">
+                Email Id is required
+              </span>
+              <span *ngIf="!email.errors?.required && email.errors?.email">
+                Email Id is not valid
+              </span>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="my-3">
+          <mat-label>
+            <mat-icon>work</mat-icon>User Role
+          </mat-label>
+
+          <mat-form-field appearance="outline" class="ms-4">
+            <mat-label>Super Admin</mat-label>
+            <mat-select formControlName="userRole">
+              <mat-option *ngFor="let option of options; let i=index" [value]="i+1">
+                {{option.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+
+        <div class="my-3">
+          <mat-label>
+            <mat-icon>emoji_events</mat-icon>Designation
+          </mat-label>
+
+
+          <mat-form-field appearance="outline" class="ms-4">
+            <mat-label>Admin</mat-label>
+            <mat-select matNativeControl disabled>
+              <mat-option value="Active">Active</mat-option>
+              <mat-option value="Active">Active</mat-option>
+
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="my-3">
+          <mat-label>
+            <mat-icon>layers</mat-icon>Business Vertical
+          </mat-label><br>
+
+          <mat-form-field class="ms-4" appearance="outline">
+            <mat-label>Dummy Business Vertical</mat-label>
+            <input matInput placeholder="Dummy Business Vertical" disabled>
+          </mat-form-field>
+        </div>
+
+        <div class="my-3">
+          <mat-label>
+            <mat-icon>work</mat-icon>Practice
+          </mat-label><br>
+
+          <mat-form-field class="ms-4" appearance="outline">
+            <mat-label>Practice</mat-label>
+            <input matInput placeholder="Dummy Practice" disabled>
+          </mat-form-field>
+        </div>
+
+        <div class="my-3">
+          <mat-label>
+            <mat-icon>local_phone</mat-icon>Phone
+          </mat-label><br>
+
+          <mat-form-field class="ms-4" appearance="outline">
+            <mat-label>Phone</mat-label>
+            <input matInput placeholder="ex:- 9874563258" disabled>
+          </mat-form-field>
+        </div>
+
+        <div class="my-3">
+          <mat-label>
+            <mat-icon>location_on</mat-icon>Location
+          </mat-label><br>
+
+          <mat-form-field class="ms-4" appearance="outline">
+            <mat-label>Location</mat-label>
+            <input matInput placeholder="Location" disabled>
+          </mat-form-field>
+        </div>
+
+
+        <div class="buttons">
+          <button mat-flat-button color="primary" (click)="addUser()" [disabled]="isLoading">
+            <span *ngIf="!isLoading">Update</span>
+            <mat-spinner diameter="20" *ngIf="isLoading" class="mx-auto"></mat-spinner>
+          </button>
+          <button mat-stroked-button (click)="edit = !edit" class="cancel-btn">Cancel</button>
+        </div>
+      </form>
+
+    </ng-template>
+  </div>
 </div>

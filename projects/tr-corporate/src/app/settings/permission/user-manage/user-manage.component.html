@@ -34,7 +34,9 @@
     <!-- Desktop view -->
     <div class="user-management">
       <div class="table-header">
-        <div class="table-info">2 users selected</div>
+        <div class="table-info" *ngIf="selection.selected.length > 0">{{ selection.selected.length }} Users Selected
+        </div>
+        <div class="table-info" *ngIf="selection.selected.length == 0">{{ totalUsers }} Total Users</div>
         <div class="table-action cloud-only">
           <mat-form-field appearance="outline">
             <mat-select [(value)]="selectedStatus">
@@ -66,10 +68,15 @@
           <!-- Position Column -->
           <ng-container matColumnDef="check">
             <th mat-header-cell *matHeaderCellDef>
-              <mat-checkbox color="primary"></mat-checkbox>
+              <mat-checkbox *ngIf="dataSource" color="primary" (change)="$event ? masterToggle() : null"
+                [checked]="selection.hasValue() && isAllSelected()"
+                [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()">
+              </mat-checkbox>
             </th>
             <td mat-cell *matCellDef="let element">
-              <mat-checkbox color="primary"></mat-checkbox>
+              <mat-checkbox color="primary" (click)="$event.stopPropagation()"
+                (change)="$event ? selection.toggle(element) : null" [checked]="selection.isSelected(element)"
+                [aria-label]="checkboxLabel(element)"></mat-checkbox>
             </td>
           </ng-container>
 
@@ -117,10 +124,14 @@
             <th mat-header-cell *matHeaderCellDef> Status </th>
             <td mat-cell *matCellDef="let element">
               <mat-label class="status" [ngClass]="{
-                'success': element.status === 'Active',
-                'warning': element.status === 'Inactive',
-                'danger': element.status === 'Deactivated'
-              }">{{element.status}} </mat-label>
+                'success': element.status == 1,
+                'warning': element.status == 2,
+                'danger': element.status == 3
+              }">
+                <span *ngIf="element.status == 1 ">Active</span>
+                <span *ngIf="element.status == 2 ">Inactive</span>
+                <span *ngIf="element.status == 3 ">Deactivated</span>
+              </mat-label>
             </td>
           </ng-container>
 
@@ -136,8 +147,10 @@
             <th mat-header-cell *matHeaderCellDef> </th>
             <td mat-cell *matCellDef="let element">
               <div class="cloud-only">
-                <button class="red" mat-icon-button matTooltip="Deactivate User" [matTooltipPosition]="'right'">
-                  <i class="icon-mc mc-person_add_disabled"></i>
+                <!-- Change element.fullname to element.userID -->
+                <button mat-icon-button matTooltip="Deactivate User" [matTooltipPosition]="'right'"
+                  (click)="deactivateUser(element.fullname)">
+                  <span class="icon-mc  mc-person_add_disabled"></span>
                 </button>
                 <button mat-icon-button [matMenuTriggerFor]="tableMenu">
                   <span class="icon-mc mc-more_horiz"></span>
