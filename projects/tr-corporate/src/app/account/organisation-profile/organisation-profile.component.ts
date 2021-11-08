@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { SnackBarService } from '../../utility/services/snack-bar.service';
 import { State } from '../../utility/store/reducers';
-import { getDefaultAccountId } from '../../utility/store/selectors/user.selector';
+import { getDefaultAccountId } from '../../utility/store/selectors/account.selector';
 import { AccountService } from '../shared/account.service';
 
 @Component({

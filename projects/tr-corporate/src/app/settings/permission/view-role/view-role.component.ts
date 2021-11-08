@@ -10,11 +10,11 @@ import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 // store
 import { Store } from '@ngrx/store';
 import { State } from '../../../utility/store/reducers';
-import { getDefaultAccountId } from '../../../utility/store/selectors/user.selector';
 
 // Component
 import { AddRoleComponent } from '../add-role/add-role.component';
-import { UserRoleService } from '../services/user-role.serbice';
+import { UserRoleService } from '../services/user-role.service';
+import { getDefaultAccountId } from '../../../utility/store/selectors/account.selector';
 
 // table data
 
@@ -78,7 +78,7 @@ export class ViewRoleComponent implements AfterViewInit, OnInit {
     private router: Router,
     private store: Store<State>) { }
 
-  ngOnInit(){
+  ngOnInit() {
     this.store.select(getDefaultAccountId).subscribe(data => {
       if (data[0]) this.loadUserRoles(data[0].accountid);
     });

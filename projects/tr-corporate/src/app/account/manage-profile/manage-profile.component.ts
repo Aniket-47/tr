@@ -46,7 +46,11 @@ export class ManageProfileComponent implements OnInit {
       middleName: [''],
       lastName: ['', [Validators.required]],
       email: [''],
-      mobilenumber: ['', [Validators.minLength(10)]]
+      mobilenumber: ['', 
+        [
+          Validators.required,
+          Validators.minLength(10)
+        ]]
     });
   }
 

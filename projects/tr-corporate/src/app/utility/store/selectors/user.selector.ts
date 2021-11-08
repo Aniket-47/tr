@@ -3,23 +3,13 @@ import { Iuser } from "../interfaces/user";
 import { State } from "../reducers";
 
 export const selectAppState = (state: State) => state.user;
- 
+
 export const getUserStatus = createSelector(
     selectAppState,
     (state: Iuser) => state.isLoggedIn
 );
 
-export const getUserName = createSelector(
+export const getUserFullName = createSelector(
     selectAppState,
-    (state: Iuser) => state.name
-);
-
-export const getDefaultAccountId = createSelector(
-    selectAppState,
-    (state: Iuser) => state.accountIDs.length ? state.accountIDs : []
-);
-
-export const getAccountIds = createSelector(
-  selectAppState,
-  (state: Iuser) => state.accountIDs
+    (state: Iuser) => state.fullName
 );
