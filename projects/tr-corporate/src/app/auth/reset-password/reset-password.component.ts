@@ -11,7 +11,8 @@ function passwordMatcher(c: AbstractControl): { [key: string]: boolean } | null 
 
   if (passwordControl.pristine || cnfPassControl.pristine) return null;
   if (passwordControl.value === cnfPassControl.value) return null;
-  return { match: true };
+  cnfPassControl.setErrors({ passMatch: true })
+  return { passMatch: true };
 }
 
 @Component({
@@ -72,7 +73,6 @@ export class ResetPasswordComponent implements OnInit {
       else {
         this.snackBar.open(res.message)
       }
-
     });
   }
 
