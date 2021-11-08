@@ -65,6 +65,11 @@
 .mat-slide-toggle {
     margin-left: auto;
 }
+::ng-deep .mat-expansion-panel-body {
+    .header-action {
+        margin-right: 0 !important;
+    }
+}
 }
 .header-action {
     display: flex;
@@ -80,7 +85,7 @@
 }
 .accordion-indicator {
     display: block;
-    font-size: 1rem;
+    font-size: .9rem;
     color: #378DF7;
     margin-top: .4rem;
     line-height: 13px;
@@ -94,7 +99,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 0 24px;
+    padding: 0 1rem;
     border-bottom: 1px solid #EBEAED;
     &:last-child {
         border: 0;
@@ -108,6 +113,7 @@
         width: 50%;
         margin-right: 16px;
     }
+   
 }
 .bg-light{
     background: rgb(0 0 0 / 4%);

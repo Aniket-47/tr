@@ -74,6 +74,8 @@
   }
   .mid-sec {
     padding: 1em 0;
+    max-height: 70vh;
+    overflow: auto;
     .personal__details__heading {
       display: flex;
       justify-content: space-between;
@@ -136,21 +138,28 @@
       margin-bottom: 5px;
       font-size: 14px;
     }
-
+    .mat-form-field {
+      display: block;
+      width: auto;
+    }
     ::ng-deep .mat-form-field-flex {
       width: 90% !important;
     }
     ::ng-deep .mat-form-field-appearance-outline .mat-form-field-wrapper {
-      margin: 0.6em 0 -1.1em 0 !important;
+      margin: 0.6em 0 .7em 0 !important;
     }
   }
 
   .buttons {
-    display: inline-block;
-    margin-top: 20px;
-    // border: 1px solid red;
-    .update-btn {
-      margin-right: 20px;
-    }
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    bottom: 10px;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    button {
+      width: 48%;
+    }    
   }
 }
