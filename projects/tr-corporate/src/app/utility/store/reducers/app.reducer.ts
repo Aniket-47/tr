@@ -3,8 +3,8 @@ import * as AppActions from "../actions/app.action";
 import { Iapp } from "../interfaces/app";
 
 export const initialState: Iapp = {
-    theme: '',
-    isLoading: false
+	theme: '',
+	isLoading: false
 };
 
 export const appReducer = createReducer(
@@ -12,15 +12,15 @@ export const appReducer = createReducer(
 
 	on(AppActions.setAppTheme, (state, action) => {
 		return {
-            ...state,
-            theme: action.data
+			...state,
+			theme: action.data
 		};
 	}),
 
 	on(AppActions.setAppLoader, (state, action) => {
 		return {
-            ...state,
-            isLoading: action.data
+			...state,
+			isLoading: action.data
 		};
 	}),
 );

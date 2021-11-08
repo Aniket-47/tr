@@ -1,8 +1,8 @@
 // App
-const appThemeAction = "[App] Save app theme";
-const appLoaderAction = "[App] Save app loader";
-
-export const APP_ACTIONS = { appThemeAction, appLoaderAction };
+export const enum AppActions {
+    APP_THEME_ACTION = "[APP] Set app theme",
+    APP_LOADER_ACTION = "[APP] Set app loader",
+}
 
 // user
 export const enum UserActions {
