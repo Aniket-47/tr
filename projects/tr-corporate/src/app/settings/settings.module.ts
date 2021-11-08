@@ -6,6 +6,7 @@ import { CardModule, MaterialModule } from '@tr';
 import { SettingsRoutingModule } from './settings-routing.module';
 import { RouterModule } from '@angular/router';
 import { SettingsMenuComponent } from './settings-menu/settings-menu.component';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 
 
 
@@ -20,6 +21,7 @@ import { SettingsMenuComponent } from './settings-menu/settings-menu.component';
     MaterialModule,
     CardModule,
     SettingsRoutingModule,
+    PerfectScrollbarModule
   ]
 })
 export class SettingsModule { }

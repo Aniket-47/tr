@@ -5,20 +5,22 @@ import { StatsComponent } from './stats/stats.component';
 
 const routes: Routes = [
   {
-    path:'',
+    path: '',
     component: DashabordComponent,
-    children:[
+    children: [
       {
         path: '',
-        component: StatsComponent
+        component: StatsComponent,
       },
       {
-        path:'settings',
-        loadChildren: () => import('../settings/settings.module').then(m => m.SettingsModule)
+        path: 'settings',
+        loadChildren: () =>
+          import('../settings/settings.module').then((m) => m.SettingsModule),
       },
       {
-        path:'account',
-        loadChildren: () => import('../../../../../@tr/src/app/account/account.module').then(m => m.AccountModule)
+        path: 'account',
+        loadChildren: () =>
+          import('../account/account.module').then((m) => m.AccountModule),
       },
       {
         path:'candidate',
@@ -30,15 +32,15 @@ const routes: Routes = [
         redirectTo: ''
       },
       {
-        path:'**',
-        redirectTo:''
-      }
-    ]
-  }
+        path: '**',
+        redirectTo: '',
+      },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class DashboardRoutingModule { }
+export class DashboardRoutingModule {}

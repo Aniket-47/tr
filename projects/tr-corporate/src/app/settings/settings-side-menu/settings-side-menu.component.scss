@@ -3,27 +3,37 @@
 
 .settings-wrap{
   width: 250px;
-  padding: 1em;
-  box-shadow: 0px 0px 1px #b4b4b4;
+  padding: 0 1rem 1em;
 
   .nav-search {
     position: sticky;
     top: 0;
     background: white;
     z-index: 2;
+    padding-top: 1.8rem;
+    @include media-breakpoint-down(md) {
+      padding: 0.8rem;
+   }
   }
 
   .settings__element{
-    max-height: 50vh;
+    height: calc(100vh - #{$header-height});
     overflow: auto;
     .mat-expansion-panel-header {
       padding: 0 0 0 8px;
 
       .icon {
-        font-size: 20px;
-        margin-right: 5px;
+        font-size: .8rem;
+        margin-right: 0.5rem;
+        padding: 0;
+        background-color: $theme-secondary;
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        line-height: 25px;
+        text-align: center;
         &::before{
-          color: #1F47F5 !important;
+          color: $white !important;
         }
       }
     }
@@ -33,7 +43,7 @@
 
       .active{
         cursor: pointer;
-        color: #1F47F5 !important;
+        color: $theme !important;
       }
     }
   }
@@ -48,19 +58,20 @@
 ::ng-deep .mat-expansion-panel-header-title{
   @include font-size($fs-default);
   font-weight: 400 !important;
+  align-items: center;
 }
 
 .icon {
   @include font-size($fs-md);
   @include margin-right(10px);
   &::before{
-    color: #1F47F5 !important;
+    color: $theme !important;
   }
 }
 
 .active{
   cursor: pointer;
-  color: #1F47F5 !important;
+  color: $theme !important;
 }
 
 ::ng-deep .mat-expansion-panel:not([class*=mat-elevation-z]) {
@@ -72,7 +83,7 @@
 }
 
 .mat-expansion-panel-header.mat-expanded {
-  height: 20px !important;
+  height: 48px !important;
 }
 
 .mat-expansion-panel-header{

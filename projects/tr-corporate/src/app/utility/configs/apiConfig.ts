@@ -1,7 +1,9 @@
 import { environment } from '../../../environments/environment';
 
 const basePath = environment.apiDomain + '/api/v1';
-const auth = basePath + '/auth';
+const auth = `${basePath}/auth`;
+const master = `${basePath}/master`;
+const account = `${basePath}/account`;
 
 export const api_routes = {
   // auth module
@@ -10,7 +12,8 @@ export const api_routes = {
   VALIDATE_EMAIL: `${auth}/validateemail`,
   VALIDATE_ACCOUNT: `${auth}/accountverification`,
   LOGIN: `${auth}/login`,
-  FORGOT_PASSWORD: `${auth}/forgotpassword`
+  FORGOT_PASSWORD: `${auth}/forgotpassword`,
+  RESET_PASSWORD: `${auth}/resetpassword/$resetPassToken`,
 };
 
 export const secure_api_routes = {
@@ -18,9 +21,30 @@ export const secure_api_routes = {
   CHANGE_PASSWORD: `${auth}/changepassword`,
   REFRESH_TOKEN: `${auth}/token/$refreshToken`,
   LOGOUT_ALL: `${auth}/logout/all`,
-  RESET_PASSWORD: `${auth}/resetpassword/$resetPassToken`,
   LOGOUT: `${auth}/logout`,
 
   // permission
-  ACCOUNT_LIST: `${auth}/user/account`
+  ACCOUNT_LIST: `${auth}/user/account`,
+  ACCOUNT: `${basePath}/account`,
+  USER: `${auth}/user`,
+  USER_UPDATE: `${auth}/user`,
+
+  //master
+  COUNTRY_LIST: `${master}/countries`,
+  STATE_LIST: `${master}/states`,
+  CITY_LIST: `${master}/cities`,
+  INDUSTRY_LIST: `${master}/industries`,
+
+  // ACCOUNT: `${auth}/account`,
+  USER_LIST: `${account}/userslist`,
+  USER_ROLES: `${account}/role`,
+  SHORT_NAME: `${account}/validateshortname`,
+
+  // User Management
+  // set these according to API
+  GET_USER: `${account}/getuser`,
+  ADD_USER: `${account}/adduser`,
+  UPDATE_USER: `${account}/updateuser`,
+  DEACTIVATE_USER: `${account}/deactivateuser`,
+  DELETE_USER: `${account}/deleteuser`,
 };

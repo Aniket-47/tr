@@ -1,1 +1,179 @@
-<p>add-user works!</p>
+<div class="add-user">
+  <div class="border-0">
+    <div class="d-flex justify-content-between">
+      <h2 class="text-dark">
+        Add User
+      </h2>
+      <button mat-icon-button mat-dialog-close>
+        <i class="icon-mc mc-x"></i>
+      </button>
+    </div>
+    <form [formGroup]="addUserForm">
+      <div class="row row-cols-1 row-cols-lg-2 mt-4">
+        <div class="col-md-6">
+          <div>
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>First Name</mat-label>
+              <input matInput formControlName="firstName" placeholder="xyz">
+              <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
+              <mat-error *ngIf="firstName.invalid && firstName.touched">
+                <span *ngIf="firstName.errors?.required">
+                  First Name is required
+                </span>
+                <span *ngIf="!firstName.errors?.required && firstName.errors?.minlength">
+                  First Name should be atleast 3 letters
+                </span>
+                <span *ngIf="firstName.errors?.maxlength">
+                  First Name should be maximum of 20 letters
+                </span>
+              </mat-error>
+
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div>
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Middle Name</mat-label>
+              <input matInput formControlName="middleName" placeholder="xyz">
+              <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
+              <mat-error *ngIf="middleName.invalid && middleName.touched">
+
+                <span *ngIf="middleName.errors?.minlength">
+                  Middle Name should be atleast 3 letters
+                </span>
+                <span *ngIf="middleName.errors?.maxlength">
+                  Middle Name should be maximum of 20 letters
+                </span>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div>
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Last Name</mat-label>
+              <input matInput formControlName="lastName" placeholder="xyz">
+              <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
+              <mat-error *ngIf="lastName.invalid && lastName.touched">
+                <span *ngIf="lastName.errors?.required">
+                  Last Name is required
+                </span>
+                <span *ngIf="!lastName.errors?.required && lastName.errors?.minlength">
+                  Last Name should be atleast 3 letters
+                </span>
+                <span *ngIf="lastName.errors?.maxlength">
+                  Last Name should be maximum of 20 letters
+                </span>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <!-- <div class="col-md-6">
+          <div>
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>User Name</mat-label>
+              <input matInput formControlName="userName" placeholder="xyz">
+             </mat-form-field>
+          </div>
+        </div> -->
+        <div class="col-md-6">
+          <div>
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Email</mat-label>
+              <input type="email" matInput formControlName="email" placeholder="pat@example.com">
+              <!--<mat-icon class="text-muted h5" matSuffix>email</mat-icon>-->
+              <mat-error *ngIf="email.invalid && email.touched">
+                <span *ngIf="email.errors?.required">
+                  Email Id is required
+                </span>
+                <span *ngIf="!email.errors?.required && email.errors?.email">
+                  Email Id is not valid
+                </span>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div>
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>User Role</mat-label>
+              <mat-select formControlName="userRole">
+                <mat-option *ngFor="let option of options; let i=index" [value]="i+1">
+                  {{option.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div>
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Designation</mat-label>
+              <mat-select disabled>
+                <mat-option *ngFor="let food of foods" [value]="food.value">
+                  {{food.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div>
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Buisness Vertical</mat-label>
+              <mat-select disabled>
+                <mat-option *ngFor="let food of foods" [value]="food.value">
+                  {{food.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div>
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Practice</mat-label>
+              <mat-select disabled>
+                <mat-option *ngFor="let food of foods" [value]="food.value">
+                  {{food.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div>
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Location</mat-label>
+              <mat-select disabled>
+                <mat-option *ngFor="let food of foods" [value]="food.value">
+                  {{food.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div>
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Reporting Manager</mat-label>
+              <mat-select disabled>
+                <mat-option *ngFor="let food of foods" [value]="food.value">
+                  {{food.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </form>
+    <div class="d-flex justify-content-end mt-2">
+      <button class="btn-lg text-dark ms-3" mat-flat-button (click)="addUserForm.reset()">Reset</button>
+      <button mat-flat-button color="primary" (click)="addUser()" [disabled]="isLoading">
+        <span *ngIf="!isLoading">Invite</span>
+        <mat-spinner diameter="20" *ngIf="isLoading" class="mx-auto"></mat-spinner>
+      </button>
+    </div>
+  </div>
+</div>

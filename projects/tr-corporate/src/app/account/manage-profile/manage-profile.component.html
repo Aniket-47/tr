@@ -1,0 +1,81 @@
+<div class="profile-info">
+  <div class="profile-form" [formGroup]="userForm">
+    <div>
+      <mat-form-field appearance="standard">
+        <mat-label>First Name</mat-label>
+        <input matInput placeholder="First name" formControlName="firstName">
+        <mat-error *ngIf="firstName.invalid && firstName.touched">
+          <span *ngIf="firstName.errors?.required">This filed is required.</span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="standard">
+        <mat-label>Middle Name</mat-label>
+        <input matInput placeholder="Middle name" formControlName="middleName">
+        <!-- <mat-error *ngIf="lastName.invalid && lastName.touched">
+          <span *ngIf="lastName.errors?.required">This filed is required.</span>
+        </mat-error> -->
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="standard">
+        <mat-label>Last Name</mat-label>
+        <input matInput placeholder="Last name" formControlName="lastName">
+        <mat-error *ngIf="lastName.invalid && lastName.touched">
+          <span *ngIf="lastName.errors?.required">This filed is required.</span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="standard">
+        <mat-label>Email Id (Official Email Id)</mat-label>
+        <input matInput type="email" placeholder="Email" formControlName="email">
+        <mat-error *ngIf="email.invalid && email.touched">
+          <span *ngIf="email.errors?.required">This filed is required.</span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="standard">
+        <mat-label>Mobile No</mat-label>
+        <input matInput type="email" placeholder="Mobile no" formControlName="mobilenumber">
+        <mat-error *ngIf="mobilenumber.invalid && mobilenumber.touched">
+          <span *ngIf="mobilenumber.errors?.required">This filed is required.</span>
+          <span *ngIf="!mobilenumber.errors?.required && mobilenumber.errors?.minlength">Minimum 10 digits</span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+   
+    <!-- <div class="account-type">
+      <p>Account Type:</p>
+      <mat-radio-group aria-label="Select an option" formControlName="accType">
+        <mat-radio-button [value]="1" color="primary">Staffing And Recruiting</mat-radio-button>
+        <mat-radio-button [value]="2" color="primary" class="mx-3 mt-3">Corporate</mat-radio-button>
+      </mat-radio-group>
+    </div> -->
+    <!-- <div>
+            <mat-form-field appearance="standard">
+                <mat-label>Password</mat-label>
+                <input matInput placeholder="" type="password">
+                </mat-form-field>
+        </div> -->
+  </div>
+  <div class="profile-image">
+    <div class="img-container">
+      <img src="{{url ? url : './assets/img/profile.png'}}" alt="">
+    </div>
+    <div class="img-action">
+      <input #fileInput type='file' (change)="onSelectFile($event)" style="display: none">
+      <button mat-stroked-button color="primary" (click)="fileInput.click()">Upload new picture</button>
+      <button mat-button *ngIf="url" (click)="delete()">Remove picture</button>
+    </div>
+  </div>
+</div>
+<div class="profile-action">
+  <button mat-stroked-button>Reset</button>
+  <button mat-flat-button color="primary" (click)="updateUser()" [disabled]="isLoading">
+    <span *ngIf="!isLoading">Save Changes</span>
+    <mat-spinner diameter="20" *ngIf="isLoading" class="mx-auto"></mat-spinner>
+  </button>
+</div>

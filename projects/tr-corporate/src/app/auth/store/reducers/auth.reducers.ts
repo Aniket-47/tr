@@ -5,14 +5,10 @@ import { Iauth } from "../interface/auth";
 export const initialState: Iauth = {
 	stepper: {
 		active: 0,
-		stepList: ['Company Type', 'Register'],
+		stepList: ['Org Type', 'Register', 'Verify'],
 		showStepper: false,
 	},
-	roles: [
-		{id: 1, name: 'Corporate'},
-		{id: 2, name: 'Staffing'},
-		{id: 3, name: 'JobSeeker'}
-	]
+	selectedRole: 0
 };
 
 export const authReducer = createReducer(
@@ -35,6 +31,13 @@ export const authReducer = createReducer(
 				...state.stepper,
 				showStepper: action.data
 			}
+		};
+	}),
+
+	on(AuthActions.setUserRole, (state, action) => {
+		return {
+            ...state,
+			selectedRole: action.data
 		};
 	}),
 );

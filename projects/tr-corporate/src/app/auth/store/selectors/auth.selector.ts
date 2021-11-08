@@ -5,12 +5,20 @@ const getAuthState = createFeatureSelector<Iauth>('auth');
  
 export const getStepper = createSelector(
     getAuthState,
-    state => state.stepper
+    state => state.stepper.stepList
 );
 
-
-export const getRoles = createSelector(
+export const isActiveStepper = createSelector(
     getAuthState,
-    state => state.roles
+    state => state.stepper.showStepper
 );
 
+export const getActiveStepperIndex = createSelector(
+    getAuthState,
+    state => state.stepper.active
+);
+
+export const getSelectedRole = createSelector(
+    getAuthState,
+    state => state.selectedRole
+);

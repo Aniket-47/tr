@@ -1,5 +1,6 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { SnackBarService } from '../../utility/services/snack-bar.service';
 import { AuthService } from '../services/auth.service';
 
 
@@ -10,33 +11,45 @@ import { AuthService } from '../services/auth.service';
 })
 export class FPasswordComponent implements OnInit {
 
-  resMessage: string="";
+  resMessage: string = "";
   isLoading = false;
-  isError = false;
 
-  constructor(private authServ: AuthService) { }
+  constructor(
+    private authServ: AuthService,
+    private snackbar: SnackBarService) { }
 
   ngOnInit(): void {
   }
-  
 
-  emailFormControl=new FormControl('',[
+  emailFormControl = new FormControl('', [
     Validators.required,
     Validators.email
   ])
 
   fpassword() {
-    this.resMessage = "";
-    this.isLoading = true;
-    this.emailFormControl.valid && this.authServ.passwordForget(this.emailFormControl.value)
-      .subscribe((res: any) => {
-        this.isLoading = false;
-       
-        this.isError = res.error==='true'?true:false;
-        console.log(res);
-        
-      
-        this.resMessage=res.message;        
-      })
+
+    if (this.emailFormControl.valid) {
+      this.resMessage = "";
+      this.isLoading = true;
+
+      this.authServ.passwordForget(this.emailFormControl.value)
+        .subscribe(res => {
+
+          this.isLoading = false;
+
+          this.resMessage = res.message;
+
+
+          if (res.error)
+            this.emailFormControl.setErrors({ 'customError': true });
+
+          else
+            this.snackbar.open(this.resMessage, "Okay", 0);
+
+        })
+    }
+
   }
+
+
 }

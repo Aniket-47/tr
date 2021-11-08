@@ -1,19 +1,20 @@
+@import '~@mucrest/ng-design/assets/styles/1-base/base-dir';
 .box-container {
   max-width: 320px;
-  margin: auto;
+  // margin: auto;
   // border: 1px solid red;
-  padding: 0 1em;
+  // padding: 0 1em;
 
   .upper-sec {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 0;
+    // padding: 15px 0;
     .upper-sec__left {
       display: flex;
       align-items: center;
       mat-icon {
-        color: #1f47f5;
+        color: $theme;
         margin-right: 10px;
       }
     }
@@ -25,8 +26,10 @@
   }
   .about-user {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: flex-start;
+    // align-items: center;
+    gap: 1rem;
+    flex-direction: column;
     // padding: 15px 0;
     .about-user__left {
       display: flex;

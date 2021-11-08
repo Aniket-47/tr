@@ -1,8 +1,13 @@
 @import '~@mucrest/ng-design/assets/styles/0-plugins/plugins-dir';
 .page-header {
     @include padding-bottom(2.3rem);
+    padding-top: 0;
+    flex-direction: column;
+    gap: 25px;
+    align-items: flex-start;
 }
 .accordion-container {
+    // @include margin-top(5rem);    
     .mat-expansion-panel {
         box-shadow: none;
         border: 1px solid #EBEAED;
@@ -26,11 +31,14 @@
         }
         &-description {
             width: 50%;
+            justify-content: flex-end;
+            align-items: center;
+            margin-right: 0;
         }
         }
         
         ::ng-deep &-body {
-            padding: 0;
+            padding: 0 !important;
             background: #fcfcfc;
         }
     }
@@ -55,7 +63,7 @@
         }
     }
 .mat-slide-toggle {
-    margin-right: 1rem;
+    margin-left: auto;
 }
 }
 .header-action {
@@ -92,7 +100,7 @@
         border: 0;
     }
     .role-title {
-        width: 50%;
+        width: 100%;
         margin-right: 16px;
         font-size: 1rem;
     }

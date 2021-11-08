@@ -1,30 +1,41 @@
-<header>
+<mat-drawer-container autosize class="right-drawer">
+  <mat-drawer #drawer mode="over" class="drawer-container add-new-role-container" position="end">
+    <button mat-icon-button (click)="drawer.toggle()" class="close-btn">
+      <span class="icon-mc mc-x"></span>
+    </button>
+    <app-add-role></app-add-role>
+  </mat-drawer>
+
+
+  <header>
     <div class="page-header">
-        <div class="page-title">
-            <!-- <button mat-icon-button>
+      <div class="page-title">
+        <!-- <button mat-icon-button>
                 <span class="icon-mc mc-back-arrow"></span>
             </button> -->
-            <h5 class="mobile-only">Permissions</h5>
-            <h2>Account Role</h2>
-        </div>
-        <div class="page-action cloud-only">
-            <button mat-stroked-button color="primary" [matMenuTriggerFor]="menu">Export <span
-                    class="icon-mc mc-expand_more"></span></button>
-            <button mat-flat-button color="primary"><span class="icon-mc mc-plus"></span> Add User </button>
-            <mat-menu #menu="matMenu">
+        <h5 class="mobile-only">Permissions</h5>
+        <h2>Account Role</h2>
+      </div>
+      <div class="page-action cloud-only">
+        <!-- <button mat-stroked-button color="primary" [matMenuTriggerFor]="menu">Export <span
+                    class="icon-mc mc-expand_more"></span></button> -->
+        <button mat-stroked-button color="success"  (click)="drawer.toggle()"><i class="add-new-role-btn-icon icon-mcf mcf-admin_panel_settings"></i> 
+          <span> Create New Role</span>
+        </button>
+        <!-- <mat-menu #menu="matMenu">
                 <button mat-menu-item>PDF</button>
                 <button mat-menu-item>Excel</button>
                 <button mat-menu-item>CSV</button>
-            </mat-menu>
-        </div>
+            </mat-menu> -->
+      </div>
     </div>
-</header>
+  </header>
 
 
-<div class="account-role">
+  <div class="account-role mt-4">
     <div class="table-header">
-        <!-- <div class="table-info">2 users selected</div> -->
-        <div class="table-action cloud-only">
+      <!-- <div class="table-info">2 users selected</div> -->
+      <!-- <div class="table-action cloud-only">
             <mat-form-field appearance="outline">
                 <mat-select [(value)]="selectedStatus">
                     <mat-option *ngFor="let item of status" [value]="item.value">
@@ -47,14 +58,15 @@
                 </mat-select>
             </mat-form-field>
 
-        </div>
+        </div> -->
     </div>
-    <table mat-table [dataSource]="dataSource" matSort>
+    <div class="table-container">
+      <table mat-table [dataSource]="dataSource" matSort>
         <!-- Role Column -->
         <ng-container matColumnDef="role">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Account Roles </th>
-            <td mat-cell *matCellDef="let element">
-                <mat-label class="role" [ngClass]="{
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Account Roles </th>
+          <td mat-cell *matCellDef="let element">
+            <mat-label class="role" [ngClass]="{
             'success': element.role === 'Admin',
             'info': element.role === 'Super Admin',
             'rm': element.role === 'Relationship Manager',
@@ -65,79 +77,85 @@
             'nh': element.role === 'New Hire',
             'hr': element.role === 'HR Manager'
           }">{{element.role}} </mat-label>
-            </td>
+          </td>
         </ng-container>
 
         <!-- Username Column -->
         <ng-container matColumnDef="users">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Users </th>
-            <td mat-cell *matCellDef="let element"> <span class="mobile-only grey-text">Total Users :</span>
-                {{element.users}} </td>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Total Users </th>
+          <td mat-cell *matCellDef="let element"> <span class="mobile-only grey-text">Total Users :</span>
+            {{element.users}} Users</td>
         </ng-container>
 
         <!-- Last Updated Column -->
         <ng-container matColumnDef="lastupdated">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Edited </th>
-            <td mat-cell *matCellDef="let element"> <span class="mobile-only grey-text">Last Updated :</span>
-                {{element.lastupdated}} </td>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Edited </th>
+          <td mat-cell *matCellDef="let element"> <span class="mobile-only grey-text">Last Updated :</span>
+            {{element.lastupdated}} </td>
         </ng-container>
-        \
+
         <!-- Status Column -->
-        <ng-container matColumnDef="status">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
-            <td mat-cell *matCellDef="let element">
-                <mat-label class="status" [ngClass]="{
+        <!-- <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+      <td mat-cell *matCellDef="let element">
+        <mat-label class="status" [ngClass]="{
               'success': element.status === 'Active',
               'warning': element.status === 'Inactive',
               'danger': element.status === 'Deactivated'
             }">{{element.status}} </mat-label>
-            </td>
-        </ng-container>
+      </td>
+    </ng-container> -->
 
         <!-- Action Column -->
         <ng-container matColumnDef="action">
-            <th mat-header-cell *matHeaderCellDef> </th>
-            <td mat-cell *matCellDef="let element">
-                <div class="cloud-only">
-                    <button mat-icon-button>
-                        <span class="icon-mc mc-create"></span>
-                    </button>
-                    <button mat-icon-button>
-                        <span class="icon-mc mc-delete"></span>
-                    </button>
-                    <button mat-icon-button>
-                        <span class="icon-mc mc-more_horiz"></span>
-                    </button>
-                </div>
-                <div class="mobile-only">
-                    <button mat-icon-button [matMenuTriggerFor]="menu"><span class="icon-mc mc-more_vert"></span></button>
-                    <mat-menu #menu="matMenu">
-                        <button mat-menu-item><span class="icon-mc mc-create"></span> Edit</button>
-                        <button mat-menu-item><span class="icon-mc mc-delete"></span> Delete</button>
-                    </mat-menu>
-                </div>
-            </td>
+          <th mat-header-cell *matHeaderCellDef> </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="cloud-only">
+              <!-- <button mat-icon-button>
+                <span class="icon-mc mc-create"></span>
+              </button> -->
+              <button mat-icon-button>
+                <span class="icon-mc mc-delete add-new-role-btn-icon"></span>
+              </button>
+              <!-- <button mat-icon-button>
+                <span class="icon-mc mc-more_horiz"></span>
+              </button> -->
+            </div>
+            <!-- <div class="mobile-only">
+              <button mat-icon-button [matMenuTriggerFor]="menu" class="right-btn"><span
+                  class="icon-mc mc-more_vert"></span></button>
+              <mat-menu #menu="matMenu">
+                 <button mat-menu-item><span class="icon-mc mc-create"></span> Edit</button>
+                <button mat-menu-item><span class="icon-mc mc-delete" *ngIf=""></span> Delete</button>
+              </mat-menu>
+            </div> -->
+          </td>
         </ng-container>
 
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
+      </table>
+    </div>
 
-    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
-    </mat-paginator>
-</div>
-<div class="floating-button page-action  mobile-only">
+
+    <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
+  </mat-paginator> -->
+
+    <mat-paginator [length]="resultsLength" [pageSize]="pageSize"></mat-paginator>
+  </div>
+  <div class="floating-button page-action  mobile-only">
     <div class="more-float-action-btn" [class.active]="toggle">
-        <button mat-stroked-button color="primary" [matMenuTriggerFor]="menu">Export <span
-                class="icon-mc mc-expand_more"></span></button>
-        <button mat-flat-button color="primary"><span class="icon-mc mc-plus"></span> Add User </button>
-        <mat-menu #menu="matMenu">
+      <!-- <button mat-stroked-button color="primary" [matMenuTriggerFor]="menu">Export <span
+                class="icon-mc mc-expand_more"></span></button> -->
+      <button mat-flat-button color="primary"><span class="icon-mc mc-plus"></span> Create New Role </button>
+      <!-- <mat-menu #menu="matMenu">
             <button mat-menu-item>PDF</button>
             <button mat-menu-item>Excel</button>
             <button mat-menu-item>CSV</button>
-        </mat-menu>
+        </mat-menu> -->
     </div>
     <button mat-fab color="primary" (click)="toggleFab()">
-        <span class="icon-mc " [ngClass]="{'mc-plus': toggle === true, 'mc-more_vert': toggle === false }"></span>
+      <span class="icon-mc " [ngClass]="{'mc-plus': toggle === true, 'mc-more_vert': toggle === false }"></span>
     </button>
-</div>
+  </div>
+</mat-drawer-container>
