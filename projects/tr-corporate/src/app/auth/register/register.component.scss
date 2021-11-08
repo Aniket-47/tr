@@ -69,7 +69,4 @@
 }
 .m-20 {
   margin-right: 20px;
-  @include media-breakpoint-down(md) {
-    margin: 0;
-  }
 }

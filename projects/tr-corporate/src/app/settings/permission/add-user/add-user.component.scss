@@ -2,7 +2,12 @@
 
 @import "~@mucrest/ng-design/assets/styles/0-plugins/plugins-dir.scss";
 
-
+.row > * {
+  max-width: 50%;
+  @include media-breakpoint-down(md) {
+    max-width: 100%;
+  }
+}
 .add-user{
     h2 {
         font-family: 'Manrope', sans-serif;

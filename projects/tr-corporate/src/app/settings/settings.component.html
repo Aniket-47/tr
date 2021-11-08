@@ -5,6 +5,9 @@
     </mat-drawer>
     <div class="sidenav-content">    
       <button type="button" mat-icon-button (click)="drawer.toggle()" class="mobile-togglebtn">
+        <span class="icon-mc mc-menu"></span>
+      </button>
+      <button type="button" mat-icon-button (click)="openBottomSheet()" class="open-bottombtn">
         <span class="icon-mc mc-filter_list"></span>
       </button>
       <router-outlet></router-outlet>
