@@ -100,6 +100,14 @@
             <!--<span matPrefix>+91</span>-->
             <input type="tel" matInput placeholder="000-000-0000" formControlName="phone">
             <!-- <mat-icon class="text-muted h5" matSuffix>phone</mat-icon> -->
+            <mat-error *ngIf="phone.touched && !phone.valid">
+              <span *ngIf="phone.errors?.required">
+                Phone number is required
+              </span>
+              <span *ngIf="!phone.errors?.required && phone.errors?.minlength">
+                Phone number should be of minimum of 8 digits
+              </span>
+            </mat-error>
           </mat-form-field>
         </div>
         <div class="col-md-6">

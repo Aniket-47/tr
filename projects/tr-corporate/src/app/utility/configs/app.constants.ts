@@ -14,6 +14,7 @@ export const ValidationConstants = {
   userAccountStrategy:{
     NAME_MIN_LENGTH: 3,
     NAME_MAX_LENGTH: 20,
+    PHONE_MIN_LENGTH: 8,
   }
 }
 export const userRoles = [
