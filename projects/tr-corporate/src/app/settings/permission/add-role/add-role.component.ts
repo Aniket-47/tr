@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Form, FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { State } from '../../../utility/store/reducers';
+import { getDefaultAccountId } from '../../../utility/store/selectors/account.selector';
 import { UserRoleService } from '../services/user-role.service';
 
 @Component({
@@ -39,14 +42,19 @@ export class AddRoleComponent implements OnInit {
   rights: any[] = [];
   rightsForm: FormGroup;
 
-  constructor(private userRoleService: UserRoleService, private fb: FormBuilder) {
+  constructor(
+    private userRoleService: UserRoleService,
+    private store: Store<State>,
+    private fb: FormBuilder) {
     this.rightsForm = this.fb.group({
       rights: this.fb.array([])
     });
   }
 
   ngOnInit(): void {
-    this.userRoleService.getPermissions().subscribe((data: any) => this.buildRights(data));
+    this.store.select(getDefaultAccountId).subscribe(accountid => {
+      if (accountid) this.userRoleService.getPermissions(accountid, '1').subscribe((data: any) => console.log(data));
+    });
   }
 
   get rightsArray(): FormArray {
@@ -99,8 +107,6 @@ export class AddRoleComponent implements OnInit {
         }
       });
     }
-
-    console.log(this.rightsForm.value);
   }
 
   // form

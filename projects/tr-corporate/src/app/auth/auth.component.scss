@@ -46,7 +46,8 @@
 .auth-step {
   display: flex;
   justify-content: center;
-  margin-top: 3rem;
+  margin: 3rem auto 0;
+ 
   @media (max-width: 767px) {
     margin-top: 1rem;
   }
@@ -54,12 +55,12 @@
 
 .logo {
   text-align: center;
+  padding-top: 2rem;
   svg{
   width: 14rem;
   height: 45px;
-  }
-
-  @media (max-width: 767px) {
-    text-align: left;
+    @media (max-width: 767px) {
+      height: 35px;
+    }
   }
 }

@@ -20,7 +20,6 @@ export class PostLoginService {
     private store: Store<State>) { }
 
   loadData() {
-    console.log('Called')
     this.http.get<AccountList_response>(secure_api_routes.ACCOUNT_LIST).subscribe((res) => {
       if (!res.error) {
         const accountList = res.data;

@@ -13,8 +13,9 @@ export class UserRoleService {
         return this.http.get<any>(secure_api_routes.USER_ROLES, { headers: { 'accountID': accountID } })
     }
 
-    getPermissions() {
-        return this.http.get('assets/dummy_fetch_update.json');
+    getPermissions(accountID: string, roleId: string) {
+        const url = `${secure_api_routes.PERMISSIONS_LIST}?roleid=${roleId}`
+        return this.http.get(url, { headers: { 'accountID': accountID } });
     }
 
 }

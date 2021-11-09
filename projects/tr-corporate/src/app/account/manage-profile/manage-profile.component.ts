@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
 import { userRoles } from '../../utility/configs/app.constants';
 import { SnackBarService } from '../../utility/services/snack-bar.service';
+import { State } from '../../utility/store/reducers';
+import { getUserDeatils } from '../../utility/store/selectors/user.selector';
 import { AccountService } from '../shared/account.service';
 
 @Component({
@@ -17,26 +20,24 @@ export class ManageProfileComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private store: Store<State>,
     private accoutService: AccountService,
     private snackbarServ: SnackBarService) {
   }
 
   ngOnInit(): void {
     this.initForm();
-    this.getUser();
+    this.loadUser();
   }
 
-  getUser() {
-    this.accoutService.getUser().subscribe((res: any) => {
-      if (res && res?.data) {
-        const user = res.data;
-        this.userForm.patchValue({
-          firstName: user?.firstname,
-          middleName: user?.middlename,
-          lastName: user?.lastname,
-          mobilenumber: user?.mobilenumber
-        });
-      }
+  loadUser() {
+    this.store.select(getUserDeatils).subscribe(user => {
+      this.userForm.patchValue({
+        firstName: user?.firstName,
+        middleName: user?.middleName,
+        lastName: user?.lastName,
+        mobilenumber: user?.mobileNumber
+      });
     });
   }
 
@@ -46,7 +47,7 @@ export class ManageProfileComponent implements OnInit {
       middleName: [''],
       lastName: ['', [Validators.required]],
       email: [''],
-      mobilenumber: ['', 
+      mobilenumber: ['',
         [
           Validators.required,
           Validators.minLength(10)
