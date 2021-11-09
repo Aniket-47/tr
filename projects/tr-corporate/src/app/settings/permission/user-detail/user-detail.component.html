@@ -136,12 +136,13 @@
 
       <form [formGroup]="editUserForm">
         <div class="my-3">
-
+        <div>
           <mat-label>
             <mat-icon>person</mat-icon> Name
-          </mat-label><br>
-
-          <mat-form-field class="ms-4" appearance="outline">
+          </mat-label>
+        </div>
+          <div class="ms-4">
+          <mat-form-field appearance="outline">
             <mat-label>First Name</mat-label>
             <input matInput formControlName="firstName" placeholder="First Name">
             <mat-error *ngIf="firstName.invalid && firstName.touched">
@@ -157,7 +158,9 @@
             </mat-error>
 
           </mat-form-field>
-          <mat-form-field class="ms-4" appearance="outline">
+        </div>
+        <div class="ms-4">
+          <mat-form-field appearance="outline">
             <mat-label>Middle Name</mat-label>
             <input matInput formControlName="middleName" placeholder="Middle Name">
             <mat-error *ngIf="middleName.invalid && middleName.touched">
@@ -169,7 +172,9 @@
               </span>
             </mat-error>
           </mat-form-field>
-          <mat-form-field class="ms-4" appearance="outline">
+        </div>
+      <div class="ms-4">
+          <mat-form-field appearance="outline">
             <mat-label>Last Name</mat-label>
             <input matInput formControlName="lastName" placeholder="Last Name">
             <mat-error *ngIf="lastName.invalid && lastName.touched">
@@ -184,7 +189,7 @@
               </span>
             </mat-error>
           </mat-form-field>
-
+        </div>
         </div>
 
 
@@ -285,11 +290,12 @@
 
 
         <div class="buttons">
-          <button mat-flat-button color="primary" (click)="addUser()" [disabled]="isLoading">
-            <span *ngIf="!isLoading">Update</span>
-            <mat-spinner diameter="20" *ngIf="isLoading" class="mx-auto"></mat-spinner>
-          </button>
           <button mat-stroked-button (click)="edit = !edit" class="cancel-btn">Cancel</button>
+          <button mat-flat-button color="primary" (click)="addUser()" [disabled]="isLoading" class="update-btn">
+            <span>Update</span>
+            <mat-spinner diameter="20" *ngIf="isLoading" class="btn-loader"></mat-spinner>
+          </button>
+         
         </div>
       </form>
 
