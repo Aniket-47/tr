@@ -292,8 +292,8 @@
         <div class="buttons">
           <button mat-stroked-button (click)="edit = !edit" class="cancel-btn">Cancel</button>
           <button mat-flat-button color="primary" (click)="addUser()" [disabled]="isLoading" class="update-btn">
-            <span *ngIf="!isLoading">Update</span>
-            <mat-spinner diameter="20" *ngIf="isLoading" class="mx-auto"></mat-spinner>
+            <span>Update</span>
+            <mat-spinner diameter="20" *ngIf="isLoading" class="btn-loader"></mat-spinner>
           </button>
          
         </div>

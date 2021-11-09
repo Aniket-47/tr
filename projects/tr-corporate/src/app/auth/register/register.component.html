@@ -156,9 +156,9 @@
         <span class="align-self-center mb-3">Already have an account ? <a href="#"> Sign In</a></span>
        <div class="d-flex justify-content-between">
           <button mat-stroked-button class="m-20" (click)="goToPrev()">Previous</button>
-          <button mat-flat-button color="primary" (click)="registerHandler()" [disabled]="isLoading">
-            <span *ngIf="!isLoading">Register</span>
-            <mat-spinner *ngIf="isLoading" diameter="20" class="mx-auto"></mat-spinner>
+          <button mat-flat-button color="primary" (click)="registerHandler()" [disabled]="isLoading" class="secondary-bg">
+            <span>Register</span>
+            <mat-spinner *ngIf="isLoading" diameter="20" class="btn-loader"></mat-spinner>
           </button>
         </div>
       </div>

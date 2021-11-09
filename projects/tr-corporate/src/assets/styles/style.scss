@@ -494,3 +494,9 @@ mat-drawer-container{
 .mat-drawer:not(.mat-drawer-side) {
   box-shadow: 0px 8px 10px -5px rgb(0 0 0 / 7%), 0px 16px 24px 2px rgb(0 0 0 / 7%), 0px 6px 30px 5px rgb(0 0 0 / 7%);
 }
+.mat-bottom-sheet-container {
+  padding-top: 1rem !important;
+}
+.cursor {
+  cursor: pointer;
+}
