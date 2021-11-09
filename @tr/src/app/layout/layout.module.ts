@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { MHeaderComponent } from './m-header/m-header.component';
 import { DHeaderComponent } from './d-header/d-header.component';
 import { MaterialModule } from '@tr';
+import { PageHeaderComponent } from './page-header/page-header.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { MaterialModule } from '@tr';
     SideMenuComponent,
     HeaderComponent,
     MHeaderComponent,
-    DHeaderComponent
+    DHeaderComponent,
+    PageHeaderComponent
 
   ],
   imports: [
@@ -27,7 +29,8 @@ import { MaterialModule } from '@tr';
     SideMenuComponent,
     HeaderComponent,
     MHeaderComponent,
-    DHeaderComponent
+    DHeaderComponent,
+    PageHeaderComponent
   ]
 })
 export class LayoutModule { }
