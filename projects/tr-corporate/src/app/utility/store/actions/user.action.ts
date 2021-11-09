@@ -1,6 +1,12 @@
 import { createAction, props } from "@ngrx/store";
 import { UserActions } from "../action.constants";
 
+// reset user
+export const resetUser = createAction(
+	UserActions.USER_RESET_ACTION,
+	props<{ data: boolean }>()
+);
+
 // fullname
 export const setUserFullName = createAction(
 	UserActions.USER_FULLNAME_ACTION,
