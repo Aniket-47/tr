@@ -140,6 +140,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     this.authService.register(payload).subscribe(res => {
       this.isLoading = false;
       if (res) {
+        if(!res.error) this.router.navigate(["./"]);
         if (res.error) {
           this.snackbarServie.open(res?.message, "Ok", 0);
         }
