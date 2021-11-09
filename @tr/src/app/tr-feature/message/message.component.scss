@@ -18,8 +18,8 @@ p{
 
 mc-brief-card{
   .icon{
-    padding-top: 0.7rem;
-    margin-right: 1.8rem;
+    // padding-top: 0.7rem;
+    // margin-right: 1.8rem;
 
     &::before{
       color: $theme !important;
@@ -58,6 +58,8 @@ mc-brief-card{
 }
 
 ::ng-deep .message-design-card{
+  
+  
   .mc-card-body{
     margin-top: 0 !important;
   }
@@ -75,9 +77,14 @@ mc-brief-card{
   .mc-card-title{
     font-size: 0.9rem;
   }
-
+  .mc-card-subtitle{
+    margin: 0;
+  }
   .mc-card{
     min-height: 0;
+    border-color: transparent;
+    border-bottom: 1px solid #EBEAED;
+    border-radius: 0;
     &:hover{
       background-color: rgba(130, 130, 130, 0.11);
     }

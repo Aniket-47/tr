@@ -1,7 +1,21 @@
 
+@import '~@mucrest/ng-design/assets/styles/1-base/variable';
+@import '~@mucrest/ng-design/assets/styles/0-plugins/plugins-dir';
+
 .account-type {
     font-size: .9rem;
     padding: 1rem 0 2rem;
+    @include media-breakpoint-down(md) {
+        p{
+            margin-bottom: 1.3rem;
+        }
+        .mat-radio-button{
+            display: block;
+        }
+        .mx-3{
+            margin-left: 0 !important;
+        }
+     }
     .mat-radio-group {
         color: rgba($color: #000000, $alpha: 0.5);
     }
