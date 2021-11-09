@@ -30,6 +30,10 @@ export const accountReducer = createReducer(
         };
     }),
 
+    on(AccountActions.resetAccount, (state, action) => {
+        return { ...initialState };
+    }),
+
     on(AccountActions.setAccountDeatils, (state, action) => {
         return {
             ...state,

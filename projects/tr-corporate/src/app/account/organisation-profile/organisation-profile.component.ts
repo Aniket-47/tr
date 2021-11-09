@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { SnackBarService } from '../../utility/services/snack-bar.service';
 import { State } from '../../utility/store/reducers';
-import { getDefaultAccountId } from '../../utility/store/selectors/account.selector';
+import { getAccountDeatils, getDefaultAccountId } from '../../utility/store/selectors/account.selector';
 import { AccountService } from '../shared/account.service';
 
 @Component({
@@ -35,10 +35,9 @@ export class OrganisationProfileComponent implements OnInit, OnChanges {
     private snackbarServ: SnackBarService,
     private store: Store<State>,
     private cd: ChangeDetectorRef) {
-    this.store.select(getDefaultAccountId).subscribe(data => {
-      this.accountId = data[0]?.accountid;
+    this.store.select(getDefaultAccountId).subscribe(accountid => {
+      this.accountId = accountid;
       if (this.accountId) {
-        this.getAccount();
         this.getCountries();
         this.getIndustryList();
       }
@@ -49,6 +48,7 @@ export class OrganisationProfileComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.initForm();
+    this.loadAccountDeatails();
     this.countryid.valueChanges.subscribe(c => { if (c) this.getStates(c) });
     this.stateid.valueChanges.subscribe(s => { if (s) this.getCities(s) });
 
@@ -57,8 +57,6 @@ export class OrganisationProfileComponent implements OnInit, OnChanges {
         debounceTime(300),
         distinctUntilChanged())
       .subscribe(val => {
-        // this.resMessage = val.message;
-        // console.log(val);
         this.checkShortNameAvailability(val)
         // this.shortname.setErrors({ 'customError': true });
       })
@@ -116,23 +114,21 @@ export class OrganisationProfileComponent implements OnInit, OnChanges {
     return this.orgProfileForm.get('industryid') as FormControl;
   }
 
-  getAccount() {
-    this.accoutService.getAccount(this.accountId).subscribe((res: any) => {
+  loadAccountDeatails() {
+    this.store.select(getAccountDeatils).subscribe(account => {
+      if (account) {
+        // shortName Validation
+        this.currentShortName = account.shortname || "";
 
-      // shortName Validation
-      this.currentShortName = res.data.shortname || "";
-
-      if (res && res?.data) {
-        const data = res?.data;
         this.orgProfileForm.patchValue({
-          name: data?.name,
-          shortname: data?.shortname,
-          domain: data?.domain,
-          countryid: data?.countryid,
-          stateid: data?.stateid,
-          cityid: +data?.cityid,
-          industryid: data?.industryid,
-          accounttype: data?.accounttype
+          name: account?.name,
+          shortname: account?.shortname,
+          domain: account?.domain,
+          countryid: account?.countryid,
+          stateid: account?.stateid,
+          cityid: +account?.cityid,
+          industryid: account?.industryid,
+          accounttype: account?.accounttype
         })
         this.cd.markForCheck()
       }

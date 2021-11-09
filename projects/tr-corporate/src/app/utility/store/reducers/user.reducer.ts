@@ -21,6 +21,10 @@ export const initialState: Iuser = {
 export const userReducer = createReducer(
 	initialState,
 
+	on(UserActions.resetUser, (state, action) => {
+		return { ...initialState };
+	}),
+
 	on(UserActions.setUserFullName, (state, action) => {
 		return {
 			...state,

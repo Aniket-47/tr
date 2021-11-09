@@ -7,6 +7,12 @@ export const setAccountList = createAction(
     props<{ data: IaccountList[] }>()
 );
 
+
+export const resetAccount = createAction(
+    AccountActions.ACC_RESET_ACTION,
+    props<{ data: boolean }>()
+);
+
 export const setAccountDeatils = createAction(
     AccountActions.ACC_DETAILS_ACTION,
     props<{ data: IaccountDetials }>()

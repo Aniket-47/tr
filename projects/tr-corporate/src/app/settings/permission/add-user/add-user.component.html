@@ -171,8 +171,8 @@
     <div class="d-flex justify-content-end mt-2">
       <button class="btn-lg text-dark ms-3" mat-flat-button (click)="addUserForm.reset()">Reset</button>
       <button mat-flat-button color="primary" (click)="addUser()" [disabled]="isLoading">
-        <span *ngIf="!isLoading">Invite</span>
-        <mat-spinner diameter="20" *ngIf="isLoading" class="mx-auto"></mat-spinner>
+        <span>Invite</span>
+        <mat-spinner diameter="20" *ngIf="isLoading" class="btn-loader"></mat-spinner>
       </button>
     </div>
   </div>

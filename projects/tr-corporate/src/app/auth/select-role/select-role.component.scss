@@ -6,15 +6,16 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  min-height: 460px;
+  min-width: 460px;
   max-width: 786px;
   width: 45vw;
   ::ng-deep .stepper .stepper-label {
     color: black;
   }
   @include media-breakpoint-down(md) {
-    background-color: transparent;
     width: 100%;
+    min-width: 100%;
+    max-width: 100%;
   }
   @include media-breakpoint-down(md) {
     ::ng-deep .stepper .stepper-label {

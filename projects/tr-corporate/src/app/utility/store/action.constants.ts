@@ -20,10 +20,12 @@ export const enum UserActions {
     USER_ADDRESS_ACTION = "[USER] Set user address",
     USER_REMOVE_ACTION = "[USER] Remove user data",
     USER_MOBILE_ACTION = "[USER] Set user mobile no",
+    USER_RESET_ACTION = "[USER] Reset user data",
 }
 
 // Account
 export const enum AccountActions {
     ACC_LIST_ACTION = "[ACCOUNT] Set account list",
     ACC_DETAILS_ACTION = "[ACCOUNT] Set account deatils",
+    ACC_RESET_ACTION = "[ACCOUNT] Reset account deatils",
 }

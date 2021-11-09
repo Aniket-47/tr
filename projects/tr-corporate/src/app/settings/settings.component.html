@@ -3,14 +3,14 @@
     <mat-drawer #drawer [mode]="drawerMode">
       <app-settings-side-menu></app-settings-side-menu>
     </mat-drawer>
-    <div class="sidenav-content">    
+    <div class="sidenav-content">
+      <router-outlet></router-outlet>
       <button type="button" mat-icon-button (click)="drawer.toggle()" class="mobile-togglebtn">
         <span class="icon-mc mc-menu"></span>
       </button>
       <button type="button" mat-icon-button (click)="openBottomSheet()" class="open-bottombtn">
         <span class="icon-mc mc-filter_list"></span>
       </button>
-      <router-outlet></router-outlet>
     </div>
   </mat-drawer-container>
 
