@@ -1,28 +1,52 @@
 <div class="account-security">
+    <form [formGroup]="changePasswordForm" autocomplete="off">
         <fieldset class="fieldset">
             <legend>Change Password</legend>
             <div>
                 <mat-form-field appearance="standard">
                     <mat-label>Old Password</mat-label>
-                    <input matInput placeholder="" type="password">
-                  </mat-form-field>
+                    <input matInput placeholder="" type="password" formControlName='oldPassword'>
+                </mat-form-field>
             </div>
             <div>
                 <mat-form-field appearance="standard">
                     <mat-label>New Password</mat-label>
-                    <input matInput placeholder="" type="password">
-                  </mat-form-field>
+                    <input matInput placeholder="" [type]="hide ? 'password' : 'text'" formControlName='password'>
+                    <mat-error *ngIf="password.touched && !password.valid">
+                        <span *ngIf="password.errors?.required">
+                          Password is required
+                        </span>
+                        <span *ngIf="!password.errors?.required && password.errors?.minlength">
+                          Password should be atleast 6 letters
+                        </span>
+                        <span *ngIf="password.errors?.maxlength">
+                          Password should be maximum of 12 letters
+                        </span>
+                    </mat-error>
+                    <mat-error *ngIf="password.hasError('customError')">
+                        {{errorMessage}}
+                    </mat-error>
+                </mat-form-field>
             </div>
             <div>
                 <mat-form-field appearance="standard">
                     <mat-label>Confirm Password</mat-label>
-                    <input matInput placeholder="" type="password">
-                  </mat-form-field>
+                    <input matInput placeholder="" [type]="hide ? 'password' : 'text'" formControlName='cnfPass'>
+                    <mat-error *ngIf="(cnfPass.touched && !cnfPass.valid)">
+                        <span *ngIf="cnfPass.errors?.required">
+                          Retype your password
+                        </span>
+                        <span *ngIf="cnfPass.errors?.passMatch">
+                          Confirm password does not match
+                        </span>
+                      </mat-error>
+                </mat-form-field>
             </div>
             <div class="profile-action">
                 <button mat-stroked-button>Reset</button>
-                <button mat-flat-button color="primary">Save Changes</button>
+                <button mat-flat-button color="primary" (click)="savePassword()">Save Changes</button>
             </div>
         </fieldset>
-    </div>
+    </form>
+</div>
        
