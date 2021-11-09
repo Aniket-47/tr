@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { LstorageService } from '@tr/src/app/utility/services/lstorage.service';
 import { LSkeys } from '../../utility/configs/app.constants';
 import { ROUTE_CONFIGS } from '../../utility/configs/routerConfig';
+import { setUserStatus } from '../../utility/store/actions/user.action';
+import { State } from '../../utility/store/reducers';
 import { AuthService } from '../services/auth.service';
 
 // Interfaces
@@ -21,7 +24,11 @@ export class LoginComponent implements OnInit {
   userNmae: string | null;
   userEmail: string | null;
 
-  constructor(private authServ: AuthService, private lsServ: LstorageService, private router: Router) {
+  constructor(
+    private authServ: AuthService,
+    private lsServ: LstorageService,
+    private store: Store<State>,
+    private router: Router) {
     this.userNmae = lsServ.getItem(LSkeys.USER_NAME);
     this.userEmail = lsServ.getItem(LSkeys.USER_EMAIL);
   }
@@ -63,6 +70,7 @@ export class LoginComponent implements OnInit {
         // on success
         this.isLoading = false;
         this.lsServ.store(LSkeys.BEARER_TOKEN, res.data.accesstoken.token);
+        this.store.dispatch(setUserStatus({ data: true }));
         this.router.navigate([ROUTE_CONFIGS.DASHBOARD]);
       },
         res_error => {

@@ -6,7 +6,7 @@ export const selectAppState = (state: State) => state.account;
 
 export const getDefaultAccountId = createSelector(
     selectAppState,
-    (state: Iaccount) => state.accountList.length ? state.accountList : []
+    (state: Iaccount) => state.accountList.length ? state.accountList[0].accountid : ''
 );
 
 export const getAccountIds = createSelector(

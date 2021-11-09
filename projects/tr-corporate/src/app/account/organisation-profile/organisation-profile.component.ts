@@ -35,8 +35,8 @@ export class OrganisationProfileComponent implements OnInit, OnChanges {
     private snackbarServ: SnackBarService,
     private store: Store<State>,
     private cd: ChangeDetectorRef) {
-    this.store.select(getDefaultAccountId).subscribe(data => {
-      this.accountId = data[0]?.accountid;
+    this.store.select(getDefaultAccountId).subscribe(accountid => {
+      this.accountId = accountid;
       if (this.accountId) {
         this.getAccount();
         this.getCountries();
