@@ -52,7 +52,7 @@ export class AuthService {
   }
 
   passwordReset(token: string, data: ResetPassword_request) {
-    const apiUrl = this.utilityServ.urlReplace(this.api_routes.RESET_PASSWORD, token);
+    const apiUrl = this.utilityServ.urlReplace(this.api_routes.RESET_PASSWORD, encodeURIComponent(token));
     return this.http.put<ResetPassword_response>(apiUrl, data)
   }
 
