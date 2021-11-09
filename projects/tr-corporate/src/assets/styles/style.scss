@@ -406,12 +406,12 @@ header {
     background-color: transparent;
 }
 mat-drawer-container{
-    background: none;
-    height: 100%;
-    }
+  background-color: transparent;
+  height: 100%;
+}
     .right-drawer {
-      background-color: $white;
-      z-index: 92 !important;
+      // background-color: $white;
+      // z-index: 2 !important;
         .drawer-container {
             position: fixed;
             right: 0px;

@@ -176,7 +176,7 @@ mc-side-navbar {
   .searchPanel {
     position: relative;
   }
-  .m-searchPanel, .close-search {display: none;}
+  .m-searchPanel, .close-search {display: none;transition: all 0.2s ease;}
 
   @media screen and (max-width: 765px) {
 

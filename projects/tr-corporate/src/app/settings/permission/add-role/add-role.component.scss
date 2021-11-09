@@ -1,10 +1,9 @@
 @import '~@mucrest/ng-design/assets/styles/0-plugins/plugins-dir';
 .page-header {
-    @include padding-bottom(2.3rem);
-    padding-top: 0;
-    flex-direction: column;
+    @include padding-bottom(1.5rem);
+    // flex-direction: column;
     gap: 25px;
-    align-items: flex-start;
+    // align-items: flex-start;
 }
 .accordion-container {
     // @include margin-top(5rem);    
@@ -13,6 +12,9 @@
         border: 1px solid #EBEAED;
         margin-top: -1px;
         border-radius: 0;
+        &:first-child {
+            margin-top: 0;
+        }
         &:last-child {
             border-bottom: 1px solid #EBEAED;
         }
