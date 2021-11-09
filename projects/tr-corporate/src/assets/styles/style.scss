@@ -201,7 +201,7 @@ header {
   height: 100%;
   padding: 2rem 0 0 2rem;
   @include media-breakpoint-down(md) {
-    padding: 4rem 1rem 0;
+    padding: 1rem 1rem 0;
   }
   .row {
     height: calc(100% - 2rem);
@@ -210,6 +210,9 @@ header {
     padding-right: 3rem;
     border-right: 1px solid rgba(0, 0, 0, 0.1);
     height: 100%;
+    @include media-breakpoint-down(md) {
+      border: 0;
+    }
     .left-header {
       h2 {
         @include font-size(1.7rem);
