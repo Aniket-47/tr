@@ -9,6 +9,7 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { ValidationConstants } from '../../utility/configs/app.constants';
+import { SnackBarService } from '../../utility/services/snack-bar.service';
 import { AuthService } from '../services/auth.service';
 import { setStepper, setStepperShow, setUserRole } from '../store/actions/auth.action';
 import { Iauth } from '../store/interface/auth';
@@ -73,6 +74,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     private router: Router,
     private authService: AuthService,
     private route: ActivatedRoute,
+    private snackbarServie: SnackBarService,
     private store: Store<Iauth>) {
     this.store.dispatch(setStepperShow({ data: true }));
   }
@@ -137,7 +139,11 @@ export class RegisterComponent implements OnInit, OnDestroy {
     this.isLoading = true;
     this.authService.register(payload).subscribe(res => {
       this.isLoading = false;
-      if (res) this.router.navigateByUrl('register-success');
+      if (res) {
+        if (res.error) {
+          this.snackbarServie.open(res?.message, "Ok", 0);
+        }
+      }
     }, (err) => this.isLoading = false)
   }
 
