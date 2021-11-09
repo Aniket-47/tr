@@ -9,6 +9,7 @@ import { RouterConfigService } from './utility/services/router-config.service';
 import { State } from './utility/store/reducers';
 import { getUserStatus } from './utility/store/selectors/user.selector';
 import { setUserStatus } from './utility/store/actions/user.action';
+import { fadeAnimation } from './animations';
 
 @Component({
   selector: 'app-root',
@@ -37,4 +38,5 @@ export class AppComponent implements OnInit {
       if (isLoggedIn) this.postLoginService.loadData();
     });
   }
+
 }
