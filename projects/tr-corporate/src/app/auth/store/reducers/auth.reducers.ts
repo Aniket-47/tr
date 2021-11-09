@@ -5,7 +5,7 @@ import { Iauth } from "../interface/auth";
 export const initialState: Iauth = {
 	stepper: {
 		active: 0,
-		stepList: ['Org Type', 'Register', 'Verify'],
+		stepList: ['Category', 'Registration', 'Verify'],
 		showStepper: false,
 	},
 	selectedRole: 0
