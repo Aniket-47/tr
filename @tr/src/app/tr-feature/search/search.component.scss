@@ -12,7 +12,15 @@
   position: fixed;
   left: 70px;
   top: 7px;
- 
+  
+  transition: all 0.5s ease;
+  &.active {
+    width: 60%;
+    -webkit-box-shadow:0 0 0 3px rgba($color: $theme, $alpha: 0.5);
+    -moz-box-shadow:0 0 0 3px rgba($color: $theme, $alpha: 0.5);
+    box-shadow:0 0 0 3px rgba($color: $theme, $alpha: 0.5);
+    z-index: 1;
+  }
  input {
    font-size: 1rem;
  }

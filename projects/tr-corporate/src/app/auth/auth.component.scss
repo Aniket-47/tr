@@ -59,5 +59,8 @@
   svg{
   width: 14rem;
   height: 45px;
+    @media (max-width: 767px) {
+      height: 35px;
+    }
   }
 }

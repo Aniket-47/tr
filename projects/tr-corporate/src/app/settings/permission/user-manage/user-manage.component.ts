@@ -59,9 +59,9 @@ export class UserManageComponent implements OnInit {
   constructor(private userlistServ: UserListService, private userServ: UserService, private store: Store<State>, public dialog: MatDialog, private snackBar: SnackBarService) {
     this.totalUsers = 0;
     this.store.select(getDefaultAccountId)
-      .subscribe(s => {
-        if (s.length > 0) {
-          this.userlistServ.getUserList(s[0].accountid).subscribe(res => {
+      .subscribe(accountid => {
+        if (accountid) {
+          this.userlistServ.getUserList(accountid).subscribe(res => {
             // console.log(res);
             this.dataSource = new MatTableDataSource(res.data)
             this.dataSource.paginator = this.paginator;

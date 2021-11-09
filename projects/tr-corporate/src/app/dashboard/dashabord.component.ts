@@ -5,7 +5,8 @@ import { LstorageService } from '@tr/src/app/utility/services/lstorage.service';
 import { Observable } from 'rxjs';
 import { LSkeys } from '../utility/configs/app.constants';
 import { ROUTE_CONFIGS } from '../utility/configs/routerConfig';
-import { setAccountList } from '../utility/store/actions/account.action';
+import { resetAccount, setAccountList } from '../utility/store/actions/account.action';
+import { resetUser, setUserStatus } from '../utility/store/actions/user.action';
 import { State } from '../utility/store/reducers';
 import { getAccountIds } from '../utility/store/selectors/account.selector';
 import { getIsLoading } from '../utility/store/selectors/app.selector';
@@ -68,6 +69,9 @@ export class DashabordComponent implements OnInit {
     this.resMsgLogout = "";
     this.logoutServ.logout()
     this.lsServ.remove(LSkeys.BEARER_TOKEN);
+    this.store.dispatch(setUserStatus({ data: false }));
+    this.store.dispatch(resetUser({ data: true }));
+    this.store.dispatch(resetAccount({ data: true }));
     this.router.navigate(["./"])
 
   }

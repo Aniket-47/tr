@@ -35,7 +35,6 @@ export class AppComponent implements OnInit {
 
     // post login api calls
     this.store.select(getUserStatus).subscribe(isLoggedIn => {
-      console.log(isLoggedIn)
       if (isLoggedIn) this.postLoginService.loadData();
     });
   }

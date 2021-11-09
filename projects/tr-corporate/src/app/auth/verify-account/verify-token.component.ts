@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { ROUTE_CONFIGS } from '../../utility/configs/routerConfig';
@@ -7,8 +7,8 @@ import { setStepper, setStepperShow } from '../store/actions/auth.action';
 import { Iauth } from '../store/interface/auth';
 
 @Component({
-    selector: '',
-    template: `
+  selector: '',
+  template: `
     <div class="message-wrap">
         <mc-message-box>
            <div class="lds-ellipsis" *ngIf="isLoading" msg-icon><div></div><div></div><div></div><div></div></div>
@@ -27,8 +27,8 @@ import { Iauth } from '../store/interface/auth';
         </mc-message-box>    
     </div>
     `,
-    styles:[
-        `
+  styles: [
+    `
             .message-wrap{
                 width: 400px;
                 max-width: 400px;
@@ -168,44 +168,47 @@ import { Iauth } from '../store/interface/auth';
                 }
               }
         `
-    ]
+  ]
 })
 
-export class VerifyAccountComponent implements OnInit{
-    isLoading = false;
-    message = 'Verifying your account';
-    isVerified = false;
-    constructor(private route: ActivatedRoute, private router: Router, private authService: AuthService,
-      private store: Store<Iauth>) {
-      this.store.dispatch(setStepperShow({ data: true }));
-    }
+export class VerifyAccountComponent implements OnInit {
+  isLoading = false;
+  message = 'Verifying your account';
+  isVerified = false;
+  constructor(private route: ActivatedRoute, private router: Router, private authService: AuthService,
+    private store: Store<Iauth>) {
+    this.store.dispatch(setStepperShow({ data: true }));
+  }
 
-    ngOnInit(): void{
-        const token = this.route.snapshot.paramMap.get('token');
-        if(token) {
-            this.isLoading = true;
-            this.authService.validateAccount(token).subscribe((res:any) => {
-                this.isLoading = false;
-                this.message = res.message;
-                this.isVerified = true;
-                this.afterVerify();
-                this.store.dispatch(setStepper({ data: 3 }));
-            }, (err) => {
-                this.isLoading = false
-                this.message = 'Account verification failed';
-                this.isVerified = false;
-                this.afterVerify()
-                this.store.dispatch(setStepper({ data: 3 }));
-            })
-        }
-    }
+  ngOnInit(): void {
+    this.store.dispatch(setStepper({ data: 2 }));
 
-    afterVerify(){
-        setTimeout(() => this.router.navigate([ROUTE_CONFIGS.LOGIN])
-        , 3000)
+    const token = this.route.snapshot.paramMap.get('token');
+    if (token) {
+      this.isLoading = true;
+      this.authService.validateAccount(token).subscribe((res: any) => {
+        this.isLoading = false;
+        this.message = res.message;
+        this.isVerified = true;
+        this.afterVerify();
+        this.store.dispatch(setStepper({ data: 3 }));
+      }, (err) => {
+        this.isLoading = false
+        this.message = 'Account verification failed';
+        this.isVerified = false;
+        this.afterVerify()
+        this.store.dispatch(setStepper({ data: 3 }));
+      })
     }
+  }
 
-    ngOnDestroy(){
-      this.store.dispatch(setStepperShow({ data: false }));
-    }
+  afterVerify() {
+    setTimeout(() => this.router.navigate([ROUTE_CONFIGS.LOGIN])
+      , 3000)
+  }
+
+  ngOnDestroy() {
+    this.store.dispatch(setStepper({ data: 0 }));
+    this.store.dispatch(setStepperShow({ data: false }));
+  }
 }

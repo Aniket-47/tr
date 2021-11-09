@@ -9,6 +9,11 @@ export const getUserStatus = createSelector(
     (state: Iuser) => state.isLoggedIn
 );
 
+export const getUserDeatils = createSelector(
+    selectAppState,
+    (state: Iuser) => state
+);
+
 export const getUserFullName = createSelector(
     selectAppState,
     (state: Iuser) => state.fullName

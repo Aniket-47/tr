@@ -186,16 +186,17 @@ mc-side-navbar {
         display: flex;
         width: 100%;
         min-width: 100vw;
-        position: fixed;
+        position: absolute;
         top: -60px;
         right: 0;
         left: 0;
         z-index: 999;
-        transition: all 0.2s ease;
+        transition: all 0.1s ease-in;
+        transition: all 0.5s ease-out;
         transform: translateY(-60px);
         &.active {
             top: 0;
-            transform: translateY(0);
+            transform: translate3d(0px, 0px, 0px);
         }
         ::ng-deep .search-container {
             background-color: $white;
@@ -217,15 +218,21 @@ mc-side-navbar {
         transform: translateY(-60px);
         background-color: $white;
         width: 40px;
-        height: 55px;
-        line-height: 56px;
+        height: 40px;
+        line-height: 44px;
+        border-radius: 20px;
         font-size: 1.5rem;
         text-align: center;
         cursor: pointer;
-        transition: all 0.2s ease;
+        transition: all 0.1s ease-in;
+        transition: all 0.5s ease-out;
+        &:hover {
+            background-color: rgba($color: $black, $alpha: 0.1);
+        }
         &.active {
-            top: 0;
-            transform: translateY(0);
+            top: 8px;
+            right: 8px;
+            transform: translate3d(0px, 0px, 0px);
         }
     }
 }

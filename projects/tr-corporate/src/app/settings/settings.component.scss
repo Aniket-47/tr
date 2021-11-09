@@ -79,7 +79,10 @@
     .mat-icon-button {
         font-size: 20px;
     }
-}
-::ng-deep .mat-drawer-content + .btn-menu-filter {
+    &.hide {
         display: none;
     }
+}
+::ng-deep .mat-drawer-container.right-drawer.mat-drawer-container-has-open ~ .btn-menu-filter {
+        display: none;
+    }  

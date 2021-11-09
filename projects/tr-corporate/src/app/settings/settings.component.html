@@ -10,7 +10,7 @@
 <button *ngIf="currentUrlPath!='/dashboard/settings'" type="button" mat-icon-button (click)="drawer.toggle()" class="togglebtn">
   <span class="icon-mc " [ngClass]="drawer.opened ? 'mc-keyboard_arrow_left': 'mc-keyboard_arrow_right'"></span>
 </button>
-<div class="btn-menu-filter">      
+<div class="btn-menu-filter" [ngClass]="drawer.opened ? 'hide': ''">      
   <button type="button" mat-icon-button (click)="drawer.toggle()" class="mobile-togglebtn">
     <span class="icon-mc mc-menu"></span>
   </button>
