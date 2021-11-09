@@ -58,7 +58,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     ],
     email: ['', [Validators.required, Validators.email]],
     company: ['', [Validators.required]],
-    phone: ['', 
+    phone: ['',
       [
         Validators.required,
         Validators.minLength(ValidationConstants.userAccountStrategy.PHONE_MIN_LENGTH)
@@ -131,7 +131,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
       email: value.email,
       userpassword: value.password,
       name: value.company,
-      accounttypeid: roleId
+      accounttypeid: roleId ? +roleId : null
     };
 
     this.isLoading = true;
