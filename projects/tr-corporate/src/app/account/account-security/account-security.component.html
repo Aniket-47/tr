@@ -43,7 +43,7 @@
                 </mat-form-field>
             </div>
             <div class="profile-action">
-                <button mat-stroked-button>Reset</button>
+                <button mat-stroked-button (click)="resetHandler()">Reset</button>
                 <button mat-flat-button color="primary" (click)="savePassword()">Save Changes</button>
             </div>
         </fieldset>

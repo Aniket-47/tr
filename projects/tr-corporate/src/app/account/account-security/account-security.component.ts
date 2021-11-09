@@ -69,19 +69,25 @@ export class AccountSecurityComponent implements OnInit {
     };
 
     this.accoutService.changePassword(payload).subscribe(res => {
-      if (!res.error) {
+      if (res.error) {
         const message = "Password changed successfully!";
         this.snackBar.open(message);
-        this.errorMessage = message;
-        this.password.setErrors({ 'customError': true });
-        console.log(this.errorMessage);        
-      }
-      else {
+      } else {
         // this.snackBar.open(res.message)
+        this.errorMessage = res.message; 
         this.password.setErrors({ 'customError': true });
         console.log(res.message);        
       }
     });
+  }
+
+  resetHandler() {
+    this.changePasswordForm.reset({
+      newPassword: '',
+      confirmPassword: '',      
+      oldPassword: '',
+    });
+    console.log(this.changePasswordForm)
   }
 
 }
