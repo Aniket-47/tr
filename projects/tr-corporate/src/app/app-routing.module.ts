@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DemoComponent } from './advance-search/demo/demo.component';
 import { AuthGuard } from './utility/guards/auth.guard';
+import { PostLoginResolver } from './utility/resolvers/post-login.resolver';
 
 const routes: Routes = [
   {
@@ -15,6 +16,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
     canActivate: [AuthGuard],
+    resolve: { data: PostLoginResolver }
   },
   {
     path: 'as',
