@@ -51,6 +51,9 @@ export class AccountSecurityComponent implements OnInit {
   get cnfPass(): AbstractControl {
     return this.changePasswordForm.get('cnfPass') as FormControl;
   }
+  get oldPassword(): AbstractControl {
+    return this.changePasswordForm.get('oldPassword') as FormControl;
+  }
 
   savePassword() {
     if (this.changePasswordForm.invalid) {
@@ -82,12 +85,7 @@ export class AccountSecurityComponent implements OnInit {
   }
 
   resetHandler() {
-    this.changePasswordForm.reset({
-      newPassword: '',
-      confirmPassword: '',      
-      oldPassword: '',
-    });
-    console.log(this.changePasswordForm)
+    this.changePasswordForm.reset();
   }
 
 }
