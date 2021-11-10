@@ -8,12 +8,12 @@
 
   <div class="example-sidenav-content">
     <tr-page-header>
-      <div page-title>
+       <div page-title>
         <h5 class="mobile-only">Permissions</h5>
         <h2>User Management</h2>
       </div>
       <div page-action>
-        <button mat-stroked-button class="cloud-only">
+        <button mat-stroked-button class="cloud-only" (click)="addUserModal()">
           <i class="add-new-role-btn-icon icon-mc mc-user-plus"></i>
           Invite User
         </button>
