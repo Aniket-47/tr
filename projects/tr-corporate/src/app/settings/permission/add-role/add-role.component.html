@@ -9,9 +9,10 @@
     </div>
     <div class="page-action">
       <mat-form-field appearance="outline">
-        <mat-select [(value)]="selectedStatus">
-          <mat-option *ngFor="let item of status" [value]="item.value">
-            {{item.viewValue}}
+        <mat-select placeholder="Select any default role" [(ngModel)]="selectedRole"
+          (ngModelChange)="onRoleSelection()">
+          <mat-option *ngFor="let role of defaultRoles$ | async as roles" [value]="role">
+            {{role?.name}}
           </mat-option>
         </mat-select>
       </mat-form-field>

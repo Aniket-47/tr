@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Form, FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { Irole } from '../../../utility/store/interfaces/role';
 import { State } from '../../../utility/store/reducers';
 import { getDefaultAccountId } from '../../../utility/store/selectors/account.selector';
+import { getRoles } from '../../../utility/store/selectors/roles.selector';
 import { UserRoleService } from '../services/user-role.service';
 
 @Component({
@@ -33,28 +36,30 @@ export class AddRoleComponent implements OnInit {
     { img: 'https://data.1freewallpapers.com/download/lake-mountains-forest-landscape-nature-800x600.jpg' },
   ]
 
-  status = [
-    { value: '0', viewValue: 'Active' },
-    { value: '1', viewValue: 'Inactive' },
-    { value: '2', viewValue: 'Deactivated' }
-  ];
-  selectedStatus = this.status[0].value;
+  defaultRoles$: Observable<Irole[]>;
+  selectedRole!: Irole;
   rights: any[] = [];
   rightsForm: FormGroup;
+  accountId!: string;
 
   constructor(
     private userRoleService: UserRoleService,
     private store: Store<State>,
     private fb: FormBuilder) {
+    this.defaultRoles$ = this.store.select(getRoles);
+
     this.rightsForm = this.fb.group({
       rights: this.fb.array([])
     });
   }
 
   ngOnInit(): void {
-    this.store.select(getDefaultAccountId).subscribe(accountid => {
-      if (accountid) this.userRoleService.getPermissions(accountid, '1').subscribe((data: any) => console.log(data));
-    });
+    this.store.select(getDefaultAccountId).subscribe(accountid => this.accountId = accountid);
+  }
+
+  onRoleSelection() {
+    const { roletypeid } = this.selectedRole;
+    this.userRoleService.getPermissions(this.accountId, roletypeid).subscribe((data: any) => console.log(data));
   }
 
   get rightsArray(): FormArray {
