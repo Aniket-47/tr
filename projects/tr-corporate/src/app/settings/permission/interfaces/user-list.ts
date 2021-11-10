@@ -12,7 +12,8 @@ export interface UserList_response {
         Status: number,
         last_updated: string
       }
-    ]
+    ],
+    totalcount: number
   }
 
 }
