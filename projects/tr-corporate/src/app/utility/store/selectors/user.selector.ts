@@ -18,3 +18,8 @@ export const getUserFullName = createSelector(
     selectAppState,
     (state: Iuser) => state.fullName
 );
+
+export const getUserFirstName = createSelector(
+    selectAppState,
+    (state: Iuser) => state.firstName
+);
