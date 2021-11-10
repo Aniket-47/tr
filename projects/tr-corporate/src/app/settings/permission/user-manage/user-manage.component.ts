@@ -63,11 +63,11 @@ export class UserManageComponent implements OnInit {
         if (accountid) {
           this.userlistServ.getUserList(accountid).subscribe(res => {
             // console.log(res);
-            this.dataSource = new MatTableDataSource(res.data)
+            this.dataSource = new MatTableDataSource(res.data.userslist)
             this.dataSource.paginator = this.paginator;
 
             // set this to total users from api
-            this.totalUsers = res.data.length;
+            this.totalUsers = res.data.userslist.length;
           });
         }
       })

@@ -25,8 +25,8 @@ export class UserService {
   getUser(data: GetUser_request) {
     return this.http.post<GetUser_response>(this.secure_api_routes.ADD_USER, data)
   }
-  createUser(data: AddUser_request) {
-    return this.http.post<AddUser_response>(this.secure_api_routes.ADD_USER, data)
+  createUser(accountID: string, data: AddUser_request) {
+    return this.http.post<AddUser_response>(this.secure_api_routes.ADD_USER, data, { headers: { 'accountID': accountID } })
   }
   updateUser(data: UpdateUser_request) {
     return this.http.post<UpdateUser_response>(this.secure_api_routes.UPDATE_USER, data)
