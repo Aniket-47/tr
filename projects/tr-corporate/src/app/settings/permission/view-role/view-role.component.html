@@ -62,7 +62,7 @@
             'vn': element.role === 'Vendor',
             'nh': element.role === 'New Hire',
             'hr': element.role === 'HR Manager'
-          }">{{element.role}} </mat-label>
+          }">{{element?.rolename}} </mat-label>
           </td>
         </ng-container>
 
@@ -70,14 +70,14 @@
         <ng-container matColumnDef="users">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Total Users </th>
           <td mat-cell *matCellDef="let element"> <span class="mobile-only grey-text">Total Users :</span>
-            {{element.users}} Users</td>
+            {{element?.users || 0}} Users</td>
         </ng-container>
 
         <!-- Last Updated Column -->
         <ng-container matColumnDef="lastupdated">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Edited </th>
           <td mat-cell *matCellDef="let element"> <span class="mobile-only grey-text">Last Updated :</span>
-            {{element.lastupdated}} </td>
+            {{element?.modifiedDatetime | date}} </td>
         </ng-container>
 
         <!-- Status Column -->

@@ -23,6 +23,7 @@ function passwordMatcher(c: AbstractControl): { [key: string]: boolean } | null 
 export class ResetPasswordComponent implements OnInit {
   hide = true;
   token: string | null = "";
+  isLoading = false;
 
   constructor(private route: ActivatedRoute, private authServ: AuthService, private fb: FormBuilder, private snackBar: SnackBarService) { }
 
@@ -48,7 +49,8 @@ export class ResetPasswordComponent implements OnInit {
   }
 
 
-  reserPassword() {
+  resetPassword() {
+    this.isLoading = true;
     // this.authServ.passwordReset(this.token,)
     if (this.resetForm.invalid) {
       for (const e in this.resetForm.controls) {
@@ -66,6 +68,7 @@ export class ResetPasswordComponent implements OnInit {
       confirmPassword: value.cnfPass,
     };
     this.authServ.passwordReset(token, payload).subscribe(res => {
+      this.isLoading = false;
       if (!res.error) {
         const message = "Password reset successfull, redircting to login"
         this.snackBar.open(message)

@@ -36,6 +36,17 @@
           color: $white !important;
         }
       }
+      .name{
+        width: 50%;
+      }
+    }
+    
+
+    .name{
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 90%;
     }
 
     .mat-list{

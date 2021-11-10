@@ -23,12 +23,12 @@ const routes: Routes = [
           import('../account/account.module').then((m) => m.AccountModule),
       },
       {
-        path:'candidate',
+        path: 'candidate',
         loadChildren: () => import('../candidate/candidate.module').then(m => m.CandidateModule)
       },
       {
-        path:'',
-        pathMatch:'full',
+        path: '',
+        pathMatch: 'full',
         redirectTo: ''
       },
       {
@@ -43,4 +43,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class DashboardRoutingModule {}
+export class DashboardRoutingModule { }
