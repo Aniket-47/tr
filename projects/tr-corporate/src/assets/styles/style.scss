@@ -477,9 +477,19 @@ mat-drawer-container{
 }
 
 .mat-paginator-container{
+  .mat-form-field-wrapper {
+    padding-bottom: 0;
+  }
+  .mat-form-field-infix {
+    margin: 0;
+    padding: 0;
+    border-top: 0;
+  }
+  .mat-paginator-page-size-select {
+    margin-top: 0;
+  }
   @include media-breakpoint-down(md) {
     justify-content: flex-start !important;
-
   }
   .mat-paginator-range-label, .mat-paginator-page-size-label{
     @include media-breakpoint-down(md) {

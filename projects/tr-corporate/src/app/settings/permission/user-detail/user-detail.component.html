@@ -1,11 +1,11 @@
 <div class="box-container">
-    <div class="upper-sec">
-        <!-- <div class="upper-sec__left">
+  <div class="upper-sec">
+    <!-- <div class="upper-sec__left">
             <mat-icon *ngIf="!edit; else editIcon">person</mat-icon>
             <h4 *ngIf="!edit; else editUserInfo">User Info</h4>
         </div> -->
 
-        <!-- <ng-template #editIcon>
+    <!-- <ng-template #editIcon>
             <mat-icon>mode_edit</mat-icon>
         </ng-template>
 
@@ -13,29 +13,30 @@
             <h4>edit user info</h4>
         </ng-template> -->
 
-        <!-- <div class="upper-sec__right pull-right">
+    <!-- <div class="upper-sec__right pull-right">
             <mat-icon class="close_icon">close</mat-icon>
         </div> -->
-        <!-- <i class="icon-mc mc-x"></i> -->
-    </div>
+    <!-- <i class="icon-mc mc-x"></i> -->
+  </div>
 
-    <ng-template #editIcon>
-      <mat-icon>mode_edit</mat-icon>
-    </ng-template>
+  <ng-template #editIcon>
+    <mat-icon>mode_edit</mat-icon>
+  </ng-template>
 
-    <ng-template #editUserInfo>
-      <h4>edit user info</h4>
-    </ng-template>
+  <ng-template #editUserInfo>
+    <h4>edit user info</h4>
+  </ng-template>
 
-    <!-- <div class="upper-sec__right">
+  <!-- <div class="upper-sec__right">
       <mat-icon class="close_icon">close</mat-icon>
     </div> -->
   <!-- </div> -->
 
   <div class="about-user my-1">
     <div class="about-user__left">
-      <img src="https://img.freepik.com/free-photo/cheerful-curly-business-girl-wearing-glasses_176420-206.jpg?size=626&ext=jpg"
-                alt="" />
+      <img
+        src="https://img.freepik.com/free-photo/cheerful-curly-business-girl-wearing-glasses_176420-206.jpg?size=626&ext=jpg"
+        alt="" />
       <div class="about-user__name">
         <h4>John Watson</h4>
         <span>john_watson</span>
@@ -135,112 +136,112 @@
     <ng-template #displayInput>
 
       <form [formGroup]="editUserForm">
-          <mat-form-field appearance="outline">
-            <mat-label>First Name</mat-label>
-            <input matInput formControlName="firstName" placeholder="First Name">
-            <mat-error *ngIf="firstName.invalid && firstName.touched">
-              <span *ngIf="firstName.errors?.required">
-                First Name is required
-              </span>
-              <span *ngIf="!firstName.errors?.required && firstName.errors?.minlength">
-                First Name should be atleast 3 letters
-              </span>
-              <span *ngIf="firstName.errors?.maxlength">
-                First Name should be maximum of 20 letters
-              </span>
-            </mat-error>
+        <mat-form-field appearance="outline">
+          <mat-label>First Name</mat-label>
+          <input matInput formControlName="firstName" placeholder="First Name">
+          <mat-error *ngIf="firstName.invalid && firstName.touched">
+            <span *ngIf="firstName.errors?.required">
+              First Name is required
+            </span>
+            <span *ngIf="!firstName.errors?.required && firstName.errors?.minlength">
+              First Name should be atleast 3 letters
+            </span>
+            <span *ngIf="firstName.errors?.maxlength">
+              First Name should be maximum of 20 letters
+            </span>
+          </mat-error>
 
-          </mat-form-field>
-          <mat-form-field appearance="outline">
-            <mat-label>Middle Name</mat-label>
-            <input matInput formControlName="middleName" placeholder="Middle Name">
-            <mat-error *ngIf="middleName.invalid && middleName.touched">
-              <span *ngIf="middleName.errors?.minlength">
-                Middle Name should be atleast 3 letters
-              </span>
-              <span *ngIf="middleName.errors?.maxlength">
-                Middle Name should be maximum of 20 letters
-              </span>
-            </mat-error>
-          </mat-form-field>
-       
-          <mat-form-field appearance="outline">
-            <mat-label>Last Name</mat-label>
-            <input matInput formControlName="lastName" placeholder="Last Name">
-            <mat-error *ngIf="lastName.invalid && lastName.touched">
-              <span *ngIf="lastName.errors?.required">
-                Last Name is required
-              </span>
-              <span *ngIf="!lastName.errors?.required && lastName.errors?.minlength">
-                Last Name should be atleast 3 letters
-              </span>
-              <span *ngIf="lastName.errors?.maxlength">
-                Last Name should be maximum of 20 letters
-              </span>
-            </mat-error>
-          </mat-form-field>
-       
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Middle Name</mat-label>
+          <input matInput formControlName="middleName" placeholder="Middle Name">
+          <mat-error *ngIf="middleName.invalid && middleName.touched">
+            <span *ngIf="middleName.errors?.minlength">
+              Middle Name should be atleast 3 letters
+            </span>
+            <span *ngIf="middleName.errors?.maxlength">
+              Middle Name should be maximum of 20 letters
+            </span>
+          </mat-error>
+        </mat-form-field>
 
-
-        
-          <mat-form-field appearance="outline">
-            <mat-label>Email</mat-label>
-            <input matInput formControlName="email" placeholder="abc123@gmail.com">
-            <mat-error *ngIf="email.invalid && email.touched">
-              <span *ngIf="email.errors?.required">
-                Email Id is required
-              </span>
-              <span *ngIf="!email.errors?.required && email.errors?.email">
-                Email Id is not valid
-              </span>
-            </mat-error>
-          </mat-form-field>
-       
-          
-
-          <mat-form-field appearance="outline">
-            <mat-label>Super Admin</mat-label>
-            <mat-select formControlName="userRole">
-              <mat-option *ngFor="let option of options; let i=index" [value]="i+1">
-                {{option.name}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-       
-
-          <mat-form-field appearance="outline">
-            <mat-label>Admin</mat-label>
-            <mat-select matNativeControl disabled>
-              <mat-option value="Active">Active</mat-option>
-              <mat-option value="Active">Active</mat-option>
-
-            </mat-select>
-          </mat-form-field>
-        
-
-          <mat-form-field appearance="outline">
-            <mat-label>Dummy Business Vertical</mat-label>
-            <input matInput placeholder="Dummy Business Vertical" disabled>
-          </mat-form-field>
-       
-       
-
-          <mat-form-field appearance="outline">
-            <mat-label>Practice</mat-label>
-            <input matInput placeholder="Dummy Practice" disabled>
-          </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="lastName" placeholder="Last Name">
+          <mat-error *ngIf="lastName.invalid && lastName.touched">
+            <span *ngIf="lastName.errors?.required">
+              Last Name is required
+            </span>
+            <span *ngIf="!lastName.errors?.required && lastName.errors?.minlength">
+              Last Name should be atleast 3 letters
+            </span>
+            <span *ngIf="lastName.errors?.maxlength">
+              Last Name should be maximum of 20 letters
+            </span>
+          </mat-error>
+        </mat-form-field>
 
 
-          <mat-form-field appearance="outline">
-            <mat-label>Phone</mat-label>
-            <input matInput placeholder="ex:- 9874563258" disabled>
-          </mat-form-field>
 
 
-          <mat-form-field appearance="outline">
-            <mat-label>Location</mat-label>
-            <input matInput placeholder="Location" disabled>
-          </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" placeholder="abc123@gmail.com">
+          <mat-error *ngIf="email.invalid && email.touched">
+            <span *ngIf="email.errors?.required">
+              Email Id is required
+            </span>
+            <span *ngIf="!email.errors?.required && email.errors?.email">
+              Email Id is not valid
+            </span>
+          </mat-error>
+        </mat-form-field>
+
+
+
+        <mat-form-field appearance="outline">
+          <mat-label>Super Admin</mat-label>
+          <mat-select formControlName="userRole">
+            <mat-option *ngFor="let option of options; let i=index" [value]="i+1">
+              {{option.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+
+        <mat-form-field appearance="outline">
+          <mat-label>Admin</mat-label>
+          <mat-select matNativeControl>
+            <mat-option value="Active">Active</mat-option>
+            <mat-option value="Active">Active</mat-option>
+
+          </mat-select>
+        </mat-form-field>
+
+
+        <mat-form-field appearance="outline">
+          <mat-label>Dummy Business Vertical</mat-label>
+          <input matInput placeholder="Dummy Business Vertical">
+        </mat-form-field>
+
+
+
+        <mat-form-field appearance="outline">
+          <mat-label>Practice</mat-label>
+          <input matInput placeholder="Dummy Practice">
+        </mat-form-field>
+
+
+        <mat-form-field appearance="outline">
+          <mat-label>Phone</mat-label>
+          <input matInput placeholder="ex:- 9874563258">
+        </mat-form-field>
+
+
+        <mat-form-field appearance="outline">
+          <mat-label>Location</mat-label>
+          <input matInput placeholder="Location">
+        </mat-form-field>
 
 
         <div class="buttons">
@@ -249,7 +250,7 @@
             <span>Update</span>
             <mat-spinner diameter="20" *ngIf="isLoading" class="btn-loader"></mat-spinner>
           </button>
-          </div>
+        </div>
       </form>
 
     </ng-template>
