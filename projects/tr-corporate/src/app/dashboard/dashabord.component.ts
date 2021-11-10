@@ -10,7 +10,7 @@ import { resetUser, setUserStatus } from '../utility/store/actions/user.action';
 import { State } from '../utility/store/reducers';
 import { getAccountIds } from '../utility/store/selectors/account.selector';
 import { getIsLoading } from '../utility/store/selectors/app.selector';
-import { getUserFullName } from '../utility/store/selectors/user.selector';
+import { getUserFirstName } from '../utility/store/selectors/user.selector';
 import { LogoutService } from './services/logout.service';
 import { setUserRoles } from '../utility/store/actions/roles.action';
 import { setUserAddress, setUserCity, setUserCountry, setUserFullName, setUserMobile, setUserName, setUserState } from '../utility/store/actions/user.action';
@@ -56,7 +56,7 @@ export class DashabordComponent implements OnInit {
 
     this.date = new Date();
     this.store.select(getAccountIds).subscribe(accounts => this.accountList = accounts);
-    this.store.select(getUserFullName).subscribe(name => this.userName = name);
+    this.store.select(getUserFirstName).subscribe(name => this.userName = name);
   }
 
   setDataInStore(data: any[]) {
@@ -75,6 +75,8 @@ export class DashabordComponent implements OnInit {
         this.store.dispatch(setUserState({ data: { stateId: user?.stateid, stateName: user?.statename } }));
         this.store.dispatch(setUserCountry({ data: { countryId: user?.countryid, countryName: user?.countryname } }));
         this.store.dispatch(setUserMobile({ data: user?.mobilenumber }));
+
+        this.lsServ.store(LSkeys.USER_NAME, `${user?.firstname}`);
       }
 
 
