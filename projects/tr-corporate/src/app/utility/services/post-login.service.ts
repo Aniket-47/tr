@@ -34,7 +34,7 @@ export class PostLoginService {
     const apis = [
       this.http.get(secure_api_routes.ACCOUNT, { headers }),
       this.http.get(secure_api_routes.USER),
-      this.http.get(secure_api_routes.USER_ROLES, { headers })
+      this.http.get(secure_api_routes.DEFAULT_ROLES)
     ];
 
     forkJoin(apis).subscribe((res: any) => {
@@ -57,7 +57,7 @@ export class PostLoginService {
 
 
         if (!res[2]?.error) {
-          const roles = res[2]?.data;
+          const roles = res[2]?.data.map((e: any) => ({ roletypeid: e?.roletypeid, name: e?.name }));
           this.store.dispatch(setUserRoles({ data: roles }));
         }
       }
