@@ -45,9 +45,13 @@
         vertical-align: top;
     }
     @include media-breakpoint-down(md) {
-        left: -8px;
+        left: -14px;
         top: 50%;
         transform: translateY(50%);
+        .icon-mc {
+            position: relative;
+            right: -5px;
+        }
      }
 }
 .move-sidena-button{
