@@ -79,14 +79,12 @@ export class ViewRoleComponent implements AfterViewInit, OnInit {
     private store: Store<State>) { }
 
   ngOnInit() {
-    this.store.select(getDefaultAccountId).subscribe(accountid => {
-      if (accountid) this.loadUserRoles(accountid);
-    });
   }
 
   ngAfterViewInit(): void {
-    // this.dataSource.paginator = this.paginator;
-    // this.dataSource.sort = this.sort;
+    this.store.select(getDefaultAccountId).subscribe(accountid => {
+      if (accountid) this.loadUserRoles(accountid);
+    });
   }
 
   resetPaging(): void {
@@ -111,13 +109,13 @@ export class ViewRoleComponent implements AfterViewInit, OnInit {
           // Flip flag to show that loading has finished.
           this.isRateLimitReached = false;
           this.resultsLength = data?.total_count;
-          return data?.data;
+          return data?.data[0]?.roles;
         }),
         catchError(() => {
           this.isRateLimitReached = true;
           return observableOf([]);
         })
-      ).subscribe(data => this.dataSource = observableOf(ELEMENT_DATA));
+      ).subscribe(data => this.dataSource = data);
   }
 
   toggleFab() {
