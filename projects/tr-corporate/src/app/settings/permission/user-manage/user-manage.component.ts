@@ -18,6 +18,8 @@ import { AddUserComponent } from '../add-user/add-user.component';
 import { SnackBarService } from '../../../utility/services/snack-bar.service';
 import { UserListService } from '../services/user-list.service';
 import { UserService } from '../services/user.service';
+import { MFilterComponent } from '../m-filter/m-filter.component';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
 
 @Component({
   selector: 'app-user-manage',
@@ -56,7 +58,7 @@ export class UserManageComponent implements OnInit {
 
   @ViewChild('modalRefElement', { static: false }) modalRefElement!: ElementRef;
 
-  constructor(private userlistServ: UserListService, private userServ: UserService, private store: Store<State>, public dialog: MatDialog, private snackBar: SnackBarService) {
+  constructor(private userlistServ: UserListService, private userServ: UserService, private store: Store<State>, public dialog: MatDialog, private snackBar: SnackBarService, private _bottomSheet: MatBottomSheet) {
     this.totalUsers = 0;
     this.store.select(getDefaultAccountId)
       .subscribe(accountid => {
@@ -76,7 +78,9 @@ export class UserManageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
+  openBottomSheet(): void {
+    this._bottomSheet.open(MFilterComponent);
+  }
   ngAfterViewInit(): void {
   }
   toggleFab() {

@@ -5,31 +5,26 @@
     </button>
     <app-user-detail></app-user-detail>
   </mat-drawer>
-  <div>
-    <header>
-      <div class="page-header">
-        <div class="page-title">
-          <!-- <button mat-icon-button>
-          <span class="mc-back-arrow"></span>
-        </button> -->
-          <h5 class="mobile-only">Permissions</h5>
-          <h2>User Management</h2>
-        </div>
-        <div class="page-action cloud-only">
-          <button mat-stroked-button color="success" (click)="addUserModal()"><i
-              class="add-new-role-btn-icon icon-mc mc-user-plus"></i>
-            <span> Invite User</span>
+
+  <div class="example-sidenav-content">
+    <tr-page-header>
+      <div page-title>
+        <h5 class="mobile-only">Permissions</h5>
+        <h2>User Management</h2>
+      </div>
+      <div page-action>
+        <button mat-stroked-button class="cloud-only">
+          <i class="add-new-role-btn-icon icon-mc mc-user-plus"></i>
+          Invite User
+        </button>
+        <div class="mobile-only">
+          <button type="button" mat-icon-button (click)="openBottomSheet()" class="open-bottombtn">
+            <span class="icon-mc mc-filter_list"></span>
           </button>
-          <!-- <button mat-stroked-button color="primary" [matMenuTriggerFor]="menu">Export <span
-            class="icon-mc mc-expand_more"></span></button>
-        <mat-menu #menu="matMenu">
-          <button mat-menu-item>PDF</button>
-          <button mat-menu-item>Excel</button>
-          <button mat-menu-item>CSV</button>
-        </mat-menu> -->
         </div>
       </div>
-    </header>
+    </tr-page-header>
+
     <!-- Desktop view -->
     <div class="user-management">
       <div class="table-header">
