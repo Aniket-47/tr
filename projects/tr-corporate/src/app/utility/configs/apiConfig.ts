@@ -4,6 +4,7 @@ const basePath = environment.apiDomain + '/api/v1';
 const auth = `${basePath}/auth`;
 const master = `${basePath}/master`;
 const account = `${basePath}/account`;
+const user = `${basePath}/user`;
 
 export const api_routes = {
   // auth module
@@ -48,4 +49,7 @@ export const secure_api_routes = {
   UPDATE_USER: `${account}/updateuser`,
   DEACTIVATE_USER: `${account}/deactivateuser`,
   DELETE_USER: `${account}/deleteuser`,
+
+  /// User
+  DEFAULT_ROLES: `${user}/roletypes`
 };
