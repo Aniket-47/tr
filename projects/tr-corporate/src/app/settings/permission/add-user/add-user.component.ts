@@ -126,7 +126,7 @@ export class AddUserComponent implements OnInit {
   }
 
   addUser() {
-    this.isLoading = true;
+    
     // const payload: AddUser_request = {
     //   firstname: this.firstName.value,
     //   middlename: this.middleName.value,
@@ -135,7 +135,7 @@ export class AddUserComponent implements OnInit {
     //   roletypeid: this.userRole.value
     // }
     if (this.addUserForm.valid) {
-
+      this.isLoading = true;
       this.userServ.createUser(this.accountID, this.addUserForm.value).subscribe(res => {
         this.isLoading = false;
         if (res.error) {
