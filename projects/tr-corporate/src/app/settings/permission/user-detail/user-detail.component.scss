@@ -142,9 +142,9 @@
       display: block;
       width: auto;
     }
-    ::ng-deep .mat-form-field-flex {
-      width: 90% !important;
-    }
+    // ::ng-deep .mat-form-field-flex {
+    //   width: 90% !important;
+    // }
     ::ng-deep .mat-form-field-appearance-outline .mat-form-field-wrapper {
       margin: 0.6em 0 .7em 0 !important;
     }
@@ -157,7 +157,7 @@
     bottom: 0px;
     width: 100%;
     background-color: $white;
-    padding: 0 1.4rem 10px;
+    padding: 0 1rem 10px;
     display: flex;
     justify-content: space-between;
     button {
