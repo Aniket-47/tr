@@ -1,9 +1,12 @@
+import { Store } from '@ngrx/store';
 import { Component, Input, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ValidationConstants } from '../../../utility/configs/app.constants';
 import { SnackBarService } from '../../../utility/services/snack-bar.service';
 import { UpdateUser_request } from '../interfaces/update-user';
 import { UserService } from '../services/user.service';
+import { State } from '../../../utility/store/reducers';
+import { getDefaultAccountId } from '../../../utility/store/selectors/account.selector';
 
 
 @Component({
@@ -26,8 +29,9 @@ export class UserDetailComponent implements OnInit {
   ];
 
   @Input() userID!: string;
+  accountID!: string;
 
-  constructor(private fb: FormBuilder, private userServ: UserService, private snackBar: SnackBarService) {
+  constructor(private fb: FormBuilder, private userServ: UserService, private snackBar: SnackBarService, private store: Store<State>) {
     // dummy data, change to user/get api
 
     // Delete this
@@ -110,6 +114,10 @@ export class UserDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
+    this.store.select(getDefaultAccountId)
+      .subscribe(accountid => {
+        this.accountID = accountid;
+      })
   }
 
   addUser() {
@@ -123,7 +131,7 @@ export class UserDetailComponent implements OnInit {
     //   accountroleid: this.userID
     // }
     if (this.editUserForm.valid) {
-      this.userServ.createUser(this.editUserForm.value).subscribe(res => {
+      this.userServ.createUser(this.accountID, this.editUserForm.value).subscribe(res => {
         this.isLoading = false;
         if (res.error) {
           // error from api
