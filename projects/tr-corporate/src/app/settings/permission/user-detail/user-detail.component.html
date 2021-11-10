@@ -135,13 +135,6 @@
     <ng-template #displayInput>
 
       <form [formGroup]="editUserForm">
-        <div class="my-3">
-        <div>
-          <mat-label>
-            <mat-icon>person</mat-icon> Name
-          </mat-label>
-        </div>
-          <div class="ms-4">
           <mat-form-field appearance="outline">
             <mat-label>First Name</mat-label>
             <input matInput formControlName="firstName" placeholder="First Name">
@@ -158,8 +151,6 @@
             </mat-error>
 
           </mat-form-field>
-        </div>
-        <div class="ms-4">
           <mat-form-field appearance="outline">
             <mat-label>Middle Name</mat-label>
             <input matInput formControlName="middleName" placeholder="Middle Name">
@@ -172,8 +163,7 @@
               </span>
             </mat-error>
           </mat-form-field>
-        </div>
-      <div class="ms-4">
+       
           <mat-form-field appearance="outline">
             <mat-label>Last Name</mat-label>
             <input matInput formControlName="lastName" placeholder="Last Name">
@@ -189,16 +179,11 @@
               </span>
             </mat-error>
           </mat-form-field>
-        </div>
-        </div>
+       
 
 
-        <div class="my-3">
-          <mat-label>
-            <mat-icon>markunread</mat-icon> Email
-          </mat-label><br>
-
-          <mat-form-field class="ms-4" appearance="outline">
+        
+          <mat-form-field appearance="outline">
             <mat-label>Email</mat-label>
             <input matInput formControlName="email" placeholder="abc123@gmail.com">
             <mat-error *ngIf="email.invalid && email.touched">
@@ -210,14 +195,10 @@
               </span>
             </mat-error>
           </mat-form-field>
-        </div>
+       
+          
 
-        <div class="my-3">
-          <mat-label>
-            <mat-icon>work</mat-icon>User Role
-          </mat-label>
-
-          <mat-form-field appearance="outline" class="ms-4">
+          <mat-form-field appearance="outline">
             <mat-label>Super Admin</mat-label>
             <mat-select formControlName="userRole">
               <mat-option *ngFor="let option of options; let i=index" [value]="i+1">
@@ -225,16 +206,9 @@
               </mat-option>
             </mat-select>
           </mat-form-field>
-        </div>
+       
 
-
-        <div class="my-3">
-          <mat-label>
-            <mat-icon>emoji_events</mat-icon>Designation
-          </mat-label>
-
-
-          <mat-form-field appearance="outline" class="ms-4">
+          <mat-form-field appearance="outline">
             <mat-label>Admin</mat-label>
             <mat-select matNativeControl disabled>
               <mat-option value="Active">Active</mat-option>
@@ -242,51 +216,31 @@
 
             </mat-select>
           </mat-form-field>
-        </div>
+        
 
-        <div class="my-3">
-          <mat-label>
-            <mat-icon>layers</mat-icon>Business Vertical
-          </mat-label><br>
-
-          <mat-form-field class="ms-4" appearance="outline">
+          <mat-form-field appearance="outline">
             <mat-label>Dummy Business Vertical</mat-label>
             <input matInput placeholder="Dummy Business Vertical" disabled>
           </mat-form-field>
-        </div>
+       
+       
 
-        <div class="my-3">
-          <mat-label>
-            <mat-icon>work</mat-icon>Practice
-          </mat-label><br>
-
-          <mat-form-field class="ms-4" appearance="outline">
+          <mat-form-field appearance="outline">
             <mat-label>Practice</mat-label>
             <input matInput placeholder="Dummy Practice" disabled>
           </mat-form-field>
-        </div>
 
-        <div class="my-3">
-          <mat-label>
-            <mat-icon>local_phone</mat-icon>Phone
-          </mat-label><br>
 
-          <mat-form-field class="ms-4" appearance="outline">
+          <mat-form-field appearance="outline">
             <mat-label>Phone</mat-label>
             <input matInput placeholder="ex:- 9874563258" disabled>
           </mat-form-field>
-        </div>
 
-        <div class="my-3">
-          <mat-label>
-            <mat-icon>location_on</mat-icon>Location
-          </mat-label><br>
 
-          <mat-form-field class="ms-4" appearance="outline">
+          <mat-form-field appearance="outline">
             <mat-label>Location</mat-label>
             <input matInput placeholder="Location" disabled>
           </mat-form-field>
-        </div>
 
 
         <div class="buttons">
@@ -295,8 +249,7 @@
             <span>Update</span>
             <mat-spinner diameter="20" *ngIf="isLoading" class="btn-loader"></mat-spinner>
           </button>
-         
-        </div>
+          </div>
       </form>
 
     </ng-template>

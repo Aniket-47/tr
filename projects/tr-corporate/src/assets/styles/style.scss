@@ -9,6 +9,7 @@ header {
 .page-header {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   @include padding(1rem 0 1.8rem);
   @include media-breakpoint-down(md) {
     @include padding(1rem 0 1.3rem);
@@ -126,12 +127,12 @@ header {
 }
 .cloud-only {
   @include media-breakpoint-down(md) {
-    display: none;
+    display: none !important;
   }
 }
 .mobile-only {
   @include media-breakpoint-up(md) {
-    display: none;
+    display: none !important;
   }
 }
 
@@ -406,12 +407,12 @@ header {
     background-color: transparent;
 }
 mat-drawer-container{
-    background: none;
-    height: 100%;
-    }
+  background-color: transparent;
+  height: 100%;
+}
     .right-drawer {
-      background-color: $white;
-      z-index: 92 !important;
+      // background-color: $white;
+      // z-index: 2 !important;
         .drawer-container {
             position: fixed;
             right: 0px;

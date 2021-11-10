@@ -1,5 +1,5 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 interface Food {
   value: string;
   viewValue: string;
@@ -10,9 +10,15 @@ interface Food {
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-
+  isActive = false;
   constructor() { }
-
+  @HostListener('document:click', ['$event'])
+  documentClick(event: any): void {
+    if (this.isActive == true) {
+      this.isActive = false;
+    }
+    
+  }
   ngOnInit(): void {
   }
   foods: Food[] = [
@@ -26,4 +32,9 @@ export class SearchComponent implements OnInit {
     {value: '7', viewValue: 'Employee Portal'},
   ];
   selected = '0';
+
+  onKeypressEvent(event: any){
+    event.stopPropagation();
+    this.isActive = true;
+ }
 }
