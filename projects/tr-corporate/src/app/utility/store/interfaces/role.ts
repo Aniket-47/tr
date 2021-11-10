@@ -1,7 +1,7 @@
 
 export interface Irole {
     name: string;
-    id: string;
+    roletypeid: string;
 }
 
 export interface Iroles {
