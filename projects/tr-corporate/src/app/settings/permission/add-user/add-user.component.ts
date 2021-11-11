@@ -10,6 +10,7 @@ import { SnackBarService } from '../../../utility/services/snack-bar.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { State } from '../../../utility/store/reducers';
 import { getDefaultAccountId } from '../../../utility/store/selectors/account.selector';
+import { getRoles } from '../../../utility/store/selectors/roles.selector';
 
 
 export interface User {
@@ -49,6 +50,7 @@ export class AddUserComponent implements OnInit {
   ];
   filteredOptions: Observable<User[]> | undefined;
   accountID!: string;
+  roles!: any[];
 
   ngOnInit() {
     this.filteredOptions = this.myControl.valueChanges
@@ -61,7 +63,10 @@ export class AddUserComponent implements OnInit {
     this.store.select(getDefaultAccountId)
       .subscribe(accountid => {
         this.accountID = accountid;
-      })
+      });
+    this.store.select(getRoles).subscribe(roles => {
+      this.roles = roles;
+    });
   }
 
   displayFn(user: User): string {
@@ -126,7 +131,7 @@ export class AddUserComponent implements OnInit {
   }
 
   addUser() {
-    
+
     // const payload: AddUser_request = {
     //   firstname: this.firstName.value,
     //   middlename: this.middleName.value,
@@ -134,6 +139,7 @@ export class AddUserComponent implements OnInit {
     //   email: this.email.value,
     //   roletypeid: this.userRole.value
     // }
+    this.addUserForm.markAllAsTouched();
     if (this.addUserForm.valid) {
       this.isLoading = true;
       this.userServ.createUser(this.accountID, this.addUserForm.value).subscribe(res => {
