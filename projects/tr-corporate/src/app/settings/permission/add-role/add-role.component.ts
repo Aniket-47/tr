@@ -59,12 +59,12 @@ export class AddRoleComponent implements OnInit {
 
   onRoleSelection() {
     const { roletypeid } = this.selectedRole;
-    // this.userRoleService.getPermissions(this.accountId, roletypeid)
-    //   .subscribe((res: any) => {
-    //     if (!res.error) this.buildRights(res?.data)
-    //   });
+    this.userRoleService.getPermissions(this.accountId, roletypeid)
+      .subscribe((res: any) => {
+        if (!res.error) this.buildRights(res?.data?.roles?.rights);
+      });
 
-    this.userRoleService.getDummyData().subscribe(res => this.buildRights(res))
+    // this.userRoleService.getDummyData().subscribe(res => this.buildRights(res))
   }
 
   get rightsArray(): FormArray {
@@ -79,8 +79,8 @@ export class AddRoleComponent implements OnInit {
     return this.getLvl2Array(rightIndex)?.controls[index].get('level3') as FormArray;
   }
 
-  buildRights(data: any) {
-    this.rights = data?.roles[0]?.rights.map((e: any) => {
+  buildRights(rights: any[]) {
+    this.rights = rights.map((e: any) => {
       let rightData: any = {
         id: e.id, name: e.name, isOn: +e.on === 1
       }
