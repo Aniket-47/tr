@@ -12,7 +12,7 @@ header {
   justify-content: space-between;
   @include padding(1rem 0 1.8rem);
   @include media-breakpoint-down(md) {
-    @include padding(1rem 0 1.3rem);
+    @include padding(1rem 0 1.3rem 1rem);
   }
   .page-title {
     display: flex;
