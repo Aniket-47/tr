@@ -29,3 +29,8 @@ export const enum AccountActions {
     ACC_DETAILS_ACTION = "[ACCOUNT] Set account deatils",
     ACC_RESET_ACTION = "[ACCOUNT] Reset account deatils",
 }
+
+// Translation
+export const enum LanguageActions {
+    LANGUAGE_SET_ACTION = "[LANG] Set user language",
+}

@@ -37,6 +37,7 @@ export const secure_api_routes = {
   INDUSTRY_LIST: `${master}/industries`,
   PERMISSIONS_LIST: `${master}/permission`,
   PERMISSIONS_UPDTAE: `${master}/permission`,
+  TRANSLATION: `${master}/translation`,
 
   // ACCOUNT: `${auth}/account`,
   USER_LIST: `${account}/userslist`,
