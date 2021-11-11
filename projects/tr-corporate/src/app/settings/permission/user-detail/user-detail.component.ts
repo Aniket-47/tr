@@ -16,7 +16,6 @@ import { getDefaultAccountId } from '../../../utility/store/selectors/account.se
 })
 export class UserDetailComponent implements OnInit {
 
-  edit: boolean = false;
   editUserForm!: FormGroup;
   isLoading = false;
 
@@ -26,6 +25,7 @@ export class UserDetailComponent implements OnInit {
     { name: '' }
   ];
 
+  @Input() edit: boolean = false;
   @Input() user = {
     fullname: "Aniket Das",
     email: "aniket.d@mucrest.com",

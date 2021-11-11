@@ -54,6 +54,7 @@ export class UserManageComponent implements OnInit {
   totalUsers!: number;
 
   currentUser!: any;
+  currentUserEdit!: boolean;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort!: MatSort;
@@ -147,11 +148,6 @@ export class UserManageComponent implements OnInit {
         })
       ).subscribe((data: any) => this.dataSource = new MatTableDataSource(data));
   }
-
-  viewUser(userData: any) {
-    this.currentUser = userData;
-  }
-
 
   deactivateUser(userID: string) {
     // console.log(userID);

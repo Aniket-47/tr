@@ -3,7 +3,7 @@
     <button mat-icon-button (click)="drawer.toggle()" class="close-btn">
       <span class="icon-mc mc-x"></span>
     </button>
-    <app-user-detail [user]="currentUser"></app-user-detail>
+    <app-user-detail [edit]="currentUserEdit" [user]="currentUser"></app-user-detail>
   </mat-drawer>
 
   <div class="example-sidenav-content">
@@ -151,10 +151,12 @@
                 </button>
                 <mat-menu #tableMenu="matMenu" backdropClass="profile-dropdown">
                   <div class="user-dropdown-submenu">
-                    <button class="blue" mat-menu-item (click)="viewUser(element);drawer.toggle()">
+                    <button class="blue" mat-menu-item
+                      (click)="currentUser = element; currentUserEdit=false;drawer.toggle()">
                       <i class="icon-mc mc-visibility"></i> <span>View details</span>
                     </button>
-                    <button class="green" mat-menu-item>
+                    <button class="green" mat-menu-item
+                      (click)="currentUser = element; currentUserEdit= true;drawer.toggle()">
                       <i class="icon-mc mc-create"></i> <span>Edit user</span>
                     </button>
                     <button class="red" mat-menu-item>
