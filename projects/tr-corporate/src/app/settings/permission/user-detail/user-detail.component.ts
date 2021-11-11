@@ -1,5 +1,5 @@
 import { Store } from '@ngrx/store';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ValidationConstants } from '../../../utility/configs/app.constants';
 import { SnackBarService } from '../../../utility/services/snack-bar.service';
@@ -14,7 +14,7 @@ import { getDefaultAccountId } from '../../../utility/store/selectors/account.se
   templateUrl: './user-detail.component.html',
   styleUrls: ['./user-detail.component.scss']
 })
-export class UserDetailComponent implements OnInit {
+export class UserDetailComponent implements OnInit, OnChanges {
 
   editUserForm!: FormGroup;
   isLoading = false;
@@ -39,22 +39,7 @@ export class UserDetailComponent implements OnInit {
   accountID!: string;
 
   constructor(private fb: FormBuilder, private userServ: UserService, private snackBar: SnackBarService, private store: Store<State>) {
-    // dummy data, change to user/get api
 
-    // Delete this
-    this.user
-
-
-    // Enable this
-
-    // this.userServ.getUser({ 'userID': this.userID }).subscribe(res => {
-    //   if(res.error){
-    //     // handel error
-    //   }
-    //   else{
-    //     this.user=res.data;
-    //   }
-    // })
   }
 
   initForm() {
@@ -114,6 +99,21 @@ export class UserDetailComponent implements OnInit {
       .subscribe(accountid => {
         this.accountID = accountid;
       })
+  }
+
+  ngOnChanges() {
+    if (this.user)
+      this.prefillUser();
+  }
+
+  prefillUser() {
+    this.editUserForm.patchValue(
+      {
+        firstname: this.user.fullname,
+        email: this.user.email,
+        userRole: this.user.roletypeid
+      }
+    )
   }
 
   addUser() {

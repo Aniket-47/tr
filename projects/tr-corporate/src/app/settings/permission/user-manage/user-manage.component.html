@@ -1,5 +1,5 @@
 <mat-drawer-container autosize class="right-drawer">
-  <mat-drawer #drawer [opened]="true" mode="over" class="drawer-container" position="end" [autoFocus]="false">
+  <mat-drawer #drawer mode="over" class="drawer-container" position="end" [autoFocus]="false">
     <button mat-icon-button (click)="drawer.toggle()" class="close-btn">
       <span class="icon-mc mc-x"></span>
     </button>
@@ -33,16 +33,17 @@
         <div class="table-info" *ngIf="selection.selected.length == 0">{{ totalUsers }} Total Users</div>
         <div class="table-action cloud-only">
           <mat-form-field appearance="outline">
-            <mat-select [(value)]="selectedStatus">
+            <mat-select [(ngModel)]="selectedStatus" placeholder="Select Status"
+              (ngModelChange)="loadUsers()">
               <mat-option *ngFor="let item of status" [value]="item.value">
                 {{item.viewValue}}
               </mat-option>
             </mat-select>
           </mat-form-field>
           <mat-form-field appearance="outline">
-            <mat-select [(value)]="selectedRole">
-              <mat-option *ngFor="let item of role" [value]="item.value">
-                {{item.viewValue}}
+            <mat-select [(ngModel)]="selectedRole" placeholder="Select Role" (ngModelChange)="loadUsers()">
+              <mat-option *ngFor="let item of role" [value]="item.roletypeid">
+                {{item.name}}
               </mat-option>
             </mat-select>
           </mat-form-field>
