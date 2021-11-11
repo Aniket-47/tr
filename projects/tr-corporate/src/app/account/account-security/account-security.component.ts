@@ -23,6 +23,7 @@ function passwordMatcher(c: AbstractControl): { [key: string]: boolean } | null 
 export class AccountSecurityComponent implements OnInit {
   hide = true;
   errorMessage: string ="";
+  isLoading = false;
 
   constructor( 
     private accoutService: AccountService,
@@ -51,8 +52,13 @@ export class AccountSecurityComponent implements OnInit {
   get cnfPass(): AbstractControl {
     return this.changePasswordForm.get('cnfPass') as FormControl;
   }
+  get oldPassword(): AbstractControl {
+    return this.changePasswordForm.get('oldPassword') as FormControl;
+  }
 
   savePassword() {
+    this.isLoading = true;
+
     if (this.changePasswordForm.invalid) {
       for (const e in this.changePasswordForm.controls) {
         this.changePasswordForm.get(e)?.markAsTouched();
@@ -69,6 +75,7 @@ export class AccountSecurityComponent implements OnInit {
     };
 
     this.accoutService.changePassword(payload).subscribe(res => {
+      this.isLoading = false;
       if (res.error) {
         const message = "Password changed successfully!";
         this.snackBar.open(message);
@@ -82,12 +89,7 @@ export class AccountSecurityComponent implements OnInit {
   }
 
   resetHandler() {
-    this.changePasswordForm.reset({
-      newPassword: '',
-      confirmPassword: '',      
-      oldPassword: '',
-    });
-    console.log(this.changePasswordForm)
+    this.changePasswordForm.reset();
   }
 
 }

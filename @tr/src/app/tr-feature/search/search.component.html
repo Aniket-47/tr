@@ -1,8 +1,8 @@
-<div class="search-container">
+<div class="search-container" [ngClass]="{'active': isActive}">
 <mat-form-field appearance="fill">
   <div matPrefix class="matprefix">
     <span class="icon-mcf mcf-search"></span>
     </div>
-  <input matInput placeholder="Search in permission">
+  <input matInput autocomplete="off" placeholder="Search in permission" (click)="onKeypressEvent($event)">
   </mat-form-field>
 </div>

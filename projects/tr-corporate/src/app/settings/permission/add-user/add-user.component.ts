@@ -1,3 +1,4 @@
+import { Store } from '@ngrx/store';
 import { AddUser_request } from './../interfaces/add-user';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -6,7 +7,10 @@ import { map, startWith } from 'rxjs/operators';
 import { ValidationConstants } from '../../../utility/configs/app.constants';
 import { UserService } from '../services/user.service';
 import { SnackBarService } from '../../../utility/services/snack-bar.service';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef } from '@angular/material/dialog';
+import { State } from '../../../utility/store/reducers';
+import { getDefaultAccountId } from '../../../utility/store/selectors/account.selector';
+import { getRoles } from '../../../utility/store/selectors/roles.selector';
 
 
 export interface User {
@@ -27,7 +31,7 @@ export class AddUserComponent implements OnInit {
 
   addUserForm!: FormGroup;
   isLoading = false;
-  constructor(private fb: FormBuilder, private userServ: UserService, private snackBar: SnackBarService, public dialogRef: MatDialogRef<AddUserComponent>,) { }
+  constructor(private fb: FormBuilder, private userServ: UserService, private snackBar: SnackBarService, public dialogRef: MatDialogRef<AddUserComponent>, private store: Store<State>) { }
 
   // selecter
   foods: Food[] = [
@@ -45,6 +49,8 @@ export class AddUserComponent implements OnInit {
     { name: '' }
   ];
   filteredOptions: Observable<User[]> | undefined;
+  accountID!: string;
+  roles!: any[];
 
   ngOnInit() {
     this.filteredOptions = this.myControl.valueChanges
@@ -54,6 +60,13 @@ export class AddUserComponent implements OnInit {
         map((name: any) => name ? this._filter(name) : this.options.slice())
       );
     this.initForm();
+    this.store.select(getDefaultAccountId)
+      .subscribe(accountid => {
+        this.accountID = accountid;
+      });
+    this.store.select(getRoles).subscribe(roles => {
+      this.roles = roles;
+    });
   }
 
   displayFn(user: User): string {
@@ -118,7 +131,7 @@ export class AddUserComponent implements OnInit {
   }
 
   addUser() {
-    this.isLoading = true;
+
     // const payload: AddUser_request = {
     //   firstname: this.firstName.value,
     //   middlename: this.middleName.value,
@@ -126,8 +139,10 @@ export class AddUserComponent implements OnInit {
     //   email: this.email.value,
     //   roletypeid: this.userRole.value
     // }
+    this.addUserForm.markAllAsTouched();
     if (this.addUserForm.valid) {
-      this.userServ.createUser(this.addUserForm.value).subscribe(res => {
+      this.isLoading = true;
+      this.userServ.createUser(this.accountID, this.addUserForm.value).subscribe(res => {
         this.isLoading = false;
         if (res.error) {
           // error from api

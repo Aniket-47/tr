@@ -33,5 +33,4 @@ export class SettingsComponent implements OnInit {
   openBottomSheet(): void {
     this._bottomSheet.open(MFilterComponent);
   }
-
 }
