@@ -28,13 +28,19 @@
     <!-- Desktop view -->
     <div class="user-management">
       <div class="table-header">
-        <div class="table-info" *ngIf="selection.selected.length > 0">{{ selection.selected.length }} Users Selected
-        </div>
+        <mat-form-field appearance="outline" *ngIf="selection.selected.length > 0">
+          <mat-select class="table-info" [placeholder]="selection.selected.length +' Users Selected'">
+            <mat-option value="activate">Activate</mat-option>
+            <mat-option value="deactivate">Deactivate</mat-option>
+            <mat-option value="delete">Delete</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <!-- <div class="table-info" *ngIf="selection.selected.length > 0">{{ selection.selected.length }} Users Selected
+        </div> -->
         <div class="table-info" *ngIf="selection.selected.length == 0">{{ totalUsers }} Total Users</div>
         <div class="table-action cloud-only">
           <mat-form-field appearance="outline">
-            <mat-select [(ngModel)]="selectedStatus" placeholder="Select Status"
-              (ngModelChange)="loadUsers()">
+            <mat-select [(ngModel)]="selectedStatus" placeholder="Select Status" (ngModelChange)="loadUsers()">
               <mat-option *ngFor="let item of status" [value]="item.value">
                 {{item.viewValue}}
               </mat-option>

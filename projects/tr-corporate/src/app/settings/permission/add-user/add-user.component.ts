@@ -7,7 +7,7 @@ import { map, startWith } from 'rxjs/operators';
 import { ValidationConstants } from '../../../utility/configs/app.constants';
 import { UserService } from '../services/user.service';
 import { SnackBarService } from '../../../utility/services/snack-bar.service';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef } from '@angular/material/dialog';
 import { State } from '../../../utility/store/reducers';
 import { getDefaultAccountId } from '../../../utility/store/selectors/account.selector';
 import { getRoles } from '../../../utility/store/selectors/roles.selector';
