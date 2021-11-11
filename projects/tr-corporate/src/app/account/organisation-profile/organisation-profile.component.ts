@@ -49,8 +49,16 @@ export class OrganisationProfileComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.initForm();
     this.loadAccountDeatails();
-    this.countryid.valueChanges.subscribe(c => { if (c) this.getStates(c) });
-    this.stateid.valueChanges.subscribe(s => { if (s) this.getCities(s) });
+    // this.getStates(this.countryid.value);
+    // this.getCities(this.stateid.value);
+    this.countryid.valueChanges.subscribe(c => {
+      if (c) this.getStates(c)
+      this.stateid.setValue(null);
+    });
+    this.stateid.valueChanges.subscribe(s => {
+      if (s) this.getCities(s)
+      this.cityid.setValue(null);
+    });
 
     this.shortNameValidation
       .pipe(
@@ -138,12 +146,14 @@ export class OrganisationProfileComponent implements OnInit, OnChanges {
   getCountries() {
     this.accoutService.getCountryList().subscribe((res: any) => {
       if (res && res?.data) this.countries = res.data;
+      this.getStates(this.countryid.value);
     });
   }
 
   getStates(isoCode: string) {
     this.accoutService.getStateList(isoCode).subscribe((res: any) => {
       if (res && res?.data) this.states = res.data?.states;
+      this.getCities(this.stateid.value);
     });
   }
 
@@ -169,6 +179,7 @@ export class OrganisationProfileComponent implements OnInit, OnChanges {
       for (const key in this.orgProfileForm.controls) {
         this.orgProfileForm.get(key)?.markAsTouched();
       }
+      return;
     }
     const cityname = this.cities.find(c => c.id === value.cityid)?.name;
     const statename = this.states.find(s => s.stateCode === value.stateid)?.name;
@@ -184,6 +195,9 @@ export class OrganisationProfileComponent implements OnInit, OnChanges {
       countryname,
       industryname
     }
+
+    if (this.shortname.value === this.currentShortName)
+      delete payload.shortname;
 
     // if (payload.shortname) delete payload.shortname;
     this.isLoading = true;
