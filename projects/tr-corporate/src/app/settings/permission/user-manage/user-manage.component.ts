@@ -53,6 +53,8 @@ export class UserManageComponent implements OnInit {
 
   totalUsers!: number;
 
+  currentUser!: any;
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort!: MatSort;
 
@@ -82,7 +84,7 @@ export class UserManageComponent implements OnInit {
     this._bottomSheet.open(MFilterComponent);
   }
   ngAfterViewInit(): void {
-    this.store.select(getDefaultAccountId).subscribe((accountid:any) => {
+    this.store.select(getDefaultAccountId).subscribe((accountid: any) => {
       if (accountid) this.loadUsers(accountid);
     });
   }
@@ -144,6 +146,10 @@ export class UserManageComponent implements OnInit {
           return observableOf([]);
         })
       ).subscribe((data: any) => this.dataSource = new MatTableDataSource(data));
+  }
+
+  viewUser(userData: any) {
+    this.currentUser = userData;
   }
 
 

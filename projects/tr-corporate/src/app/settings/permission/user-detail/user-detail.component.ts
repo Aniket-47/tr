@@ -20,33 +20,29 @@ export class UserDetailComponent implements OnInit {
   editUserForm!: FormGroup;
   isLoading = false;
 
-  user!: any;
-
   options = [
     { name: '' },
     { name: '' },
     { name: '' }
   ];
 
-  @Input() userID!: string;
+  @Input() user = {
+    fullname: "Aniket Das",
+    email: "aniket.d@mucrest.com",
+    roletypeid: "Super Admin",
+    designation: "Developer",
+    businessVertical: "lorem",
+    practice: "Blah Blah",
+    phone: "+918954467845",
+    location: "Kolkata Park Street, Pin 700022"
+  };
   accountID!: string;
 
   constructor(private fb: FormBuilder, private userServ: UserService, private snackBar: SnackBarService, private store: Store<State>) {
     // dummy data, change to user/get api
 
     // Delete this
-    this.user = {
-      firstname: "Aniket",
-      middlename: "",
-      lastname: "Das",
-      email: "aniket.d@mucrest.com",
-      roletypeid: "Super Admin",
-      designation: "Developer",
-      businessVertical: "lorem",
-      practice: "Blah Blah",
-      phone: "+918954467845",
-      location: "Kolkata Park Street, Pin 700022"
-    }
+    this.user
 
 
     // Enable this
