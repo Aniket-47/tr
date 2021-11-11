@@ -5,7 +5,7 @@ import { StatsComponent } from './stats/stats.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { CardModule, LayoutModule, MaterialModule } from '@tr';
 import { ComponentsModule } from '@mucrest/ng-design';
-import { TranslatePipe } from '@mucrest/ng-core';
+import { McCoreModule, TranslatePipe } from '@mucrest/ng-core';
 import { TrFeatureModule } from '@tr/src/app/tr-feature/tr-feature.module';
 import { LstorageService } from '@tr/src/app/utility/services/lstorage.service';
 import { LSkeys } from '../utility/configs/app.constants';
@@ -19,6 +19,7 @@ import { LSkeys } from '../utility/configs/app.constants';
   ],
   imports: [
     CommonModule,
+    McCoreModule,
     LayoutModule,
     ComponentsModule,
     MaterialModule,
@@ -32,8 +33,6 @@ export class DashboardModule {
   constructor(
     private lsServ: LstorageService) {
     const languageData = this.lsServ.getItem(LSkeys.LANGUAGE) || '';
-    if (languageData) {
-      TranslatePipe.setLanguagePack(JSON.parse(languageData))
-    }
+    if (languageData) TranslatePipe.setLanguagePack(JSON.parse(languageData));
   }
 }
