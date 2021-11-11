@@ -8,6 +8,7 @@ import { RouterConfigService } from './utility/services/router-config.service';
 
 import { State } from './utility/store/reducers';
 import { setUserStatus } from './utility/store/actions/user.action';
+import { fadeAnimation } from './animations';
 
 @Component({
   selector: 'app-root',
@@ -49,4 +50,5 @@ export class AppComponent implements OnInit {
       this.loading = false;
     }
   }
+
 }

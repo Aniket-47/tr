@@ -6,12 +6,12 @@ import { ViewUserComponent } from './view-user/view-user.component';
 import { ViewRoleComponent } from './view-role/view-role.component';
 import { AddRoleComponent } from './add-role/add-role.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
-import { MaterialModule } from '@tr';
+import { LayoutModule, MaterialModule } from '@tr';
 import { MFilterComponent } from './m-filter/m-filter.component';
 import { PermissionComponent } from './permission.component';
 import { RouterModule } from '@angular/router';
 import { PermissionRoutingModule } from './permission-routing.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -28,10 +28,12 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,
+    FormsModule,
     ReactiveFormsModule,
     MaterialModule,
+    LayoutModule,
     PermissionRoutingModule,
-    ReactiveFormsModule
+
   ]
 })
 export class PermissionModule { }

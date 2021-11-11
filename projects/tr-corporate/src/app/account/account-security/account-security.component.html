@@ -48,8 +48,11 @@
                 </mat-form-field>
             </div>
             <div class="profile-action">
-                <button mat-stroked-button type="reset" (click)="resetHandler()">Reset</button>
-                <button mat-flat-button color="primary" (click)="savePassword()">Save Changes</button>
+                <button mat-stroked-button (click)="resetHandler()">Reset</button>
+                <button mat-flat-button color="primary" (click)="savePassword()" [disabled] ='isLoading'>
+                    <span>Save Changes</span>
+                    <mat-spinner *ngIf='isLoading' diameter='20' class="btn-loader"></mat-spinner>
+                </button>
             </div>
         </fieldset>
     </form>

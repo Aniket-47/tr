@@ -23,6 +23,7 @@ function passwordMatcher(c: AbstractControl): { [key: string]: boolean } | null 
 export class AccountSecurityComponent implements OnInit {
   hide = true;
   errorMessage: string ="";
+  isLoading = false;
 
   constructor( 
     private accoutService: AccountService,
@@ -56,6 +57,8 @@ export class AccountSecurityComponent implements OnInit {
   }
 
   savePassword() {
+    this.isLoading = true;
+
     if (this.changePasswordForm.invalid) {
       for (const e in this.changePasswordForm.controls) {
         this.changePasswordForm.get(e)?.markAsTouched();
@@ -72,6 +75,7 @@ export class AccountSecurityComponent implements OnInit {
     };
 
     this.accoutService.changePassword(payload).subscribe(res => {
+      this.isLoading = false;
       if (!res.error) {
         const message = "Password changed successfully!";
         this.snackBar.open(message);

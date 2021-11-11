@@ -16,8 +16,16 @@ export class UserListService {
     this.secure_api_routes = secure_api_routes;
   }
 
-  getUserList(accountID: string) {
-    return this.http.get<UserList_response>(this.secure_api_routes.USER_LIST, { headers: { 'accountID': accountID } })
+  getUserList(accountID: string, sort?: string, pageNo?: number, sortOrder?: string) {
+    let url = `${this.secure_api_routes.USER_LIST}?limit=10`
+    if (sort) {
+      url = `${url}&orderby=${sort}`;
+    }
+    if (sortOrder) {
+      url = `${url}&order=${sortOrder}`;
+    }
+
+    return this.http.get<UserList_response>(url, { headers: { 'accountID': accountID } })
   }
 
 }

@@ -1,29 +1,25 @@
-<header>
-  <div class="page-header">
-    <div class="page-title">
-      <!-- <button mat-icon-button>
-        <span class="mc-back-arrow"></span>
-      </button> -->
-      <!-- <h5 class="mobile-only">Permissions</h5> -->
-      <h2>Create New Role</h2>
-    </div>
-    <div class="page-action">
-      <mat-form-field appearance="outline">
-        <mat-select [(value)]="selectedStatus">
-          <mat-option *ngFor="let item of status" [value]="item.value">
-            {{item.viewValue}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>New Role Name</mat-label>
-        <input matInput placeholder="Placeholder" value="">
-      </mat-form-field>
-      <button mat-flat-button color="primary" (click)="submitHandler()">Submit </button>
+<tr-page-header>
+  <div page-title>
+   <h5 class="mobile-only">Permissions</h5>
+   <h2>Create New Role</h2>
+ </div>
+ <div page-action class="page-action cloud-only">
+  <mat-form-field appearance="outline">
+    <mat-select placeholder="Select any default role" [(ngModel)]="selectedRole"
+      (ngModelChange)="onRoleSelection()">
+      <mat-option *ngFor="let role of defaultRoles$ | async as roles" [value]="role">
+        {{role?.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>New Role Name</mat-label>
+    <input matInput placeholder="Placeholder" value="">
+  </mat-form-field>
+  <button mat-flat-button color="primary" (click)="submitHandler()">Submit </button>
+ </div>
+</tr-page-header>
 
-    </div>
-  </div>
-</header>
 <div class="accordion-container" [formGroup]="rightsForm">
   <ng-container formArrayName="rights">
     <mat-accordion *ngIf="rightsArray.controls.length">
