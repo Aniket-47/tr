@@ -87,7 +87,9 @@ export class DashabordComponent implements OnInit {
       }
 
       if (!data[3]?.error) {
-        this.store.dispatch(setLanguage({ data: data[3]?.data }))
+        // this.store.dispatch(setLanguage({ data: data[3]?.data }));
+        this.lsServ.remove(LSkeys.LANGUAGE);
+        this.lsServ.store(LSkeys.LANGUAGE, JSON.stringify(data[3]?.data));
       }
     }
   }
