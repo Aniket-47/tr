@@ -8,14 +8,15 @@
 
   <tr-page-header>
     <div page-title>
-     <h5 class="mobile-only">Permissions</h5>
-     <h2>Account Role</h2>
-   </div>
-   <div page-action class="page-action cloud-only">
-    <button mat-stroked-button color="success"  (click)="drawer.toggle()"><i class="add-new-role-btn-icon icon-mcf mcf-admin_panel_settings"></i> 
-      <span> Create New Role</span>
-    </button>
-   </div>
+      <h5 class="mobile-only">Permissions</h5>
+      <h2>Account Role</h2>
+    </div>
+    <div page-action class="page-action cloud-only">
+      <button mat-stroked-button color="success" (click)="drawer.toggle()"><i
+          class="add-new-role-btn-icon icon-mcf mcf-admin_panel_settings"></i>
+        <span> Create New Role</span>
+      </button>
+    </div>
   </tr-page-header>
 
   <div class="account-role">
@@ -100,7 +101,7 @@
               <!-- <button mat-icon-button>
                 <span class="icon-mc mc-create"></span>
               </button> -->
-              <button mat-icon-button>
+              <button mat-icon-button [disabled]="!element?.users">
                 <span class="icon-mc mc-delete add-new-role-btn-icon"></span>
               </button>
               <!-- <button mat-icon-button>

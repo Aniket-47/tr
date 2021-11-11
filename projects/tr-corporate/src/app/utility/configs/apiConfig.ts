@@ -36,11 +36,13 @@ export const secure_api_routes = {
   CITY_LIST: `${master}/cities`,
   INDUSTRY_LIST: `${master}/industries`,
   PERMISSIONS_LIST: `${master}/permission`,
+  PERMISSIONS_UPDTAE: `${master}/permission`,
 
   // ACCOUNT: `${auth}/account`,
   USER_LIST: `${account}/userslist`,
   USER_ROLES: `${account}/role`,
   SHORT_NAME: `${account}/validateshortname`,
+  ADD_ROLE: `${account}/role`,
 
   // User Management
   GET_USER: `${user}/getuser`,

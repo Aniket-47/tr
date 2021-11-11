@@ -59,7 +59,12 @@ export class AddRoleComponent implements OnInit {
 
   onRoleSelection() {
     const { roletypeid } = this.selectedRole;
-    this.userRoleService.getPermissions(this.accountId, roletypeid).subscribe((data: any) => console.log(data));
+    // this.userRoleService.getPermissions(this.accountId, roletypeid)
+    //   .subscribe((res: any) => {
+    //     if (!res.error) this.buildRights(res?.data)
+    //   });
+
+    this.userRoleService.getDummyData().subscribe(res => this.buildRights(res))
   }
 
   get rightsArray(): FormArray {
@@ -145,8 +150,57 @@ export class AddRoleComponent implements OnInit {
     this.rightsArray.clear();
   }
 
+  toggleAllLvl(rightIndex: number) {
+    const currentRightStatus = !!this.rightsArray.controls[rightIndex].get('isOn')?.value;
+    const isThereLevel2 = !!this.rightsArray.controls[rightIndex].get('level2')?.value;
+    if (isThereLevel2) {
+      // level 2 toggle
+      const lvl2Arr = this.getLvl2Array(rightIndex);
+      lvl2Arr.controls.forEach((e, index) => {
+        e.get('isOn')?.setValue(!currentRightStatus);
+
+        // level 3 toggle
+        const isThereLevel3 = e.get('level3')?.value;
+        if (isThereLevel3) this.toggleLvl3(rightIndex, index, currentRightStatus);
+      });
+    }
+  }
+
+  toggleLvl3(rightIndex: number, lvl2Index: number, status: boolean) {
+    const lvl3Arr = this.getLvl3Array(rightIndex, lvl2Index);
+    lvl3Arr.controls.forEach(e => {
+      e.get('isOn')?.setValue(!status);
+    });
+  }
+
   submitHandler() {
-    console.log(this.rightsForm.value)
+    let rights: { id: number | string, on: number }[] = [];
+    this.rightsForm.get('rights')?.value.forEach((r: any) => {
+      rights.push({
+        id: r.id,
+        on: r.isOn === true ? 1 : 0
+      });
+
+      if (r?.level2 && Array.isArray(r?.level2)) {
+        r.level2.forEach((l2: any) => {
+          rights.push({
+            id: l2.id,
+            on: l2.isOn === true ? 1 : 0
+          });
+
+          if (l2?.level3 && Array.isArray(l2?.level3)) {
+            l2.level3.forEach((l3: any) => {
+              rights.push({
+                id: l3.id,
+                on: l3.isOn === true ? 1 : 0
+              });
+            });
+          }
+        });
+      }
+    });
+
+    console.log(rights)
   }
 
   step = 0;

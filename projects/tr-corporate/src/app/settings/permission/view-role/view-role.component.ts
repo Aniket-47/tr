@@ -105,11 +105,11 @@ export class ViewRoleComponent implements AfterViewInit, OnInit {
             this.paginator.pageIndex + 1,
             this.sort.direction == "desc" ? "DESC" : "ASC");
         }),
-        map(data => {
+        map(res => {
           // Flip flag to show that loading has finished.
           this.isRateLimitReached = false;
-          this.resultsLength = data?.total_count;
-          return data?.data[0]?.roles;
+          this.resultsLength = res?.data?.totalcount;
+          return res?.data?.roles;
         }),
         catchError(() => {
           this.isRateLimitReached = true;

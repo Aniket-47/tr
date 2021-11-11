@@ -14,8 +14,20 @@ export class UserRoleService {
     }
 
     getPermissions(accountID: string, roleId: string) {
-        const url = `${secure_api_routes.PERMISSIONS_LIST}?roleid=${roleId}`
+        const url = `${secure_api_routes.PERMISSIONS_LIST}?roletypeid=${roleId}`
         return this.http.get(url, { headers: { 'accountID': accountID } });
+    }
+
+    getDummyData() {
+        return this.http.get('assets/dummy_fetch_update.json');
+    }
+
+    saveRole(payload: any, accountID: string) {
+        return this.http.post(secure_api_routes.ADD_ROLE, payload, { headers: { 'accountID': accountID } });
+    }
+
+    updatePersmissions(payload: any, accountID: string) {
+        return this.http.put(secure_api_routes.PERMISSIONS_UPDTAE, payload, { headers: { 'accountID': accountID } });
     }
 
 }
