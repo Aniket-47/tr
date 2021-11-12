@@ -169,4 +169,8 @@ export class ViewRoleComponent implements AfterViewInit, OnInit {
     }
   }
 
+  deleteRole(role: Irole) {
+    console.log(role)
+  }
+
 }
