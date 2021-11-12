@@ -86,7 +86,7 @@ export class AddRoleComponent implements OnInit, OnChanges {
         .subscribe((res: any) => {
           if (!res.error) {
             this.buildRights(res?.data?.roles?.rights);
-            this.rightsArray.disable();
+            // this.rightsArray.disable();
           }
         });
     } else {
