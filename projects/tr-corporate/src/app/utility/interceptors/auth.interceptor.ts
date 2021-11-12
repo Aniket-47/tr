@@ -24,7 +24,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const accessToken = this.lsServ.getItem(LSkeys.BEARER_TOKEN);
-    if (request.headers.get('skipError') === 'Yes') this.skipError = true;
+    if (request.headers.get('skipError')) this.skipError = true;
     else this.skipError = false;
 
     let authReq

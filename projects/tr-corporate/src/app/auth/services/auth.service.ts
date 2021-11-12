@@ -36,7 +36,7 @@ export class AuthService {
   login(logindata: Login_request) {
     const guid = (Guid.create()).toString();
     this.lsServ.store(LSkeys.DEVICE_GUID, guid);
-    return this.http.post<Login_response>(this.api_routes.LOGIN, logindata, { headers: { 'clientuniqueid': guid } });
+    return this.http.post<Login_response>(this.api_routes.LOGIN, logindata, { headers: { 'clientuniqueid': guid, 'skipError': 'true' } });
   }
 
   validateEmail(email: string) {
