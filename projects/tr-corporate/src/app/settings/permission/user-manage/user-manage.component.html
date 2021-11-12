@@ -28,13 +28,21 @@
     <!-- Desktop view -->
     <div class="user-management">
       <div class="table-header">
-        <mat-form-field appearance="outline" *ngIf="selection.selected.length > 0">
+        <div *ngIf="selection.selected.length > 0" [matMenuTriggerFor]="menu">
+          {{ selection.selected.length }} Users Selected <i class="icon-mc mc-keyboard_arrow_down"></i>
+        </div>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item> <i class="icon-mc mcf-spellcheck"></i> Activate</button>
+          <button mat-menu-item> <i class="icon-mc  mc-person_add_disabled"></i> Deactivate</button>
+          <button mat-menu-item> <i class="icon-mc mc-user-x"></i> Delete</button>
+        </mat-menu>
+        <!-- <mat-form-field appearance="outline" *ngIf="selection.selected.length > 0">
           <mat-select class="table-info" [placeholder]="selection.selected.length +' Users Selected'">
             <mat-option value="activate">Activate</mat-option>
             <mat-option value="deactivate">Deactivate</mat-option>
             <mat-option value="delete">Delete</mat-option>
           </mat-select>
-        </mat-form-field>
+        </mat-form-field> -->
         <!-- <div class="table-info" *ngIf="selection.selected.length > 0">{{ selection.selected.length }} Users Selected
         </div> -->
         <div class="table-info" *ngIf="selection.selected.length == 0">{{ totalUsers }} Total Users</div>
@@ -147,7 +155,7 @@
           <ng-container matColumnDef="action">
             <th mat-header-cell *matHeaderCellDef> </th>
             <td mat-cell *matCellDef="let element">
-              <div class="cloud-only">
+              <div class="cloud-only align-right">
                 <!-- Change element.fullname to element.userID -->
                 <button mat-icon-button matTooltip="Deactivate User" [matTooltipPosition]="'right'"
                   (click)="deactivateUser(element.fullname)">
