@@ -140,7 +140,7 @@ export class UserManageComponent implements OnInit {
           return this.userlistServ.getUserList(
             this.accountID,
             this.paginator.pageSize,
-            0,
+            this.paginator.pageIndex * this.paginator.pageSize,
             {
               sort: this.sort.active,
               sortOrder: this.sort.direction == "desc" ? "desc" : "asc",

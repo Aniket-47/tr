@@ -16,8 +16,9 @@ export class UserListService {
     this.secure_api_routes = secure_api_routes;
   }
 
-  getUserList(accountID: string, limit: number, ofset: number, options?: { sort?: string, sortOrder?: string, filter_roletypeid?: number, filter_status?: number }) {
-    let url = `${this.secure_api_routes.USER_LIST}?limit=${limit}`
+  getUserList(accountID: string, limit: number, offset: number, options?: { sort?: string, sortOrder?: string, filter_roletypeid?: number, filter_status?: number }) {
+    let url = `${this.secure_api_routes.USER_LIST}?limit=${limit}&offset=${offset}`;
+
     if (options?.sort) {
       url = `${url}&orderby=${options.sort}`;
     }
