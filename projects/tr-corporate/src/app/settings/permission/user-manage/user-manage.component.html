@@ -1,14 +1,14 @@
 <mat-drawer-container autosize class="right-drawer">
-  <mat-drawer #drawer [opened]="true" mode="over" class="drawer-container" position="end" [autoFocus]="false">
+  <mat-drawer #drawer mode="over" class="drawer-container" position="end" [autoFocus]="false">
     <button mat-icon-button (click)="drawer.toggle()" class="close-btn">
       <span class="icon-mc mc-x"></span>
     </button>
-    <app-user-detail></app-user-detail>
+    <app-user-detail [edit]="currentUserEdit" [user]="currentUser"></app-user-detail>
   </mat-drawer>
 
   <div class="example-sidenav-content">
     <tr-page-header>
-       <div page-title>
+      <div page-title>
         <h5 class="mobile-only">Permissions</h5>
         <h2>User Management</h2>
       </div>
@@ -28,21 +28,28 @@
     <!-- Desktop view -->
     <div class="user-management">
       <div class="table-header">
-        <div class="table-info" *ngIf="selection.selected.length > 0">{{ selection.selected.length }} Users Selected
-        </div>
+        <mat-form-field appearance="outline" *ngIf="selection.selected.length > 0">
+          <mat-select class="table-info" [placeholder]="selection.selected.length +' Users Selected'">
+            <mat-option value="activate">Activate</mat-option>
+            <mat-option value="deactivate">Deactivate</mat-option>
+            <mat-option value="delete">Delete</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <!-- <div class="table-info" *ngIf="selection.selected.length > 0">{{ selection.selected.length }} Users Selected
+        </div> -->
         <div class="table-info" *ngIf="selection.selected.length == 0">{{ totalUsers }} Total Users</div>
         <div class="table-action cloud-only">
           <mat-form-field appearance="outline">
-            <mat-select [(value)]="selectedStatus">
+            <mat-select [(ngModel)]="selectedStatus" placeholder="Select Status" (ngModelChange)="loadUsers()">
               <mat-option *ngFor="let item of status" [value]="item.value">
                 {{item.viewValue}}
               </mat-option>
             </mat-select>
           </mat-form-field>
           <mat-form-field appearance="outline">
-            <mat-select [(value)]="selectedRole">
-              <mat-option *ngFor="let item of role" [value]="item.value">
-                {{item.viewValue}}
+            <mat-select [(ngModel)]="selectedRole" placeholder="Select Role" (ngModelChange)="loadUsers()">
+              <mat-option *ngFor="let item of role" [value]="item.roletypeid">
+                {{item.name}}
               </mat-option>
             </mat-select>
           </mat-form-field>
@@ -151,10 +158,12 @@
                 </button>
                 <mat-menu #tableMenu="matMenu" backdropClass="profile-dropdown">
                   <div class="user-dropdown-submenu">
-                    <button class="blue" mat-menu-item (click)="drawer.toggle()">
+                    <button class="blue" mat-menu-item
+                      (click)="currentUser = element; currentUserEdit=false;drawer.toggle()">
                       <i class="icon-mc mc-visibility"></i> <span>View details</span>
                     </button>
-                    <button class="green" mat-menu-item>
+                    <button class="green" mat-menu-item
+                      (click)="currentUser = element; currentUserEdit= true;drawer.toggle()">
                       <i class="icon-mc mc-create"></i> <span>Edit user</span>
                     </button>
                     <button class="red" mat-menu-item>

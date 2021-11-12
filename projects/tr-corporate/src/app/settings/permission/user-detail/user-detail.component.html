@@ -74,7 +74,7 @@
             <span class="icon-mc mc-person"></span>
             <div class="d-flex flex-column">
               <mat-label>Name</mat-label>
-              <span class="value">{{ user.firstname+" "+user.middlename+" "+user.lastname }}</span>
+              <span class="value">{{ user?.fullname }}</span>
             </div>
           </div>
 
@@ -82,14 +82,14 @@
             <span class="icon-mc mc-local_post_office"></span>
             <div class="d-flex flex-column">
               <mat-label>Email</mat-label>
-              <span class="value">{{ user.email }}</span>
+              <span class="value">{{ user?.email }}</span>
             </div>
           </div>
           <div class="common-div">
             <span class="icon-mcf mcf-work"></span>
             <div class="d-flex flex-column">
               <mat-label>User Role</mat-label>
-              <span class="value">{{ user.roletypeid }}</span>
+              <span class="value">{{ user?.roletypeid }}</span>
             </div>
           </div>
           <div class="common-div">
@@ -97,35 +97,35 @@
             <mat-icon class="mat-icon">emoji_events</mat-icon>
             <div class="d-flex flex-column">
               <mat-label>Designation</mat-label>
-              <span class="value">{{ user.designation }}</span>
+              <span class="value">{{ user?.designation }}</span>
             </div>
           </div>
           <div class="common-div">
             <span class="icon-mc mc-layers"></span>
             <div class="d-flex flex-column">
               <mat-label>Business Vertical</mat-label>
-              <span class="value">{{ user.businessVertical }}</span>
+              <span class="value">{{ user?.businessVertical }}</span>
             </div>
           </div>
           <div class="common-div">
             <span class="icon-mcf mcf-work"></span>
             <div class="d-flex flex-column">
               <mat-label>Practice</mat-label>
-              <span class="value">{{ user.practice }}</span>
+              <span class="value">{{ user?.practice }}</span>
             </div>
           </div>
           <div class="common-div">
             <span class="icon-mc mc-local_phone"></span>
             <div class="d-flex flex-column">
               <mat-label>Phone</mat-label>
-              <span class="value">{{ user.phone }}</span>
+              <span class="value">{{ user?.phone }}</span>
             </div>
           </div>
           <div class="common-div">
             <span class="icon-mc mc-location_pin"></span>
             <div class="d-flex flex-column">
               <mat-label>Location</mat-label>
-              <span class="value">{{ user.location }}</span>
+              <span class="value">{{ user?.location }}</span>
             </div>
           </div>
         </div>
@@ -220,15 +220,15 @@
 
 
         <mat-form-field appearance="outline">
-          <mat-label>Dummy Business Vertical</mat-label>
-          <input matInput placeholder="Dummy Business Vertical">
+          <mat-label>Business Vertical</mat-label>
+          <input matInput placeholder="Business Vertical">
         </mat-form-field>
 
 
 
         <mat-form-field appearance="outline">
           <mat-label>Practice</mat-label>
-          <input matInput placeholder="Dummy Practice">
+          <input matInput placeholder="Practice">
         </mat-form-field>
 
 
