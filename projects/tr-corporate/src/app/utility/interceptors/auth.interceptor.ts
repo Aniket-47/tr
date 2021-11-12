@@ -11,14 +11,22 @@ import { catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { LstorageService } from '@tr/src/app/utility/services/lstorage.service';
 import { LSkeys } from '../configs/app.constants';
+import { errorCollection } from '../configs/server-error.constant';
+import { SnackBarService } from '../services/snack-bar.service';
+import { ROUTE_CONFIGS } from '../configs/routerConfig';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-  constructor(private router: Router, private lsServ: LstorageService) { }
+  private errorCollection: { [key: string]: string } = errorCollection;
+  private skipError: boolean = false;
+  constructor(private router: Router, private lsServ: LstorageService, private snackBarService: SnackBarService) { }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const accessToken = this.lsServ.getItem(LSkeys.BEARER_TOKEN);
+    if (request.headers.get('skipError') === 'Yes') this.skipError = true;
+    else this.skipError = false;
+
     let authReq
 
     if (accessToken) {
@@ -33,23 +41,27 @@ export class AuthInterceptor implements HttpInterceptor {
     }
 
     // Pass on the cloned request instead of the original request.
-    return next.handle(authReq) //.pipe((source) => this.handleAuthErrors(source));
+    return next.handle(authReq).pipe((source) => this.handleAuthErrors(source));
   }
 
 
 
-  // handleAuthErrors(
-  //   source: Observable<HttpEvent<any>>,
-  // ): Observable<HttpEvent<any>> {
-  //   return source.pipe(
-  //     catchError((error: HttpErrorResponse) => {
-  //       if (error.status === 401) {
-  //         this.router.navigate(['/auth/login']);
-  //         return EMPTY;
-  //       } else {
-  //         return throwError(error);
-  //       }
-  //     }),
-  //   )
-  // }
+  handleAuthErrors(
+    source: Observable<HttpEvent<any>>,
+  ): Observable<HttpEvent<any>> {
+    return source.pipe(
+      catchError((error: HttpErrorResponse) => {
+        if (this.skipError) return throwError(error);
+
+        let message = this.errorCollection[error.status] || 'Server is unable to respond accordingly';
+        this.snackBarService.open(message, 'Ok', 0);
+        if (error.status === 401) {
+          this.router.navigate([ROUTE_CONFIGS.LOGIN]);
+          return EMPTY;
+        } else {
+          return throwError(error);
+        }
+      }),
+    )
+  }
 }
