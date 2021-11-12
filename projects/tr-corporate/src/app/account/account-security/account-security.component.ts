@@ -79,6 +79,7 @@ export class AccountSecurityComponent implements OnInit {
       if (!res.error) {
         const message = "Password changed successfully!";
         this.snackBar.open(message);
+        this.changePasswordForm.reset();
       } else {
         this.errorMessage = res.message; 
         this.password.setErrors({ 'customError': true });
