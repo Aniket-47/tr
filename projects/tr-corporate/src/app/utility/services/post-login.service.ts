@@ -33,7 +33,8 @@ export class PostLoginService {
     const apis = [
       this.http.get(secure_api_routes.ACCOUNT, { headers }),
       this.http.get(secure_api_routes.USER),
-      this.http.get(secure_api_routes.DEFAULT_ROLES)
+      this.http.get(secure_api_routes.DEFAULT_ROLES),
+      this.http.get(secure_api_routes.TRANSLATION, { headers })
     ];
 
     return forkJoin(apis);

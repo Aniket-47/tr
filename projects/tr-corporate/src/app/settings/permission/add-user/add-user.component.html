@@ -99,8 +99,8 @@
             <mat-form-field appearance="outline" class="w-100">
               <mat-label>User Role</mat-label>
               <mat-select formControlName="userRole">
-                <mat-option *ngFor="let option of options; let i=index" [value]="i+1">
-                  {{option.name}}
+                <mat-option *ngFor="let role of roles" [value]="role.roletypeid">
+                  {{role.name}}
                 </mat-option>
               </mat-select>
             </mat-form-field>

@@ -15,6 +15,7 @@ import { LogoutService } from './services/logout.service';
 import { setUserRoles } from '../utility/store/actions/roles.action';
 import { setUserAddress, setUserCity, setUserCountry, setUserFullName, setUserMobile, setUserName, setUserState } from '../utility/store/actions/user.action';
 import { IaccountDetials } from '../utility/store/interfaces/account';
+import { setLanguage } from '../utility/store/actions/language.action';
 
 
 @Component({
@@ -83,6 +84,12 @@ export class DashabordComponent implements OnInit {
       if (!data[2]?.error) {
         const roles = data[2]?.data.map((e: any) => ({ roletypeid: e?.roletypeid, name: e?.name }));
         this.store.dispatch(setUserRoles({ data: roles }));
+      }
+
+      if (!data[3]?.error) {
+        // this.store.dispatch(setLanguage({ data: data[3]?.data }));
+        this.lsServ.remove(LSkeys.LANGUAGE);
+        this.lsServ.store(LSkeys.LANGUAGE, JSON.stringify(data[3]?.data));
       }
     }
   }
