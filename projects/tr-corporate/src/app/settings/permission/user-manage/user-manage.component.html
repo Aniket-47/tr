@@ -174,7 +174,7 @@
               <div class="mobile-only">
                 <button mat-icon-button [matMenuTriggerFor]="menu"><span class="icon-mc mc-more_vert"></span></button>
                 <mat-menu #menu="matMenu">
-                  <button mat-menu-item class="green"><i class="icon-mc mc-create"></i> Edit user</button>
+                  <button mat-menu-item class="green" (click)="currentUser = element; currentUserEdit= true;drawer.toggle()"><i class="icon-mc mc-create"></i> Edit user</button>
                   <button mat-menu-item class="red"><i class="icon-mc mc-delete"></i> Remove user</button>
                 </mat-menu>
               </div>
