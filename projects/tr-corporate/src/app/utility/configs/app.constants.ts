@@ -2,7 +2,8 @@ export const enum LSkeys {
   BEARER_TOKEN = "bearerToken",
   USER_EMAIL = "userEmail",
   USER_NAME = "userName",
-  DEVICE_GUID = "deviceGuid"
+  DEVICE_GUID = "deviceGuid",
+  LANGUAGE = 'language'
 }
 
 export const ValidationConstants = {
@@ -11,7 +12,7 @@ export const ValidationConstants = {
     PASSWORD_MAX_LENGTH: 15,
     PASSWORD_PATTON: ""
   },
-  userAccountStrategy:{
+  userAccountStrategy: {
     NAME_MIN_LENGTH: 3,
     NAME_MAX_LENGTH: 20,
     PHONE_MIN_LENGTH: 8,
