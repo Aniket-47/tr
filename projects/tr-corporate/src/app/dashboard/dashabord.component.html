@@ -2,11 +2,13 @@
   <mat-drawer #drawer mode="over" [autoFocus]="false">
     <tr-m-header (logOutEvent)="logout()">
       <img class="circle" src="assets/img/profile.png" image>
-      <span name></span>
+      <!-- <span class="user-avatar" *ngIf="userName" image>{{userName.split('')[0] }}</span> -->
+      <span name> {{userName }} </span>
       <span email></span>
       <span account-lists>
         <a *ngFor="let account of accountList">
-          <span class="icon-mc mc-folder"></span> <span> {{ account.name }} </span></a>
+          <span class="icon-mc mc-folder"></span> <span> {{ account.name }} </span>
+        </a>
       </span>
     </tr-m-header>
   </mat-drawer>
