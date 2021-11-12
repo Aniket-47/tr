@@ -9,12 +9,16 @@ export class UserRoleService {
     constructor(private http: HttpClient) {
     }
 
-    getUserRoles(accountID: string, sort?: string, pageNo?: number, sortOrder?: string) {
-        return this.http.get<any>(secure_api_routes.USER_ROLES, { headers: { 'accountID': accountID } })
+    getUserRoles(accountID: string, offset: number = 0, limit: number = 10, sort?: string, sortOrder?: string,) {
+        let url = `${secure_api_routes.USER_ROLES}?offset=${offset}&limit=${limit}`;
+        if (sort) url = `${url}&orderby=${sort}`;
+        if (sortOrder) url = `${url}&order=${sortOrder}`;
+
+        return this.http.get<any>(url, { headers: { 'accountID': accountID } })
     }
 
-    getPermissions(accountID: string, roleId: string) {
-        const url = `${secure_api_routes.PERMISSIONS_LIST}?roletypeid=${roleId}`
+    getPermissions(accountID: string, roletypeid: string) {
+        const url = `${secure_api_routes.PERMISSIONS_LIST}?roletypeid=${roletypeid}`
         return this.http.get(url, { headers: { 'accountID': accountID } });
     }
 
