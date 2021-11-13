@@ -15,6 +15,7 @@ import { State } from '../../../utility/store/reducers';
 import { AddRoleComponent } from '../add-role/add-role.component';
 import { UserRoleService } from '../services/user-role.service';
 import { getDefaultAccountId } from '../../../utility/store/selectors/account.selector';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 // table data
 
@@ -40,7 +41,15 @@ export interface Iroll {
 @Component({
   selector: 'app-view-role',
   templateUrl: './view-role.component.html',
-  styleUrls: ['./view-role.component.scss']
+  styleUrls: ['./view-role.component.scss'],
+  animations: [
+    trigger('fadeInOut', [
+      state('void', style({
+        opacity: 0
+      })),
+      transition('void <=> *', animate(1000)),
+    ]),
+  ]
 })
 export class ViewRoleComponent implements AfterViewInit, OnInit {
 

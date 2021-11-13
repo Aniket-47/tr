@@ -20,11 +20,20 @@ import { UserListService } from '../services/user-list.service';
 import { UserService } from '../services/user.service';
 import { MFilterComponent } from '../m-filter/m-filter.component';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-user-manage',
   templateUrl: './user-manage.component.html',
-  styleUrls: ['./user-manage.component.scss']
+  styleUrls: ['./user-manage.component.scss'],
+  animations: [
+    trigger('fadeInOut', [
+      state('void', style({
+        opacity: 0
+      })),
+      transition('void <=> *', animate(1000)),
+    ]),
+  ]
 })
 export class UserManageComponent implements OnInit {
 

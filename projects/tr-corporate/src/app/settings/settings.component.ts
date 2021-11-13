@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { MatDrawer } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
+import { fadeAnimation } from '../animations';
 import { MFilterComponent } from './permission/m-filter/m-filter.component';
 
 @Component({

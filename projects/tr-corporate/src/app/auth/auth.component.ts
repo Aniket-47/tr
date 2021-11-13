@@ -3,6 +3,8 @@ import { Store } from '@ngrx/store';
 import { getActiveStepperIndex, getStepper, isActiveStepper } from './store/selectors/auth.selector';
 import { Iauth } from './store/interface/auth';
 import { Observable } from 'rxjs';
+import { fadeAnimation } from '../animations';
+
 
 @Component({
   selector: 'app-auth',
@@ -30,4 +32,7 @@ export class AuthComponent implements OnInit {
 
     this.store.select(getActiveStepperIndex).subscribe(data => this.activeStepper = data)
   }
+
+
+
 }

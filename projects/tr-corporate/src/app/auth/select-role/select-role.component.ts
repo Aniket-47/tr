@@ -1,3 +1,4 @@
+import { trigger, state, style, transition, animate } from '@angular/animations';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -10,6 +11,14 @@ import { Iauth } from '../store/interface/auth';
   selector: 'app-select-role',
   templateUrl: './select-role.component.html',
   styleUrls: ['./select-role.component.scss'],
+  animations: [
+    trigger('fadeInOut', [
+      state('void', style({
+        opacity: 0
+      })),
+      transition('void <=> *', animate(1000)),
+    ]),
+  ]
 })
 export class SelectRoleComponent implements OnInit, OnDestroy {
   roles: any[] = [];
