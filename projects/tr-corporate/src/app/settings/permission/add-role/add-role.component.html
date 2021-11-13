@@ -31,7 +31,7 @@
     </div>
   </tr-page-header>
 
-  <div class="accordion-container">
+  <div class="accordion-container" [@fadeInOut]>
     <ng-container formArrayName="rights">
       <mat-accordion *ngIf="rightsArray.controls.length">
         <ng-container *ngFor="let eachRight of rightsArray.controls; let i = index" [formGroupName]="i">
@@ -39,28 +39,12 @@
             <mat-expansion-panel-header>
               <mat-panel-title>
 
-<<<<<<< HEAD
-<div class="accordion-container" [formGroup]="rightsForm" [@fadeInOut]>
-  <ng-container formArrayName="rights">
-    <mat-accordion *ngIf="rightsArray.controls.length">
-      <ng-container *ngFor="let eachRight of rightsArray.controls; let i = index" [formGroupName]="i">
-        <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-
-              <div class="accordion-title">
-                <div>{{eachRight.get('name')?.value | titlecase}}</div>
-                <div class="accordion-indicator">
-                  Show all {{eachRight.get('level2')?.value.length}} permissions
-                  <span class="mat-expansion-indicator"></span>
-=======
                 <div class="accordion-title">
                   <div>{{eachRight.get('name')?.value || 'test' | titlecase}}</div>
                   <div class="accordion-indicator">
                     Show all {{eachRight.get('level2')?.value.length}} permissions
                     <span class="mat-expansion-indicator"></span>
                   </div>
->>>>>>> 2d55ee4bfbc986787914e54d93996611547ff279
                 </div>
               </mat-panel-title>
               <mat-panel-description>
