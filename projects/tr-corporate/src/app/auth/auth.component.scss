@@ -56,12 +56,12 @@
 }
 
 .logo {
-  text-align: center;
   padding-top: 2rem;
   svg{
   width: 14rem;
   height: 45px;
     @media (max-width: 767px) {
+      width:  11rem;
       height: 35px;
     }
   }
