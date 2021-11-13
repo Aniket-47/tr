@@ -1,18 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { LstorageService } from '@tr/src/app/utility/services/lstorage.service';
 import { Observable } from 'rxjs';
 import { LSkeys } from '../utility/configs/app.constants';
 import { ROUTE_CONFIGS } from '../utility/configs/routerConfig';
-import { resetAccount, setAccountList } from '../utility/store/actions/account.action';
+import { resetAccount, setAccountDeatils } from '../utility/store/actions/account.action';
 import { resetUser, setUserStatus } from '../utility/store/actions/user.action';
 import { State } from '../utility/store/reducers';
 import { getAccountIds } from '../utility/store/selectors/account.selector';
 import { getIsLoading } from '../utility/store/selectors/app.selector';
-import { getUserFullName } from '../utility/store/selectors/user.selector';
-import { AccountListApiService } from './services/account-list-api.service';
+import { getUserFirstName } from '../utility/store/selectors/user.selector';
 import { LogoutService } from './services/logout.service';
+import { setUserRoles } from '../utility/store/actions/roles.action';
+import { setUserAddress, setUserCity, setUserCountry, setUserFullName, setUserMobile, setUserName, setUserState } from '../utility/store/actions/user.action';
+import { IaccountDetials } from '../utility/store/interfaces/account';
+import { setLanguage } from '../utility/store/actions/language.action';
 
 
 @Component({
@@ -40,25 +43,55 @@ export class DashabordComponent implements OnInit {
   }
 
   constructor(
-    private accountListApiServ: AccountListApiService,
     private logoutServ: LogoutService,
     private lsServ: LstorageService,
     private store: Store<State>,
+    private route: ActivatedRoute,
     private router: Router) {
     this.isLoading$ = this.store.select(getIsLoading);
   }
 
   ngOnInit(): void {
+    const preloadData: any[] = this.route.snapshot.data?.data;
+    this.setDataInStore(preloadData);
+
     this.date = new Date();
     this.store.select(getAccountIds).subscribe(accounts => this.accountList = accounts);
-    this.store.select(getUserFullName).subscribe(name => this.userName = name);
-    // this.accountListApiServ.getAccountList().subscribe(res => {
-    //   if (!res.error) {
-    //     this.accountList = res.data;
-    //     this.store.dispatch(setAccountList({ data: this.accountList }))
-    //   }
-    // });
+    this.store.select(getUserFirstName).subscribe(name => this.userName = name);
+  }
 
+  setDataInStore(data: any[]) {
+    if (data.length) {
+      if (!data[0]?.error) {
+        const account: IaccountDetials = data[0]?.data;
+        this.store.dispatch(setAccountDeatils({ data: account }));
+      }
+
+      if (!data[1]?.error) {
+        const user = data[1].data;
+        this.store.dispatch(setUserFullName({ data: `${user?.firstname} ${user?.lastname}` }));
+        this.store.dispatch(setUserAddress({ data: user?.address }));
+        this.store.dispatch(setUserName({ data: { firstName: user?.firstname, middleName: user?.middleName, lastName: user?.lastname } }));
+        this.store.dispatch(setUserCity({ data: { cityId: user?.cityid, cityName: user?.cityname } }));
+        this.store.dispatch(setUserState({ data: { stateId: user?.stateid, stateName: user?.statename } }));
+        this.store.dispatch(setUserCountry({ data: { countryId: user?.countryid, countryName: user?.countryname } }));
+        this.store.dispatch(setUserMobile({ data: user?.mobilenumber }));
+
+        this.lsServ.store(LSkeys.USER_NAME, `${user?.firstname}`);
+      }
+
+
+      if (!data[2]?.error) {
+        const roles = data[2]?.data.map((e: any) => ({ roletypeid: e?.roletypeid, name: e?.name }));
+        this.store.dispatch(setUserRoles({ data: roles }));
+      }
+
+      if (!data[3]?.error) {
+        // this.store.dispatch(setLanguage({ data: data[3]?.data }));
+        this.lsServ.remove(LSkeys.LANGUAGE);
+        this.lsServ.store(LSkeys.LANGUAGE, JSON.stringify(data[3]?.data));
+      }
+    }
   }
 
   toggleSearch() {

@@ -74,6 +74,7 @@ export class LoginComponent implements OnInit {
         this.lsServ.store(LSkeys.BEARER_TOKEN, res.data.accesstoken.token);
         this.store.dispatch(setUserStatus({ data: true }));
         this.router.navigate([ROUTE_CONFIGS.DASHBOARD]);
+        this.lsServ.store(LSkeys.USER_EMAIL, this.email);
       },
         res_error => {
           // console.log("Error ", res_error)

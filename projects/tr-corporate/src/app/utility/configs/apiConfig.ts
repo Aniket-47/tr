@@ -4,6 +4,7 @@ const basePath = environment.apiDomain + '/api/v1';
 const auth = `${basePath}/auth`;
 const master = `${basePath}/master`;
 const account = `${basePath}/account`;
+const user = `${basePath}/user`;
 
 export const api_routes = {
   // auth module
@@ -35,17 +36,22 @@ export const secure_api_routes = {
   CITY_LIST: `${master}/cities`,
   INDUSTRY_LIST: `${master}/industries`,
   PERMISSIONS_LIST: `${master}/permission`,
+  PERMISSIONS_UPDTAE: `${master}/permission`,
+  TRANSLATION: `${master}/translation`,
 
   // ACCOUNT: `${auth}/account`,
   USER_LIST: `${account}/userslist`,
   USER_ROLES: `${account}/role`,
   SHORT_NAME: `${account}/validateshortname`,
+  ADD_ROLE: `${account}/role`,
 
   // User Management
-  // set these according to API
-  GET_USER: `${account}/getuser`,
-  ADD_USER: `${account}/adduser`,
-  UPDATE_USER: `${account}/updateuser`,
-  DEACTIVATE_USER: `${account}/deactivateuser`,
-  DELETE_USER: `${account}/deleteuser`,
+  GET_USER: `${user}/getuser`,
+  ADD_USER: `${user}/adduser`,
+  UPDATE_USER: `${user}/updateuser`,
+  DEACTIVATE_USER: `${user}/deactivateuser`,
+  DELETE_USER: `${user}/deleteuser`,
+
+  /// User
+  DEFAULT_ROLES: `${user}/roletypes`
 };

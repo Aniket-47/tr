@@ -16,8 +16,25 @@ export class UserListService {
     this.secure_api_routes = secure_api_routes;
   }
 
-  getUserList(accountID: string) {
-    return this.http.get<UserList_response>(this.secure_api_routes.USER_LIST, { headers: { 'accountID': accountID } })
+  getUserList(accountID: string, limit: number, offset: number, options?: { sort?: string, sortOrder?: string, filter_roletypeid?: number, filter_status?: number }) {
+    let url = `${this.secure_api_routes.USER_LIST}?limit=${limit}&offset=${offset}`;
+
+    if (options?.sort) {
+      url = `${url}&orderby=${options.sort}`;
+    }
+    if (options?.sortOrder) {
+      url = `${url}&order=${options.sortOrder}`;
+    }
+
+    if (options?.filter_roletypeid) {
+      url = `${url}&filter_roletypeid=${options.filter_roletypeid}`;
+    }
+    if (options?.filter_status) {
+      url = `${url}&filter_status=${options.filter_status}`;
+    }
+
+
+    return this.http.get<UserList_response>(url, { headers: { 'accountID': accountID } })
   }
 
 }

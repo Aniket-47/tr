@@ -16,6 +16,7 @@ import { AddRoleComponent } from '../add-role/add-role.component';
 import { UserRoleService } from '../services/user-role.service';
 import { getDefaultAccountId } from '../../../utility/store/selectors/account.selector';
 import { fadeAnimation } from '../../../animations';
+import { MatDrawer } from '@angular/material/sidenav';
 
 // table data
 
@@ -32,8 +33,11 @@ const ELEMENT_DATA = [
   { role: 'HR Manager', users: 5, lastupdated: '17 Apr 2021' },
 ];
 
-export interface Iroll {
-  role: string;
+export interface Irole {
+  accountroleid: string;
+  isdefaultrole: number; // 1 -dafault, 0 - custom
+  roletypeid: number;
+  rolename: string;
   users: number;
   lastupdated: Date | string;
 }
@@ -64,15 +68,23 @@ export class ViewRoleComponent implements AfterViewInit, OnInit {
   selectedStatus = this.status[0].value;
   selectedRole = this.role[0].value;
   selectedSort = this.sortby[0].value;
-  displayedColumns: string[] = ['role', 'users', 'lastupdated', 'action'];
+  displayedColumns: string[] = ['rolename', 'users', 'lastupdated', 'action'];
   // dataSource = new MatTableDataSource<any>(ELEMENT_DATA);
-  dataSource = new Observable<Iroll[]>();
+  dataSource = new Observable<Irole[]>();
   isRateLimitReached: boolean = false;
+  accountid!: string;
+
+  selectedRoleInfo!: { roletypeid: number, rolename: string } | null;
+
+  // pagination
+  offset: number = 0;
   resultsLength: number = 0;
-  pageSize = 10;
+  pageSize = 10; // limit
 
   @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort!: MatSort;
+  @ViewChild(MatDrawer, { static: false }) drawer!: MatDrawer;
+
 
   constructor(
     private dialog: MatDialog,
@@ -81,45 +93,69 @@ export class ViewRoleComponent implements AfterViewInit, OnInit {
     private store: Store<State>) { }
 
   ngOnInit() {
-    this.store.select(getDefaultAccountId).subscribe(accountid => {
-      if (accountid) this.loadUserRoles(accountid);
-    });
   }
 
   ngAfterViewInit(): void {
-    // this.dataSource.paginator = this.paginator;
-    // this.dataSource.sort = this.sort;
+    this.store.select(getDefaultAccountId).subscribe(accountid => {
+      if (accountid) {
+        this.accountid = accountid;
+        this.loadUserRoles(accountid);
+      }
+    });
   }
 
   resetPaging(): void {
     this.paginator.pageIndex = 1;
   }
 
+  roleSubmitHandler() {
+    this.resetPaging();
+    this.drawer.close();
+    this.loadUserRoles(this.accountid);
+  }
+
+  createNewRole() {
+    this.selectedRoleInfo = null;
+    this.drawer.open();
+  }
+
+  viewRoleDeatils(role: Irole) {
+    this.selectedRoleInfo = { roletypeid: role.roletypeid, rolename: role.rolename };
+    this.drawer.open();
+  }
+
   loadUserRoles(accountid: string) {
     // If the user changes the sort order, reset back to the first page.
-    this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
+    this.sort.sortChange.subscribe(() => {
+      this.paginator.pageIndex = 0;
+      this.offset = 0;
+    });
+
 
     merge(this.sort.sortChange, this.paginator.page)
       .pipe(
         startWith({}),
         switchMap(() => {
+          if (this.paginator.pageIndex > 0) this.offset = this.pageSize * this.paginator.pageIndex + 1;
+
           return this.userRoleService.getUserRoles(
             accountid,
+            this.offset,
+            this.pageSize,
             this.sort.active,
-            this.paginator.pageIndex + 1,
             this.sort.direction == "desc" ? "DESC" : "ASC");
         }),
-        map(data => {
+        map((res: any) => {
           // Flip flag to show that loading has finished.
           this.isRateLimitReached = false;
-          this.resultsLength = data?.total_count;
-          return data?.data;
+          this.resultsLength = res?.data?.totalcount;
+          return res?.data?.roles;
         }),
         catchError(() => {
           this.isRateLimitReached = true;
           return observableOf([]);
         })
-      ).subscribe(data => this.dataSource = observableOf(ELEMENT_DATA));
+      ).subscribe(data => this.dataSource = data);
   }
 
   toggleFab() {
@@ -133,6 +169,10 @@ export class ViewRoleComponent implements AfterViewInit, OnInit {
     } else {
       const dialogRef = this.dialog.open(AddRoleComponent);
     }
+  }
+
+  deleteRole(role: Irole) {
+    console.log(role)
   }
 
 }

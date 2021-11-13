@@ -1,25 +1,45 @@
-<tr-page-header  [@fadeInOut]>
-  <div page-title>
-   <h5 class="mobile-only">Permissions</h5>
-   <h2>Create New Role</h2>
- </div>
- <div page-action class="page-action cloud-only">
-  <mat-form-field appearance="outline">
-    <mat-select [(value)]="selectedStatus">
-      <mat-option *ngFor="let item of status" [value]="item.value">
-        {{item.viewValue}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label>New Role Name</mat-label>
-    <input matInput placeholder="Placeholder" value="">
-  </mat-form-field>
-  <button mat-flat-button color="primary" (click)="submitHandler()">Submit </button>
+<ng-container [formGroup]="roleForm" [@fadeInOut]>
+  <tr-page-header>
+    <div page-title>
+      <h5 class="mobile-only">Permissions</h5>
+      <h2 *ngIf="!isRoleView">Create New Role</h2>
+      <h2 *ngIf="isRoleView">{{selectedRoleInfo?.rolename | titlecase}}</h2>
+    </div>
+    <div page-action class="page-action cloud-only" *ngIf="!isRoleView">
+      <mat-form-field appearance="outline">
+        <mat-label>Role Type</mat-label>
+        <mat-select placeholder="Select any default role" formControlName="roleType">
+          <mat-option *ngFor="let role of defaultRoles" [value]="role?.roletypeid">
+            {{role?.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="roleType.invalid && roleType?.errors">
+          <span *ngIf="roleType?.errors?.required">This field is required.</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>New Role Name</mat-label>
+        <input matInput placeholder="Placeholder" formControlName="roleName">
+        <mat-error *ngIf="roleName.invalid && roleName?.errors">
+          <span *ngIf="roleName?.errors?.required">This field is required.</span>
+        </mat-error>
+      </mat-form-field>
+      <button mat-flat-button color="primary" (click)="submitHandler()" [disabled]="isLoading">
+        <span>Submit</span>
+        <mat-spinner *ngIf="isLoading" diameter="20" class="btn-loader"></mat-spinner>
+      </button>
+    </div>
+  </tr-page-header>
 
- </div>
-</tr-page-header>
+  <div class="accordion-container">
+    <ng-container formArrayName="rights">
+      <mat-accordion *ngIf="rightsArray.controls.length">
+        <ng-container *ngFor="let eachRight of rightsArray.controls; let i = index" [formGroupName]="i">
+          <mat-expansion-panel [expanded]="true" hideToggle>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
 
+<<<<<<< HEAD
 <div class="accordion-container" [formGroup]="rightsForm" [@fadeInOut]>
   <ng-container formArrayName="rights">
     <mat-accordion *ngIf="rightsArray.controls.length">
@@ -33,46 +53,55 @@
                 <div class="accordion-indicator">
                   Show all {{eachRight.get('level2')?.value.length}} permissions
                   <span class="mat-expansion-indicator"></span>
+=======
+                <div class="accordion-title">
+                  <div>{{eachRight.get('name')?.value || 'test' | titlecase}}</div>
+                  <div class="accordion-indicator">
+                    Show all {{eachRight.get('level2')?.value.length}} permissions
+                    <span class="mat-expansion-indicator"></span>
+                  </div>
+>>>>>>> 2d55ee4bfbc986787914e54d93996611547ff279
                 </div>
-              </div>
-            </mat-panel-title>
-            <mat-panel-description>
+              </mat-panel-title>
+              <mat-panel-description>
 
-              <mat-slide-toggle color="green" formControlName="isOn"></mat-slide-toggle>
-            </mat-panel-description>
-          </mat-expansion-panel-header>
+                <mat-slide-toggle color="green" formControlName="isOn" (click)="toggleAllLvl(i)"></mat-slide-toggle>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
 
-          <div class="inner-content" *ngIf="eachRight.get('level2')">
-            <ng-container formArrayName="level2">
-              <ng-container *ngFor="let eachLvl2 of getLvl2Array(i)?.controls; let l2 = index" [formGroupName]="l2">
-                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                  <mat-expansion-panel-header>
-                    <mat-panel-title>
-                      {{eachLvl2.get('name')?.value}}
-                    </mat-panel-title>
-                    <mat-panel-description>
-                      <mat-slide-toggle color="green" formControlName="isOn">
-                      </mat-slide-toggle>
-                    </mat-panel-description>
-                  </mat-expansion-panel-header>
-                  <ng-container *ngIf="eachLvl2.get('level3')">
-                    <ng-container formArrayName="level3">
-                      <div class="role-list bg-light"
-                        *ngFor="let eachLvl3 of getLvl3Array(i, l2)?.controls; let l3 = index" [formGroupName]="l3">
-                        <div class="role-title">{{eachLvl3.get('name')?.value}}</div>
-                        <div class="header-action">
-                          <mat-slide-toggle color="green" formControlName="isOn"></mat-slide-toggle>
+            <div class="inner-content" *ngIf="eachRight.get('level2')">
+              <ng-container formArrayName="level2">
+                <ng-container *ngFor="let eachLvl2 of getLvl2Array(i)?.controls; let l2 = index" [formGroupName]="l2">
+                  <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        {{eachLvl2.get('name')?.value || 'test' | titlecase}}
+                      </mat-panel-title>
+                      <mat-panel-description>
+                        <mat-slide-toggle color="green" formControlName="isOn"
+                          (click)="toggleLvl3(i, l2, eachLvl2.get('isOn')?.value)">
+                        </mat-slide-toggle>
+                      </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <ng-container *ngIf="eachLvl2.get('level3')">
+                      <ng-container formArrayName="level3">
+                        <div class="role-list bg-light"
+                          *ngFor="let eachLvl3 of getLvl3Array(i, l2)?.controls; let l3 = index" [formGroupName]="l3">
+                          <div class="role-title">{{eachLvl3.get('name')?.value || 'test' | titlecase}}</div>
+                          <div class="header-action">
+                            <mat-slide-toggle color="green" formControlName="isOn"></mat-slide-toggle>
+                          </div>
                         </div>
-                      </div>
+                      </ng-container>
                     </ng-container>
-                  </ng-container>
-                </mat-expansion-panel>
+                  </mat-expansion-panel>
+                </ng-container>
               </ng-container>
-            </ng-container>
-          </div>
+            </div>
 
-        </mat-expansion-panel>
-      </ng-container>
-    </mat-accordion>
-  </ng-container>
-</div>
+          </mat-expansion-panel>
+        </ng-container>
+      </mat-accordion>
+    </ng-container>
+  </div>
+</ng-container>

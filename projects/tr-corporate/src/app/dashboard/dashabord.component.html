@@ -2,11 +2,13 @@
   <mat-drawer #drawer mode="over" [autoFocus]="false">
     <tr-m-header (logOutEvent)="logout()">
       <img class="circle" src="assets/img/profile.png" image>
-      <span name></span>
+      <!-- <span class="user-avatar" *ngIf="userName" image>{{userName.split('')[0] }}</span> -->
+      <span name> {{userName }} </span>
       <span email></span>
       <span account-lists>
         <a *ngFor="let account of accountList">
-          <span class="icon-mc mc-folder"></span> <span> {{ account.name }} </span></a>
+          <span class="icon-mc mc-folder"></span> <span> {{ account.name }} </span>
+        </a>
       </span>
     </tr-m-header>
   </mat-drawer>
@@ -40,7 +42,7 @@
             <mat-expansion-panel-header>
               <mat-panel-title>
                 <span class="icon-mc mc-layers"></span>
-                <span> Accounts</span>
+                <span> Accounts </span>
               </mat-panel-title>
             </mat-expansion-panel-header>
             <div class="user-dropdown-submenu-item" *ngFor="let account of accountList">
@@ -54,8 +56,10 @@
       <button mat-menu-item [routerLink]="MANAGE_PROFILE_ROUTE"><i class="icon-mc mc-person"></i> <span>Manage
           Profile</span></button>
       <!-- <button mat-menu-item><i class="icon-mc mc-switch_account"></i> <span>Accounts</span></button> -->
-      <button mat-menu-item (click)="logout()"><i class="icon-mc mc-power_settings_new"></i> <span>Sign
-          Out</span></button>
+      <button mat-menu-item (click)="logout()">
+        <i class="icon-mc mc-power_settings_new"></i> 
+        <span>Sign Out</span>
+      </button>
     </mat-menu>
     <mat-menu #notify="matMenu" backdropClass="profile-dropdown" class="notificationCard">
       <tr-notification></tr-notification>
