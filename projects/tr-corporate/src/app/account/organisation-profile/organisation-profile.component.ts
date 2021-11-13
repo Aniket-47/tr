@@ -3,6 +3,7 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from
 import { Store } from '@ngrx/store';
 import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { fadeAnimation } from '../../animations';
 import { SnackBarService } from '../../utility/services/snack-bar.service';
 import { State } from '../../utility/store/reducers';
 import { getAccountDeatils, getDefaultAccountId } from '../../utility/store/selectors/account.selector';
@@ -11,7 +12,8 @@ import { AccountService } from '../shared/account.service';
 @Component({
   selector: 'tr-organisation-profile',
   templateUrl: './organisation-profile.component.html',
-  styleUrls: ['./organisation-profile.component.scss']
+  styleUrls: ['./organisation-profile.component.scss'],
+  animations: [fadeAnimation]
 })
 export class OrganisationProfileComponent implements OnInit, OnChanges {
 

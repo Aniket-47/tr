@@ -7,6 +7,7 @@ import { ValidationConstants } from '../../../utility/configs/app.constants';
 import { UserService } from '../services/user.service';
 import { SnackBarService } from '../../../utility/services/snack-bar.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { fadeAnimation } from '../../../animations';
 
 
 export interface User {
@@ -21,7 +22,8 @@ interface Food {
 @Component({
   selector: 'app-add-user',
   templateUrl: './add-user.component.html',
-  styleUrls: ['./add-user.component.scss']
+  styleUrls: ['./add-user.component.scss'],
+  animations: [fadeAnimation]
 })
 export class AddUserComponent implements OnInit {
 

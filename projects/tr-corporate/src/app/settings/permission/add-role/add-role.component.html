@@ -1,4 +1,4 @@
-<tr-page-header>
+<tr-page-header  [@fadeInOut]>
   <div page-title>
    <h5 class="mobile-only">Permissions</h5>
    <h2>Create New Role</h2>
@@ -20,7 +20,7 @@
  </div>
 </tr-page-header>
 
-<div class="accordion-container" [formGroup]="rightsForm">
+<div class="accordion-container" [formGroup]="rightsForm" [@fadeInOut]>
   <ng-container formArrayName="rights">
     <mat-accordion *ngIf="rightsArray.controls.length">
       <ng-container *ngFor="let eachRight of rightsArray.controls; let i = index" [formGroupName]="i">

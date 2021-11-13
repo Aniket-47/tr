@@ -7,14 +7,7 @@ import { ROUTE_CONFIGS } from '../../utility/configs/routerConfig';
 import { setUserStatus } from '../../utility/store/actions/user.action';
 import { State } from '../../utility/store/reducers';
 import { AuthService } from '../services/auth.service';
-import {
-  trigger,
-  state,
-  style,
-  animate,
-  transition,
-  // ...
-} from '@angular/animations';
+import { fadeAnimation } from '../../animations';
 
 // Interfaces
 
@@ -22,14 +15,7 @@ import {
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  animations: [
-    trigger('fadeInOut', [
-      state('void', style({
-        opacity: 0
-      })),
-      transition('void <=> *', animate(1000)),
-    ]),
-  ]
+  animations: [fadeAnimation]
 })
 export class LoginComponent implements OnInit {
   isFirstStep: boolean = true;

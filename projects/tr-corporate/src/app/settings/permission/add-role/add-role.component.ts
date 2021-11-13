@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Form, FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import { fadeAnimation } from '../../../animations';
 import { State } from '../../../utility/store/reducers';
 import { getDefaultAccountId } from '../../../utility/store/selectors/account.selector';
 import { UserRoleService } from '../services/user-role.service';
@@ -8,7 +9,8 @@ import { UserRoleService } from '../services/user-role.service';
 @Component({
   selector: 'app-add-role',
   templateUrl: './add-role.component.html',
-  styleUrls: ['./add-role.component.scss']
+  styleUrls: ['./add-role.component.scss'],
+  animations: [fadeAnimation]
 })
 export class AddRoleComponent implements OnInit {
 

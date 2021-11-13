@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { fadeAnimation } from '../../animations';
 import { ValidationConstants } from '../../utility/configs/app.constants';
 import { SnackBarService } from '../../utility/services/snack-bar.service';
 import { AuthService } from '../services/auth.service';
@@ -18,7 +19,8 @@ function passwordMatcher(c: AbstractControl): { [key: string]: boolean } | null 
 @Component({
   selector: 'app-reset-password',
   templateUrl: './reset-password.component.html',
-  styleUrls: ['./reset-password.component.scss']
+  styleUrls: ['./reset-password.component.scss'],
+  animations: [fadeAnimation]
 })
 export class ResetPasswordComponent implements OnInit {
   hide = true;

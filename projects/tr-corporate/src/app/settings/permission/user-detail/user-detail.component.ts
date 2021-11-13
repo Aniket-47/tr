@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { fadeAnimation } from '../../../animations';
 import { ValidationConstants } from '../../../utility/configs/app.constants';
 import { SnackBarService } from '../../../utility/services/snack-bar.service';
 import { UpdateUser_request } from '../interfaces/update-user';
@@ -9,7 +10,8 @@ import { UserService } from '../services/user.service';
 @Component({
   selector: 'app-user-detail',
   templateUrl: './user-detail.component.html',
-  styleUrls: ['./user-detail.component.scss']
+  styleUrls: ['./user-detail.component.scss'],
+  animations: [fadeAnimation]
 })
 export class UserDetailComponent implements OnInit {
 
