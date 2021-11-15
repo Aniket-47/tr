@@ -89,7 +89,11 @@ export class UserManageComponent implements OnInit {
   }
 
   openBottomSheet(): void {
-    this._bottomSheet.open(MFilterComponent);
+    this._bottomSheet.open(MFilterComponent).afterDismissed()
+      .subscribe(result => {
+        console.log(result);
+
+      })
   }
   ngAfterViewInit(): void {
     this.store.select(getDefaultAccountId).subscribe((accountid: any) => {
