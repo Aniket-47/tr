@@ -9,15 +9,15 @@
     <div>
       <h6>Sort By</h6>
       <mat-selection-list #shoes [multiple]="false" class="lists mt-2" [(ngModel)]="selectedSort">
-        <mat-list-option *ngFor="let element of sortTypes" [value]="element" class="brd">
-          {{element}}
+        <mat-list-option *ngFor="let element of sortTypes" [value]="element.value" class="brd">
+          {{element.viewValue}}
         </mat-list-option>
       </mat-selection-list>
     </div>
 
     <div class="mt-3">
       <h6>By Status</h6>
-      <mat-selection-list #shoes [multiple]="false" class="lists mt-2" [(ngModel)]="selectedRole">
+      <mat-selection-list #shoes [multiple]="false" class="lists mt-2" [(ngModel)]="selectedStatus">
         <mat-list-option *ngFor="let element of status" [value]="element.value" class="brd">
           {{element.viewValue}}
         </mat-list-option>
@@ -26,7 +26,7 @@
 
     <div class="mt-3">
       <h6>By Role</h6>
-      <mat-selection-list #shoes [multiple]="false" class="lists mt-2" [(ngModel)]="selectedStatus">
+      <mat-selection-list #shoes [multiple]="false" class="lists mt-2" [(ngModel)]="selectedRole">
         <mat-list-option *ngFor="let element of role" [value]="element.roletypeid" class="brd">
           {{element.name}}
         </mat-list-option>
