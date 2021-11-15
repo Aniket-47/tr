@@ -17,7 +17,8 @@ import { UserRoleService } from '../services/user-role.service';
 import { getDefaultAccountId } from '../../../utility/store/selectors/account.selector';
 import { fadeAnimation } from '../../../animations';
 import { MatDrawer } from '@angular/material/sidenav';
-import { RouterConfigService } from '@tr/src/app/utility/services/routeGuards/router-config.service';
+import { SnackBarService } from '../../../utility/services/snack-bar.service';
+import { RouterConfigService } from '../../../utility/services/router-config.service';
 
 // table data
 
@@ -52,7 +53,7 @@ export interface Irole {
 export class ViewRoleComponent implements AfterViewInit, OnInit {
 
   toggle = false;
-  config:any;
+  config: any;
 
   status = [
     { value: '0', viewValue: 'Active' },
@@ -92,11 +93,12 @@ export class ViewRoleComponent implements AfterViewInit, OnInit {
   constructor(
     private dialog: MatDialog,
     private userRoleService: UserRoleService,
+    private snackbarServ: SnackBarService,
     private router: Router,
     private configServ: RouterConfigService,
     private store: Store<State>) {
-      this.config = configServ.routerconfig;
-    }
+    this.config = configServ.routerconfig;
+  }
 
   ngOnInit() {
   }
@@ -178,6 +180,17 @@ export class ViewRoleComponent implements AfterViewInit, OnInit {
   }
 
   deleteRole(role: Irole) {
-    console.log(role)
+    if (role.isdefaultrole) {
+      this.snackbarServ.open("Default role can't be deleted.", "Ok");
+      return;
+    }
+
+    if (!role.isdefaultrole && role)
+      this.userRoleService.deleteRole(+role.accountroleid).subscribe((res: any) => {
+        if (!res.error) {
+          this.snackbarServ.open('Successfully deleted', "Ok");
+          this.loadUserRoles(this.accountid);
+        } else this.snackbarServ.open(res?.message);
+      });
   }
 }
