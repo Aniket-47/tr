@@ -33,7 +33,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MaterialModule,
     LayoutModule,
     PermissionRoutingModule,
-
+  ],
+  entryComponents: [
+    MFilterComponent
   ]
 })
 export class PermissionModule { }

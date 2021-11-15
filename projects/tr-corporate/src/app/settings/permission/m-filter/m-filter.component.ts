@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { fadeAnimation } from '../../../animations';
 import { State } from '../../../utility/store/reducers';
+import { MatDialogRef } from '@angular/material/dialog';
+import { MatBottomSheetRef } from '@angular/material/bottom-sheet';
 
 @Component({
   selector: 'app-m-filter',
@@ -20,12 +22,31 @@ export class MFilterComponent implements OnInit {
   ];
   role!: any[];
 
-  constructor(private store: Store<State>) { }
+  selectedData!: {
+    sort: string,
+    sortOrder: string,
+    filter_roletypeid: number,
+    filter_status: number
+  };
+
+  selectedSort!: string;
+  selectedStatus!: number;
+  selectedRole!: number;
+
+  constructor(private store: Store<State>, public dialogRef: MatBottomSheetRef<MFilterComponent>) {
+
+  }
 
   ngOnInit(): void {
     this.store.select(getRoles).subscribe(roles => {
       this.role = roles;
     });
+  }
+
+
+  onfilter() {
+    // this.dialogRef.afterDismissed({ 'sort': this.selectedSort, 'filter_roletypeid': this.selectedRole, 'filter_status': this.selectedStatus })
+    this.dialogRef.dismiss()
   }
 
 }
