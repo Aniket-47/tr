@@ -44,7 +44,7 @@ export class UserManageComponent implements OnInit {
 
   selectedStatus!: number;
   selectedRole!: number;
-  displayedColumns: string[] = ['check', 'name', 'email', 'role', 'status', 'lastupdated', 'action'];
+  displayedColumns: string[] = ['check', 'name', 'email', 'roletypeid', 'status', 'lastupdated', 'action'];
   dataSource!: MatTableDataSource<any>;
   selection = new SelectionModel<any>(true, []);
   addUserModalRef!: MatDialogRef<AddUserComponent>;
