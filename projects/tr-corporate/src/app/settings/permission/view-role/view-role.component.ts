@@ -18,6 +18,7 @@ import { getDefaultAccountId } from '../../../utility/store/selectors/account.se
 import { fadeAnimation } from '../../../animations';
 import { MatDrawer } from '@angular/material/sidenav';
 import { SnackBarService } from '../../../utility/services/snack-bar.service';
+import { RouterConfigService } from '../../../utility/services/router-config.service';
 
 // table data
 
@@ -52,6 +53,8 @@ export interface Irole {
 export class ViewRoleComponent implements AfterViewInit, OnInit {
 
   toggle = false;
+  config: any;
+
   status = [
     { value: '0', viewValue: 'Active' },
     { value: '1', viewValue: 'Inactive' },
@@ -92,7 +95,10 @@ export class ViewRoleComponent implements AfterViewInit, OnInit {
     private userRoleService: UserRoleService,
     private snackbarServ: SnackBarService,
     private router: Router,
-    private store: Store<State>) { }
+    private configServ: RouterConfigService,
+    private store: Store<State>) {
+    this.config = configServ.routerconfig;
+  }
 
   ngOnInit() {
   }
@@ -167,7 +173,7 @@ export class ViewRoleComponent implements AfterViewInit, OnInit {
   addUserRole() {
     const isMobile = false;
     if (!isMobile) {
-      this.router.navigateByUrl('dashboard/settings/permission/role');
+      this.router.navigateByUrl(this.config.VIEW_ROLE);
     } else {
       const dialogRef = this.dialog.open(AddRoleComponent);
     }
@@ -187,5 +193,4 @@ export class ViewRoleComponent implements AfterViewInit, OnInit {
         } else this.snackbarServ.open(res?.message);
       });
   }
-
 }
