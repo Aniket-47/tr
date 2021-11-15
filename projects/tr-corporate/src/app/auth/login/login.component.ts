@@ -7,13 +7,15 @@ import { ROUTE_CONFIGS } from '../../utility/configs/routerConfig';
 import { setUserStatus } from '../../utility/store/actions/user.action';
 import { State } from '../../utility/store/reducers';
 import { AuthService } from '../services/auth.service';
+import { fadeAnimation } from '../../animations';
 
 // Interfaces
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  animations: [fadeAnimation]
 })
 export class LoginComponent implements OnInit {
   isFirstStep: boolean = true;

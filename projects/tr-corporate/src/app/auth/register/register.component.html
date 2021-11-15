@@ -1,4 +1,4 @@
-<div class="register mt-5">
+<div class="register mt-5" [@fadeInOut]>
   <!-- <mc-stepper [stepNames]="stepperPages" [currentStep]="currentStep" class="mx-auto"></mc-stepper> -->
     <div>
       <h2 class="text-dark">Your Personal Details</h2>
@@ -153,7 +153,7 @@
         </div>
       </div>
       <div class="d-flex justify-content-between register-action">
-        <span class="align-self-center mb-3">Already have an account ? <a href="#"> Sign In</a></span>
+        <span class="align-self-center mb-3">Already have an account ? <a routerLink="./auth/login"> Sign In</a></span>
        <div class="d-flex justify-content-between">
           <button mat-stroked-button class="m-20" (click)="goToPrev()">Previous</button>
           <button mat-flat-button color="primary" (click)="registerHandler()" [disabled]="isLoading" class="secondary-bg">

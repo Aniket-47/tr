@@ -1,6 +1,7 @@
 import { Store } from '@ngrx/store';
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { fadeAnimation } from '../../../animations';
 import { ValidationConstants } from '../../../utility/configs/app.constants';
 import { SnackBarService } from '../../../utility/services/snack-bar.service';
 import { UpdateUser_request } from '../interfaces/update-user';
@@ -12,7 +13,8 @@ import { getDefaultAccountId } from '../../../utility/store/selectors/account.se
 @Component({
   selector: 'app-user-detail',
   templateUrl: './user-detail.component.html',
-  styleUrls: ['./user-detail.component.scss']
+  styleUrls: ['./user-detail.component.scss'],
+  animations: [fadeAnimation]
 })
 export class UserDetailComponent implements OnInit, OnChanges {
 

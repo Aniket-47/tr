@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { AbstractControl, Form, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import { fadeAnimation } from '../../../animations';
 import { Observable } from 'rxjs';
 import { SnackBarService } from '../../../utility/services/snack-bar.service';
 import { Irole } from '../../../utility/store/interfaces/role';
@@ -12,7 +13,8 @@ import { UserRoleService } from '../services/user-role.service';
 @Component({
   selector: 'app-add-role',
   templateUrl: './add-role.component.html',
-  styleUrls: ['./add-role.component.scss']
+  styleUrls: ['./add-role.component.scss'],
+  animations: [fadeAnimation]
 })
 export class AddRoleComponent implements OnInit, OnChanges {
 

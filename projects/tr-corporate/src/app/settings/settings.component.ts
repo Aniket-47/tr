@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { MatDrawer } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
+import { fadeAnimation } from '../animations';
 import { MFilterComponent } from './permission/m-filter/m-filter.component';
+import {ROUTE_CONFIGS} from '../utility/configs/routerConfig';
 
 @Component({
   selector: 'app-settings',
@@ -15,11 +17,16 @@ export class SettingsComponent implements OnInit {
   innerWidth: any;
 
   currentUrlPath: string;
+  ROUTE_CONFIGS=ROUTE_CONFIGS;
+  @ViewChild('drawer',{static: true}) drawer!: MatDrawer;
 
   constructor(private router: Router, private _bottomSheet: MatBottomSheet) {
     this.currentUrlPath = router.url;
     router.events.subscribe(res => {
       this.currentUrlPath = router.url;
+      if(this.currentUrlPath === ROUTE_CONFIGS.SETTINGS_DASHBOARD){
+        this.drawer.close()
+      }
     })
   }
 

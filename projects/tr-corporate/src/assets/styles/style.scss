@@ -7,12 +7,17 @@ header {
     z-index:2;
 }
 .page-header {
+  position: sticky;
+  top: 0;
+  z-index:2;
+  background-color: $white;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
   @include padding(1rem 0 1.8rem);
   @include media-breakpoint-down(md) {
-    @include padding(1rem 0 1.3rem);
+    @include padding(1rem 0 1.3rem 1rem);
   }
   .page-title {
     display: flex;
@@ -191,6 +196,7 @@ header {
     }
     &:last-child {
         width: 210px;
+        margin-right: 0;
       }
     }
   }
