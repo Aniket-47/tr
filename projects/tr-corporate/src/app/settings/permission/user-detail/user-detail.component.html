@@ -200,10 +200,10 @@
 
 
         <mat-form-field appearance="outline">
-          <mat-label>Super Admin</mat-label>
+          <mat-label>Role</mat-label>
           <mat-select formControlName="userRole">
-            <mat-option *ngFor="let option of options; let i=index" [value]="i+1">
-              {{option.name}}
+            <mat-option *ngFor="let role of roles;">
+              {{role.name}}
             </mat-option>
           </mat-select>
         </mat-form-field>

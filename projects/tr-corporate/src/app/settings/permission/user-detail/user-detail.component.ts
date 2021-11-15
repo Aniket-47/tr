@@ -7,6 +7,8 @@ import { UpdateUser_request } from '../interfaces/update-user';
 import { UserService } from '../services/user.service';
 import { State } from '../../../utility/store/reducers';
 import { getDefaultAccountId } from '../../../utility/store/selectors/account.selector';
+import { Irole } from '../../../utility/store/interfaces/role';
+import { getRoles } from '../../../utility/store/selectors/roles.selector';
 
 
 @Component({
@@ -19,11 +21,7 @@ export class UserDetailComponent implements OnInit, OnChanges {
   editUserForm!: FormGroup;
   isLoading = false;
 
-  options = [
-    { name: '' },
-    { name: '' },
-    { name: '' }
-  ];
+  roles: Irole[] = [];
 
   @Input() edit: boolean = false;
   @Input() user = {
@@ -98,7 +96,13 @@ export class UserDetailComponent implements OnInit, OnChanges {
     this.store.select(getDefaultAccountId)
       .subscribe(accountid => {
         this.accountID = accountid;
-      })
+      });
+      
+      
+    this.store.select(getRoles).subscribe(roles => {
+      // remove owner, because for one account there is only one owner.
+      if (roles && roles.length) this.roles = roles.slice(1, roles.length);
+    })
   }
 
   ngOnChanges() {
