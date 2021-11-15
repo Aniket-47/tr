@@ -35,7 +35,7 @@ export class UserRoleService {
     }
 
     deleteRole(roletypeid: number) {
-        const url = `${secure_api_routes.DELETE_ROLE}?roletypeid=${roletypeid}`;
+        const url = `${secure_api_routes.DELETE_ROLE}?accountroleid=${roletypeid}`;
         return this.http.patch(url, {});
     }
 
