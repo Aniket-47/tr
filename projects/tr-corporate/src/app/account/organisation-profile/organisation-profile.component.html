@@ -14,8 +14,7 @@
         <mat-label>Short Name</mat-label>
         <input matInput formControlName="shortname" (keyup)='checkValidity()'>
         <mat-error *ngIf="shortname.invalid && shortname.touched">
-          <span *ngIf="shortname.errors?.maxlength">Short Name should be maximum 15
-            letters</span>
+          <span *ngIf="shortname.errors?.maxlength">Short Name should be maximum 15 letters</span>
           <span *ngIf="shortname.errors?.minlength">Short Name should be mininum 5 letters.</span>
         </mat-error>
         <mat-error *ngIf="shortname.hasError('customError')">

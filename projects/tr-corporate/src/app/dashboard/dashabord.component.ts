@@ -33,7 +33,7 @@ export class DashabordComponent implements OnInit {
   searchToggle = false;
   resMsgLogout: string = "";
   isLoading$!: Observable<boolean>;
-  MANAGE_PROFILE_ROUTE = ROUTE_CONFIGS.ACCOUNT_MANAGE_PROFILE;
+  routerConfig = ROUTE_CONFIGS;
 
   accountList: { accountid: string; name: string; }[] = [];
   userName!: string;

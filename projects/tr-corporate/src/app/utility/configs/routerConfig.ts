@@ -6,6 +6,11 @@ export const ROUTE_CONFIGS = {
   REGISTER1: '/auth/selectrole',
   REGISTER2: '/auth/register',
   SETTINGS_DASHBOARD: '/dashboard/settings',
+  VIEW_ROLE: '/dashboard/settings/permission/role',
+  PERSONAL_PROFILE: '/dashboard/account/manage-profile',
+  ORGANISATION_PROFILE: '/dashboard/account/organisation-profile',
+  ACCOUNT_SECURITY: '/dashboard/account/account-security',
+  PERMISSION: '/dashboard/settings/permission/users'
 }
 
 export const ROUTE_PERMISSION = {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { MatDrawer } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
+import { ROUTE_CONFIGS } from '../utility/configs/routerConfig';
 import { MFilterComponent } from './permission/m-filter/m-filter.component';
 
 @Component({
@@ -13,6 +14,7 @@ export class SettingsComponent implements OnInit {
   showFiller = true;
   drawerMode: any;
   innerWidth: any;
+  routerConfig = ROUTE_CONFIGS;
 
   currentUrlPath: string;
 

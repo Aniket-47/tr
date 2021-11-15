@@ -16,6 +16,7 @@ import { AddRoleComponent } from '../add-role/add-role.component';
 import { UserRoleService } from '../services/user-role.service';
 import { getDefaultAccountId } from '../../../utility/store/selectors/account.selector';
 import { MatDrawer } from '@angular/material/sidenav';
+import { RouterConfigService } from '@tr/src/app/utility/services/routeGuards/router-config.service';
 
 // table data
 
@@ -49,6 +50,8 @@ export interface Irole {
 export class ViewRoleComponent implements AfterViewInit, OnInit {
 
   toggle = false;
+  config:any;
+
   status = [
     { value: '0', viewValue: 'Active' },
     { value: '1', viewValue: 'Inactive' },
@@ -88,7 +91,10 @@ export class ViewRoleComponent implements AfterViewInit, OnInit {
     private dialog: MatDialog,
     private userRoleService: UserRoleService,
     private router: Router,
-    private store: Store<State>) { }
+    private configServ: RouterConfigService,
+    private store: Store<State>) {
+      this.config = configServ.routerconfig;
+    }
 
   ngOnInit() {
   }
@@ -163,7 +169,7 @@ export class ViewRoleComponent implements AfterViewInit, OnInit {
   addUserRole() {
     const isMobile = false;
     if (!isMobile) {
-      this.router.navigateByUrl('dashboard/settings/permission/role');
+      this.router.navigateByUrl(this.config.VIEW_ROLE);
     } else {
       const dialogRef = this.dialog.open(AddRoleComponent);
     }
@@ -172,5 +178,4 @@ export class ViewRoleComponent implements AfterViewInit, OnInit {
   deleteRole(role: Irole) {
     console.log(role)
   }
-
 }

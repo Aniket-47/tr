@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ValidationConstants } from '../../utility/configs/app.constants';
+import { ROUTE_CONFIGS } from '../../utility/configs/routerConfig';
 import { SnackBarService } from '../../utility/services/snack-bar.service';
 import { AuthService } from '../services/auth.service';
 
@@ -25,6 +26,8 @@ export class ResetPasswordComponent implements OnInit {
   hidecnfpass = true;
   token: string | null = "";
   isLoading = false;
+  routerConfig = ROUTE_CONFIGS;
+
 
   constructor(private route: ActivatedRoute, private authServ: AuthService, private fb: FormBuilder, private snackBar: SnackBarService) { }
 

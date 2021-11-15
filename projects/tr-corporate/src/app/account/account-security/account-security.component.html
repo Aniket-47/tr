@@ -5,7 +5,7 @@
             <div>
                 <mat-form-field appearance="standard">
                     <mat-label>Old Password</mat-label>
-                    <input matInput placeholder="" type="password" formControlName='oldPassword'>
+                    <input matInput type="password" formControlName='oldPassword'>
                     <mat-error *ngIf="oldPassword.touched && !oldPassword.valid">
                         <span *ngIf="oldPassword.errors?.required">
                           Old password is required
@@ -16,7 +16,7 @@
             <div>
                 <mat-form-field appearance="standard">
                     <mat-label>New Password</mat-label>
-                    <input matInput placeholder="" [type]="hide ? 'password' : 'text'" formControlName='password'>
+                    <input matInput [type]="hide ? 'password' : 'text'" formControlName='password'>
                     <mat-error *ngIf="password.touched && !password.valid">
                         <span *ngIf="password.errors?.required">
                           Password is required
@@ -36,7 +36,7 @@
             <div>
                 <mat-form-field appearance="standard">
                     <mat-label>Confirm Password</mat-label>
-                    <input matInput placeholder="" [type]="hide ? 'password' : 'text'" formControlName='cnfPass'>
+                    <input matInput [type]="hide ? 'password' : 'text'" formControlName='cnfPass'>
                     <mat-error *ngIf="(cnfPass.touched && !cnfPass.valid)">
                         <span *ngIf="cnfPass.errors?.required">
                           Retype your password

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { ROUTE_CONFIGS } from '../../utility/configs/routerConfig';
 import { SnackBarService } from '../../utility/services/snack-bar.service';
 import { AuthService } from '../services/auth.service';
 
@@ -13,6 +14,8 @@ export class FPasswordComponent implements OnInit {
 
   resMessage: string = "";
   isLoading = false;
+  routerConfig = ROUTE_CONFIGS;
+
 
   constructor(
     private authServ: AuthService,

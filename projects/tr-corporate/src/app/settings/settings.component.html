@@ -7,7 +7,7 @@
   </div>
 </mat-drawer-container>
 <button
-  *ngIf="currentUrlPath != '/dashboard/settings'"
+  *ngIf="currentUrlPath !== routerConfig.SETTINGS_DASHBOARD"
   type="button"
   mat-icon-button
   (click)="drawer.toggle()"
@@ -21,4 +21,4 @@
   ></span>
 </button>
 
-<div *ngIf="currentUrlPath === '/dashboard/settings'"> {{ drawer.close() }} </div>
+<div *ngIf="currentUrlPath === routerConfig.SETTINGS_DASHBOARD"> {{ drawer.close() }} </div>
