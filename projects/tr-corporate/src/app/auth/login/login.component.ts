@@ -7,13 +7,15 @@ import { ROUTE_CONFIGS } from '../../utility/configs/routerConfig';
 import { setUserStatus } from '../../utility/store/actions/user.action';
 import { State } from '../../utility/store/reducers';
 import { AuthService } from '../services/auth.service';
+import { fadeAnimation } from '../../animations';
 
 // Interfaces
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  animations: [fadeAnimation]
 })
 export class LoginComponent implements OnInit {
   isFirstStep: boolean = true;
@@ -21,7 +23,7 @@ export class LoginComponent implements OnInit {
   passwordValidationError: string | null = null;
   email: string = "";
   isLoading: boolean = false;
-  userNmae: string | null;
+  userName: string | null;
   userEmail: string | null;
 
   constructor(
@@ -29,13 +31,13 @@ export class LoginComponent implements OnInit {
     private lsServ: LstorageService,
     private store: Store<State>,
     private router: Router) {
-    this.userNmae = lsServ.getItem(LSkeys.USER_NAME);
+    this.userName = lsServ.getItem(LSkeys.USER_NAME);
     this.userEmail = lsServ.getItem(LSkeys.USER_EMAIL);
   }
 
   ngOnInit(): void {
 
-    if (this.userEmail && this.userNmae)
+    if (this.userEmail && this.userName)
       this.isEmailExists(this.userEmail);
 
   }
@@ -66,7 +68,6 @@ export class LoginComponent implements OnInit {
     this.isLoading = true;
     this.authServ.login({ "email": this.email, "password": password })
       .subscribe((res: any) => {
-        // console.log("Res ", res);
         // on success
         this.isLoading = false;
         this.lsServ.store(LSkeys.BEARER_TOKEN, res.data.accesstoken.token);
@@ -75,7 +76,6 @@ export class LoginComponent implements OnInit {
         this.lsServ.store(LSkeys.USER_EMAIL, this.email);
       },
         res_error => {
-          // console.log("Error ", res_error)
           const { error } = res_error;
           this.isLoading = false;
           this.passwordValidationError = error.message;
@@ -84,7 +84,8 @@ export class LoginComponent implements OnInit {
 
   changeAccount() {
     this.isFirstStep = true;
-
+    this.lsServ.remove(LSkeys.USER_NAME);
+    this.lsServ.remove(LSkeys.USER_EMAIL);
   }
 
 }

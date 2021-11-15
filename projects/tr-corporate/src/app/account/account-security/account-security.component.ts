@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { fadeAnimation } from '../../animations';
 import { ValidationConstants } from '../../utility/configs/app.constants';
 import { SnackBarService } from '../../utility/services/snack-bar.service';
 import { AccountService } from '../shared/account.service';
@@ -18,7 +19,8 @@ function passwordMatcher(c: AbstractControl): { [key: string]: boolean } | null 
 @Component({
   selector: 'app-account-security',
   templateUrl: './account-security.component.html',
-  styleUrls: ['./account-security.component.scss']
+  styleUrls: ['./account-security.component.scss'],
+  animations: [fadeAnimation]
 })
 export class AccountSecurityComponent implements OnInit {
   hide = true;

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import { fadeAnimation } from '../../animations';
 import { userRoles } from '../../utility/configs/app.constants';
 import { SnackBarService } from '../../utility/services/snack-bar.service';
 import { setUserMobile, setUserName } from '../../utility/store/actions/user.action';
@@ -11,7 +12,8 @@ import { AccountService } from '../shared/account.service';
 @Component({
   selector: 'app-manage-profile',
   templateUrl: './manage-profile.component.html',
-  styleUrls: ['./manage-profile.component.scss']
+  styleUrls: ['./manage-profile.component.scss'],
+  animations: [fadeAnimation]
 })
 export class ManageProfileComponent implements OnInit {
   url: any;

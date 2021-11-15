@@ -7,6 +7,7 @@ import { map, startWith } from 'rxjs/operators';
 import { ValidationConstants } from '../../../utility/configs/app.constants';
 import { UserService } from '../services/user.service';
 import { SnackBarService } from '../../../utility/services/snack-bar.service';
+import { fadeAnimation } from '../../../animations';
 import { MatDialogRef } from '@angular/material/dialog';
 import { State } from '../../../utility/store/reducers';
 import { getDefaultAccountId } from '../../../utility/store/selectors/account.selector';
@@ -25,7 +26,8 @@ interface Food {
 @Component({
   selector: 'app-add-user',
   templateUrl: './add-user.component.html',
-  styleUrls: ['./add-user.component.scss']
+  styleUrls: ['./add-user.component.scss'],
+  animations: [fadeAnimation]
 })
 export class AddUserComponent implements OnInit {
 
