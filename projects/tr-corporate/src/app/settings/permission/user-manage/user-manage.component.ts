@@ -160,10 +160,10 @@ export class UserManageComponent implements OnInit {
   }
 
 
-  deactivateUser(userID: string) {
+  deactivateUser(email: string) {
     // console.log(userID);
 
-    this.userServ.deactivateUser({ 'userID': userID }).subscribe(res => {
+    this.userServ.updateUserStatus({ 'email': email, 'status': 0 }).subscribe(res => {
       if (res.error) {
         // error from api
         this.snackBar.open(res.message);
@@ -174,8 +174,23 @@ export class UserManageComponent implements OnInit {
       }
     })
   }
-  deleteUser(userID: string) {
-    this.userServ.deleteUser({ 'userID': userID }).subscribe(res => {
+  activateUser(email: string) {
+    // console.log(userID);
+
+    this.userServ.updateUserStatus({ 'email': email, 'status': 1 }).subscribe(res => {
+      if (res.error) {
+        // error from api
+        this.snackBar.open(res.message);
+      }
+      else {
+        // success from api
+        this.snackBar.open(res.message);
+      }
+    })
+  }
+
+  deleteUser(email: string) {
+    this.userServ.deleteUser({ 'email': email }).subscribe(res => {
       if (res.error) {
         // error from api
         this.snackBar.open(res.message);

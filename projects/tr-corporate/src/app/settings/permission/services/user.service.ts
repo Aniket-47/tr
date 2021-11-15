@@ -8,8 +8,8 @@ import { api_routes, secure_api_routes } from '../../../utility/configs/apiConfi
 // Interdaces
 import { AddUser_response, AddUser_request } from './../interfaces/add-user';
 import { UpdateUser_request, UpdateUser_response } from '../interfaces/update-user';
-import { DeactivateUser_request, DeactivateUser_response } from '../interfaces/deactivate-user';
 import { DeleteUser_request, DeleteUser_response } from '../interfaces/delete-user';
+import { UpdateUserStatus_request, UpdateUserStatus_response } from '../interfaces/update-user-status';
 
 @Injectable({
   providedIn: 'root'
@@ -31,10 +31,10 @@ export class UserService {
   updateUser(data: UpdateUser_request) {
     return this.http.post<UpdateUser_response>(this.secure_api_routes.UPDATE_USER, data)
   }
-  deactivateUser(data: DeactivateUser_request) {
-    return this.http.post<DeactivateUser_response>(this.secure_api_routes.DEACTIVATE_USER, data)
+  updateUserStatus(data: UpdateUserStatus_request) {
+    return this.http.put<UpdateUserStatus_response>(this.secure_api_routes.UPDATE_USER_STATUS, data)
   }
   deleteUser(data: DeleteUser_request) {
-    return this.http.post<DeleteUser_response>(this.secure_api_routes.DELETE_USER, data)
+    return this.http.patch<DeleteUser_response>(this.secure_api_routes.DELETE_USER, data)
   }
 }

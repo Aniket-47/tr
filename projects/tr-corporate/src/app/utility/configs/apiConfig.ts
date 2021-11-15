@@ -49,8 +49,8 @@ export const secure_api_routes = {
   GET_USER: `${user}/getuser`,
   ADD_USER: `${user}/adduser`,
   UPDATE_USER: `${user}/updateuser`,
-  DEACTIVATE_USER: `${user}/deactivateuser`,
-  DELETE_USER: `${user}/deleteuser`,
+  UPDATE_USER_STATUS: `${user}/status`,
+  DELETE_USER: `${user}/delete`,
 
   /// User
   DEFAULT_ROLES: `${user}/roletypes`
