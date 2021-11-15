@@ -44,13 +44,14 @@ export const secure_api_routes = {
   USER_ROLES: `${account}/role`,
   SHORT_NAME: `${account}/validateshortname`,
   ADD_ROLE: `${account}/role`,
+  DELETE_ROLE: `${account}/role`,
 
   // User Management
   GET_USER: `${user}/getuser`,
   ADD_USER: `${user}/adduser`,
   UPDATE_USER: `${user}/updateuser`,
-  DEACTIVATE_USER: `${user}/deactivateuser`,
-  DELETE_USER: `${user}/deleteuser`,
+  UPDATE_USER_STATUS: `${user}/status`,
+  DELETE_USER: `${user}/delete`,
 
   /// User
   DEFAULT_ROLES: `${user}/roletypes`
