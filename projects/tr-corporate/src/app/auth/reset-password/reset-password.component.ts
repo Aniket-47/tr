@@ -3,6 +3,7 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from
 import { ActivatedRoute } from '@angular/router';
 import { fadeAnimation } from '../../animations';
 import { ValidationConstants } from '../../utility/configs/app.constants';
+import { ROUTE_CONFIGS } from '../../utility/configs/routerConfig';
 import { SnackBarService } from '../../utility/services/snack-bar.service';
 import { AuthService } from '../services/auth.service';
 
@@ -23,9 +24,12 @@ function passwordMatcher(c: AbstractControl): { [key: string]: boolean } | null 
   animations: [fadeAnimation]
 })
 export class ResetPasswordComponent implements OnInit {
-  hide = true;
+  hidepassword = true;
+  hidecnfpass = true;
   token: string | null = "";
   isLoading = false;
+  routerConfig = ROUTE_CONFIGS;
+
 
   constructor(private route: ActivatedRoute, private authServ: AuthService, private fb: FormBuilder, private snackBar: SnackBarService) { }
 
@@ -49,10 +53,12 @@ export class ResetPasswordComponent implements OnInit {
   get cnfPass(): AbstractControl {
     return this.resetForm.get('cnfPass') as FormControl;
   }
+  logme() {
+    console.log(this.cnfPass)
+  }
 
 
   resetPassword() {
-    this.isLoading = true;
     // this.authServ.passwordReset(this.token,)
     if (this.resetForm.invalid) {
       for (const e in this.resetForm.controls) {
@@ -63,6 +69,7 @@ export class ResetPasswordComponent implements OnInit {
     }
 
 
+    this.isLoading = true;
     const { value } = this.resetForm;
     const token = this.route.snapshot.paramMap.get('token') || "";
     const payload = {

@@ -23,7 +23,8 @@ function passwordMatcher(c: AbstractControl): { [key: string]: boolean } | null 
   animations: [fadeAnimation]
 })
 export class AccountSecurityComponent implements OnInit {
-  hide = true;
+  hideNewPass = true;
+  hideCnfPass = true;
   errorMessage: string ="";
   isLoading = false;
 
