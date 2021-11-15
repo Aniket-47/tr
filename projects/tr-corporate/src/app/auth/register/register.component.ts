@@ -1,3 +1,4 @@
+
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
   AbstractControl,
@@ -9,6 +10,7 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { RouterConfigService } from '@tr/src/app/utility/services/routeGuards/router-config.service';
+import { fadeAnimation } from '../../animations';
 import { ValidationConstants } from '../../utility/configs/app.constants';
 import { SnackBarService } from '../../utility/services/snack-bar.service';
 import { AuthService } from '../services/auth.service';
@@ -28,6 +30,7 @@ function passwordMatcher(c: AbstractControl): { [key: string]: boolean } | null 
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
+  animations: [fadeAnimation]
 })
 export class RegisterComponent implements OnInit, OnDestroy {
   hidepassword = true;

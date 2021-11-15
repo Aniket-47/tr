@@ -10,6 +10,7 @@
   min-height: 460px;
   max-width: 786px;
   width: 45vw;
+  transition: all 0.5s ease;
   @include media-breakpoint-down(md) {
     padding: 0;
     background-color: transparent;

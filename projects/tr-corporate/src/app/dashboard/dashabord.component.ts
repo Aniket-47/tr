@@ -5,8 +5,7 @@ import { LstorageService } from '@tr/src/app/utility/services/lstorage.service';
 import { Observable } from 'rxjs';
 import { LSkeys } from '../utility/configs/app.constants';
 import { ROUTE_CONFIGS } from '../utility/configs/routerConfig';
-import { resetAccount, setAccountDeatils } from '../utility/store/actions/account.action';
-import { resetUser, setUserStatus } from '../utility/store/actions/user.action';
+import { setAccountDeatils } from '../utility/store/actions/account.action';
 import { State } from '../utility/store/reducers';
 import { getAccountIds } from '../utility/store/selectors/account.selector';
 import { getIsLoading } from '../utility/store/selectors/app.selector';
@@ -15,7 +14,6 @@ import { LogoutService } from './services/logout.service';
 import { setUserRoles } from '../utility/store/actions/roles.action';
 import { setUserAddress, setUserCity, setUserCountry, setUserFullName, setUserMobile, setUserName, setUserState } from '../utility/store/actions/user.action';
 import { IaccountDetials } from '../utility/store/interfaces/account';
-import { setLanguage } from '../utility/store/actions/language.action';
 
 
 @Component({
@@ -87,7 +85,6 @@ export class DashabordComponent implements OnInit {
       }
 
       if (!data[3]?.error) {
-        // this.store.dispatch(setLanguage({ data: data[3]?.data }));
         this.lsServ.remove(LSkeys.LANGUAGE);
         this.lsServ.store(LSkeys.LANGUAGE, JSON.stringify(data[3]?.data));
       }
@@ -100,13 +97,9 @@ export class DashabordComponent implements OnInit {
 
   logout() {
     this.resMsgLogout = "";
-    this.logoutServ.logout()
-    this.lsServ.remove(LSkeys.BEARER_TOKEN);
-    this.store.dispatch(setUserStatus({ data: false }));
-    this.store.dispatch(resetUser({ data: true }));
-    this.store.dispatch(resetAccount({ data: true }));
+    this.logoutServ.logout();
+    this.logoutServ.clearSavedData();
     this.router.navigate(["./"])
-
   }
   onEvent(event: any) {
     event.stopPropagation();

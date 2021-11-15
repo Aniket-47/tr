@@ -3,7 +3,8 @@ export const enum LSkeys {
   USER_EMAIL = "userEmail",
   USER_NAME = "userName",
   DEVICE_GUID = "deviceGuid",
-  LANGUAGE = 'language'
+  LANGUAGE = 'language',
+  DEFAULT_ACCOUNT = 'defaultAccount'
 }
 
 export const ValidationConstants = {

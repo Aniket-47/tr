@@ -4,7 +4,8 @@ export interface Iaccount {
 }
 
 export interface IaccountList {
-    accountid: string; name: string;
+    accountid: string;
+    name: string;
 }
 
 export interface IaccountDetials {

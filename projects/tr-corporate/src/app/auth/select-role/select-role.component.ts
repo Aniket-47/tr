@@ -1,7 +1,9 @@
+
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { RouterConfigService } from '@tr/src/app/utility/services/routeGuards/router-config.service';
+import { fadeAnimation } from '../../animations';
 import { userRoles } from '../../utility/configs/app.constants';
 import { setStepper, setStepperShow, setUserRole } from '../store/actions/auth.action';
 
@@ -11,6 +13,7 @@ import { Iauth } from '../store/interface/auth';
   selector: 'app-select-role',
   templateUrl: './select-role.component.html',
   styleUrls: ['./select-role.component.scss'],
+  animations: [fadeAnimation]
 })
 export class SelectRoleComponent implements OnInit, OnDestroy {
   roles: any[] = [];
