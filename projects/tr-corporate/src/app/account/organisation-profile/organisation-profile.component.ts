@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { SnackBarService } from '../../utility/services/snack-bar.service';
+import { setAccountDeatils } from '../../utility/store/actions/account.action';
 import { State } from '../../utility/store/reducers';
 import { getAccountDeatils, getDefaultAccountId } from '../../utility/store/selectors/account.selector';
 import { AccountService } from '../shared/account.service';
@@ -204,7 +205,11 @@ export class OrganisationProfileComponent implements OnInit, OnChanges {
     this.accoutService.updateAccount(payload, this.accountId).subscribe((res: any) => {
       if (res?.error) {
         this.snackbarServ.open(res?.message, "Ok");
-      } else this.snackbarServ.open('Successfully updated', "Ok");
+      } else {
+        // update store
+        this.store.dispatch(setAccountDeatils({ data: payload }));
+        this.snackbarServ.open('Successfully updated', "Ok");
+      }
       this.isLoading = false;
     }, (err) => this.isLoading = false)
   }
