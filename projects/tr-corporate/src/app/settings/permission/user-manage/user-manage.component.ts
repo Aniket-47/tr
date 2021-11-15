@@ -25,6 +25,7 @@ import { MatBottomSheet } from '@angular/material/bottom-sheet';
 
 import { merge, Observable, of as observableOf } from 'rxjs';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
+import { getRoles } from '../../../utility/store/selectors/roles.selector';
 
 @Component({
   selector: 'app-user-manage',
@@ -39,19 +40,21 @@ export class UserManageComponent implements OnInit {
     { value: '1', viewValue: 'Active' },
     { value: '2', viewValue: 'Pending' }
   ];
-  role = [
-    { value: '0', viewValue: 'Admin' },
-    { value: '1', viewValue: 'Super Admin' }
-  ];
+  role!: any[];
 
-  selectedStatus = this.status[0].value;
-  selectedRole = this.role[0].value;
+  selectedStatus!: number;
+  selectedRole!: number;
   displayedColumns: string[] = ['check', 'name', 'email', 'role', 'status', 'lastupdated', 'action'];
   dataSource!: MatTableDataSource<any>;
   selection = new SelectionModel<any>(true, []);
   addUserModalRef!: MatDialogRef<AddUserComponent>;
 
   totalUsers!: number;
+
+  currentUser!: any;
+  currentUserEdit!: boolean;
+
+  accountID!: string;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort!: MatSort;
@@ -76,14 +79,18 @@ export class UserManageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.store.select(getRoles).subscribe(roles => {
+      this.role = roles;
+    });
   }
 
   openBottomSheet(): void {
     this._bottomSheet.open(MFilterComponent);
   }
   ngAfterViewInit(): void {
-    this.store.select(getDefaultAccountId).subscribe((accountid:any) => {
-      if (accountid) this.loadUsers(accountid);
+    this.store.select(getDefaultAccountId).subscribe((accountid: any) => {
+      this.accountID = accountid;
+      if (accountid) this.loadUsers();
     });
   }
 
@@ -121,7 +128,7 @@ export class UserManageComponent implements OnInit {
   }
 
 
-  loadUsers(accountid: string) {
+  loadUsers() {
     // If the user changes the sort order, reset back to the first page.
     this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
 
@@ -129,15 +136,21 @@ export class UserManageComponent implements OnInit {
       .pipe(
         startWith({}),
         switchMap(() => {
+
           return this.userlistServ.getUserList(
-            accountid,
-            this.sort.active,
-            this.paginator.pageIndex + 1,
-            this.sort.direction == "desc" ? "desc" : "asc");
+            this.accountID,
+            this.paginator.pageSize,
+            this.paginator.pageIndex * this.paginator.pageSize,
+            {
+              sort: this.sort.active,
+              sortOrder: this.sort.direction == "desc" ? "desc" : "asc",
+              filter_roletypeid: this.selectedRole,
+              filter_status: this.selectedStatus
+            });
         }),
         map((res: any) => {
+          this.paginator.length = this.totalUsers = res?.data.totalcount;
           // Flip flag to show that loading has finished.
-          this.totalUsers = res?.data.totalcount;
           return res?.data.userslist;
         }),
         catchError(() => {
