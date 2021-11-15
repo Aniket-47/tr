@@ -3,7 +3,9 @@
     <button mat-icon-button (click)="drawer.toggle()" class="close-btn">
       <span class="icon-mc mc-x"></span>
     </button>
-    <app-user-detail [edit]="currentUserEdit" [user]="currentUser"></app-user-detail>
+    <app-user-detail *ngIf="!viewUserPermission" [edit]="currentUserEdit" [user]="currentUser"></app-user-detail>
+    <app-add-role *ngIf="viewUserPermission"
+      [selectedRoleInfo]="{'rolename': currentUser.role,'roletypeid':currentUser.roletypeid}"></app-add-role>
   </mat-drawer>
 
   <div class="example-sidenav-content" [@fadeInOut]>
@@ -72,8 +74,8 @@
                 [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()">
               </mat-checkbox>
             </th>
-            <td (click)="currentUser = element; currentUserEdit=false;drawer.toggle()" mat-cell
-              *matCellDef="let element">
+            <td (click)="currentUser = element; currentUserEdit=false;viewUserPermission=false; drawer.toggle()"
+              mat-cell *matCellDef="let element">
               <mat-checkbox color="primary" (click)="$event.stopPropagation()"
                 (change)="$event ? selection.toggle(element) : null" [checked]="selection.isSelected(element)"
                 [aria-label]="checkboxLabel(element)"></mat-checkbox>
@@ -83,8 +85,8 @@
           <!-- Name Column -->
           <ng-container matColumnDef="name">
             <th mat-header-cell *matHeaderCellDef> Full Name </th>
-            <td (click)="currentUser = element; currentUserEdit=false;drawer.toggle()" mat-cell
-              *matCellDef="let element">
+            <td (click)="currentUser = element; currentUserEdit=false;viewUserPermission=false; drawer.toggle()"
+              mat-cell *matCellDef="let element">
               <div class="user-info">
                 <div class="user-img">
                   <img *ngIf="element.img" src="{{element.img}}" alt="">
@@ -106,8 +108,8 @@
           <!-- Role Column -->
           <ng-container matColumnDef="roletypeid">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Role </th>
-            <td (click)="currentUser = element; currentUserEdit=false;drawer.toggle()" mat-cell
-              *matCellDef="let element">
+            <td (click)="currentUser = element; currentUserEdit=false;viewUserPermission=false; drawer.toggle()"
+              mat-cell *matCellDef="let element">
               <mat-label class="role" [ngClass]="{
               'success': element.role === 'Admin',
               'info': element.role === 'Super Admin'
@@ -118,8 +120,8 @@
           <!-- Email Column -->
           <ng-container matColumnDef="email">
             <th mat-header-cell *matHeaderCellDef> Email </th>
-            <td (click)="currentUser = element; currentUserEdit=false;drawer.toggle()" mat-cell
-              *matCellDef="let element">
+            <td (click)="currentUser = element; currentUserEdit=false;viewUserPermission=false; drawer.toggle()"
+              mat-cell *matCellDef="let element">
               {{element.email}}
             </td>
           </ng-container>
@@ -127,8 +129,8 @@
           <!-- Status Column -->
           <ng-container matColumnDef="status">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
-            <td (click)="currentUser = element; currentUserEdit=false;drawer.toggle()" mat-cell
-              *matCellDef="let element">
+            <td (click)="currentUser = element; currentUserEdit=false;viewUserPermission=false; drawer.toggle()"
+              mat-cell *matCellDef="let element">
               <mat-label class="status m-l-10" [ngClass]="{
                 'success': element.status == 1,
                 'warning': element.status == 2,
@@ -136,7 +138,7 @@
               }">
                 <span *ngIf="element.status == 1 ">Active</span>
                 <span *ngIf="element.status == 2 ">Pending</span>
-                <span *ngIf="element.status == 0 ">Deactive</span>
+                <span *ngIf="element.status == 0 ">Inactive</span>
               </mat-label>
             </td>
           </ng-container>
@@ -144,8 +146,8 @@
           <!-- Last Updated Column -->
           <ng-container matColumnDef="lastupdated">
             <th mat-header-cell *matHeaderCellDef> Last Updated </th>
-            <td (click)="currentUser = element; currentUserEdit=false;drawer.toggle()" mat-cell
-              *matCellDef="let element"> <span class="mobile-only grey-text">Updated :</span>
+            <td (click)="currentUser = element; currentUserEdit=false;viewUserPermission=false; drawer.toggle()"
+              mat-cell *matCellDef="let element"> <span class="mobile-only grey-text">Updated :</span>
               {{element.last_updated | date}} </td>
           </ng-container>
 
@@ -165,8 +167,12 @@
                 <mat-menu #tableMenu="matMenu" backdropClass="profile-dropdown">
                   <div class="user-dropdown-submenu">
                     <button class="blue" mat-menu-item
-                      (click)="currentUser = element; currentUserEdit=false;drawer.toggle()">
+                      (click)="currentUser = element; currentUserEdit=false;viewUserPermission=false; drawer.toggle()">
                       <i class="icon-mc mc-visibility"></i> <span>View details</span>
+                    </button>
+                    <button class="blue" mat-menu-item
+                      (click)="currentUser = element; viewUserPermission=true; drawer.toggle()">
+                      <i class="icon-mc mcf-admin_panel_settings"></i> <span>View Permission</span>
                     </button>
                     <button class="green" mat-menu-item
                       (click)="currentUser = element; currentUserEdit= true;drawer.toggle()">

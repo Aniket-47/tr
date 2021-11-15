@@ -100,7 +100,11 @@ export class DashabordComponent implements OnInit {
 
   logout() {
     this.resMsgLogout = "";
-    this.logoutServ.logout()
+    this.logoutServ.logout().subscribe(res => {
+      // if(res.error)
+      console.log(res.message);
+
+    })
     this.lsServ.remove(LSkeys.BEARER_TOKEN);
     this.store.dispatch(setUserStatus({ data: false }));
     this.store.dispatch(resetUser({ data: true }));

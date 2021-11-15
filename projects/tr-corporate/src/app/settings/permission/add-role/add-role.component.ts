@@ -78,11 +78,17 @@ export class AddRoleComponent implements OnInit, OnChanges {
           });
       }
     });
+
+
   }
 
+
+
   ngOnChanges() {
+    this.store.select(getDefaultAccountId).subscribe(accountid => this.accountId = accountid);
     if (this.selectedRoleInfo?.roletypeid && this.accountId) {
       this.isRoleView = true;
+
       if (this.rightsArray.controls.length) this.clearRightsForm();
       this.userRoleService.getPermissions(this.accountId, `${this.selectedRoleInfo.roletypeid}`)
         .subscribe((res: any) => {

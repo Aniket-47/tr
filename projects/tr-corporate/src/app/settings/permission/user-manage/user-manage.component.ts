@@ -56,6 +56,8 @@ export class UserManageComponent implements OnInit {
   currentUser!: any;
   currentUserEdit!: boolean;
 
+  viewUserPermission = false;
+
   accountID!: string;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
