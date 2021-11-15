@@ -56,8 +56,10 @@ table.mat-table {
                 bottom: 30px;
              }
              &:nth-child(5) {
-                display: none;
-            }
+                position: absolute;
+                left: 14.2rem;
+                top: 1.5rem;
+             }
             &:nth-child(6) {
                 position: absolute;
                 right: 14px;
