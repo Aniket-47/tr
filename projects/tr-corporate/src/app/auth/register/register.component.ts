@@ -29,7 +29,8 @@ function passwordMatcher(c: AbstractControl): { [key: string]: boolean } | null 
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit, OnDestroy {
-  hide = true;
+  hidepassword = true;
+  hidecnfpass = true;
   isLoading = false;
 
   // Form

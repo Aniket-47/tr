@@ -22,7 +22,6 @@
                 First Name should be maximum of 20 letters
               </span>
             </mat-error>
-            <!-- <mat-icon class="text-muted h5" matSuffix>person</mat-icon> -->
           </mat-form-field>
         </div>
         <div class="col-md-6">
@@ -40,7 +39,6 @@
                 Middle Name should be maximum of 20 letters
               </span>
             </mat-error>
-            <!-- <mat-icon class="text-muted h5" matSuffix>person</mat-icon> -->
           </mat-form-field>
         </div>
         <div class="col-md-6">
@@ -58,7 +56,6 @@
                 Last Name should be maximum of 20 letters
               </span>
             </mat-error>
-            <!-- <mat-icon class="text-muted h5" matSuffix>person</mat-icon> -->
           </mat-form-field>
         </div>
         <div class="col-md-6">
@@ -73,7 +70,6 @@
                 Email Id is not valid
               </span>
             </mat-error>
-            <!--<mat-icon class="text-muted h5" matSuffix>email</mat-icon>-->
           </mat-form-field>
         </div>
         <div class="col-md-6 pr-4">
@@ -91,15 +87,12 @@
                 Company Name should be maximum of 50 letters
               </span>
             </mat-error>
-            <!-- <mat-icon class="text-muted h5" matSuffix>person</mat-icon> -->
           </mat-form-field>
         </div>
         <div class="col-md-6 pr-5">
           <mat-form-field class="example-full-width" appearance="outline">
             <mat-label>Phone Number</mat-label>
-            <!--<span matPrefix>+91</span>-->
             <input type="tel" matInput placeholder="000-000-0000" formControlName="phone">
-            <!-- <mat-icon class="text-muted h5" matSuffix>phone</mat-icon> -->
             <mat-error *ngIf="phone.touched && !phone.valid">
               <span *ngIf="phone.errors?.required">
                 Phone number is required
@@ -113,9 +106,9 @@
         <div class="col-md-6">
           <mat-form-field appearance="outline">
             <mat-label>Password</mat-label>
-            <input placeholder="xyz" matInput [type]="hide ? 'password' : 'text'" formControlName="password">
-            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-              [attr.aria-pressed]="hide">
+            <input placeholder="xyz" matInput [type]="hidepassword ? 'password' : 'text'" formControlName="password">
+            <button mat-icon-button matSuffix (click)="hidepassword = !hidepassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidepassword" class="btn-show-hide">
+              <span ngClass="{{hidepassword ? 'icon-mc mc-eye-off' : 'icon-mc mc-eye'}}"></span>
             </button>
             <mat-error *ngIf="password.touched && !password.valid">
               <span *ngIf="password.errors?.required">
@@ -128,15 +121,14 @@
                 Password should be maximum of 12 letters
               </span>
             </mat-error>
-            <!--<mat-icon class="text-muted h5">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>-->
           </mat-form-field>
         </div>
         <div class="col-md-6">
           <mat-form-field appearance="outline" class="w-100 brd">
             <mat-label>Confirm Password</mat-label>
-            <input placeholder="xyz" matInput [type]="hide ? 'password' : 'text'" formControlName="cnfPass">
-            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-              [attr.aria-pressed]="hide">
+            <input placeholder="xyz" matInput [type]="hidecnfpass ? 'password' : 'text'" formControlName="cnfPass">
+            <button mat-icon-button matSuffix (click)="hidecnfpass = !hidecnfpass" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidecnfpass" class="btn-show-hide">
+              <span ngClass="{{hidecnfpass ? 'icon-mc mc-eye-off' : 'icon-mc mc-eye'}}"></span>
             </button>
             <mat-error *ngIf="cnfPass.touched">
               <span *ngIf="cnfPass.errors?.required">
@@ -148,7 +140,7 @@
               <!-- <span *ngIf="!cnfPass.errors?.required && (cnfPass.value!=password.value)">
                 Confirm Password doesn't match
               </span> -->
-            </mat-error><!-- <mat-icon class="text-muted h5">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon> -->
+            </mat-error>
           </mat-form-field>
         </div>
       </div>
