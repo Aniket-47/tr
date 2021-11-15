@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+import { fadeAnimation } from '../../animations';
 
 @Component({
   selector: 'app-settings-side-menu',
   templateUrl: './settings-side-menu.component.html',
-  styleUrls: ['./settings-side-menu.component.scss']
+  styleUrls: ['./settings-side-menu.component.scss'],
+  animations: [fadeAnimation]
 })
 
 export class SettingsSideMenuComponent implements OnInit {

@@ -1,10 +1,13 @@
+
 import { Component, OnInit } from '@angular/core';
+import { fadeAnimation } from '../../animations';
 import { ROUTE_CONFIGS } from '../../utility/configs/routerConfig';
 
 @Component({
   selector: 'app-stats',
   templateUrl: './stats.component.html',
-  styleUrls: ['./stats.component.scss']
+  styleUrls: ['./stats.component.scss'],
+  animations: [fadeAnimation]
 })
 export class StatsComponent implements OnInit {
 
