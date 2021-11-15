@@ -1,51 +1,50 @@
 
-            <div class="profile-info">
-                    <div class="profile-form">
-                        <div>
-                            <mat-form-field appearance="standard">
-                                <mat-label>First Name</mat-label>
-                                <input matInput placeholder="Placeholder" value="">
-                              </mat-form-field>
-                        </div>
-                        <div>
-                            <mat-form-field appearance="standard">
-                                <mat-label>Middle Name</mat-label>
-                                <input matInput placeholder="Placeholder" value="">
-                              </mat-form-field>
-                        </div>
-                        <div>
-                            <mat-form-field appearance="standard">
-                                <mat-label>Last Name</mat-label>
-                                <input matInput placeholder="Placeholder" value="">
-                              </mat-form-field>
-                        </div>
-                        <div>
-                            <mat-form-field appearance="standard">
-                                <mat-label>Email Id (Official Email Id)</mat-label>
-                                <input matInput type="email" placeholder="Placeholder" value="">
-                              </mat-form-field>
-                        </div>
-                        <div class="account-type">
-                            <p>Account Type:</p>
-                            <mat-radio-group aria-label="Select an option">
-                                <mat-radio-button value="1" color="primary">Staffing And Recruiting</mat-radio-button>
-                                <mat-radio-button value="2" color="primary" class="mx-3 mt-3">Corporate</mat-radio-button>
-                              </mat-radio-group>
-                        </div>
-                       
-                    </div>
-                        <div class="profile-image">
-                            <div class="img-container">
-                                <img src="{{url ? url : './assets/img/profile.png'}}" alt="">
-                            </div>
-                            <div class="img-action">
-                                <input #fileInput type='file' (change)="onSelectFile($event)" style="display: none">
-                                <button mat-stroked-button color="primary" (click)="fileInput.click()">Upload new picture</button>
-                                <button mat-button *ngIf="url" (click)="delete()">Remove picture</button>
-                            </div>
-                        </div>
-            </div>
-            <div class="profile-action">
-                <button mat-stroked-button>Cancel</button>
-                <button mat-flat-button color="primary">Save Changes</button>
-            </div>
+<div class="profile-info">
+    <div class="profile-form">
+        <div>
+            <mat-form-field appearance="standard">
+                <mat-label>First Name</mat-label>
+                <input matInput placeholder="Placeholder" value="">
+                </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="standard">
+                <mat-label>Middle Name</mat-label>
+                <input matInput placeholder="Placeholder" value="">
+                </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="standard">
+                <mat-label>Last Name</mat-label>
+                <input matInput placeholder="Placeholder" value="">
+                </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="standard">
+                <mat-label>Email Id (Official Email Id)</mat-label>
+                <input matInput type="email" placeholder="Placeholder" value="">
+                </mat-form-field>
+        </div>
+        <div class="account-type">
+            <p>Account Type:</p>
+            <mat-radio-group aria-label="Select an option">
+                <mat-radio-button value="1" color="primary">Staffing And Recruiting</mat-radio-button>
+                <mat-radio-button value="2" color="primary" class="mx-3 mt-3">Corporate</mat-radio-button>
+                </mat-radio-group>
+        </div>            
+    </div>
+    <div class="profile-image">
+        <div class="img-container">
+            <img src="{{url ? url : './assets/img/profile.png'}}" alt="">
+        </div>
+        <div class="img-action">
+            <input #fileInput type='file' (change)="onSelectFile($event)" style="display: none">
+            <button mat-stroked-button color="primary" (click)="fileInput.click()">Upload new picture</button>
+            <button mat-button *ngIf="url" (click)="delete()">Remove picture</button>
+        </div>
+    </div>
+</div>
+<div class="profile-action">
+    <button mat-stroked-button>Cancel</button>
+    <button mat-flat-button color="primary">Save Changes</button>
+</div>

@@ -1,5 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
+import { ROUTE_CONFIGS } from '../../utility/configs/routerConfig';
 import { fadeAnimation } from '../../animations';
 
 @Component({
@@ -9,6 +10,7 @@ import { fadeAnimation } from '../../animations';
   animations: [fadeAnimation]
 })
 export class SettingsMenuComponent implements OnInit {
+  routerConfig = ROUTE_CONFIGS;
 
   constructor() { }
 
