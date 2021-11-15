@@ -5,6 +5,7 @@ import { fadeAnimation } from '../../../animations';
 import { State } from '../../../utility/store/reducers';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatBottomSheetRef } from '@angular/material/bottom-sheet';
+import { FilterService } from '../services/filter.service';
 
 @Component({
   selector: 'app-m-filter',
@@ -14,7 +15,10 @@ import { MatBottomSheetRef } from '@angular/material/bottom-sheet';
 })
 export class MFilterComponent implements OnInit {
 
-  sortTypes: string[] = ['Sort by Status', 'Sort by Role'];
+  sortTypes = [
+    { value: 'status', viewValue: 'Sort by Status' },
+    { value: 'roletypeid', viewValue: 'Sort by Role' }
+  ];
   status = [
     { value: '0', viewValue: 'Deactive' },
     { value: '1', viewValue: 'Active' },
@@ -33,7 +37,7 @@ export class MFilterComponent implements OnInit {
   selectedStatus!: number;
   selectedRole!: number;
 
-  constructor(private store: Store<State>, public dialogRef: MatBottomSheetRef<MFilterComponent>) {
+  constructor(private store: Store<State>, public dialogRef: MatBottomSheetRef<MFilterComponent>, public filterserv: FilterService) {
 
   }
 
@@ -45,6 +49,9 @@ export class MFilterComponent implements OnInit {
 
 
   onfilter() {
+    this.filterserv.SelectedRole = this.selectedRole;
+    this.filterserv.SelectedSort = this.selectedSort;
+    this.filterserv.SelectedStatus = this.selectedStatus;
     // this.dialogRef.afterDismissed({ 'sort': this.selectedSort, 'filter_roletypeid': this.selectedRole, 'filter_status': this.selectedStatus })
     this.dialogRef.dismiss()
   }

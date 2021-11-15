@@ -28,6 +28,7 @@ import { fadeAnimation } from '../../../animations';
 import { merge, Observable, of as observableOf } from 'rxjs';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 import { getRoles } from '../../../utility/store/selectors/roles.selector';
+import { FilterService } from '../services/filter.service';
 
 @Component({
   selector: 'app-user-manage',
@@ -68,7 +69,7 @@ export class UserManageComponent implements OnInit {
 
   @ViewChild('modalRefElement', { static: false }) modalRefElement!: ElementRef;
 
-  constructor(private userlistServ: UserListService, private userServ: UserService, private store: Store<State>, public dialog: MatDialog, private snackBar: SnackBarService, private _bottomSheet: MatBottomSheet) {
+  constructor(private userlistServ: UserListService, private userServ: UserService, private store: Store<State>, public dialog: MatDialog, private snackBar: SnackBarService, private _bottomSheet: MatBottomSheet, private filterServ: FilterService) {
     this.totalUsers = 0;
     // this.store.select(getDefaultAccountId)
     //   .subscribe(accountid => {
@@ -98,8 +99,10 @@ export class UserManageComponent implements OnInit {
   openBottomSheet(): void {
     this._bottomSheet.open(MFilterComponent).afterDismissed()
       .subscribe(result => {
-        console.log(result);
-
+        this.selectedRole = this.filterServ.SelectedRole;
+        this.selectedStatus = this.filterServ.selectedStatus;
+        this.sort.active = this.filterServ.selectedSort;
+        this.loadUsers();
       })
   }
   ngAfterViewInit(): void {
