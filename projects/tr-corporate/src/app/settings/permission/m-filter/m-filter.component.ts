@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { fadeAnimation } from '../../../animations';
 
 @Component({
   selector: 'app-m-filter',
   templateUrl: './m-filter.component.html',
-  styleUrls: ['./m-filter.component.scss']
+  styleUrls: ['./m-filter.component.scss'],
+  animations: [fadeAnimation]
 })
 export class MFilterComponent implements OnInit {
 

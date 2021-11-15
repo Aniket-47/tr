@@ -21,6 +21,7 @@ import { UserListService } from '../services/user-list.service';
 import { UserService } from '../services/user.service';
 import { MFilterComponent } from '../m-filter/m-filter.component';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { fadeAnimation } from '../../../animations';
 
 
 import { merge, Observable, of as observableOf } from 'rxjs';
@@ -30,7 +31,8 @@ import { getRoles } from '../../../utility/store/selectors/roles.selector';
 @Component({
   selector: 'app-user-manage',
   templateUrl: './user-manage.component.html',
-  styleUrls: ['./user-manage.component.scss']
+  styleUrls: ['./user-manage.component.scss'],
+  animations: [fadeAnimation]
 })
 export class UserManageComponent implements OnInit {
 

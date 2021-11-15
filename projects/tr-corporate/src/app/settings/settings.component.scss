@@ -31,27 +31,48 @@
 
 .togglebtn {
     position: fixed;
-    left: 45px;
-    top: 60px;
+    left: 50px;
+    top: 100px;
     font-size: 1.5rem;
-    z-index: 9999;
+    z-index: 9;
     border: #EBEAED 1px solid;
     background: $white;
     width: 30px;
     height: 30px;
     line-height: 30px;
-    border-radius: 16px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    .icon-mc {
+        position: relative;
+        right: -5px;
+        &::before {
+            color: $theme;
+        }
+    }
     ::ng-deep .mat-button-wrapper>* {
         vertical-align: top;
     }
     @include media-breakpoint-down(md) {
-        left: -14px;
-        top: 50%;
-        transform: translateY(50%);
+        left: -10px;
+        top: 75px;
+        background: $theme;
+        border-color: $theme;
         .icon-mc {
-            position: relative;
-            right: -5px;
+            &::before {
+                color: $white;
+            } 
         }
+     }
+     &.right {
+        left: 311px;
+        border-radius: 0 6px 6px 0;
+        width: 20px;
+        @include media-breakpoint-down(md) {
+            left: 250px;
+        }
+         .icon-mc {
+             right: 4px;
+         }
      }
 }
 .move-sidena-button{
@@ -91,4 +112,4 @@
 }
 ::ng-deep .mat-drawer-container.right-drawer.mat-drawer-container-has-open ~ .btn-menu-filter {
         display: none;
-    }  
+    } 

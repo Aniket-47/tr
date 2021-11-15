@@ -1,15 +1,16 @@
-<!-- <tr-header class="d-none d-md-block"> -->
-  <!-- <button action mat-flat-button color="accent" class="xs" routerLink="./selectrole">Sign Up</button>
-  <button action mat-flat-button color="primary" class="xs" routerLink="./login">Sign In</button> -->
-<!-- </tr-header> -->
+<!-- <tr-header class="d-none d-md-block">
+  <button action mat-flat-button color="accent" class="xs" routerLink="./selectrole">Sign Up</button>
+  <button action mat-flat-button color="primary" class="xs" routerLink="./login">Sign In</button>
+</tr-header> -->
 
 <div class="row">
-  <div class="col-md-4 left-panel d-none d-md-flex p-0">
+  <div class="col-md-5 left-panel d-none d-md-flex p-0">
     <img [src]="leftPanelImg">
     <div class="mask"></div>
   </div>
   
-  <div class="col-12 col-md-8">
+  <div class="col-12 col-md-7">
+    <div class="right-panel my-auto">     
     <div class="logo d-block">
       <svg width="150" height="50" viewBox="0 0 102 21" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M22.0402 15.5904H23.6125V7.67016H26.6527V6.19572H19V7.67016H22.0402V15.5904Z" fill="black" />
@@ -49,10 +50,12 @@
         <circle cx="11.1962" cy="6.464" r="6" transform="rotate(-60 11.1962 6.464)" fill="#032AD0" />
         <circle cx="6.19615" cy="13.7846" r="6" transform="rotate(-60 6.19615 13.7846)" fill="#FF715A" />
       </svg>
+    </div>   
+      <mc-stepper [stepNames]="stepperPages" [currentStep]="activeStepper" class="auth-step" *ngIf="showStepper$ | async"></mc-stepper>
+    <!-- <router-outlet></router-outlet> -->
+    <div>
+      <router-outlet></router-outlet>
     </div>
-    <mc-stepper [stepNames]="stepperPages" [currentStep]="activeStepper" class="auth-step" *ngIf="showStepper$ | async"></mc-stepper>
-    <div class="right-panel my-auto">     
-    <router-outlet></router-outlet>
     </div>
   </div>
 </div>

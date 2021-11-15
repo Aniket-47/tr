@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { fadeAnimation } from '../../animations';
 import { SnackBarService } from '../../utility/services/snack-bar.service';
 import { AuthService } from '../services/auth.service';
 
@@ -7,7 +8,8 @@ import { AuthService } from '../services/auth.service';
 @Component({
   selector: 'app-f-password',
   templateUrl: './f-password.component.html',
-  styleUrls: ['./f-password.component.scss']
+  styleUrls: ['./f-password.component.scss'],
+  animations: [fadeAnimation]
 })
 export class FPasswordComponent implements OnInit {
 
