@@ -107,7 +107,7 @@
             <mat-label>Password</mat-label>
             <input matInput [type]="hidepassword ? 'password' : 'text'" formControlName="password">
             <button mat-icon-button matSuffix (click)="hidepassword = !hidepassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidepassword" class="btn-show-hide">
-              <span ngClass="{{hidepassword ? 'icon-mc mc-eye-off' : 'icon-mc mc-eye'}}"></span>
+              <span class="icon-mc" [ngClass]="{'mc-eye-off' : hidepassword, 'mc-eye': !hidepassword}"></span>
             </button>
             <mat-error *ngIf="password.touched && !password.valid">
               <span *ngIf="password.errors?.required">
@@ -127,7 +127,7 @@
             <mat-label>Confirm Password</mat-label>
             <input matInput [type]="hidecnfpass ? 'password' : 'text'" formControlName="cnfPass">
             <button mat-icon-button matSuffix (click)="hidecnfpass = !hidecnfpass" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidecnfpass" class="btn-show-hide">
-              <span ngClass="{{hidecnfpass ? 'icon-mc mc-eye-off' : 'icon-mc mc-eye'}}"></span>
+              <span class="icon-mc" [ngClass]="{'mc-eye-off' : hidecnfpass, 'mc-eye': !hidecnfpass}"></span>
             </button>
             <mat-error *ngIf="cnfPass.touched">
               <span *ngIf="cnfPass.errors?.required">
