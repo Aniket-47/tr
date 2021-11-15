@@ -2,15 +2,14 @@
   <!-- <mc-stepper [stepNames]="stepperPages" [currentStep]="currentStep" class="mx-auto"></mc-stepper> -->
     <div>
       <h2 class="text-dark">Your Personal Details</h2>
-      <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ante commodo at pellentesque
-        viverra eu gravida gravida.</p>
+      <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ante commodo at pellentesque viverra eu gravida gravida.</p>
     </div>
     <form autocomplete="off" [formGroup]="registerForm" >
       <div class="row row-cols-1 row-cols-lg-2">
         <div class="col-md-6">
           <mat-form-field appearance="outline">
             <mat-label>First Name</mat-label>
-            <input matInput placeholder="xyz" formControlName="firstName">
+            <input matInput placeholder="First Name" formControlName="firstName">
             <mat-error *ngIf="firstName.touched && !firstName.valid">
               <span *ngIf="firstName.errors?.required">
                 First Name is required
@@ -27,7 +26,7 @@
         <div class="col-md-6">
           <mat-form-field appearance="outline">
             <mat-label>Middle Name</mat-label>
-            <input matInput placeholder="xyz" formControlName="middleName">
+            <input matInput placeholder="Middle Name" formControlName="middleName">
             <mat-error *ngIf="middleName.touched && !middleName.valid">
               <!-- <span *ngIf="middleName.errors?.required">
                 Middle Name is required
@@ -44,7 +43,7 @@
         <div class="col-md-6">
           <mat-form-field appearance="outline">
             <mat-label>Last Name</mat-label>
-            <input matInput placeholder="xyz" formControlName="lastName">
+            <input matInput placeholder="Last Name" formControlName="lastName">
             <mat-error *ngIf="lastName.touched && !lastName.valid">
               <span *ngIf="lastName.errors?.required">
                 Last Name is required
@@ -75,7 +74,7 @@
         <div class="col-md-6 pr-4">
           <mat-form-field appearance="outline">
             <mat-label>Company Name</mat-label>
-            <input matInput placeholder="xyz" formControlName="company">
+            <input matInput placeholder="Company Name" formControlName="company">
             <mat-error *ngIf="company.touched && !company.valid">
               <span *ngIf="company.errors?.required">
                 Company Name is required
@@ -106,7 +105,7 @@
         <div class="col-md-6">
           <mat-form-field appearance="outline">
             <mat-label>Password</mat-label>
-            <input placeholder="xyz" matInput [type]="hidepassword ? 'password' : 'text'" formControlName="password">
+            <input matInput [type]="hidepassword ? 'password' : 'text'" formControlName="password">
             <button mat-icon-button matSuffix (click)="hidepassword = !hidepassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidepassword" class="btn-show-hide">
               <span class="icon-mc" [ngClass]="{'mc-eye-off' : hidepassword, 'mc-eye': !hidepassword}"></span>
             </button>
@@ -126,7 +125,7 @@
         <div class="col-md-6">
           <mat-form-field appearance="outline" class="w-100 brd">
             <mat-label>Confirm Password</mat-label>
-            <input placeholder="xyz" matInput [type]="hidecnfpass ? 'password' : 'text'" formControlName="cnfPass">
+            <input matInput [type]="hidecnfpass ? 'password' : 'text'" formControlName="cnfPass">
             <button mat-icon-button matSuffix (click)="hidecnfpass = !hidecnfpass" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidecnfpass" class="btn-show-hide">
               <span class="icon-mc" [ngClass]="{'mc-eye-off' : hidecnfpass, 'mc-eye': !hidecnfpass}"></span>
             </button>

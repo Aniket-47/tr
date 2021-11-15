@@ -9,6 +9,7 @@ import {
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { RouterConfigService } from '@tr/src/app/utility/services/routeGuards/router-config.service';
 import { fadeAnimation } from '../../animations';
 import { ValidationConstants } from '../../utility/configs/app.constants';
 import { SnackBarService } from '../../utility/services/snack-bar.service';
@@ -35,6 +36,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   hidepassword = true;
   hidecnfpass = true;
   isLoading = false;
+  config: any;
 
   // Form
   registerForm: FormGroup = this.fb.group({
@@ -76,11 +78,13 @@ export class RegisterComponent implements OnInit, OnDestroy {
   constructor(
     private fb: FormBuilder,
     private router: Router,
+    private configServ: RouterConfigService,
     private authService: AuthService,
     private route: ActivatedRoute,
     private snackbarServie: SnackBarService,
     private store: Store<Iauth>) {
     this.store.dispatch(setStepperShow({ data: true }));
+    this.config = configServ.routerconfig;
   }
 
   ngOnInit(): void {
@@ -155,6 +159,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
   goToPrev() {
     this.store.dispatch(setStepper({ data: 0 }));
     this.store.dispatch(setUserRole({ data: 0 }));
-    this.router.navigateByUrl('auth/selectrole');
+    this.router.navigateByUrl(this.config.REGISTER1);
   }
 }
