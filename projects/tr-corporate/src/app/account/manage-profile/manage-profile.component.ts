@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { fadeAnimation } from '../../animations';
 import { userRoles } from '../../utility/configs/app.constants';
 import { SnackBarService } from '../../utility/services/snack-bar.service';
+import { setUserMobile, setUserName } from '../../utility/store/actions/user.action';
 import { State } from '../../utility/store/reducers';
 import { getUserDeatils } from '../../utility/store/selectors/user.selector';
 import { AccountService } from '../shared/account.service';
@@ -93,7 +94,12 @@ export class ManageProfileComponent implements OnInit {
     this.accoutService.updateUser(payload).subscribe((res: any) => {
       if (res?.error) {
         this.snackbarServ.open(res?.message, "Ok");
-      } else this.snackbarServ.open('Successfully updated', "Ok");
+      } else {
+        // update store
+        this.store.dispatch(setUserMobile({ data: value.mobilenumber }));
+        this.store.dispatch(setUserName({ data: { firstName: value.firstName, middleName: value.middleName, lastName: value.lastname } }));
+        this.snackbarServ.open('Successfully updated', "Ok");
+      }
       this.isLoading = false;
     }, (err) => this.isLoading = false)
   }
