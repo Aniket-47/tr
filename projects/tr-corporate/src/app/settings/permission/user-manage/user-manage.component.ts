@@ -1,5 +1,6 @@
 import { MatSort } from '@angular/material/sort';
 import { Store } from '@ngrx/store';
+import { MatDrawer } from '@angular/material/sidenav';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 // ngrx
@@ -57,11 +58,13 @@ export class UserManageComponent implements OnInit {
   currentUserEdit!: boolean;
 
   viewUserPermission = false;
+  showUserActionMenu = true;
 
   accountID!: string;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort!: MatSort;
+  @ViewChild(MatDrawer, { static: false }) drawer!: MatDrawer;
 
   @ViewChild('modalRefElement', { static: false }) modalRefElement!: ElementRef;
 
@@ -86,6 +89,10 @@ export class UserManageComponent implements OnInit {
     this.store.select(getRoles).subscribe(roles => {
       this.role = roles;
     });
+  }
+
+  preventDefault(e: Event) {
+    e.preventDefault();
   }
 
   openBottomSheet(): void {
@@ -210,5 +217,14 @@ export class UserManageComponent implements OnInit {
     })
   }
 
+  openTblItem(userData: any) {
+    this.currentUser = userData;
+    this.currentUserEdit = false;
+    this.viewUserPermission = false;
+    if (this.showUserActionMenu) this.drawer.toggle();
+    setTimeout(() => {
+      this.showUserActionMenu = true;
+    }, 100)
+  }
 
 }
