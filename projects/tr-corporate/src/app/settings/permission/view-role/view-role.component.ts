@@ -17,6 +17,7 @@ import { UserRoleService } from '../services/user-role.service';
 import { getDefaultAccountId } from '../../../utility/store/selectors/account.selector';
 import { fadeAnimation } from '../../../animations';
 import { MatDrawer } from '@angular/material/sidenav';
+import { SnackBarService } from '../../../utility/services/snack-bar.service';
 
 // table data
 
@@ -89,6 +90,7 @@ export class ViewRoleComponent implements AfterViewInit, OnInit {
   constructor(
     private dialog: MatDialog,
     private userRoleService: UserRoleService,
+    private snackbarServ: SnackBarService,
     private router: Router,
     private store: Store<State>) { }
 
@@ -172,7 +174,18 @@ export class ViewRoleComponent implements AfterViewInit, OnInit {
   }
 
   deleteRole(role: Irole) {
-    console.log(role)
+    if (role.isdefaultrole) {
+      this.snackbarServ.open("Default role can't be deleted.", "Ok");
+      return;
+    }
+
+    if (!role.isdefaultrole && role)
+      this.userRoleService.deleteRole(+role.accountroleid).subscribe((res: any) => {
+        if (!res.error) {
+          this.snackbarServ.open('Successfully deleted', "Ok");
+          this.loadUserRoles(this.accountid);
+        } else this.snackbarServ.open(res?.message);
+      });
   }
 
 }
