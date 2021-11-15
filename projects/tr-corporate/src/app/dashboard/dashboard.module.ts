@@ -10,7 +10,12 @@ import { TrFeatureModule } from '@tr/src/app/tr-feature/tr-feature.module';
 import { LstorageService } from '@tr/src/app/utility/services/lstorage.service';
 import { LSkeys } from '../utility/configs/app.constants';
 
-
+// Perfect Scrollbar
+import { PerfectScrollbarModule, PerfectScrollbarConfigInterface,
+  PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
+  const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+    wheelPropagation: true
+  };
 
 @NgModule({
   declarations: [
@@ -26,7 +31,14 @@ import { LSkeys } from '../utility/configs/app.constants';
     CardModule,
     TrFeatureModule,
     // McCardModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
+    PerfectScrollbarModule
+  ],
+  providers: [
+    {
+      provide: PERFECT_SCROLLBAR_CONFIG,
+      useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
+    }
   ]
 })
 export class DashboardModule {
