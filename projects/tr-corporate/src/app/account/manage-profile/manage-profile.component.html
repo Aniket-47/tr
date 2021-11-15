@@ -39,7 +39,7 @@
     <div>
       <mat-form-field appearance="standard">
         <mat-label>Mobile No</mat-label>
-        <input matInput type="email" placeholder="Mobile no" formControlName="mobilenumber">
+        <input matInput type="email" placeholder="Mobile No" formControlName="mobilenumber">
         <mat-error *ngIf="mobilenumber.invalid && mobilenumber.touched">
           <span *ngIf="mobilenumber.errors?.required">This field is required.</span>
           <span *ngIf="!mobilenumber.errors?.required && mobilenumber.errors?.minlength">Minimum 10 digits</span>

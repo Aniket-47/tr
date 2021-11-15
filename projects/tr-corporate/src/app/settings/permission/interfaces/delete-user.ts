@@ -1,5 +1,5 @@
 export interface DeleteUser_request {
-  userID: string
+  email: string
 }
 
 export interface DeleteUser_response {

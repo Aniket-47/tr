@@ -34,4 +34,9 @@ export class UserRoleService {
         return this.http.put(secure_api_routes.PERMISSIONS_UPDTAE, payload, { headers: { 'accountID': accountID } });
     }
 
+    deleteRole(roletypeid: number) {
+        const url = `${secure_api_routes.DELETE_ROLE}?accountroleid=${roletypeid}`;
+        return this.http.patch(url, {});
+    }
+
 }

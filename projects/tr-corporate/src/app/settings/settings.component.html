@@ -7,11 +7,14 @@
   </div>
 </mat-drawer-container>
 <button
-  *ngIf="currentUrlPath != '/dashboard/settings'"
+  *ngIf="currentUrlPath !== routerConfig.SETTINGS_DASHBOARD"
   type="button"
   mat-icon-button
   (click)="drawer.toggle()"
   class="togglebtn"
+  [ngClass]="
+      drawer.opened ? 'right' : 'left'
+    "
 >
   <span
     class="icon-mc"

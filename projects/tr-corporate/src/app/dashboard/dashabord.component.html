@@ -46,15 +46,14 @@
               </mat-panel-title>
             </mat-expansion-panel-header>
             <div class="user-dropdown-submenu-item" *ngFor="let account of accountList">
-              <a routerLink="" routerLinkActive=""><span class="icon-mc mc-folder"></span>
+              <a><span class="icon-mc mc-folder"></span>
                 <span>{{ account.name }}</span></a>
             </div>
           </mat-expansion-panel>
         </mat-accordion>
 
       </div>
-      <button mat-menu-item [routerLink]="MANAGE_PROFILE_ROUTE"><i class="icon-mc mc-person"></i> <span>Manage
-          Profile</span></button>
+      <button mat-menu-item [routerLink]="routerConfig.ACCOUNT_MANAGE_PROFILE"><i class="icon-mc mc-person"></i> <span>Manage Profile</span></button>
       <!-- <button mat-menu-item><i class="icon-mc mc-switch_account"></i> <span>Accounts</span></button> -->
       <button mat-menu-item (click)="logout()">
         <i class="icon-mc mc-power_settings_new"></i> 
@@ -82,14 +81,13 @@
       </a>
     </div>
     <div top class="border-bottom side-nav-hvr">
-      <a routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" matTooltip="Home"
-        matTooltipPosition='right'><span class="icon-mc mc-home"></span></a>
+      <a [routerLink]="routerConfig.DASHBOARD" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" matTooltip="Home" matTooltipPosition='right'><span class="icon-mc mc-home"></span></a>
       <a matTooltip="Jobs" matTooltipPosition='right'><span class="icon-mcf mcf-work_outline"></span></a>
       <a matTooltip="Candidates" matTooltipPosition='right'><span class="icon-mc mc-group"></span></a>
     </div>
     <div top class="side-nav-hvr">
       <a matTooltip="Analytics" matTooltipPosition='right'><span class="icon-mc mc-pie_chart_outlined"></span></a>
-      <a routerLink="/dashboard/settings" routerLinkActive="active" matTooltip="Settings"
+      <a [routerLink]="routerConfig.SETTINGS_DASHBOARD" routerLinkActive="active" matTooltip="Settings"
         matTooltipPosition='right'><span class="icon-mc mc-sliders"></span></a>
     </div>
   </mc-side-navbar>

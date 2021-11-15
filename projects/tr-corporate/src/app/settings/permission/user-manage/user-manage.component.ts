@@ -1,5 +1,6 @@
 import { MatSort } from '@angular/material/sort';
 import { Store } from '@ngrx/store';
+import { MatDrawer } from '@angular/material/sidenav';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 // ngrx
@@ -46,7 +47,7 @@ export class UserManageComponent implements OnInit {
 
   selectedStatus!: number;
   selectedRole!: number;
-  displayedColumns: string[] = ['check', 'name', 'email', 'role', 'status', 'lastupdated', 'action'];
+  displayedColumns: string[] = ['check', 'name', 'email', 'roletypeid', 'status', 'lastupdated', 'action'];
   dataSource!: MatTableDataSource<any>;
   selection = new SelectionModel<any>(true, []);
   addUserModalRef!: MatDialogRef<AddUserComponent>;
@@ -56,10 +57,14 @@ export class UserManageComponent implements OnInit {
   currentUser!: any;
   currentUserEdit!: boolean;
 
+  viewUserPermission = false;
+  showUserActionMenu = true;
+
   accountID!: string;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort!: MatSort;
+  @ViewChild(MatDrawer, { static: false }) drawer!: MatDrawer;
 
   @ViewChild('modalRefElement', { static: false }) modalRefElement!: ElementRef;
 
@@ -86,8 +91,16 @@ export class UserManageComponent implements OnInit {
     });
   }
 
+  preventDefault(e: Event) {
+    e.preventDefault();
+  }
+
   openBottomSheet(): void {
-    this._bottomSheet.open(MFilterComponent);
+    this._bottomSheet.open(MFilterComponent).afterDismissed()
+      .subscribe(result => {
+        console.log(result);
+
+      })
   }
   ngAfterViewInit(): void {
     this.store.select(getDefaultAccountId).subscribe((accountid: any) => {
@@ -162,10 +175,10 @@ export class UserManageComponent implements OnInit {
   }
 
 
-  deactivateUser(userID: string) {
+  deactivateUser(email: string) {
     // console.log(userID);
 
-    this.userServ.deactivateUser({ 'userID': userID }).subscribe(res => {
+    this.userServ.updateUserStatus({ 'email': email, 'status': 0 }).subscribe(res => {
       if (res.error) {
         // error from api
         this.snackBar.open(res.message);
@@ -176,8 +189,10 @@ export class UserManageComponent implements OnInit {
       }
     })
   }
-  deleteUser(userID: string) {
-    this.userServ.deleteUser({ 'userID': userID }).subscribe(res => {
+  activateUser(email: string) {
+    // console.log(userID);
+
+    this.userServ.updateUserStatus({ 'email': email, 'status': 1 }).subscribe(res => {
       if (res.error) {
         // error from api
         this.snackBar.open(res.message);
@@ -189,5 +204,27 @@ export class UserManageComponent implements OnInit {
     })
   }
 
+  deleteUser(email: string) {
+    this.userServ.deleteUser({ 'email': email }).subscribe(res => {
+      if (res.error) {
+        // error from api
+        this.snackBar.open(res.message);
+      }
+      else {
+        // success from api
+        this.snackBar.open(res.message);
+      }
+    })
+  }
+
+  openTblItem(userData: any) {
+    this.currentUser = userData;
+    this.currentUserEdit = false;
+    this.viewUserPermission = false;
+    if (this.showUserActionMenu) this.drawer.toggle();
+    setTimeout(() => {
+      this.showUserActionMenu = true;
+    }, 100)
+  }
 
 }
