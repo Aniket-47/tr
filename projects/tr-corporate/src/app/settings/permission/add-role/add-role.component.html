@@ -5,7 +5,7 @@
       <h2 *ngIf="!isRoleView">Create New Role</h2>
       <h2 *ngIf="isRoleView">{{selectedRoleInfo?.rolename | titlecase}}</h2>
     </div>
-    <div page-action class="page-action cloud-only" *ngIf="!isRoleView">
+    <div page-action class="page-action" *ngIf="!isRoleView">
       <mat-form-field appearance="outline">
         <mat-label>Role Type</mat-label>
         <mat-select placeholder="Select any default role" formControlName="roleType">
