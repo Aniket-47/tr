@@ -1,23 +1,28 @@
 <div class="bottom-filter" [@fadeInOut]>
   <div class="heading">
-    <h2 class="text-dark d-flex"><a href="#" class="icon-mc mc-back-arrow align-self-center fnt-sz"></a> <span
-        class="align-self-center">Filters</span></h2>
-    <span><button class="btn-lg ms-3" mat-flat-button color="primary" (click)="onfilter()">Apply</button></span>
+    <h2 class="text-dark d-flex" (click)="dismiss()">
+      <a class="icon-mc mc-back-arrow align-self-center fnt-sz"></a>
+      <span class="align-self-center">Filters</span>
+    </h2>
+    <span>
+      <button class="btn-lg ms-3 border" mat-flat-button (click)="onReset()">Reset</button>
+      <button class="btn-lg ms-3" mat-flat-button color="primary" (click)="onfilter()">Apply</button>
+    </span>
   </div>
 
   <div class="filter-container">
     <div>
       <h6>Sort By</h6>
       <mat-selection-list #shoes [multiple]="false" class="lists mt-2" [(ngModel)]="selectedSort">
-        <mat-list-option *ngFor="let element of sortTypes" [value]="element" class="brd">
-          {{element}}
+        <mat-list-option *ngFor="let element of sortTypes" [value]="element.value" class="brd">
+          {{element.viewValue}}
         </mat-list-option>
       </mat-selection-list>
     </div>
 
     <div class="mt-3">
       <h6>By Status</h6>
-      <mat-selection-list #shoes [multiple]="false" class="lists mt-2" [(ngModel)]="selectedRole">
+      <mat-selection-list #shoes [multiple]="false" class="lists mt-2" [(ngModel)]="selectedStatus">
         <mat-list-option *ngFor="let element of status" [value]="element.value" class="brd">
           {{element.viewValue}}
         </mat-list-option>
@@ -26,7 +31,7 @@
 
     <div class="mt-3">
       <h6>By Role</h6>
-      <mat-selection-list #shoes [multiple]="false" class="lists mt-2" [(ngModel)]="selectedStatus">
+      <mat-selection-list #shoes [multiple]="false" class="lists mt-2" [(ngModel)]="selectedRole">
         <mat-list-option *ngFor="let element of role" [value]="element.roletypeid" class="brd">
           {{element.name}}
         </mat-list-option>

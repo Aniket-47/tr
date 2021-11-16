@@ -18,7 +18,7 @@
                 <mat-form-field appearance="standard">
                     <mat-label>New Password</mat-label>
                     <input matInput [type]="hideNewPass ? 'password' : 'text'" formControlName='password'>
-                    <button mat-icon-button matSuffix (click)="hideNewPass = !hideNewPass" 
+                    <button type="button" mat-icon-button matSuffix (click)="hideNewPass = !hideNewPass" 
                         [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideNewPass" class="btn-show-hide">
                         <span class="icon-mc" [ngClass]="{'mc-eye-off' : hideNewPass, 'mc-eye': !hideNewPass}"></span>
                     </button>
@@ -42,7 +42,7 @@
                 <mat-form-field appearance="standard">
                     <mat-label>Confirm Password</mat-label>
                     <input matInput placeholder="" [type]="hideCnfPass ? 'password' : 'text'" formControlName='cnfPass'>
-                    <button mat-icon-button matSuffix (click)="hideCnfPass = !hideCnfPass" 
+                    <button type="button" mat-icon-button matSuffix (click)="hideCnfPass = !hideCnfPass" 
                         [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideCnfPass" class="btn-show-hide">
                         <span class="icon-mc" [ngClass]="{'mc-eye-off' : hideCnfPass, 'mc-eye': !hideCnfPass}"></span>
                     </button>
@@ -57,7 +57,7 @@
                 </mat-form-field>
             </div>
             <div class="profile-action">
-                <button mat-stroked-button (click)="resetHandler()">Reset</button>
+                <button type="reset" mat-stroked-button (click)="resetHandler()">Reset</button>
                 <button mat-flat-button color="primary" (click)="savePassword()" [disabled] ='isLoading'>
                     <span>Save Changes</span>
                     <mat-spinner *ngIf='isLoading' diameter='20' class="btn-loader"></mat-spinner>

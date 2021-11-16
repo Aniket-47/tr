@@ -45,6 +45,7 @@ export const secure_api_routes = {
   SHORT_NAME: `${account}/validateshortname`,
   ADD_ROLE: `${account}/role`,
   DELETE_ROLE: `${account}/role`,
+  UPDATE_ROLE: `${account}/role`,
 
   // User Management
   GET_USER: `${user}/getuser`,

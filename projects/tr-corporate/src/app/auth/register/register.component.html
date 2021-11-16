@@ -106,7 +106,7 @@
           <mat-form-field appearance="outline">
             <mat-label>Password</mat-label>
             <input matInput [type]="hidepassword ? 'password' : 'text'" formControlName="password">
-            <button mat-icon-button matSuffix (click)="hidepassword = !hidepassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidepassword" class="btn-show-hide">
+            <button type="button" mat-icon-button matSuffix (click)="hidepassword = !hidepassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidepassword" class="btn-show-hide">
               <span class="icon-mc" [ngClass]="{'mc-eye-off' : hidepassword, 'mc-eye': !hidepassword}"></span>
             </button>
             <mat-error *ngIf="password.touched && !password.valid">
@@ -126,7 +126,7 @@
           <mat-form-field appearance="outline" class="w-100 brd">
             <mat-label>Confirm Password</mat-label>
             <input matInput [type]="hidecnfpass ? 'password' : 'text'" formControlName="cnfPass">
-            <button mat-icon-button matSuffix (click)="hidecnfpass = !hidecnfpass" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidecnfpass" class="btn-show-hide">
+            <button type="button" mat-icon-button matSuffix (click)="hidecnfpass = !hidecnfpass" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidecnfpass" class="btn-show-hide">
               <span class="icon-mc" [ngClass]="{'mc-eye-off' : hidecnfpass, 'mc-eye': !hidecnfpass}"></span>
             </button>
             <mat-error *ngIf="cnfPass.touched">
@@ -144,7 +144,7 @@
         </div>
       </div>
       <div class="d-flex justify-content-between register-action">
-        <span class="align-self-center mb-3">Already have an account ? <a routerLink="./auth/login"> Sign In</a></span>
+        <span class="align-self-center mb-3">Already have an account ? <a [routerLink]="routerConfig.LOGIN"> Sign In</a></span>
        <div class="d-flex justify-content-between">
           <button mat-stroked-button class="m-20" (click)="goToPrev()">Previous</button>
           <button mat-flat-button color="primary" (click)="registerHandler()" [disabled]="isLoading" class="secondary-bg">

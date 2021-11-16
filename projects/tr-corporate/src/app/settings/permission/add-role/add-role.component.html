@@ -1,11 +1,12 @@
 <ng-container [formGroup]="roleForm" [@fadeInOut]>
   <tr-page-header>
     <div page-title>
-      <h5 class="mobile-only">Permissions</h5>
-      <h2 *ngIf="!isRoleView">Create New Role</h2>
+      <!-- <h5 class="mobile-only">Permissions</h5> -->
+      <h2 *ngIf="!isRoleView && !isEdit">Create New Role</h2>
+      <h2 *ngIf="isEdit">Update Role</h2>
       <h2 *ngIf="isRoleView">{{selectedRoleInfo?.rolename | titlecase}}</h2>
     </div>
-    <div page-action class="page-action cloud-only" *ngIf="!isRoleView">
+    <div page-action class="page-action" *ngIf="!isRoleView">
       <mat-form-field appearance="outline">
         <mat-label>Role Type</mat-label>
         <mat-select placeholder="Select any default role" formControlName="roleType">
@@ -25,7 +26,7 @@
         </mat-error>
       </mat-form-field>
       <button mat-flat-button color="primary" (click)="submitHandler()" [disabled]="isLoading">
-        <span>Submit</span>
+        <span>{{isEdit ? 'Update' : 'Submit'}}</span>
         <mat-spinner *ngIf="isLoading" diameter="20" class="btn-loader"></mat-spinner>
       </button>
     </div>
@@ -35,7 +36,7 @@
     <ng-container formArrayName="rights">
       <mat-accordion *ngIf="rightsArray.controls.length">
         <ng-container *ngFor="let eachRight of rightsArray.controls; let i = index" [formGroupName]="i">
-          <mat-expansion-panel [expanded]="true" hideToggle>
+          <mat-expansion-panel hideToggle>
             <mat-expansion-panel-header>
               <mat-panel-title>
 
@@ -49,8 +50,7 @@
               </mat-panel-title>
               <mat-panel-description>
 
-                <mat-slide-toggle color="green" formControlName="isOn" (click)="toggleAllLvl(i)"
-                  [ngClass]="{'not-allowed': isRoleView}"></mat-slide-toggle>
+                <mat-slide-toggle color="green" formControlName="isOn" (click)="toggleAllLvl(i)"></mat-slide-toggle>
               </mat-panel-description>
             </mat-expansion-panel-header>
 
@@ -60,7 +60,7 @@
                   <mat-expansion-panel>
                     <mat-expansion-panel-header>
                       <mat-panel-title>
-                        {{eachLvl2.get('name')?.value || 'test' | titlecase}}
+                        {{eachLvl2.get('name')?.value | titlecase}}
                       </mat-panel-title>
                       <mat-panel-description>
                         <mat-slide-toggle color="green" formControlName="isOn"
@@ -72,7 +72,7 @@
                       <ng-container formArrayName="level3">
                         <div class="role-list bg-light"
                           *ngFor="let eachLvl3 of getLvl3Array(i, l2)?.controls; let l3 = index" [formGroupName]="l3">
-                          <div class="role-title">{{eachLvl3.get('name')?.value || 'test' | titlecase}}</div>
+                          <div class="role-title">{{eachLvl3.get('name')?.value | titlecase}}</div>
                           <div class="header-action">
                             <mat-slide-toggle color="green" formControlName="isOn"></mat-slide-toggle>
                           </div>
