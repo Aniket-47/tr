@@ -144,7 +144,7 @@
         </div>
       </div>
       <div class="d-flex justify-content-between register-action">
-        <span class="align-self-center mb-3">Already have an account ? <a routerLink="./auth/login"> Sign In</a></span>
+        <span class="align-self-center mb-3">Already have an account ? <a [routerLink]="routerConfig.LOGIN"> Sign In</a></span>
        <div class="d-flex justify-content-between">
           <button mat-stroked-button class="m-20" (click)="goToPrev()">Previous</button>
           <button mat-flat-button color="primary" (click)="registerHandler()" [disabled]="isLoading" class="secondary-bg">
