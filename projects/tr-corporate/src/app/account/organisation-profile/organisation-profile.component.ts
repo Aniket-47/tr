@@ -24,6 +24,8 @@ export class OrganisationProfileComponent implements OnInit, OnChanges {
   resMessage: string = "";
   currentShortName!: string;
 
+  shortnameValidation!: string;
+
   // List
   countries: { name: string, iso2: string }[] = [];
   states: { name: string, stateCode: string }[] = [];
@@ -36,8 +38,8 @@ export class OrganisationProfileComponent implements OnInit, OnChanges {
     private fb: FormBuilder,
     private accoutService: AccountService,
     private snackbarServ: SnackBarService,
-    private store: Store<State>,
-    private cd: ChangeDetectorRef) {
+    private store: Store<State>) {
+    this.initForm();
     this.store.select(getDefaultAccountId).subscribe(accountid => {
       this.accountId = accountid;
       if (this.accountId) {
@@ -47,20 +49,13 @@ export class OrganisationProfileComponent implements OnInit, OnChanges {
     });
   }
 
-  shortnameValidation!: string;
-
   ngOnInit(): void {
-    this.initForm();
-    this.loadAccountDeatails();
-    // this.getStates(this.countryid.value);
-    // this.getCities(this.stateid.value);
     this.countryid.valueChanges.subscribe(c => {
-      if (c) this.getStates(c)
-      this.stateid.setValue(null);
+      console.log(c)
+      if (c) this.getStates(c);
     });
     this.stateid.valueChanges.subscribe(s => {
-      if (s) this.getCities(s)
-      this.cityid.setValue(null);
+      if (s) this.getCities(s);
     });
 
     this.shortNameValidation
@@ -70,7 +65,9 @@ export class OrganisationProfileComponent implements OnInit, OnChanges {
       .subscribe(val => {
         this.checkShortNameAvailability(val)
         // this.shortname.setErrors({ 'customError': true });
-      })
+      });
+
+    this.loadAccountDeatails();
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -140,8 +137,7 @@ export class OrganisationProfileComponent implements OnInit, OnChanges {
           cityid: +account?.cityid,
           industryid: account?.industryid,
           accounttype: account?.accounttype
-        })
-        this.cd.markForCheck()
+        });
       }
     });
   }
@@ -149,14 +145,12 @@ export class OrganisationProfileComponent implements OnInit, OnChanges {
   getCountries() {
     this.accoutService.getCountryList().subscribe((res: any) => {
       if (res && res?.data) this.countries = res.data;
-      this.getStates(this.countryid.value);
     });
   }
 
   getStates(isoCode: string) {
     this.accoutService.getStateList(isoCode).subscribe((res: any) => {
       if (res && res?.data) this.states = res.data?.states;
-      this.getCities(this.stateid.value);
     });
   }
 
