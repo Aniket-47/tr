@@ -445,10 +445,16 @@ mat-drawer-container{
             background-color: #ffffff94;
             backdrop-filter: blur(1px);
         }
-        &.user-managemant {
+       &.drawer-lg {
           mat-drawer {
-            width: 40%;
-          }
+            width: 500px;  
+            .drawer-btn {
+              .mat-flat-button {
+                transition: all 0.5s ease;
+                  width: calc(500px - 2rem) !important;
+              }              
+          }          
+          }          
         }
     }
 
