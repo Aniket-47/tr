@@ -1,11 +1,11 @@
 import { Store } from '@ngrx/store';
-import { AddUser_request } from './../interfaces/add-user';
+import { AddUser_request } from '../shared/interfaces/add-user';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { ValidationConstants } from '../../../utility/configs/app.constants';
-import { UserService } from '../services/user.service';
+import { UserService } from '../shared/services/user.service';
 import { SnackBarService } from '../../../utility/services/snack-bar.service';
 import { fadeAnimation } from '../../../animations';
 import { MatDialogRef } from '@angular/material/dialog';

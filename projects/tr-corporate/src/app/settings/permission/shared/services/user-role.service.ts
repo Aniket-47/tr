@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { secure_api_routes } from '../../../utility/configs/apiConfig';
+import { secure_api_routes } from '../../../../utility/configs/apiConfig';
 
 @Injectable({
     providedIn: 'root'
@@ -28,6 +28,10 @@ export class UserRoleService {
 
     saveRole(payload: any, accountID: string) {
         return this.http.post(secure_api_routes.ADD_ROLE, payload, { headers: { 'accountID': accountID } });
+    }
+
+    updateRole(payload: any) {
+        return this.http.put(secure_api_routes.UPDATE_ROLE, payload);
     }
 
     updatePersmissions(payload: any, accountID: string) {

@@ -54,10 +54,11 @@
         </mat-accordion>
 
       </div>
-      <button mat-menu-item [routerLink]="routerConfig.ACCOUNT_MANAGE_PROFILE"><i class="icon-mc mc-person"></i> <span>Manage Profile</span></button>
+      <button mat-menu-item [routerLink]="routerConfig.ACCOUNT_MANAGE_PROFILE"><i class="icon-mc mc-person"></i>
+        <span>Manage Profile</span></button>
       <!-- <button mat-menu-item><i class="icon-mc mc-switch_account"></i> <span>Accounts</span></button> -->
       <button mat-menu-item (click)="logout()">
-        <i class="icon-mc mc-power_settings_new"></i> 
+        <i class="icon-mc mc-power_settings_new"></i>
         <span>Sign Out</span>
       </button>
     </mat-menu>
@@ -82,7 +83,8 @@
       </a>
     </div>
     <div top class="border-bottom side-nav-hvr">
-      <a [routerLink]="routerConfig.DASHBOARD" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" matTooltip="Home" matTooltipPosition='right'><span class="icon-mc mc-home"></span></a>
+      <a [routerLink]="routerConfig.DASHBOARD" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+        matTooltip="Home" matTooltipPosition='right'><span class="icon-mc mc-home"></span></a>
       <a matTooltip="Jobs" matTooltipPosition='right'><span class="icon-mcf mcf-work_outline"></span></a>
       <a matTooltip="Candidates" matTooltipPosition='right'><span class="icon-mc mc-group"></span></a>
     </div>
@@ -98,7 +100,7 @@
     <span class="icon-mc mc-x"></span>
   </div>
   <div class="content-wrapper">
-    <mat-progress-bar mode="indeterminate" *ngIf="isLoading$ | async"></mat-progress-bar>
+    <mat-progress-bar mode="indeterminate" *ngIf="isLoading$ | async" class="z-1000"></mat-progress-bar>
     <router-outlet></router-outlet>
   </div>
 </mat-drawer-container>

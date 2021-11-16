@@ -1,8 +1,8 @@
 import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { api_routes, secure_api_routes } from '../../../utility/configs/apiConfig';
-import { UtilityService } from '../../../utility/services/utility.service';
+import { api_routes, secure_api_routes } from '../../../../utility/configs/apiConfig';
+import { UtilityService } from '../../../../utility/services/utility.service';
 import { UserList_response } from '../interfaces/user-list';
 
 @Injectable({

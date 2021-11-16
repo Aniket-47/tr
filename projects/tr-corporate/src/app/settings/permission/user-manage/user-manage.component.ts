@@ -18,8 +18,8 @@ import { AddUserComponent } from '../add-user/add-user.component';
 
 // Services
 import { SnackBarService } from '../../../utility/services/snack-bar.service';
-import { UserListService } from '../services/user-list.service';
-import { UserService } from '../services/user.service';
+import { UserListService } from '../shared/services/user-list.service';
+import { UserService } from '../shared/services/user.service';
 import { MFilterComponent } from '../m-filter/m-filter.component';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { fadeAnimation } from '../../../animations';
@@ -28,7 +28,8 @@ import { fadeAnimation } from '../../../animations';
 import { merge, Observable, of as observableOf } from 'rxjs';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 import { getRoles } from '../../../utility/store/selectors/roles.selector';
-import { FilterService } from '../services/filter.service';
+import { FilterService } from '../shared/services/filter.service';
+import { ConfirmationComponent } from '../../../shared/components/confirmation/confirmation.component';
 
 @Component({
   selector: 'app-user-manage',
@@ -40,6 +41,7 @@ export class UserManageComponent implements OnInit {
 
   toggle = false;
   status = [
+    { value: '', viewValue: 'All' },
     { value: '0', viewValue: 'Deactive' },
     { value: '1', viewValue: 'Active' },
     { value: '2', viewValue: 'Pending' }
@@ -59,7 +61,7 @@ export class UserManageComponent implements OnInit {
   currentUserEdit!: boolean;
 
   viewUserPermission = false;
-  showUserActionMenu = true;
+  hideUserActionMenu = true;
 
   accountID!: string;
 
@@ -80,7 +82,7 @@ export class UserManageComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.select(getRoles).subscribe(roles => {
-      this.role = roles;
+      this.role = [{ roletypeid: '', name: 'All' }, ...roles];
     });
   }
 
@@ -100,12 +102,10 @@ export class UserManageComponent implements OnInit {
     this._bottomSheet.open(MFilterComponent, { data: appliedFilterData }).afterDismissed()
       .subscribe(result => {
         if (result) {
-          // this.selectedRole = this.filterServ.SelectedRole;
-          // this.selectedStatus = this.filterServ.selectedStatus;
-          // this.sort.active = this.filterServ.selectedSort;
+          console.log(result);
 
-          this.selectedRole = result.filter_roletypeid;
-          this.selectedStatus = result.filter_status;
+          this.selectedRole = result.filter_roletypeid[0] === '' ? undefined : result.filter_roletypeid;
+          this.selectedStatus = result.filter_status[0] === '' ? undefined : result.filter_status;
           this.sort.active = result.sort;
           this.loadUsers();
         }
@@ -208,33 +208,52 @@ export class UserManageComponent implements OnInit {
   }
 
   deleteUser(email: string) {
-    this.userServ.deleteUser({ 'email': email }).subscribe(res => {
-      if (res.error) {
-        // error from api
-        this.snackBar.open(res.message);
+    const dialogRef = this.dialog.open(ConfirmationComponent, { width: '500px', });
+
+    dialogRef.afterClosed().subscribe(isConfirmed => {
+      if (isConfirmed) {
+        this.userServ.deleteUser({ 'email': email }).subscribe(res => {
+          if (res.error) this.snackBar.open(res.message);
+          else this.snackBar.open(res.message);
+        });
       }
-      else {
-        // success from api
-        this.snackBar.open(res.message);
-      }
-    })
+    });
   }
 
   toggleUserActionMenu() {
-    this.showUserActionMenu = false;
+    this.hideUserActionMenu = false;
     setTimeout(() => {
-      this.showUserActionMenu = true;
+      this.hideUserActionMenu = true;
     }, 100);
   }
 
   openTblItem(userData: any) {
     this.currentUser = userData;
     this.currentUserEdit = false;
-    this.viewUserPermission = false;
-    if (this.showUserActionMenu) this.drawer.toggle();
+    if (this.hideUserActionMenu) this.drawer.toggle();
     setTimeout(() => {
-      this.showUserActionMenu = true;
+      this.hideUserActionMenu = true;
     }, 100)
   }
 
+  viewPermission(element: any) {
+    this.toggleUserActionMenu();
+    this.viewUserPermission = true;
+    this.currentUser = element;
+    this.drawer.open();
+  }
+
+  viewDetails(element: any) {
+    this.currentUser = element;
+    this.currentUserEdit = false;
+    this.viewUserPermission = false;
+    this.drawer.open();
+  }
+
+  editUser(element: any) {
+    this.currentUser = element;
+    this.currentUserEdit = true;
+    this.viewUserPermission = false;
+    this.drawer.open();
+  }
 }

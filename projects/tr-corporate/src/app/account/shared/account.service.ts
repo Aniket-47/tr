@@ -1,5 +1,5 @@
-import { ChangePassword_response } from '../interfaces/changed-password';
-import { ShortName_response } from './../interfaces/short-name';
+import { ChangePassword_response } from './interfaces/changed-password';
+import { ShortName_response } from './interfaces/short-name';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -56,7 +56,7 @@ export class AccountService {
   }
 
   changePassword(payload: any) {
-    const url = `${secure_api_routes.CHANGE_PASSWORD}`; 
+    const url = `${secure_api_routes.CHANGE_PASSWORD}`;
     return this.http.post<ChangePassword_response>(url, payload)
   }
 }

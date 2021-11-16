@@ -5,7 +5,7 @@ import { fadeAnimation } from '../../../animations';
 import { State } from '../../../utility/store/reducers';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA } from '@angular/material/bottom-sheet';
-import { FilterService } from '../services/filter.service';
+import { FilterService } from '../shared/services/filter.service';
 
 @Component({
   selector: 'app-m-filter',
@@ -20,6 +20,7 @@ export class MFilterComponent implements OnInit {
     { value: 'roletypeid', viewValue: 'Sort by Role' }
   ];
   status = [
+    { value: '', viewValue: 'All' },
     { value: '0', viewValue: 'Deactive' },
     { value: '1', viewValue: 'Active' },
     { value: '2', viewValue: 'Pending' }
@@ -40,7 +41,7 @@ export class MFilterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.store.select(getRoles).subscribe(roles => this.role = roles);
+    this.store.select(getRoles).subscribe(roles => this.role = [{ roletypeid: '', name: 'All' }, ...roles]);
 
     if (this.data) {
       if (this.data.sort) this.selectedSort = this.data.sort;
