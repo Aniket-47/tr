@@ -6,25 +6,29 @@
       <h2 *ngIf="isEdit">Update Role</h2>
       <h2 *ngIf="isRoleView">{{selectedRoleInfo?.rolename | titlecase}}</h2>
     </div>
-    <div page-action class="page-action" *ngIf="!isRoleView">
-      <mat-form-field appearance="outline">
-        <mat-label>Role Type</mat-label>
-        <mat-select placeholder="Select any default role" formControlName="roleType">
-          <mat-option *ngFor="let role of defaultRoles" [value]="role?.roletypeid">
-            {{role?.name}}
-          </mat-option>
-        </mat-select>
-        <mat-error *ngIf="roleType.invalid && roleType?.errors">
-          <span *ngIf="roleType?.errors?.required">This field is required.</span>
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field appearance="outline">
+    <div page-action class="w-100 drawer-btn" *ngIf="!isRoleView">
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Role Type</mat-label>
+          <mat-select placeholder="Select any default role" formControlName="roleType">
+            <mat-option *ngFor="let role of defaultRoles" [value]="role?.roletypeid">
+              {{role?.name}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="roleType.invalid && roleType?.errors">
+            <span *ngIf="roleType?.errors?.required">This field is required.</span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+      <mat-form-field appearance="outline" >
         <mat-label>New Role Name</mat-label>
         <input matInput placeholder="Placeholder" formControlName="roleName">
         <mat-error *ngIf="roleName.invalid && roleName?.errors">
           <span *ngIf="roleName?.errors?.required">This field is required.</span>
         </mat-error>
       </mat-form-field>
+    </div>
       <button mat-flat-button color="primary" (click)="submitHandler()" [disabled]="isLoading">
         <span>{{isEdit ? 'Update' : 'Submit'}}</span>
         <mat-spinner *ngIf="isLoading" diameter="20" class="btn-loader"></mat-spinner>
@@ -61,6 +65,7 @@
                     <mat-expansion-panel-header>
                       <mat-panel-title>
                         {{eachLvl2.get('name')?.value | titlecase}}
+                        <span class="icon-mc mc-keyboard_arrow_down"></span>
                       </mat-panel-title>
                       <mat-panel-description>
                         <mat-slide-toggle color="green" formControlName="isOn"

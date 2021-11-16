@@ -1,5 +1,7 @@
 @import "~@mucrest/ng-design/assets/styles/0-plugins/plugins-dir";
-
+* {
+  font-family: 'Manrope', sans-serif !important;
+}
 header {
     position: sticky;
     top: 0;
@@ -15,7 +17,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  @include padding(1rem 0 1.8rem);
+  @include padding(1rem 0 1.1rem);
   @include media-breakpoint-down(md) {
     @include padding(1rem 0 1.3rem 1rem);
   }
@@ -47,6 +49,14 @@ header {
   @include margin-bottom(0.5rem);
   .table-action {
     margin-left: auto;
+  }
+}
+.account-role {
+  .role {
+    @include media-breakpoint-down(md) {
+      text-align: left;
+      padding: 0.5rem 0; 
+    }
   }
 }
 .role {
@@ -215,8 +225,8 @@ header {
   }
   .left-menu {
     padding-right: 3rem;
-    border-right: 1px solid rgba(0, 0, 0, 0.1);
-    height: 100%;
+    position: sticky;
+    top: 4.8rem;
     @include media-breakpoint-down(md) {
       border: 0;
     }
@@ -294,6 +304,9 @@ header {
         }
       }
     }
+  }
+  .col-md-7 {
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
   }
   .organisation-info,
   .account-security {
@@ -432,12 +445,25 @@ mat-drawer-container{
             background-color: #ffffff94;
             backdrop-filter: blur(1px);
         }
-
+       &.drawer-lg {
+          mat-drawer {
+            width: 500px;  
+            .drawer-btn {
+              .mat-flat-button {
+                transition: all 0.5s ease;
+                  width: calc(500px - 2rem) !important;
+              }              
+          }          
+          }          
+        }
     }
 
 .table-container{
     height: calc(100vh - 280px);
     overflow: auto;
+    @include media-breakpoint-down(md) {
+      height: calc(100vh - 240px);
+  }
 }
 
 .add-new-role-container {

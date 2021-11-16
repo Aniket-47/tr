@@ -1,5 +1,5 @@
-<mat-drawer-container autosize class="right-drawer">
-  <mat-drawer #drawer mode="over" class="drawer-container add-new-role-container" position="end" [autoFocus]="false">
+<mat-drawer-container autosize class="right-drawer drawer-lg">
+  <mat-drawer #drawer mode="over" class="drawer-container add-new-role-container " position="end" [autoFocus]="false">
     <button mat-icon-button (click)="reset()" class="close-btn">
       <span class="icon-mc mc-x"></span>
     </button>
@@ -14,7 +14,7 @@
         <h2>Account Role</h2>
       </div>
       <div page-action class="page-action cloud-only">
-        <button mat-stroked-button color="success" (click)="createNewRole()"><i
+        <button mat-flat-button color="primary" (click)="createNewRole()"><i
             class="add-new-role-btn-icon icon-mcf mcf-admin_panel_settings"></i>
           <span> Create New Role</span>
         </button>
