@@ -40,6 +40,7 @@ export class UserManageComponent implements OnInit {
 
   toggle = false;
   status = [
+    { value: '', viewValue: 'All' },
     { value: '0', viewValue: 'Deactive' },
     { value: '1', viewValue: 'Active' },
     { value: '2', viewValue: 'Pending' }
@@ -88,7 +89,9 @@ export class UserManageComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.select(getRoles).subscribe(roles => {
+      roles.unshift({ roletypeid: '', name: 'All' });
       this.role = roles;
+      console.log(this.role);
     });
   }
 
@@ -99,10 +102,12 @@ export class UserManageComponent implements OnInit {
   openBottomSheet(): void {
     this._bottomSheet.open(MFilterComponent).afterDismissed()
       .subscribe(result => {
-        this.selectedRole = this.filterServ.SelectedRole;
-        this.selectedStatus = this.filterServ.selectedStatus;
-        this.sort.active = this.filterServ.selectedSort;
-        this.loadUsers();
+        if ((this.selectedRole != this.filterServ.SelectedRole) || (this.selectedStatus != this.filterServ.selectedStatus) || (this.sort.active != this.filterServ.selectedSort)) {
+          this.selectedRole = this.filterServ.SelectedRole;
+          this.selectedStatus = this.filterServ.selectedStatus;
+          this.sort.active = this.filterServ.selectedSort;
+          this.loadUsers();
+        }
       })
   }
   ngAfterViewInit(): void {
