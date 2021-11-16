@@ -2,14 +2,14 @@
   <button action mat-flat-button color="accent" class="xs" routerLink="./selectrole">Sign Up</button>
   <button action mat-flat-button color="primary" class="xs" routerLink="./login">Sign In</button>
 </tr-header> -->
-
+<perfect-scrollbar>
 <div class="row">
-  <div class="col-md-5 left-panel d-none d-md-flex p-0">
+  <div class="col-lg-5 left-panel d-none d-lg-flex p-0">
     <img [src]="leftPanelImg">
     <div class="mask"></div>
   </div>
   
-  <div class="col-12 col-md-7">
+  <div class="col-12 col-lg-7">
     <div class="right-panel my-auto">     
     <div class="logo d-block">
       <svg width="150" height="50" viewBox="0 0 102 21" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -53,9 +53,10 @@
     </div>   
       <mc-stepper [stepNames]="stepperPages" [currentStep]="activeStepper" class="auth-step" *ngIf="showStepper$ | async"></mc-stepper>
     <!-- <router-outlet></router-outlet> -->
-    <div>
+
       <router-outlet></router-outlet>
-    </div>
     </div>
   </div>
 </div>
+
+</perfect-scrollbar>

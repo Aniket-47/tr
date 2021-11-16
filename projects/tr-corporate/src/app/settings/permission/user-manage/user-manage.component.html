@@ -1,3 +1,4 @@
+
 <mat-drawer-container autosize class="right-drawer">
   <mat-drawer #drawer mode="over" class="drawer-container" position="end" [autoFocus]="false">
     <button mat-icon-button (click)="drawer.toggle()" class="close-btn">
@@ -65,6 +66,7 @@
         </div>
       </div>
       <div class="table-container">
+        <perfect-scrollbar>
         <table mat-table [dataSource]="dataSource" matSort>
           <!-- Position Column -->
           <ng-container matColumnDef="check">
@@ -215,6 +217,7 @@
           <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="openTblItem(row)"></tr>
         </table>
+      </perfect-scrollbar>
       </div>
 
       <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
