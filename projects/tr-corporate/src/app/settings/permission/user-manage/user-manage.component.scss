@@ -134,7 +134,7 @@ table.mat-table {
 
 .add-new-role-btn-icon{
     &::before{
-        color: $theme-secondary;
+        color: $white;
         font-size: 1rem;
     }
 }
@@ -174,4 +174,7 @@ table.mat-table {
 
 .selected-user:hover{
     cursor: pointer;
+}
+.fs20 {
+    font-size: 20px;
 }
