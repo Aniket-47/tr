@@ -22,7 +22,7 @@ export class SelectRoleComponent implements OnInit, OnDestroy {
 
   constructor(private router: Router, private store: Store<Iauth>) {
     this.store.dispatch(setStepperShow({ data: true }));
-    this.store.dispatch(setUserRole({data: 0}));
+    this.store.dispatch(setUserRole({ data: 0 }));
   }
 
   ngOnInit(): void {
@@ -36,7 +36,7 @@ export class SelectRoleComponent implements OnInit, OnDestroy {
   roleHandler(role: number) {
     const { id } = this.roles.find((e) => e.id === role);
     this.store.dispatch(setStepper({ data: 1 }));
-    this.store.dispatch(setUserRole({ data: id}));
+    this.store.dispatch(setUserRole({ data: id }));
     this.router.navigate([ROUTE_CONFIGS.REGISTER2, id]);
   }
 }

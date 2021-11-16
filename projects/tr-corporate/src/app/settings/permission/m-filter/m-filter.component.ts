@@ -5,7 +5,7 @@ import { fadeAnimation } from '../../../animations';
 import { State } from '../../../utility/store/reducers';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA } from '@angular/material/bottom-sheet';
-import { FilterService } from '../services/filter.service';
+import { FilterService } from '../shared/services/filter.service';
 
 @Component({
   selector: 'app-m-filter',

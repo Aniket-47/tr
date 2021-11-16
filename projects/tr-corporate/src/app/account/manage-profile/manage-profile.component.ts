@@ -86,7 +86,7 @@ export class ManageProfileComponent implements OnInit {
     const payload = {
       firstname: value.firstName,
       middlename: value.middleName,
-      lastname: value.lastname,
+      lastname: value.lastName,
       profileimagepath: this.url ? this.url : '',
       mobilenumber: value.mobilenumber
     }
@@ -98,7 +98,7 @@ export class ManageProfileComponent implements OnInit {
       } else {
         // update store
         this.store.dispatch(setUserMobile({ data: value.mobilenumber }));
-        this.store.dispatch(setUserName({ data: { firstName: value.firstName, middleName: value.middleName, lastName: value.lastname } }));
+        this.store.dispatch(setUserName({ data: { firstName: value.firstName, middleName: value.middleName, lastName: value.lastName } }));
         this.snackbarServ.open('Successfully updated', "Ok");
         this.userForm.reset();        
       }
