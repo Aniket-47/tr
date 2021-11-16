@@ -18,9 +18,9 @@
           <span *ngIf="shortname.errors?.minlength">Short Name should be mininum 5 letters.</span>
         </mat-error>
         <mat-error *ngIf="shortname.hasError('customError')">
-          {{ resMessage }}
+          {{ resShortMessage }}
         </mat-error>
-        <mat-hint class="green" *ngIf="resMessage">{{ resMessage }}</mat-hint>
+        <mat-hint class="green" *ngIf="resShortMessage">{{ resShortMessage }}</mat-hint>
       </mat-form-field>
     </div>
   </div>

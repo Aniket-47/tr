@@ -21,7 +21,7 @@ export class OrganisationProfileComponent implements OnInit, OnChanges {
   accountId!: string;
   orgProfileForm!: FormGroup;
   shortNameValidation = new Subject();
-  resMessage: string = "";
+  resShortMessage: string = "";
   currentShortName!: string;
 
   shortnameValidation!: string;
@@ -205,7 +205,7 @@ export class OrganisationProfileComponent implements OnInit, OnChanges {
         // update store
         this.store.dispatch(setAccountDeatils({ data: payload }));
         this.snackbarServ.open('Successfully updated', "Ok");
-        this.orgProfileForm.reset();
+        // this.orgProfileForm.reset();
       }
       this.isLoading = false;
     }, (err) => this.isLoading = false)
@@ -220,24 +220,26 @@ export class OrganisationProfileComponent implements OnInit, OnChanges {
 
   checkShortNameAvailability(sName: any) {
     this.isLoading = true;
-    this.resMessage = '';
+    this.resShortMessage = '';
     this.accoutService.getShortName(sName)
       .subscribe(res => {
         this.isLoading = false;
         if (res.error && sName != this.currentShortName) {
-          this.resMessage = res.message;
+          this.resShortMessage = res.message;
           this.shortname.markAllAsTouched();
           this.shortname.setErrors({ 'customError': true });
         }
         else {
-          this.resMessage = "Shortname Available"
+          this.resShortMessage = "Shortname Available"
         }
 
       })
   }
 
   resetHandler() {
-    this.orgProfileForm.reset();    
+    // this.orgProfileForm.reset();
+    this.loadAccountDeatails();
+    this.resShortMessage = ''
   }
 
 }

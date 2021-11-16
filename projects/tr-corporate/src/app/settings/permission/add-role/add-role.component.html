@@ -1,7 +1,7 @@
 <ng-container [formGroup]="roleForm" [@fadeInOut]>
   <tr-page-header>
     <div page-title>
-      <h5 class="mobile-only">Permissions</h5>
+      <!-- <h5 class="mobile-only">Permissions</h5> -->
       <h2 *ngIf="!isRoleView && !isEdit">Create New Role</h2>
       <h2 *ngIf="isEdit">Update Role</h2>
       <h2 *ngIf="isRoleView">{{selectedRoleInfo?.rolename | titlecase}}</h2>
