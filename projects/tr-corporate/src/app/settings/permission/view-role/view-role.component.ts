@@ -19,6 +19,7 @@ import { fadeAnimation } from '../../../animations';
 import { MatDrawer } from '@angular/material/sidenav';
 import { SnackBarService } from '../../../utility/services/snack-bar.service';
 import { RouterConfigService } from '../../../utility/services/router-config.service';
+import { ConfirmationComponent } from '../../../shared/components/confirmation/confirmation.component';
 
 // table data
 
@@ -189,13 +190,20 @@ export class ViewRoleComponent implements AfterViewInit, OnInit {
     }
 
     this.toggleUserActionMenu()
-    if (!role.isdefaultrole && role)
-      this.userRoleService.deleteRole(+role.accountroleid).subscribe((res: any) => {
-        if (!res.error) {
-          this.snackbarServ.open('Successfully deleted', "Ok");
-          this.loadUserRoles(this.accountid);
-        } else this.snackbarServ.open(res?.message);
+    if (!role.isdefaultrole && role) {
+      const dialogRef = this.dialog.open(ConfirmationComponent, { width: '500px', });
+
+      dialogRef.afterClosed().subscribe(isConfirmed => {
+        if (isConfirmed) {
+          this.userRoleService.deleteRole(+role.accountroleid).subscribe((res: any) => {
+            if (!res.error) {
+              this.snackbarServ.open('Successfully deleted', "Ok");
+              this.loadUserRoles(this.accountid);
+            } else this.snackbarServ.open(res?.message);
+          });
+        }
       });
+    }
   }
 
 
