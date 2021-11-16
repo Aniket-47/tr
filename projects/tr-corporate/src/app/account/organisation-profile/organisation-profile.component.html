@@ -95,7 +95,7 @@
     </div>
   </div>
   <div class="profile-action">
-    <button mat-stroked-button>Reset</button>
+    <button mat-stroked-button (click)="resetHandler()">Reset</button>
     <button mat-flat-button color="primary" (click)="saveOrgProfile()" [disabled]="isLoading">
       <span>Save Changes</span>
       <mat-spinner diameter="20" *ngIf="isLoading" class="btn-loader"></mat-spinner>
