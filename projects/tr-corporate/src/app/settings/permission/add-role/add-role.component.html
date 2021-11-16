@@ -35,7 +35,7 @@
     <ng-container formArrayName="rights">
       <mat-accordion *ngIf="rightsArray.controls.length">
         <ng-container *ngFor="let eachRight of rightsArray.controls; let i = index" [formGroupName]="i">
-          <mat-expansion-panel [expanded]="true" hideToggle>
+          <mat-expansion-panel hideToggle>
             <mat-expansion-panel-header>
               <mat-panel-title>
 
@@ -60,7 +60,7 @@
                   <mat-expansion-panel>
                     <mat-expansion-panel-header>
                       <mat-panel-title>
-                        {{eachLvl2.get('name')?.value || 'test' | titlecase}}
+                        {{eachLvl2.get('name')?.value | titlecase}}
                       </mat-panel-title>
                       <mat-panel-description>
                         <mat-slide-toggle color="green" formControlName="isOn"
@@ -72,7 +72,7 @@
                       <ng-container formArrayName="level3">
                         <div class="role-list bg-light"
                           *ngFor="let eachLvl3 of getLvl3Array(i, l2)?.controls; let l3 = index" [formGroupName]="l3">
-                          <div class="role-title">{{eachLvl3.get('name')?.value || 'test' | titlecase}}</div>
+                          <div class="role-title">{{eachLvl3.get('name')?.value | titlecase}}</div>
                           <div class="header-action">
                             <mat-slide-toggle color="green" formControlName="isOn"></mat-slide-toggle>
                           </div>
