@@ -1,8 +1,13 @@
 <div class="bottom-filter" [@fadeInOut]>
   <div class="heading">
-    <h2 class="text-dark d-flex"><a href="#" class="icon-mc mc-back-arrow align-self-center fnt-sz"></a> <span
-        class="align-self-center">Filters</span></h2>
-    <span><button class="btn-lg ms-3" mat-flat-button color="primary" (click)="onfilter()">Apply</button></span>
+    <h2 class="text-dark d-flex" (click)="dismiss()">
+      <a class="icon-mc mc-back-arrow align-self-center fnt-sz"></a>
+      <span class="align-self-center">Filters</span>
+    </h2>
+    <span>
+      <button class="btn-lg ms-3 border" mat-flat-button (click)="onReset()">Reset</button>
+      <button class="btn-lg ms-3" mat-flat-button color="primary" (click)="onfilter()">Apply</button>
+    </span>
   </div>
 
   <div class="filter-container">

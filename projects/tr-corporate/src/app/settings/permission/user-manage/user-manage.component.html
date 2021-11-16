@@ -187,28 +187,30 @@
               <div class="mobile-only">
                 <button mat-icon-button [matMenuTriggerFor]="menu" (click)="showUserActionMenu = false"><span
                     class="icon-mc mc-more_vert"></span></button>
-                <mat-menu #menu="matMenu">
-                  <button class="blue" mat-menu-item
-                    (click)="currentUser = element; currentUserEdit=false; viewUserPermission=false; drawer.toggle()">
-                    <i class="icon-mc mc-visibility"></i> <span>View details</span>
-                  </button>
-                  <button class="blue" mat-menu-item
-                    (click)="currentUser = element; viewUserPermission=true; drawer.toggle()">
-                    <i class="icon-mc mcf-admin_panel_settings"></i> <span>View Permission</span>
-                  </button>
-                  <button class="green" mat-menu-item
-                    (click)="currentUser = element; currentUserEdit= true; viewUserPermission=true; drawer.toggle()">
-                    <i class="icon-mc mc-create"></i> <span>Edit user</span>
-                  </button>
-                  <button class="green" mat-menu-item *ngIf="element.status==0" (click)="activateUser(element.email)">
-                    <i class="icon-mc  mc-person_add"></i> <span>Activate User</span>
-                  </button>
-                  <button class="red" mat-menu-item *ngIf="element.status==1" (click)="deactivateUser(element.email)">
-                    <i class="icon-mc  mc-person_add_disabled"></i> <span>Deactivate User</span>
-                  </button>
-                  <button class="red" mat-menu-item (click)="deleteUser(element.email)">
-                    <i class="icon-mc mc-user-x"></i> <span>Remove user</span>
-                  </button>
+                <mat-menu #menu="matMenu" backdropClass="profile-dropdown">
+                  <div class="user-dropdown-submenu">
+                    <button class="blue" mat-menu-item
+                      (click)="currentUser = element; currentUserEdit=false; viewUserPermission=false; drawer.toggle()">
+                      <i class="icon-mc mc-visibility"></i> <span>View details</span>
+                    </button>
+                    <button class="blue" mat-menu-item
+                      (click)="currentUser = element; viewUserPermission=true; drawer.toggle()">
+                      <i class="icon-mc mcf-admin_panel_settings"></i> <span>View Permission</span>
+                    </button>
+                    <button class="green" mat-menu-item
+                      (click)="currentUser = element; currentUserEdit= true; viewUserPermission=true; drawer.toggle()">
+                      <i class="icon-mc mc-create"></i> <span>Edit user</span>
+                    </button>
+                    <button class="green" mat-menu-item *ngIf="element.status==0" (click)="activateUser(element.email)">
+                      <i class="icon-mc  mc-person_add"></i> <span>Activate User</span>
+                    </button>
+                    <button class="red" mat-menu-item *ngIf="element.status==1" (click)="deactivateUser(element.email)">
+                      <i class="icon-mc  mc-person_add_disabled"></i> <span>Deactivate User</span>
+                    </button>
+                    <button class="red" mat-menu-item (click)="deleteUser(element.email)">
+                      <i class="icon-mc mc-user-x"></i> <span>Remove user</span>
+                    </button>
+                  </div>
                 </mat-menu>
               </div>
             </td>
