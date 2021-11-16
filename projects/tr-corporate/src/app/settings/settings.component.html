@@ -12,6 +12,9 @@
   mat-icon-button
   (click)="drawer.toggle()"
   class="togglebtn"
+  [ngClass]="
+      drawer.opened ? 'right' : 'left'
+    "
 >
   <span
     class="icon-mc"
@@ -21,4 +24,4 @@
   ></span>
 </button>
 
-<div *ngIf="currentUrlPath === routerConfig.SETTINGS_DASHBOARD"> {{ drawer.close() }} </div>
+<!-- <div *ngIf="currentUrlPath === '/dashboard/settings'"> {{ drawer.close() }} </div> -->
