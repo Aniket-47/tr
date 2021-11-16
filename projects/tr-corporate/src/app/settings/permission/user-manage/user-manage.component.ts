@@ -234,4 +234,9 @@ export class UserManageComponent implements OnInit {
     }, 100)
   }
 
+  viewPermission(ele:any) {
+    this.toggleUserActionMenu();
+    this.viewUserPermission=true; 
+    this.drawer.toggle()
+  }
 }
