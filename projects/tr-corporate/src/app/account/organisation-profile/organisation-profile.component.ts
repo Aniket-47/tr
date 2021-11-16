@@ -205,6 +205,7 @@ export class OrganisationProfileComponent implements OnInit, OnChanges {
         // update store
         this.store.dispatch(setAccountDeatils({ data: payload }));
         this.snackbarServ.open('Successfully updated', "Ok");
+        this.orgProfileForm.reset();
       }
       this.isLoading = false;
     }, (err) => this.isLoading = false)
@@ -233,6 +234,10 @@ export class OrganisationProfileComponent implements OnInit, OnChanges {
         }
 
       })
+  }
+
+  resetHandler() {
+    this.orgProfileForm.reset();    
   }
 
 }

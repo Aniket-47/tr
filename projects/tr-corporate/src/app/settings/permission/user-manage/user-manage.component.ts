@@ -29,6 +29,7 @@ import { merge, Observable, of as observableOf } from 'rxjs';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 import { getRoles } from '../../../utility/store/selectors/roles.selector';
 import { FilterService } from '../services/filter.service';
+import { ConfirmationComponent } from '../../../shared/components/confirmation/confirmation.component';
 
 @Component({
   selector: 'app-user-manage',
@@ -207,16 +208,16 @@ export class UserManageComponent implements OnInit {
   }
 
   deleteUser(email: string) {
-    this.userServ.deleteUser({ 'email': email }).subscribe(res => {
-      if (res.error) {
-        // error from api
-        this.snackBar.open(res.message);
+    const dialogRef = this.dialog.open(ConfirmationComponent, { width: '500px', });
+
+    dialogRef.afterClosed().subscribe(isConfirmed => {
+      if (isConfirmed) {
+        this.userServ.deleteUser({ 'email': email }).subscribe(res => {
+          if (res.error) this.snackBar.open(res.message);
+          else this.snackBar.open(res.message);
+        });
       }
-      else {
-        // success from api
-        this.snackBar.open(res.message);
-      }
-    })
+    });
   }
 
   toggleUserActionMenu() {
@@ -236,4 +237,24 @@ export class UserManageComponent implements OnInit {
     }, 100)
   }
 
+  viewPermission(element:any) {
+    this.viewUserPermission=true;
+    this.toggleUserActionMenu();
+    this.currentUser = element;
+    this.drawer.open()
+  }
+
+  viewDetails(element:any) {
+    this.currentUser = element;
+    this.currentUserEdit=false;
+    this.viewUserPermission=false;
+    this.drawer.open();
+  }
+
+  editUser(element:any) {
+    this.currentUser = element;
+    this.currentUserEdit= true;
+    this.viewUserPermission=false;
+    this.drawer.open();
+  }
 }
