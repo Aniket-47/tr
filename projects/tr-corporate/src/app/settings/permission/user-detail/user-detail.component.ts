@@ -4,8 +4,8 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from
 import { fadeAnimation } from '../../../animations';
 import { ValidationConstants } from '../../../utility/configs/app.constants';
 import { SnackBarService } from '../../../utility/services/snack-bar.service';
-import { UpdateUser_request } from '../interfaces/update-user';
-import { UserService } from '../services/user.service';
+import { UpdateUser_request } from '../shared/interfaces/update-user';
+import { UserService } from '../shared/services/user.service';
 import { State } from '../../../utility/store/reducers';
 import { getDefaultAccountId } from '../../../utility/store/selectors/account.selector';
 import { Irole } from '../../../utility/store/interfaces/role';
@@ -99,8 +99,8 @@ export class UserDetailComponent implements OnInit, OnChanges {
       .subscribe(accountid => {
         this.accountID = accountid;
       });
-      
-      
+
+
     this.store.select(getRoles).subscribe(roles => {
       // remove owner, because for one account there is only one owner.
       if (roles && roles.length) this.roles = roles.slice(1, roles.length);

@@ -1,12 +1,12 @@
-import { GetUser_request, GetUser_response } from './../interfaces/get-user';
+import { GetUser_request, GetUser_response } from '../interfaces/get-user';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { UtilityService } from '../../../utility/services/utility.service';
-import { api_routes, secure_api_routes } from '../../../utility/configs/apiConfig';
+import { UtilityService } from '../../../../utility/services/utility.service';
+import { api_routes, secure_api_routes } from '../../../../utility/configs/apiConfig';
 
 // Interdaces
-import { AddUser_response, AddUser_request } from './../interfaces/add-user';
+import { AddUser_response, AddUser_request } from '../interfaces/add-user';
 import { UpdateUser_request, UpdateUser_response } from '../interfaces/update-user';
 import { DeleteUser_request, DeleteUser_response } from '../interfaces/delete-user';
 import { UpdateUserStatus_request, UpdateUserStatus_response } from '../interfaces/update-user-status';

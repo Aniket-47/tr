@@ -18,8 +18,8 @@ import { AddUserComponent } from '../add-user/add-user.component';
 
 // Services
 import { SnackBarService } from '../../../utility/services/snack-bar.service';
-import { UserListService } from '../services/user-list.service';
-import { UserService } from '../services/user.service';
+import { UserListService } from '../shared/services/user-list.service';
+import { UserService } from '../shared/services/user.service';
 import { MFilterComponent } from '../m-filter/m-filter.component';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { fadeAnimation } from '../../../animations';
@@ -28,7 +28,7 @@ import { fadeAnimation } from '../../../animations';
 import { merge, Observable, of as observableOf } from 'rxjs';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 import { getRoles } from '../../../utility/store/selectors/roles.selector';
-import { FilterService } from '../services/filter.service';
+import { FilterService } from '../shared/services/filter.service';
 import { ConfirmationComponent } from '../../../shared/components/confirmation/confirmation.component';
 
 @Component({
