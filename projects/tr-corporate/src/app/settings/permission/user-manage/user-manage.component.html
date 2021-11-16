@@ -153,7 +153,7 @@
                 <!-- Change element.fullname to element.userID -->
                 <button *ngIf="element.status==0" mat-icon-button matTooltip="Activate User"
                   [matTooltipPosition]="'right'" (click)="activateUser(element.email)">
-                  <span class="icon-mc  mc-person_add"></span>
+                  <span class="icon-mc mcf-spellcheck"></span>
                 </button>
                 <button *ngIf="element.status==1" mat-icon-button matTooltip="Deactivate User"
                   [matTooltipPosition]="'right'" (click)="deactivateUser(element.email)">
@@ -200,7 +200,7 @@
                       <i class="icon-mc mc-create"></i> <span>Edit user</span>
                     </button>
                     <button class="green" mat-menu-item *ngIf="element.status==0" (click)="activateUser(element.email)">
-                      <i class="icon-mc  mc-person_add"></i> <span>Activate User</span>
+                      <i class="icon-mc  mcf-spellcheck"></i> <span>Activate User</span>
                     </button>
                     <button class="red" mat-menu-item *ngIf="element.status==1" (click)="deactivateUser(element.email)">
                       <i class="icon-mc  mc-person_add_disabled"></i> <span>Deactivate User</span>
