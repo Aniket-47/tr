@@ -94,13 +94,13 @@ export class ManageProfileComponent implements OnInit {
     this.accoutService.updateUser(payload).subscribe((res: any) => {
       if (res?.error) {
         this.snackbarServ.open(res?.message, "Ok");
-        
+
       } else {
         // update store
         this.store.dispatch(setUserMobile({ data: value.mobilenumber }));
         this.store.dispatch(setUserName({ data: { firstName: value.firstName, middleName: value.middleName, lastName: value.lastName } }));
         this.snackbarServ.open('Successfully updated', "Ok");
-        this.userForm.reset();        
+        // this.userForm.reset();        
       }
       this.isLoading = false;
     }, (err) => this.isLoading = false)
@@ -121,6 +121,7 @@ export class ManageProfileComponent implements OnInit {
   }
 
   resetHandler() {
-    this.userForm.reset();
+    this.loadUser();
+    // this.userForm.reset();
   }
 }

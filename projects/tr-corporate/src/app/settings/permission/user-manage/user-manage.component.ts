@@ -61,7 +61,7 @@ export class UserManageComponent implements OnInit {
   currentUserEdit!: boolean;
 
   viewUserPermission = false;
-  showUserActionMenu = true;
+  hideUserActionMenu = true;
 
   accountID!: string;
 
@@ -221,40 +221,39 @@ export class UserManageComponent implements OnInit {
   }
 
   toggleUserActionMenu() {
-    this.showUserActionMenu = false;
+    this.hideUserActionMenu = false;
     setTimeout(() => {
-      this.showUserActionMenu = true;
+      this.hideUserActionMenu = true;
     }, 100);
   }
 
   openTblItem(userData: any) {
     this.currentUser = userData;
     this.currentUserEdit = false;
-    this.viewUserPermission = false;
-    if (this.showUserActionMenu) this.drawer.toggle();
+    if (this.hideUserActionMenu) this.drawer.toggle();
     setTimeout(() => {
-      this.showUserActionMenu = true;
+      this.hideUserActionMenu = true;
     }, 100)
   }
 
-  viewPermission(element:any) {
-    this.viewUserPermission=true;
+  viewPermission(element: any) {
     this.toggleUserActionMenu();
+    this.viewUserPermission = true;
     this.currentUser = element;
-    this.drawer.open()
-  }
-
-  viewDetails(element:any) {
-    this.currentUser = element;
-    this.currentUserEdit=false;
-    this.viewUserPermission=false;
     this.drawer.open();
   }
 
-  editUser(element:any) {
+  viewDetails(element: any) {
     this.currentUser = element;
-    this.currentUserEdit= true;
-    this.viewUserPermission=false;
+    this.currentUserEdit = false;
+    this.viewUserPermission = false;
+    this.drawer.open();
+  }
+
+  editUser(element: any) {
+    this.currentUser = element;
+    this.currentUserEdit = true;
+    this.viewUserPermission = false;
     this.drawer.open();
   }
 }
