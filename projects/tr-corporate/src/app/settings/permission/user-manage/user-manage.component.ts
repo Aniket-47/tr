@@ -235,9 +235,23 @@ export class UserManageComponent implements OnInit {
   }
 
   viewPermission(element:any) {
+    this.viewUserPermission=true; 
     this.toggleUserActionMenu();
     this.currentUser = element; 
-    this.viewUserPermission=true; 
-    this.drawer.toggle()
+    this.drawer.open()
+  }
+
+  viewDetails(element:any) {
+    this.currentUser = element; 
+    this.currentUserEdit=false; 
+    this.viewUserPermission=false; 
+    this.drawer.open();
+  }
+
+  editUser(element:any) {
+    this.currentUser = element; 
+    this.currentUserEdit= true; 
+    this.viewUserPermission=false; 
+    this.drawer.open();
   }
 }
