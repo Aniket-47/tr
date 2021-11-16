@@ -1,5 +1,7 @@
 @import "~@mucrest/ng-design/assets/styles/0-plugins/plugins-dir";
-
+* {
+  font-family: 'Manrope', sans-serif !important;
+}
 header {
     position: sticky;
     top: 0;
@@ -47,6 +49,14 @@ header {
   @include margin-bottom(0.5rem);
   .table-action {
     margin-left: auto;
+  }
+}
+.account-role {
+  .role {
+    @include media-breakpoint-down(md) {
+      text-align: left;
+      padding: 0.5rem 0; 
+    }
   }
 }
 .role {
@@ -216,7 +226,7 @@ header {
   .left-menu {
     padding-right: 3rem;
     position: sticky;
-    top: $header-height;
+    top: 4.8rem;
     @include media-breakpoint-down(md) {
       border: 0;
     }
@@ -435,7 +445,11 @@ mat-drawer-container{
             background-color: #ffffff94;
             backdrop-filter: blur(1px);
         }
-
+        &.user-managemant {
+          mat-drawer {
+            width: 40%;
+          }
+        }
     }
 
 .table-container{
