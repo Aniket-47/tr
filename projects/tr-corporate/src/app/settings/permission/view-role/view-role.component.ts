@@ -76,6 +76,7 @@ export class ViewRoleComponent implements AfterViewInit, OnInit {
   // dataSource = new MatTableDataSource<any>(ELEMENT_DATA);
   dataSource = new Observable<Irole[]>();
   isRateLimitReached: boolean = false;
+  showUserActionMenu = true;
   accountid!: string;
 
   selectedRoleInfo!: { roletypeid: number, rolename: string } | null;
@@ -128,8 +129,10 @@ export class ViewRoleComponent implements AfterViewInit, OnInit {
   }
 
   viewRoleDeatils(role: Irole) {
-    this.selectedRoleInfo = { roletypeid: role.roletypeid, rolename: role.rolename };
-    this.drawer.open();
+    if (this.showUserActionMenu) {
+      this.drawer.open();
+      this.selectedRoleInfo = { roletypeid: role.roletypeid, rolename: role.rolename };
+    }
   }
 
   loadUserRoles(accountid: string) {
@@ -185,6 +188,7 @@ export class ViewRoleComponent implements AfterViewInit, OnInit {
       return;
     }
 
+    this.toggleUserActionMenu()
     if (!role.isdefaultrole && role)
       this.userRoleService.deleteRole(+role.accountroleid).subscribe((res: any) => {
         if (!res.error) {
@@ -192,5 +196,13 @@ export class ViewRoleComponent implements AfterViewInit, OnInit {
           this.loadUserRoles(this.accountid);
         } else this.snackbarServ.open(res?.message);
       });
+  }
+
+
+  toggleUserActionMenu() {
+    this.showUserActionMenu = false;
+    setTimeout(() => {
+      this.showUserActionMenu = true;
+    }, 100);
   }
 }
