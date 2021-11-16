@@ -53,7 +53,7 @@ export class UserManageComponent implements OnInit {
   selection = new SelectionModel<any>(true, []);
   addUserModalRef!: MatDialogRef<AddUserComponent>;
 
-  totalUsers!: number;
+  totalUsers: number = 0;
 
   currentUser!: any;
   currentUserEdit!: boolean;
@@ -66,24 +66,16 @@ export class UserManageComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort!: MatSort;
   @ViewChild(MatDrawer, { static: false }) drawer!: MatDrawer;
-
   @ViewChild('modalRefElement', { static: false }) modalRefElement!: ElementRef;
 
-  constructor(private userlistServ: UserListService, private userServ: UserService, private store: Store<State>, public dialog: MatDialog, private snackBar: SnackBarService, private _bottomSheet: MatBottomSheet, private filterServ: FilterService) {
-    this.totalUsers = 0;
-    // this.store.select(getDefaultAccountId)
-    //   .subscribe(accountid => {
-    //     if (accountid) {
-    //       this.userlistServ.getUserList(accountid).subscribe(res => {
-    //         // console.log(res);
-    //         this.dataSource = new MatTableDataSource(res.data.userslist)
-    //         this.dataSource.paginator = this.paginator;
-
-    //         // set this to total users from api
-    //         this.totalUsers = res.data.totalcount;
-    //       });
-    //     }
-    //   })
+  constructor(
+    private userlistServ: UserListService,
+    private userServ: UserService,
+    private store: Store<State>,
+    public dialog: MatDialog,
+    private snackBar: SnackBarService,
+    private _bottomSheet: MatBottomSheet,
+    private filterServ: FilterService) {
   }
 
   ngOnInit(): void {
@@ -92,24 +84,32 @@ export class UserManageComponent implements OnInit {
     });
   }
 
-  preventDefault(e: Event) {
-    e.preventDefault();
-  }
-
-  openBottomSheet(): void {
-    this._bottomSheet.open(MFilterComponent).afterDismissed()
-      .subscribe(result => {
-        this.selectedRole = this.filterServ.SelectedRole;
-        this.selectedStatus = this.filterServ.selectedStatus;
-        this.sort.active = this.filterServ.selectedSort;
-        this.loadUsers();
-      })
-  }
   ngAfterViewInit(): void {
     this.store.select(getDefaultAccountId).subscribe((accountid: any) => {
       this.accountID = accountid;
       if (accountid) this.loadUsers();
     });
+  }
+
+  preventDefault(e: Event) {
+    e.preventDefault();
+  }
+
+  openBottomSheet(): void {
+    const appliedFilterData = { sort: this.sort.active, filter_status: this.selectedStatus, filter_roletypeid: this.selectedRole }
+    this._bottomSheet.open(MFilterComponent, { data: appliedFilterData }).afterDismissed()
+      .subscribe(result => {
+        if (result) {
+          // this.selectedRole = this.filterServ.SelectedRole;
+          // this.selectedStatus = this.filterServ.selectedStatus;
+          // this.sort.active = this.filterServ.selectedSort;
+
+          this.selectedRole = result.filter_roletypeid;
+          this.selectedStatus = result.filter_status;
+          this.sort.active = result.sort;
+          this.loadUsers();
+        }
+      })
   }
 
   toggleFab() {
@@ -179,7 +179,7 @@ export class UserManageComponent implements OnInit {
 
 
   deactivateUser(email: string) {
-    // console.log(userID);
+    this.toggleUserActionMenu();
 
     this.userServ.updateUserStatus({ 'email': email, 'status': 0 }).subscribe(res => {
       if (res.error) {
@@ -193,7 +193,7 @@ export class UserManageComponent implements OnInit {
     })
   }
   activateUser(email: string) {
-    // console.log(userID);
+    this.toggleUserActionMenu();
 
     this.userServ.updateUserStatus({ 'email': email, 'status': 1 }).subscribe(res => {
       if (res.error) {
@@ -218,6 +218,13 @@ export class UserManageComponent implements OnInit {
         this.snackBar.open(res.message);
       }
     })
+  }
+
+  toggleUserActionMenu() {
+    this.showUserActionMenu = false;
+    setTimeout(() => {
+      this.showUserActionMenu = true;
+    }, 100);
   }
 
   openTblItem(userData: any) {
