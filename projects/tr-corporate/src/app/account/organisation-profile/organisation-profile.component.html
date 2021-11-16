@@ -20,6 +20,7 @@
         <mat-error *ngIf="shortname.hasError('customError')">
           {{ resMessage }}
         </mat-error>
+        <mat-hint class="green" *ngIf="resMessage">{{ resMessage }}</mat-hint>
       </mat-form-field>
     </div>
   </div>
