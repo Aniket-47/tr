@@ -81,9 +81,7 @@ export class UserManageComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.select(getRoles).subscribe(roles => {
-      roles.unshift({ roletypeid: '', name: 'All' });
-      this.role = roles;
-      console.log(this.role);
+      this.role = [{ roletypeid: '', name: 'All' }, ...roles];
     });
   }
 
@@ -103,12 +101,10 @@ export class UserManageComponent implements OnInit {
     this._bottomSheet.open(MFilterComponent, { data: appliedFilterData }).afterDismissed()
       .subscribe(result => {
         if (result) {
-          // this.selectedRole = this.filterServ.SelectedRole;
-          // this.selectedStatus = this.filterServ.selectedStatus;
-          // this.sort.active = this.filterServ.selectedSort;
+          console.log(result);
 
-          this.selectedRole = result.filter_roletypeid;
-          this.selectedStatus = result.filter_status;
+          this.selectedRole = result.filter_roletypeid[0] === '' ? undefined : result.filter_roletypeid;
+          this.selectedStatus = result.filter_status[0] === '' ? undefined : result.filter_status;
           this.sort.active = result.sort;
           this.loadUsers();
         }

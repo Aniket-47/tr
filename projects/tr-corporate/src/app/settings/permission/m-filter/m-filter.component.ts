@@ -41,7 +41,7 @@ export class MFilterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.store.select(getRoles).subscribe(roles => this.role = roles);
+    this.store.select(getRoles).subscribe(roles => this.role = [{ roletypeid: '', name: 'All' }, ...roles]);
 
     if (this.data) {
       if (this.data.sort) this.selectedSort = this.data.sort;
