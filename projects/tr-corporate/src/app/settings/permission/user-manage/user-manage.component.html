@@ -162,14 +162,14 @@
                     <button class="blue" mat-menu-item
                       (click)="currentUser = element; currentUserEdit=false; viewUserPermission=false; drawer.toggle()">
                       <i class="icon-mc mc-visibility"></i> <span>View details</span>
+                    </button>                    
+                    <button class="green" mat-menu-item *ngIf="element.status==0" 
+                    (click)="activateUser(element.email)">
+                      <i class="icon-mc mc-how_to_reg"></i> <span>Activate User</span>
                     </button>
-                    <button *ngIf="element.status==0" mat-icon-button matTooltip="Activate User"
-                      [matTooltipPosition]="'right'" (click)="activateUser(element.email)">
-                      <span class="icon-mc mc-how_to_reg">Activate User</span>
-                    </button>
-                    <button *ngIf="element.status==1" mat-icon-button matTooltip="Deactivate User"
-                      [matTooltipPosition]="'right'" (click)="deactivateUser(element.email)">
-                      <span class="icon-mc mc-do_not_disturb_on">Deactivate User</span>
+                    <button class="red" mat-menu-item *ngIf="element.status==1" 
+                    (click)="deactivateUser(element.email)">
+                      <i class="icon-mc mc-do_not_disturb_on"></i> <span>Deactivate User</span>
                     </button>
                     <button class="green" mat-menu-item
                       (click)="currentUser = element; currentUserEdit= true; viewUserPermission=true; drawer.toggle()">
