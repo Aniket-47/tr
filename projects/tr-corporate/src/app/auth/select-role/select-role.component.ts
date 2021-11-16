@@ -18,12 +18,11 @@ import { Iauth } from '../store/interface/auth';
 })
 export class SelectRoleComponent implements OnInit, OnDestroy {
   roles: any[] = [];
-  config: any;
+  routerConfig = ROUTE_CONFIGS;
 
-  constructor(private router: Router, private store: Store<Iauth>, private configServ: RouterConfigService) {
+  constructor(private router: Router, private store: Store<Iauth>) {
     this.store.dispatch(setStepperShow({ data: true }));
     this.store.dispatch(setUserRole({ data: 0 }));
-    this.config = configServ.routerconfig;
   }
 
   ngOnInit(): void {

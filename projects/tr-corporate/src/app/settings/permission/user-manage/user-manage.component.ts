@@ -41,6 +41,7 @@ export class UserManageComponent implements OnInit {
 
   toggle = false;
   status = [
+    { value: '', viewValue: 'All' },
     { value: '0', viewValue: 'Deactive' },
     { value: '1', viewValue: 'Active' },
     { value: '2', viewValue: 'Pending' }
@@ -81,7 +82,7 @@ export class UserManageComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.select(getRoles).subscribe(roles => {
-      this.role = roles;
+      this.role = [{ roletypeid: '', name: 'All' }, ...roles];
     });
   }
 
@@ -101,8 +102,10 @@ export class UserManageComponent implements OnInit {
     this._bottomSheet.open(MFilterComponent, { data: appliedFilterData }).afterDismissed()
       .subscribe(result => {
         if (result) {
-          this.selectedRole = result.filter_roletypeid;
-          this.selectedStatus = result.filter_status;
+          console.log(result);
+
+          this.selectedRole = result.filter_roletypeid[0] === '' ? undefined : result.filter_roletypeid;
+          this.selectedStatus = result.filter_status[0] === '' ? undefined : result.filter_status;
           this.sort.active = result.sort;
           this.loadUsers();
         }
@@ -234,4 +237,24 @@ export class UserManageComponent implements OnInit {
     }, 100)
   }
 
+  viewPermission(element:any) {
+    this.viewUserPermission=true;
+    this.toggleUserActionMenu();
+    this.currentUser = element;
+    this.drawer.open()
+  }
+
+  viewDetails(element:any) {
+    this.currentUser = element;
+    this.currentUserEdit=false;
+    this.viewUserPermission=false;
+    this.drawer.open();
+  }
+
+  editUser(element:any) {
+    this.currentUser = element;
+    this.currentUserEdit= true;
+    this.viewUserPermission=false;
+    this.drawer.open();
+  }
 }
