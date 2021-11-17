@@ -19,7 +19,12 @@ export const getUserFullName = createSelector(
     (state: Iuser) => state.fullName
 );
 
+export const getUserRole = createSelector(
+    selectAppState,
+    (state: Iuser) => state.role
+);
+
 export const getUserFirstName = createSelector(
     selectAppState,
-    (state: Iuser) => state.firstName
+    (state: Iuser) => state.name.firstName
 );

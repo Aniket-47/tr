@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { LstorageService } from '@tr/src/app/utility/services/lstorage.service';
 import { LSkeys } from '../../utility/configs/app.constants';
 import { ROUTE_CONFIGS } from '../../utility/configs/routerConfig';
-import { setUserStatus } from '../../utility/store/actions/user.action';
+import { setUserLoginStatus } from '../../utility/store/actions/user.action';
 import { State } from '../../utility/store/reducers';
 import { AuthService } from '../services/auth.service';
 import { fadeAnimation } from '../../animations';
@@ -71,7 +71,7 @@ export class LoginComponent implements OnInit {
         // on success
         this.isLoading = false;
         this.lsServ.store(LSkeys.BEARER_TOKEN, res.data.accesstoken.token);
-        this.store.dispatch(setUserStatus({ data: true }));
+        this.store.dispatch(setUserLoginStatus({ data: true }));
         this.router.navigate([ROUTE_CONFIGS.DASHBOARD]);
         this.lsServ.store(LSkeys.USER_EMAIL, this.email);
       },
