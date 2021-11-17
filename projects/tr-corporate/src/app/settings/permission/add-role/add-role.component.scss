@@ -92,6 +92,8 @@
     margin-top: .4rem;
     line-height: 13px;
     .mat-expansion-indicator {
+        position: relative;
+        top: -3px;
         display: inline-block;
         margin-left: .4rem;
     }
@@ -123,4 +125,16 @@
 
 .mat-slide-toggle.mat-disabled {
     opacity: 1 !important;
+}
+.mc-keyboard_arrow_down {
+    font-size: 1.3rem;
+}
+.drawer-btn {
+    .mat-flat-button {
+        position: fixed;
+        bottom: 1rem;
+        right: 1rem;
+        width: calc(350px - 2rem);
+    }
+    
 }

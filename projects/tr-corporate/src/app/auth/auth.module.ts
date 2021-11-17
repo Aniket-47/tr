@@ -19,6 +19,15 @@ import { VerifyAccountComponent } from './verify-account/verify-token.component'
 import { StoreModule } from '@ngrx/store';
 import { authReducer } from './store/reducers/auth.reducers';
 
+// Perfect Scrollbar
+import { PerfectScrollbarModule, PerfectScrollbarConfigInterface,
+  PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
+  const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+    wheelPropagation: true
+  };
+
+
+  
 @NgModule({
   declarations: [
     AuthComponent,
@@ -39,7 +48,14 @@ import { authReducer } from './store/reducers/auth.reducers';
     LayoutModule,
     McModule,
     CardModule,
-    AuthRoutingModule
+    AuthRoutingModule,
+    PerfectScrollbarModule
   ],
+  providers: [
+    {
+      provide: PERFECT_SCROLLBAR_CONFIG,
+      useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
+    }
+  ]
 })
 export class AuthModule { }

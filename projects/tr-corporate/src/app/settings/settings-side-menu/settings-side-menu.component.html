@@ -1,12 +1,13 @@
-<!-- <perfectScrollbar style="max-height: calc(100vh - 3.8rem);" [perfectScrollbar]="config"> -->
+
   <div class="settings-wrap" [@fadeInOut]>
     <div class="nav-search">
       <mat-form-field floatLabel="never">
-        <mat-icon matSuffix>search</mat-icon>
+        <span matSuffix class="icon-mcf mcf-search"></span>
         <input matInput placeholder="Search...">
       </mat-form-field>
     </div>
     <div class="settings__element">
+      <perfect-scrollbar>
       <mat-accordion>
         <mat-expansion-panel hideToggle (opened)="panelOpenState = true" (closed)="panelOpenState = false" *ngFor="let parent of parents">
           <mat-expansion-panel-header>
@@ -22,6 +23,7 @@
            </mat-list>
         </mat-expansion-panel>
       </mat-accordion>
+    </perfect-scrollbar>
     </div>
   </div>  
-<!-- </perfectScrollbar> -->
+

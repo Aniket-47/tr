@@ -13,6 +13,12 @@ import { PermissionComponent } from './permission.component';
 import { PermissionRoutingModule } from './permission-routing.module';
 
 
+// Perfect Scrollbar
+import { PerfectScrollbarModule, PerfectScrollbarConfigInterface,
+  PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
+  const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+    wheelPropagation: true
+  };
 
 @NgModule({
   declarations: [
@@ -32,6 +38,13 @@ import { PermissionRoutingModule } from './permission-routing.module';
     MaterialModule,
     LayoutModule,
     PermissionRoutingModule,
+    PerfectScrollbarModule
+  ],
+  providers: [
+    {
+      provide: PERFECT_SCROLLBAR_CONFIG,
+      useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
+    }
   ],
   entryComponents: [
     MFilterComponent
