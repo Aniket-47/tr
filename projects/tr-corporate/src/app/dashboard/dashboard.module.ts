@@ -44,7 +44,7 @@ import { PerfectScrollbarModule, PerfectScrollbarConfigInterface,
 export class DashboardModule {
   constructor(
     private lsServ: LstorageService) {
-    const languageData = this.lsServ.getItem(LSkeys.LANGUAGE) || '';
+    const languageData = this.lsServ.getItem(LSkeys.LANGUAGE);
     if (languageData) TranslatePipe.setLanguagePack(JSON.parse(languageData));
   }
 }

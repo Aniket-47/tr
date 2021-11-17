@@ -27,7 +27,7 @@ export const secure_api_routes = {
   // permission
   ACCOUNT_LIST: `${auth}/user/account`,
   ACCOUNT: `${basePath}/account`,
-  USER: `${auth}/user`,
+  USER: `${user}/userdetail`,
   USER_UPDATE: `${auth}/user`,
 
   //master
@@ -48,7 +48,7 @@ export const secure_api_routes = {
   UPDATE_ROLE: `${account}/role`,
 
   // User Management
-  GET_USER: `${user}/getuser`,
+  GET_USER: `${user}/getdetailbyemail`,
   ADD_USER: `${user}/adduser`,
   UPDATE_USER: `${user}/updateuser`,
   UPDATE_USER_STATUS: `${user}/status`,

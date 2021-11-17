@@ -10,7 +10,7 @@ import { State } from '../utility/store/reducers';
 import { getAccountIds } from '../utility/store/selectors/account.selector';
 import { getIsLoading } from '../utility/store/selectors/app.selector';
 import { getUserFirstName } from '../utility/store/selectors/user.selector';
-import { LogoutService } from './services/logout.service';
+import { LogoutService } from './shared/services/logout.service';
 import { setUserRoles } from '../utility/store/actions/roles.action';
 import { setUserAddress, setUserCity, setUserCountry, setUserFullName, setUserMobile, setUserName, setUserState } from '../utility/store/actions/user.action';
 import { IaccountDetials } from '../utility/store/interfaces/account';

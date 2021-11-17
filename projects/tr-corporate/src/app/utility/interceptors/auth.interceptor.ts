@@ -14,7 +14,7 @@ import { LSkeys } from '../configs/app.constants';
 import { errorCollection } from '../configs/server-error.constant';
 import { SnackBarService } from '../services/snack-bar.service';
 import { ROUTE_CONFIGS } from '../configs/routerConfig';
-import { LogoutService } from '../../dashboard/services/logout.service';
+import { LogoutService } from '../../dashboard/shared/services/logout.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {

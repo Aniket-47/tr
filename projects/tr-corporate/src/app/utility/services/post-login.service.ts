@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { LstorageService } from '@tr/src/app/utility/services/lstorage.service';
 import { EMPTY, forkJoin, throwError } from 'rxjs';
 import { mergeMap } from 'rxjs/operators';
-import { AccountList_response } from '../../dashboard/interfaces/account-list';
+import { AccountList_response } from '../../dashboard/shared/interfaces/account-list';
 import { secure_api_routes } from '../configs/apiConfig';
 import { LSkeys } from '../configs/app.constants';
 import { setAccountList } from '../store/actions/account.action';
