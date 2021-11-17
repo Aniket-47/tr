@@ -1,5 +1,5 @@
 export interface GetUser_request {
-  userID: string
+  email: string
 }
 
 export interface GetUser_response {
@@ -7,9 +7,17 @@ export interface GetUser_response {
   statusCode: number,
   message: string,
   data: {
+    businessverticalid: string,
+    designationname: string,
+    email: string,
     firstname: string,
-    middlename: string,
     lastname: string,
-    roletypeid: number
+    locationname: string,
+    middlename: string,
+    mobilenumber: string,
+    practicename: string,
+    roletypeid: number,
+    roletypename: string,
+    status: number,
   }
 }
