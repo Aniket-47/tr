@@ -4,14 +4,14 @@ import { Store } from '@ngrx/store';
 import { LstorageService } from '@tr/src/app/utility/services/lstorage.service';
 
 // Utility
-import { secure_api_routes } from '../../utility/configs/apiConfig';
-import { LSkeys } from '../../utility/configs/app.constants';
-import { resetAccount } from '../../utility/store/actions/account.action';
-import { resetUser, setUserLoginStatus } from '../../utility/store/actions/user.action';
-import { State } from '../../utility/store/reducers';
+import { secure_api_routes } from '../../../utility/configs/apiConfig';
+import { LSkeys } from '../../../utility/configs/app.constants';
+import { resetAccount } from '../../../utility/store/actions/account.action';
+import { resetUser, setUserLoginStatus } from '../../../utility/store/actions/user.action';
+import { State } from '../../../utility/store/reducers';
 
 // Interfaces
-import { Logout_response } from '../interfaces/logout';
+import { Logout_response } from './../../shared/interfaces/logout';
 
 @Injectable({
   providedIn: 'root'

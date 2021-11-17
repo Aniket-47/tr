@@ -1,0 +1,4 @@
+export enum DASHBOARD_LN {
+  TXT_SIGN_OUT = "TXT_SIGN_OUT",
+  TXT_ADD_CLIENT = "TXT_ADD_CLIENT"
+}

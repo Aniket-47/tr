@@ -10,10 +10,11 @@ import { State } from '../utility/store/reducers';
 import { getAccountIds } from '../utility/store/selectors/account.selector';
 import { getIsLoading } from '../utility/store/selectors/app.selector';
 import { getUserFirstName, getUserFullName } from '../utility/store/selectors/user.selector';
-import { LogoutService } from './services/logout.service';
+import { LogoutService } from './shared/services/logout.service';
 import { setUserRoles } from '../utility/store/actions/roles.action';
 import { setUserAddress, setUserCity, setUserCountry, setUserFullName, setUserMail, setUserMobile, setUserRole, setUserState } from '../utility/store/actions/user.action';
 import { IaccountDetials } from '../utility/store/interfaces/account';
+import { DASHBOARD_LN } from './shared/dashboard.lang';
 
 
 @Component({
@@ -36,6 +37,7 @@ export class DashabordComponent implements OnInit {
   accountList: { accountid: string; name: string; }[] = [];
   userName!: string;
 
+  ln = DASHBOARD_LN;
   toggleBadgeVisibility() {
     this.hidden = !this.hidden;
   }
@@ -45,7 +47,8 @@ export class DashabordComponent implements OnInit {
     private lsServ: LstorageService,
     private store: Store<State>,
     private route: ActivatedRoute,
-    private router: Router) {
+    private router: Router,
+  ) {
     this.isLoading$ = this.store.select(getIsLoading);
   }
 

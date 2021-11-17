@@ -2,11 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 // Utility
-import { api_routes, secure_api_routes } from '../../utility/configs/apiConfig';
-import { UtilityService } from '../../utility/services/utility.service';
+import { api_routes, secure_api_routes } from '../../../utility/configs/apiConfig';
+import { UtilityService } from '../../../utility/services/utility.service';
 
 // Interfaces
-import { AccountList_response } from '../interfaces/account-list';
+import { AccountList_response } from '../../shared/interfaces/account-list';
 
 
 @Injectable({

@@ -1,4 +1,3 @@
-
 <mat-drawer-container>
   <mat-drawer #drawer mode="over" [autoFocus]="false">
     <tr-m-header (logOutEvent)="logout()">
@@ -33,8 +32,8 @@
     </div>
     <a [matMenuTriggerFor]="menu" class="user-dropdown">
       <span class="icon-mcf mcf-account_circle" *ngIf="!userName"></span>
-      <span class="user-avatar" *ngIf="userName">{{userName.split(' ')[0] }}</span>
-      <span class="user-name">{{userName }}</span>
+      <span class="user-avatar" *ngIf="userName">{{userName.split('')[0] }}</span>
+      <span class="user-name">{{userName.split(' ')[0]}}</span>
     </a>
     <mat-menu #menu="matMenu" backdropClass="profile-dropdown">
       <div class="user-dropdown-submenu" (click)="onEvent($event)">
@@ -59,7 +58,7 @@
       <!-- <button mat-menu-item><i class="icon-mc mc-switch_account"></i> <span>Accounts</span></button> -->
       <button mat-menu-item (click)="logout()">
         <i class="icon-mc mc-power_settings_new"></i>
-        <span>Sign Out</span>
+        <span>{{ ln.TXT_SIGN_OUT | translate }}</span>
       </button>
     </mat-menu>
     <mat-menu #notify="matMenu" backdropClass="profile-dropdown" class="notificationCard">
