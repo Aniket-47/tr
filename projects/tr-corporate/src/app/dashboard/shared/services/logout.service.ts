@@ -4,11 +4,10 @@ import { Store } from '@ngrx/store';
 import { LstorageService } from '@tr/src/app/utility/services/lstorage.service';
 
 // Utility
-import { api_routes, secure_api_routes } from '../../../utility/configs/apiConfig';
+import { secure_api_routes } from '../../../utility/configs/apiConfig';
 import { LSkeys } from '../../../utility/configs/app.constants';
-import { UtilityService } from '../../../utility/services/utility.service';
 import { resetAccount } from '../../../utility/store/actions/account.action';
-import { resetUser, setUserStatus } from '../../../utility/store/actions/user.action';
+import { resetUser, setUserLoginStatus } from '../../../utility/store/actions/user.action';
 import { State } from '../../../utility/store/reducers';
 
 // Interfaces
@@ -34,7 +33,7 @@ export class LogoutService {
   clearSavedData() {
     this.lsServ.remove(LSkeys.BEARER_TOKEN);
     this.lsServ.remove(LSkeys.DEFAULT_ACCOUNT);
-    this.store.dispatch(setUserStatus({ data: false }));
+    this.store.dispatch(setUserLoginStatus({ data: false }));
     this.store.dispatch(resetUser({ data: true }));
     this.store.dispatch(resetAccount({ data: true }));
   }

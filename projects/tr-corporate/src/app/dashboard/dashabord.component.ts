@@ -9,10 +9,10 @@ import { setAccountDeatils } from '../utility/store/actions/account.action';
 import { State } from '../utility/store/reducers';
 import { getAccountIds } from '../utility/store/selectors/account.selector';
 import { getIsLoading } from '../utility/store/selectors/app.selector';
-import { getUserFirstName } from '../utility/store/selectors/user.selector';
+import { getUserFirstName, getUserFullName } from '../utility/store/selectors/user.selector';
 import { LogoutService } from './shared/services/logout.service';
 import { setUserRoles } from '../utility/store/actions/roles.action';
-import { setUserAddress, setUserCity, setUserCountry, setUserFullName, setUserMobile, setUserName, setUserState } from '../utility/store/actions/user.action';
+import { setUserAddress, setUserCity, setUserCountry, setUserFullName, setUserMail, setUserMobile, setUserRole, setUserState } from '../utility/store/actions/user.action';
 import { IaccountDetials } from '../utility/store/interfaces/account';
 import { DASHBOARD_LN } from './shared/dashboard.lang';
 
@@ -58,7 +58,7 @@ export class DashabordComponent implements OnInit {
 
     this.date = new Date();
     this.store.select(getAccountIds).subscribe(accounts => this.accountList = accounts);
-    this.store.select(getUserFirstName).subscribe(name => this.userName = name);
+    this.store.select(getUserFullName).subscribe(name => this.userName = name);
   }
 
   setDataInStore(data: any[]) {
@@ -69,14 +69,17 @@ export class DashabordComponent implements OnInit {
       }
 
       if (!data[1]?.error) {
-        const user = data[1].data;
+        console.log(data[1])
+        const user = data[1].data[0];
         this.store.dispatch(setUserFullName({ data: `${user?.firstname} ${user?.lastname}` }));
-        this.store.dispatch(setUserAddress({ data: user?.address }));
-        this.store.dispatch(setUserName({ data: { firstName: user?.firstname, middleName: user?.middleName, lastName: user?.lastname } }));
-        this.store.dispatch(setUserCity({ data: { cityId: user?.cityid, cityName: user?.cityname } }));
-        this.store.dispatch(setUserState({ data: { stateId: user?.stateid, stateName: user?.statename } }));
-        this.store.dispatch(setUserCountry({ data: { countryId: user?.countryid, countryName: user?.countryname } }));
+        // this.store.dispatch(setUserAddress({ data: user?.address }));
+        // this.store.dispatch(setUserCity({ data: { cityId: user?.cityid, cityName: user?.cityname } }));
+        // this.store.dispatch(setUserState({ data: { stateId: user?.stateid, stateName: user?.statename } }));
+        // this.store.dispatch(setUserCountry({ data: { countryId: user?.countryid, countryName: user?.countryname } }));
         this.store.dispatch(setUserMobile({ data: user?.mobilenumber }));
+        this.store.dispatch(setUserMail({ data: user?.email }));
+        this.store.dispatch(setUserRole({ data: { roletypename: user?.roletypename, roletypeid: user?.roletypeid } }));
+
 
         this.lsServ.store(LSkeys.USER_NAME, `${user?.firstname}`);
       }

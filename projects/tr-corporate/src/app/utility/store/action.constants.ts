@@ -16,11 +16,14 @@ export const enum UserActions {
     USER_CITY_ACTION = "[USER] Set user city",
     USER_STATE_ACTION = "[USER] Set user state",
     USER_COUNTRY_ACTION = "[USER] Set user country",
-    USER_STATUS_ACTION = "[USER] Set user login status",
+    USER_LOGIN_STATUS_ACTION = "[USER] Set user login status",
     USER_ADDRESS_ACTION = "[USER] Set user address",
     USER_REMOVE_ACTION = "[USER] Remove user data",
     USER_MOBILE_ACTION = "[USER] Set user mobile no",
     USER_RESET_ACTION = "[USER] Reset user data",
+    USER_ROLE_ACTION = "[USER] Set user role",
+    USER_EMAIL_ACTION = "[USER] Set user email",
+    USER_STATUS_ACTION = "[USER] Set user status",
 }
 
 // Account

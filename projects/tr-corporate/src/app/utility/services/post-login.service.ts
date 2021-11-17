@@ -30,12 +30,12 @@ export class PostLoginService {
           // store default account id in LS
           this.lsServ.remove(LSkeys.DEFAULT_ACCOUNT);
           this.lsServ.store(LSkeys.DEFAULT_ACCOUNT, accountList[0].accountid);
-          return this.preLoadData(accountList[0].accountid);
+          return this.preLoadData();
         } else return [];
       }))
   }
 
-  preLoadData(accountId: string) {
+  preLoadData() {
     const apis = [
       this.http.get(secure_api_routes.ACCOUNT),
       this.http.get(secure_api_routes.USER),
