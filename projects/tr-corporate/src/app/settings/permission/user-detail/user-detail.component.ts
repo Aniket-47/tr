@@ -10,6 +10,7 @@ import { State } from '../../../utility/store/reducers';
 import { getDefaultAccountId } from '../../../utility/store/selectors/account.selector';
 import { Irole } from '../../../utility/store/interfaces/role';
 import { getRoles } from '../../../utility/store/selectors/roles.selector';
+import { GetUser_response } from './../shared/interfaces/get-user';
 
 
 @Component({
@@ -26,16 +27,10 @@ export class UserDetailComponent implements OnInit, OnChanges {
   roles: Irole[] = [];
 
   @Input() edit: boolean = false;
-  @Input() user = {
-    fullname: "Aniket Das",
-    email: "aniket.d@mucrest.com",
-    roletypeid: "Super Admin",
-    designation: "Developer",
-    businessVertical: "lorem",
-    practice: "Blah Blah",
-    phone: "+918954467845",
-    location: "Kolkata Park Street, Pin 700022"
-  };
+  @Input() userEmail!: string;
+
+
+  user!: GetUser_response["data"];
   accountID!: string;
 
   constructor(private fb: FormBuilder, private userServ: UserService, private snackBar: SnackBarService, private store: Store<State>) {
@@ -44,7 +39,7 @@ export class UserDetailComponent implements OnInit, OnChanges {
 
   initForm() {
     this.editUserForm = this.fb.group({
-      firstName: [
+      firstname: [
         '',
         [
           Validators.required,
@@ -52,14 +47,14 @@ export class UserDetailComponent implements OnInit, OnChanges {
           Validators.maxLength(ValidationConstants.userAccountStrategy.NAME_MAX_LENGTH)
         ],
       ],
-      middleName: [
+      middlename: [
         '',
         [
           Validators.minLength(ValidationConstants.userAccountStrategy.NAME_MIN_LENGTH),
           Validators.maxLength(ValidationConstants.userAccountStrategy.NAME_MAX_LENGTH)
         ],
       ],
-      lastName: [
+      lastname: [
         '',
         [
           Validators.required,
@@ -73,24 +68,44 @@ export class UserDetailComponent implements OnInit, OnChanges {
           Validators.email
         ]
       ],
-      userRole: [''],
+      roletypeid: [''],
+      designationname: [''],
+      businessverticalid: [''],
+      practicename: [''],
+      mobilenumber: [''],
+      locationname: ['']
     });
   }
 
-  get firstName(): AbstractControl {
-    return this.editUserForm.get('firstName') as FormControl;
+  get firstname(): AbstractControl {
+    return this.editUserForm.get('firstname') as FormControl;
   }
-  get middleName(): AbstractControl {
-    return this.editUserForm.get('middleName') as FormControl;
+  get middlename(): AbstractControl {
+    return this.editUserForm.get('middlename') as FormControl;
   }
-  get lastName(): AbstractControl {
-    return this.editUserForm.get('lastName') as FormControl;
+  get lastname(): AbstractControl {
+    return this.editUserForm.get('lastname') as FormControl;
   }
   get email(): AbstractControl {
     return this.editUserForm.get('email') as FormControl;
   }
-  get userRole(): AbstractControl {
-    return this.editUserForm.get('userRole') as FormControl;
+  get roletypeid(): AbstractControl {
+    return this.editUserForm.get('roletypeid') as FormControl;
+  }
+  get designationname(): AbstractControl {
+    return this.editUserForm.get('designationname') as FormControl;
+  }
+  get businessverticalid(): AbstractControl {
+    return this.editUserForm.get('businessverticalid') as FormControl;
+  }
+  get practicename(): AbstractControl {
+    return this.editUserForm.get('practicename') as FormControl;
+  }
+  get mobilenumber(): AbstractControl {
+    return this.editUserForm.get('mobilenumber') as FormControl;
+  }
+  get locationname(): AbstractControl {
+    return this.editUserForm.get('locationname') as FormControl;
   }
 
   ngOnInit(): void {
@@ -108,18 +123,26 @@ export class UserDetailComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    if (this.user)
+    if (this.userEmail)
       this.prefillUser();
   }
 
   prefillUser() {
-    this.editUserForm.patchValue(
-      {
-        firstname: this.user.fullname,
-        email: this.user.email,
-        userRole: this.user.roletypeid
+    // this.editUserForm.patchValue(
+    //   {
+    //     firstname: this.user.fullname,
+    //     email: this.user.email,
+    //     userRole: this.user.roletypeid
+    //   }
+    // )
+
+    this.userServ.getUser(this.userEmail).subscribe(res => {
+      if (!res.error) {
+        this.user = res.data;
+        this.editUserForm.patchValue(res.data);
+
       }
-    )
+    })
   }
 
   addUser() {
