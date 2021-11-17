@@ -7,16 +7,28 @@ export const resetUser = createAction(
 	props<{ data: boolean }>()
 );
 
+// name
+export const setUserName = createAction(
+	UserActions.USER_FULLNAME_ACTION,
+	props<{ data: { firstName: string, middleName: string, lastName: string } }>()
+);
+
 // fullname
 export const setUserFullName = createAction(
 	UserActions.USER_FULLNAME_ACTION,
 	props<{ data: string }>()
 );
 
-// name
-export const setUserName = createAction(
-	UserActions.USER_NAME_ACTION,
-	props<{ data: { firstName: string, lastName: string, middleName: string } }>()
+// email
+export const setUserMail = createAction(
+	UserActions.USER_EMAIL_ACTION,
+	props<{ data: string }>()
+);
+
+// role
+export const setUserRole = createAction(
+	UserActions.USER_ROLE_ACTION,
+	props<{ data: { roletypeid: number, roletypename: string } }>()
 );
 
 // address
@@ -49,8 +61,14 @@ export const setUserMobile = createAction(
 	props<{ data: string }>()
 );
 
-// use status
+// user status
 export const setUserStatus = createAction(
 	UserActions.USER_STATUS_ACTION,
+	props<{ data: number }>()
+);
+
+// user login status
+export const setUserLoginStatus = createAction(
+	UserActions.USER_LOGIN_STATUS_ACTION,
 	props<{ data: boolean }>()
 );

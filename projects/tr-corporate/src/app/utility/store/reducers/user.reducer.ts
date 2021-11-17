@@ -4,18 +4,20 @@ import { Iuser } from "../interfaces/user";
 
 export const initialState: Iuser = {
 	isLoggedIn: false,
+	name: { firstName: '', middleName: '', lastName: '' },
 	fullName: '',
-	firstName: '',
-	lastName: '',
-	middleName: '',
 	address: '',
-	cityId: '',
-	cityName: '',
-	countryId: '',
-	countryName: '',
 	mobileNumber: '',
-	stateId: '',
-	stateName: '',
+	city: { cityId: '', cityName: '' },
+	country: { countryId: '', countryName: '' },
+	state: { stateId: '', stateName: '' },
+	role: { roletypeid: 0, roletypename: '' },
+	email: '',
+	practicename: '',
+	locationname: '',
+	designationname: '',
+	businessverticalid: '',
+	status: 0
 };
 
 export const userReducer = createReducer(
@@ -32,18 +34,6 @@ export const userReducer = createReducer(
 		};
 	}),
 
-
-	on(UserActions.setUserName, (state, action) => {
-		const { firstName, lastName, middleName } = action.data;
-		return {
-			...state,
-			firstName,
-			lastName,
-			middleName
-		};
-	}),
-
-
 	on(UserActions.setUserAddress, (state, action) => {
 		return {
 			...state,
@@ -52,29 +42,24 @@ export const userReducer = createReducer(
 	}),
 
 	on(UserActions.setUserCity, (state, action) => {
-		const { cityId, cityName } = action.data;
+
 		return {
 			...state,
-			cityId,
-			cityName
+			city: action.data
 		};
 	}),
 
 	on(UserActions.setUserState, (state, action) => {
-		const { stateId, stateName } = action.data;
 		return {
 			...state,
-			stateId,
-			stateName
+			state: action.data
 		};
 	}),
 
 	on(UserActions.setUserCountry, (state, action) => {
-		const { countryId, countryName } = action.data;
 		return {
 			...state,
-			countryId,
-			countryName
+			country: action.data
 		};
 	}),
 
@@ -85,10 +70,31 @@ export const userReducer = createReducer(
 		};
 	}),
 
-	on(UserActions.setUserStatus, (state, action) => {
+	on(UserActions.setUserMail, (state, action) => {
+		return {
+			...state,
+			email: action.data
+		};
+	}),
+
+	on(UserActions.setUserRole, (state, action) => {
+		return {
+			...state,
+			role: action.data
+		};
+	}),
+
+	on(UserActions.setUserLoginStatus, (state, action) => {
 		return {
 			...state,
 			isLoggedIn: action.data
+		};
+	}),
+
+	on(UserActions.setUserStatus, (state, action) => {
+		return {
+			...state,
+			status: action.data
 		};
 	}),
 );
