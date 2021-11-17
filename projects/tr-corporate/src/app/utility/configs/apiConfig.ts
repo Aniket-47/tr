@@ -27,7 +27,7 @@ export const secure_api_routes = {
   // permission
   ACCOUNT_LIST: `${auth}/user/account`,
   ACCOUNT: `${basePath}/account`,
-  USER: `${auth}/user`,
+  USER: `${user}/userdetail`,
   USER_UPDATE: `${auth}/user`,
 
   //master

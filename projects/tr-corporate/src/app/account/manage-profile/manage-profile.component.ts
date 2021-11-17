@@ -36,9 +36,9 @@ export class ManageProfileComponent implements OnInit {
   loadUser() {
     this.store.select(getUserDeatils).subscribe(user => {
       this.userForm.patchValue({
-        firstName: user?.firstName,
-        middleName: user?.middleName,
-        lastName: user?.lastName,
+        firstName: user?.name.firstName,
+        middleName: user?.name.middleName,
+        lastName: user?.name.lastName,
         mobilenumber: user?.mobileNumber
       });
     });
