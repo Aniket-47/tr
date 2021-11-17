@@ -11,11 +11,13 @@ import { LstorageService } from '@tr/src/app/utility/services/lstorage.service';
 import { LSkeys } from '../utility/configs/app.constants';
 
 // Perfect Scrollbar
-import { PerfectScrollbarModule, PerfectScrollbarConfigInterface,
-  PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
-  const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
-    wheelPropagation: true
-  };
+import {
+  PerfectScrollbarModule, PerfectScrollbarConfigInterface,
+  PERFECT_SCROLLBAR_CONFIG
+} from 'ngx-perfect-scrollbar';
+const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+  wheelPropagation: true
+};
 
 @NgModule({
   declarations: [
@@ -46,5 +48,6 @@ export class DashboardModule {
     private lsServ: LstorageService) {
     const languageData = this.lsServ.getItem(LSkeys.LANGUAGE);
     if (languageData) TranslatePipe.setLanguagePack(JSON.parse(languageData));
+    TranslatePipe.setUserLanguage("EN-US")
   }
 }
