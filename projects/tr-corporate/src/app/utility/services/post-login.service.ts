@@ -40,7 +40,8 @@ export class PostLoginService {
       this.http.get(secure_api_routes.ACCOUNT),
       this.http.get(secure_api_routes.USER),
       this.http.get(secure_api_routes.DEFAULT_ROLES),
-      this.http.get(secure_api_routes.TRANSLATION)
+      this.http.get(secure_api_routes.TRANSLATION),
+      this.http.get(secure_api_routes.BUSINESS_VERTICLE),
     ];
 
     return forkJoin(apis);

@@ -11,6 +11,9 @@ import { SettingsMenuComponent } from './settings-menu/settings-menu.component';
 // Perfect Scrollbar
 import { PerfectScrollbarModule, PerfectScrollbarConfigInterface,
   PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
+import { LstorageService } from '@tr/src/app/utility/services/lstorage.service';
+import { LSkeys } from '../utility/configs/app.constants';
+import { McCoreModule, TranslatePipe } from '@mucrest/ng-core';
   const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     wheelPropagation: true
   };
@@ -24,6 +27,7 @@ import { PerfectScrollbarModule, PerfectScrollbarConfigInterface,
   ],
   imports: [
     CommonModule,
+    McCoreModule,
     MaterialModule,
     CardModule,
     SettingsRoutingModule,

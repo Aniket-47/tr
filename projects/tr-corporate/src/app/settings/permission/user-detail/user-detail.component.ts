@@ -10,6 +10,7 @@ import { State } from '../../../utility/store/reducers';
 import { getDefaultAccountId } from '../../../utility/store/selectors/account.selector';
 import { Irole } from '../../../utility/store/interfaces/role';
 import { getRoles } from '../../../utility/store/selectors/roles.selector';
+import { SETTINGS_LN } from '../../shared/settings.lang';
 import { GetUser_response } from './../shared/interfaces/get-user';
 
 
@@ -22,6 +23,7 @@ import { GetUser_response } from './../shared/interfaces/get-user';
 export class UserDetailComponent implements OnInit, OnChanges {
 
   editUserForm!: FormGroup;
+  newUser!: any;
   isLoading = false;
 
   roles: Irole[] = [];
@@ -32,6 +34,8 @@ export class UserDetailComponent implements OnInit, OnChanges {
 
   user!: GetUser_response["data"];
   accountID!: string;
+
+  ln = SETTINGS_LN;
 
   constructor(private fb: FormBuilder, private userServ: UserService, private snackBar: SnackBarService, private store: Store<State>) {
 
@@ -145,7 +149,7 @@ export class UserDetailComponent implements OnInit, OnChanges {
     })
   }
 
-  addUser() {
+  editUser() {
     this.isLoading = true;
     // const payload: UpdateUser_request = {
     //   firstname: this.firstName.value,
@@ -155,8 +159,15 @@ export class UserDetailComponent implements OnInit, OnChanges {
     //   roletypeid: this.userRole.value,
     //   accountroleid: this.userID
     // }
+    this.editUserForm.markAllAsTouched();
     if (this.editUserForm.valid) {
-      this.userServ.createUser(this.accountID, this.editUserForm.value).subscribe(res => {
+      this.isLoading = true;
+      this.newUser = this.editUserForm.value;
+      this.newUser.roletypename = this.roletypeid.value.name;
+      this.newUser.roletypeid = this.roletypeid.value.roletypeid;
+      // console.log(this.newUser);
+
+      this.userServ.createUser(this.accountID, this.newUser).subscribe(res => {
         this.isLoading = false;
         if (res.error) {
           // error from api
@@ -165,12 +176,13 @@ export class UserDetailComponent implements OnInit, OnChanges {
         else {
           // success from api
           this.snackBar.open(res.message);
-          setTimeout(() => {
-            this.editUserForm.reset();
-          }, 4000)
+
         }
+
       })
     }
   }
+
+
 
 }

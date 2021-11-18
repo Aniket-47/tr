@@ -1,6 +1,9 @@
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
+import { TranslatePipe } from '@mucrest/ng-core';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { fadeAnimation } from '../../animations';
+import { SETTINGS_LN } from '../shared/settings.lang';
 
 @Component({
   selector: 'app-settings-side-menu',
@@ -10,145 +13,150 @@ import { fadeAnimation } from '../../animations';
 })
 
 export class SettingsSideMenuComponent implements OnInit {
+
+  ln = SETTINGS_LN;
+
   public config: PerfectScrollbarConfigInterface = {
     suppressScrollX: true
   };
+
   parents = [
     {
-      name: 'Permission',
+      name: this.ln.TXT_PERMISSIONS,
       child: [
         {
-          name: 'User Management',
+          name: this.ln.TXT_USER_MANAGEMENT,
           link: "./permission/users",
+          // link: "routerConfig.SETTINGS_DASHBOARD",
         },
         {
-          name: 'Account Role',
+          name: this.ln.TXT_ACCOUNT_ROLE,
           link: "./permission/roles",
         },
       ],
       icon: 'icon-mc mc-grading',
     },
     {
-      name: 'Templates',
+      name: this.ln.TXT_TEMPLATE,
       child: [
         {
-          name: 'User Management',
+          name: this.ln.TXT_USER_MANAGEMENT,
           link: "./permission/users",
         },
         {
-          name: 'Account Role',
+          name: this.ln.TXT_ACCOUNT_ROLE,
           link: "./permission/users",
         },
       ],
       icon: 'icon-mcf mcf-book',
     },
     {
-      name: 'Integration',
+      name: this.ln.TXT_INTEGRATION,
       child: [
         {
-          name: 'User Management',
+          name: this.ln.TXT_USER_MANAGEMENT,
           link: "./permission/users",
         },
         {
-          name: 'Account Role',
+          name: this.ln.TXT_ACCOUNT_ROLE,
           link: "./permission/users",
         }
       ],
       icon: 'icon-mcf mcf-add_task',
     },
     {
-      name: 'Configuration',
+      name: this.ln.TXT_CONFIGURATION,
       child: [
         {
-          name: 'User Management',
+          name: this.ln.TXT_USER_MANAGEMENT,
           link: './permission/users',
         },
         {
-          name: 'Account Role',
+          name: this.ln.TXT_ACCOUNT_ROLE,
           link: './permission/users',
         }
       ],
       icon: 'icon-mc mc-settings_brightness',
     },
     {
-      name: 'Billing',
+      name: this.ln.TXT_BILLING,
       child: [
         {
-          name: 'User Management',
+          name: this.ln.TXT_USER_MANAGEMENT,
           link: './permission/users',
         },
         {
-          name: 'Account Role',
+          name: this.ln.TXT_ACCOUNT_ROLE,
           link: './permission/users',
         },
       ],
       icon: 'icon-mc mc-money',
     },
     {
-      name: 'Candidate Portal',
+      name: this.ln.TXT_CANDIDATE_PORTAL,
       child: [
         {
-          name: 'User Management',
+          name: this.ln.TXT_USER_MANAGEMENT,
           link: './permission/users',
         },
         {
-          name: 'Account Role',
+          name: this.ln.TXT_ACCOUNT_ROLE,
           link: './permission/users',
         },
       ],
       icon: 'icon-mcf mcf-account_circle',
     },
     {
-      name: 'Vendor Portal',
+      name: this.ln.TXT_VENDOR_PORTAL,
       child: [
         {
-          name: 'User Management',
+          name: this.ln.TXT_USER_MANAGEMENT,
           link: "./permission/users",
         },
         {
-          name: 'Account Role',
+          name: this.ln.TXT_ACCOUNT_ROLE,
           link: "./permission/users",
         },
       ],
       icon: 'icon-mc mc-thumbs_up_down',
     },
     {
-      name: 'Employee Portal',
+      name: this.ln.TXT_EMPLOYEE_PORTAL,
       child: [
         {
-          name: 'User Management',
+          name: this.ln.TXT_USER_MANAGEMENT,
           link: "./permission/users",
         },
         {
-          name: 'Account Role',
+          name: this.ln.TXT_ACCOUNT_ROLE,
           link: "./permission/users",
         },
       ],
       icon: 'icon-mcf mcf-card_travel',
     },
     {
-      name: 'Career Guide',
+      name: this.ln.TXT_CAREER_PAGE_BUILDER,
       child: [
         {
-          name: 'User Management',
+          name: this.ln.TXT_USER_MANAGEMENT,
           link: "./permission/users",
         },
         {
-          name: 'Account Role',
+          name: this.ln.TXT_ACCOUNT_ROLE,
           link: "./permission/users",
         },
       ],
       icon: 'icon-mcf mcf-file_present',
     },
     {
-      name: 'GDPR',
+      name: this.ln.TXT_GDPR,
       child: [
         {
-          name: 'User Management',
+          name: this.ln.TXT_USER_MANAGEMENT,
           link: "./permission/users",
         },
         {
-          name: 'Account Role',
+          name: this.ln.TXT_ACCOUNT_ROLE,
           link: "./permission/users",
         },
       ],

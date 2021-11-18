@@ -7,6 +7,7 @@ import { Irole } from '../../../utility/store/interfaces/role';
 import { State } from '../../../utility/store/reducers';
 import { getDefaultAccountId } from '../../../utility/store/selectors/account.selector';
 import { getRoles } from '../../../utility/store/selectors/roles.selector';
+import { SETTINGS_LN } from '../../shared/settings.lang';
 import { UserRoleService } from '../shared/services/user-role.service';
 
 @Component({
@@ -30,6 +31,8 @@ export class AddRoleComponent implements OnInit, OnChanges {
   @Input() isEdit: boolean = false;
   @Input('isView') isRoleView: boolean = false;
   @Output() onRoleSubmit = new EventEmitter<boolean>();
+
+  ln = SETTINGS_LN;
 
   constructor(
     private userRoleService: UserRoleService,
@@ -241,10 +244,8 @@ export class AddRoleComponent implements OnInit, OnChanges {
       }
     });
     const payload: any = {
-      role: {
-        roletypeid: value.roleType,
-        rolename: value.roleName
-      }
+      roletypeid: value.roleType,
+      rolename: value.roleName
     }
 
     const payload2 = {

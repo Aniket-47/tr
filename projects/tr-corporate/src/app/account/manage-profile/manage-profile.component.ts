@@ -7,6 +7,7 @@ import { SnackBarService } from '../../utility/services/snack-bar.service';
 import { setUserMobile, setUserName } from '../../utility/store/actions/user.action';
 import { State } from '../../utility/store/reducers';
 import { getUserDeatils } from '../../utility/store/selectors/user.selector';
+import { ACCOUNT_LN } from '../shared/account.lang';
 import { AccountService } from '../shared/account.service';
 
 @Component({
@@ -20,6 +21,8 @@ export class ManageProfileComponent implements OnInit {
   userForm!: FormGroup;
   roles = userRoles;
   isLoading = false;
+
+  ln = ACCOUNT_LN;
 
   constructor(
     private fb: FormBuilder,
@@ -35,6 +38,7 @@ export class ManageProfileComponent implements OnInit {
 
   loadUser() {
     this.store.select(getUserDeatils).subscribe(user => {
+      console.log(user)
       this.userForm.patchValue({
         firstName: user?.name.firstName,
         middleName: user?.name.middleName,

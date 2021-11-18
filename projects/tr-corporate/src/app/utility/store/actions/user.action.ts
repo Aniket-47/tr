@@ -9,7 +9,7 @@ export const resetUser = createAction(
 
 // name
 export const setUserName = createAction(
-	UserActions.USER_FULLNAME_ACTION,
+	UserActions.USER_NAME_ACTION,
 	props<{ data: { firstName: string, middleName: string, lastName: string } }>()
 );
 
