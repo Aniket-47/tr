@@ -39,13 +39,14 @@ import { SETTINGS_LN } from '../../shared/settings.lang';
   animations: [fadeAnimation]
 })
 export class UserManageComponent implements OnInit {
+  ln = SETTINGS_LN;
 
   toggle = false;
   status = [
-    { value: '', viewValue: 'All' },
-    { value: '0', viewValue: 'Deactive' },
-    { value: '1', viewValue: 'Active' },
-    { value: '2', viewValue: 'Pending' }
+    { value: '', viewValue: this.ln.TXT_ALL },
+    { value: '0', viewValue: this.ln.TXT_DEACTIVE },
+    { value: '1', viewValue: this.ln.TXT_ACTIVE },
+    { value: '2', viewValue: this.ln.TXT_PENDING }
   ];
   role!: any[];
 
@@ -71,7 +72,6 @@ export class UserManageComponent implements OnInit {
   @ViewChild(MatDrawer, { static: false }) drawer!: MatDrawer;
   @ViewChild('modalRefElement', { static: false }) modalRefElement!: ElementRef;
 
-  ln = SETTINGS_LN;
 
   constructor(
     private userlistServ: UserListService,
