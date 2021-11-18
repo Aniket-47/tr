@@ -77,13 +77,6 @@ import { Iauth } from '../store/interface/auth';
               stroke-dashoffset: 900;
             }
           }
-            .message-wrap{
-                width: 400px;
-                max-width: 400px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
             .icon::before{
                 color: rgb(13, 216, 13);
             }

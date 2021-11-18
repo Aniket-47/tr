@@ -546,3 +546,7 @@ mat-drawer-container{
 .cursor {
   cursor: pointer;
 }
+
+router-outlet + ng-component{
+  width: 100% !important;
+}
