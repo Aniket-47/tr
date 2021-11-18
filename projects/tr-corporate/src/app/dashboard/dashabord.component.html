@@ -14,20 +14,23 @@
   </mat-drawer>
   <tr-d-header>
     <span class="icon-mc mc-menu header-icon" m-brand (click)="drawer.toggle()"></span>
-    <tr-search class="searchPanel cloud-only"></tr-search>
+    <!-- <tr-search class="searchPanel cloud-only"></tr-search> -->
     <div class="header-icon mobile-only">
       <span class="icon-mcf mcf-search" (click)="toggleSearch()"></span>
+    </div>
+    <div class="header-icon">
+      <span class="icon-mcf mcf-search"></span>
     </div>
     <div class="action-icon" [ngClass]="{'menu-active':colorActivation}">
       <a [matMenuTriggerFor]="notify" class="header-icon" (menuClosed)="colorActivation=false"
         (menuOpened)="colorActivation=true">
-        <span class="icon-mc mc-notifications" matBadge="3" matBadgePosition="after" matBadgeColor="accent"></span>
+        <span class="icon-mc mc-notifications_none" matBadge="3" matBadgePosition="after" matBadgeColor="accent"></span>
       </a>
     </div>
     <div class="active-icon" [ngClass]="{'menu-active':msgColorActivation}">
       <a [matMenuTriggerFor]="message" class="header-icon" (menuClosed)="msgColorActivation=false"
         (menuOpened)="msgColorActivation=true">
-        <span class="icon-mcf mcf-outgoing_mail"></span>
+        <span class="icon-mc mc-mail"></span>
       </a>
     </div>
     <a [matMenuTriggerFor]="menu" class="user-dropdown">
