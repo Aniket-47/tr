@@ -10,6 +10,7 @@ import { State } from '../../../utility/store/reducers';
 import { getDefaultAccountId } from '../../../utility/store/selectors/account.selector';
 import { Irole } from '../../../utility/store/interfaces/role';
 import { getRoles } from '../../../utility/store/selectors/roles.selector';
+import { SETTINGS_LN } from '../../shared/settings.lang';
 
 
 @Component({
@@ -37,6 +38,8 @@ export class UserDetailComponent implements OnInit, OnChanges {
     location: "Kolkata Park Street, Pin 700022"
   };
   accountID!: string;
+
+  ln = SETTINGS_LN;
 
   constructor(private fb: FormBuilder, private userServ: UserService, private snackBar: SnackBarService, private store: Store<State>) {
 

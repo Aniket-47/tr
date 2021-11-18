@@ -1,0 +1,3 @@
+export enum CANDIDATE_LN {
+  TXT_FIRST_NAME = "TXT_FIRST_NAME",  
+}

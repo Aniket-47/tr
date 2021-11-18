@@ -30,6 +30,7 @@ import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 import { getRoles } from '../../../utility/store/selectors/roles.selector';
 import { FilterService } from '../shared/services/filter.service';
 import { ConfirmationComponent } from '../../../shared/components/confirmation/confirmation.component';
+import { SETTINGS_LN } from '../../shared/settings.lang';
 
 @Component({
   selector: 'app-user-manage',
@@ -69,6 +70,8 @@ export class UserManageComponent implements OnInit {
   @ViewChild(MatSort, { static: false }) sort!: MatSort;
   @ViewChild(MatDrawer, { static: false }) drawer!: MatDrawer;
   @ViewChild('modalRefElement', { static: false }) modalRefElement!: ElementRef;
+
+  ln = SETTINGS_LN;
 
   constructor(
     private userlistServ: UserListService,
