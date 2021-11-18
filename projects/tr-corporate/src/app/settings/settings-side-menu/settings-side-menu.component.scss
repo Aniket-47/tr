@@ -14,8 +14,15 @@
     @include media-breakpoint-down(md) {
       padding: 0;
    }
+   ::ng-deep .mat-form-field-flex {
+    align-items: end;
+   }
    .mcf-search  {
-     font-size: 1.3rem;
+     font-size: 24px;
+     margin-right: .5rem;
+   }
+   .mat-form-field {
+     font-size: 1rem;
    }
   }
 
@@ -26,10 +33,9 @@
       padding: 0 0 0 8px;
 
       .icon {
-        font-size: .8rem;
+        font-size: 1.2rem;
         margin-right: 0.5rem;
         padding: 0;
-        background-color: $theme-secondary;
         border-radius: 50%;
         width: 24px;
         min-width: 24px;
@@ -37,7 +43,7 @@
         line-height: 25px;
         text-align: center;
         &::before{
-          color: $white !important;
+          color: $black !important;
         }
       }
     }
@@ -76,6 +82,7 @@
   @include font-size($fs-default);
   font-weight: 400 !important;
   align-items: center;
+  width: 100%;
 }
 
 .icon {
