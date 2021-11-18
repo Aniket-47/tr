@@ -202,7 +202,7 @@
         <mat-form-field appearance="outline">
           <mat-label>{{ln.TXT_ROLE | translate}}</mat-label>
           <mat-select formControlName="roletypeid">
-            <mat-option *ngFor="let role of roles;">
+            <mat-option *ngFor="let role of roles;" [value]="role">
               {{role.name}}
             </mat-option>
           </mat-select>
@@ -242,7 +242,7 @@
 
         <div class="buttons">
           <button mat-stroked-button (click)="edit = !edit" class="cancel-btn">{{ln.TXT_CANCEL | translate}}</button>
-          <button mat-flat-button color="primary" (click)="addUser()" [disabled]="isLoading" class="update-btn">
+          <button mat-flat-button color="primary" (click)="editUser()" [disabled]="isLoading" class="update-btn">
             <span>{{ln.TXT_UPDATED | translate}}</span>
             <mat-spinner diameter="20" *ngIf="isLoading" class="btn-loader"></mat-spinner>
           </button>

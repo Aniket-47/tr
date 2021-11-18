@@ -119,7 +119,7 @@ export class AddUserComponent implements OnInit {
       ],
       roletypeid: ['', [Validators.required]],
       designationname: [''],
-      businessverticalid: [''],
+      businessverticalid: ['', [Validators.required]],
       practicename: [''],
       mobilenumber: [''],
       locationname: ['']
@@ -188,6 +188,7 @@ export class AddUserComponent implements OnInit {
             this.addUserForm.reset();
           }, 4000)
         }
+
       })
     }
   }

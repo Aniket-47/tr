@@ -23,6 +23,7 @@ import { GetUser_response } from './../shared/interfaces/get-user';
 export class UserDetailComponent implements OnInit, OnChanges {
 
   editUserForm!: FormGroup;
+  newUser!: any;
   isLoading = false;
 
   roles: Irole[] = [];
@@ -148,7 +149,7 @@ export class UserDetailComponent implements OnInit, OnChanges {
     })
   }
 
-  addUser() {
+  editUser() {
     this.isLoading = true;
     // const payload: UpdateUser_request = {
     //   firstname: this.firstName.value,
@@ -158,8 +159,15 @@ export class UserDetailComponent implements OnInit, OnChanges {
     //   roletypeid: this.userRole.value,
     //   accountroleid: this.userID
     // }
+    this.editUserForm.markAllAsTouched();
     if (this.editUserForm.valid) {
-      this.userServ.createUser(this.accountID, this.editUserForm.value).subscribe(res => {
+      this.isLoading = true;
+      this.newUser = this.editUserForm.value;
+      this.newUser.roletypename = this.roletypeid.value.name;
+      this.newUser.roletypeid = this.roletypeid.value.roletypeid;
+      // console.log(this.newUser);
+
+      this.userServ.createUser(this.accountID, this.newUser).subscribe(res => {
         this.isLoading = false;
         if (res.error) {
           // error from api
@@ -168,12 +176,13 @@ export class UserDetailComponent implements OnInit, OnChanges {
         else {
           // success from api
           this.snackBar.open(res.message);
-          setTimeout(() => {
-            this.editUserForm.reset();
-          }, 4000)
+
         }
+
       })
     }
   }
+
+
 
 }
