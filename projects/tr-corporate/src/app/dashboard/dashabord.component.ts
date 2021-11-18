@@ -12,7 +12,7 @@ import { getIsLoading } from '../utility/store/selectors/app.selector';
 import { getUserFirstName, getUserFullName } from '../utility/store/selectors/user.selector';
 import { LogoutService } from './shared/services/logout.service';
 import { setUserRoles } from '../utility/store/actions/roles.action';
-import { setUserAddress, setUserCity, setUserCountry, setUserFullName, setUserMail, setUserMobile, setUserRole, setUserState } from '../utility/store/actions/user.action';
+import { setUserAddress, setUserCity, setUserCountry, setUserFullName, setUserMail, setUserMobile, setUserName, setUserRole, setUserState, setUserStatus } from '../utility/store/actions/user.action';
 import { IaccountDetials } from '../utility/store/interfaces/account';
 import { DASHBOARD_LN } from './shared/dashboard.lang';
 
@@ -77,10 +77,12 @@ export class DashabordComponent implements OnInit {
         // this.store.dispatch(setUserState({ data: { stateId: user?.stateid, stateName: user?.statename } }));
         // this.store.dispatch(setUserCountry({ data: { countryId: user?.countryid, countryName: user?.countryname } }));
         this.store.dispatch(setUserMobile({ data: user?.mobilenumber }));
+        this.store.dispatch(setUserName({ data: { firstName: user.firstname, middleName: user?.middlename, lastName: user?.lastname } }))
         this.store.dispatch(setUserMail({ data: user?.email }));
         this.store.dispatch(setUserRole({ data: { roletypename: user?.roletypename, roletypeid: user?.roletypeid } }));
+        this.store.dispatch(setUserStatus({ data: user?.status }));
 
-
+        // store user name 
         this.lsServ.store(LSkeys.USER_NAME, `${user?.firstname}`);
       }
 

@@ -93,7 +93,7 @@ export class OrganisationProfileComponent implements OnInit, OnChanges {
       stateid: ['', [Validators.required]],
       cityid: ['', [Validators.required]],
       industryid: ['', [Validators.required]],
-      accounttype: ['', [Validators.required]]
+      accounttype: [{ value: '', disabled: true }, [Validators.required]]
     });
   }
 
@@ -174,6 +174,7 @@ export class OrganisationProfileComponent implements OnInit, OnChanges {
 
 
   saveOrgProfile() {
+    this.orgProfileForm.enable();
     const { value, invalid } = this.orgProfileForm;
     if (invalid) {
       for (const key in this.orgProfileForm.controls) {

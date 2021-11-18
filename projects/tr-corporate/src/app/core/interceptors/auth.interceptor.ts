@@ -62,7 +62,7 @@ export class AuthInterceptor implements HttpInterceptor {
         if (this.skipError) return throwError(error);
 
         let message = this.errorCollection[error.status] || 'Server is unable to respond accordingly';
-        this.snackBarService.open(message, 'Ok', 0);
+        this.snackBarService.open(message, 'Ok', 10000);
         if (error.status === 401) {
           this.logoutServ.logout();
           this.logoutServ.clearSavedData();

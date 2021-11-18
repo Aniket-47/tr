@@ -32,3 +32,8 @@ export const enum AccountActions {
     ACC_DETAILS_ACTION = "[ACCOUNT] Set account deatils",
     ACC_RESET_ACTION = "[ACCOUNT] Reset account deatils",
 }
+
+// Business verticle
+export const enum BusinessVerticleActios {
+    BUSINESS_VERTICLE_ACTION = "[BUSINESS] Set business verticles",
+}

@@ -244,10 +244,8 @@ export class AddRoleComponent implements OnInit, OnChanges {
       }
     });
     const payload: any = {
-      role: {
-        roletypeid: value.roleType,
-        rolename: value.roleName
-      }
+      roletypeid: value.roleType,
+      rolename: value.roleName
     }
 
     const payload2 = {

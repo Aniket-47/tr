@@ -38,6 +38,7 @@ export class ManageProfileComponent implements OnInit {
 
   loadUser() {
     this.store.select(getUserDeatils).subscribe(user => {
+      console.log(user)
       this.userForm.patchValue({
         firstName: user?.name.firstName,
         middleName: user?.name.middleName,
