@@ -18,14 +18,14 @@ export class SettingsComponent implements OnInit {
   routerConfig = ROUTE_CONFIGS;
 
   currentUrlPath: string;
-  ROUTE_CONFIGS=ROUTE_CONFIGS;
-  @ViewChild('drawer',{static: true}) drawer!: MatDrawer;
+  ROUTE_CONFIGS = ROUTE_CONFIGS;
+  @ViewChild('drawer', { static: true }) drawer!: MatDrawer;
 
   constructor(private router: Router, private _bottomSheet: MatBottomSheet) {
     this.currentUrlPath = router.url;
     router.events.subscribe(res => {
       this.currentUrlPath = router.url;
-      if(this.currentUrlPath === ROUTE_CONFIGS.SETTINGS_DASHBOARD){
+      if (this.currentUrlPath === ROUTE_CONFIGS.SETTINGS_DASHBOARD) {
         this.drawer.close()
       }
     })

@@ -5,7 +5,7 @@ import {
   ActivatedRouteSnapshot
 } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { PostLoginService } from '../services/post-login.service';
+import { PostLoginService } from '../../utility/services/post-login.service';
 
 @Injectable({
   providedIn: 'root'

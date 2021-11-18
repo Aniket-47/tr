@@ -29,7 +29,7 @@ import { merge, Observable, of as observableOf } from 'rxjs';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 import { getRoles } from '../../../utility/store/selectors/roles.selector';
 import { FilterService } from '../shared/services/filter.service';
-import { ConfirmationComponent } from '../../../shared/components/confirmation/confirmation.component';
+import { ConfirmationComponent } from '../../../utility/components/confirmation/confirmation.component';
 
 @Component({
   selector: 'app-user-manage',

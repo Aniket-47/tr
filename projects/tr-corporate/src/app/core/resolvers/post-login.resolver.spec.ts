@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { PostLoginResolver } from '../resolvers/post-login.resolver';
+import { PostLoginResolver } from './post-login.resolver';
 
 describe('PostLoginResolver', () => {
   let resolver: PostLoginResolver;
