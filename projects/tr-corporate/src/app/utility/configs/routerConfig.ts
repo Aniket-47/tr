@@ -5,6 +5,7 @@ export const ROUTE_CONFIGS = {
   LOGIN: '/auth/login',
   REGISTER1: '/auth/selectrole',
   REGISTER2: '/auth/register',
+  REGISTER_SUCCESS: '/auth/register-success',
   SETTINGS_DASHBOARD: '/dashboard/settings',
   VIEW_ROLE: '/dashboard/settings/permission/role',
   PERSONAL_PROFILE: '/dashboard/account/manage-profile',
@@ -14,7 +15,7 @@ export const ROUTE_CONFIGS = {
 }
 
 export const ROUTE_PERMISSION = {
-    SETTINGS_DASHBOARD: true
+  SETTINGS_DASHBOARD: true
 }
 
 
