@@ -54,11 +54,13 @@
 
       </div>
       <button mat-menu-item [routerLink]="routerConfig.ACCOUNT_MANAGE_PROFILE"><i class="icon-mc mc-person"></i>
-        <span>Manage Profile</span></button>
+        <span>{{ln.TXT_MANAGE_PROFILE | translate}}</span>
+        <!-- <span>Manage Profile</span> -->
+      </button>
       <!-- <button mat-menu-item><i class="icon-mc mc-switch_account"></i> <span>Accounts</span></button> -->
       <button mat-menu-item (click)="logout()">
         <i class="icon-mc mc-power_settings_new"></i>
-        <span>Sign Out</span>
+        <span>{{ln.TXT_SIGN_OUT | translate}}</span>
       </button>
     </mat-menu>
     <mat-menu #notify="matMenu" backdropClass="profile-dropdown" class="notificationCard">
@@ -84,7 +86,7 @@
     <div top class="border-bottom side-nav-hvr">
       <a [routerLink]="routerConfig.DASHBOARD" routerLinkActive="active" 
         [routerLinkActiveOptions]="{exact: true}"
-        matTooltip="Home" matTooltipPosition='right'>
+        matTooltip="{{ln.TXT_HOME | translate}}" matTooltipPosition='right'>
         <span class="icon-mc mc-home"></span>
       </a>
       <a matTooltip="Jobs" matTooltipPosition='right'>

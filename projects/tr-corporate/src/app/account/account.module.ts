@@ -8,6 +8,7 @@ import { OrganisationProfileComponent } from './organisation-profile/organisatio
 import { ManageProfileComponent } from './manage-profile/manage-profile.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AccountSecurityComponent } from './account-security/account-security.component';
+import { McCoreModule } from '@mucrest/ng-core';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { AccountSecurityComponent } from './account-security/account-security.co
   ],
   imports: [
     CommonModule,
+    McCoreModule,
     AccountRoutingModule,
     MaterialModule,
     ReactiveFormsModule

@@ -169,9 +169,11 @@
       </div>
     </form>
     <div class="d-flex justify-content-end mt-2">
-      <button class="btn-lg text-dark ms-3" mat-flat-button (click)="addUserForm.reset()">Reset</button>
+      <button class="btn-lg text-dark ms-3" mat-flat-button (click)="addUserForm.reset()">
+        {{ln.TXT_RESET | translate}}
+      </button>
       <button mat-flat-button color="primary" (click)="addUser()" [disabled]="isLoading">
-        <span>Invite</span>
+        <span>{{ln.TXT_INVITE | translate}}</span>
         <mat-spinner diameter="20" *ngIf="isLoading" class="btn-loader"></mat-spinner>
       </button>
     </div>
