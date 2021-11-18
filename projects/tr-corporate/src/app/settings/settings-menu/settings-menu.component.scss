@@ -28,15 +28,18 @@
       height: 100%;
       ::ng-deep .mc-card {
         height: 100%;
+        &:hover {
+          border-color: $theme;
+        }
       }
   }
   }
   i {
-    background-color: $theme-secondary;
-    padding: .4rem;
-    border-radius: 50%;
+    // background-color: $theme-secondary;
+    // padding: .4rem;
+    // border-radius: 50%;
     &::before {
-      color: $white;
+      color: $theme;
     }
   }
 

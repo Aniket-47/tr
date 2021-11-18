@@ -9,14 +9,14 @@ const routes: Routes = [
     path: 'auth',
     loadChildren: () =>
       import('./auth/auth.module').then((m) => m.AuthModule),
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: 'dashboard',
     loadChildren: () =>
       import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
-    canActivate: [AuthGuard],
-    resolve: { data: PostLoginResolver }
+    // canActivate: [AuthGuard],
+    // resolve: { data: PostLoginResolver }
   },
   {
     path: 'as',
