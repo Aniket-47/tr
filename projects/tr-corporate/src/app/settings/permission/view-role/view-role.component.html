@@ -10,13 +10,13 @@
   <div [@fadeInOut]>
     <tr-page-header>
       <div page-title>
-        <h5 class="mobile-only">Permissions</h5>
-        <h2>Account Role</h2>
+        <h5 class="mobile-only">{{ln.TXT_PERMISSIONS | translate}}</h5>
+        <h2>{{ln.TXT_ACCOUNT_ROLE | translate}}</h2>
       </div>
       <div page-action class="page-action cloud-only">
         <button mat-flat-button color="primary" (click)="createNewRole()"><i
             class="add-new-role-btn-icon icon-mcf mcf-admin_panel_settings"></i>
-          <span> Create New Role</span>
+          <span> {{ln.TXT_CREATE_NEW_ROLE | translate}}</span>
         </button>
       </div>
     </tr-page-header>
@@ -53,7 +53,7 @@
         <table mat-table [dataSource]="dataSource" matSort>
           <!-- Role Column -->
           <ng-container matColumnDef="rolename">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Account Roles </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ln.TXT_ACCOUNTS_ROLES | translate}} </th>
             <td mat-cell *matCellDef="let element">
               <mat-label class="role" [ngClass]="{
             'success': element.role === 'Admin',
@@ -71,15 +71,15 @@
 
           <!-- Username Column -->
           <ng-container matColumnDef="users">
-            <th mat-header-cell *matHeaderCellDef> Total Users </th>
+            <th mat-header-cell *matHeaderCellDef> {{ln.TXT_TOTAL_USERS | translate}} </th>
             <td mat-cell *matCellDef="let element"> <span class="mobile-only grey-text">Total Users :</span>
-              {{element?.users || 0}} Users</td>
+              {{element?.usercount || 0}} Users</td>
           </ng-container>
 
           <!-- Last Updated Column -->
           <ng-container matColumnDef="lastupdated">
-            <th mat-header-cell *matHeaderCellDef> Last Edited </th>
-            <td mat-cell *matCellDef="let element"> <span class="mobile-only grey-text">Last Updated :</span>
+            <th mat-header-cell *matHeaderCellDef> {{ln.TXT_LAST_EDITED | translate}} </th>
+            <td mat-cell *matCellDef="let element"> <span class="mobile-only grey-text">{{ln.TXT_LAST_UPDATED | translate}} :</span>
               {{element?.modifiedDatetime | date}} </td>
           </ng-container>
 
@@ -104,7 +104,7 @@
                   <span class="icon-mc mc-create"></span>
                 </button>
                 <button mat-icon-button (click)="deleteRole(element)">
-                  <span class="icon-mc mc-delete add-new-role-btn-icon"></span>
+                  <span class="icon-mc mc-delete"></span>
                 </button>
                 <button mat-icon-button (click)="viewRoleDeatils(element)">
                   <span class="icon-mc mc-visibility"></span>
@@ -116,13 +116,13 @@
                 <mat-menu #menu="matMenu" backdropClass="profile-dropdown">
                   <div class="user-dropdown-submenu">
                     <button mat-menu-item (click)="editRole(element)"><span class="icon-mc mc-create"></span>
-                      <span class="mx-3">Edit</span></button>
+                      <span class="mx-3">{{ln.TXT_EDIT | translate}}</span></button>
                     <button mat-menu-item (click)="viewRoleDeatils(element)">
-                      <span class="icon-mc mc-visibility"></span><span class="mx-3">View</span>
+                      <span class="icon-mc mc-visibility"></span><span class="mx-3">{{ln.TXT_VIEW | translate}}</span>
                     </button>
                     <button mat-menu-item (click)="deleteRole(element)">
                       <span class="icon-mc mc-delete add-new-role-btn-icon"></span>
-                      <span class="mx-3">Delete</span>
+                      <span class="mx-3">{{ln.TXT_DELETE | translate}}</span>
                     </button>
                     <!-- <button mat-menu-item><span class="icon-mc mc-delete" *ngIf=""></span> Delete</button> -->
                   </div>
@@ -146,7 +146,7 @@
       <div class="more-float-action-btn" [class.active]="toggle">
         <!-- <button mat-stroked-button color="primary" [matMenuTriggerFor]="menu">Export <span
                 class="icon-mc mc-expand_more"></span></button> -->
-        <button mat-flat-button color="primary" (click)="createNewRole()"><span class="icon-mc mc-plus"></span> New Role
+        <button mat-flat-button color="primary" (click)="createNewRole()"><span class="icon-mc mc-plus"></span> {{ln.TXT_NEW_ROLE | translate}}
         </button>
         <!-- <mat-menu #menu="matMenu">
             <button mat-menu-item>PDF</button>

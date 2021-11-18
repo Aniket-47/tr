@@ -1,4 +1,3 @@
-
 <mat-drawer-container>
   <mat-drawer #drawer mode="over" [autoFocus]="false">
     <tr-m-header (logOutEvent)="logout()">
@@ -15,26 +14,29 @@
   </mat-drawer>
   <tr-d-header>
     <span class="icon-mc mc-menu header-icon" m-brand (click)="drawer.toggle()"></span>
-    <tr-search class="searchPanel cloud-only"></tr-search>
+    <!-- <tr-search class="searchPanel cloud-only"></tr-search> -->
     <div class="header-icon mobile-only">
       <span class="icon-mcf mcf-search" (click)="toggleSearch()"></span>
+    </div>
+    <div class="header-icon">
+      <span class="icon-mcf mcf-search"></span>
     </div>
     <div class="action-icon" [ngClass]="{'menu-active':colorActivation}">
       <a [matMenuTriggerFor]="notify" class="header-icon" (menuClosed)="colorActivation=false"
         (menuOpened)="colorActivation=true">
-        <span class="icon-mc mc-notifications" matBadge="3" matBadgePosition="after" matBadgeColor="accent"></span>
+        <span class="icon-mc mc-notifications_none" matBadge="3" matBadgePosition="after" matBadgeColor="accent"></span>
       </a>
     </div>
     <div class="active-icon" [ngClass]="{'menu-active':msgColorActivation}">
       <a [matMenuTriggerFor]="message" class="header-icon" (menuClosed)="msgColorActivation=false"
         (menuOpened)="msgColorActivation=true">
-        <span class="icon-mcf mcf-outgoing_mail"></span>
+        <span class="icon-mc mc-mail"></span>
       </a>
     </div>
     <a [matMenuTriggerFor]="menu" class="user-dropdown">
       <span class="icon-mcf mcf-account_circle" *ngIf="!userName"></span>
       <span class="user-avatar" *ngIf="userName">{{userName.split('')[0] }}</span>
-      <span class="user-name">{{userName }}</span>
+      <span class="user-name">{{userName.split(' ')[0]}}</span>
     </a>
     <mat-menu #menu="matMenu" backdropClass="profile-dropdown">
       <div class="user-dropdown-submenu" (click)="onEvent($event)">
@@ -43,7 +45,7 @@
             <mat-expansion-panel-header>
               <mat-panel-title>
                 <span class="icon-mc mc-layers"></span>
-                <span> Accounts </span>
+                <span> {{ln.TXT_ACCOUNTS | translate}} </span>
               </mat-panel-title>
             </mat-expansion-panel-header>
             <div class="user-dropdown-submenu-item" *ngFor="let account of accountList">
@@ -55,11 +57,13 @@
 
       </div>
       <button mat-menu-item [routerLink]="routerConfig.ACCOUNT_MANAGE_PROFILE"><i class="icon-mc mc-person"></i>
-        <span>Manage Profile</span></button>
+        <span>{{ln.TXT_MANAGE_PROFILE | translate}}</span>
+        <!-- <span>Manage Profile</span> -->
+      </button>
       <!-- <button mat-menu-item><i class="icon-mc mc-switch_account"></i> <span>Accounts</span></button> -->
       <button mat-menu-item (click)="logout()">
         <i class="icon-mc mc-power_settings_new"></i>
-        <span>Sign Out</span>
+        <span>{{ln.TXT_SIGN_OUT | translate}}</span>
       </button>
     </mat-menu>
     <mat-menu #notify="matMenu" backdropClass="profile-dropdown" class="notificationCard">
@@ -83,15 +87,26 @@
       </a>
     </div>
     <div top class="border-bottom side-nav-hvr">
-      <a [routerLink]="routerConfig.DASHBOARD" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
-        matTooltip="Home" matTooltipPosition='right'><span class="icon-mc mc-home"></span></a>
-      <a matTooltip="Jobs" matTooltipPosition='right'><span class="icon-mcf mcf-work_outline"></span></a>
-      <a matTooltip="Candidates" matTooltipPosition='right'><span class="icon-mc mc-group"></span></a>
+      <a [routerLink]="routerConfig.DASHBOARD" routerLinkActive="active" 
+        [routerLinkActiveOptions]="{exact: true}"
+        matTooltip="{{ln.TXT_HOME | translate}}" matTooltipPosition='right'>
+        <span class="icon-mc mc-home"></span>
+      </a>
+      <a matTooltip="{{ln.TXT_JOBS | translate}}" matTooltipPosition='right'>
+        <span class="icon-mcf mcf-work_outline"></span>
+      </a>
+      <a matTooltip="{{ln.TXT_CANDIDATES | translate}}" matTooltipPosition='right'>
+        <span class="icon-mc mc-group"></span>
+      </a>
     </div>
     <div top class="side-nav-hvr">
-      <a matTooltip="Analytics" matTooltipPosition='right'><span class="icon-mc mc-pie_chart_outlined"></span></a>
-      <a [routerLink]="routerConfig.SETTINGS_DASHBOARD" routerLinkActive="active" matTooltip="Settings"
-        matTooltipPosition='right'><span class="icon-mc mc-sliders"></span></a>
+      <a matTooltip="{{ln.TXT_ANALYTICS | translate}}" matTooltipPosition='right'>
+        <span class="icon-mc mc-pie_chart_outlined"></span>
+      </a>
+      <a [routerLink]="routerConfig.SETTINGS_DASHBOARD" routerLinkActive="active" 
+        matTooltip="{{ln.TXT_SETTINGS | translate}}" matTooltipPosition='right'>
+        <span class="icon-mc mc-sliders"></span>
+      </a>
     </div>
   </mc-side-navbar>
   <tr-search class="m-searchPanel" [ngClass]="{'active': searchToggle}"></tr-search>

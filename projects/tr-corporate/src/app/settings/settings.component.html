@@ -1,4 +1,3 @@
-
 <mat-drawer-container autosize>
   <mat-drawer #drawer [mode]="drawerMode">
     <app-settings-side-menu></app-settings-side-menu>
@@ -7,22 +6,13 @@
     <router-outlet></router-outlet>
   </div>
 </mat-drawer-container>
-<button
-  *ngIf="currentUrlPath !== routerConfig.SETTINGS_DASHBOARD"
-  type="button"
-  mat-icon-button
-  (click)="drawer.toggle()"
-  class="togglebtn"
-  [ngClass]="
+<button *ngIf="currentUrlPath !== routerConfig.SETTINGS_DASHBOARD" type="button" mat-icon-button
+  (click)="drawer.toggle()" class="togglebtn" [ngClass]="
       drawer.opened ? 'right' : 'left'
-    "
->
-  <span
-    class="icon-mc"
-    [ngClass]="
+    ">
+  <span class="icon-mc" [ngClass]="
       drawer.opened ? 'mc-keyboard_arrow_left' : 'mc-keyboard_arrow_right'
-    "
-  ></span>
+    "></span>
 </button>
 
 <!-- <div *ngIf="currentUrlPath === '/dashboard/settings'"> {{ drawer.close() }} </div> -->

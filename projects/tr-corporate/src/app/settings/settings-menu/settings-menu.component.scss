@@ -29,7 +29,7 @@
       ::ng-deep .mc-card {
         height: 100%;
         &:hover {
-          border-color: $theme;
+          box-shadow: inset 0px 0px 0px 2px $theme;
         }
       }
   }

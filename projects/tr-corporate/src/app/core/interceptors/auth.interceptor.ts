@@ -10,11 +10,11 @@ import { EMPTY, Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { LstorageService } from '@tr/src/app/utility/services/lstorage.service';
-import { LSkeys } from '../configs/app.constants';
-import { errorCollection } from '../configs/server-error.constant';
-import { SnackBarService } from '../services/snack-bar.service';
-import { ROUTE_CONFIGS } from '../configs/routerConfig';
-import { LogoutService } from '../../dashboard/services/logout.service';
+import { LogoutService } from '../../dashboard/shared/services/logout.service';
+import { SnackBarService } from '../../utility/services/snack-bar.service';
+import { errorCollection } from '../../utility/configs/server-error.constant';
+import { LSkeys } from '../../utility/configs/app.constants';
+import { ROUTE_CONFIGS } from '../../utility/configs/routerConfig';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {

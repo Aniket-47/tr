@@ -21,7 +21,8 @@ import { UserRoleService } from '../shared/services/user-role.service';
 
 // Component
 import { AddRoleComponent } from '../add-role/add-role.component';
-import { ConfirmationComponent } from '../../../shared/components/confirmation/confirmation.component';
+import { ConfirmationComponent } from '../../../utility/components/confirmation/confirmation.component';
+import { SETTINGS_LN } from '../../shared/settings.lang';
 
 
 export interface Irole {
@@ -29,7 +30,7 @@ export interface Irole {
   isdefaultrole: number; // 1 -dafault, 0 - custom
   roletypeid: number;
   rolename: string;
-  users: number;
+  usercount: number;
   lastupdated: Date | string;
 }
 
@@ -61,7 +62,7 @@ export class ViewRoleComponent implements AfterViewInit, OnInit {
   selectedStatus = this.status[0].value;
   selectedRole = this.role[0].value;
   selectedSort = this.sortby[0].value;
-  displayedColumns: string[] = ['rolename', 'users', 'lastupdated', 'action'];
+  displayedColumns: string[] = ['rolename', 'usercount', 'lastupdated', 'action'];
   // dataSource = new MatTableDataSource<any>(ELEMENT_DATA);
   dataSource = new Observable<Irole[]>();
   isRateLimitReached: boolean = false;
@@ -81,6 +82,8 @@ export class ViewRoleComponent implements AfterViewInit, OnInit {
 
   isEditRole: boolean = false;
   isViewRole: boolean = false;
+
+  ln = SETTINGS_LN;
 
   constructor(
     private dialog: MatDialog,
@@ -120,14 +123,15 @@ export class ViewRoleComponent implements AfterViewInit, OnInit {
       .pipe(
         startWith({}),
         switchMap(() => {
-          if (this.paginator.pageIndex > 0) this.offset = this.pageSize * this.paginator.pageIndex + 1;
+          if (this.paginator.pageIndex > 0) this.offset = this.pageSize * this.paginator.pageIndex;
+          else this.offset = 0;
 
           return this.userRoleService.getUserRoles(
             accountid,
             this.offset,
             this.pageSize,
             this.sort.active,
-            this.sort.direction == "desc" ? "DESC" : "ASC");
+            this.sort.direction == "desc" ? "desc" : "asc");
         }),
         map((res: any) => {
           // Flip flag to show that loading has finished.
@@ -182,17 +186,17 @@ export class ViewRoleComponent implements AfterViewInit, OnInit {
   }
 
   deleteRole(role: Irole) {
+    this.toggleTblRowClick();
     if (role.isdefaultrole) {
       this.snackbarServ.open("Default role can't be deleted.", "Ok");
       return;
     }
 
-    if (role.users >= 0) {
+    if (role.usercount > 0) {
       this.snackbarServ.open("Users are associated to this role.", "Ok");
       return;
     }
 
-    this.toggleTblRowClick();
     if (!role.isdefaultrole && role) {
       const dialogRef = this.dialog.open(ConfirmationComponent, { width: '500px', });
 
