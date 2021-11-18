@@ -1,10 +1,10 @@
 <div class="account-security" [@fadeInOut]>
     <form [formGroup]="changePasswordForm" autocomplete="off">
         <fieldset class="fieldset">
-            <legend>Change Password</legend>
+            <legend>{{ln.TXT_CHANGE_PASSWORD | translate}}</legend>
             <div>
                 <mat-form-field appearance="standard">
-                    <mat-label>Old Password</mat-label>
+                    <mat-label>{{ln.TXT_OLD_PASSWORD | translate}}</mat-label>
                     <input matInput placeholder="" type="password" formControlName='oldPassword'>
                     
                     <mat-error *ngIf="oldPassword.touched && !oldPassword.valid">
@@ -16,7 +16,7 @@
             </div>
             <div>
                 <mat-form-field appearance="standard">
-                    <mat-label>New Password</mat-label>
+                    <mat-label>{{ln.TXT_NEW_PASSWORD | translate}}</mat-label>
                     <input matInput [type]="hideNewPass ? 'password' : 'text'" formControlName='password'>
                     <button type="button" mat-icon-button matSuffix (click)="hideNewPass = !hideNewPass" 
                         [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideNewPass" class="btn-show-hide">
@@ -40,7 +40,7 @@
             </div>
             <div>
                 <mat-form-field appearance="standard">
-                    <mat-label>Confirm Password</mat-label>
+                    <mat-label>{{ln.TXT_CONFIRM_PASSWORD | translate}}</mat-label>
                     <input matInput placeholder="" [type]="hideCnfPass ? 'password' : 'text'" formControlName='cnfPass'>
                     <button type="button" mat-icon-button matSuffix (click)="hideCnfPass = !hideCnfPass" 
                         [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideCnfPass" class="btn-show-hide">
@@ -57,9 +57,9 @@
                 </mat-form-field>
             </div>
             <div class="profile-action">
-                <button type="reset" mat-stroked-button (click)="resetHandler()">Reset</button>
+                <button type="reset" mat-stroked-button (click)="resetHandler()">{{ln.TXT_RESET | translate}}</button>
                 <button mat-flat-button color="primary" (click)="savePassword()" [disabled] ='isLoading'>
-                    <span>Save Changes</span>
+                    <span>{{ln.TXT_SAVE_CHANGES | translate}}</span>
                     <mat-spinner *ngIf='isLoading' diameter='20' class="btn-loader"></mat-spinner>
                 </button>
             </div>

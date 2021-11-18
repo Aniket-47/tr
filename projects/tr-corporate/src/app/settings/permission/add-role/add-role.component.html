@@ -2,14 +2,14 @@
   <tr-page-header>
     <div page-title>
       <!-- <h5 class="mobile-only">Permissions</h5> -->
-      <h2 *ngIf="!isRoleView && !isEdit">Create New Role</h2>
-      <h2 *ngIf="isEdit">Update Role</h2>
+      <h2 *ngIf="!isRoleView && !isEdit">{{ln.TXT_CREATE_NEW_ROLE | translate}}</h2>
+      <h2 *ngIf="isEdit">{{ln.TXT_UPDATE_ROLE | translate}}</h2>
       <h2 *ngIf="isRoleView">{{selectedRoleInfo?.rolename | titlecase}}</h2>
     </div>
     <div page-action class="w-100 drawer-btn" *ngIf="!isRoleView">
       <div>
         <mat-form-field appearance="outline">
-          <mat-label>Role Type</mat-label>
+          <mat-label>{{ln.TXT_ROLE_TYPE | translate}}</mat-label>
           <mat-select placeholder="Select any default role" formControlName="roleType">
             <mat-option *ngFor="let role of defaultRoles" [value]="role?.roletypeid">
               {{role?.name}}
@@ -22,7 +22,7 @@
       </div>
       <div>
       <mat-form-field appearance="outline" >
-        <mat-label>New Role Name</mat-label>
+        <mat-label>{{ln.TXT_NEW_ROLE_NAME | translate}}</mat-label>
         <input matInput placeholder="Placeholder" formControlName="roleName">
         <mat-error *ngIf="roleName.invalid && roleName?.errors">
           <span *ngIf="roleName?.errors?.required">This field is required.</span>

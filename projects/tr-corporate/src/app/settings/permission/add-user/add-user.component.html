@@ -2,7 +2,7 @@
   <div class="border-0">
     <div class="d-flex justify-content-between">
       <h2 class="text-dark">
-        Add User
+        {{ln.TXT_ADD_USER | translate}}
       </h2>
       <button mat-icon-button mat-dialog-close>
         <i class="icon-mc mc-x"></i>
@@ -13,8 +13,8 @@
         <div class="col-md-6">
           <div>
             <mat-form-field appearance="outline" class="w-100">
-              <mat-label>First Name</mat-label>
-              <input matInput formControlName="firstname" placeholder="xyz">
+              <mat-label>{{ln.TXT_FIRST_NAME | translate}}</mat-label>
+              <input matInput formControlName="firstName" placeholder="xyz">
               <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
               <mat-error *ngIf="firstname.invalid && firstname.touched">
                 <span *ngIf="firstname.errors?.required">
@@ -34,8 +34,8 @@
         <div class="col-md-6">
           <div>
             <mat-form-field appearance="outline" class="w-100">
-              <mat-label>Middle Name</mat-label>
-              <input matInput formControlName="middlename" placeholder="xyz">
+              <mat-label>{{ln.TXT_MIDDLE_NAME | translate}}</mat-label>
+              <input matInput formControlName="middleName" placeholder="xyz">
               <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
               <mat-error *ngIf="middlename.invalid && middlename.touched">
 
@@ -52,8 +52,8 @@
         <div class="col-md-6">
           <div>
             <mat-form-field appearance="outline" class="w-100">
-              <mat-label>Last Name</mat-label>
-              <input matInput formControlName="lastname" placeholder="xyz">
+              <mat-label>{{ln.TXT_LAST_NAME | translate}}</mat-label>
+              <input matInput formControlName="lastName" placeholder="xyz">
               <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
               <mat-error *ngIf="lastname.invalid && lastname.touched">
                 <span *ngIf="lastname.errors?.required">
@@ -80,7 +80,7 @@
         <div class="col-md-6">
           <div>
             <mat-form-field appearance="outline" class="w-100">
-              <mat-label>Email</mat-label>
+              <mat-label>{{ln.TXT_EMAIL | translate}}</mat-label>
               <input type="email" matInput formControlName="email" placeholder="pat@example.com">
               <!--<mat-icon class="text-muted h5" matSuffix>email</mat-icon>-->
               <mat-error *ngIf="email.invalid && email.touched">
@@ -97,9 +97,9 @@
         <div class="col-md-6">
           <div>
             <mat-form-field appearance="outline" class="w-100">
-              <mat-label>User Role</mat-label>
-              <mat-select formControlName="roletypeid">
-                <mat-option *ngFor="let role of roles" [value]="role">
+              <mat-label>{{ln.TXT_USER_ROLE | translate}}</mat-label>
+              <mat-select formControlName="userRole">
+                <mat-option *ngFor="let role of roles" [value]="role.roletypeid">
                   {{role.name}}
                 </mat-option>
               </mat-select>
@@ -109,49 +109,71 @@
         <div class="col-md-6">
           <div>
             <mat-form-field appearance="outline" class="w-100">
-              <mat-label>Designation</mat-label>
-              <input matInput formControlName="designationname" placeholder="Designation">
+              <mat-label>{{ln.TXT_DESIGNATION | translate}}</mat-label>
+              <mat-select disabled>
+                <mat-option *ngFor="let food of foods" [value]="food.value">
+                  {{food.viewValue}}
+                </mat-option>
+              </mat-select>
             </mat-form-field>
           </div>
         </div>
         <div class="col-md-6">
           <div>
             <mat-form-field appearance="outline" class="w-100">
-              <mat-label>Buisness Vertical</mat-label>
-              <input type="number" matInput formControlName="businessverticalid" placeholder="Business Vertical">
+              <mat-label>{{ln.TXT_BUSINESS_VERTICAL | translate}}</mat-label>
+              <mat-select disabled>
+                <mat-option *ngFor="let food of foods" [value]="food.value">
+                  {{food.viewValue}}
+                </mat-option>
+              </mat-select>
             </mat-form-field>
           </div>
         </div>
         <div class="col-md-6">
           <div>
             <mat-form-field appearance="outline" class="w-100">
-              <mat-label>Practice</mat-label>
-              <input matInput formControlName="practicename" placeholder="Practice">
+              <mat-label>{{ln.TXT_PRACTICE | translate}}</mat-label>
+              <mat-select disabled>
+                <mat-option *ngFor="let food of foods" [value]="food.value">
+                  {{food.viewValue}}
+                </mat-option>
+              </mat-select>
             </mat-form-field>
           </div>
         </div>
         <div class="col-md-6">
           <div>
             <mat-form-field appearance="outline" class="w-100">
-              <mat-label>Phone</mat-label>
-              <input matInput formControlName="mobilenumber" placeholder="ex:- 9874563258">
+              <mat-label>{{ln.TXT_LOCATION | translate}}</mat-label>
+              <mat-select disabled>
+                <mat-option *ngFor="let food of foods" [value]="food.value">
+                  {{food.viewValue}}
+                </mat-option>
+              </mat-select>
             </mat-form-field>
           </div>
         </div>
         <div class="col-md-6">
           <div>
             <mat-form-field appearance="outline" class="w-100">
-              <mat-label>Location</mat-label>
-              <input matInput formControlName="locationname" placeholder="Location">
+              <mat-label>{{ln.TXT_REPORTING_MANAGER | translate}}</mat-label>
+              <mat-select disabled>
+                <mat-option *ngFor="let food of foods" [value]="food.value">
+                  {{food.viewValue}}
+                </mat-option>
+              </mat-select>
             </mat-form-field>
           </div>
         </div>
       </div>
     </form>
     <div class="d-flex justify-content-end mt-2">
-      <button class="btn-lg text-dark ms-3" mat-flat-button (click)="addUserForm.reset()">Reset</button>
+      <button class="btn-lg text-dark ms-3" mat-flat-button (click)="addUserForm.reset()">
+        {{ln.TXT_RESET | translate}}
+      </button>
       <button mat-flat-button color="primary" (click)="addUser()" [disabled]="isLoading">
-        <span>Invite</span>
+        <span>{{ln.TXT_INVITE | translate}}</span>
         <mat-spinner diameter="20" *ngIf="isLoading" class="btn-loader"></mat-spinner>
       </button>
     </div>

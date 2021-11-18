@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CANDIDATE_LN } from './shared/candidate.lang';
 
 @Component({
   selector: 'app-candidate',
@@ -7,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CandidateComponent implements OnInit {
 
+  ln = CANDIDATE_LN;
+  
   constructor() { }
 
   ngOnInit(): void {

@@ -22,6 +22,7 @@ import { UserRoleService } from '../shared/services/user-role.service';
 // Component
 import { AddRoleComponent } from '../add-role/add-role.component';
 import { ConfirmationComponent } from '../../../utility/components/confirmation/confirmation.component';
+import { SETTINGS_LN } from '../../shared/settings.lang';
 
 
 export interface Irole {
@@ -81,6 +82,8 @@ export class ViewRoleComponent implements AfterViewInit, OnInit {
 
   isEditRole: boolean = false;
   isViewRole: boolean = false;
+
+  ln = SETTINGS_LN;
 
   constructor(
     private dialog: MatDialog,
