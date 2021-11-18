@@ -1,5 +1,5 @@
+//settings-menu
 export enum SETTINGS_LN {
-  //settings-menu
   TXT_PERMISSIONS = "TXT_PERMISSIONS",
   TXT_TEMPLATE = "TXT_TEMPLATE",
   TXT_FORM_VISIBILITY_SETTING = "",
@@ -75,6 +75,8 @@ export enum SETTINGS_LN {
   TXT_EXCEL = "TXT_EXCEL",
   TXT_CSV = "",
   TXT_EXPORT = "",
+  TXT_ALL = "TXT_ALL",
+  TXT_DEACTIVE = "TXT_DEACTIVE",
 
   //permissions > view-role
   TXT_ACCOUNT_ROLE = "TXT_ACCOUNT_ROLE",
@@ -82,7 +84,7 @@ export enum SETTINGS_LN {
   TXT_LAST_EDITED = "TXT_LAST_EDITED",
   TXT_EDIT = "TXT_EDIT",
   TXT_VIEW = "TXT_VIEW",
-  TXT_NEW_ROLE ="",
+  TXT_NEW_ROLE = "",
 }
 
 // export default ln = Translator(SETTINGS_LN)
