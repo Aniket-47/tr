@@ -1,15 +1,34 @@
 export interface Iuser {
     isLoggedIn: boolean;
     fullName: string;
-    firstName: string;
-    lastName: string;
-    middleName: string;
+    name: { firstName: string, middleName: string, lastName: string },
+    mobileNumber: string;
+    email: string;
     address: string;
+    city: Icity;
+    country: Icountry;
+    state: Istate;
+    role: Irole;
+    practicename: string;
+    locationname: string;
+    designationname: string;
+    businessverticalid: string;
+    status: number
+}
+
+interface Icity {
     cityId: string;
     cityName: string;
-    countryId: string;
-    countryName: string;
-    mobileNumber: string;
+}
+interface Istate {
     stateId: string;
     stateName: string;
+}
+interface Icountry {
+    countryId: string;
+    countryName: string;
+}
+interface Irole {
+    roletypeid: number;
+    roletypename: string;
 }

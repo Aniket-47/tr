@@ -8,6 +8,7 @@ import { SnackBarService } from '../../utility/services/snack-bar.service';
 import { setAccountDeatils } from '../../utility/store/actions/account.action';
 import { State } from '../../utility/store/reducers';
 import { getAccountDeatils, getDefaultAccountId } from '../../utility/store/selectors/account.selector';
+import { ACCOUNT_LN } from '../shared/account.lang';
 import { AccountService } from '../shared/account.service';
 
 @Component({
@@ -33,6 +34,8 @@ export class OrganisationProfileComponent implements OnInit, OnChanges {
   industries: { code: number, name: string }[] = [];
 
   isLoading = false;
+
+  ln = ACCOUNT_LN;
 
   constructor(
     private fb: FormBuilder,

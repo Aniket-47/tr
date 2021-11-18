@@ -6,6 +6,7 @@ import { State } from '../../../utility/store/reducers';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA } from '@angular/material/bottom-sheet';
 import { FilterService } from '../shared/services/filter.service';
+import { SETTINGS_LN } from '../../shared/settings.lang';
 
 @Component({
   selector: 'app-m-filter',
@@ -32,6 +33,8 @@ export class MFilterComponent implements OnInit {
   selectedSort!: string;
   selectedStatus!: number;
   selectedRole!: number;
+
+  ln = SETTINGS_LN;
 
   constructor(
     @Inject(MAT_BOTTOM_SHEET_DATA) public data: any,

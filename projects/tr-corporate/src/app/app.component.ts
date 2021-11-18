@@ -7,7 +7,7 @@ import { ROUTE_PERMISSION, ROUTE_CONFIGS } from './utility/configs/routerConfig'
 import { RouterConfigService } from './utility/services/router-config.service';
 
 import { State } from './utility/store/reducers';
-import { setUserStatus } from './utility/store/actions/user.action';
+import { setUserLoginStatus } from './utility/store/actions/user.action';
 import { fadeAnimation } from './animations';
 
 @Component({
@@ -36,7 +36,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     // set logged in status
     this.isUserLoggedIn = !!this.lstorageService.getItem(LSkeys.BEARER_TOKEN);
-    this.store.dispatch(setUserStatus({ data: this.isUserLoggedIn }));
+    this.store.dispatch(setUserLoginStatus({ data: this.isUserLoggedIn }));
   }
 
   checkRouterEvent(routerEvent: RouterEvent): void {

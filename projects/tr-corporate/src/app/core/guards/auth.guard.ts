@@ -8,8 +8,8 @@ import {
 } from '@angular/router';
 import { LstorageService } from '@tr/src/app/utility/services/lstorage.service';
 import { Observable } from 'rxjs';
-import { LSkeys } from '../configs/app.constants';
-import { RouterConfigService } from '../services/router-config.service';
+import { LSkeys } from '../../utility/configs/app.constants';
+import { RouterConfigService } from '../../utility/services/router-config.service';
 
 @Injectable({
   providedIn: 'root',
@@ -31,8 +31,8 @@ export class AuthGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-      this.config = this.configServ.routerconfig;
-      this.loggedin = !!this.LsService.getItem(LSkeys.BEARER_TOKEN);
+    this.config = this.configServ.routerconfig;
+    this.loggedin = !!this.LsService.getItem(LSkeys.BEARER_TOKEN);
 
     if (state.url.startsWith(this.config.DASHBOARD)) {
       if (this.loggedin) return true;
