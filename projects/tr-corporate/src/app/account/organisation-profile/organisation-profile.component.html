@@ -2,16 +2,16 @@
   <div class="row">
     <div class="col-md-6">
       <mat-form-field appearance="standard">
-        <mat-label>Company Name</mat-label>
+        <mat-label>{{ln.TXT_COMPANY_NAME | translate}}</mat-label>
         <input matInput formControlName="name">
         <mat-error *ngIf="name.invalid && name.touched">
-          <span *ngIf="name.errors?.required">This filed is required.</span>
+          <span *ngIf="name.errors?.required">This field is required.</span>
         </mat-error>
       </mat-form-field>
     </div>
     <div class="col-md-6">
       <mat-form-field appearance="standard">
-        <mat-label>Short Name</mat-label>
+        <mat-label>{{ln.TXT_SHORT_NAME | translate}}</mat-label>
         <input matInput formControlName="shortname" (keyup)='checkValidity()'>
         <mat-error *ngIf="shortname.invalid && shortname.touched">
           <span *ngIf="shortname.errors?.maxlength">Short Name should be maximum 15 letters</span>
@@ -27,18 +27,18 @@
   <div class="row">
     <div class="col-md-6">
       <mat-form-field appearance="standard">
-        <mat-label>Country</mat-label>
+        <mat-label>{{ln.TXT_COUNTRY | translate}}</mat-label>
         <mat-select formControlName="countryid">
           <mat-option [value]="each?.iso2" *ngFor="let each of countries">{{each?.name}}</mat-option>
         </mat-select>
         <mat-error *ngIf="countryid.invalid && countryid.touched">
-          <span *ngIf="countryid.errors?.required">This filed is required.</span>
+          <span *ngIf="countryid.errors?.required">This field is required.</span>
         </mat-error>
       </mat-form-field>
     </div>
     <div class="col-md-6">
       <mat-form-field appearance="standard">
-        <mat-label>Company URL</mat-label>
+        <mat-label>{{ln.TXT_COMPANY_URL | translate}}</mat-label>
         <input matInput formControlName="domain">
         <!-- <mat-error *ngIf="domain.invalid && domain.touched">
           <span *ngIf="domain.errors?.required">This filed is required.</span>
@@ -49,23 +49,23 @@
   <div class="row">
     <div class="col-md-6">
       <mat-form-field appearance="standard">
-        <mat-label>State</mat-label>
+        <mat-label>{{ln.TXT_STATE | translate}}</mat-label>
         <mat-select formControlName="stateid">
           <mat-option [value]="each?.stateCode" *ngFor="let each of states">{{each?.name}}</mat-option>
         </mat-select>
         <mat-error *ngIf="stateid.invalid && stateid.touched">
-          <span *ngIf="stateid.errors?.required">This filed is required.</span>
+          <span *ngIf="stateid.errors?.required">This field is required.</span>
         </mat-error>
       </mat-form-field>
     </div>
     <div class="col-md-6">
       <mat-form-field appearance="standard">
-        <mat-label>City</mat-label>
+        <mat-label>{{ln.TXT_CITY | translate}}</mat-label>
         <mat-select formControlName="cityid">
           <mat-option [value]="each?.id" *ngFor="let each of cities">{{each?.name}}</mat-option>
         </mat-select>
         <mat-error *ngIf="cityid.invalid && cityid.touched">
-          <span *ngIf="cityid.errors?.required">This filed is required.</span>
+          <span *ngIf="cityid.errors?.required">This field is required.</span>
         </mat-error>
       </mat-form-field>
     </div>
@@ -73,12 +73,12 @@
   <div class="row">
     <div class="col-md-6">
       <mat-form-field appearance="standard">
-        <mat-label>Industry</mat-label>
+        <mat-label>{{ln.TXT_INDUSTRY | translate}}</mat-label>
         <mat-select formControlName="industryid">
           <mat-option [value]="each?.code" *ngFor="let each of industries">{{each?.name}}</mat-option>
         </mat-select>
         <mat-error *ngIf="name.invalid && name.touched">
-          <span *ngIf="name.errors?.required">This filed is required.</span>
+          <span *ngIf="name.errors?.required">This field is required.</span>
         </mat-error>
       </mat-form-field>
     </div>
@@ -87,19 +87,20 @@
   <div class="row">
     <div class="col-md-12">
       <div class="account-type">
-        <p>Account Type</p>
+        <p>{{ln.TXT_ACCOUNT_TYPE | translate}}</p>
         <mat-radio-group aria-label="Select an option" formControlName="accounttype">
-          <mat-radio-button [value]="'TXT_ACT_CORP'" color="primary">Corporate</mat-radio-button>
-          <mat-radio-button [value]="'TXT_ACT_STAFF'" color="primary" class="mx-3 mt-3">Staffing And Recruiting
+          <mat-radio-button [value]="'TXT_ACT_STAFF'" color="primary">{{ln.TXT_STAF_REC | translate}}</mat-radio-button>
+          <mat-radio-button [value]="'TXT_ACT_CORP'" color="primary" class="mx-3 mt-3">
+            {{ln.TXT_CORPORATE | translate}}
           </mat-radio-button>
         </mat-radio-group>
       </div>
     </div>
   </div>
   <div class="profile-action">
-    <button mat-stroked-button (click)="resetHandler()">Reset</button>
+    <button mat-stroked-button (click)="resetHandler()">{{ln.TXT_RESET | translate}}</button>
     <button mat-flat-button color="primary" (click)="saveOrgProfile()" [disabled]="isLoading">
-      <span>Save Changes</span>
+      <span>{{ln.TXT_SAVE_CHANGES | translate}}</span>
       <mat-spinner diameter="20" *ngIf="isLoading" class="btn-loader"></mat-spinner>
     </button>
   </div>

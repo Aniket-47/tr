@@ -12,6 +12,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { State } from '../../../utility/store/reducers';
 import { getDefaultAccountId } from '../../../utility/store/selectors/account.selector';
 import { getRoles } from '../../../utility/store/selectors/roles.selector';
+import { SETTINGS_LN } from '../../shared/settings.lang';
 
 
 export interface User {
@@ -34,6 +35,9 @@ export class AddUserComponent implements OnInit {
   addUserForm!: FormGroup;
   newUser!: any;
   isLoading = false;
+
+  ln = SETTINGS_LN;
+
   constructor(private fb: FormBuilder, private userServ: UserService, private snackBar: SnackBarService, public dialogRef: MatDialogRef<AddUserComponent>, private store: Store<State>) { }
 
   // selecter

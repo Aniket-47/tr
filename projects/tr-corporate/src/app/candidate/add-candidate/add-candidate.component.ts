@@ -3,6 +3,7 @@ import {SelectionModel} from '@angular/cdk/collections';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatChipInputEvent} from '@angular/material/chips';
+import { CANDIDATE_LN } from '../shared/candidate.lang';
 
 // table
 export interface PeriodicElement {
@@ -63,6 +64,8 @@ export class AddCandidateComponent implements OnInit {
     }
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
   }
+
+  ln = CANDIDATE_LN;
 
   constructor() { }
 

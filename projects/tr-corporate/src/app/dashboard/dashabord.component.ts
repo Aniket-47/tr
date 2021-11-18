@@ -69,7 +69,7 @@ export class DashabordComponent implements OnInit {
       }
 
       if (!data[1]?.error) {
-        console.log(data[1])
+        // console.log(data[1])
         const user = data[1].data;
         this.store.dispatch(setUserFullName({ data: `${user?.firstname} ${user?.lastname}` }));
         // this.store.dispatch(setUserAddress({ data: user?.address }));

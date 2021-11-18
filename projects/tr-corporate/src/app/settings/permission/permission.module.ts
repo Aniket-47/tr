@@ -16,6 +16,7 @@ import { PermissionRoutingModule } from './permission-routing.module';
 // Perfect Scrollbar
 import { PerfectScrollbarModule, PerfectScrollbarConfigInterface,
   PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
+import { McCoreModule } from '@mucrest/ng-core';
   const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     wheelPropagation: true
   };
@@ -33,6 +34,7 @@ import { PerfectScrollbarModule, PerfectScrollbarConfigInterface,
   ],
   imports: [
     CommonModule,
+    McCoreModule,
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
