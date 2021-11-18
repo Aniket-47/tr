@@ -14,12 +14,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { reducers } from './utility/store/reducers';
-import { AuthInterceptor } from './utility/interceptors/auth.interceptor';
-import { BusyInterceptor } from './utility/interceptors/busy.interceptor';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
-import { ConfirmationComponent } from './shared/components/confirmation/confirmation.component';
+import { ConfirmationComponent } from './utility/components/confirmation/confirmation.component';
+import { AuthInterceptor } from './core/interceptors/auth.interceptor';
+import { BusyInterceptor } from './core/interceptors/busy.interceptor';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -38,7 +38,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     HttpClientModule,
     AppRoutingModule,
     PerfectScrollbarModule,
-    StoreModule.forRoot(reducers,{}),
+    StoreModule.forRoot(reducers, {}),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode
@@ -59,7 +59,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
     }
   ],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
