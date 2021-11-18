@@ -38,7 +38,7 @@
         src="https://img.freepik.com/free-photo/cheerful-curly-business-girl-wearing-glasses_176420-206.jpg?size=626&ext=jpg"
         alt="" />
       <div class="about-user__name">
-        <h4>{{ user?.fullname }}</h4>
+        <h4>{{ user?.firstname }}</h4>
         <span>{{ user?.email }}</span>
       </div>
     </div>
@@ -97,35 +97,35 @@
             <span class="icon-mc mc-school"></span>
             <div class="d-flex flex-column">
               <mat-label>Designation</mat-label>
-              <span class="value">{{ user?.designation }}</span>
+              <span class="value">{{ user?.designationname }}</span>
             </div>
           </div>
           <div class="common-div">
             <span class="icon-mc mc-layers"></span>
             <div class="d-flex flex-column">
               <mat-label>Business Vertical</mat-label>
-              <span class="value">{{ user?.businessVertical }}</span>
+              <span class="value">{{ user?.businessverticalid }}</span>
             </div>
           </div>
           <div class="common-div">
             <span class="icon-mcf mcf-work"></span>
             <div class="d-flex flex-column">
               <mat-label>Practice</mat-label>
-              <span class="value">{{ user?.practice }}</span>
+              <span class="value">{{ user?.practicename}}</span>
             </div>
           </div>
           <div class="common-div">
             <span class="icon-mc mc-local_phone"></span>
             <div class="d-flex flex-column">
               <mat-label>Phone</mat-label>
-              <span class="value">{{ user?.phone }}</span>
+              <span class="value">{{ user?.mobilenumber }}</span>
             </div>
           </div>
           <div class="common-div">
             <span class="icon-mc mc-location_pin"></span>
             <div class="d-flex flex-column">
               <mat-label>Location</mat-label>
-              <span class="value">{{ user?.location }}</span>
+              <span class="value">{{ user?.locationname }}</span>
             </div>
           </div>
         </div>
@@ -138,15 +138,15 @@
       <form [formGroup]="editUserForm">
         <mat-form-field appearance="outline">
           <mat-label>First Name</mat-label>
-          <input matInput formControlName="firstName" placeholder="First Name">
-          <mat-error *ngIf="firstName.invalid && firstName.touched">
-            <span *ngIf="firstName.errors?.required">
+          <input matInput formControlName="firstname" placeholder="First Name">
+          <mat-error *ngIf="firstname.invalid && firstname.touched">
+            <span *ngIf="firstname.errors?.required">
               First Name is required
             </span>
-            <span *ngIf="!firstName.errors?.required && firstName.errors?.minlength">
+            <span *ngIf="!firstname.errors?.required && firstname.errors?.minlength">
               First Name should be atleast 3 letters
             </span>
-            <span *ngIf="firstName.errors?.maxlength">
+            <span *ngIf="firstname.errors?.maxlength">
               First Name should be maximum of 20 letters
             </span>
           </mat-error>
@@ -154,12 +154,12 @@
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Middle Name</mat-label>
-          <input matInput formControlName="middleName" placeholder="Middle Name">
-          <mat-error *ngIf="middleName.invalid && middleName.touched">
-            <span *ngIf="middleName.errors?.minlength">
+          <input matInput formControlName="middlename" placeholder="Middle Name">
+          <mat-error *ngIf="middlename.invalid && middlename.touched">
+            <span *ngIf="middlename.errors?.minlength">
               Middle Name should be atleast 3 letters
             </span>
-            <span *ngIf="middleName.errors?.maxlength">
+            <span *ngIf="middlename.errors?.maxlength">
               Middle Name should be maximum of 20 letters
             </span>
           </mat-error>
@@ -167,15 +167,15 @@
 
         <mat-form-field appearance="outline">
           <mat-label>Last Name</mat-label>
-          <input matInput formControlName="lastName" placeholder="Last Name">
-          <mat-error *ngIf="lastName.invalid && lastName.touched">
-            <span *ngIf="lastName.errors?.required">
+          <input matInput formControlName="lastname" placeholder="Last Name">
+          <mat-error *ngIf="lastname.invalid && lastname.touched">
+            <span *ngIf="lastname.errors?.required">
               Last Name is required
             </span>
-            <span *ngIf="!lastName.errors?.required && lastName.errors?.minlength">
+            <span *ngIf="!lastname.errors?.required && lastname.errors?.minlength">
               Last Name should be atleast 3 letters
             </span>
-            <span *ngIf="lastName.errors?.maxlength">
+            <span *ngIf="lastname.errors?.maxlength">
               Last Name should be maximum of 20 letters
             </span>
           </mat-error>
@@ -201,7 +201,7 @@
 
         <mat-form-field appearance="outline">
           <mat-label>Role</mat-label>
-          <mat-select formControlName="userRole">
+          <mat-select formControlName="roletypeid">
             <mat-option *ngFor="let role of roles;">
               {{role.name}}
             </mat-option>
@@ -210,37 +210,33 @@
 
 
         <mat-form-field appearance="outline">
-          <mat-label>Admin</mat-label>
-          <mat-select matNativeControl>
-            <mat-option value="Active">Active</mat-option>
-            <mat-option value="Active">Active</mat-option>
-
-          </mat-select>
+          <mat-label>Designation</mat-label>
+          <input matInput formControlName="designationname" placeholder="Designation">
         </mat-form-field>
 
 
         <mat-form-field appearance="outline">
           <mat-label>Business Vertical</mat-label>
-          <input matInput placeholder="Business Vertical">
+          <input matInput formControlName="businessverticalid" placeholder="Business Vertical">
         </mat-form-field>
 
 
 
         <mat-form-field appearance="outline">
           <mat-label>Practice</mat-label>
-          <input matInput placeholder="Practice">
+          <input matInput formControlName="practicename" placeholder="Practice">
         </mat-form-field>
 
 
         <mat-form-field appearance="outline">
           <mat-label>Phone</mat-label>
-          <input matInput placeholder="ex:- 9874563258">
+          <input matInput formControlName="mobilenumber" placeholder="ex:- 9874563258">
         </mat-form-field>
 
 
         <mat-form-field appearance="outline">
           <mat-label>Location</mat-label>
-          <input matInput placeholder="Location">
+          <input matInput formControlName="locationname" placeholder="Location">
         </mat-form-field>
 
 

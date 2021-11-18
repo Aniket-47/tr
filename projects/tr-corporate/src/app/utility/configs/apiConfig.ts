@@ -48,9 +48,9 @@ export const secure_api_routes = {
   UPDATE_ROLE: `${account}/role`,
 
   // User Management
-  GET_USER: `${user}/getdetailbyemail`,
+  GET_USER: `${user}/userdetailbyemail`,
   ADD_USER: `${user}/adduser`,
-  UPDATE_USER: `${user}/updateuser`,
+  UPDATE_USER: `${account}/user`,
   UPDATE_USER_STATUS: `${user}/status`,
   DELETE_USER: `${user}/delete`,
 
