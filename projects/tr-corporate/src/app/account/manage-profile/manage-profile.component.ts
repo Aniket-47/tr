@@ -42,7 +42,8 @@ export class ManageProfileComponent implements OnInit {
         firstName: user?.name.firstName,
         middleName: user?.name.middleName,
         lastName: user?.name.lastName,
-        mobilenumber: user?.mobileNumber
+        mobilenumber: user?.mobileNumber,
+        email: user?.email
       });
     });
   }
