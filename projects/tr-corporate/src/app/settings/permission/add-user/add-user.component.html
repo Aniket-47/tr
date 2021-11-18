@@ -16,14 +16,14 @@
               <mat-label>{{ln.TXT_FIRST_NAME | translate}}</mat-label>
               <input matInput formControlName="firstName" placeholder="xyz">
               <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
-              <mat-error *ngIf="firstName.invalid && firstName.touched">
-                <span *ngIf="firstName.errors?.required">
+              <mat-error *ngIf="firstname.invalid && firstname.touched">
+                <span *ngIf="firstname.errors?.required">
                   First Name is required
                 </span>
-                <span *ngIf="!firstName.errors?.required && firstName.errors?.minlength">
+                <span *ngIf="!firstname.errors?.required && firstname.errors?.minlength">
                   First Name should be atleast 3 letters
                 </span>
-                <span *ngIf="firstName.errors?.maxlength">
+                <span *ngIf="firstname.errors?.maxlength">
                   First Name should be maximum of 20 letters
                 </span>
               </mat-error>
@@ -37,12 +37,12 @@
               <mat-label>{{ln.TXT_MIDDLE_NAME | translate}}</mat-label>
               <input matInput formControlName="middleName" placeholder="xyz">
               <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
-              <mat-error *ngIf="middleName.invalid && middleName.touched">
+              <mat-error *ngIf="middlename.invalid && middlename.touched">
 
-                <span *ngIf="middleName.errors?.minlength">
+                <span *ngIf="middlename.errors?.minlength">
                   Middle Name should be atleast 3 letters
                 </span>
-                <span *ngIf="middleName.errors?.maxlength">
+                <span *ngIf="middlename.errors?.maxlength">
                   Middle Name should be maximum of 20 letters
                 </span>
               </mat-error>
@@ -55,14 +55,14 @@
               <mat-label>{{ln.TXT_LAST_NAME | translate}}</mat-label>
               <input matInput formControlName="lastName" placeholder="xyz">
               <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
-              <mat-error *ngIf="lastName.invalid && lastName.touched">
-                <span *ngIf="lastName.errors?.required">
+              <mat-error *ngIf="lastname.invalid && lastname.touched">
+                <span *ngIf="lastname.errors?.required">
                   Last Name is required
                 </span>
-                <span *ngIf="!lastName.errors?.required && lastName.errors?.minlength">
+                <span *ngIf="!lastname.errors?.required && lastname.errors?.minlength">
                   Last Name should be atleast 3 letters
                 </span>
-                <span *ngIf="lastName.errors?.maxlength">
+                <span *ngIf="lastname.errors?.maxlength">
                   Last Name should be maximum of 20 letters
                 </span>
               </mat-error>

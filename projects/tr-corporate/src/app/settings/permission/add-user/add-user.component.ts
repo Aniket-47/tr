@@ -33,6 +33,7 @@ interface Food {
 export class AddUserComponent implements OnInit {
 
   addUserForm!: FormGroup;
+  newUser!: any;
   isLoading = false;
 
   ln = SETTINGS_LN;
@@ -87,7 +88,7 @@ export class AddUserComponent implements OnInit {
 
   initForm() {
     this.addUserForm = this.fb.group({
-      firstName: [
+      firstname: [
         '',
         [
           Validators.required,
@@ -95,14 +96,14 @@ export class AddUserComponent implements OnInit {
           Validators.maxLength(ValidationConstants.userAccountStrategy.NAME_MAX_LENGTH)
         ],
       ],
-      middleName: [
+      middlename: [
         '',
         [
           Validators.minLength(ValidationConstants.userAccountStrategy.NAME_MIN_LENGTH),
           Validators.maxLength(ValidationConstants.userAccountStrategy.NAME_MAX_LENGTH)
         ],
       ],
-      lastName: [
+      lastname: [
         '',
         [
           Validators.required,
@@ -116,24 +117,44 @@ export class AddUserComponent implements OnInit {
           Validators.email
         ]
       ],
-      userRole: [''],
+      roletypeid: ['', [Validators.required]],
+      designationname: [''],
+      businessverticalid: [''],
+      practicename: [''],
+      mobilenumber: [''],
+      locationname: ['']
     });
   }
 
-  get firstName(): AbstractControl {
-    return this.addUserForm.get('firstName') as FormControl;
+  get firstname(): AbstractControl {
+    return this.addUserForm.get('firstname') as FormControl;
   }
-  get middleName(): AbstractControl {
-    return this.addUserForm.get('middleName') as FormControl;
+  get middlename(): AbstractControl {
+    return this.addUserForm.get('middlename') as FormControl;
   }
-  get lastName(): AbstractControl {
-    return this.addUserForm.get('lastName') as FormControl;
+  get lastname(): AbstractControl {
+    return this.addUserForm.get('lastname') as FormControl;
   }
   get email(): AbstractControl {
     return this.addUserForm.get('email') as FormControl;
   }
-  get userRole(): AbstractControl {
-    return this.addUserForm.get('userRole') as FormControl;
+  get roletypeid(): AbstractControl {
+    return this.addUserForm.get('roletypeid') as FormControl;
+  }
+  get designationname(): AbstractControl {
+    return this.addUserForm.get('designationname') as FormControl;
+  }
+  get businessverticalid(): AbstractControl {
+    return this.addUserForm.get('businessverticalid') as FormControl;
+  }
+  get practicename(): AbstractControl {
+    return this.addUserForm.get('practicename') as FormControl;
+  }
+  get mobilenumber(): AbstractControl {
+    return this.addUserForm.get('mobilenumber') as FormControl;
+  }
+  get locationname(): AbstractControl {
+    return this.addUserForm.get('locationname') as FormControl;
   }
 
   addUser() {
@@ -148,7 +169,12 @@ export class AddUserComponent implements OnInit {
     this.addUserForm.markAllAsTouched();
     if (this.addUserForm.valid) {
       this.isLoading = true;
-      this.userServ.createUser(this.accountID, this.addUserForm.value).subscribe(res => {
+      this.newUser = this.addUserForm.value;
+      this.newUser.roletypename = this.roletypeid.value.name;
+      this.newUser.roletypeid = this.roletypeid.value.roletypeid;
+      // console.log(this.newUser);
+
+      this.userServ.createUser(this.accountID, this.newUser).subscribe(res => {
         this.isLoading = false;
         if (res.error) {
           // error from api
