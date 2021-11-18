@@ -12,7 +12,7 @@ table.mat-table {
      }
      .mat-header-cell {
         &:first-of-type {
-            padding-left: 0;
+            padding-left: 12px;
          }
         }
     tr.mat-row {
@@ -30,7 +30,7 @@ table.mat-table {
          }
          td.mat-cell {
             &:first-of-type {
-                padding-left: 0;
+                padding-left: 12px;
                 @include media-breakpoint-down(md) {
                     width: 40px;
                 }
@@ -177,4 +177,7 @@ table.mat-table {
 }
 .fs20 {
     font-size: 20px;
+}
+.table-header{
+    padding-left: 15px;
 }
