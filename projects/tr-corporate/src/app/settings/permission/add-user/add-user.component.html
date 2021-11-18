@@ -14,7 +14,7 @@
           <div>
             <mat-form-field appearance="outline" class="w-100">
               <mat-label>{{ln.TXT_FIRST_NAME | translate}}</mat-label>
-              <input matInput formControlName="firstName" placeholder="xyz">
+              <input matInput formControlName="firstname" placeholder="xyz">
               <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
               <mat-error *ngIf="firstname.invalid && firstname.touched">
                 <span *ngIf="firstname.errors?.required">
@@ -35,7 +35,7 @@
           <div>
             <mat-form-field appearance="outline" class="w-100">
               <mat-label>{{ln.TXT_MIDDLE_NAME | translate}}</mat-label>
-              <input matInput formControlName="middleName" placeholder="xyz">
+              <input matInput formControlName="middlename" placeholder="xyz">
               <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
               <mat-error *ngIf="middlename.invalid && middlename.touched">
 
@@ -53,7 +53,7 @@
           <div>
             <mat-form-field appearance="outline" class="w-100">
               <mat-label>{{ln.TXT_LAST_NAME | translate}}</mat-label>
-              <input matInput formControlName="lastName" placeholder="xyz">
+              <input matInput formControlName="lastname" placeholder="xyz">
               <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
               <mat-error *ngIf="lastname.invalid && lastname.touched">
                 <span *ngIf="lastname.errors?.required">
@@ -98,8 +98,8 @@
           <div>
             <mat-form-field appearance="outline" class="w-100">
               <mat-label>{{ln.TXT_USER_ROLE | translate}}</mat-label>
-              <mat-select formControlName="userRole">
-                <mat-option *ngFor="let role of roles" [value]="role.roletypeid">
+              <mat-select formControlName="roletypeid">
+                <mat-option *ngFor="let role of roles;" [value]="role">
                   {{role.name}}
                 </mat-option>
               </mat-select>
@@ -110,11 +110,7 @@
           <div>
             <mat-form-field appearance="outline" class="w-100">
               <mat-label>{{ln.TXT_DESIGNATION | translate}}</mat-label>
-              <mat-select disabled>
-                <mat-option *ngFor="let food of foods" [value]="food.value">
-                  {{food.viewValue}}
-                </mat-option>
-              </mat-select>
+              <input matInput formControlName="designationname" placeholder="Designation">
             </mat-form-field>
           </div>
         </div>
@@ -122,11 +118,7 @@
           <div>
             <mat-form-field appearance="outline" class="w-100">
               <mat-label>{{ln.TXT_BUSINESS_VERTICAL | translate}}</mat-label>
-              <mat-select disabled>
-                <mat-option *ngFor="let food of foods" [value]="food.value">
-                  {{food.viewValue}}
-                </mat-option>
-              </mat-select>
+              <input type="number" matInput formControlName="businessverticalid" placeholder="Business Vertical">
             </mat-form-field>
           </div>
         </div>
@@ -134,11 +126,15 @@
           <div>
             <mat-form-field appearance="outline" class="w-100">
               <mat-label>{{ln.TXT_PRACTICE | translate}}</mat-label>
-              <mat-select disabled>
-                <mat-option *ngFor="let food of foods" [value]="food.value">
-                  {{food.viewValue}}
-                </mat-option>
-              </mat-select>
+              <input matInput formControlName="practicename" placeholder="Practice">
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div>
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>{{ln.TXT_PHONE | translate}}</mat-label>
+              <input matInput formControlName="mobilenumber" placeholder="ex:- 9874563258">
             </mat-form-field>
           </div>
         </div>
@@ -146,23 +142,7 @@
           <div>
             <mat-form-field appearance="outline" class="w-100">
               <mat-label>{{ln.TXT_LOCATION | translate}}</mat-label>
-              <mat-select disabled>
-                <mat-option *ngFor="let food of foods" [value]="food.value">
-                  {{food.viewValue}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div>
-            <mat-form-field appearance="outline" class="w-100">
-              <mat-label>{{ln.TXT_REPORTING_MANAGER | translate}}</mat-label>
-              <mat-select disabled>
-                <mat-option *ngFor="let food of foods" [value]="food.value">
-                  {{food.viewValue}}
-                </mat-option>
-              </mat-select>
+              <input matInput formControlName="locationname" placeholder="Location">
             </mat-form-field>
           </div>
         </div>
