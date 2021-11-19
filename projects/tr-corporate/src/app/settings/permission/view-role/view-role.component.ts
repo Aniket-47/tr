@@ -29,6 +29,7 @@ export interface Irole {
   accountroleid: string;
   isdefaultrole: number; // 1 -dafault, 0 - custom
   roletypeid: number;
+  name: string;
   rolename: string;
   usercount: number;
   modifiedDatetime: Date | string;
@@ -173,7 +174,7 @@ export class ViewRoleComponent implements AfterViewInit, OnInit {
 
   viewRoleDeatils(role: Irole) {
     if (this.showUserActionMenu) {
-      this.selectedRoleInfo = { roletypeid: role.roletypeid, rolename: role.rolename };
+      this.selectedRoleInfo = { roletypeid: role.roletypeid, rolename: role.name };
       this.isViewRole = true;
       this.isEditRole = false;
       this.drawer.open();
@@ -189,7 +190,7 @@ export class ViewRoleComponent implements AfterViewInit, OnInit {
 
     this.isEditRole = true;
     this.isViewRole = false
-    this.selectedRoleInfo = { roletypeid: role.roletypeid, rolename: role.rolename, accountroleid: role.accountroleid };
+    this.selectedRoleInfo = { roletypeid: role.roletypeid, rolename: role.name, accountroleid: role.accountroleid };
     this.drawer.open();
   }
 

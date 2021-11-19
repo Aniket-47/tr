@@ -1,3 +1,4 @@
+import { TranslatePipe } from '@mucrest/ng-core';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { fadeAnimation } from '../../animations';
@@ -26,15 +27,16 @@ function passwordMatcher(c: AbstractControl): { [key: string]: boolean } | null 
 export class AccountSecurityComponent implements OnInit {
   hideNewPass = true;
   hideCnfPass = true;
-  errorMessage: string ="";
+  errorMessage: string = "";
   isLoading = false;
 
   ln = ACCOUNT_LN;
 
-  constructor( 
+  constructor(
     private accoutService: AccountService,
-    private fb: FormBuilder, 
-    private snackBar: SnackBarService
+    private fb: FormBuilder,
+    private snackBar: SnackBarService,
+    private translater: TranslatePipe
   ) { }
 
   ngOnInit(): void {
@@ -53,7 +55,7 @@ export class AccountSecurityComponent implements OnInit {
 
   // getters
   get password(): AbstractControl {
-    return this.changePasswordForm.get('password') as FormControl;    
+    return this.changePasswordForm.get('password') as FormControl;
   }
   get cnfPass(): AbstractControl {
     return this.changePasswordForm.get('cnfPass') as FormControl;
@@ -83,11 +85,11 @@ export class AccountSecurityComponent implements OnInit {
     this.accoutService.changePassword(payload).subscribe(res => {
       this.isLoading = false;
       if (!res.error) {
-        const message = "Password changed successfully!";
+        const message = String(this.translater.transform(this.ln.TXT_PASSWORD_CHANGED));
         this.snackBar.open(message);
         this.changePasswordForm.reset();
       } else {
-        this.errorMessage = res.message; 
+        this.errorMessage = res.message;
         this.password.setErrors({ 'customError': true });
       }
     });

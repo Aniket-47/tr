@@ -11,7 +11,7 @@
       <mat-accordion>
         <mat-expansion-panel hideToggle (opened)="panelOpenState = true" (closed)="panelOpenState = false" *ngFor="let parent of parents">
           <mat-expansion-panel-header>
-            <mat-panel-title>           
+            <mat-panel-title class="font-600">           
               <span [ngClass]="parent.icon" class="icon"></span>
               <span class="name">{{parent.name | translate}}</span>
             </mat-panel-title>
