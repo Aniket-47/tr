@@ -1,4 +1,4 @@
-@import '~@mucrest/ng-design/assets/styles/1-base/base-dir';
+@import "~@mucrest/ng-design/assets/styles/1-base/base-dir";
 .box-container {
   max-width: 370px;
   // margin: auto;
@@ -10,18 +10,18 @@
     justify-content: space-between;
     align-items: center;
     // padding: 15px 0;
-    h4{
+    h4 {
       font-weight: 600;
       font-size: 0.8rem;
-      span{
+      span {
         font-size: 1.2rem;
         vertical-align: text-top;
       }
     }
-    .icon-mc{
+    .icon-mc {
       margin-right: 10px;
-      &:before{
-        color:$theme;
+      &:before {
+        color: $theme;
       }
     }
     .upper-sec__left {
@@ -62,7 +62,7 @@
         }
         span {
           font-size: 14px;
-          color: #84818A;
+          color: #84818a;
         }
       }
     }
@@ -70,19 +70,19 @@
       button {
         color: rgb(139, 196, 139);
       }
-      
+
       .mat-icon {
         margin-left: 5px;
       }
       .mat-form-field {
         display: flex;
         background-color: rgba(20, 177, 59, 0.1);
-        color: #00A46C;
+        color: #00a46c;
         font-size: 12px;
         border-radius: 4px;
         padding: 10px;
-        .mc-icon{
-          color: #504F54;
+        .mc-icon {
+          color: #504f54;
           font-size: 15px;
         }
       }
@@ -140,10 +140,16 @@
           &:first-child {
             margin: 10px 0 15px 0;
           }
-          .icon-mc, .icon-mcf {
+          .icon-mc,
+          .icon-mcf {
             color: gray;
             font-size: 18px;
             margin-right: 14px;
+          }
+          div span {
+            display: inline-block;
+            margin: 10px 0;
+            font-weight: 500;
           }
         }
         mat-label {
@@ -198,6 +204,6 @@
     // justify-content: space-between;
     // button {
     //   width: 48%;
-    // }    
+    // }
   }
 }
