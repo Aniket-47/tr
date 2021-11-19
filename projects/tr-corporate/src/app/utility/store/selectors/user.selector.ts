@@ -28,3 +28,8 @@ export const getUserFirstName = createSelector(
     selectAppState,
     (state: Iuser) => state.name.firstName
 );
+
+export const getUserEmail = createSelector(
+    selectAppState,
+    (state: Iuser) => state.email
+);

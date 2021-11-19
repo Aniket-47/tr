@@ -63,8 +63,6 @@ export class AddRoleComponent implements OnInit, OnChanges {
     });
   }
 
-
-
   ngOnChanges() {
     console.log('edit', this.isEdit, 'view', this.isRoleView)
     this.store.select(getDefaultAccountId).subscribe(accountid => this.accountId = accountid);

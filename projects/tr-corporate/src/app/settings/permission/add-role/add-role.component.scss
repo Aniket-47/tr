@@ -56,7 +56,7 @@
                 border-bottom: 1px solid #EBEAED;
                 &-title {
                     font-size: 1rem;
-                    font-weight: 400;
+                    font-weight: 600;
                 }
             }
             .role-list {
@@ -134,7 +134,7 @@
         position: fixed;
         bottom: 1rem;
         right: 1rem;
-        width: calc(350px - 2rem);
+        // width: calc(350px - 2rem);
     }
     
 }
