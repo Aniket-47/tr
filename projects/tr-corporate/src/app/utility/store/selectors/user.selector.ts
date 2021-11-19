@@ -30,6 +30,6 @@ export const getUserFirstName = createSelector(
 );
 
 export const getUserEmail = createSelector(
-  selectAppState, (state: Iuser) => state.email
+    selectAppState,
+    (state: Iuser) => state.email
 );
-

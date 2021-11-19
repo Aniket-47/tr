@@ -4,3 +4,6 @@ export interface IBusVert {
     parentid: number;
     parentname: string;
 }
+export interface IBusVertList {
+    list: IBusVert[]
+}
