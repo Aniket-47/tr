@@ -31,7 +31,7 @@ export interface Irole {
   roletypeid: number;
   rolename: string;
   usercount: number;
-  lastupdated: Date | string;
+  modifiedDatetime: Date | string;
 }
 
 @Component({
@@ -45,24 +45,24 @@ export class ViewRoleComponent implements AfterViewInit, OnInit {
   toggle = false;
   config: any;
 
-  status = [
-    { value: '0', viewValue: 'Active' },
-    { value: '1', viewValue: 'Inactive' },
-    { value: '2', viewValue: 'Deactivated' }
-  ];
-  role = [
-    { value: '0', viewValue: 'Admin' },
-    { value: '1', viewValue: 'Super Admin' }
-  ];
+  // status = [
+  //   { value: '0', viewValue: 'Active' },
+  //   { value: '1', viewValue: 'Inactive' },
+  //   { value: '2', viewValue: 'Deactivated' }
+  // ];
+  // role = [
+  //   { value: '0', viewValue: 'Admin' },
+  //   { value: '1', viewValue: 'Super Admin' }
+  // ];
   sortby = [
-    { value: '0', viewValue: 'Shot By: Added to Jobs' },
-    { value: '1', viewValue: 'Shot By: Added to Jobs' },
-    { value: '2', viewValue: 'Shot By: Added to Jobs' }
+    { value: 'rolename', viewValue: 'Sort By: Added to Role Name' },
+    { value: 'usercount', viewValue: 'Sort By: Added to User Count' },
+    { value: 'modifiedDatetime', viewValue: 'Sort By: Added to Last Updated' }
   ];
-  selectedStatus = this.status[0].value;
-  selectedRole = this.role[0].value;
+  // selectedStatus = this.status[0].value;
+  // selectedRole = this.role[0].value;
   selectedSort = this.sortby[0].value;
-  displayedColumns: string[] = ['rolename', 'usercount', 'lastupdated', 'action'];
+  displayedColumns: string[] = ['rolename', 'usercount', 'modifiedDatetime', 'action'];
   // dataSource = new MatTableDataSource<any>(ELEMENT_DATA);
   dataSource = new Observable<Irole[]>();
   isRateLimitReached: boolean = false;
@@ -89,7 +89,6 @@ export class ViewRoleComponent implements AfterViewInit, OnInit {
     private dialog: MatDialog,
     private userRoleService: UserRoleService,
     private snackbarServ: SnackBarService,
-    private router: Router,
     private configServ: RouterConfigService,
     private store: Store<State>) {
     this.config = configServ.routerconfig;
@@ -109,6 +108,10 @@ export class ViewRoleComponent implements AfterViewInit, OnInit {
 
   resetPaging(): void {
     this.paginator.pageIndex = 1;
+  }
+
+  onHeaderSort() {
+    this.sort.sort({ id: this.selectedSort, disableClear: false, start: 'asc' })
   }
 
   loadUserRoles(accountid: string) {
