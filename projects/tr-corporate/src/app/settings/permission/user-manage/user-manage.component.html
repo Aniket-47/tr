@@ -197,7 +197,7 @@
                         <i class="icon-mc mc-do_not_disturb_on"></i>
                         <span>{{ln.TXT_DEACTIVATE_USER | translate }}</span>
                       </button>
-                      <button mat-menu-item (click)="deleteUser(element.email)">
+                      <button *ngIf="element.status==0" mat-menu-item (click)="deleteUser(element.email)">
                         <i class="icon-mc mc-user-x"></i> <span>{{ln.TXT_DELETE_USER | translate}}</span>
                       </button>
                     </div>
@@ -226,7 +226,7 @@
                       <button mat-menu-item *ngIf="element.status==1" (click)="deactivateUser(element.email)">
                         <i class="icon-mc mc-do_not_disturb_on"></i> <span>{{ln.TXT_DEACTIVATE_USER | translate}}</span>
                       </button>
-                      <button mat-menu-item (click)="deleteUser(element.email)">
+                      <button *ngIf="element.status==0" mat-menu-item (click)="deleteUser(element.email)">
                         <i class="icon-mc mc-user-x"></i> <span>{{ln.TXT_DELETE_USER | translate}}</span>
                       </button>
                     </div>
