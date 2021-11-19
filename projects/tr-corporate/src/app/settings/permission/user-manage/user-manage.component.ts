@@ -1,3 +1,5 @@
+import { getUserEmail } from './../../../utility/store/selectors/user.selector';
+import { getBusinessVerticle } from './../../../utility/store/selectors/business-vertical.selector';
 import { MatSort } from '@angular/material/sort';
 import { Store } from '@ngrx/store';
 import { MatDrawer } from '@angular/material/sidenav';
@@ -67,6 +69,8 @@ export class UserManageComponent implements OnInit {
 
   accountID!: string;
 
+  loggedinUserEmail!: string;
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort!: MatSort;
   @ViewChild(MatDrawer, { static: false }) drawer!: MatDrawer;
@@ -87,6 +91,10 @@ export class UserManageComponent implements OnInit {
     this.store.select(getRoles).subscribe(roles => {
       this.role = [{ roletypeid: '', name: 'All' }, ...roles];
     });
+    this.store.select(getUserEmail).subscribe(email => {
+      this.loggedinUserEmail = email;
+    })
+
   }
 
   ngAfterViewInit(): void {

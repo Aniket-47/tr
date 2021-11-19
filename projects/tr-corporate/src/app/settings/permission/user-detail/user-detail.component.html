@@ -90,7 +90,7 @@
             <span class="icon-mcf mcf-work"></span>
             <div class="d-flex flex-column">
               <mat-label>{{ln.TXT_USER_ROLE | translate}}</mat-label>
-              <span class="value">{{ user?.roletypeid }}</span>
+              <span class="value">{{ user?.roletypename }}</span>
             </div>
           </div>
           <div class="common-div">
@@ -217,7 +217,11 @@
 
         <mat-form-field appearance="outline">
           <mat-label>{{ln.TXT_BUSINESS_VERTICAL | translate}}</mat-label>
-          <input matInput formControlName="businessverticalid" placeholder="Business Vertical">
+          <mat-select formControlName="businessverticalid">
+            <mat-option *ngFor="let businessvertical of businessverticals;" [value]="businessvertical.businessverticalid">
+              {{businessvertical.name}}
+            </mat-option>
+          </mat-select>
         </mat-form-field>
 
 
