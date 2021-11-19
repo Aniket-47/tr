@@ -61,7 +61,7 @@ export class ViewRoleComponent implements AfterViewInit, OnInit {
   ];
   // selectedStatus = this.status[0].value;
   // selectedRole = this.role[0].value;
-  selectedSort = this.sortby[0].value;
+  selectedSort = this.sortby[2].value;
   displayedColumns: string[] = ['rolename', 'usercount', 'modifiedDatetime', 'action'];
   // dataSource = new MatTableDataSource<any>(ELEMENT_DATA);
   dataSource = new Observable<Irole[]>();
@@ -104,10 +104,14 @@ export class ViewRoleComponent implements AfterViewInit, OnInit {
         this.loadUserRoles(accountid);
       }
     });
+
+    this.drawer.openedChange.subscribe((_) => {
+      if (!this.drawer.opened) this.reset();
+    });
   }
 
   resetPaging(): void {
-    this.paginator.pageIndex = 1;
+    this.paginator.pageIndex = 0;
   }
 
   onHeaderSort() {
@@ -157,8 +161,8 @@ export class ViewRoleComponent implements AfterViewInit, OnInit {
   roleSubmitHandler() {
     this.resetPaging();
     this.drawer.close();
-    this.loadUserRoles(this.accountid);
     this.reset();
+    this.loadUserRoles(this.accountid);
   }
 
   createNewRole() {
