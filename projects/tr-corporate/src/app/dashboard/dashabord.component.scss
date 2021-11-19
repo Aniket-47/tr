@@ -312,16 +312,17 @@ mc-side-navbar {
             }
         }
     }
-  
+
 
 
     ::ng-deep .notificationCard{
-        .mat-menu-content{        
-            max-height: 40vh !important; 
+        .mat-menu-content{
+            max-height: 40vh !important;
             padding-top: 0 !important;
-        }        
+        }
     }
 
     .z-1000 {
         z-index: 1000 !important;
+        position: fixed;
     }

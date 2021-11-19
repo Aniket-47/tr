@@ -52,8 +52,8 @@ export class UserManageComponent implements OnInit {
   ];
 
   sorts = [
-    { value: 'status', viewValue: 'Sort By: Status' },
-    { value: 'roletypeid', viewValue: 'Sort By: Role' }
+    { value: 'status', viewValue: ' Status' },
+    { value: 'roletypeid', viewValue: ' Role' }
   ]
 
   role!: any[];

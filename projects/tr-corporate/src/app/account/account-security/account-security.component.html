@@ -1,68 +1,67 @@
 <div class="account-security" [@fadeInOut]>
-    <form [formGroup]="changePasswordForm" autocomplete="off">
-        <fieldset class="fieldset">
-            <legend>{{ln.TXT_CHANGE_PASSWORD | translate}}</legend>
-            <div>
-                <mat-form-field appearance="standard">
-                    <mat-label>{{ln.TXT_OLD_PASSWORD | translate}}</mat-label>
-                    <input matInput type="password" formControlName='oldPassword'>                    
-                    <mat-error *ngIf="oldPassword.touched && !oldPassword.valid">
-                        <span *ngIf="oldPassword.errors?.required">
-                          {{ln.TXT_OLD_PASSWORD_REQUIRED | translate}}
-                        </span>  
-                    </mat-error>                  
-                </mat-form-field>
-            </div>
-            <div>
-                <mat-form-field appearance="standard">
-                    <mat-label>{{ln.TXT_NEW_PASSWORD | translate}}</mat-label>
-                    <input matInput [type]="hideNewPass ? 'password' : 'text'" formControlName='password'>
-                    <button type="button" mat-icon-button matSuffix (click)="hideNewPass = !hideNewPass" 
-                        [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideNewPass" class="btn-show-hide">
-                        <span class="icon-mc" [ngClass]="{'mc-eye-off' : hideNewPass, 'mc-eye': !hideNewPass}"></span>
-                    </button>
-                    <mat-error *ngIf="password.touched && !password.valid">
-                        <span *ngIf="password.errors?.required">
-                          {{ln.TXT_PASSWORD_REQUIRED | translate}}
-                        </span>
-                        <span *ngIf="!password.errors?.required && password.errors?.minlength">
-                          {{ln.TXT_PASSWORD_6_LETTERS | translate}}
-                        </span>
-                        <span *ngIf="password.errors?.maxlength">
-                          {{ln.TXT_PASSWORD_MAX12_LETTERS | translate}}
-                        </span>
-                    </mat-error>
-                    <mat-error *ngIf="password.hasError('customError')">
-                        {{errorMessage}}
-                    </mat-error>
-                </mat-form-field>
-            </div>
-            <div>
-                <mat-form-field appearance="standard">
-                    <mat-label>{{ln.TXT_CONFIRM_PASSWORD | translate}}</mat-label>
-                    <input matInput [type]="hideCnfPass ? 'password' : 'text'" formControlName='cnfPass'>
-                    <button type="button" mat-icon-button matSuffix (click)="hideCnfPass = !hideCnfPass" 
-                        [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideCnfPass" class="btn-show-hide">
-                        <span class="icon-mc" [ngClass]="{'mc-eye-off' : hideCnfPass, 'mc-eye': !hideCnfPass}"></span>
-                    </button>
-                    <mat-error *ngIf="(cnfPass.touched && !cnfPass.valid)">
-                        <span *ngIf="cnfPass.errors?.required">
-                          {{ln.TXT_RETYPE_PASSWORD | translate}}
-                        </span>
-                        <span *ngIf="cnfPass.errors?.passMatch">
-                          {{ln.TXT_CONFIRM_PASSWORD_NOTMATCH | translate}}
-                        </span>
-                      </mat-error>
-                </mat-form-field>
-            </div>
-            <div class="profile-action">
-                <button type="reset" mat-stroked-button (click)="resetHandler()">{{ln.TXT_RESET | translate}}</button>
-                <button mat-flat-button color="primary" (click)="savePassword()" [disabled] ='isLoading'>
-                    <span>{{ln.TXT_SAVE_CHANGES | translate}}</span>
-                    <mat-spinner *ngIf='isLoading' diameter='20' class="btn-loader"></mat-spinner>
-                </button>
-            </div>
-        </fieldset>
-    </form>
+  <form [formGroup]="changePasswordForm" autocomplete="off">
+    <fieldset class="fieldset">
+      <legend>{{ln.TXT_CHANGE_PASSWORD | translate}}</legend>
+      <div>
+        <mat-form-field appearance="standard">
+          <mat-label>{{ln.TXT_OLD_PASSWORD | translate}}</mat-label>
+          <input matInput type="password" formControlName='oldPassword'>
+          <mat-error *ngIf="oldPassword.touched && !oldPassword.valid">
+            <span *ngIf="oldPassword.errors?.required">
+              {{ln.TXT_OLD_PASSWORD_REQUIRED | translate}}
+            </span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="standard">
+          <mat-label>{{ln.TXT_NEW_PASSWORD | translate}}</mat-label>
+          <input matInput [type]="hideNewPass ? 'password' : 'text'" formControlName='password'>
+          <button type="button" mat-icon-button matSuffix (click)="hideNewPass = !hideNewPass"
+            [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideNewPass" class="btn-show-hide">
+            <span class="icon-mc" [ngClass]="{'mc-eye-off' : hideNewPass, 'mc-eye': !hideNewPass}"></span>
+          </button>
+          <mat-error *ngIf="password.touched && !password.valid">
+            <span *ngIf="password.errors?.required">
+              {{ln.TXT_PASSWORD_REQUIRED | translate}}
+            </span>
+            <span *ngIf="!password.errors?.required && password.errors?.minlength">
+              {{ln.TXT_PASSWORD_6_LETTERS | translate}}
+            </span>
+            <span *ngIf="password.errors?.maxlength">
+              {{ln.TXT_PASSWORD_MAX12_LETTERS | translate}}
+            </span>
+          </mat-error>
+          <mat-error *ngIf="password.hasError('customError')">
+            {{errorMessage | translate}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="standard">
+          <mat-label>{{ln.TXT_CONFIRM_PASSWORD | translate}}</mat-label>
+          <input matInput [type]="hideCnfPass ? 'password' : 'text'" formControlName='cnfPass'>
+          <button type="button" mat-icon-button matSuffix (click)="hideCnfPass = !hideCnfPass"
+            [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideCnfPass" class="btn-show-hide">
+            <span class="icon-mc" [ngClass]="{'mc-eye-off' : hideCnfPass, 'mc-eye': !hideCnfPass}"></span>
+          </button>
+          <mat-error *ngIf="(cnfPass.touched && !cnfPass.valid)">
+            <span *ngIf="cnfPass.errors?.required">
+              {{ln.TXT_RETYPE_PASSWORD | translate}}
+            </span>
+            <span *ngIf="cnfPass.errors?.passMatch">
+              {{ln.TXT_CONFIRM_PASSWORD_NOTMATCH | translate}}
+            </span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="profile-action">
+        <button type="reset" mat-stroked-button (click)="resetHandler()">{{ln.TXT_RESET | translate}}</button>
+        <button mat-flat-button color="primary" (click)="savePassword()" [disabled]='isLoading'>
+          <span>{{ln.TXT_SAVE_CHANGES | translate}}</span>
+          <mat-spinner *ngIf='isLoading' diameter='20' class="btn-loader"></mat-spinner>
+        </button>
+      </div>
+    </fieldset>
+  </form>
 </div>
-       
