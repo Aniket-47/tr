@@ -1,6 +1,6 @@
 @import "~@mucrest/ng-design/assets/styles/0-plugins/plugins-dir";
 * {
-  font-family: 'Manrope', sans-serif !important;
+  font-family: 'Manrope' !important;
 }
 header {
     position: sticky;
@@ -545,4 +545,8 @@ mat-drawer-container{
 }
 .cursor {
   cursor: pointer;
+}
+
+router-outlet + ng-component{
+  width: 100% !important;
 }
