@@ -3,16 +3,16 @@
     <div>
       <mat-form-field appearance="standard">
         <mat-label>{{ln.TXT_FIRST_NAME | translate}}</mat-label>
-        <input matInput placeholder="First name" formControlName="firstName">
+        <input matInput formControlName="firstName">
         <mat-error *ngIf="firstName.invalid && firstName.touched">
-          <span *ngIf="firstName.errors?.required">This field is required.</span>
+          <span *ngIf="firstName.errors?.required">{{ln.TXT_FIELD_REQUIRED | translate}}</span>
         </mat-error>
       </mat-form-field>
     </div>
     <div>
       <mat-form-field appearance="standard">
         <mat-label>{{ln.TXT_MIDDLE_NAME | translate}}</mat-label>
-        <input matInput placeholder="Middle name" formControlName="middleName">
+        <input matInput formControlName="middleName">
         <!-- <mat-error *ngIf="lastName.invalid && lastName.touched">
           <span *ngIf="lastName.errors?.required">This filed is required.</span>
         </mat-error> -->
@@ -21,9 +21,9 @@
     <div>
       <mat-form-field appearance="standard">
         <mat-label>{{ln.TXT_LAST_NAME | translate}}</mat-label>
-        <input matInput placeholder="Last name" formControlName="lastName">
+        <input matInput formControlName="lastName">
         <mat-error *ngIf="lastName.invalid && lastName.touched">
-          <span *ngIf="lastName.errors?.required">This field is required.</span>
+          <span *ngIf="lastName.errors?.required">{{ln.TXT_FIELD_REQUIRED | translate}}</span>
         </mat-error>
       </mat-form-field>
     </div>
@@ -31,19 +31,19 @@
       <mat-form-field appearance="standard">
         <!-- <mat-label>Email Id (Official Email Id)</mat-label> -->
         <mat-label>{{ln.TXT_EMAIL_IDO | translate}}</mat-label>
-        <input matInput type="email" placeholder="Email" formControlName="email">
+        <input matInput type="email" formControlName="email">
         <mat-error *ngIf="email.invalid && email.touched">
-          <span *ngIf="email.errors?.required">This field is required.</span>
+          <span *ngIf="email.errors?.required">{{ln.TXT_FIELD_REQUIRED | translate}}</span>
         </mat-error>
       </mat-form-field>
     </div>
     <div>
       <mat-form-field appearance="standard">
         <mat-label>{{ln.TXT_MOBILE_NO | translate}}</mat-label>
-        <input matInput type="email" placeholder="Mobile No" formControlName="mobilenumber">
+        <input matInput type="email" formControlName="mobilenumber">
         <mat-error *ngIf="mobilenumber.invalid && mobilenumber.touched">
-          <span *ngIf="mobilenumber.errors?.required">This field is required.</span>
-          <span *ngIf="!mobilenumber.errors?.required && mobilenumber.errors?.minlength">Minimum 10 digits</span>
+          <span *ngIf="mobilenumber.errors?.required">{{ln.TXT_FIELD_REQUIRED | translate}}</span>
+          <span *ngIf="!mobilenumber.errors?.required && mobilenumber.errors?.minlength">{{ln.TXT_MINIMUM_10_DIGITS | translate}}</span>
         </mat-error>
       </mat-form-field>
     </div>
