@@ -15,8 +15,8 @@ import { setUserRoles } from '../utility/store/actions/roles.action';
 import { setUserAddress, setUserCity, setUserCountry, setUserFullName, setUserMail, setUserMobile, setUserName, setUserRole, setUserState, setUserStatus } from '../utility/store/actions/user.action';
 import { IaccountDetials } from '../utility/store/interfaces/account';
 import { DASHBOARD_LN } from './shared/dashboard.lang';
-import { setBusinessVerticle } from '../utility/store/actions/business-verticle.action';
-import { IBusVert } from '../utility/store/interfaces/business-verticle';
+import { setBusinessVerticle } from '../utility/store/actions/business-vertical.action';
+import { IBusVert } from '../utility/store/interfaces/business-vertical';
 
 
 @Component({

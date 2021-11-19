@@ -11,14 +11,14 @@ import * as userData from "../reducers/user.reducer";
 import * as appData from "../reducers/app.reducer";
 import * as accountData from "../reducers/account.reducer";
 import * as roleData from "../reducers/roles.reducer";
-import * as busVertdata from "../reducers/business-verticle.reducer";
+import * as busVertdata from "./business-vertical.reducer";
 
 // models
 import { Iapp } from "../interfaces/app";
 import { Iuser } from "../interfaces/user";
 import { Iaccount } from "../interfaces/account";
 import { Iroles } from "../interfaces/role";
-import { IBusVert } from "../interfaces/business-verticle";
+import { IBusVert } from "../interfaces/business-vertical";
 
 export interface State {
 	app: Iapp;
