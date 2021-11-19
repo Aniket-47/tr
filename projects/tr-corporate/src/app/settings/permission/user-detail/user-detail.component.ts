@@ -36,7 +36,7 @@ export class UserDetailComponent implements OnInit, OnChanges {
   @Input() userEmail!: string;
 
 
-  user!: GetUser_response["data"];
+  user!: GetUser_response["data"] | null;
   accountID!: string;
 
   ln = SETTINGS_LN;
@@ -128,12 +128,13 @@ export class UserDetailComponent implements OnInit, OnChanges {
       // remove owner, because for one account there is only one owner.
       if (roles && roles.length) this.roles = roles.slice(1, roles.length);
     })
-     this.store.select(getBusinessVerticle).subscribe(businessverticals => {
+    this.store.select(getBusinessVerticle).subscribe(businessverticals => {
       this.businessverticals = businessverticals;
     })
   }
 
   ngOnChanges() {
+    this.user = null
     if (this.userEmail)
       this.prefillUser();
   }

@@ -1,37 +1,40 @@
 <div class="profile-container" [@fadeInOut]>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-3">
-                <div class="left-menu">
-                    <div class="left-header">
-                        <h2>{{ln.TXT_MANAGE_PROFILE | translate}}</h2>
-                        <p>Update and manage your account</p>
-                    </div>
-                    <ul class="profile-link">
-                        <li>
-                            <a [routerLink]="routerConfig.PERSONAL_PROFILE" routerLinkActive="active"><span class="icon-mc mc-person_pin"></span> 
-                                <span>{{ln.TXT_PERSONAL_PROFILE | translate}}</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a [routerLink]="routerConfig.ORGANISATION_PROFILE" routerLinkActive="active"><span class="icon-mc mc-settings_applications"></span> 
-                                <span>{{ln.TXT_ORG_PROFILE | translate}}</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a [routerLink]="routerConfig.ACCOUNT_SECURITY" routerLinkActive="active"><span class="icon-mc mc-lock_outline"></span> 
-                                <span>{{ln.TXT_ACCOUNT_SECURITY | translate}}</span>
-                            </a>
-                        </li>
-                        <!-- <li><a href="#"><span class="mc-notifications"></span> <span>Notifications</span></a></li>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="left-menu">
+          <div class="left-header">
+            <h2>{{ln.TXT_MANAGE_PROFILE | translate}}</h2>
+            <p>{{ln.TXT_UPLOAD_MANAGE_ACCOUNT | translate}}</p>
+          </div>
+          <ul class="profile-link">
+            <li>
+              <a [routerLink]="routerConfig.PERSONAL_PROFILE" routerLinkActive="active"><span
+                  class="icon-mc mc-person_pin"></span>
+                <span>{{ln.TXT_PERSONAL_PROFILE | translate}}</span>
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="routerConfig.ORGANISATION_PROFILE" routerLinkActive="active"><span
+                  class="icon-mc mc-settings_applications"></span>
+                <span>{{ln.TXT_ORG_PROFILE | translate}}</span>
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="routerConfig.ACCOUNT_SECURITY" routerLinkActive="active"><span
+                  class="icon-mc mc-lock_outline"></span>
+                <span>{{ln.TXT_ACCOUNT_SECURITY | translate}}</span>
+              </a>
+            </li>
+            <!-- <li><a href="#"><span class="mc-notifications"></span> <span>Notifications</span></a></li>
                         <li><a href="#"><span class="mc-ic_plan"></span> <span>Plans</span></a></li>
                         <li><a href="#"><span class="mc-help"></span> <span>Helpdesk</span></a></li> -->
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-7">           
-                <router-outlet></router-outlet>
-            </div>
+          </ul>
         </div>
+      </div>
+      <div class="col-md-7">
+        <router-outlet></router-outlet>
+      </div>
     </div>
+  </div>
 </div>
