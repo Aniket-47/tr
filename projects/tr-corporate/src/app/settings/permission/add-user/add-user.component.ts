@@ -1,3 +1,4 @@
+import { getBusinessVerticle } from './../../../utility/store/selectors/business-vertical.selector';
 import { Store } from '@ngrx/store';
 import { AddUser_request } from '../shared/interfaces/add-user';
 import { Component, OnInit } from '@angular/core';
@@ -58,6 +59,7 @@ export class AddUserComponent implements OnInit {
   filteredOptions: Observable<User[]> | undefined;
   accountID!: string;
   roles!: any[];
+  businessverticals!: any[];
 
   ngOnInit() {
     this.filteredOptions = this.myControl.valueChanges
@@ -74,6 +76,9 @@ export class AddUserComponent implements OnInit {
     this.store.select(getRoles).subscribe(roles => {
       this.roles = roles;
     });
+    this.store.select(getBusinessVerticle).subscribe(businessverticals => {
+      this.businessverticals = businessverticals;
+    })
   }
 
   displayFn(user: User): string {
