@@ -42,7 +42,7 @@
           <mat-form-field appearance="outline">
             <mat-select [(ngModel)]="selectedSort" (ngModelChange)="onHeaderSort()">
               <mat-option *ngFor="let item of sortby" [value]="item.value">
-                {{item.viewValue}}
+                {{item.viewValue | translate}}
               </mat-option>
             </mat-select>
           </mat-form-field>

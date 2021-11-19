@@ -49,13 +49,16 @@
 
     <div class="about-user__right">
       <!-- <mat-label *ngIf="!edit">Admin</mat-label> -->
-      <div class="mat-form-field" *ngIf="edit">
-        <!-- <mat-label>{{ln.TXT_ADMIN | translate}}</mat-label> -->
-        <select matNativeControl>
-          <option value="Active">{{ln.TXT_ACTIVE | translate}}</option>
-          <option value="Active">{{ln.TXT_ACTIVE | translate}}</option>
-        </select>
-        <span class="icon-mc mc-keyboard_arrow_down"></span>
+      <div *ngIf="user" class="mat-form-field">
+        <mat-label *ngIf="user?.status==0">{{ln.TXT_DEACTIVE | translate}}</mat-label>
+        <mat-label *ngIf="user?.status==1">{{ln.TXT_ACTIVE | translate}}</mat-label>
+        <mat-label *ngIf="user?.status==2">{{ln.TXT_PENDING | translate}}</mat-label>
+        <mat-select matNativeControl [(ngModel)]="user.status" [disabled]="!edit">
+          <mat-option value="0">{{ln.TXT_DEACTIVE | translate}}</mat-option>
+          <mat-option value="1">{{ln.TXT_ACTIVE | translate}}</mat-option>
+          <mat-option value="2">{{ln.TXT_PENDING | translate}}</mat-option>
+        </mat-select>
+        <!-- <span class="icon-mc mc-keyboard_arrow_down"></span> -->
       </div>
 
     </div>
@@ -79,14 +82,18 @@
             <div class="common-div">
               <span class="icon-mc mc-person"></span>
               <div class="d-flex flex-column">
-                <mat-label>Name</mat-label>
-                <span *ngIf="user" class="value">{{ user?.firstname +' '+ user?.middlename+' '+user?.lastname }}</span>
+                <mat-label>{{ ln.TXT_FULL_NAME }}</mat-label>
+                <span class="value">
+                  <ng-container *ngIf="user">
+                    {{ user?.firstname +' '+ user?.middlename+' '+user?.lastname }}
+                  </ng-container>
+                </span>
               </div>
             </div>
             <div class="common-div">
               <span class="icon-mc mc-local_post_office"></span>
               <div class="d-flex flex-column">
-                <mat-label>Email</mat-label>
+                <mat-label>{{ ln.TXT_EMAIL }}</mat-label>
                 <span class="value">{{ user?.email }}</span>
               </div>
             </div>

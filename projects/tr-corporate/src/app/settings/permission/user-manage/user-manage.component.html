@@ -66,22 +66,22 @@
           <mat-form-field appearance="outline">
             <mat-select [(ngModel)]="selectedStatus" placeholder="Select Status" (ngModelChange)="loadUsers()">
               <mat-option *ngFor="let item of status" [value]="item.value">
-                {{item.viewValue}}
+                {{item.viewValue | translate}}
               </mat-option>
             </mat-select>
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-select [(ngModel)]="selectedRole" placeholder="Select Role" (ngModelChange)="loadUsers()">
               <mat-option *ngFor="let item of role" [value]="item.roletypeid">
-                {{item.name}}
+                {{item.name | translate}}
               </mat-option>
             </mat-select>
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-select [(ngModel)]="selectedSort" (ngModelChange)="onHeaderSort()">
               <mat-option *ngFor="let item of sorts" [value]="item.value">
-                <span class="sort-by">Sort By: </span>
-                {{item.viewValue}}
+                <span class="sort-by">{{ln.TXT_SORT_BY | translate}} :</span>
+                {{item.viewValue | translate}}
               </mat-option>
             </mat-select>
           </mat-form-field>
@@ -165,7 +165,7 @@
               }">
                   <span *ngIf="element.status == 1 ">{{ln.TXT_ACTIVE | translate}}</span>
                   <span *ngIf="element.status == 2 ">{{ln.TXT_PENDING | translate}}</span>
-                  <span *ngIf="element.status == 0 ">{{ln.TXT_INACTIVE | translate}}</span>
+                  <span *ngIf="element.status == 0 ">{{ln.TXT_DEACTIVE | translate}}</span>
                 </mat-label>
               </td>
             </ng-container>
