@@ -36,10 +36,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-    if (this.userEmail && this.userName)
-      this.isEmailExists(this.userEmail);
-
+    if (this.userEmail && this.userName) this.isEmailExists(this.userEmail);
   }
 
   isEmailExists(email: string) {
@@ -61,7 +58,7 @@ export class LoginComponent implements OnInit {
         const { error } = res_error;
         this.isLoading = false;
         this.emailValidationError = error.message;
-      })
+      });
   }
 
   login(password: string) {
