@@ -52,8 +52,8 @@ export class UserManageComponent implements OnInit {
   ];
 
   sorts = [
-    { value: 'status', viewValue: 'Status' },
-    { value: 'roletypeid', viewValue: 'Role' }
+    { value: 'status', viewValue: 'Sort By: Status' },
+    { value: 'roletypeid', viewValue: 'Sort By: Role' }
   ]
 
   role!: any[];
@@ -274,4 +274,9 @@ export class UserManageComponent implements OnInit {
     this.viewUserPermission = false;
     this.drawer.open();
   }
+
+  onHeaderSort() {
+    this.sort.sort({ id: this.selectedSort, disableClear: false, start: 'asc' })
+  }
+
 }

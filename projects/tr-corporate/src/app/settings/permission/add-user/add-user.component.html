@@ -118,7 +118,12 @@
           <div>
             <mat-form-field appearance="outline" class="w-100">
               <mat-label>{{ln.TXT_BUSINESS_VERTICAL | translate}}</mat-label>
-              <input type="number" matInput formControlName="businessverticalid" placeholder="Business Vertical">
+              <mat-select formControlName="businessverticalid">
+                <mat-option *ngFor="let businessvertical of businessverticals;"
+                  [value]="businessvertical.businessverticalid">
+                  {{businessvertical.name}}
+                </mat-option>
+              </mat-select>
             </mat-form-field>
           </div>
         </div>
