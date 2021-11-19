@@ -9,7 +9,7 @@
         <div class="col-md-6">
           <mat-form-field appearance="outline">
             <mat-label>First Name</mat-label>
-            <input matInput placeholder="First Name" formControlName="firstName">
+            <input matInput formControlName="firstName">
             <mat-error *ngIf="firstName.touched && !firstName.valid">
               <span *ngIf="firstName.errors?.required">
                 First Name is required
@@ -26,7 +26,7 @@
         <div class="col-md-6">
           <mat-form-field appearance="outline">
             <mat-label>Middle Name</mat-label>
-            <input matInput placeholder="Middle Name" formControlName="middleName">
+            <input matInput formControlName="middleName">
             <mat-error *ngIf="middleName.touched && !middleName.valid">
               <!-- <span *ngIf="middleName.errors?.required">
                 Middle Name is required
@@ -43,7 +43,7 @@
         <div class="col-md-6">
           <mat-form-field appearance="outline">
             <mat-label>Last Name</mat-label>
-            <input matInput placeholder="Last Name" formControlName="lastName">
+            <input matInput formControlName="lastName">
             <mat-error *ngIf="lastName.touched && !lastName.valid">
               <span *ngIf="lastName.errors?.required">
                 Last Name is required
@@ -60,7 +60,7 @@
         <div class="col-md-6">
           <mat-form-field appearance="outline">
             <mat-label>Email Id (Official Email Id)</mat-label>
-            <input type="email" matInput placeholder="pat@example.com" formControlName="email">
+            <input type="email" matInput formControlName="email">
             <mat-error *ngIf="email.touched && !email.valid">
               <span *ngIf="email.errors?.required">
                 Email Id is required
@@ -74,7 +74,7 @@
         <div class="col-md-6 pr-4">
           <mat-form-field appearance="outline">
             <mat-label>Company Name</mat-label>
-            <input matInput placeholder="Company Name" formControlName="company">
+            <input matInput formControlName="company">
             <mat-error *ngIf="company.touched && !company.valid">
               <span *ngIf="company.errors?.required">
                 Company Name is required
@@ -91,7 +91,7 @@
         <div class="col-md-6 pr-5">
           <mat-form-field class="example-full-width" appearance="outline">
             <mat-label>Phone Number</mat-label>
-            <input type="tel" matInput placeholder="000-000-0000" formControlName="phone">
+            <input type="tel" matInput formControlName="phone">
             <mat-error *ngIf="phone.touched && !phone.valid">
               <span *ngIf="phone.errors?.required">
                 Phone number is required
@@ -106,7 +106,8 @@
           <mat-form-field appearance="outline">
             <mat-label>Password</mat-label>
             <input matInput [type]="hidepassword ? 'password' : 'text'" formControlName="password">
-            <button type="button" mat-icon-button matSuffix (click)="hidepassword = !hidepassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidepassword" class="btn-show-hide">
+            <button type="button" mat-icon-button matSuffix (click)="hidepassword = !hidepassword" 
+              [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidepassword" class="btn-show-hide">
               <span class="icon-mc" [ngClass]="{'mc-eye-off' : hidepassword, 'mc-eye': !hidepassword}"></span>
             </button>
             <mat-error *ngIf="password.touched && !password.valid">
@@ -126,7 +127,8 @@
           <mat-form-field appearance="outline" class="w-100 brd">
             <mat-label>Confirm Password</mat-label>
             <input matInput [type]="hidecnfpass ? 'password' : 'text'" formControlName="cnfPass">
-            <button type="button" mat-icon-button matSuffix (click)="hidecnfpass = !hidecnfpass" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidecnfpass" class="btn-show-hide">
+            <button type="button" mat-icon-button matSuffix (click)="hidecnfpass = !hidecnfpass" 
+              [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidecnfpass" class="btn-show-hide">
               <span class="icon-mc" [ngClass]="{'mc-eye-off' : hidecnfpass, 'mc-eye': !hidecnfpass}"></span>
             </button>
             <mat-error *ngIf="cnfPass.touched">
