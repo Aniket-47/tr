@@ -13,7 +13,7 @@ function passwordMatcher(c: AbstractControl): { [key: string]: boolean } | null 
 
   if (passwordControl.pristine || cnfPassControl.pristine) return null;
   if (passwordControl.value === cnfPassControl.value) return null;
-  cnfPassControl.setErrors({ passMatch: true })
+  cnfPassControl.setErrors({ passMatch: true });
   return { passMatch: true };
 }
 

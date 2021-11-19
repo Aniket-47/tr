@@ -15,6 +15,8 @@ import { setUserRoles } from '../utility/store/actions/roles.action';
 import { setUserAddress, setUserCity, setUserCountry, setUserFullName, setUserMail, setUserMobile, setUserName, setUserRole, setUserState, setUserStatus } from '../utility/store/actions/user.action';
 import { IaccountDetials } from '../utility/store/interfaces/account';
 import { DASHBOARD_LN } from './shared/dashboard.lang';
+import { setBusinessVerticle } from '../utility/store/actions/business-verticle.action';
+import { IBusVert } from '../utility/store/interfaces/business-verticle';
 
 
 @Component({
@@ -95,6 +97,11 @@ export class DashabordComponent implements OnInit {
       if (!data[3]?.error) {
         this.lsServ.remove(LSkeys.LANGUAGE);
         this.lsServ.store(LSkeys.LANGUAGE, JSON.stringify(data[3]?.data));
+      }
+
+      if (!data[4]?.error) {
+        const buildData = data[4].data.map((e: IBusVert) => ({ businessverticalid: e.businessverticalid, name: e.name, parentid: e.parentid, parentname: e.parentname }))
+        this.store.dispatch(setBusinessVerticle({ data: buildData }))
       }
     }
   }

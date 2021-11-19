@@ -5,8 +5,11 @@ import {
   FormBuilder,
   FormControl,
   FormGroup,
+  FormGroupDirective,
+  NgForm,
   Validators,
 } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { RouterConfigService } from '@tr/src/app/utility/services/routeGuards/router-config.service';
@@ -27,6 +30,15 @@ function passwordMatcher(c: AbstractControl): { [key: string]: boolean } | null 
   return { match: true };
 }
 
+export class cnfPasswordMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const invalidCtrl = !!(control?.invalid && control?.parent?.dirty);
+    const invalidParent = !!(control?.parent?.invalid && control?.parent?.dirty);
+
+    return invalidCtrl || invalidParent;
+  }
+}
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -41,6 +53,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   routerConfig = ROUTE_CONFIGS;
 
   // Form
+  matcher = new cnfPasswordMatcher();
   registerForm: FormGroup = this.fb.group({
     firstName: [
       '',
