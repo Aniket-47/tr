@@ -5,11 +5,10 @@
             <div>
                 <mat-form-field appearance="standard">
                     <mat-label>{{ln.TXT_OLD_PASSWORD | translate}}</mat-label>
-                    <input matInput placeholder="" type="password" formControlName='oldPassword'>
-                    
+                    <input matInput type="password" formControlName='oldPassword'>                    
                     <mat-error *ngIf="oldPassword.touched && !oldPassword.valid">
                         <span *ngIf="oldPassword.errors?.required">
-                          Old password is required
+                          {{ln.TXT_OLD_PASSWORD_REQUIRED | translate}}
                         </span>  
                     </mat-error>                  
                 </mat-form-field>
@@ -24,13 +23,13 @@
                     </button>
                     <mat-error *ngIf="password.touched && !password.valid">
                         <span *ngIf="password.errors?.required">
-                          Password is required
+                          {{ln.TXT_PASSWORD_REQUIRED | translate}}
                         </span>
                         <span *ngIf="!password.errors?.required && password.errors?.minlength">
-                          Password should be atleast 6 letters
+                          {{ln.TXT_PASSWORD_6_LETTERS | translate}}
                         </span>
                         <span *ngIf="password.errors?.maxlength">
-                          Password should be maximum of 12 letters
+                          {{ln.TXT_PASSWORD_MAX12_LETTERS | translate}}
                         </span>
                     </mat-error>
                     <mat-error *ngIf="password.hasError('customError')">
@@ -41,17 +40,17 @@
             <div>
                 <mat-form-field appearance="standard">
                     <mat-label>{{ln.TXT_CONFIRM_PASSWORD | translate}}</mat-label>
-                    <input matInput placeholder="" [type]="hideCnfPass ? 'password' : 'text'" formControlName='cnfPass'>
+                    <input matInput [type]="hideCnfPass ? 'password' : 'text'" formControlName='cnfPass'>
                     <button type="button" mat-icon-button matSuffix (click)="hideCnfPass = !hideCnfPass" 
                         [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideCnfPass" class="btn-show-hide">
                         <span class="icon-mc" [ngClass]="{'mc-eye-off' : hideCnfPass, 'mc-eye': !hideCnfPass}"></span>
                     </button>
                     <mat-error *ngIf="(cnfPass.touched && !cnfPass.valid)">
                         <span *ngIf="cnfPass.errors?.required">
-                          Retype your password
+                          {{ln.TXT_RETYPE_PASSWORD | translate}}
                         </span>
                         <span *ngIf="cnfPass.errors?.passMatch">
-                          Confirm password does not match
+                          {{ln.TXT_CONFIRM_PASSWORD_NOTMATCH | translate}}
                         </span>
                       </mat-error>
                 </mat-form-field>

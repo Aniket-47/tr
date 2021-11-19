@@ -16,19 +16,19 @@
             </mat-option>
           </mat-select>
           <mat-error *ngIf="roleType.invalid && roleType?.errors">
-            <span *ngIf="roleType?.errors?.required">This field is required.</span>
+            <span *ngIf="roleType?.errors?.required">{{ln.TXT_FIELD_REQUIRED | translate}}</span>
           </mat-error>
         </mat-form-field>
       </div>
       <div>
-        <mat-form-field appearance="outline">
-          <mat-label>{{ln.TXT_NEW_ROLE_NAME | translate}}</mat-label>
-          <input matInput placeholder="Placeholder" formControlName="roleName">
-          <mat-error *ngIf="roleName.invalid && roleName?.errors">
-            <span *ngIf="roleName?.errors?.required">This field is required.</span>
-          </mat-error>
-        </mat-form-field>
-      </div>
+      <mat-form-field appearance="outline" >
+        <mat-label>{{ln.TXT_NEW_ROLE_NAME | translate}}</mat-label>
+        <input matInput placeholder="Placeholder" formControlName="roleName">
+        <mat-error *ngIf="roleName.invalid && roleName?.errors">
+          <span *ngIf="roleName?.errors?.required">{{ln.TXT_FIELD_REQUIRED | translate}}</span>
+        </mat-error>
+      </mat-form-field>
+    </div>
       <button mat-flat-button color="primary" (click)="submitHandler()" [disabled]="isLoading">
         <span>{{isEdit ? 'Update' : 'Submit'}}</span>
         <mat-spinner *ngIf="isLoading" diameter="20" class="btn-loader"></mat-spinner>

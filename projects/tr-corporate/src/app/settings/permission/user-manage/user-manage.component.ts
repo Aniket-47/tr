@@ -96,7 +96,7 @@ export class UserManageComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.select(getRoles).subscribe(roles => {
-      this.role = [{ roletypeid: '', name: 'All' }, ...roles];
+      this.role = [{ roletypeid: '', name: this.ln.TXT_ALL}, ...roles];
     });
     this.store.select(getUserEmail).subscribe(email => {
       this.loggedinUserEmail = email;
