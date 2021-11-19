@@ -550,3 +550,14 @@ mat-drawer-container{
 router-outlet + ng-component{
   width: 100% !important;
 }
+
+.font-600{
+  font-size: 600 !important;
+}
+.font-500{
+  font-size: 500 !important;
+}
+
+button{
+  font-weight: 600 !important;
+}

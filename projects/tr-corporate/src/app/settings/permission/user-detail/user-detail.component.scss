@@ -12,6 +12,11 @@
     // padding: 15px 0;
     h4{
       font-weight: 600;
+      font-size: 0.8rem;
+      span{
+        font-size: 1.2rem;
+        vertical-align: text-top;
+      }
     }
     .icon-mc{
       margin-right: 10px;
@@ -52,11 +57,12 @@
       }
       .about-user__name {
         h4 {
-          font-size: 18px;
+          font-size: 1rem;
+          margin-bottom: 8px;
         }
         span {
-          font-size: 15px;
-          color: gray;
+          font-size: 14px;
+          color: #84818A;
         }
       }
     }
