@@ -27,7 +27,15 @@ export const userReducer = createReducer(
 		return { ...initialState };
 	}),
 
+	on(UserActions.setUserName, (state, action) => {
+		return {
+			...state,
+			name: action.data
+		};
+	}),
+
 	on(UserActions.setUserFullName, (state, action) => {
+		console.log(action)
 		return {
 			...state,
 			fullName: action.data

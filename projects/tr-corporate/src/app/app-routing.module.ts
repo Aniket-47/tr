@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { DemoComponent } from './advance-search/demo/demo.component';
 import { AuthGuard } from './core/guards/auth.guard';
 import { PostLoginResolver } from './core/resolvers/post-login.resolver';
+// import { AuthGuard } from './utility/guards/auth.guard';
+// import { PostLoginResolver } from './utility/resolvers/post-login.resolver';
 
 const routes: Routes = [
   {

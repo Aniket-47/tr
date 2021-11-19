@@ -1,5 +1,5 @@
+//settings-menu
 export enum SETTINGS_LN {
-  //settings-menu
   TXT_PERMISSIONS = "TXT_PERMISSIONS",
   TXT_TEMPLATE = "TXT_TEMPLATE",
   TXT_FORM_VISIBILITY_SETTING = "TXT_FORM_VISIBILITY_SETTING",
@@ -12,8 +12,7 @@ export enum SETTINGS_LN {
   TXT_CAREER_PAGE_BUILDER = "TXT_CAREER_PAGE_BUILDER",
   TXT_GDPR = "TXT_GDPR",
 
-  //perm
-  //ission > add-role
+  //permission > add-role
   TXT_CREATE_NEW_ROLE = "TXT_CREATE_NEW_ROLE",
   TXT_UPDATE_ROLE = "TXT_UPDATE_ROLE",
   TXT_ROLE_TYPE = "TXT_ROLE_TYPE",

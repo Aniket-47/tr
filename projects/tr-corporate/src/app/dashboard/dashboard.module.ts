@@ -48,6 +48,6 @@ export class DashboardModule {
     private lsServ: LstorageService) {
     const languageData = this.lsServ.getItem(LSkeys.LANGUAGE);
     if (languageData) TranslatePipe.setLanguagePack(JSON.parse(languageData));
-    TranslatePipe.setUserLanguage("EN-US")
+    // TranslatePipe.setUserLanguage("EN-US")
   }
 }
