@@ -24,7 +24,7 @@
       <div page-action>
         <button mat-flat-button color="primary" class="cloud-only" (click)="addUserModal()">
           <i class="add-new-role-btn-icon icon-mc mc-plus"></i>
-          {{ln.TXT_INVITE_USER | translate}}
+          {{ln.TXT_ADD_USER | translate}}
         </button>
         <div class="mobile-only">
           <button type="button" mat-icon-button (click)="openBottomSheet()" class="open-bottombtn">
@@ -198,7 +198,7 @@
                         <span>{{ln.TXT_DEACTIVATE_USER | translate }}</span>
                       </button>
                       <button mat-menu-item (click)="deleteUser(element.email)">
-                        <i class="icon-mc mc-user-x"></i> <span>{{ln.TXT_REMOVE_USER | translate}}</span>
+                        <i class="icon-mc mc-user-x"></i> <span>{{ln.TXT_DELETE_USER | translate}}</span>
                       </button>
                     </div>
                   </mat-menu>
@@ -227,7 +227,7 @@
                         <i class="icon-mc mc-do_not_disturb_on"></i> <span>{{ln.TXT_DEACTIVATE_USER | translate}}</span>
                       </button>
                       <button mat-menu-item (click)="deleteUser(element.email)">
-                        <i class="icon-mc mc-user-x"></i> <span>{{ln.TXT_REMOVE_USER | translate}}</span>
+                        <i class="icon-mc mc-user-x"></i> <span>{{ln.TXT_DELETE_USER | translate}}</span>
                       </button>
                     </div>
                   </mat-menu>
@@ -250,7 +250,7 @@
         <button mat-stroked-button color="primary" [matMenuTriggerFor]="menu">{{ln.TXT_EXPORT | translate}} <span
             class="icon-mc mc-expand_more"></span></button>
         <button mat-flat-button color="primary" (click)="addUserModal()"><span class="icon-mc  mc-user-plus"></span>
-          {{ln.TXT_INVITE_USER | translate}}
+          {{ln.TXT_ADD_USER | translate}}
         </button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item>{{ln.TXT_PDF | translate}}</button>
