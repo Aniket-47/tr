@@ -43,6 +43,8 @@ export interface Irole {
 })
 export class ViewRoleComponent implements AfterViewInit, OnInit {
 
+  ln = SETTINGS_LN;
+
   toggle = false;
   config: any;
 
@@ -56,9 +58,9 @@ export class ViewRoleComponent implements AfterViewInit, OnInit {
   //   { value: '1', viewValue: 'Super Admin' }
   // ];
   sortby = [
-    { value: 'rolename', viewValue: 'Sort By: Added to Role Name' },
-    { value: 'usercount', viewValue: 'Sort By: Added to User Count' },
-    { value: 'modifiedDatetime', viewValue: 'Sort By: Added to Last Updated' }
+    { value: 'rolename', viewValue: this.ln.TXT_SORT_BY_ADDED_ROLE_NAME },
+    { value: 'usercount', viewValue: this.ln.TXT_SORT_BY_ADDED_USER_COUNT },
+    { value: 'modifiedDatetime', viewValue: this.ln.TXT_SORT_BY_ADDED_LAST_UPDATED }
   ];
   // selectedStatus = this.status[0].value;
   // selectedRole = this.role[0].value;
@@ -84,7 +86,6 @@ export class ViewRoleComponent implements AfterViewInit, OnInit {
   isEditRole: boolean = false;
   isViewRole: boolean = false;
 
-  ln = SETTINGS_LN;
 
   constructor(
     private dialog: MatDialog,
