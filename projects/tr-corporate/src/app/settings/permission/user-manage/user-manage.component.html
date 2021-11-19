@@ -19,12 +19,12 @@
           <h5 class="mobile-only">{{ln.TXT_PERMISSIONS | translate}}</h5>
           <h2>{{ln.TXT_USER_MANAGEMENT | translate}}</h2>
         </div>
-        
+
       </div>
       <div page-action>
         <button mat-flat-button color="primary" class="cloud-only" (click)="addUserModal()">
           <i class="add-new-role-btn-icon icon-mc mc-plus"></i>
-          {{ln.TXT_INVITE_USER | translate}}
+          {{ln.TXT_ADD_USER | translate}}
         </button>
         <div class="mobile-only">
           <button type="button" mat-icon-button (click)="openBottomSheet()" class="open-bottombtn">
@@ -37,16 +37,22 @@
     <!-- Desktop view -->
     <div class="user-management">
       <div class="table-header">
-        <div *ngIf="selection.selected.length > 0" [matMenuTriggerFor]="menu" class="selected-user">
-          {{ selection.selected.length }} {{ln.TXT_USERS_SELECTED | translate}} <i class="icon-mc mc-keyboard_arrow_down"></i>
+        <div *ngIf="selection.selected.length > 0" class="selected-user">
+          {{ selection.selected.length }} {{ln.TXT_USERS_SELECTED | translate}} <i class="icon-mc mc-more_vert"></i>
         </div>
         <mat-menu #menu="matMenu">
           <button mat-menu-item> <i class="icon-mc mc-how_to_reg"></i> {{ln.TXT_ACTIVATE | translate}}</button>
           <button mat-menu-item> <i class="icon-mc mc-do_not_disturb_on"></i> {{ln.TXT_DEACTIVATE | translate}}</button>
           <button mat-menu-item> <i class="icon-mc mc-user-x"></i> {{ln.TXT_DELETE | translate}}</button>
         </mat-menu>
-        <div class="table-info" *ngIf="selection.selected.length == 0">{{ totalUsers }} 
-          {{ln.TXT_TOTAL_USERS | translate}}
+        <div class="table-info" *ngIf="selection.selected.length == 0">{{ totalUsers }}
+          <span *ngIf="totalUsers<=1">
+            {{ln.TXT_TOTAL_USER | translate}}
+          </span>
+          <span *ngIf="totalUsers>1">
+            {{ln.TXT_TOTAL_USERS | translate}}
+          </span>
+
         </div>
         <div class="table-action cloud-only">
           <mat-form-field appearance="outline">
@@ -91,15 +97,15 @@
               </td>
             </ng-container>
 
-          <!-- Name Column -->
-          <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef> {{ln.TXT_FULL_NAME | translate}} </th>
-            <td mat-cell *matCellDef="let element">
-              <div class="user-info">
-                <div class="user-img">
-                  <img *ngIf="element.img" src="{{element.img}}" alt="">
-                  <img *ngIf="!element.img" src="assets/img/user.jpg" alt="">
-                  <mat-label class="status user-img-label" [ngClass]="{
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef> {{ln.TXT_FULL_NAME | translate}} </th>
+              <td mat-cell *matCellDef="let element">
+                <div class="user-info">
+                  <div class="user-img">
+                    <img *ngIf="element.img" src="{{element.img}}" alt="">
+                    <img *ngIf="!element.img" src="assets/img/user.jpg" alt="">
+                    <mat-label class="status user-img-label" [ngClass]="{
                     'success': element.status == 1,
                     'warning': element.status == 2,
                     'danger': element.status == 0
@@ -113,24 +119,24 @@
               </td>
             </ng-container>
 
-          <!-- Role Column -->
-          <ng-container matColumnDef="roletypeid">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ln.TXT_ROLE | translate}} </th>
-            <td mat-cell *matCellDef="let element">
-              <mat-label class="role" [ngClass]="{
+            <!-- Role Column -->
+            <ng-container matColumnDef="roletypeid">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ln.TXT_ROLE | translate}} </th>
+              <td mat-cell *matCellDef="let element">
+                <mat-label class="role" [ngClass]="{
               'success': element.role === 'Admin',
               'info': element.role === 'Super Admin'
             }">{{element.role}} </mat-label>
               </td>
             </ng-container>
 
-          <!-- Email Column -->
-          <ng-container matColumnDef="email">
-            <th mat-header-cell *matHeaderCellDef> {{ln.TXT_EMAIL | translate}} </th>
-            <td mat-cell *matCellDef="let element">
-              {{element.email}}
-            </td>
-          </ng-container>
+            <!-- Email Column -->
+            <ng-container matColumnDef="email">
+              <th mat-header-cell *matHeaderCellDef> {{ln.TXT_EMAIL | translate}} </th>
+              <td mat-cell *matCellDef="let element">
+                {{element.email}}
+              </td>
+            </ng-container>
 
             <!-- Status Column -->
             <ng-container matColumnDef="status">
@@ -141,21 +147,21 @@
                 'warning': element.status == 2,
                 'danger': element.status == 0
               }">
-                <span *ngIf="element.status == 1 ">{{ln.TXT_ACTIVE | translate}}</span>
-                <span *ngIf="element.status == 2 ">{{ln.TXT_PENDING | translate}}</span>
-                <span *ngIf="element.status == 0 ">{{ln.TXT_INACTIVE | translate}}</span>
-              </mat-label>
-            </td>
-          </ng-container>
+                  <span *ngIf="element.status == 1 ">{{ln.TXT_ACTIVE | translate}}</span>
+                  <span *ngIf="element.status == 2 ">{{ln.TXT_PENDING | translate}}</span>
+                  <span *ngIf="element.status == 0 ">{{ln.TXT_INACTIVE | translate}}</span>
+                </mat-label>
+              </td>
+            </ng-container>
 
-          <!-- Last Updated Column -->
-          <ng-container matColumnDef="lastupdated">
-            <th mat-header-cell *matHeaderCellDef> {{ln.TXT_LAST_UPDATED | translate}} </th>
-            <td mat-cell *matCellDef="let element"> 
-              <span class="mobile-only grey-text"> {{ln.TXT_UPDATED | translate}} :</span>
-              {{element.last_updated | date}} 
-            </td>
-          </ng-container>
+            <!-- Last Updated Column -->
+            <ng-container matColumnDef="lastupdated">
+              <th mat-header-cell *matHeaderCellDef> {{ln.TXT_LAST_UPDATED | translate}} </th>
+              <td mat-cell *matCellDef="let element">
+                <span class="mobile-only grey-text"> {{ln.TXT_UPDATED | translate}} :</span>
+                {{element.last_updated | date}}
+              </td>
+            </ng-container>
 
             <!-- Action Column -->
             <ng-container matColumnDef="action">
@@ -167,7 +173,7 @@
                     <i class="icon-mc mc-preview"></i>
                   </button>
                   <button mat-icon-button [matMenuTriggerFor]="tableMenu" (click)="hideUserActionMenu = false">
-                    <span class="icon-mc mc-more_horiz"></span>
+                    <span class="icon-mc mc-more_vert"></span>
                   </button>
                   <mat-menu #tableMenu="matMenu" backdropClass="profile-dropdown">
                     <div class="user-dropdown-submenu">
@@ -181,11 +187,11 @@
                         <i class="icon-mc mc-how_to_reg"></i> <span>{{ln.TXT_ACTIVATE_USER | translate}}</span>
                       </button>
                       <button mat-menu-item *ngIf="element.status==1" (click)="deactivateUser(element.email)">
-                        <i class="icon-mc mc-do_not_disturb_on"></i> 
+                        <i class="icon-mc mc-do_not_disturb_on"></i>
                         <span>{{ln.TXT_DEACTIVATE_USER | translate }}</span>
                       </button>
-                      <button mat-menu-item (click)="deleteUser(element.email)">
-                        <i class="icon-mc mc-user-x"></i> <span>{{ln.TXT_REMOVE_USER | translate}}</span>
+                      <button *ngIf="element.status==0" mat-menu-item (click)="deleteUser(element.email)">
+                        <i class="icon-mc mc-user-x"></i> <span>{{ln.TXT_DELETE_USER | translate}}</span>
                       </button>
                     </div>
                   </mat-menu>
@@ -200,7 +206,8 @@
                         <i class="icon-mc mc-visibility"></i> <span>{{ln.TXT_VIEW_DETAILS | translate}}</span>
                       </button>
                       <button mat-menu-item (click)="currentUser = element; viewUserPermission=true; drawer.toggle()">
-                        <i class="icon-mcf mcf-chrome_reader_mode"></i> <span>{{ln.TXT_VIEW_PERMISSION | translate}}</span>
+                        <i class="icon-mcf mcf-chrome_reader_mode"></i> <span>{{ln.TXT_VIEW_PERMISSION |
+                          translate}}</span>
                       </button>
                       <button mat-menu-item
                         (click)="currentUser = element; currentUserEdit= true; viewUserPermission=true; drawer.toggle()">
@@ -212,8 +219,8 @@
                       <button mat-menu-item *ngIf="element.status==1" (click)="deactivateUser(element.email)">
                         <i class="icon-mc mc-do_not_disturb_on"></i> <span>{{ln.TXT_DEACTIVATE_USER | translate}}</span>
                       </button>
-                      <button mat-menu-item (click)="deleteUser(element.email)">
-                        <i class="icon-mc mc-user-x"></i> <span>{{ln.TXT_REMOVE_USER | translate}}</span>
+                      <button *ngIf="element.status==0" mat-menu-item (click)="deleteUser(element.email)">
+                        <i class="icon-mc mc-user-x"></i> <span>{{ln.TXT_DELETE_USER | translate}}</span>
                       </button>
                     </div>
                   </mat-menu>
@@ -233,11 +240,11 @@
     <!-- Mobile View -->
     <div class="floating-button page-action  mobile-only">
       <div class="more-float-action-btn" [class.active]="toggle">
-        <button mat-stroked-button color="primary" [matMenuTriggerFor]="menu">{{ln.TXT_EXPORT | translate}} <span
-            class="icon-mc mc-expand_more"></span></button>
         <button mat-flat-button color="primary" (click)="addUserModal()"><span class="icon-mc  mc-user-plus"></span>
-          {{ln.TXT_INVITE_USER | translate}}
+          {{ln.TXT_ADD_USER | translate}}
         </button>
+        <button mat-stroked-button color="primary" [matMenuTriggerFor]="menu">{{ln.TXT_EXPORT | translate}} <span
+          class="icon-mc mc-expand_more"></span></button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item>{{ln.TXT_PDF | translate}}</button>
           <button mat-menu-item>{{ln.TXT_EXCEL | translate}}</button>

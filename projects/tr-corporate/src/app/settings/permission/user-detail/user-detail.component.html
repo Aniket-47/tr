@@ -17,15 +17,19 @@
             <mat-icon class="close_icon">close</mat-icon>
         </div> -->
     <!-- <i class="icon-mc mc-x"></i> -->
+    <div *ngIf="!edit">
+      <h4><span class="icon-mc mc-person"></span>User Info</h4>
+    </div>
+    <div *ngIf="edit">
+      <h4><span class="icon-mc mc-create"></span> Edit user info</h4>
+    </div>
   </div>
 
-  <ng-template #editIcon>
+  <!-- <ng-template #editIcon>
     <mat-icon>mode_edit</mat-icon>
-  </ng-template>
+  </ng-template> -->
 
-  <ng-template #editUserInfo>
-    <h4>edit user info</h4>
-  </ng-template>
+  
 
   <!-- <div class="upper-sec__right">
       <mat-icon class="close_icon">close</mat-icon>
@@ -45,19 +49,20 @@
 
     <div class="about-user__right">
       <!-- <mat-label *ngIf="!edit">Admin</mat-label> -->
-      <mat-form-field class="mat-form-field" *ngIf="edit">
-        <mat-label>{{ln.TXT_ADMIN | translate}}</mat-label>
-        <mat-select matNativeControl>
-          <mat-option value="Active">{{ln.TXT_ACTIVE | translate}}</mat-option>
-          <mat-option value="Active">{{ln.TXT_ACTIVE | translate}}</mat-option>
-
-        </mat-select>
-      </mat-form-field>
+      <div class="mat-form-field" *ngIf="edit">
+        <!-- <mat-label>{{ln.TXT_ADMIN | translate}}</mat-label> -->
+        <select matNativeControl>
+          <option value="Active">{{ln.TXT_ACTIVE | translate}}</option>
+          <option value="Active">{{ln.TXT_ACTIVE | translate}}</option>
+        </select>
+        <span class="icon-mc mc-keyboard_arrow_down"></span>
+      </div>
 
     </div>
   </div>
 
   <div class="mid-sec">
+    <perfect-scrollbar>
     <div class="personal__details__heading">
       <h3>{{ln.TXT_USER_DETAILS | translate}}</h3>
       <!-- <button mat-button color="primary" (click)="edit = !edit" *ngIf="!edit; else hideEditBtn">
@@ -67,7 +72,7 @@
     <ng-template #hideEditBtn> </ng-template>
 
 
-    <div *ngIf="!edit; else displayInput">
+    <ng-container *ngIf="!edit; else displayInput">
       <div class="personal__details__content">
         <div class="user_detail_list">
 
@@ -130,7 +135,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </ng-container>
 
 
     <ng-template #displayInput>
@@ -241,14 +246,15 @@
 
 
         <div class="buttons">
-          <button mat-stroked-button (click)="edit = !edit" class="cancel-btn">{{ln.TXT_CANCEL | translate}}</button>
           <button mat-flat-button color="primary" (click)="editUser()" [disabled]="isLoading" class="update-btn">
             <span>{{ln.TXT_UPDATED | translate}}</span>
             <mat-spinner diameter="20" *ngIf="isLoading" class="btn-loader"></mat-spinner>
           </button>
+          <button mat-stroked-button (click)="edit = !edit" class="cancel-btn">{{ln.TXT_CANCEL | translate}}</button>
         </div>
       </form>
 
     </ng-template>
+  </perfect-scrollbar>
   </div>
 </div>

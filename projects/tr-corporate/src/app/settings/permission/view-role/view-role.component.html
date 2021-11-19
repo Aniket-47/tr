@@ -49,8 +49,14 @@
 
         </div>
       </div>
+      
       <div class="table-container">
+<<<<<<< HEAD
         <table mat-table [dataSource]="dataSource" matSort matSortActive="modifiedDatetime" matSortDirection="asc">
+=======
+        <perfect-scrollbar>
+        <table mat-table [dataSource]="dataSource" matSort>
+>>>>>>> 0438a304bee46802f2b9a5b0d3fda2dd4dc017f1
           <!-- Role Column -->
           <ng-container matColumnDef="rolename">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ln.TXT_ACCOUNTS_ROLES | translate}} </th>
@@ -146,8 +152,9 @@
           <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="viewRoleDeatils(row)"></tr>
         </table>
+      </perfect-scrollbar>
       </div>
-
+    
 
       <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
   </mat-paginator> -->

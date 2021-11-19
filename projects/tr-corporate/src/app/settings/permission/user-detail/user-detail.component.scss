@@ -1,6 +1,6 @@
 @import '~@mucrest/ng-design/assets/styles/1-base/base-dir';
 .box-container {
-  max-width: 320px;
+  max-width: 370px;
   // margin: auto;
   // border: 1px solid red;
   // padding: 0 1em;
@@ -10,6 +10,15 @@
     justify-content: space-between;
     align-items: center;
     // padding: 15px 0;
+    h4{
+      font-weight: 600;
+    }
+    .icon-mc{
+      margin-right: 10px;
+      &:before{
+        color:$theme;
+      }
+    }
     .upper-sec__left {
       display: flex;
       align-items: center;
@@ -26,11 +35,11 @@
   }
   .about-user {
     display: flex;
-    justify-content: flex-start;
-    // align-items: center;
+    justify-content: space-between;
+    align-items: center;
     gap: 1rem;
-    flex-direction: column;
-    // padding: 15px 0;
+    padding: 1rem 0;
+    border-bottom: 1px solid #eaeaea;
     .about-user__left {
       display: flex;
       align-items: center;
@@ -55,11 +64,21 @@
       button {
         color: rgb(139, 196, 139);
       }
+      
       .mat-icon {
         margin-left: 5px;
       }
       .mat-form-field {
-        width: 80px;
+        display: flex;
+        background-color: rgba(20, 177, 59, 0.1);
+        color: #00A46C;
+        font-size: 12px;
+        border-radius: 4px;
+        padding: 10px;
+        .mc-icon{
+          color: #504F54;
+          font-size: 15px;
+        }
       }
       ::ng-deep .mat-form-field-wrapper {
         padding-bottom: 0;
@@ -77,19 +96,19 @@
   }
   .mid-sec {
     padding: 0;
-    height: calc(100vh - 250px);
+    height: calc(100vh - 180px);
     overflow: auto;
     .personal__details__heading {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      // margin-bottom: 10px;
+      margin: 15px 0 20px;
       h3 {
         font-size: 18px;
       }
     }
     .personal__details__content {
-      padding: 1em 0 0.8em;
+      padding: 10px 0 0.8em;
       // max-height: 250px;
       // overflow-y: auto;
       .icon {
@@ -130,6 +149,7 @@
     }
     form {
       margin-top: 1rem;
+      padding-bottom: 3rem;
     }
     // this mat-icon styles for edit page part
     mat-icon {
@@ -165,11 +185,13 @@
     bottom: 0px;
     width: 100%;
     background-color: $white;
-    padding: 0 1rem 10px;
+    padding: 0 0 10px;
     display: flex;
-    justify-content: space-between;
-    button {
-      width: 48%;
-    }    
+    gap: 10px;
+    // display: flex;
+    // justify-content: space-between;
+    // button {
+    //   width: 48%;
+    // }    
   }
 }
