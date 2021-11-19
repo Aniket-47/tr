@@ -37,8 +37,8 @@
     <!-- Desktop view -->
     <div class="user-management">
       <div class="table-header">
-        <div *ngIf="selection.selected.length > 0" [matMenuTriggerFor]="menu" class="selected-user">
-          {{ selection.selected.length }} {{ln.TXT_USERS_SELECTED | translate}} <i class="icon-mc mc-keyboard_arrow_down"></i>
+        <div *ngIf="selection.selected.length > 0" class="selected-user">
+          {{ selection.selected.length }} {{ln.TXT_USERS_SELECTED | translate}} <i class="icon-mc mc-more_vert"></i>
         </div>
         <mat-menu #menu="matMenu">
           <button mat-menu-item> <i class="icon-mc mc-how_to_reg"></i> {{ln.TXT_ACTIVATE | translate}}</button>
@@ -233,11 +233,11 @@
     <!-- Mobile View -->
     <div class="floating-button page-action  mobile-only">
       <div class="more-float-action-btn" [class.active]="toggle">
-        <button mat-stroked-button color="primary" [matMenuTriggerFor]="menu">{{ln.TXT_EXPORT | translate}} <span
-            class="icon-mc mc-expand_more"></span></button>
         <button mat-flat-button color="primary" (click)="addUserModal()"><span class="icon-mc  mc-user-plus"></span>
           {{ln.TXT_INVITE_USER | translate}}
         </button>
+        <button mat-stroked-button color="primary" [matMenuTriggerFor]="menu">{{ln.TXT_EXPORT | translate}} <span
+          class="icon-mc mc-expand_more"></span></button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item>{{ln.TXT_PDF | translate}}</button>
           <button mat-menu-item>{{ln.TXT_EXCEL | translate}}</button>

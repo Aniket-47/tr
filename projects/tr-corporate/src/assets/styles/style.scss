@@ -439,7 +439,7 @@ mat-drawer-container{
             padding-top: 5rem;
             padding-left: 1rem;
             padding-right: 1rem;
-            width: 350px;
+            width: 400px;
         }
         .mat-drawer-backdrop.mat-drawer-shown {            
             background-color: #ffffff94;
@@ -459,7 +459,7 @@ mat-drawer-container{
     }
 
 .table-container{
-    height: calc(100vh - 280px);
+    height: calc(100vh - 250px);
     overflow: auto;
     @include media-breakpoint-down(md) {
       height: calc(100vh - 240px);
