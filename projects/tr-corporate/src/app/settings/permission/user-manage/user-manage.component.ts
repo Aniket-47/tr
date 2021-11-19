@@ -50,10 +50,17 @@ export class UserManageComponent implements OnInit {
     { value: '1', viewValue: this.ln.TXT_ACTIVE },
     { value: '2', viewValue: this.ln.TXT_PENDING }
   ];
+
+  sorts = [
+    { value: 'status', viewValue: 'Status' },
+    { value: 'roletypeid', viewValue: 'Role' }
+  ]
+
   role!: any[];
 
   selectedStatus!: number;
   selectedRole!: number;
+  selectedSort = "status";
   displayedColumns: string[] = ['check', 'name', 'roletypeid', 'email', 'status', 'lastupdated', 'action'];
   dataSource!: MatTableDataSource<any>;
   selection = new SelectionModel<any>(true, []);
