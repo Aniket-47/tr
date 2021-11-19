@@ -1,3 +1,4 @@
+import { getBusinessVerticle } from './../../../utility/store/selectors/business-vertical.selector';
 import { Store } from '@ngrx/store';
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -27,12 +28,15 @@ export class UserDetailComponent implements OnInit, OnChanges {
   isLoading = false;
 
   roles: Irole[] = [];
+  businessverticals!: any[];
+
+
 
   @Input() edit: boolean = false;
   @Input() userEmail!: string;
 
 
-  user!: GetUser_response["data"];
+  user!: GetUser_response["data"] | null;
   accountID!: string;
 
   ln = SETTINGS_LN;
@@ -124,9 +128,13 @@ export class UserDetailComponent implements OnInit, OnChanges {
       // remove owner, because for one account there is only one owner.
       if (roles && roles.length) this.roles = roles.slice(1, roles.length);
     })
+    this.store.select(getBusinessVerticle).subscribe(businessverticals => {
+      this.businessverticals = businessverticals;
+    })
   }
 
   ngOnChanges() {
+    this.user = null
     if (this.userEmail)
       this.prefillUser();
   }

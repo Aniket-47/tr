@@ -29,7 +29,7 @@
     <mat-icon>mode_edit</mat-icon>
   </ng-template> -->
 
-  
+
 
   <!-- <div class="upper-sec__right">
       <mat-icon class="close_icon">close</mat-icon>
@@ -63,198 +63,203 @@
 
   <div class="mid-sec">
     <perfect-scrollbar>
-    <div class="personal__details__heading">
-      <h3>{{ln.TXT_USER_DETAILS | translate}}</h3>
-      <!-- <button mat-button color="primary" (click)="edit = !edit" *ngIf="!edit; else hideEditBtn">
+      <div class="personal__details__heading">
+        <h3>{{ln.TXT_USER_DETAILS | translate}}</h3>
+        <!-- <button mat-button color="primary" (click)="edit = !edit" *ngIf="!edit; else hideEditBtn">
         Edit
       </button> -->
-    </div>
-    <ng-template #hideEditBtn> </ng-template>
-
-
-    <ng-container *ngIf="!edit; else displayInput">
-      <div class="personal__details__content">
-        <div class="user_detail_list">
-
-          <!-- <div class="common-div">
-            <mat-icon class="mat-icon">person</mat-icon>
-            <div class="d-flex flex-column">
-              <mat-label>Name</mat-label>
-              <span class="value">{{ user?.fullname }}</span>
-            </div>
-          </div>
-          <div class="common-div">
-            <span class="icon-mc mc-local_post_office"></span>
-            <div class="d-flex flex-column">
-              <mat-label>Email</mat-label>
-              <span class="value">{{ user?.email }}</span>
-            </div>
-          </div> -->
-
-          <div class="common-div">
-            <span class="icon-mcf mcf-work"></span>
-            <div class="d-flex flex-column">
-              <mat-label>{{ln.TXT_USER_ROLE | translate}}</mat-label>
-              <span class="value">{{ user?.roletypeid }}</span>
-            </div>
-          </div>
-          <div class="common-div">
-            <span class="icon-mc mc-school"></span>
-            <div class="d-flex flex-column">
-              <mat-label>{{ln.TXT_DESIGNATION | translate}}</mat-label>
-              <span class="value">{{ user?.designationname }}</span>
-            </div>
-          </div>
-          <div class="common-div">
-            <span class="icon-mc mc-layers"></span>
-            <div class="d-flex flex-column">
-              <mat-label>{{ln.TXT_BUSINESS_VERTICAL | translate}}</mat-label>
-              <span class="value">{{ user?.businessverticalid }}</span>
-            </div>
-          </div>
-          <div class="common-div">
-            <span class="icon-mcf mcf-work"></span>
-            <div class="d-flex flex-column">
-              <mat-label>{{ln.TXT_PRACTICE | translate}}</mat-label>
-              <span class="value">{{ user?.practicename}}</span>
-            </div>
-          </div>
-          <div class="common-div">
-            <span class="icon-mc mc-local_phone"></span>
-            <div class="d-flex flex-column">
-              <mat-label>{{ln.TXT_PHONE | translate}}</mat-label>
-              <span class="value">{{ user?.mobilenumber }}</span>
-            </div>
-          </div>
-          <div class="common-div">
-            <span class="icon-mc mc-location_pin"></span>
-            <div class="d-flex flex-column">
-              <mat-label>{{ln.TXT_LOCATION | translate}}</mat-label>
-              <span class="value">{{ user?.locationname }}</span>
-            </div>
-          </div>
-        </div>
       </div>
-    </ng-container>
+      <ng-template #hideEditBtn> </ng-template>
 
 
-    <ng-template #displayInput>
+      <ng-container *ngIf="!edit; else displayInput">
+        <div class="personal__details__content">
+          <div class="user_detail_list">
 
-      <form [formGroup]="editUserForm">
-        <mat-form-field appearance="outline">
-          <mat-label>{{ln.TXT_FIRST_NAME | translate}}</mat-label>
-          <input matInput formControlName="firstname" placeholder="First Name">
-          <mat-error *ngIf="firstname.invalid && firstname.touched">
-            <span *ngIf="firstname.errors?.required">
-              First Name is required
-            </span>
-            <span *ngIf="!firstname.errors?.required && firstname.errors?.minlength">
-              First Name should be atleast 3 letters
-            </span>
-            <span *ngIf="firstname.errors?.maxlength">
-              First Name should be maximum of 20 letters
-            </span>
-          </mat-error>
+            <div class="common-div">
+              <span class="icon-mc mc-person"></span>
+              <div class="d-flex flex-column">
+                <mat-label>Name</mat-label>
+                <span *ngIf="user" class="value">{{ user?.firstname +' '+ user?.middlename+' '+user?.lastname }}</span>
+              </div>
+            </div>
+            <div class="common-div">
+              <span class="icon-mc mc-local_post_office"></span>
+              <div class="d-flex flex-column">
+                <mat-label>Email</mat-label>
+                <span class="value">{{ user?.email }}</span>
+              </div>
+            </div>
 
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-          <mat-label>{{ln.TXT_MIDDLE_NAME | translate}}</mat-label>
-          <input matInput formControlName="middlename" placeholder="Middle Name">
-          <mat-error *ngIf="middlename.invalid && middlename.touched">
-            <span *ngIf="middlename.errors?.minlength">
-              Middle Name should be atleast 3 letters
-            </span>
-            <span *ngIf="middlename.errors?.maxlength">
-              Middle Name should be maximum of 20 letters
-            </span>
-          </mat-error>
-        </mat-form-field>
-
-        <mat-form-field appearance="outline">
-          <mat-label>{{ln.TXT_LAST_NAME | translate}}</mat-label>
-          <input matInput formControlName="lastname" placeholder="Last Name">
-          <mat-error *ngIf="lastname.invalid && lastname.touched">
-            <span *ngIf="lastname.errors?.required">
-              Last Name is required
-            </span>
-            <span *ngIf="!lastname.errors?.required && lastname.errors?.minlength">
-              Last Name should be atleast 3 letters
-            </span>
-            <span *ngIf="lastname.errors?.maxlength">
-              Last Name should be maximum of 20 letters
-            </span>
-          </mat-error>
-        </mat-form-field>
-
-
-
-
-        <mat-form-field appearance="outline">
-          <mat-label>{{ln.TXT_EMAIL | translate}}</mat-label>
-          <input matInput formControlName="email" placeholder="abc123@gmail.com">
-          <mat-error *ngIf="email.invalid && email.touched">
-            <span *ngIf="email.errors?.required">
-              Email Id is required
-            </span>
-            <span *ngIf="!email.errors?.required && email.errors?.email">
-              Email Id is not valid
-            </span>
-          </mat-error>
-        </mat-form-field>
-
-
-
-        <mat-form-field appearance="outline">
-          <mat-label>{{ln.TXT_ROLE | translate}}</mat-label>
-          <mat-select formControlName="roletypeid">
-            <mat-option *ngFor="let role of roles;" [value]="role">
-              {{role.name}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-
-
-        <mat-form-field appearance="outline">
-          <mat-label>{{ln.TXT_DESIGNATION | translate}}</mat-label>
-          <input matInput formControlName="designationname" placeholder="Designation">
-        </mat-form-field>
-
-
-        <mat-form-field appearance="outline">
-          <mat-label>{{ln.TXT_BUSINESS_VERTICAL | translate}}</mat-label>
-          <input matInput formControlName="businessverticalid" placeholder="Business Vertical">
-        </mat-form-field>
-
-
-
-        <mat-form-field appearance="outline">
-          <mat-label>{{ln.TXT_PRACTICE | translate}}</mat-label>
-          <input matInput formControlName="practicename" placeholder="Practice">
-        </mat-form-field>
-
-
-        <mat-form-field appearance="outline">
-          <mat-label>{{ln.TXT_PHONE | translate}}</mat-label>
-          <input matInput formControlName="mobilenumber" placeholder="ex:- 9874563258">
-        </mat-form-field>
-
-
-        <mat-form-field appearance="outline">
-          <mat-label>{{ln.TXT_LOCATION | translate}}</mat-label>
-          <input matInput formControlName="locationname" placeholder="Location">
-        </mat-form-field>
-
-
-        <div class="buttons">
-          <button mat-flat-button color="primary" (click)="editUser()" [disabled]="isLoading" class="update-btn">
-            <span>{{ln.TXT_UPDATED | translate}}</span>
-            <mat-spinner diameter="20" *ngIf="isLoading" class="btn-loader"></mat-spinner>
-          </button>
-          <button mat-stroked-button (click)="edit = !edit" class="cancel-btn">{{ln.TXT_CANCEL | translate}}</button>
+            <div class="common-div">
+              <span class="icon-mcf mcf-work"></span>
+              <div class="d-flex flex-column">
+                <mat-label>{{ln.TXT_USER_ROLE | translate}}</mat-label>
+                <span class="value">{{ user?.roletypename }}</span>
+              </div>
+            </div>
+            <div class="common-div">
+              <span class="icon-mc mc-school"></span>
+              <div class="d-flex flex-column">
+                <mat-label>{{ln.TXT_DESIGNATION | translate}}</mat-label>
+                <span class="value">{{ user?.designationname }}</span>
+              </div>
+            </div>
+            <div class="common-div">
+              <span class="icon-mc mc-layers"></span>
+              <div class="d-flex flex-column">
+                <mat-label>{{ln.TXT_BUSINESS_VERTICAL | translate}}</mat-label>
+                <span class="value">{{ user?.businessverticalid }}</span>
+              </div>
+            </div>
+            <div class="common-div">
+              <span class="icon-mc mc-nature"></span>
+              <div class="d-flex flex-column">
+                <mat-label>{{ln.TXT_PRACTICE | translate}}</mat-label>
+                <span class="value">{{ user?.practicename}}</span>
+              </div>
+            </div>
+            <div class="common-div">
+              <span class="icon-mc mc-local_phone"></span>
+              <div class="d-flex flex-column">
+                <mat-label>{{ln.TXT_PHONE | translate}}</mat-label>
+                <span class="value">{{ user?.mobilenumber }}</span>
+              </div>
+            </div>
+            <div class="common-div">
+              <span class="icon-mc mc-location_pin"></span>
+              <div class="d-flex flex-column">
+                <mat-label>{{ln.TXT_LOCATION | translate}}</mat-label>
+                <span class="value">{{ user?.locationname }}</span>
+              </div>
+            </div>
+          </div>
         </div>
-      </form>
+      </ng-container>
 
-    </ng-template>
-  </perfect-scrollbar>
+
+      <ng-template #displayInput>
+
+        <form [formGroup]="editUserForm">
+          <mat-form-field appearance="outline">
+            <mat-label>{{ln.TXT_FIRST_NAME | translate}}</mat-label>
+            <input matInput formControlName="firstname" placeholder="First Name">
+            <mat-error *ngIf="firstname.invalid && firstname.touched">
+              <span *ngIf="firstname.errors?.required">
+                First Name is required
+              </span>
+              <span *ngIf="!firstname.errors?.required && firstname.errors?.minlength">
+                First Name should be atleast 3 letters
+              </span>
+              <span *ngIf="firstname.errors?.maxlength">
+                First Name should be maximum of 20 letters
+              </span>
+            </mat-error>
+
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>{{ln.TXT_MIDDLE_NAME | translate}}</mat-label>
+            <input matInput formControlName="middlename" placeholder="Middle Name">
+            <mat-error *ngIf="middlename.invalid && middlename.touched">
+              <span *ngIf="middlename.errors?.minlength">
+                Middle Name should be atleast 3 letters
+              </span>
+              <span *ngIf="middlename.errors?.maxlength">
+                Middle Name should be maximum of 20 letters
+              </span>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>{{ln.TXT_LAST_NAME | translate}}</mat-label>
+            <input matInput formControlName="lastname" placeholder="Last Name">
+            <mat-error *ngIf="lastname.invalid && lastname.touched">
+              <span *ngIf="lastname.errors?.required">
+                Last Name is required
+              </span>
+              <span *ngIf="!lastname.errors?.required && lastname.errors?.minlength">
+                Last Name should be atleast 3 letters
+              </span>
+              <span *ngIf="lastname.errors?.maxlength">
+                Last Name should be maximum of 20 letters
+              </span>
+            </mat-error>
+          </mat-form-field>
+
+
+
+
+          <mat-form-field appearance="outline">
+            <mat-label>{{ln.TXT_EMAIL | translate}}</mat-label>
+            <input matInput formControlName="email" placeholder="abc123@gmail.com">
+            <mat-error *ngIf="email.invalid && email.touched">
+              <span *ngIf="email.errors?.required">
+                Email Id is required
+              </span>
+              <span *ngIf="!email.errors?.required && email.errors?.email">
+                Email Id is not valid
+              </span>
+            </mat-error>
+          </mat-form-field>
+
+
+
+          <mat-form-field appearance="outline">
+            <mat-label>{{ln.TXT_ROLE | translate}}</mat-label>
+            <mat-select formControlName="roletypeid">
+              <mat-option *ngFor="let role of roles;" [value]="role">
+                {{role.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+
+          <mat-form-field appearance="outline">
+            <mat-label>{{ln.TXT_DESIGNATION | translate}}</mat-label>
+            <input matInput formControlName="designationname" placeholder="Designation">
+          </mat-form-field>
+
+
+          <mat-form-field appearance="outline">
+            <mat-label>{{ln.TXT_BUSINESS_VERTICAL | translate}}</mat-label>
+            <mat-select formControlName="businessverticalid">
+              <mat-option *ngFor="let businessvertical of businessverticals;"
+                [value]="businessvertical.businessverticalid">
+                {{businessvertical.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+
+
+          <mat-form-field appearance="outline">
+            <mat-label>{{ln.TXT_PRACTICE | translate}}</mat-label>
+            <input matInput formControlName="practicename" placeholder="Practice">
+          </mat-form-field>
+
+
+          <mat-form-field appearance="outline">
+            <mat-label>{{ln.TXT_PHONE | translate}}</mat-label>
+            <input matInput formControlName="mobilenumber" placeholder="ex:- 9874563258">
+          </mat-form-field>
+
+
+          <mat-form-field appearance="outline">
+            <mat-label>{{ln.TXT_LOCATION | translate}}</mat-label>
+            <input matInput formControlName="locationname" placeholder="Location">
+          </mat-form-field>
+
+
+          <div class="buttons">
+            <button mat-flat-button color="primary" (click)="editUser()" [disabled]="isLoading" class="update-btn">
+              <span>{{ln.TXT_UPDATED | translate}}</span>
+              <mat-spinner diameter="20" *ngIf="isLoading" class="btn-loader"></mat-spinner>
+            </button>
+            <button mat-stroked-button (click)="edit = !edit" class="cancel-btn">{{ln.TXT_CANCEL | translate}}</button>
+          </div>
+        </form>
+
+      </ng-template>
+    </perfect-scrollbar>
   </div>
 </div>

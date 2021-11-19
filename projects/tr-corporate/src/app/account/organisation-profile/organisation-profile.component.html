@@ -5,7 +5,7 @@
         <mat-label>{{ln.TXT_COMPANY_NAME | translate}}</mat-label>
         <input matInput formControlName="name">
         <mat-error *ngIf="name.invalid && name.touched">
-          <span *ngIf="name.errors?.required">This field is required.</span>
+          <span *ngIf="name.errors?.required">{{ln.TXT_FIELD_REQUIRED | translate}}</span>
         </mat-error>
       </mat-form-field>
     </div>
@@ -14,8 +14,8 @@
         <mat-label>{{ln.TXT_SHORT_NAME | translate}}</mat-label>
         <input matInput formControlName="shortname" (keyup)='checkValidity()'>
         <mat-error *ngIf="shortname.invalid && shortname.touched">
-          <span *ngIf="shortname.errors?.maxlength">Short Name should be maximum 15 letters</span>
-          <span *ngIf="shortname.errors?.minlength">Short Name should be mininum 5 letters.</span>
+          <span *ngIf="shortname.errors?.maxlength">{{ln.TXT_SHORT_NAME_MAX15 | translate}}</span>
+          <span *ngIf="shortname.errors?.minlength">{{ln.TXT_SHORT_NAME_MIN5 | translate}}</span>
         </mat-error>
         <mat-error *ngIf="shortname.hasError('customError')">
           {{ resShortMessage }}
@@ -32,7 +32,7 @@
           <mat-option [value]="each?.iso2" *ngFor="let each of countries">{{each?.name}}</mat-option>
         </mat-select>
         <mat-error *ngIf="countryid.invalid && countryid.touched">
-          <span *ngIf="countryid.errors?.required">This field is required.</span>
+          <span *ngIf="countryid.errors?.required">{{ln.TXT_FIELD_REQUIRED | translate}}</span>
         </mat-error>
       </mat-form-field>
     </div>
@@ -54,7 +54,7 @@
           <mat-option [value]="each?.stateCode" *ngFor="let each of states">{{each?.name}}</mat-option>
         </mat-select>
         <mat-error *ngIf="stateid.invalid && stateid.touched">
-          <span *ngIf="stateid.errors?.required">This field is required.</span>
+          <span *ngIf="stateid.errors?.required">{{ln.TXT_FIELD_REQUIRED | translate}}</span>
         </mat-error>
       </mat-form-field>
     </div>
@@ -65,7 +65,7 @@
           <mat-option [value]="each?.id" *ngFor="let each of cities">{{each?.name}}</mat-option>
         </mat-select>
         <mat-error *ngIf="cityid.invalid && cityid.touched">
-          <span *ngIf="cityid.errors?.required">This field is required.</span>
+          <span *ngIf="cityid.errors?.required">{{ln.TXT_FIELD_REQUIRED | translate}}</span>
         </mat-error>
       </mat-form-field>
     </div>
@@ -78,7 +78,7 @@
           <mat-option [value]="each?.code" *ngFor="let each of industries">{{each?.name}}</mat-option>
         </mat-select>
         <mat-error *ngIf="name.invalid && name.touched">
-          <span *ngIf="name.errors?.required">This field is required.</span>
+          <span *ngIf="name.errors?.required">{{ln.TXT_FIELD_REQUIRED | translate}}</span>
         </mat-error>
       </mat-form-field>
     </div>

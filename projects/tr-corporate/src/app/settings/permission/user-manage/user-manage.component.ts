@@ -1,3 +1,5 @@
+import { getUserEmail } from './../../../utility/store/selectors/user.selector';
+import { getBusinessVerticle } from './../../../utility/store/selectors/business-vertical.selector';
 import { MatSort } from '@angular/material/sort';
 import { Store } from '@ngrx/store';
 import { MatDrawer } from '@angular/material/sidenav';
@@ -48,10 +50,17 @@ export class UserManageComponent implements OnInit {
     { value: '1', viewValue: this.ln.TXT_ACTIVE },
     { value: '2', viewValue: this.ln.TXT_PENDING }
   ];
+
+  sorts = [
+    { value: 'status', viewValue: ' Status' },
+    { value: 'roletypeid', viewValue: ' Role' }
+  ]
+
   role!: any[];
 
   selectedStatus!: number;
   selectedRole!: number;
+  selectedSort = "status";
   displayedColumns: string[] = ['check', 'name', 'roletypeid', 'email', 'status', 'lastupdated', 'action'];
   dataSource!: MatTableDataSource<any>;
   selection = new SelectionModel<any>(true, []);
@@ -66,6 +75,8 @@ export class UserManageComponent implements OnInit {
   hideUserActionMenu = true;
 
   accountID!: string;
+
+  loggedinUserEmail!: string;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort!: MatSort;
@@ -85,8 +96,12 @@ export class UserManageComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.select(getRoles).subscribe(roles => {
-      this.role = [{ roletypeid: '', name: 'All' }, ...roles];
+      this.role = [{ roletypeid: '', name: this.ln.TXT_ALL}, ...roles];
     });
+    this.store.select(getUserEmail).subscribe(email => {
+      this.loggedinUserEmail = email;
+    })
+
   }
 
   ngAfterViewInit(): void {
@@ -259,4 +274,9 @@ export class UserManageComponent implements OnInit {
     this.viewUserPermission = false;
     this.drawer.open();
   }
+
+  onHeaderSort() {
+    this.sort.sort({ id: this.selectedSort, disableClear: false, start: 'asc' })
+  }
+
 }

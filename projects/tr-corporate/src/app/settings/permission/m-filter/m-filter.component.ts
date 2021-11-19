@@ -15,16 +15,19 @@ import { SETTINGS_LN } from '../../shared/settings.lang';
   animations: [fadeAnimation]
 })
 export class MFilterComponent implements OnInit {
+
+  ln = SETTINGS_LN;
+
   // Filter data
   sortTypes = [
-    { value: 'status', viewValue: 'Sort by Status' },
-    { value: 'roletypeid', viewValue: 'Sort by Role' }
+    { value: 'status', viewValue: this.ln.TXT_SORT_BY_STATUS},
+    { value: 'roletypeid', viewValue: this.ln.TXT_SORT_BY }
   ];
   status = [
-    { value: '', viewValue: 'All' },
-    { value: '0', viewValue: 'Deactive' },
-    { value: '1', viewValue: 'Active' },
-    { value: '2', viewValue: 'Pending' }
+    { value: '', viewValue: this.ln.TXT_ALL },
+    { value: '0', viewValue: this.ln.TXT_DEACTIVE },
+    { value: '1', viewValue: this.ln.TXT_ACTIVE },
+    { value: '2', viewValue: this.ln.TXT_PENDING }
   ];
   role!: any[];
 
@@ -34,7 +37,6 @@ export class MFilterComponent implements OnInit {
   selectedStatus!: number;
   selectedRole!: number;
 
-  ln = SETTINGS_LN;
 
   constructor(
     @Inject(MAT_BOTTOM_SHEET_DATA) public data: any,
@@ -44,7 +46,7 @@ export class MFilterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.store.select(getRoles).subscribe(roles => this.role = [{ roletypeid: '', name: 'All' }, ...roles]);
+    this.store.select(getRoles).subscribe(roles => this.role = [{ roletypeid: '', name: this.ln.TXT_ALL }, ...roles]);
 
     if (this.data) {
       if (this.data.sort) this.selectedSort = this.data.sort;

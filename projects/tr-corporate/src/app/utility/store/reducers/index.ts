@@ -18,14 +18,14 @@ import { Iapp } from "../interfaces/app";
 import { Iuser } from "../interfaces/user";
 import { Iaccount } from "../interfaces/account";
 import { Iroles } from "../interfaces/role";
-import { IBusVert } from "../interfaces/business-vertical";
+import { IBusVertList } from "../interfaces/business-vertical";
 
 export interface State {
 	app: Iapp;
 	user: Iuser;
 	account: Iaccount,
 	roles: Iroles,
-	businessVerticles: IBusVert[]
+	businessVerticles: IBusVertList
 }
 
 export const reducers: ActionReducerMap<State> = {
