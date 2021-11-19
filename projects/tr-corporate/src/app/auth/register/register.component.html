@@ -1,157 +1,162 @@
 <div class="register mt-5" [@fadeInOut]>
   <!-- <mc-stepper [stepNames]="stepperPages" [currentStep]="currentStep" class="mx-auto"></mc-stepper> -->
-    <div>
-      <h2 class="text-dark">Your Personal Details</h2>
-      <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ante commodo at pellentesque viverra eu gravida gravida.</p>
-    </div>
-    <form autocomplete="off" [formGroup]="registerForm" >
-      <div class="row row-cols-1 row-cols-lg-2">
-        <div class="col-md-6">
-          <mat-form-field appearance="outline">
-            <mat-label>First Name</mat-label>
-            <input matInput placeholder="First Name" formControlName="firstName">
-            <mat-error *ngIf="firstName.touched && !firstName.valid">
-              <span *ngIf="firstName.errors?.required">
-                First Name is required
-              </span>
-              <span *ngIf="!firstName.errors?.required && firstName.errors?.minlength">
-                First Name should be atleast 3 letters
-              </span>
-              <span *ngIf="firstName.errors?.maxlength">
-                First Name should be maximum of 20 letters
-              </span>
-            </mat-error>
-          </mat-form-field>
-        </div>
-        <div class="col-md-6">
-          <mat-form-field appearance="outline">
-            <mat-label>Middle Name</mat-label>
-            <input matInput placeholder="Middle Name" formControlName="middleName">
-            <mat-error *ngIf="middleName.touched && !middleName.valid">
-              <!-- <span *ngIf="middleName.errors?.required">
+  <div>
+    <h2 class="text-dark">Your Personal Details</h2>
+    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ante commodo at pellentesque viverra
+      eu gravida gravida.</p>
+  </div>
+  <form autocomplete="off" [formGroup]="registerForm">
+    <div class="row row-cols-1 row-cols-lg-2">
+      <div class="col-md-6">
+        <mat-form-field appearance="outline">
+          <mat-label>First Name</mat-label>
+          <input matInput placeholder="First Name" formControlName="firstName">
+          <mat-error *ngIf="firstName.touched && !firstName.valid">
+            <span *ngIf="firstName.errors?.required">
+              First Name is required
+            </span>
+            <span *ngIf="!firstName.errors?.required && firstName.errors?.minlength">
+              First Name should be atleast 3 letters
+            </span>
+            <span *ngIf="firstName.errors?.maxlength">
+              First Name should be maximum of 20 letters
+            </span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field appearance="outline">
+          <mat-label>Middle Name</mat-label>
+          <input matInput placeholder="Middle Name" formControlName="middleName">
+          <mat-error *ngIf="middleName.touched && !middleName.valid">
+            <!-- <span *ngIf="middleName.errors?.required">
                 Middle Name is required
               </span> -->
-              <span *ngIf="!middleName.errors?.required && middleName.errors?.minlength">
-                Middle Name should be atleast 3letters
-              </span>
-              <span *ngIf="middleName.errors?.maxlength">
-                Middle Name should be maximum of 20 letters
-              </span>
-            </mat-error>
-          </mat-form-field>
-        </div>
-        <div class="col-md-6">
-          <mat-form-field appearance="outline">
-            <mat-label>Last Name</mat-label>
-            <input matInput placeholder="Last Name" formControlName="lastName">
-            <mat-error *ngIf="lastName.touched && !lastName.valid">
-              <span *ngIf="lastName.errors?.required">
-                Last Name is required
-              </span>
-              <span *ngIf="!lastName.errors?.required && lastName.errors?.minlength">
-                Last Name should be atleast 3 letters
-              </span>
-              <span *ngIf="lastName.errors?.maxlength">
-                Last Name should be maximum of 20 letters
-              </span>
-            </mat-error>
-          </mat-form-field>
-        </div>
-        <div class="col-md-6">
-          <mat-form-field appearance="outline">
-            <mat-label>Email Id (Official Email Id)</mat-label>
-            <input type="email" matInput placeholder="pat@example.com" formControlName="email">
-            <mat-error *ngIf="email.touched && !email.valid">
-              <span *ngIf="email.errors?.required">
-                Email Id is required
-              </span>
-              <span *ngIf="!email.errors?.required && email.errors?.email">
-                Email Id is not valid
-              </span>
-            </mat-error>
-          </mat-form-field>
-        </div>
-        <div class="col-md-6 pr-4">
-          <mat-form-field appearance="outline">
-            <mat-label>Company Name</mat-label>
-            <input matInput placeholder="Company Name" formControlName="company">
-            <mat-error *ngIf="company.touched && !company.valid">
-              <span *ngIf="company.errors?.required">
-                Company Name is required
-              </span>
-              <span *ngIf="!company.errors?.required && company.errors?.minlength">
-                Company Name should be atleast 3 letters
-              </span>
-              <span *ngIf="company.errors?.maxlength">
-                Company Name should be maximum of 50 letters
-              </span>
-            </mat-error>
-          </mat-form-field>
-        </div>
-        <div class="col-md-6 pr-5">
-          <mat-form-field class="example-full-width" appearance="outline">
-            <mat-label>Phone Number</mat-label>
-            <input type="tel" matInput placeholder="000-000-0000" formControlName="phone">
-            <mat-error *ngIf="phone.touched && !phone.valid">
-              <span *ngIf="phone.errors?.required">
-                Phone number is required
-              </span>
-              <span *ngIf="!phone.errors?.required && phone.errors?.minlength">
-                Phone number should be of minimum of 8 digits
-              </span>
-            </mat-error>
-          </mat-form-field>
-        </div>
-        <div class="col-md-6">
-          <mat-form-field appearance="outline">
-            <mat-label>Password</mat-label>
-            <input matInput [type]="hidepassword ? 'password' : 'text'" formControlName="password">
-            <button type="button" mat-icon-button matSuffix (click)="hidepassword = !hidepassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidepassword" class="btn-show-hide">
-              <span class="icon-mc" [ngClass]="{'mc-eye-off' : hidepassword, 'mc-eye': !hidepassword}"></span>
-            </button>
-            <mat-error *ngIf="password.touched && !password.valid">
-              <span *ngIf="password.errors?.required">
-                Password is required
-              </span>
-              <span *ngIf="!password.errors?.required && password.errors?.minlength">
-                Password should be atleast 6 letters
-              </span>
-              <span *ngIf="password.errors?.maxlength">
-                Password should be maximum of 12 letters
-              </span>
-            </mat-error>
-          </mat-form-field>
-        </div>
-        <div class="col-md-6">
-          <mat-form-field appearance="outline" class="w-100 brd">
-            <mat-label>Confirm Password</mat-label>
-            <input matInput [type]="hidecnfpass ? 'password' : 'text'" formControlName="cnfPass">
-            <button type="button" mat-icon-button matSuffix (click)="hidecnfpass = !hidecnfpass" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidecnfpass" class="btn-show-hide">
-              <span class="icon-mc" [ngClass]="{'mc-eye-off' : hidecnfpass, 'mc-eye': !hidecnfpass}"></span>
-            </button>
-            <mat-error *ngIf="cnfPass.touched">
-              <span *ngIf="cnfPass.errors?.required">
-                Confirm Password is required
-              </span>
-              <span *ngIf="registerForm.errors?.match">
-                Password does not match.
-              </span>
-              <span *ngIf="!cnfPass.errors?.required && (cnfPass.value!=password.value)">
-                Confirm Password doesn't match
-              </span>
-            </mat-error>
-          </mat-form-field>
-        </div>
+            <span *ngIf="!middleName.errors?.required && middleName.errors?.minlength">
+              Middle Name should be atleast 3letters
+            </span>
+            <span *ngIf="middleName.errors?.maxlength">
+              Middle Name should be maximum of 20 letters
+            </span>
+          </mat-error>
+        </mat-form-field>
       </div>
-      <div class="d-flex justify-content-between register-action">
-        <span class="align-self-center mb-3">Already have an account ? <a [routerLink]="routerConfig.LOGIN"> Sign In</a></span>
-       <div class="d-flex justify-content-between">
-          <button mat-stroked-button class="m-20" (click)="goToPrev()">Previous</button>
-          <button mat-flat-button color="primary" (click)="registerHandler()" [disabled]="isLoading" class="secondary-bg">
-            <span>Register</span>
-            <mat-spinner *ngIf="isLoading" diameter="20" class="btn-loader"></mat-spinner>
+      <div class="col-md-6">
+        <mat-form-field appearance="outline">
+          <mat-label>Last Name</mat-label>
+          <input matInput placeholder="Last Name" formControlName="lastName">
+          <mat-error *ngIf="lastName.touched && !lastName.valid">
+            <span *ngIf="lastName.errors?.required">
+              Last Name is required
+            </span>
+            <span *ngIf="!lastName.errors?.required && lastName.errors?.minlength">
+              Last Name should be atleast 3 letters
+            </span>
+            <span *ngIf="lastName.errors?.maxlength">
+              Last Name should be maximum of 20 letters
+            </span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field appearance="outline">
+          <mat-label>Email Id (Official Email Id)</mat-label>
+          <input type="email" matInput placeholder="pat@example.com" formControlName="email">
+          <mat-error *ngIf="email.touched && !email.valid">
+            <span *ngIf="email.errors?.required">
+              Email Id is required
+            </span>
+            <span *ngIf="!email.errors?.required && email.errors?.email">
+              Email Id is not valid
+            </span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-md-6 pr-4">
+        <mat-form-field appearance="outline">
+          <mat-label>Company Name</mat-label>
+          <input matInput placeholder="Company Name" formControlName="company">
+          <mat-error *ngIf="company.touched && !company.valid">
+            <span *ngIf="company.errors?.required">
+              Company Name is required
+            </span>
+            <span *ngIf="!company.errors?.required && company.errors?.minlength">
+              Company Name should be atleast 3 letters
+            </span>
+            <span *ngIf="company.errors?.maxlength">
+              Company Name should be maximum of 50 letters
+            </span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-md-6 pr-5">
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Phone Number</mat-label>
+          <input type="tel" matInput placeholder="000-000-0000" formControlName="phone">
+          <mat-error *ngIf="phone.touched && !phone.valid">
+            <span *ngIf="phone.errors?.required">
+              Phone number is required
+            </span>
+            <span *ngIf="!phone.errors?.required && phone.errors?.minlength">
+              Phone number should be of minimum of 8 digits
+            </span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput [type]="hidepassword ? 'password' : 'text'" formControlName="password">
+          <button type="button" mat-icon-button matSuffix (click)="hidepassword = !hidepassword"
+            [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidepassword" class="btn-show-hide">
+            <span class="icon-mc" [ngClass]="{'mc-eye-off' : hidepassword, 'mc-eye': !hidepassword}"></span>
           </button>
-        </div>
+          <mat-error *ngIf="password.touched && !password.valid">
+            <span *ngIf="password.errors?.required">
+              Password is required
+            </span>
+            <span *ngIf="!password.errors?.required && password.errors?.minlength">
+              Password should be atleast 6 letters
+            </span>
+            <span *ngIf="password.errors?.maxlength">
+              Password should be maximum of 12 letters
+            </span>
+          </mat-error>
+        </mat-form-field>
       </div>
-    </form>
+      <div class="col-md-6">
+        <mat-form-field appearance="outline" class="w-100 brd">
+          <mat-label>Confirm Password</mat-label>
+          <input matInput [type]="hidecnfpass ? 'password' : 'text'" formControlName="cnfPass"
+            [errorStateMatcher]="matcher">
+          <button type="button" mat-icon-button matSuffix (click)="hidecnfpass = !hidecnfpass"
+            [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidecnfpass" class="btn-show-hide">
+            <span class="icon-mc" [ngClass]="{'mc-eye-off' : hidecnfpass, 'mc-eye': !hidecnfpass}"></span>
+          </button>
+          <mat-error *ngIf="cnfPass.touched">
+            <span *ngIf="cnfPass.errors?.required">
+              Confirm Password is required
+            </span>
+            <span *ngIf="!registerForm.errors?.passMatch">
+              Confirm Password does not match.
+            </span>
+            <!-- <span *ngIf="!cnfPass.errors?.required && (cnfPass.value!=password.value)">
+              Confirm Password doesn't match
+            </span> -->
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="d-flex justify-content-between register-action">
+      <span class="align-self-center mb-3">Already have an account ? <a [routerLink]="routerConfig.LOGIN"> Sign
+          In</a></span>
+      <div class="d-flex justify-content-between">
+        <button mat-stroked-button class="m-20" (click)="goToPrev()">Previous</button>
+        <button mat-flat-button color="primary" (click)="registerHandler()" [disabled]="isLoading" class="secondary-bg">
+          <span>Register</span>
+          <mat-spinner *ngIf="isLoading" diameter="20" class="btn-loader"></mat-spinner>
+        </button>
+      </div>
+    </div>
+  </form>
 </div>
