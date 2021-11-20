@@ -52,11 +52,13 @@
         vertical-align: top;
     }
     @include media-breakpoint-down(md) {
-        left: -10px;
+        left: -8px;
         top: 75px;
         background: $theme;
         border-color: $theme;
-        .icon-mc {
+        border-radius: 0 4px 4px 0;
+        .icon-mc {  
+            margin-left: 5px;
             &::before {
                 color: $white;
             } 

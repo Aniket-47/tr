@@ -25,19 +25,33 @@ header {
     display: flex;
     align-items: center;
     @include media-breakpoint-down(md) {
-      display: block;
+      // display: block;
     }
     .mat-icon-button {
       @include font-size(1.3rem);
       @include margin-right(0.3rem);
+      @include media-breakpoint-down(md) {
+        @include font-size(0.9rem);
+        height: 25px;
+        width: 25px;
+        line-height: 25px;
+        // display: none;
+        margin-left: -10px;
+      }
     }
     h2 {
       margin: 0;
       @include font-size($fs-lg);
       font-weight: 400;
+      @include media-breakpoint-down(md) {
+        font-size: 1.2rem;
+      }
     }
     h5 {
       @include font-size($fs-xs);
+      @include media-breakpoint-down(md) {
+        @include font-size(0.688rem);
+      }
       margin-bottom: 0.3rem;
       color: #84818a;
     }
@@ -53,11 +67,30 @@ header {
   }
 }
 .account-role {
+  .mat-select{
+    font-size: 14px;
+    font-weight: 600;
+    color: #84818A;
+  }
+  .mat-select-value {
+    color: #84818A;
+}
+  .mat-sort-header-content{
+    color: #84818A;
+    font-weight: 600;
+    font-size: 14px;
+  }
   .role {
+    font-size: 14px;
+    font-weight: 600;
     @include media-breakpoint-down(md) {
-      text-align: left;
+      text-align: center;
       padding: 0.5rem 0; 
     }
+  }
+  .mat-cell {
+    color: #25364D;
+    font-weight: 500;
   }
 }
 .role {
@@ -165,6 +198,7 @@ header {
 
 .user-management,
 .account-role,
+.add-role,
 .page-action {
   .mat-icon-button {
     font-size: 1rem;
@@ -458,6 +492,9 @@ mat-drawer-container{
             padding-left: 1rem;
             padding-right: 1rem;
             width: 400px;
+            @include media-breakpoint-down(md) {
+              width: 340px;
+            }
         }
         .mat-drawer-backdrop.mat-drawer-shown {            
             background-color: #ffffff94;

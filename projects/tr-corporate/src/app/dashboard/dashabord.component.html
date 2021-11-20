@@ -15,12 +15,12 @@
   <tr-d-header>
     <span class="icon-mc mc-menu header-icon" m-brand (click)="drawer.toggle()"></span>
     <!-- <tr-search class="searchPanel cloud-only"></tr-search> -->
-    <div class="header-icon mobile-only">
-      <span class="icon-mcf mcf-search" (click)="toggleSearch()"></span>
-    </div>
     <div class="header-icon">
-      <span class="icon-mcf mcf-search"></span>
+      <span class="icon-mcf mcf-search hmm" (click)="toggleSearch()"></span>
     </div>
+    <!-- <div class="header-icon">
+      <span class="icon-mcf mcf-search"></span>
+    </div> -->
     <div class="action-icon" [ngClass]="{'menu-active':colorActivation}">
       <a [matMenuTriggerFor]="notify" class="header-icon" (menuClosed)="colorActivation=false"
         (menuOpened)="colorActivation=true">

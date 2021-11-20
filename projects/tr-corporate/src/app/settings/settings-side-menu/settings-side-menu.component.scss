@@ -29,6 +29,11 @@
   .settings__element{
     height: calc(100vh - 140px);
     overflow: auto;
+    .mat-list-base .mat-list-item{
+      @include media-breakpoint-down(md) {
+        font-size: 14px;
+     }
+    }
     .mat-expansion-panel-header {
       padding: 0 0 0 8px;
 
@@ -80,6 +85,10 @@
 
 ::ng-deep .mat-expansion-panel-header-title{
   @include font-size($fs-default);
+  @include media-breakpoint-down(md) {
+    font-size: 15px;
+ }
+
   font-weight: 600 !important;
   align-items: center;
   width: 100%;

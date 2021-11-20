@@ -6,7 +6,7 @@
     // align-items: flex-start;
 }
 .accordion-container {
-    // @include margin-top(5rem);    
+    @include margin-top(1rem);    
     .mat-expansion-panel {
         box-shadow: none;
         border: 1px solid #EBEAED;
@@ -75,12 +75,18 @@
 }
 .header-action {
     display: flex;
-    justify-content: flex-start;
+    justify-content: flex-end;
     width: 100%;
     align-items: center;
+    gap: 15px;
     .action-item {
         flex-basis: 33.3%;
     }
+    ::ng-deep .mat-form-field-appearance-outline .mat-form-field-wrapper{
+        margin: 0;
+        padding: 0;
+    }
+
 }
 ::ng-deep .mat-expansion-indicator {
     display: none;
@@ -130,11 +136,30 @@
     font-size: 1.3rem;
 }
 .drawer-btn {
-    .mat-flat-button {
-        position: fixed;
-        bottom: 1rem;
-        right: 1rem;
-        // width: calc(350px - 2rem);
-    }
+    display: flex;
+    gap: 15px;
+    // .mat-flat-button {
+    //     position: fixed;
+    //     bottom: 1rem;
+    //     right: 1rem;
+    //     // width: calc(350px - 2rem);
+    // }
     
+}
+.add-role{
+    .mat-form-field {
+        &[appearance="outline"] {
+        &:last-child {
+            width: 180px;
+            margin-right: 0;
+          }
+        }
+      }
+      ::ng-deep .mat-form-field-appearance-outline .mat-form-field-subscript-wrapper {
+        padding: 0 1em;
+        top: 40px;
+    }
+    ::ng-deep mat-select {
+        font-weight: 600 !important;
+    }
 }

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { getUserEmail } from './../../../utility/store/selectors/user.selector';
 import { getBusinessVerticle } from './../../../utility/store/selectors/business-vertical.selector';
 import { MatSort } from '@angular/material/sort';
@@ -91,7 +92,8 @@ export class UserManageComponent implements OnInit {
     public dialog: MatDialog,
     private snackBar: SnackBarService,
     private _bottomSheet: MatBottomSheet,
-    private filterServ: FilterService) {
+    private filterServ: FilterService,
+    private router: Router) {
   }
 
   ngOnInit(): void {
@@ -258,7 +260,8 @@ export class UserManageComponent implements OnInit {
     this.toggleUserActionMenu();
     this.viewUserPermission = true;
     this.currentUser = element;
-    this.drawer.open();
+    // this.drawer.open();
+    this.router.navigate(['role'])
   }
 
   viewDetails(element: any) {
@@ -280,5 +283,4 @@ export class UserManageComponent implements OnInit {
   onHeaderSort() {
     this.sort.sort({ id: this.selectedSort, disableClear: false, start: 'asc' })
   }
-
 }

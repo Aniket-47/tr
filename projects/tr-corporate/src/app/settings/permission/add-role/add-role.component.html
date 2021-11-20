@@ -1,12 +1,12 @@
 <ng-container [formGroup]="roleForm" [@fadeInOut]>
-  <tr-page-header>
+  <tr-page-header class="add-role">
     <div page-title>
       <!-- <h5 class="mobile-only">Permissions</h5> -->
       <h2 *ngIf="!isRoleView && !isEdit">{{ln.TXT_CREATE_NEW_ROLE | translate}}</h2>
       <h2 *ngIf="isEdit">{{ln.TXT_UPDATE_ROLE | translate}}</h2>
       <h2 *ngIf="isRoleView">{{selectedRoleInfo?.rolename | titlecase}}</h2>
     </div>
-    <div page-action class="w-100 drawer-btn" *ngIf="!isRoleView">
+    <div page-action class="header-action" *ngIf="!isRoleView">
       <div>
         <mat-form-field appearance="outline">
           <mat-label>{{ln.TXT_ROLE_TYPE | translate}}</mat-label>

@@ -4,9 +4,9 @@
       <a class="icon-mc mc-back-arrow align-self-center fnt-sz"></a>
       <span class="align-self-center">{{ln.TXT_FILTERS | translate}}</span>
     </h2>
-    <span>
-      <button class="btn-lg ms-3 border" mat-flat-button (click)="onReset()">{{ln.TXT_RESET | translate}}</button>
-      <button class="btn-lg ms-3" mat-flat-button color="primary" (click)="onfilter()">{{ln.TXT_APPLY | translate}}</button>
+    <span class="d-flex"> 
+      <button class="xs" mat-stroked-button (click)="onReset()">{{ln.TXT_RESET | translate}}</button>
+      <button class="ms-2 xs"  mat-flat-button color="primary" (click)="onfilter()">{{ln.TXT_APPLY | translate}}</button>
     </span>
   </div>
 

@@ -58,16 +58,16 @@
               <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ln.TXT_ACCOUNTS_ROLES | translate}} </th>
               <td mat-cell *matCellDef="let element">
                 <mat-label class="role" [ngClass]="{
-            'success': element?.roletypeid === 2,
-            'info': element?.roletypeid === 1,
-            'rm': element?.roletypeid === 4 ,
-            'dm': element?.roletypeid === 5 ,
-            'bm': element?.roletypeid === 6 ,
-            'bl': element?.roletypeid === 7,
-            'vn': element?.roletypeid === 8 ,
-            'nh': element?.roletypeid === 9 ,
-            'hr': element?.roletypeid === 3
-          }">
+                    'success': element?.roletypeid === 2,
+                    'info': element?.roletypeid === 1,
+                    'rm': element?.roletypeid === 4 ,
+                    'dm': element?.roletypeid === 5 ,
+                    'bm': element?.roletypeid === 6 ,
+                    'bl': element?.roletypeid === 7,
+                    'vn': element?.roletypeid === 8 ,
+                    'nh': element?.roletypeid === 9 ,
+                    'hr': element?.roletypeid === 3
+                }">
                   {{element.isdefaultrole==1?element.rolename: element.name}}
                 </mat-label>
               </td>
