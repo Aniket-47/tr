@@ -30,6 +30,7 @@
             font-size: 18px;
             align-items: center;
             width: 50%;
+            line-height: 24.59px;
         }
         &-description {
             width: 50%;
@@ -56,7 +57,8 @@
                 border-bottom: 1px solid #EBEAED;
                 &-title {
                     font-size: 1rem;
-                    font-weight: 600;
+                    font-weight: 400 !important;
+                    line-height: 21.86px;
                 }
             }
             .role-list {
@@ -93,10 +95,11 @@
 }
 .accordion-indicator {
     display: block;
-    font-size: .9rem;
+    font-size: 1rem;
+    font-weight: 400;
     color: #378DF7;
     margin-top: .4rem;
-    line-height: 13px;
+    line-height: 21px;
     .mat-expansion-indicator {
         position: relative;
         top: -3px;

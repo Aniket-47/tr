@@ -31,8 +31,8 @@ table.mat-table {
         }
     }
     .mat-header-cell {
-        font-size: 14px;
-        font-weight: 400;
+        font-size: 0.875rem;
+        font-weight: 600;
         color: #84818A;
         padding-left: 0;
     }
@@ -113,4 +113,19 @@ table.mat-table {
 }
 .text-right {
     text-align: right;
+}
+
+.actions{
+    .icon-mc,.icon-mcf{
+        font-size: 1.3rem !important;
+        font-weight: 500 !important;
+    }
+    .user-dropdown-submenu{
+        .icon-mc,.icon-mcf{
+            font-size: 1.3rem !important;
+            font-weight: 500 !important;
+        }
+        font-size: 00.875rem;
+        font-weight: 400;
+    }
 }
