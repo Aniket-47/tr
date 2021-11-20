@@ -268,11 +268,13 @@ export class UserManageComponent implements OnInit {
     this.drawer.open();
   }
 
-  editUser(element: any) {
+  editUser(element: any,evt?:Event) {
+    evt?.stopPropagation();
     this.currentUser = element;
     this.currentUserEdit = true;
     this.viewUserPermission = false;
     this.drawer.open();
+    console.log("Called", this.drawer)
   }
 
   onHeaderSort() {

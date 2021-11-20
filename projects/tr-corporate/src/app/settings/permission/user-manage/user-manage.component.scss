@@ -28,6 +28,8 @@ table.mat-table {
             margin-bottom: 1rem;
             position: relative;
             border-radius: 4px;
+            // position: absolute;
+            // top: 25px;
          }
          td.mat-cell {
             &:first-of-type {
@@ -42,33 +44,52 @@ table.mat-table {
             @include media-breakpoint-down(md) {
             vertical-align: top;
             border: 0;
+            .name{
+                margin-top: -8px;
+                font-size: 0.875rem;
+            }
+            img{
+                margin-top: 14px;
+            }
              &:first-of-type {
                 padding-left: 10px;
                 padding-top: 10px;
+                // position: absolute;
+                // top: 25px;
              }
              &:nth-child(3) {
                 position: absolute;
-                left: 40px;
-                bottom: 65px;
+                left: 10px;
+                bottom: 10px;
              }
              &:nth-child(4) {
                 position: absolute;
-                left: 33px;
-                bottom: 30px;
+                left: 98px;
+                bottom: 92px;
+                color: #84818A;
+                font-weight: 500;
+                font-size: 0.875rem;
              }
              &:nth-child(5) {
-                display: none;
+                position: absolute;
+                right: 15px;
+                bottom: 15px;
              }
             &:nth-child(6) {
                 position: absolute;
-                right: 14px;
-                bottom: 14px;
+                right: 105px;
+                bottom: 55px;
+                font-weight: 600;
+                font-size: 0.875rem !important;
             }
             &:last-child {
                 padding-right: 0;
                 text-align: right;
                 width: auto;
                 margin-left: auto;
+                .mc-more_vert{
+                    font-size: 1.4rem;
+                }
             }
             }
          }
@@ -187,9 +208,11 @@ table.mat-table {
     font-size: 1rem;
     font-weight: 600;
 }
-.font-500{
-    font-weight: 500;
+.text-muted{
+    color: #84818A;
 }
 .table-action{
-    font-weight: 600 !important;
+    mat-select{
+        font-weight: 600 !important;
+    }
 }

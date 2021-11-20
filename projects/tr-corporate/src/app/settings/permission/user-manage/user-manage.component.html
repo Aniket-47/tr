@@ -77,11 +77,11 @@
               </mat-option>
             </mat-select>
           </mat-form-field>
-          <mat-form-field appearance="outline">
+          <mat-form-field appearance="outline" class="short-wrapper">
+            <span class="sort-by font-600">{{ln.TXT_SORT_BY | translate}}:</span>
             <mat-select [(ngModel)]="selectedSort" (ngModelChange)="onHeaderSort()">
               <mat-option *ngFor="let item of sorts" [value]="item.value">
-                <span class="sort-by">{{ln.TXT_SORT_BY | translate}} :</span>
-                {{item.viewValue | translate}}
+                <span class="font-500 text-muted">{{item.viewValue | translate}}</span>
               </mat-option>
             </mat-select>
           </mat-form-field>
@@ -184,7 +184,7 @@
               <th mat-header-cell *matHeaderCellDef> </th>
               <td mat-cell *matCellDef="let element">
                 <div class="cloud-only align-right">
-                  <button mat-icon-button (click)="editUser(element)" matTooltip="{{ln.TXT_EDIT_USER| translate}}"
+                  <button mat-icon-button (click)="editUser(element, $event)" matTooltip="{{ln.TXT_EDIT_USER| translate}}"
                     matTooltipPosition="left">
                     <i class="icon-mc mc-create"></i>
                   </button>

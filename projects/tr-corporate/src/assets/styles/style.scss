@@ -46,6 +46,7 @@ header {
 .table-header {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   @include margin-bottom(0.5rem);
   .table-action {
     margin-left: auto;
@@ -205,12 +206,29 @@ header {
         }
     }
     &:last-child {
-        width: 210px;
+        width: 270px;
         margin-right: 0;
       }
     }
   }
 }
+.user-management 
+.short-wrapper 
+.mat-form-field-infix {
+  display: flex !important;
+  gap: 0.5rem;
+  .mat-select-value-text{
+    color: #84818A;
+  }
+  .sort-by{
+      width: 55%;
+  }
+  .text-muted{
+    color: #84818A;
+  }
+
+}
+
 // profile
 .profile-container {
   // max-width: 990px;
@@ -552,10 +570,10 @@ router-outlet + ng-component{
 }
 
 .font-600{
-  font-size: 600 !important;
+  font-weight: 600 !important;
 }
 .font-500{
-  font-size: 500 !important;
+  font-weight: 500 !important;
 }
 
 button{
