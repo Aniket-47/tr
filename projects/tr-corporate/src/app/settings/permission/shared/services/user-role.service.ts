@@ -6,6 +6,7 @@ import { secure_api_routes } from '../../../../utility/configs/apiConfig';
 interface IroleData {
     isView: boolean;
     isEdit: boolean;
+    isNew: boolean;
     selectedRole: {
         roletypeid: number;
         rolename: string;
@@ -20,6 +21,7 @@ export class UserRoleService {
     roleData: IroleData = {
         isView: false,
         isEdit: false,
+        isNew: false,
         selectedRole: null
     }
     private roleDataSource = new BehaviorSubject(this.roleData);
@@ -33,11 +35,14 @@ export class UserRoleService {
     }
 
     resetSelectedRole() {
-        this.roleData = {
+        const roleData = {
             isView: false,
             isEdit: false,
+            isNew: false,
             selectedRole: null
         }
+
+        this.setCurrentRole(roleData);
     }
 
     getUserRoles(accountID: string, offset: number = 0, limit: number = 10, sort?: string, sortOrder?: string,) {
