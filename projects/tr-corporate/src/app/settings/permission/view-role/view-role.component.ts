@@ -159,12 +159,18 @@ export class ViewRoleComponent implements OnInit, AfterViewInit {
 
 
   createNewRole() {
+    this.userRoleService.setCurrentRole({
+      isNew: true,
+      isView: false,
+      isEdit: false,
+      selectedRole: null
+    });
     this.router.navigate([ROUTE_CONFIGS.VIEW_ROLE]);
   }
 
   viewRoleDeatils(role: Irole) {
     const selectedRoleInfo = { roletypeid: role.roletypeid, rolename: role.rolename };
-    const roleData = { selectedRole: selectedRoleInfo, isEdit: false, isView: true };
+    const roleData = { selectedRole: selectedRoleInfo, isEdit: false, isView: true, isNew: false };
     this.userRoleService.setCurrentRole(roleData);
     this.router.navigateByUrl(ROUTE_CONFIGS.VIEW_ROLE);
   }
@@ -175,7 +181,7 @@ export class ViewRoleComponent implements OnInit, AfterViewInit {
       return;
     }
     const selectedRoleInfo = { roletypeid: role.roletypeid, rolename: role.rolename, accountroleid: role.accountroleid };
-    this.userRoleService.setCurrentRole({ isEdit: true, isView: false, selectedRole: selectedRoleInfo });
+    this.userRoleService.setCurrentRole({ isEdit: true, isView: false, selectedRole: selectedRoleInfo, isNew: false });
     this.router.navigate([ROUTE_CONFIGS.VIEW_ROLE]);
   }
 

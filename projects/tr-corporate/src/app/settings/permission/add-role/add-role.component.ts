@@ -65,11 +65,16 @@ export class AddRoleComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.userRoleService.resetSelectedRole()
+    this.userRoleService.resetSelectedRole();
   }
 
   getUserSelectedRole() {
     this.userRoleService.currentRoleData.subscribe(data => {
+      const { isNew, isEdit, isView } = data;
+      if (isNew === false && isEdit === false && isView === false) {
+        this.router.navigate([ROUTE_CONFIGS.ROLES]);
+      }
+
       if (data) {
         console.log(data)
         this.isRoleView = data.isView;
