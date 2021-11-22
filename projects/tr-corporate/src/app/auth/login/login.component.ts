@@ -42,6 +42,7 @@ export class LoginComponent implements OnInit {
   isEmailExists(email: string) {
     this.email = email;
     this.isLoading = true;
+    this.emailValidationError = null;
     this.authServ.validateEmail(email).subscribe((res: any) => {
       if (res.statusCode == 400) {
         // on success
@@ -63,6 +64,7 @@ export class LoginComponent implements OnInit {
 
   login(password: string) {
     this.isLoading = true;
+    this.passwordValidationError = null;
     this.authServ.login({ "email": this.email, "password": password })
       .subscribe((res: any) => {
         // on success
