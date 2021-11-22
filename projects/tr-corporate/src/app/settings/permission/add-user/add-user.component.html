@@ -100,7 +100,7 @@
               <mat-label>{{ln.TXT_USER_ROLE | translate}}</mat-label>
               <mat-select formControlName="roletypeid">
                 <mat-option *ngFor="let role of roles;" [value]="role">
-                  {{role.name}}
+                  {{role.name | translate}}
                 </mat-option>
               </mat-select>
             </mat-form-field>
