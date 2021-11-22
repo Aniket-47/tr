@@ -32,6 +32,7 @@ export class AddRoleComponent implements OnInit, OnDestroy {
   selectedRoleInfo?: { roletypeid: number, rolename: string, accountroleid?: string } | null;
   isEdit: boolean = false;
   isRoleView: boolean = false;
+  rightsData: any[] = [];
 
   ln = SETTINGS_LN;
 
@@ -129,6 +130,7 @@ export class AddRoleComponent implements OnInit, OnDestroy {
   }
 
   buildRights(rights: any[]) {
+    this.rightsData = rights;
     if (this.rightsArray.controls.length) this.clearRightsForm();
 
     this.rights = rights.map((e: any) => {
@@ -200,12 +202,29 @@ export class AddRoleComponent implements OnInit, OnDestroy {
     this.rightsArray.clear();
   }
 
-  onLvl1Toggle() {
+  onLvl1Toggle(rightIndex: number) {
+    const currentRightStatus = !!this.rightsArray.controls[rightIndex].get('isOn')?.value;
+    const isThereLevel2 = !!this.rightsArray.controls[rightIndex].get('level2')?.value;
+    console.log({ currentRightStatus })
 
+    if (isThereLevel2 && currentRightStatus) {
+      // level 2 toggle
+      const lvl2Arr = this.getLvl2Array(rightIndex);
+      lvl2Arr.controls.forEach((e, index) => {
+        e.get('isOn')?.setValue(false);
+
+        // level 3 toggle
+        const isThereLevel3 = e.get('level3')?.value;
+        if (isThereLevel3) this.toggleLvl3(rightIndex, index, false);
+      });
+    }
   }
 
-  reset() {
-
+  resetToDefault() {
+    if (this.rightsData) {
+      this.clearRightsForm();
+      this.buildRights(this.rightsData);
+    }
   }
 
 
@@ -216,20 +235,6 @@ export class AddRoleComponent implements OnInit, OnDestroy {
       this.rightsArray.controls[rightIndex].get('isOn')?.setValue(true);
       this.getLvl2Array(rightIndex).controls[lvl2Index].get('isOn')?.setValue(true);
     }
-
-    // const currentRightStatus = !!this.rightsArray.controls[rightIndex].get('isOn')?.value;
-    // const isThereLevel2 = !!this.rightsArray.controls[rightIndex].get('level2')?.value;
-    // if (isThereLevel2) {
-    //   // level 2 toggle
-    //   const lvl2Arr = this.getLvl2Array(rightIndex);
-    //   lvl2Arr.controls.forEach((e, index) => {
-    //     e.get('isOn')?.setValue(!currentRightStatus);
-
-    //     // level 3 toggle
-    //     const isThereLevel3 = e.get('level3')?.value;
-    //     if (isThereLevel3) this.toggleLvl3(rightIndex, index, currentRightStatus);
-    //   });
-    // }
   }
 
   onToggleLvl2(rightIndex: number, lvl2Index: number) {
@@ -243,7 +248,7 @@ export class AddRoleComponent implements OnInit, OnDestroy {
   toggleLvl3(rightIndex: number, lvl2Index: number, status: boolean) {
     const lvl3Arr = this.getLvl3Array(rightIndex, lvl2Index);
     lvl3Arr.controls.forEach(e => {
-      e.get('isOn')?.setValue(!status);
+      e.get('isOn')?.setValue(status);
     });
   }
 
