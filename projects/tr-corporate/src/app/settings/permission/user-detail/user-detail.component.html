@@ -53,10 +53,9 @@
         <mat-label *ngIf="user?.status==0">{{ln.TXT_DEACTIVE | translate}}</mat-label>
         <mat-label *ngIf="user?.status==1">{{ln.TXT_ACTIVE | translate}}</mat-label>
         <mat-label *ngIf="user?.status==2">{{ln.TXT_PENDING | translate}}</mat-label>
-        <mat-select matNativeControl [(ngModel)]="user.status" [disabled]="!edit">
+        <mat-select matNativeControl [(ngModel)]="user.status" [disabled]="!edit" (selectionChange)="statusChanged(user.status)">
           <mat-option value="0">{{ln.TXT_DEACTIVE | translate}}</mat-option>
           <mat-option value="1">{{ln.TXT_ACTIVE | translate}}</mat-option>
-          <mat-option value="2">{{ln.TXT_PENDING | translate}}</mat-option>
         </mat-select>
         <!-- <span class="icon-mc mc-keyboard_arrow_down"></span> -->
       </div>
