@@ -53,7 +53,8 @@
         <mat-label *ngIf="user?.status==0">{{ln.TXT_DEACTIVE | translate}}</mat-label>
         <mat-label *ngIf="user?.status==1">{{ln.TXT_ACTIVE | translate}}</mat-label>
         <mat-label *ngIf="user?.status==2">{{ln.TXT_PENDING | translate}}</mat-label>
-        <mat-select matNativeControl [(ngModel)]="user.status" [disabled]="!edit" (selectionChange)="statusChanged(user.status)">
+        <mat-select matNativeControl [(ngModel)]="user.status" [disabled]="!edit || isCurrentUser"
+          (selectionChange)="statusChanged(user.status)" >
           <mat-option value="0">{{ln.TXT_DEACTIVE | translate}}</mat-option>
           <mat-option value="1">{{ln.TXT_ACTIVE | translate}}</mat-option>
         </mat-select>
@@ -224,7 +225,7 @@
           <div class="mat-form-field-flex">
             <mat-label>{{ln.TXT_ROLE | translate}}</mat-label>
             <mat-form-field appearance="outline">
-              <mat-select *ngIf="user?.roletypeid!=1" formControlName="roletypeid">
+              <mat-select *ngIf="user?.roletypeid!=1" [disabled]="isCurrentUser" formControlName="roletypeid">
                 <mat-option *ngFor="let role of roles;" [value]="role.roletypeid">
                   {{role.name | translate}}
                 </mat-option>
@@ -245,8 +246,7 @@
           <div class="mat-form-field-flex">
             <mat-label>{{ln.TXT_BUSINESS_VERTICAL | translate}}</mat-label>
             <mat-form-field appearance="outline">
-              <mat-select formControlName="businessverticalid"
-                placeholder="{{ln.TXT_BUSINESS_VERTICAL | translate}}">
+              <mat-select formControlName="businessverticalid" placeholder="{{ln.TXT_BUSINESS_VERTICAL | translate}}">
                 <mat-option *ngFor="let businessvertical of businessverticals;"
                   [value]="businessvertical.businessverticalid">
                   {{businessvertical.name}}
@@ -284,7 +284,7 @@
               <span>{{ln.TXT_UPDATED | translate}}</span>
               <mat-spinner diameter="20" *ngIf="isLoading" class="btn-loader"></mat-spinner>
             </button>
-            <button mat-stroked-button (click)="edit = !edit" class="cancel-btn">{{ln.TXT_CANCEL | translate}}</button>
+            <button type="button" mat-stroked-button (click)="reloadForm()" class="cancel-btn">{{ln.TXT_CANCEL | translate}}</button>
           </div>
         </form>
 
