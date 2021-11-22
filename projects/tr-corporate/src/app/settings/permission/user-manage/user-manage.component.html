@@ -5,8 +5,6 @@
     </button>
     <app-user-detail *ngIf="!viewUserPermission" [edit]="currentUserEdit" [userEmail]="currentUser?.email">
     </app-user-detail>
-    <app-add-role *ngIf="viewUserPermission" [isView]="true" [isEdit]="false"
-      [selectedRoleInfo]="{'rolename': currentUser.role,'roletypeid':currentUser.roletypeid}"></app-add-role>
   </mat-drawer>
 
   <div class="example-sidenav-content" [@fadeInOut]>

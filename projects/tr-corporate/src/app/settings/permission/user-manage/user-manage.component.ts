@@ -34,6 +34,8 @@ import { getRoles } from '../../../utility/store/selectors/roles.selector';
 import { FilterService } from '../shared/services/filter.service';
 import { ConfirmationComponent } from '../../../utility/components/confirmation/confirmation.component';
 import { SETTINGS_LN } from '../../shared/settings.lang';
+import { ROUTE_CONFIGS } from '../../../utility/configs/routerConfig';
+import { UserRoleService } from '../shared/services/user-role.service';
 
 @Component({
   selector: 'app-user-manage',
@@ -92,13 +94,13 @@ export class UserManageComponent implements OnInit {
     public dialog: MatDialog,
     private snackBar: SnackBarService,
     private _bottomSheet: MatBottomSheet,
-    private filterServ: FilterService,
+    private userRoleService: UserRoleService,
     private router: Router) {
   }
 
   ngOnInit(): void {
     this.store.select(getRoles).subscribe(roles => {
-      this.role = [{ roletypeid: '', name: this.ln.TXT_ALL}, ...roles];
+      this.role = [{ roletypeid: '', name: this.ln.TXT_ALL }, ...roles];
     });
     this.store.select(getUserEmail).subscribe(email => {
       this.loggedinUserEmail = email;
@@ -257,11 +259,9 @@ export class UserManageComponent implements OnInit {
   }
 
   viewPermission(element: any) {
-    this.toggleUserActionMenu();
-    this.viewUserPermission = true;
-    this.currentUser = element;
-    // this.drawer.open();
-    this.router.navigate(['role'])
+    const data = { selectedRole: { rolename: element.role, roletypeid: element.roletypeid }, isView: true, isEdit: false };
+    this.userRoleService.setCurrentRole(data);
+    this.router.navigate([ROUTE_CONFIGS.VIEW_ROLE]);
   }
 
   viewDetails(element: any) {
@@ -271,7 +271,7 @@ export class UserManageComponent implements OnInit {
     this.drawer.open();
   }
 
-  editUser(element: any,evt?:Event) {
+  editUser(element: any, evt?: Event) {
     evt?.stopPropagation();
     this.currentUser = element;
     this.currentUserEdit = true;

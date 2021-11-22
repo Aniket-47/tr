@@ -1,31 +1,22 @@
-<mat-drawer-container autosize class="right-drawer drawer-lg">
-  <mat-drawer #drawer mode="over" class="drawer-container add-new-role-container " position="end" [autoFocus]="false">
-    <button mat-icon-button (click)="reset()" class="close-btn">
-      <span class="icon-mc mc-x"></span>
-    </button>
-    <app-add-role (onRoleSubmit)="roleSubmitHandler()" [selectedRoleInfo]="selectedRoleInfo" [isEdit]="isEditRole"
-      [isView]="isViewRole">
-    </app-add-role>
-  </mat-drawer>
-  <div [@fadeInOut]>
-    <tr-page-header>
-      <div page-title>
-        <h5 class="mobile-only">{{ln.TXT_PERMISSIONS | translate}}</h5>
-        <h2>{{ln.TXT_ACCOUNT_ROLE | translate}}</h2>
-      </div>
-      <div page-action class="page-action cloud-only">
-        <button mat-flat-button color="primary" (click)="createNewRole()">
-          <i class="add-new-role-btn-icon icon-mc mc-plus"></i>
-          <span> {{ln.TXT_CREATE_NEW_ROLE | translate}}</span>
-        </button>
-      </div>
-    </tr-page-header>
+<div [@fadeInOut]>
+  <tr-page-header>
+    <div page-title>
+      <h5 class="mobile-only">{{ln.TXT_PERMISSIONS | translate}}</h5>
+      <h2>{{ln.TXT_ACCOUNT_ROLE | translate}}</h2>
+    </div>
+    <div page-action class="page-action cloud-only">
+      <button mat-flat-button color="primary" (click)="createNewRole()">
+        <i class="add-new-role-btn-icon icon-mc mc-plus"></i>
+        <span> {{ln.TXT_CREATE_NEW_ROLE | translate}}</span>
+      </button>
+    </div>
+  </tr-page-header>
 
-    <div class="account-role">
-      <div class="table-header">
-        <!-- <div class="table-info">2 users selected</div> -->
-        <div class="table-action cloud-only">
-          <!-- <mat-form-field appearance="outline">
+  <div class="account-role">
+    <div class="table-header">
+      <!-- <div class="table-info">2 users selected</div> -->
+      <div class="table-action cloud-only">
+        <!-- <mat-form-field appearance="outline">
                 <mat-select [(value)]="selectedStatus">
                     <mat-option *ngFor="let item of status" [value]="item.value">
                         {{item.viewValue}}
@@ -39,25 +30,25 @@
                     </mat-option>
                 </mat-select>
             </mat-form-field> -->
-          <mat-form-field appearance="outline">
-            <mat-select [(ngModel)]="selectedSort" (ngModelChange)="onHeaderSort()">
-              <mat-option *ngFor="let item of sortby" [value]="item.value">
-                {{item.viewValue | translate}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-select [(ngModel)]="selectedSort" (ngModelChange)="onHeaderSort()">
+            <mat-option *ngFor="let item of sortby" [value]="item.value">
+              {{item.viewValue | translate}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
 
-        </div>
       </div>
+    </div>
 
-      <div class="table-container">
-        <perfect-scrollbar>
-          <table mat-table [dataSource]="dataSource" matSort matSortActive="modifiedDatetime" matSortDirection="asc">
-            <!-- Role Column -->
-            <ng-container matColumnDef="rolename">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ln.TXT_ACCOUNTS_ROLES | translate}} </th>
-              <td mat-cell *matCellDef="let element">
-                <mat-label class="role" [ngClass]="{
+    <div class="table-container">
+      <perfect-scrollbar>
+        <table mat-table [dataSource]="dataSource" matSort matSortActive="modifiedDatetime" matSortDirection="asc">
+          <!-- Role Column -->
+          <ng-container matColumnDef="rolename">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ln.TXT_ACCOUNTS_ROLES | translate}} </th>
+            <td mat-cell *matCellDef="let element">
+              <mat-label class="role" [ngClass]="{
                     'success': element?.roletypeid === 2,
                     'info': element?.roletypeid === 1,
                     'rm': element?.roletypeid === 4 ,
@@ -68,28 +59,37 @@
                     'nh': element?.roletypeid === 9 ,
                     'hr': element?.roletypeid === 3
                 }">
-                  {{element.isdefaultrole==1?element.rolename: element.name}}
-                </mat-label>
-              </td>
-            </ng-container>
+                <span>{{element.rolename | translate}}</span>
+              </mat-label>
+            </td>
+          </ng-container>
 
+<<<<<<< HEAD
+          <!-- Username Column -->
+          <ng-container matColumnDef="usercount">
+            <th mat-header-cell *matHeaderCellDef> {{ln.TXT_TOTAL_USERS | translate}} </th>
+            <td mat-cell *matCellDef="let element"> <span class="mobile-only grey-text">Total Users :</span>
+              {{element?.usercount || 0}} {{element?.usercount > 1 ? 'Users' : 'User'}}</td>
+          </ng-container>
+=======
             <!-- Username Column -->
             <ng-container matColumnDef="usercount">
               <th mat-header-cell *matHeaderCellDef> {{ln.TXT_TOTAL_USERS | translate}} </th>
               <td mat-cell *matCellDef="let element"> <span class="mobile-only grey-text">{{ln.TXT_TOTAL_USERS | translate}} :</span>
                 {{element?.usercount || 0}} {{element?.usercount > 1 ? ln.TXT_USERS : ln.TXT_USER | translate}}</td>
             </ng-container>
+>>>>>>> 2efbd96940897026b6742c136807a1eeb8aff169
 
-            <!-- Last Updated Column -->
-            <ng-container matColumnDef="modifiedDatetime">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ln.TXT_LAST_EDITED | translate}} </th>
-              <td mat-cell *matCellDef="let element"> <span class="mobile-only grey-text">{{ln.TXT_LAST_UPDATED |
+          <!-- Last Updated Column -->
+          <ng-container matColumnDef="modifiedDatetime">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ln.TXT_LAST_EDITED | translate}} </th>
+            <td mat-cell *matCellDef="let element"> <span class="mobile-only grey-text">{{ln.TXT_LAST_UPDATED |
                   translate}} :</span>
-                {{element?.modifiedDatetime | date}} </td>
-            </ng-container>
+              {{element?.modifiedDatetime | date}} </td>
+          </ng-container>
 
-            <!-- Status Column -->
-            <!-- <ng-container matColumnDef="status">
+          <!-- Status Column -->
+          <!-- <ng-container matColumnDef="status">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
       <td mat-cell *matCellDef="let element">
         <mat-label class="status" [ngClass]="{
@@ -100,84 +100,83 @@
       </td>
     </ng-container> -->
 
-            <!-- Action Column -->
-            <ng-container matColumnDef="action">
-              <th mat-header-cell *matHeaderCellDef> </th>
-              <td mat-cell *matCellDef="let element" class="text-right actions">
-                <div class="cloud-only">
-                  <button mat-icon-button (click)="viewRoleDeatils(element)">
-                    <span class="icon-mc mc-visibility"></span>
-                  </button>
-                  <button mat-icon-button [matMenuTriggerFor]="tableMenu" (click)="toggleTblRowClick()">
-                    <span class="icon-mc mc-more_vert"></span>
-                  </button>
-                  <mat-menu #tableMenu="matMenu" backdropClass="profile-dropdown">
-                    <div class="user-dropdown-submenu">
-                      <button mat-menu-item (click)="editRole(element)" [disabled]="element?.isdefaultrole==1">
-                        <span class="icon-mc mc-create"></span>
-                        <span class="mx-3">{{ln.TXT_EDIT | translate}}</span>
-                      </button>
-                      <button mat-menu-item (click)="deleteRole(element)" [disabled]="element?.isdefaultrole==1">
-                        <span class="icon-mc mc-delete"></span>
-                        <span class="mx-3">{{ln.TXT_DELETE | translate}}</span>
-                      </button>
-                      <!-- <button mat-menu-item><span class="icon-mc mc-delete" *ngIf=""></span> Delete</button> -->
-                    </div>
-                  </mat-menu>
-                </div>
-                <div class="mobile-only">
-                  <button mat-icon-button [matMenuTriggerFor]="menu" class="right-btn" (click)="toggleTblRowClick()">
-                    <span class="icon-mc mc-more_vert"></span>
-                  </button>
-                  <mat-menu #menu="matMenu" backdropClass="profile-dropdown">
-                    <div class="user-dropdown-submenu">
-                      <button mat-menu-item (click)="viewRoleDeatils(element)">
-                        <span class="icon-mc mc-visibility"></span>
-                        <span class="mx-3">{{ln.TXT_VIEW | translate}}</span>
-                      </button>
-                      <button mat-menu-item (click)="editRole(element)" [disabled]="element?.isdefaultrole==1">
-                        <span class="icon-mc mc-create"></span>
-                        <span class="mx-3">{{ln.TXT_EDIT | translate}}</span>
-                      </button>
-                      <button mat-menu-item (click)="deleteRole(element)" [disabled]="element?.isdefaultrole==1">
-                        <span class="icon-mc mc-delete"></span>
-                        <span class="mx-3">{{ln.TXT_DELETE | translate}}</span>
-                      </button>
-                      <!-- <button mat-menu-item><span class="icon-mc mc-delete" *ngIf=""></span> Delete</button> -->
-                    </div>
-                  </mat-menu>
-                </div>
-              </td>
-            </ng-container>
+          <!-- Action Column -->
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef> </th>
+            <td mat-cell *matCellDef="let element" class="text-right actions">
+              <div class="cloud-only">
+                <button mat-icon-button (click)="viewRoleDeatils(element)">
+                  <span class="icon-mc mc-visibility"></span>
+                </button>
+                <button mat-icon-button [matMenuTriggerFor]="tableMenu" #moreMenu>
+                  <span class="icon-mc mc-more_vert"></span>
+                </button>
+                <mat-menu #tableMenu="matMenu" backdropClass="profile-dropdown">
+                  <div class="user-dropdown-submenu">
+                    <button mat-menu-item (click)="editRole(element)" [disabled]="element?.isdefaultrole==1">
+                      <span class="icon-mc mc-create"></span>
+                      <span class="mx-3">{{ln.TXT_EDIT | translate}}</span>
+                    </button>
+                    <button mat-menu-item (click)="deleteRole(element)" [disabled]="element?.isdefaultrole==1">
+                      <span class="icon-mc mc-delete"></span>
+                      <span class="mx-3">{{ln.TXT_DELETE | translate}}</span>
+                    </button>
+                    <!-- <button mat-menu-item><span class="icon-mc mc-delete" *ngIf=""></span> Delete</button> -->
+                  </div>
+                </mat-menu>
+              </div>
+              <div class="mobile-only">
+                <button mat-icon-button [matMenuTriggerFor]="menu" class="right-btn">
+                  <span class="icon-mc mc-more_vert"></span>
+                </button>
+                <mat-menu #menu="matMenu" backdropClass="profile-dropdown">
+                  <div class="user-dropdown-submenu">
+                    <button mat-menu-item (click)="viewRoleDeatils(element)">
+                      <span class="icon-mc mc-visibility"></span>
+                      <span class="mx-3">{{ln.TXT_VIEW | translate}}</span>
+                    </button>
+                    <button mat-menu-item (click)="editRole(element)" [disabled]="element?.isdefaultrole==1">
+                      <span class="icon-mc mc-create"></span>
+                      <span class="mx-3">{{ln.TXT_EDIT | translate}}</span>
+                    </button>
+                    <button mat-menu-item (click)="deleteRole(element)" [disabled]="element?.isdefaultrole==1">
+                      <span class="icon-mc mc-delete"></span>
+                      <span class="mx-3">{{ln.TXT_DELETE | translate}}</span>
+                    </button>
+                    <!-- <button mat-menu-item><span class="icon-mc mc-delete" *ngIf=""></span> Delete</button> -->
+                  </div>
+                </mat-menu>
+              </div>
+            </td>
+          </ng-container>
 
-            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="viewRoleDeatils(row)"></tr>
-          </table>
-        </perfect-scrollbar>
-      </div>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;" #tblRow></tr>
+        </table>
+      </perfect-scrollbar>
+    </div>
 
 
-      <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
+    <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
   </mat-paginator> -->
 
-      <mat-paginator [length]="resultsLength" [pageSize]="pageSize"></mat-paginator>
-    </div>
-    <div class="floating-button page-action  mobile-only">
-      <div class="more-float-action-btn" [class.active]="toggle">
-        <!-- <button mat-stroked-button color="primary" [matMenuTriggerFor]="menu">Export <span
+    <mat-paginator [length]="resultsLength" [pageSize]="pageSize"></mat-paginator>
+  </div>
+  <div class="floating-button page-action  mobile-only">
+    <div class="more-float-action-btn" [class.active]="toggle">
+      <!-- <button mat-stroked-button color="primary" [matMenuTriggerFor]="menu">Export <span
                 class="icon-mc mc-expand_more"></span></button> -->
-        <button mat-flat-button color="primary" (click)="createNewRole()"><span class="icon-mc mc-plus"></span>
-          {{ln.TXT_NEW_ROLE | translate}}
-        </button>
-        <!-- <mat-menu #menu="matMenu">
+      <button mat-flat-button color="primary" (click)="createNewRole()"><span class="icon-mc mc-plus"></span>
+        {{ln.TXT_NEW_ROLE | translate}}
+      </button>
+      <!-- <mat-menu #menu="matMenu">
             <button mat-menu-item>PDF</button>
             <button mat-menu-item>Excel</button>
             <button mat-menu-item>CSV</button>
         </mat-menu> -->
-      </div>
-      <button mat-fab color="primary" (click)="toggleFab()">
-        <span class="icon-mc " [ngClass]="{'mc-plus': toggle === true, 'mc-more_vert': toggle === false }"></span>
-      </button>
     </div>
+    <button mat-fab color="primary" (click)="toggleFab()">
+      <span class="icon-mc " [ngClass]="{'mc-plus': toggle === true, 'mc-more_vert': toggle === false }"></span>
+    </button>
   </div>
-</mat-drawer-container>
+</div>

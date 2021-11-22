@@ -1,12 +1,43 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { secure_api_routes } from '../../../../utility/configs/apiConfig';
+
+interface IroleData {
+    isView: boolean;
+    isEdit: boolean;
+    selectedRole: {
+        roletypeid: number;
+        rolename: string;
+        accountroleid?: string
+    } | null
+}
 
 @Injectable({
     providedIn: 'root'
 })
 export class UserRoleService {
+    roleData: IroleData = {
+        isView: false,
+        isEdit: false,
+        selectedRole: null
+    }
+    private roleDataSource = new BehaviorSubject(this.roleData);
+    currentRoleData = this.roleDataSource.asObservable();
+
     constructor(private http: HttpClient) {
+    }
+
+    setCurrentRole(data: IroleData) {
+        this.roleDataSource.next(data)
+    }
+
+    resetSelectedRole() {
+        this.roleData = {
+            isView: false,
+            isEdit: false,
+            selectedRole: null
+        }
     }
 
     getUserRoles(accountID: string, offset: number = 0, limit: number = 10, sort?: string, sortOrder?: string,) {
