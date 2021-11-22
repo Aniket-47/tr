@@ -65,18 +65,15 @@
                     {{ eachRight.get("name")?.value || "test" | titlecase }}
                   </div>
                   <div class="accordion-indicator">
-                    {{ln.TXT_SHOW_ALL | translate}} {{eachRight.get('level2')?.value.length}} 
+                    {{ln.TXT_SHOW_ALL | translate}} {{eachRight.get('level2')?.value.length}}
                     {{ln.TXT_ACTIONS | translate}}
                     <span class="mat-expansion-indicator"></span>
                   </div>
                 </div>
               </mat-panel-title>
               <mat-panel-description>
-                <mat-slide-toggle
-                  color="green"
-                  formControlName="isOn"
-                  (click)="toggleAllLvl(i)"
-                ></mat-slide-toggle>
+
+                <mat-slide-toggle color="green" formControlName="isOn" (click)="onLvl1Toggle(i)"></mat-slide-toggle>
               </mat-panel-description>
             </mat-expansion-panel-header>
 
@@ -96,13 +93,7 @@
                         <span class="icon-mc mc-keyboard_arrow_down"></span>
                       </mat-panel-title>
                       <mat-panel-description>
-                        <mat-slide-toggle
-                          color="green"
-                          formControlName="isOn"
-                          (click)="
-                            toggleLvl3(i, l2, eachLvl2.get('isOn')?.value)
-                          "
-                        >
+                        <mat-slide-toggle color="green" formControlName="isOn" (click)="onToggleLvl2(i, l2)">
                         </mat-slide-toggle>
                       </mat-panel-description>
                     </mat-expansion-panel-header>
@@ -120,7 +111,7 @@
                             {{ eachLvl3.get("name")?.value | titlecase }}
                           </div>
                           <div class="header-action">
-                            <mat-slide-toggle color="green" formControlName="isOn">
+                            <mat-slide-toggle color="green" formControlName="isOn" (click)="toggleAllLvl(i, l2, l3)">
                             </mat-slide-toggle>
                           </div>
                         </div>
