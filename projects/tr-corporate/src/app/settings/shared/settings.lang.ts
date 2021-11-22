@@ -22,6 +22,7 @@ export enum SETTINGS_LN {
 
   //permission > add-role
   TXT_CREATE_NEW_ROLE = "TXT_CREATE_NEW_ROLE",
+  TXT_ADD_ROLE = "TXT_ADD_ROLE",
   TXT_UPDATE_ROLE = "TXT_UPDATE_ROLE",
   TXT_ROLE_TYPE = "TXT_ROLE_TYPE",
   TXT_NEW_ROLE_NAME = "TXT_NEW_ROLE_NAME",
@@ -30,6 +31,7 @@ export enum SETTINGS_LN {
   TXT_SUBMIT = "TXT_SUBMIT",
   TXT_SHOW_ALL = "TXT_SHOW_ALL",
   TXT_OK = "TXT_OK",
+  TXT_ACTIONS = "TXT_ACTIONS",
 
   //permission > add-user
   TXT_ADD_USER = "TXT_ADD_USER",
