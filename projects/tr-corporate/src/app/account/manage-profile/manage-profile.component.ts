@@ -98,13 +98,13 @@ export class ManageProfileComponent implements OnInit {
     this.isLoading = true;
     this.accoutService.updateUser(payload).subscribe((res: any) => {
       if (res?.error) {
-        this.snackbarServ.open(res?.message, "Ok");
+        this.snackbarServ.open(res?.message, this.ln.TXT_OK);
 
       } else {
         // update store
         this.store.dispatch(setUserMobile({ data: value.mobilenumber }));
         this.store.dispatch(setUserName({ data: { firstName: value.firstName, middleName: value.middleName, lastName: value.lastName } }));
-        this.snackbarServ.open('Successfully updated', "Ok");
+        this.snackbarServ.open(this.ln.TXT_SUCCESSFULLY_ADDED, this.ln.TXT_OK );
         // this.userForm.reset();        
       }
       this.isLoading = false;

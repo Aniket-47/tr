@@ -18,10 +18,10 @@
         </div> -->
     <!-- <i class="icon-mc mc-x"></i> -->
     <div *ngIf="!edit">
-      <h4><span class="icon-mc mc-person"></span>User Info</h4>
+      <h4><span class="icon-mc mc-person"></span>{{ln.TXT_USER_INFO | translate}}</h4>
     </div>
     <div *ngIf="edit">
-      <h4><span class="icon-mc mc-create"></span> Edit user info</h4>
+      <h4><span class="icon-mc mc-create"></span> {{ln.TXT_EDIT_USER_INFO | translate}}</h4>
     </div>
   </div>
 
@@ -156,16 +156,16 @@
           <div class="mat-form-field-flex">
             <mat-label>{{ln.TXT_NAME | translate}}</mat-label>
             <mat-form-field appearance="outline">
-              <input matInput formControlName="firstname" placeholder="First Name">
+              <input matInput formControlName="firstname" placeholder="{{ln.TXT_FIRST_NAME | translate}}">
               <mat-error *ngIf="firstname.invalid && firstname.touched">
                 <span *ngIf="firstname.errors?.required">
-                  First Name is required
+                  {{ln.TXT_FIRST_NAME_REQUIRED | translate}}
                 </span>
                 <span *ngIf="!firstname.errors?.required && firstname.errors?.minlength">
-                  First Name should be atleast 3 letters
+                  {{ln.TXT_FIRST_NAME_3ATLEAST_LETTERS | translate}}
                 </span>
                 <span *ngIf="firstname.errors?.maxlength">
-                  First Name should be maximum of 20 letters
+                  {{ln.TXT_FIRST_NAME_20MAX_LETTERS | translate}}
                 </span>
               </mat-error>
             </mat-form-field>
@@ -173,29 +173,29 @@
 
             <mat-form-field appearance="outline">
               <!-- <mat-label>{{ln.TXT_MIDDLE_NAME | translate}}</mat-label> -->
-              <input matInput formControlName="middlename" placeholder="Middle Name">
+              <input matInput formControlName="middlename" placeholder="{{ln.TXT_MIDDLE_NAME | translate}}">
               <mat-error *ngIf="middlename.invalid && middlename.touched">
                 <span *ngIf="middlename.errors?.minlength">
-                  Middle Name should be atleast 3 letters
+                  {{ln.TXT_MIDDLE_NAME_3_LETTERS | translate}}
                 </span>
                 <span *ngIf="middlename.errors?.maxlength">
-                  Middle Name should be maximum of 20 letters
+                  {{ln.TXT_MIDDLE_NAME_20_LETTERS | translate}}
                 </span>
               </mat-error>
             </mat-form-field>
 
             <mat-form-field appearance="outline">
               <!-- <mat-label>{{ln.TXT_LAST_NAME | translate}}</mat-label> -->
-              <input matInput formControlName="lastname" placeholder="Last Name">
+              <input matInput formControlName="lastname" placeholder="{{ln.TXT_LAST_NAME | translate}}">
               <mat-error *ngIf="lastname.invalid && lastname.touched">
                 <span *ngIf="lastname.errors?.required">
-                  Last Name is required
+                  {{ln.TXT_LAST_NAME_REQUIRED | translate}}
                 </span>
                 <span *ngIf="!lastname.errors?.required && lastname.errors?.minlength">
-                  Last Name should be atleast 3 letters
+                  {{ln.TXT_LAST_NAME_3_LETTERS | translate}}
                 </span>
                 <span *ngIf="lastname.errors?.maxlength">
-                  Last Name should be maximum of 20 letters
+                  {{ln.TXT_LAST_NAME_20_LETTERS | translate}}
                 </span>
               </mat-error>
             </mat-form-field>
@@ -211,10 +211,10 @@
               <input matInput formControlName="email" placeholder="abc123@gmail.com">
               <mat-error *ngIf="email.invalid && email.touched">
                 <span *ngIf="email.errors?.required">
-                  Email Id is required
+                  {{ln.TXT_EMAIL_REQUIRED | translate}}
                 </span>
                 <span *ngIf="!email.errors?.required && email.errors?.email">
-                  Email Id is not valid
+                  {{ln.TXT_EMAIL_NOT_VALID | translate}}
                 </span>
               </mat-error>
             </mat-form-field>
@@ -237,7 +237,7 @@
           <div class="mat-form-field-flex">
             <mat-label>{{ln.TXT_DESIGNATION | translate}}</mat-label>
             <mat-form-field appearance="outline">
-              <input matInput formControlName="designationname" placeholder="Designation">
+              <input matInput formControlName="designationname" placeholder="{{ln.TXT_DESIGNATION | translate}}">
             </mat-form-field>
           </div>
 
@@ -245,7 +245,8 @@
           <div class="mat-form-field-flex">
             <mat-label>{{ln.TXT_BUSINESS_VERTICAL | translate}}</mat-label>
             <mat-form-field appearance="outline">
-              <mat-select formControlName="businessverticalid" placeholder="Business Vertical">
+              <mat-select formControlName="businessverticalid" 
+                placeholder="{{ln.TXT_BUSINESS_VERTICAL | translate}}">
                 <mat-option *ngFor="let businessvertical of businessverticals;"
                   [value]="businessvertical.businessverticalid">
                   {{businessvertical.name}}
@@ -258,7 +259,7 @@
           <div class="mat-form-field-flex">
             <mat-label>{{ln.TXT_PRACTICE | translate}}</mat-label>
             <mat-form-field appearance="outline">
-              <input matInput formControlName="practicename" placeholder="Practice">
+              <input matInput formControlName="practicename" placeholder="{{ln.TXT_PRACTICE | translate}}">
             </mat-form-field>
           </div>
 
@@ -274,7 +275,7 @@
           <div class="mat-form-field-flex">
             <mat-label>{{ln.TXT_LOCATION | translate}}</mat-label>
             <mat-form-field appearance="outline">
-              <input matInput formControlName="locationname" placeholder="Location">
+              <input matInput formControlName="locationname" placeholder="{{ln.TXT_LOCATION | translate}}">
             </mat-form-field>
           </div>
 

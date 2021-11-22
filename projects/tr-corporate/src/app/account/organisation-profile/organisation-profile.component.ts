@@ -204,11 +204,11 @@ export class OrganisationProfileComponent implements OnInit, OnChanges {
     this.isLoading = true;
     this.accoutService.updateAccount(payload, this.accountId).subscribe((res: any) => {
       if (res?.error) {
-        this.snackbarServ.open(res?.message, "Ok");
+        this.snackbarServ.open(res?.message, this.ln.TXT_OK);
       } else {
         // update store
         this.store.dispatch(setAccountDeatils({ data: payload }));
-        this.snackbarServ.open('Successfully updated', "Ok");
+        this.snackbarServ.open(this.ln.TXT_SUCCESSFULLY_ADDED, this.ln.TXT_OK);
         // this.orgProfileForm.reset();
       }
       this.isLoading = false;
@@ -234,7 +234,7 @@ export class OrganisationProfileComponent implements OnInit, OnChanges {
           this.shortname.setErrors({ 'customError': true });
         }
         else {
-          this.resShortMessage = "Shortname Available"
+          this.resShortMessage = this.ln.TXT_SHORTNAME_AVAILABLE;
         }
 
       })

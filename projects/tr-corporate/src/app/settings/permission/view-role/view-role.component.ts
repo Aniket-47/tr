@@ -184,7 +184,7 @@ export class ViewRoleComponent implements AfterViewInit, OnInit {
   editRole(role: Irole) {
     this.toggleTblRowClick();
     if (role.isdefaultrole) {
-      this.snackbarServ.open("Default role can't be updated.", "Ok");
+      this.snackbarServ.open(this.ln.TXT_DEFAULT_ROLE_CANNOT_UPDATE, this.ln.TXT_OK);
       return;
     }
 
@@ -197,12 +197,12 @@ export class ViewRoleComponent implements AfterViewInit, OnInit {
   deleteRole(role: Irole) {
     this.toggleTblRowClick();
     if (role.isdefaultrole) {
-      this.snackbarServ.open("Default role can't be deleted.", "Ok");
+      this.snackbarServ.open(this.ln.TXT_DEFAULT_ROLE_CANNOT_DELETE, this.ln.TXT_OK);
       return;
     }
 
     if (role.usercount > 0) {
-      this.snackbarServ.open("Users are associated to this role.", "Ok");
+      this.snackbarServ.open(this.ln.TXT_USERS_ASSOCIATED_TO_ROLE, this.ln.TXT_OK);
       return;
     }
 
@@ -213,7 +213,7 @@ export class ViewRoleComponent implements AfterViewInit, OnInit {
         if (isConfirmed) {
           this.userRoleService.deleteRole(+role.accountroleid).subscribe((res: any) => {
             if (!res.error) {
-              this.snackbarServ.open('Successfully deleted', "Ok");
+              this.snackbarServ.open(this.ln.TXT_SUCCESSFULLY_DELETED, this.ln.TXT_OK);
               this.loadUserRoles(this.accountid);
             } else this.snackbarServ.open(res?.message);
           });
