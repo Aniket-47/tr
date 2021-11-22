@@ -7,6 +7,7 @@ export const ROUTE_CONFIGS = {
   REGISTER2: '/auth/register',
   REGISTER_SUCCESS: '/auth/register-success',
   SETTINGS_DASHBOARD: '/dashboard/settings',
+  ROLES: '/dashboard/settings/permission/roles',
   VIEW_ROLE: '/dashboard/settings/permission/role',
   PERSONAL_PROFILE: '/dashboard/account/manage-profile',
   ORGANISATION_PROFILE: '/dashboard/account/organisation-profile',

@@ -1,11 +1,9 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
-import { MatDrawer } from '@angular/material/sidenav';
 import { MatSort } from '@angular/material/sort';
-import { merge, Observable, of as observableOf } from 'rxjs';
+import { fromEvent, merge, Observable, of as observableOf } from 'rxjs';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 import { fadeAnimation } from '../../../animations';
 
@@ -23,6 +21,7 @@ import { UserRoleService } from '../shared/services/user-role.service';
 import { AddRoleComponent } from '../add-role/add-role.component';
 import { ConfirmationComponent } from '../../../utility/components/confirmation/confirmation.component';
 import { SETTINGS_LN } from '../../shared/settings.lang';
+import { ROUTE_CONFIGS } from '../../../utility/configs/routerConfig';
 
 
 export interface Irole {
@@ -41,7 +40,7 @@ export interface Irole {
   styleUrls: ['./view-role.component.scss'],
   animations: [fadeAnimation]
 })
-export class ViewRoleComponent implements AfterViewInit, OnInit {
+export class ViewRoleComponent implements OnInit, AfterViewInit {
 
   ln = SETTINGS_LN;
 
@@ -59,20 +58,18 @@ export class ViewRoleComponent implements AfterViewInit, OnInit {
   // ];
   sortby = [
     { value: 'rolename', viewValue: this.ln.TXT_SORT_BY_ADDED_ROLE_NAME },
-    { value: 'usercount', viewValue: this.ln.TXT_SORT_BY_ADDED_USER_COUNT },
+    // { value: 'usercount', viewValue: this.ln.TXT_SORT_BY_ADDED_USER_COUNT },
     { value: 'modifiedDatetime', viewValue: this.ln.TXT_SORT_BY_ADDED_LAST_UPDATED }
   ];
   // selectedStatus = this.status[0].value;
   // selectedRole = this.role[0].value;
-  selectedSort = this.sortby[2].value;
+  selectedSort = this.sortby[1].value;
   displayedColumns: string[] = ['rolename', 'usercount', 'modifiedDatetime', 'action'];
   // dataSource = new MatTableDataSource<any>(ELEMENT_DATA);
   dataSource = new Observable<Irole[]>();
   isRateLimitReached: boolean = false;
   showUserActionMenu = true;
   accountid!: string;
-
-  selectedRoleInfo!: { roletypeid: number, rolename: string, accountroleid?: string } | null;
 
   // pagination
   offset: number = 0;
@@ -81,22 +78,23 @@ export class ViewRoleComponent implements AfterViewInit, OnInit {
 
   @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort!: MatSort;
-  @ViewChild(MatDrawer, { static: false }) drawer!: MatDrawer;
+  // @ViewChild('moreMenu', { static: false }) moreMenu!: ElementRef;
+  // @ViewChild('tblRow', { static: false }) tblRow!: ElementRef;
 
-  isEditRole: boolean = false;
-  isViewRole: boolean = false;
-
+  tblRowClick$!: Observable<any>;
+  moreMenuClick$!: Observable<any>;
 
   constructor(
     private dialog: MatDialog,
     private userRoleService: UserRoleService,
     private snackbarServ: SnackBarService,
     private configServ: RouterConfigService,
+    private router: Router,
     private store: Store<State>) {
     this.config = configServ.routerconfig;
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
   ngAfterViewInit(): void {
@@ -106,10 +104,10 @@ export class ViewRoleComponent implements AfterViewInit, OnInit {
         this.loadUserRoles(accountid);
       }
     });
+    // this.tblRowClick$ = fromEvent(this.tblRow.nativeElement, 'click');
+    // this.moreMenuClick$ = fromEvent(this.rowContainers., 'click');
 
-    this.drawer.openedChange.subscribe((_) => {
-      if (!this.drawer.opened) this.reset();
-    });
+    // this.tblRowClick$.subscribe(console.log)
   }
 
   resetPaging(): void {
@@ -117,7 +115,7 @@ export class ViewRoleComponent implements AfterViewInit, OnInit {
   }
 
   onHeaderSort() {
-    this.sort.sort({ id: this.selectedSort, disableClear: false, start: 'asc' })
+    this.sort.sort({ id: this.selectedSort, disableClear: false, start: 'asc' });
   }
 
   loadUserRoles(accountid: string) {
@@ -160,42 +158,28 @@ export class ViewRoleComponent implements AfterViewInit, OnInit {
   }
 
 
-  roleSubmitHandler() {
-    this.resetPaging();
-    this.drawer.close();
-    this.reset();
-    this.loadUserRoles(this.accountid);
-  }
-
   createNewRole() {
-    this.selectedRoleInfo = null;
-    this.drawer.open();
+    this.router.navigate([ROUTE_CONFIGS.VIEW_ROLE]);
   }
 
   viewRoleDeatils(role: Irole) {
-    if (this.showUserActionMenu) {
-      this.selectedRoleInfo = { roletypeid: role.roletypeid, rolename: role.name };
-      this.isViewRole = true;
-      this.isEditRole = false;
-      this.drawer.open();
-    }
+    const selectedRoleInfo = { roletypeid: role.roletypeid, rolename: role.rolename };
+    const roleData = { selectedRole: selectedRoleInfo, isEdit: false, isView: true };
+    this.userRoleService.setCurrentRole(roleData);
+    this.router.navigateByUrl(ROUTE_CONFIGS.VIEW_ROLE);
   }
 
   editRole(role: Irole) {
-    this.toggleTblRowClick();
     if (role.isdefaultrole) {
       this.snackbarServ.open("Default role can't be updated.", "Ok");
       return;
     }
-
-    this.isEditRole = true;
-    this.isViewRole = false
-    this.selectedRoleInfo = { roletypeid: role.roletypeid, rolename: role.name, accountroleid: role.accountroleid };
-    this.drawer.open();
+    const selectedRoleInfo = { roletypeid: role.roletypeid, rolename: role.rolename, accountroleid: role.accountroleid };
+    this.userRoleService.setCurrentRole({ isEdit: true, isView: false, selectedRole: selectedRoleInfo });
+    this.router.navigate([ROUTE_CONFIGS.VIEW_ROLE]);
   }
 
   deleteRole(role: Irole) {
-    this.toggleTblRowClick();
     if (role.isdefaultrole) {
       this.snackbarServ.open("Default role can't be deleted.", "Ok");
       return;
@@ -220,19 +204,5 @@ export class ViewRoleComponent implements AfterViewInit, OnInit {
         }
       });
     }
-  }
-
-  reset() {
-    this.selectedRoleInfo = null;
-    this.isEditRole = false;
-    this.isViewRole = false;
-    this.drawer.close();
-  }
-
-  toggleTblRowClick() {
-    this.showUserActionMenu = false;
-    setTimeout(() => {
-      this.showUserActionMenu = true;
-    }, 100);
   }
 }
