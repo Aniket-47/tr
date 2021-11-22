@@ -263,7 +263,7 @@ export class UserManageComponent implements OnInit {
   }
 
   viewPermission(element: any) {
-    const data = { selectedRole: { rolename: element.role, roletypeid: element.roletypeid }, isView: true, isEdit: false };
+    const data = { selectedRole: { rolename: element.role, roletypeid: element.roletypeid }, isView: true, isEdit: false, isNew: false };
     this.userRoleService.setCurrentRole(data);
     this.router.navigate([ROUTE_CONFIGS.VIEW_ROLE]);
   }
