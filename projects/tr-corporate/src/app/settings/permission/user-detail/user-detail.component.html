@@ -90,6 +90,7 @@
                 </span>
               </div>
             </div>
+
             <div class="common-div">
               <span class="icon-mc mc-local_post_office"></span>
               <div class="d-flex flex-column">
@@ -148,114 +149,134 @@
       <ng-template #displayInput>
 
         <form [formGroup]="editUserForm">
-          <mat-form-field appearance="outline">
-            <mat-label>{{ln.TXT_FIRST_NAME | translate}}</mat-label>
-            <input matInput formControlName="firstname" placeholder="First Name">
-            <mat-error *ngIf="firstname.invalid && firstname.touched">
-              <span *ngIf="firstname.errors?.required">
-                First Name is required
-              </span>
-              <span *ngIf="!firstname.errors?.required && firstname.errors?.minlength">
-                First Name should be atleast 3 letters
-              </span>
-              <span *ngIf="firstname.errors?.maxlength">
-                First Name should be maximum of 20 letters
-              </span>
-            </mat-error>
-
-          </mat-form-field>
-          <mat-form-field appearance="outline">
-            <mat-label>{{ln.TXT_MIDDLE_NAME | translate}}</mat-label>
-            <input matInput formControlName="middlename" placeholder="Middle Name">
-            <mat-error *ngIf="middlename.invalid && middlename.touched">
-              <span *ngIf="middlename.errors?.minlength">
-                Middle Name should be atleast 3 letters
-              </span>
-              <span *ngIf="middlename.errors?.maxlength">
-                Middle Name should be maximum of 20 letters
-              </span>
-            </mat-error>
-          </mat-form-field>
-
-          <mat-form-field appearance="outline">
-            <mat-label>{{ln.TXT_LAST_NAME | translate}}</mat-label>
-            <input matInput formControlName="lastname" placeholder="Last Name">
-            <mat-error *ngIf="lastname.invalid && lastname.touched">
-              <span *ngIf="lastname.errors?.required">
-                Last Name is required
-              </span>
-              <span *ngIf="!lastname.errors?.required && lastname.errors?.minlength">
-                Last Name should be atleast 3 letters
-              </span>
-              <span *ngIf="lastname.errors?.maxlength">
-                Last Name should be maximum of 20 letters
-              </span>
-            </mat-error>
-          </mat-form-field>
 
 
+          <!-- <div class="common-div"> -->
+          <span class="update-field-icon icon-mc mc-person"></span>
+          <div class="mat-form-field-flex">
+            <mat-label>{{ln.TXT_NAME | translate}}</mat-label>
+            <mat-form-field appearance="outline">
+              <input matInput formControlName="firstname" placeholder="First Name">
+              <mat-error *ngIf="firstname.invalid && firstname.touched">
+                <span *ngIf="firstname.errors?.required">
+                  First Name is required
+                </span>
+                <span *ngIf="!firstname.errors?.required && firstname.errors?.minlength">
+                  First Name should be atleast 3 letters
+                </span>
+                <span *ngIf="firstname.errors?.maxlength">
+                  First Name should be maximum of 20 letters
+                </span>
+              </mat-error>
+            </mat-form-field>
+            <!-- </div> -->
+
+            <mat-form-field appearance="outline">
+              <!-- <mat-label>{{ln.TXT_MIDDLE_NAME | translate}}</mat-label> -->
+              <input matInput formControlName="middlename" placeholder="Middle Name">
+              <mat-error *ngIf="middlename.invalid && middlename.touched">
+                <span *ngIf="middlename.errors?.minlength">
+                  Middle Name should be atleast 3 letters
+                </span>
+                <span *ngIf="middlename.errors?.maxlength">
+                  Middle Name should be maximum of 20 letters
+                </span>
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <!-- <mat-label>{{ln.TXT_LAST_NAME | translate}}</mat-label> -->
+              <input matInput formControlName="lastname" placeholder="Last Name">
+              <mat-error *ngIf="lastname.invalid && lastname.touched">
+                <span *ngIf="lastname.errors?.required">
+                  Last Name is required
+                </span>
+                <span *ngIf="!lastname.errors?.required && lastname.errors?.minlength">
+                  Last Name should be atleast 3 letters
+                </span>
+                <span *ngIf="lastname.errors?.maxlength">
+                  Last Name should be maximum of 20 letters
+                </span>
+              </mat-error>
+            </mat-form-field>
+
+          </div>
 
 
-          <mat-form-field appearance="outline">
+
+          <span class="update-field-icon icon-mc mc-local_post_office"></span>
+          <div class="mat-form-field-flex">
             <mat-label>{{ln.TXT_EMAIL | translate}}</mat-label>
-            <input matInput formControlName="email" placeholder="abc123@gmail.com">
-            <mat-error *ngIf="email.invalid && email.touched">
-              <span *ngIf="email.errors?.required">
-                Email Id is required
-              </span>
-              <span *ngIf="!email.errors?.required && email.errors?.email">
-                Email Id is not valid
-              </span>
-            </mat-error>
-          </mat-form-field>
+            <mat-form-field appearance="outline">
+              <input matInput formControlName="email" placeholder="abc123@gmail.com">
+              <mat-error *ngIf="email.invalid && email.touched">
+                <span *ngIf="email.errors?.required">
+                  Email Id is required
+                </span>
+                <span *ngIf="!email.errors?.required && email.errors?.email">
+                  Email Id is not valid
+                </span>
+              </mat-error>
+            </mat-form-field>
+          </div>
 
 
-
-          <mat-form-field appearance="outline">
+          <span class="update-field-icon icon-mc mc-work"></span>
+          <div class="mat-form-field-flex">
             <mat-label>{{ln.TXT_ROLE | translate}}</mat-label>
-            <mat-select formControlName="roletypeid">
-              <mat-option *ngFor="let role of roles;" [value]="role">
-                {{role.name}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-select formControlName="roletypeid">
+                <mat-option *ngFor="let role of roles;" [value]="role">
+                  {{role.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
 
-
-          <mat-form-field appearance="outline">
+          <span class="update-field-icon icon-mc mc-school"></span>
+          <div class="mat-form-field-flex">
             <mat-label>{{ln.TXT_DESIGNATION | translate}}</mat-label>
-            <input matInput formControlName="designationname" placeholder="Designation">
-          </mat-form-field>
+            <mat-form-field appearance="outline">
+              <input matInput formControlName="designationname" placeholder="Designation">
+            </mat-form-field>
+          </div>
 
-
-          <mat-form-field appearance="outline">
+          <span class="update-field-icon icon-mc mc-layers"></span>
+          <div class="mat-form-field-flex">
             <mat-label>{{ln.TXT_BUSINESS_VERTICAL | translate}}</mat-label>
-            <mat-select formControlName="businessverticalid">
-              <mat-option *ngFor="let businessvertical of businessverticals;"
-                [value]="businessvertical.businessverticalid">
-                {{businessvertical.name}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-select formControlName="businessverticalid" placeholder="Business Vertical">
+                <mat-option *ngFor="let businessvertical of businessverticals;"
+                  [value]="businessvertical.businessverticalid">
+                  {{businessvertical.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
 
-
-
-          <mat-form-field appearance="outline">
+          <span class="update-field-icon icon-mc mc-nature"></span>
+          <div class="mat-form-field-flex">
             <mat-label>{{ln.TXT_PRACTICE | translate}}</mat-label>
-            <input matInput formControlName="practicename" placeholder="Practice">
-          </mat-form-field>
+            <mat-form-field appearance="outline">
+              <input matInput formControlName="practicename" placeholder="Practice">
+            </mat-form-field>
+          </div>
 
-
-          <mat-form-field appearance="outline">
+          <span class="update-field-icon icon-mc mc-local_phone"></span>
+          <div class="mat-form-field-flex">
             <mat-label>{{ln.TXT_PHONE | translate}}</mat-label>
-            <input matInput formControlName="mobilenumber" placeholder="ex:- 9874563258">
-          </mat-form-field>
+            <mat-form-field appearance="outline">
+              <input matInput formControlName="mobilenumber" placeholder="ex:- 9874563258">
+            </mat-form-field>
+          </div>
 
-
-          <mat-form-field appearance="outline">
+          <span class="update-field-icon icon-mc mc-location_pin"></span>
+          <div class="mat-form-field-flex">
             <mat-label>{{ln.TXT_LOCATION | translate}}</mat-label>
-            <input matInput formControlName="locationname" placeholder="Location">
-          </mat-form-field>
-
+            <mat-form-field appearance="outline">
+              <input matInput formControlName="locationname" placeholder="Location">
+            </mat-form-field>
+          </div>
 
           <div class="buttons">
             <button mat-flat-button color="primary" (click)="editUser()" [disabled]="isLoading" class="update-btn">

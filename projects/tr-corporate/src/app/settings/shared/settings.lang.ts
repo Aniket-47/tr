@@ -67,6 +67,7 @@ export enum SETTINGS_LN {
   TXT_PHONE = "TXT_PHONE",
   TXT_CANCEL = "TXT_CANCEL",
   TXT_UPDATE = "TXT_UPDATE",
+  TXT_NAME = "TXT_NAME",
 
   //permissions > user-manage
   TXT_USER_MANAGEMENT = "TXT_USER_MANAGEMENT",
