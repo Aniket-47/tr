@@ -35,7 +35,7 @@
     <!-- Desktop view -->
     <div class="user-management">
       <div class="table-header">
-        <div *ngIf="selection.selected.length > 0" [matMenuTriggerFor]="menu" class="selected-user">
+        <div class="table-info" *ngIf="selection.selected.length > 0" [matMenuTriggerFor]="menu" class="selected-user">
           {{ selection.selected.length }}
           <span *ngIf="selection.selected.length<=1">
             {{ln.TXT_USER_SELECTED | translate}}
