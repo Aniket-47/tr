@@ -135,6 +135,7 @@ export class UserDetailComponent implements OnInit, OnChanges {
 
   ngOnChanges() {
     this.user = null
+    this.initForm();
     if (this.userEmail)
       this.prefillUser();
   }
@@ -171,11 +172,10 @@ export class UserDetailComponent implements OnInit, OnChanges {
     if (this.editUserForm.valid) {
       this.isLoading = true;
       this.newUser = this.editUserForm.value;
-      this.newUser.roletypename = this.roletypeid.value.name;
-      this.newUser.roletypeid = this.roletypeid.value.roletypeid;
+      this.newUser.roletypename = this.roles.find(e => e.roletypeid == this.newUser.roletypeid)?.name;
       // console.log(this.newUser);
 
-      this.userServ.createUser(this.accountID, this.newUser).subscribe(res => {
+      this.userServ.updateUser(this.newUser).subscribe(res => {
         this.isLoading = false;
         if (res.error) {
           // error from api
@@ -184,7 +184,6 @@ export class UserDetailComponent implements OnInit, OnChanges {
         else {
           // success from api
           this.snackBar.open(res.message);
-
         }
 
       })

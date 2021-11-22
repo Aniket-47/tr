@@ -275,7 +275,7 @@ export class AddRoleComponent implements OnInit, OnDestroy {
       this.userRoleService.saveRole(payload, this.accountId).subscribe((res: any) => {
         if (!res?.error) {
           this.updatePermission(payload2);
-          this.snackbarService.open(res?.message, 'Ok');
+          this.snackbarService.open(res?.message, this.ln.TXT_OK);
         }
         this.isLoading = false;
       }, (err) => this.isLoading = false);
@@ -283,7 +283,7 @@ export class AddRoleComponent implements OnInit, OnDestroy {
       this.userRoleService.updateRole(payload).subscribe((res: any) => {
         if (!res?.error) {
           this.updatePermission(payload2);
-          this.snackbarService.open(res?.message, 'Ok');
+          this.snackbarService.open(res?.message, this.ln.TXT_OK);
         }
         this.isLoading = false;
       }, (err) => this.isLoading = false);
@@ -293,7 +293,7 @@ export class AddRoleComponent implements OnInit, OnDestroy {
   updatePermission(payload: any) {
     this.userRoleService.updatePersmissions(payload, this.accountId).subscribe((res: any) => {
       if (!res?.error) {
-        this.snackbarService.open(res?.message, 'Ok');
+        this.snackbarService.open(res?.message, this.ln.TXT_OK);
         this.roleForm.reset();
         this.rightsArray.clear();
         this.router.navigate([ROUTE_CONFIGS.ROLES]);

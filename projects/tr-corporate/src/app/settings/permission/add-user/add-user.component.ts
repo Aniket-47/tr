@@ -179,7 +179,7 @@ export class AddUserComponent implements OnInit {
       this.newUser.roletypeid = this.roletypeid.value.roletypeid;
       // console.log(this.newUser);
 
-      this.userServ.createUser(this.accountID, this.newUser).subscribe(res => {
+      this.userServ.createUser(this.newUser).subscribe(res => {
         this.isLoading = false;
         if (res.error) {
           // error from api

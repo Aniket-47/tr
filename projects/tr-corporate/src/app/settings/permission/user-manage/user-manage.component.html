@@ -33,7 +33,7 @@
     <!-- Desktop view -->
     <div class="user-management">
       <div class="table-header">
-        <!-- <div *ngIf="selection.selected.length > 0" [matMenuTriggerFor]="menu" class="selected-user">
+        <div class="table-info" *ngIf="selection.selected.length > 0" [matMenuTriggerFor]="menu" class="selected-user">
           {{ selection.selected.length }}
           <span *ngIf="selection.selected.length<=1">
             {{ln.TXT_USER_SELECTED | translate}}
@@ -47,9 +47,9 @@
           <button mat-menu-item> <i class="icon-mc mc-how_to_reg"></i> {{ln.TXT_ACTIVATE | translate}}</button>
           <button mat-menu-item> <i class="icon-mc mc-do_not_disturb_on"></i> {{ln.TXT_DEACTIVATE | translate}}</button>
           <button mat-menu-item> <i class="icon-mc mc-user-x"></i> {{ln.TXT_DELETE | translate}}</button>
-        </mat-menu> -->
-        <!-- <div class="table-info" *ngIf="selection.selected.length == 0">{{ totalUsers }} -->
-        <div class="table-info">{{ totalUsers }}
+        </mat-menu>
+        <div class="table-info" *ngIf="selection.selected.length == 0">{{ totalUsers }}
+          <!-- <div class="table-info">{{ totalUsers }} -->
           <span *ngIf="totalUsers<=1">
             {{ln.TXT_TOTAL_USER | translate}}
           </span>
@@ -60,14 +60,14 @@
         </div>
         <div class="table-action cloud-only">
           <mat-form-field appearance="outline">
-            <mat-select [(ngModel)]="selectedStatus" placeholder="Select Status" (ngModelChange)="loadUsers()">
+            <mat-select [(ngModel)]="selectedStatus" placeholder="{{ln.TXT_SELECT_STATUS | translate}}" (ngModelChange)="loadUsers()">
               <mat-option *ngFor="let item of status" [value]="item.value">
                 {{item.viewValue | translate}}
               </mat-option>
             </mat-select>
           </mat-form-field>
           <mat-form-field appearance="outline">
-            <mat-select [(ngModel)]="selectedRole" placeholder="Select Role" (ngModelChange)="loadUsers()">
+            <mat-select [(ngModel)]="selectedRole" placeholder="{{ln.TXT_SELECT_ROLE | translate}}" (ngModelChange)="loadUsers()">
               <mat-option *ngFor="let item of role" [value]="item.roletypeid">
                 {{item.name | translate}}
               </mat-option>
@@ -220,15 +220,15 @@
                   <mat-menu #menu="matMenu" backdropClass="profile-dropdown">
                     <div class="user-dropdown-submenu">
                       <button mat-menu-item
-                        (click)="currentUser = element; currentUserEdit=false; viewUserPermission=false; drawer.toggle()">
+                        (click)="viewDetails(element)">
                         <i class="icon-mc mc-visibility"></i> <span>{{ln.TXT_VIEW_DETAILS | translate}}</span>
                       </button>
-                      <button mat-menu-item (click)="currentUser = element; viewUserPermission=true; drawer.toggle()">
+                      <button mat-menu-item (click)="viewPermission(element)">
                         <i class="icon-mcf mcf-chrome_reader_mode"></i> <span>{{ln.TXT_VIEW_PERMISSION |
                           translate}}</span>
                       </button>
                       <button mat-menu-item
-                        (click)="currentUser = element; currentUserEdit= true; viewUserPermission=true; drawer.toggle()">
+                        (click)="editUser(element)">
                         <i class="icon-mc mc-create"></i> <span>{{ln.TXT_EDIT_USER | translate}}</span>
                       </button>
                       <button mat-menu-item *ngIf="element.status==0" (click)="activateUser(element.email)">

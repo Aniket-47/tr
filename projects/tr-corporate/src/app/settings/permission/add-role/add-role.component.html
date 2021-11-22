@@ -30,7 +30,7 @@
         </mat-form-field>
       </div>
       <button mat-flat-button color="primary" (click)="submitHandler()" [disabled]="isLoading">
-        <span>{{isEdit ? 'Update' : 'Submit'}}</span>
+        <span>{{isEdit ? ln.TXT_UPDATE : ln.TXT_SUBMIT | translate}}</span>
         <mat-spinner *ngIf="isLoading" diameter="20" class="btn-loader"></mat-spinner>
       </button>
     </div>
@@ -47,7 +47,7 @@
                 <div class="accordion-title">
                   <div>{{eachRight.get('name')?.value || 'test' | titlecase}}</div>
                   <div class="accordion-indicator">
-                    Show all {{eachRight.get('level2')?.value.length}} permissions
+                    {{ln.TXT_SHOW_ALL | translate}} {{eachRight.get('level2')?.value.length}} {{ln.TXT_PERMISSIONS | translate}}
                     <span class="mat-expansion-indicator"></span>
                   </div>
                 </div>
