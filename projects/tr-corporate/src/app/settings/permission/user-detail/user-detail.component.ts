@@ -175,7 +175,7 @@ export class UserDetailComponent implements OnInit, OnChanges {
       this.newUser.roletypeid = this.roletypeid.value.roletypeid;
       // console.log(this.newUser);
 
-      this.userServ.createUser(this.accountID, this.newUser).subscribe(res => {
+      this.userServ.updateUser(this.newUser).subscribe(res => {
         this.isLoading = false;
         if (res.error) {
           // error from api
