@@ -292,4 +292,13 @@ export class UserManageComponent implements OnInit {
     emitted.status == 0 ? this.deactivateUser(emitted.email) : this.activateUser(emitted.email);
   }
 
+  userUpdated(emitted: { userEmail: string, firstname: string, middlename: string, lastname: string, roletypeid: number, email: string }) {
+
+    const updateditem = this.dataSource.data.find(e => e.email == emitted.userEmail);
+    const index = this.dataSource.data.indexOf(updateditem);
+    this.dataSource.data[index] = { ...emitted };
+
+    this.dataSource = new MatTableDataSource(this.dataSource.data);
+  }
+
 }

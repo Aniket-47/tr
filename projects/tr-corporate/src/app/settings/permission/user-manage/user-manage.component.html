@@ -3,7 +3,8 @@
     <button mat-icon-button (click)="drawer.toggle()" class="close-btn">
       <span class="icon-mc mc-x"></span>
     </button>
-    <app-user-detail *ngIf="!viewUserPermission" [edit]="currentUserEdit" [userEmail]="currentUser?.email" (statusChange)="changeStatus($event)">
+    <app-user-detail *ngIf="!viewUserPermission" [edit]="currentUserEdit" [userEmail]="currentUser?.email"
+      (statusChange)="changeStatus($event)" (userUpdate)="userUpdated($event)">
     </app-user-detail>
   </mat-drawer>
 
@@ -60,14 +61,16 @@
         </div>
         <div class="table-action cloud-only">
           <mat-form-field appearance="outline">
-            <mat-select [(ngModel)]="selectedStatus" placeholder="{{ln.TXT_SELECT_STATUS | translate}}" (ngModelChange)="loadUsers()">
+            <mat-select [(ngModel)]="selectedStatus" placeholder="{{ln.TXT_SELECT_STATUS | translate}}"
+              (ngModelChange)="loadUsers()">
               <mat-option *ngFor="let item of status" [value]="item.value">
                 {{item.viewValue | translate}}
               </mat-option>
             </mat-select>
           </mat-form-field>
           <mat-form-field appearance="outline">
-            <mat-select [(ngModel)]="selectedRole" placeholder="{{ln.TXT_SELECT_ROLE | translate}}" (ngModelChange)="loadUsers()">
+            <mat-select [(ngModel)]="selectedRole" placeholder="{{ln.TXT_SELECT_ROLE | translate}}"
+              (ngModelChange)="loadUsers()">
               <mat-option *ngFor="let item of role" [value]="item.roletypeid">
                 {{item.name | translate}}
               </mat-option>
@@ -75,9 +78,11 @@
           </mat-form-field>
           <mat-form-field appearance="outline" class="short-wrapper">
             <span class="sort-by font-600">{{ln.TXT_SORT_BY | translate}}:</span>
+            <!-- <mat-label *ngIf="selectedSort=='status'">Status</mat-label> -->
             <mat-select [(ngModel)]="selectedSort" (ngModelChange)="onHeaderSort()">
               <mat-option *ngFor="let item of sorts" [value]="item.value">
-                <span class="font-500 text-muted">{{ln.TXT_SORT_BY | translate}}:</span> <span class="font-500 text-muted">{{item.viewValue | translate}}</span>
+                <!-- <span class="font-500 text-muted">{{ln.TXT_SORT_BY | translate}} </span> -->
+                <span class="font-500 text-muted">{{item.viewValue | translate}}</span>
               </mat-option>
             </mat-select>
           </mat-form-field>
@@ -219,16 +224,14 @@
                       class="icon-mc mc-more_vert"></span></button>
                   <mat-menu #menu="matMenu" backdropClass="profile-dropdown">
                     <div class="user-dropdown-submenu">
-                      <button mat-menu-item
-                        (click)="viewDetails(element)">
+                      <button mat-menu-item (click)="viewDetails(element)">
                         <i class="icon-mc mc-visibility"></i> <span>{{ln.TXT_VIEW_DETAILS | translate}}</span>
                       </button>
                       <button mat-menu-item (click)="viewPermission(element)">
                         <i class="icon-mcf mcf-chrome_reader_mode"></i> <span>{{ln.TXT_VIEW_PERMISSION |
                           translate}}</span>
                       </button>
-                      <button mat-menu-item
-                        (click)="editUser(element)">
+                      <button mat-menu-item (click)="editUser(element)">
                         <i class="icon-mc mc-create"></i> <span>{{ln.TXT_EDIT_USER | translate}}</span>
                       </button>
                       <button mat-menu-item *ngIf="element.status==0" (click)="activateUser(element.email)">
