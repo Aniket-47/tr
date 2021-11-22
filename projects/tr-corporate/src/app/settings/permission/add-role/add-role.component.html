@@ -7,7 +7,20 @@
       </h2>
       <h2 *ngIf="isEdit">{{ ln.TXT_UPDATE_ROLE | translate }}</h2>
       <h2 *ngIf="isRoleView">{{ selectedRoleInfo?.rolename | titlecase }}</h2>
-    </div>  
+    </div> 
+    <button
+    mat-flat-button
+    color="primary"
+    (click)="submitHandler()"
+    [disabled]="isLoading"
+    >
+      <span>Set Default</span>
+      <mat-spinner
+        *ngIf="isLoading"
+        diameter="20"
+        class="btn-loader"
+      ></mat-spinner>
+    </button>
     <!-- <div page-action class="header-action" *ngIf="!isRoleView"></div> -->
   </tr-page-header>
 
