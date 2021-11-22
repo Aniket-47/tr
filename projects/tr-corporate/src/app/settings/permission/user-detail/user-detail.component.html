@@ -53,10 +53,9 @@
         <mat-label *ngIf="user?.status==0">{{ln.TXT_DEACTIVE | translate}}</mat-label>
         <mat-label *ngIf="user?.status==1">{{ln.TXT_ACTIVE | translate}}</mat-label>
         <mat-label *ngIf="user?.status==2">{{ln.TXT_PENDING | translate}}</mat-label>
-        <mat-select matNativeControl [(ngModel)]="user.status" [disabled]="!edit">
+        <mat-select matNativeControl [(ngModel)]="user.status" [disabled]="!edit" (selectionChange)="statusChanged(user.status)">
           <mat-option value="0">{{ln.TXT_DEACTIVE | translate}}</mat-option>
           <mat-option value="1">{{ln.TXT_ACTIVE | translate}}</mat-option>
-          <mat-option value="2">{{ln.TXT_PENDING | translate}}</mat-option>
         </mat-select>
         <!-- <span class="icon-mc mc-keyboard_arrow_down"></span> -->
       </div>
@@ -225,11 +224,12 @@
           <div class="mat-form-field-flex">
             <mat-label>{{ln.TXT_ROLE | translate}}</mat-label>
             <mat-form-field appearance="outline">
-              <mat-select formControlName="roletypeid">
-                <mat-option *ngFor="let role of roles;" [value]="role">
-                  {{role.name}}
+              <mat-select *ngIf="user?.roletypeid!=1" formControlName="roletypeid">
+                <mat-option *ngFor="let role of roles;" [value]="role.roletypeid">
+                  {{role.name | translate}}
                 </mat-option>
               </mat-select>
+              <input *ngIf="user?.roletypeid==1" matInput value="{{ ln.TXT_ROLE_OWNER | translate }}" disabled>
             </mat-form-field>
           </div>
 
@@ -245,7 +245,7 @@
           <div class="mat-form-field-flex">
             <mat-label>{{ln.TXT_BUSINESS_VERTICAL | translate}}</mat-label>
             <mat-form-field appearance="outline">
-              <mat-select formControlName="businessverticalid" 
+              <mat-select formControlName="businessverticalid"
                 placeholder="{{ln.TXT_BUSINESS_VERTICAL | translate}}">
                 <mat-option *ngFor="let businessvertical of businessverticals;"
                   [value]="businessvertical.businessverticalid">

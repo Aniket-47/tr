@@ -217,6 +217,9 @@
 .mat-form-field-flex {
   display: inline-block;
   width: 90%;
+  .mat-form-field {
+    margin-top: 10px;
+  }
 }
 .update-field-icon {
   margin-right: 14px;

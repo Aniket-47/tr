@@ -12,7 +12,7 @@
   </tr-page-header>
 
   <div class="accordion-container" [@fadeInOut]>
-    <div class="input-container"> 
+    <div class="input-container" *ngIf="!isRoleView"> 
       <div>
         <mat-form-field appearance="outline">
           <mat-label>{{ ln.TXT_ROLE_TYPE | translate }}</mat-label>
@@ -65,9 +65,8 @@
                     {{ eachRight.get("name")?.value || "test" | titlecase }}
                   </div>
                   <div class="accordion-indicator">
-                    {{ ln.TXT_SHOW_ALL | translate }}
-                    {{ eachRight.get("level2")?.value.length }}
-                    {{ ln.TXT_PERMISSIONS | translate }}
+                    {{ln.TXT_SHOW_ALL | translate}} {{eachRight.get('level2')?.value.length}} 
+                    {{ln.TXT_ACTIONS | translate}}
                     <span class="mat-expansion-indicator"></span>
                   </div>
                 </div>
@@ -121,10 +120,8 @@
                             {{ eachLvl3.get("name")?.value | titlecase }}
                           </div>
                           <div class="header-action">
-                            <mat-slide-toggle
-                              color="green"
-                              formControlName="isOn"
-                            ></mat-slide-toggle>
+                            <mat-slide-toggle color="green" formControlName="isOn">
+                            </mat-slide-toggle>
                           </div>
                         </div>
                       </ng-container>
@@ -138,7 +135,7 @@
       </mat-accordion>
     </ng-container>
   </perfect-scrollbar>
-    <div class="action-bottom">
+    <div class="action-bottom" *ngIf="!isRoleView">
       <button
       mat-flat-button
       color="primary"

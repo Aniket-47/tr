@@ -1,6 +1,5 @@
 import { Router } from '@angular/router';
 import { getUserEmail } from './../../../utility/store/selectors/user.selector';
-import { getBusinessVerticle } from './../../../utility/store/selectors/business-vertical.selector';
 import { MatSort } from '@angular/material/sort';
 import { Store } from '@ngrx/store';
 import { MatDrawer } from '@angular/material/sidenav';
@@ -28,12 +27,13 @@ import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { fadeAnimation } from '../../../animations';
 
 
-import { merge, Observable, of as observableOf } from 'rxjs';
+import { merge, of as observableOf } from 'rxjs';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 import { getRoles } from '../../../utility/store/selectors/roles.selector';
-import { FilterService } from '../shared/services/filter.service';
 import { ConfirmationComponent } from '../../../utility/components/confirmation/confirmation.component';
 import { SETTINGS_LN } from '../../shared/settings.lang';
+import { ROUTE_CONFIGS } from '../../../utility/configs/routerConfig';
+import { UserRoleService } from '../shared/services/user-role.service';
 
 @Component({
   selector: 'app-user-manage',
@@ -92,13 +92,13 @@ export class UserManageComponent implements OnInit {
     public dialog: MatDialog,
     private snackBar: SnackBarService,
     private _bottomSheet: MatBottomSheet,
-    private filterServ: FilterService,
+    private userRoleService: UserRoleService,
     private router: Router) {
   }
 
   ngOnInit(): void {
     this.store.select(getRoles).subscribe(roles => {
-      this.role = [{ roletypeid: '', name: this.ln.TXT_ALL}, ...roles];
+      this.role = [{ roletypeid: '', name: this.ln.TXT_ALL }, ...roles];
     });
     this.store.select(getUserEmail).subscribe(email => {
       this.loggedinUserEmail = email;
@@ -227,13 +227,19 @@ export class UserManageComponent implements OnInit {
     })
   }
 
-  deleteUser(email: string) {
+  deleteUser(email: string, i: number) {
     const dialogRef = this.dialog.open(ConfirmationComponent, { width: '500px', });
 
     dialogRef.afterClosed().subscribe(isConfirmed => {
       if (isConfirmed) {
+
+
         this.userServ.deleteUser({ 'email': email }).subscribe(res => {
-          if (res.error) this.snackBar.open(res.message);
+          if (res.error) {
+            this.snackBar.open(res.message);
+            this.dataSource.data.splice(i, 1);
+            this.dataSource = new MatTableDataSource(this.dataSource.data);
+          }
           else this.snackBar.open(res.message);
         });
       }
@@ -257,11 +263,9 @@ export class UserManageComponent implements OnInit {
   }
 
   viewPermission(element: any) {
-    this.toggleUserActionMenu();
-    this.viewUserPermission = true;
-    this.currentUser = element;
-    // this.drawer.open();
-    this.router.navigate(['role'])
+    const data = { selectedRole: { rolename: element.role, roletypeid: element.roletypeid }, isView: true, isEdit: false };
+    this.userRoleService.setCurrentRole(data);
+    this.router.navigate([ROUTE_CONFIGS.VIEW_ROLE]);
   }
 
   viewDetails(element: any) {
@@ -271,7 +275,7 @@ export class UserManageComponent implements OnInit {
     this.drawer.open();
   }
 
-  editUser(element: any,evt?:Event) {
+  editUser(element: any, evt?: Event) {
     evt?.stopPropagation();
     this.currentUser = element;
     this.currentUserEdit = true;
@@ -283,4 +287,9 @@ export class UserManageComponent implements OnInit {
   onHeaderSort() {
     this.sort.sort({ id: this.selectedSort, disableClear: false, start: 'asc' })
   }
+
+  changeStatus(emitted: { status: number, email: string }) {
+    emitted.status == 0 ? this.deactivateUser(emitted.email) : this.activateUser(emitted.email);
+  }
+
 }

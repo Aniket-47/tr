@@ -1,7 +1,10 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { filter, map } from 'rxjs/operators';
 import { fadeAnimation } from '../../../animations';
+import { ROUTE_CONFIGS } from '../../../utility/configs/routerConfig';
 import { SnackBarService } from '../../../utility/services/snack-bar.service';
 import { Irole } from '../../../utility/store/interfaces/role';
 import { State } from '../../../utility/store/reducers';
@@ -16,21 +19,19 @@ import { UserRoleService } from '../shared/services/user-role.service';
   styleUrls: ['./add-role.component.scss'],
   animations: [fadeAnimation]
 })
-export class AddRoleComponent implements OnInit, OnChanges {
+export class AddRoleComponent implements OnInit, OnDestroy {
 
   panelOpenState = false;
 
   defaultRoles!: Irole[];
-  selectedRole!: Irole;
   rights: any[] = [];
-  roleForm: FormGroup;
+  roleForm!: FormGroup;
   accountId!: string;
   isLoading = false;
 
-  @Input() selectedRoleInfo?: { roletypeid: number, rolename: string, accountroleid?: string } | null;
-  @Input() isEdit: boolean = false;
-  @Input('isView') isRoleView: boolean = false;
-  @Output() onRoleSubmit = new EventEmitter<boolean>();
+  selectedRoleInfo?: { roletypeid: number, rolename: string, accountroleid?: string } | null;
+  isEdit: boolean = false;
+  isRoleView: boolean = false;
 
   ln = SETTINGS_LN;
 
@@ -38,12 +39,9 @@ export class AddRoleComponent implements OnInit, OnChanges {
     private userRoleService: UserRoleService,
     private store: Store<State>,
     private snackbarService: SnackBarService,
+    private router: Router,
     private fb: FormBuilder) {
-    this.roleForm = this.fb.group({
-      roleType: ['', [Validators.required]],
-      roleName: ['', [Validators.required]],
-      rights: this.fb.array([]),
-    });
+    this.initForm();
   }
 
   ngOnInit(): void {
@@ -61,36 +59,53 @@ export class AddRoleComponent implements OnInit, OnChanges {
           });
       }
     });
+
+    this.getUserSelectedRole();
   }
 
-  ngOnChanges() {
-    console.log('edit', this.isEdit, 'view', this.isRoleView)
-    this.store.select(getDefaultAccountId).subscribe(accountid => this.accountId = accountid);
-    if (this.selectedRoleInfo?.roletypeid && this.accountId) {
+  ngOnDestroy() {
+    this.userRoleService.resetSelectedRole()
+  }
 
-      if (this.isEdit) {
-        // update form 
-        this.roleForm.patchValue({
-          roleType: this.selectedRoleInfo.roletypeid,
-          roleName: this.selectedRoleInfo.rolename
-        });
-      }
+  getUserSelectedRole() {
+    this.userRoleService.currentRoleData.subscribe(data => {
+      if (data) {
+        console.log(data)
+        this.isRoleView = data.isView;
+        this.isEdit = data.isEdit;
+        this.selectedRoleInfo = data.selectedRole;
+        if (this.selectedRoleInfo?.roletypeid && this.accountId) {
 
-      // remove extra api call bcz we already update form
-      // on form value chage it will get call
-      if (!this.isEdit) {
-        this.userRoleService.getPermissions(this.accountId, `${this.selectedRoleInfo.roletypeid}`)
-          .subscribe((res: any) => {
-            if (!res.error) {
-              this.buildRights(res?.data?.roles?.rights);
-              this.rightsArray.disable();
-            }
-          });
+          if (this.isEdit) {
+            // update form 
+            this.roleForm.patchValue({
+              roleType: this.selectedRoleInfo.roletypeid,
+              roleName: this.selectedRoleInfo.rolename
+            });
+          }
+
+          // remove extra api call bcz we already update form
+          // on form value chage it will get call
+          if (!this.isEdit) {
+            this.userRoleService.getPermissions(this.accountId, `${this.selectedRoleInfo.roletypeid}`)
+              .subscribe((res: any) => {
+                if (!res.error) {
+                  this.buildRights(res?.data?.roles?.rights);
+                  this.rightsArray.disable();
+                }
+              });
+          }
+        }
       }
-    } else {
-      this.roleForm.reset();
-      this.clearRightsForm();
-    }
+    });
+  }
+
+  initForm() {
+    this.roleForm = this.fb.group({
+      roleType: ['', [Validators.required]],
+      roleName: ['', [Validators.required]],
+      rights: this.fb.array([]),
+    });
   }
 
   get roleType(): AbstractControl {
@@ -252,7 +267,7 @@ export class AddRoleComponent implements OnInit, OnChanges {
     }
 
     // for update add accountroleid
-    if (this.isEdit) payload.role['accountroleid'] = this.selectedRoleInfo?.accountroleid;
+    if (this.isEdit) payload['accountroleid'] = this.selectedRoleInfo?.accountroleid;
 
     this.isLoading = true;
 
@@ -265,7 +280,7 @@ export class AddRoleComponent implements OnInit, OnChanges {
         this.isLoading = false;
       }, (err) => this.isLoading = false);
     } else {
-      this.userRoleService.updateRole(payload.role).subscribe((res: any) => {
+      this.userRoleService.updateRole(payload).subscribe((res: any) => {
         if (!res?.error) {
           this.updatePermission(payload2);
           this.snackbarService.open(res?.message, this.ln.TXT_OK);
@@ -281,7 +296,7 @@ export class AddRoleComponent implements OnInit, OnChanges {
         this.snackbarService.open(res?.message, this.ln.TXT_OK);
         this.roleForm.reset();
         this.rightsArray.clear();
-        this.onRoleSubmit.emit(true);
+        this.router.navigate([ROUTE_CONFIGS.ROLES]);
       }
     });
   }
@@ -302,8 +317,4 @@ export class AddRoleComponent implements OnInit, OnChanges {
   onEvent(event: any) {
     event.stopPropagation();
   }
-
-
-
-
 }

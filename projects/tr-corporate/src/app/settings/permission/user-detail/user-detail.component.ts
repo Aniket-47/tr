@@ -1,6 +1,6 @@
 import { getBusinessVerticle } from './../../../utility/store/selectors/business-vertical.selector';
 import { Store } from '@ngrx/store';
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, Output, EventEmitter } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { fadeAnimation } from '../../../animations';
 import { ValidationConstants } from '../../../utility/configs/app.constants';
@@ -34,6 +34,8 @@ export class UserDetailComponent implements OnInit, OnChanges {
 
   @Input() edit: boolean = false;
   @Input() userEmail!: string;
+
+  @Output() statusChange = new EventEmitter();
 
 
   user!: GetUser_response["data"] | null;
@@ -135,6 +137,7 @@ export class UserDetailComponent implements OnInit, OnChanges {
 
   ngOnChanges() {
     this.user = null
+    this.initForm();
     if (this.userEmail)
       this.prefillUser();
   }
@@ -171,8 +174,7 @@ export class UserDetailComponent implements OnInit, OnChanges {
     if (this.editUserForm.valid) {
       this.isLoading = true;
       this.newUser = this.editUserForm.value;
-      this.newUser.roletypename = this.roletypeid.value.name;
-      this.newUser.roletypeid = this.roletypeid.value.roletypeid;
+      this.newUser.roletypename = this.roles.find(e => e.roletypeid == this.newUser.roletypeid)?.name;
       // console.log(this.newUser);
 
       this.userServ.updateUser(this.newUser).subscribe(res => {
@@ -190,6 +192,9 @@ export class UserDetailComponent implements OnInit, OnChanges {
     }
   }
 
+  statusChanged(status: number) {
+    this.statusChange.emit({ status: status, email: this.userEmail })
+  }
 
 
 }
