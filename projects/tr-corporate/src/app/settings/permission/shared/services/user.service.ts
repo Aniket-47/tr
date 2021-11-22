@@ -25,8 +25,8 @@ export class UserService {
   getUser(email: string) {
     return this.http.get<GetUser_response>(`${this.secure_api_routes.GET_USER}?email=${email}`, { headers: { 'email': email } })
   }
-  createUser(accountID: string, data: AddUser_request) {
-    return this.http.post<AddUser_response>(this.secure_api_routes.ADD_USER, data, { headers: { 'accountID': accountID } })
+  createUser(data: AddUser_request) {
+    return this.http.post<AddUser_response>(this.secure_api_routes.ADD_USER, data)
   }
   updateUser(data: UpdateUser_request) {
     return this.http.put<UpdateUser_response>(this.secure_api_routes.UPDATE_USER, data)
