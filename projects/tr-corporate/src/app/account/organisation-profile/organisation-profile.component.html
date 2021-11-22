@@ -18,9 +18,9 @@
           <span *ngIf="shortname.errors?.minlength">{{ln.TXT_SHORT_NAME_MIN5 | translate}}</span>
         </mat-error>
         <mat-error *ngIf="shortname.hasError('customError')">
-          {{ resShortMessage }}
+          {{ resShortMessage | translate }}
         </mat-error>
-        <mat-hint class="green" *ngIf="resShortMessage">{{ resShortMessage }}</mat-hint>
+        <mat-hint class="green" *ngIf="resShortMessage">{{ resShortMessage | translate}}</mat-hint>
       </mat-form-field>
     </div>
   </div>
