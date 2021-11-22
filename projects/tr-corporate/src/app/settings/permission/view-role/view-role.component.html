@@ -64,21 +64,13 @@
             </td>
           </ng-container>
 
-<<<<<<< HEAD
           <!-- Username Column -->
           <ng-container matColumnDef="usercount">
             <th mat-header-cell *matHeaderCellDef> {{ln.TXT_TOTAL_USERS | translate}} </th>
-            <td mat-cell *matCellDef="let element"> <span class="mobile-only grey-text">Total Users :</span>
-              {{element?.usercount || 0}} {{element?.usercount > 1 ? 'Users' : 'User'}}</td>
+            <td mat-cell *matCellDef="let element"> <span
+                class="mobile-only grey-text">{{ln.TXT_TOTAL_USERS | translate}} :</span>
+              {{element?.usercount || 0}} {{element?.usercount > 1 ? ln.TXT_USERS : ln.TXT_USER | translate}}</td>
           </ng-container>
-=======
-            <!-- Username Column -->
-            <ng-container matColumnDef="usercount">
-              <th mat-header-cell *matHeaderCellDef> {{ln.TXT_TOTAL_USERS | translate}} </th>
-              <td mat-cell *matCellDef="let element"> <span class="mobile-only grey-text">{{ln.TXT_TOTAL_USERS | translate}} :</span>
-                {{element?.usercount || 0}} {{element?.usercount > 1 ? ln.TXT_USERS : ln.TXT_USER | translate}}</td>
-            </ng-container>
->>>>>>> 2efbd96940897026b6742c136807a1eeb8aff169
 
           <!-- Last Updated Column -->
           <ng-container matColumnDef="modifiedDatetime">
