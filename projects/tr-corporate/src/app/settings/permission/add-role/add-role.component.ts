@@ -32,6 +32,7 @@ export class AddRoleComponent implements OnInit, OnDestroy {
   selectedRoleInfo?: { roletypeid: number, rolename: string, accountroleid?: string } | null;
   isEdit: boolean = false;
   isRoleView: boolean = false;
+  rightsData: any[] = [];
 
   ln = SETTINGS_LN;
 
@@ -129,6 +130,7 @@ export class AddRoleComponent implements OnInit, OnDestroy {
   }
 
   buildRights(rights: any[]) {
+    this.rightsData = rights;
     if (this.rightsArray.controls.length) this.clearRightsForm();
 
     this.rights = rights.map((e: any) => {
@@ -200,26 +202,53 @@ export class AddRoleComponent implements OnInit, OnDestroy {
     this.rightsArray.clear();
   }
 
-  toggleAllLvl(rightIndex: number) {
+  onLvl1Toggle(rightIndex: number) {
     const currentRightStatus = !!this.rightsArray.controls[rightIndex].get('isOn')?.value;
     const isThereLevel2 = !!this.rightsArray.controls[rightIndex].get('level2')?.value;
-    if (isThereLevel2) {
+    console.log({ currentRightStatus })
+
+    if (isThereLevel2 && currentRightStatus) {
       // level 2 toggle
       const lvl2Arr = this.getLvl2Array(rightIndex);
       lvl2Arr.controls.forEach((e, index) => {
-        e.get('isOn')?.setValue(!currentRightStatus);
+        e.get('isOn')?.setValue(false);
 
         // level 3 toggle
         const isThereLevel3 = e.get('level3')?.value;
-        if (isThereLevel3) this.toggleLvl3(rightIndex, index, currentRightStatus);
+        if (isThereLevel3) this.toggleLvl3(rightIndex, index, false);
       });
+    }
+  }
+
+  resetToDefault() {
+    if (this.rightsData) {
+      this.clearRightsForm();
+      this.buildRights(this.rightsData);
+    }
+  }
+
+
+  toggleAllLvl(rightIndex: number, lvl2Index: number, lvl3Index: number) {
+    const isLvl3StatusOn: boolean = this.getLvl3Array(rightIndex, lvl2Index).controls[lvl3Index].get('isOn')?.value;
+
+    if (!isLvl3StatusOn) {
+      this.rightsArray.controls[rightIndex].get('isOn')?.setValue(true);
+      this.getLvl2Array(rightIndex).controls[lvl2Index].get('isOn')?.setValue(true);
+    }
+  }
+
+  onToggleLvl2(rightIndex: number, lvl2Index: number) {
+    const isLvl2StatusOn: boolean = this.getLvl2Array(rightIndex).controls[lvl2Index].get('isOn')?.value;
+
+    if (!isLvl2StatusOn) {
+      this.rightsArray.controls[rightIndex].get('isOn')?.setValue(true);
     }
   }
 
   toggleLvl3(rightIndex: number, lvl2Index: number, status: boolean) {
     const lvl3Arr = this.getLvl3Array(rightIndex, lvl2Index);
     lvl3Arr.controls.forEach(e => {
-      e.get('isOn')?.setValue(!status);
+      e.get('isOn')?.setValue(status);
     });
   }
 

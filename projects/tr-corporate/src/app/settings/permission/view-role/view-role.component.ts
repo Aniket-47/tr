@@ -57,9 +57,9 @@ export class ViewRoleComponent implements OnInit, AfterViewInit {
   //   { value: '1', viewValue: 'Super Admin' }
   // ];
   sortby = [
-    { value: 'rolename', viewValue: this.ln.TXT_SORT_BY_ADDED_ROLE_NAME },
+    { value: 'rolename', viewValue: this.ln.TXT_ROLE_NAME },
     // { value: 'usercount', viewValue: this.ln.TXT_SORT_BY_ADDED_USER_COUNT },
-    { value: 'modifiedDatetime', viewValue: this.ln.TXT_SORT_BY_ADDED_LAST_UPDATED }
+    { value: 'modifiedDatetime', viewValue: this.ln.TXT_LAST_UPDATED }
   ];
   // selectedStatus = this.status[0].value;
   // selectedRole = this.role[0].value;
