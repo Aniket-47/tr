@@ -235,12 +235,12 @@ export class UserManageComponent implements OnInit {
 
 
         this.userServ.deleteUser({ 'email': email }).subscribe(res => {
-          if (res.error) {
+          if (res.error) this.snackBar.open(res.message);
+          else {
             this.snackBar.open(res.message);
             this.dataSource.data.splice(i, 1);
             this.dataSource = new MatTableDataSource(this.dataSource.data);
           }
-          else this.snackBar.open(res.message);
         });
       }
     });
