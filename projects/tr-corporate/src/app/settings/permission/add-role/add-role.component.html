@@ -8,7 +8,11 @@
       <h2 *ngIf="isEdit">{{ ln.TXT_UPDATE_ROLE | translate }}</h2>
       <h2 *ngIf="isRoleView">{{ selectedRoleInfo?.rolename || '' | translate }}</h2>
     </div>
-    <!-- <div page-action class="header-action" *ngIf="!isRoleView"></div> -->
+    <div page-action class="header-action">
+      <button mat-stroked-button class="default">
+       <span class="icon-mc mc-star-2"></span> Set Default 
+      </button>
+    </div>
   </tr-page-header>
 
   <div class="accordion-container" [@fadeInOut]>
