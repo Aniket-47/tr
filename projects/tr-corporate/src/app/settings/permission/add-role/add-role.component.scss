@@ -6,7 +6,15 @@
     // align-items: flex-start;
 }
 .accordion-container {
-    @include margin-top(1rem);    
+    @include margin-top(1rem); 
+    ::ng-deep .mat-accordion{
+        display: block;
+        height: calc(100vh - 315px);
+        @include media-breakpoint-down(md) {
+            height: calc(100vh - 360px);
+        }
+    }   
+    
     .mat-expansion-panel {
         box-shadow: none;
         border: 1px solid #EBEAED;
@@ -45,7 +53,11 @@
             background: #fcfcfc;
         }
     }
-    
+   .mat-expansion-panel-header-title {
+        @include media-breakpoint-down(md) {
+            width: 100%;
+        }
+    }
     .inner-content {
         .mat-expansion-panel {
             border-left: 0;
@@ -165,4 +177,25 @@
     ::ng-deep mat-select {
         font-weight: 600 !important;
     }
+}
+.input-container{
+    display: flex;
+    gap: 12px;
+    @include media-breakpoint-down(md) {
+        display: block;
+    }
+    .mat-form-field {
+        @include media-breakpoint-up(md) {
+            width: 320px;
+        }
+       
+    }
+    ::ng-deep .mat-form-field-appearance-outline .mat-form-field-wrapper {
+        margin: 0;
+    }
+}   
+
+.action-bottom{
+    text-align: right;
+    margin-top: 15px;
 }
