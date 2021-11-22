@@ -225,11 +225,12 @@
           <div class="mat-form-field-flex">
             <mat-label>{{ln.TXT_ROLE | translate}}</mat-label>
             <mat-form-field appearance="outline">
-              <mat-select formControlName="roletypeid">
-                <mat-option *ngFor="let role of roles;" [value]="role">
+              <mat-select *ngIf="user?.roletypeid!=1" formControlName="roletypeid">
+                <mat-option *ngFor="let role of roles;" [value]="role.roletypeid">
                   {{role.name}}
                 </mat-option>
               </mat-select>
+              <!-- <input *ngIf="user?.roletypeid==1" matInput value="{{ ln.TXT_ROLE_OWNER | translate }}"> -->
             </mat-form-field>
           </div>
 

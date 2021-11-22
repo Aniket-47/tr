@@ -222,15 +222,15 @@
                   <mat-menu #menu="matMenu" backdropClass="profile-dropdown">
                     <div class="user-dropdown-submenu">
                       <button mat-menu-item
-                        (click)="currentUser = element; currentUserEdit=false; viewUserPermission=false; drawer.toggle()">
+                        (click)="viewDetails(element)">
                         <i class="icon-mc mc-visibility"></i> <span>{{ln.TXT_VIEW_DETAILS | translate}}</span>
                       </button>
-                      <button mat-menu-item (click)="currentUser = element; viewUserPermission=true; drawer.toggle()">
+                      <button mat-menu-item (click)="viewPermission(element)">
                         <i class="icon-mcf mcf-chrome_reader_mode"></i> <span>{{ln.TXT_VIEW_PERMISSION |
                           translate}}</span>
                       </button>
                       <button mat-menu-item
-                        (click)="currentUser = element; currentUserEdit= true; viewUserPermission=true; drawer.toggle()">
+                        (click)="editUser(element)">
                         <i class="icon-mc mc-create"></i> <span>{{ln.TXT_EDIT_USER | translate}}</span>
                       </button>
                       <button mat-menu-item *ngIf="element.status==0" (click)="activateUser(element.email)">
