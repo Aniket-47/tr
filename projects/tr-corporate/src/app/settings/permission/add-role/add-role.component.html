@@ -47,14 +47,15 @@
                 <div class="accordion-title">
                   <div>{{eachRight.get('name')?.value || 'test' | titlecase}}</div>
                   <div class="accordion-indicator">
-                    {{ln.TXT_SHOW_ALL | translate}} {{eachRight.get('level2')?.value.length}} {{ln.TXT_PERMISSIONS | translate}}
+                    {{ln.TXT_SHOW_ALL | translate}} {{eachRight.get('level2')?.value.length}}
+                    {{ln.TXT_PERMISSIONS | translate}}
                     <span class="mat-expansion-indicator"></span>
                   </div>
                 </div>
               </mat-panel-title>
               <mat-panel-description>
 
-                <mat-slide-toggle color="green" formControlName="isOn" (click)="toggleAllLvl(i)"></mat-slide-toggle>
+                <mat-slide-toggle color="green" formControlName="isOn" (click)="onLvl1Toggle()"></mat-slide-toggle>
               </mat-panel-description>
             </mat-expansion-panel-header>
 
@@ -68,8 +69,7 @@
                         <span class="icon-mc mc-keyboard_arrow_down"></span>
                       </mat-panel-title>
                       <mat-panel-description>
-                        <mat-slide-toggle color="green" formControlName="isOn"
-                          (click)="toggleLvl3(i, l2, eachLvl2.get('isOn')?.value)">
+                        <mat-slide-toggle color="green" formControlName="isOn" (click)="onToggleLvl2(i, l2)">
                         </mat-slide-toggle>
                       </mat-panel-description>
                     </mat-expansion-panel-header>
@@ -79,7 +79,7 @@
                           *ngFor="let eachLvl3 of getLvl3Array(i, l2)?.controls; let l3 = index" [formGroupName]="l3">
                           <div class="role-title">{{eachLvl3.get('name')?.value | titlecase}}</div>
                           <div class="header-action">
-                            <mat-slide-toggle color="green" formControlName="isOn">
+                            <mat-slide-toggle color="green" formControlName="isOn" (click)="toggleAllLvl(i, l2, l3)">
                             </mat-slide-toggle>
                           </div>
                         </div>

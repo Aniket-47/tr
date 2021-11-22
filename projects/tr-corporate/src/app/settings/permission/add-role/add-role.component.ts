@@ -200,19 +200,43 @@ export class AddRoleComponent implements OnInit, OnDestroy {
     this.rightsArray.clear();
   }
 
-  toggleAllLvl(rightIndex: number) {
-    const currentRightStatus = !!this.rightsArray.controls[rightIndex].get('isOn')?.value;
-    const isThereLevel2 = !!this.rightsArray.controls[rightIndex].get('level2')?.value;
-    if (isThereLevel2) {
-      // level 2 toggle
-      const lvl2Arr = this.getLvl2Array(rightIndex);
-      lvl2Arr.controls.forEach((e, index) => {
-        e.get('isOn')?.setValue(!currentRightStatus);
+  onLvl1Toggle() {
 
-        // level 3 toggle
-        const isThereLevel3 = e.get('level3')?.value;
-        if (isThereLevel3) this.toggleLvl3(rightIndex, index, currentRightStatus);
-      });
+  }
+
+  reset() {
+
+  }
+
+
+  toggleAllLvl(rightIndex: number, lvl2Index: number, lvl3Index: number) {
+    const isLvl3StatusOn: boolean = this.getLvl3Array(rightIndex, lvl2Index).controls[lvl3Index].get('isOn')?.value;
+
+    if (!isLvl3StatusOn) {
+      this.rightsArray.controls[rightIndex].get('isOn')?.setValue(true);
+      this.getLvl2Array(rightIndex).controls[lvl2Index].get('isOn')?.setValue(true);
+    }
+
+    // const currentRightStatus = !!this.rightsArray.controls[rightIndex].get('isOn')?.value;
+    // const isThereLevel2 = !!this.rightsArray.controls[rightIndex].get('level2')?.value;
+    // if (isThereLevel2) {
+    //   // level 2 toggle
+    //   const lvl2Arr = this.getLvl2Array(rightIndex);
+    //   lvl2Arr.controls.forEach((e, index) => {
+    //     e.get('isOn')?.setValue(!currentRightStatus);
+
+    //     // level 3 toggle
+    //     const isThereLevel3 = e.get('level3')?.value;
+    //     if (isThereLevel3) this.toggleLvl3(rightIndex, index, currentRightStatus);
+    //   });
+    // }
+  }
+
+  onToggleLvl2(rightIndex: number, lvl2Index: number) {
+    const isLvl2StatusOn: boolean = this.getLvl2Array(rightIndex).controls[lvl2Index].get('isOn')?.value;
+
+    if (!isLvl2StatusOn) {
+      this.rightsArray.controls[rightIndex].get('isOn')?.setValue(true);
     }
   }
 
