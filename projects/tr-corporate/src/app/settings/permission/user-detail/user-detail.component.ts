@@ -184,7 +184,6 @@ export class UserDetailComponent implements OnInit, OnChanges {
         else {
           // success from api
           this.snackBar.open(res.message);
-
         }
 
       })

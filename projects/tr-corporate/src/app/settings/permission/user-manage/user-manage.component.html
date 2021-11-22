@@ -62,14 +62,14 @@
         </div>
         <div class="table-action cloud-only">
           <mat-form-field appearance="outline">
-            <mat-select [(ngModel)]="selectedStatus" placeholder="Select Status" (ngModelChange)="loadUsers()">
+            <mat-select [(ngModel)]="selectedStatus" placeholder="{{ln.TXT_SELECT_STATUS | translate}}" (ngModelChange)="loadUsers()">
               <mat-option *ngFor="let item of status" [value]="item.value">
                 {{item.viewValue | translate}}
               </mat-option>
             </mat-select>
           </mat-form-field>
           <mat-form-field appearance="outline">
-            <mat-select [(ngModel)]="selectedRole" placeholder="Select Role" (ngModelChange)="loadUsers()">
+            <mat-select [(ngModel)]="selectedRole" placeholder="{{ln.TXT_SELECT_ROLE | translate}}" (ngModelChange)="loadUsers()">
               <mat-option *ngFor="let item of role" [value]="item.roletypeid">
                 {{item.name | translate}}
               </mat-option>
