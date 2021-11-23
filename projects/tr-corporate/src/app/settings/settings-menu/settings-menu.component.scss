@@ -60,11 +60,15 @@ tr-brief-newline-card{
   @include margin-top(1rem !important) ;
   overflow: hidden;
   text-overflow: ellipsis;
+  line-height: 1.6;
 }
 .p-fnts{
   font-size: $fs-default;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+::ng-deep .mc-card-subtitle{
+  margin-top: 5px;
 }
 .col-sm-3 {
   @media (min-width: 576px)
