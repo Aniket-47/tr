@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { fadeAnimation } from '../../animations';
 import { userRoles } from '../../utility/configs/app.constants';
 import { SnackBarService } from '../../utility/services/snack-bar.service';
-import { setUserMobile, setUserName } from '../../utility/store/actions/user.action';
+import { setUserFullName, setUserMobile, setUserName } from '../../utility/store/actions/user.action';
 import { State } from '../../utility/store/reducers';
 import { getUserDeatils } from '../../utility/store/selectors/user.selector';
 import { ACCOUNT_LN } from '../shared/account.lang';
@@ -103,8 +103,9 @@ export class ManageProfileComponent implements OnInit {
       } else {
         // update store
         this.store.dispatch(setUserMobile({ data: value.mobilenumber }));
+        this.store.dispatch(setUserFullName({ data: `${value.firstName} ${value.middleName} ${value.lastName}` }))
         this.store.dispatch(setUserName({ data: { firstName: value.firstName, middleName: value.middleName, lastName: value.lastName } }));
-        this.snackbarServ.open(this.ln.TXT_SUCCESSFULLY_ADDED, this.ln.TXT_OK );
+        this.snackbarServ.open(this.ln.TXT_SUCCESSFULLY_ADDED, this.ln.TXT_OK);
         // this.userForm.reset();        
       }
       this.isLoading = false;

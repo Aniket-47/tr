@@ -1,5 +1,4 @@
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { TranslatePipe } from '@mucrest/ng-core';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { fadeAnimation } from '../../animations';
@@ -15,6 +14,7 @@ import { SETTINGS_LN } from '../shared/settings.lang';
 export class SettingsSideMenuComponent implements OnInit {
 
   ln = SETTINGS_LN;
+  @Output() navigateEvent = new EventEmitter<any>();
 
   public config: PerfectScrollbarConfigInterface = {
     suppressScrollX: true
@@ -189,5 +189,9 @@ export class SettingsSideMenuComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onNavigate() {
+    this.navigateEvent.emit()
   }
 }

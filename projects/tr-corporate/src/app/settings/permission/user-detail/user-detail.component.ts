@@ -47,6 +47,7 @@ export class UserDetailComponent implements OnInit, OnChanges {
 
   ln = SETTINGS_LN;
 
+  isDisabled = false;
 
   constructor(private fb: FormBuilder, private userServ: UserService, private snackBar: SnackBarService, private store: Store<State>) {
 
@@ -149,6 +150,7 @@ export class UserDetailComponent implements OnInit, OnChanges {
   }
 
   prefillUser() {
+    this.isDisabled = true;
     // this.editUserForm.patchValue(
     //   {
     //     firstname: this.user.fullname,
@@ -159,6 +161,7 @@ export class UserDetailComponent implements OnInit, OnChanges {
 
     this.userServ.getUser(this.userEmail).subscribe(res => {
       if (!res.error) {
+        this.isDisabled = false;
         this.user = res.data;
         this.editUserForm.patchValue(res.data);
         this.store.select(getUserEmail).subscribe(email => {

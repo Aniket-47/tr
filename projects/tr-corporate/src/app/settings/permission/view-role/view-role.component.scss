@@ -129,10 +129,10 @@ table.mat-table {
         font-weight: 400;
     }
 }
-.user-dropdown-submenu {
-    ::ng-deep {
-        .mat-menu-item[disabled] {
-            cursor:not-allowed !important;
-        }
-    }
-}
+// .user-dropdown-submenu {
+//     ::ng-deep {
+//         .mat-menu-item[disabled] {
+//             cursor:not-allowed !important;
+//         }
+//     }
+// }

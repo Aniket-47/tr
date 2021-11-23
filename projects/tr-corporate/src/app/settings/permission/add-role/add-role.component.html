@@ -50,7 +50,7 @@
       </div>
     </div>
     <perfect-scrollbar>
-      <ng-container formArrayName="rights">
+      <ng-container formArrayName="rights" class="mt-3">
         <mat-accordion *ngIf="rightsArray.controls.length">
           <ng-container *ngFor="let eachRight of rightsArray.controls; let i = index" [formGroupName]="i">
             <mat-expansion-panel hideToggle>

@@ -1,52 +1,59 @@
 <div class="mat-drawer-panel">
-    <div class="mat-drawer-panel-header">
-        <div class="user-avater">
-          <ng-content select=[image]></ng-content>
-        <!-- <img class="circle" src="assets/img/profile.png"> -->
-        </div>
-        <div class="user-info">
-        <span class="user-info__name">
-          <!-- Daniel Jones -->
-          <ng-content select=[name]></ng-content>
-        </span>
-        <span class="user-info__email">
-          <!-- daniel@gmail.com -->
-          <ng-content select=[email]></ng-content>
-        </span>
-        </div>
-        <button mat-icon-button color="theme" class="ml-auto">
-            <span class="icon-mc mc-settings" [routerLink]="routerConfig.ACCOUNT_MANAGE_PROFILE"></span>
-        </button>
+  <div class="mat-drawer-panel-header">
+    <div class="user-avater">
+      <ng-content select=[image]></ng-content>
+      <!-- <img class="circle" src="assets/img/profile.png"> -->
+    </div>
+    <div class="user-info">
+      <span class="user-info__name">
+        <!-- Daniel Jones -->
+        <ng-content select=[name]></ng-content>
+      </span>
+      <span class="user-info__email">
+        <!-- daniel@gmail.com -->
+        <ng-content select=[email]></ng-content>
+      </span>
+    </div>
+    <button mat-icon-button color="theme" class="ml-auto" (click)="onNavigate()"
+      [routerLink]="routerConfig.ACCOUNT_MANAGE_PROFILE" routerLinkActive="active">
+      <span class="icon-mc mc-settings"></span>
+    </button>
   </div>
   <div class="mat-drawer-panel-header-menu">
     <mat-accordion>
-        <mat-expansion-panel (opened)="panelOpenState = true"
-                             (closed)="panelOpenState = false">
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-                <span class="icon-mc mc-layers"></span>
-               <span> Accounts</span>
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-          <div class="mat-drawer-panel-header-menu-item">
-            <!-- <a routerLink="" routerLinkActive=""><span class="icon-mc mc-folder"></span> <span> {{items.account}} </span></a>> -->
-            <ng-content select=[account-lists]></ng-content>
-          </div>
-        </mat-expansion-panel>
-      </mat-accordion>
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <span class="icon-mc mc-layers"></span>
+            <span> Accounts</span>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="mat-drawer-panel-header-menu-item">
+          <!-- <a routerLink="" routerLinkActive=""><span class="icon-mc mc-folder"></span> <span> {{items.account}} </span></a>> -->
+          <ng-content select=[account-lists]></ng-content>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
 
   </div>
   <div class="mat-drawer-panel-menu">
-    <a [routerLink]="routerConfig.DASHBOARD" routerLinkActive=""><span class="icon-mc mc-home"></span> <span>Home</span></a>
-    <a routerLink="" routerLinkActive=""><span class="icon-mc mc-work_outline"></span> <span>Jobs</span></a>
-    <a routerLink="" routerLinkActive=""><span class="icon-mc mc-group"></span> <span>Candidates</span></a>
-    <a routerLink="" routerLinkActive=""><span class="icon-mc mc-insert_chart_outlined"></span> <span>Analytics</span></a>
+    <a [routerLink]="routerConfig.DASHBOARD" routerLinkActive="" (click)="onNavigate()"><span
+        class="icon-mc mc-home"></span>
+      <span>Home</span></a>
+    <a routerLink="" routerLinkActive="" (click)="onNavigate()"><span class="icon-mc mc-work_outline"></span>
+      <span>Jobs</span></a>
+    <a routerLink="" routerLinkActive="" (click)="onNavigate()"><span class="icon-mc mc-group"></span>
+      <span>Candidates</span></a>
+    <a routerLink="" routerLinkActive="" (click)="onNavigate()"><span class="icon-mc mc-insert_chart_outlined"></span>
+      <span>Analytics</span></a>
     <!-- <a routerLink="" routerLinkActive=""><span class="icon-mc mc-inbox"></span> <span>Inbox</span></a> -->
-    <a [routerLink]="routerConfig.SETTINGS_DASHBOARD" routerLinkActive=""><span class="icon-mc mc-sliders"></span> <span>Settings</span></a>
+    <a [routerLink]="routerConfig.SETTINGS_DASHBOARD" routerLinkActive="active" (click)="onNavigate()"><span
+        class="icon-mc mc-sliders"></span>
+      <span>Settings</span></a>
   </div>
   <div class="mat-drawer-panel-footer" (click)="mLogOut()">
     <a class="ml-auto">
-        <span class="icon-mc mc-power_settings_new"></span> <span>Signout</span>
+      <span class="icon-mc mc-power_settings_new"></span> <span>Signout</span>
     </a>
   </div>
 </div>
