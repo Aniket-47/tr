@@ -23,6 +23,8 @@ export class SettingsSideMenuComponent implements OnInit {
   parents = [
     {
       name: this.ln.TXT_PERMISSIONS,
+      link: "./permission",
+      activeOption: false,
       child: [
         {
           name: this.ln.TXT_USER_MANAGEMENT,
@@ -38,6 +40,8 @@ export class SettingsSideMenuComponent implements OnInit {
     },
     {
       name: this.ln.TXT_TEMPLATE,
+      link: "./",
+      activeOption: true,
       child: [
         {
           name: this.ln.TXT_USER_MANAGEMENT,
@@ -52,6 +56,8 @@ export class SettingsSideMenuComponent implements OnInit {
     },
     {
       name: this.ln.TXT_INTEGRATION,
+      link: "./",
+      activeOption: true,
       child: [
         {
           name: this.ln.TXT_USER_MANAGEMENT,
@@ -66,6 +72,8 @@ export class SettingsSideMenuComponent implements OnInit {
     },
     {
       name: this.ln.TXT_CONFIGURATION,
+      link: "./",
+      activeOption: true,
       child: [
         {
           name: this.ln.TXT_USER_MANAGEMENT,
@@ -80,6 +88,8 @@ export class SettingsSideMenuComponent implements OnInit {
     },
     {
       name: this.ln.TXT_BILLING,
+      link: "./",
+      activeOption: true,
       child: [
         {
           name: this.ln.TXT_USER_MANAGEMENT,
@@ -94,6 +104,8 @@ export class SettingsSideMenuComponent implements OnInit {
     },
     {
       name: this.ln.TXT_CANDIDATE_PORTAL,
+      link: "./",
+      activeOption: true,
       child: [
         {
           name: this.ln.TXT_USER_MANAGEMENT,
@@ -108,6 +120,8 @@ export class SettingsSideMenuComponent implements OnInit {
     },
     {
       name: this.ln.TXT_VENDOR_PORTAL,
+      link: "./",
+      activeOption: true,
       child: [
         {
           name: this.ln.TXT_USER_MANAGEMENT,
@@ -122,6 +136,8 @@ export class SettingsSideMenuComponent implements OnInit {
     },
     {
       name: this.ln.TXT_EMPLOYEE_PORTAL,
+      link: "./",
+      activeOption: true,
       child: [
         {
           name: this.ln.TXT_USER_MANAGEMENT,
@@ -136,6 +152,8 @@ export class SettingsSideMenuComponent implements OnInit {
     },
     {
       name: this.ln.TXT_CAREER_PAGE_BUILDER,
+      link: "./",
+      activeOption: true,
       child: [
         {
           name: this.ln.TXT_USER_MANAGEMENT,
@@ -150,6 +168,8 @@ export class SettingsSideMenuComponent implements OnInit {
     },
     {
       name: this.ln.TXT_GDPR,
+      link: "./",
+      activeOption: true,
       child: [
         {
           name: this.ln.TXT_USER_MANAGEMENT,

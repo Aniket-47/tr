@@ -137,7 +137,7 @@
             <span *ngIf="cnfPass.errors?.required">
               Confirm Password is required
             </span>
-            <span *ngIf="!registerForm.errors?.passMatch">
+            <span *ngIf="!registerForm.errors?.passMatch && !cnfPass.errors?.required">
               Confirm Password does not match.
             </span>
             <!-- <span *ngIf="!cnfPass.errors?.required && (cnfPass.value!=password.value)">

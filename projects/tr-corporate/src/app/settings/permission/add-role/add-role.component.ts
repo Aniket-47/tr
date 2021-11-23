@@ -83,7 +83,7 @@ export class AddRoleComponent implements OnInit, OnDestroy {
         this.selectedRoleInfo = data.selectedRole;
         if (this.selectedRoleInfo?.roletypeid && this.accountId) {
 
-          // update form 
+          // update form
           if (this.isEdit) this.updateForm();
 
           // remove extra api call bcz we already update form
@@ -119,7 +119,7 @@ export class AddRoleComponent implements OnInit, OnDestroy {
   }
 
   updateForm() {
-    // update form 
+    // update form
     this.roleForm.patchValue({
       roleType: this.selectedRoleInfo?.roletypeid,
       roleName: this.selectedRoleInfo?.rolename
@@ -319,18 +319,18 @@ export class AddRoleComponent implements OnInit, OnDestroy {
 
     if (!this.isEdit) {
       this.userRoleService.saveRole(payload, this.accountId).subscribe((res: any) => {
-        if (!res?.error) {
+        if (!res?.error)
           this.updatePermission(payload2);
-          this.snackbarService.open(res?.message, this.ln.TXT_OK);
-        }
+
+        this.snackbarService.open(res?.message, this.ln.TXT_OK);
         this.isLoading = false;
       }, (err) => this.isLoading = false);
     } else {
       this.userRoleService.updateRole(payload).subscribe((res: any) => {
-        if (!res?.error) {
+        if (!res?.error)
           this.updatePermission(payload2);
-          this.snackbarService.open(res?.message, this.ln.TXT_OK);
-        }
+
+        this.snackbarService.open(res?.message, this.ln.TXT_OK);
         this.isLoading = false;
       }, (err) => this.isLoading = false);
     }
