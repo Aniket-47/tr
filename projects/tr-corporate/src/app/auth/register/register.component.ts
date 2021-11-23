@@ -12,9 +12,10 @@ import {
 import { ErrorStateMatcher } from '@angular/material/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { LstorageService } from '@tr/src/app/utility/services/lstorage.service';
 import { RouterConfigService } from '@tr/src/app/utility/services/routeGuards/router-config.service';
 import { fadeAnimation } from '../../animations';
-import { ValidationConstants } from '../../utility/configs/app.constants';
+import { LSkeys, ValidationConstants } from '../../utility/configs/app.constants';
 import { ROUTE_CONFIGS } from '../../utility/configs/routerConfig';
 import { SnackBarService } from '../../utility/services/snack-bar.service';
 import { AuthService } from '../services/auth.service';
@@ -97,7 +98,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
     private authService: AuthService,
     private route: ActivatedRoute,
     private snackbarServie: SnackBarService,
-    private store: Store<Iauth>) {
+    private store: Store<Iauth>,
+    private lsServ: LstorageService) {
     this.store.dispatch(setStepperShow({ data: true }));
     // this.config = configServ.routerconfig;
   }
@@ -163,7 +165,12 @@ export class RegisterComponent implements OnInit, OnDestroy {
     this.authService.register(payload).subscribe(res => {
       this.isLoading = false;
       if (res) {
-        if (!res.error) this.router.navigate([ROUTE_CONFIGS.REGISTER_SUCCESS]);
+        if (!res.error) {
+          this.router.navigate([ROUTE_CONFIGS.REGISTER_SUCCESS]);
+          this.lsServ.store(LSkeys.REGISTERED_EMAIL, payload.email);
+          this.lsServ.store(LSkeys.USER_EMAIL,payload.email);
+          this.lsServ.store(LSkeys.USER_NAME,payload.firstname);
+        }
         if (res.error) {
           this.snackbarServie.open(res?.message, "Ok", 0);
         }
