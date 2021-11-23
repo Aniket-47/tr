@@ -32,7 +32,7 @@
             </mat-form-field> -->
         <mat-form-field appearance="outline" class="short-wrapper">
           <span class="sort-by font-600">{{ln.TXT_SORT_BY | translate}}:</span>
-          <mat-select [(ngModel)]="selectedSort" (ngModelChange)="onHeaderSort()">
+          <mat-select disableOptionCentering [(ngModel)]="selectedSort" (ngModelChange)="onHeaderSort()">
             <mat-option *ngFor="let item of sortby" [value]="item.value">
               <span class="font-500 text-muted">{{item.viewValue | translate}}</span>
             </mat-option>
