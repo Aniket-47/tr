@@ -82,7 +82,7 @@
             <div class="common-div">
               <span class="icon-mc mc-person"></span>
               <div class="d-flex flex-column">
-                <mat-label>{{ ln.TXT_FULL_NAME }}</mat-label>
+                <mat-label>{{ ln.TXT_FULL_NAME | translate }}</mat-label>
                 <span class="value">
                   <ng-container *ngIf="user">
                     {{ user?.firstname +' '+ user?.middlename+' '+user?.lastname }}
@@ -94,7 +94,7 @@
             <div class="common-div">
               <span class="icon-mc mc-local_post_office"></span>
               <div class="d-flex flex-column">
-                <mat-label>{{ ln.TXT_EMAIL }}</mat-label>
+                <mat-label>{{ ln.TXT_EMAIL | translate }}</mat-label>
                 <span class="value">{{ user?.email }}</span>
               </div>
             </div>
