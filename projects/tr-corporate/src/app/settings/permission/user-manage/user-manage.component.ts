@@ -205,6 +205,11 @@ export class UserManageComponent implements OnInit {
       if (res.error) {
         // error from api
         this.snackBar.open(res.message);
+        const updateditem = this.dataSource.data.find(e => e.email == email);
+        const index = this.dataSource.data.indexOf(updateditem);
+        this.dataSource.data[index] = { ...{ status: 0 } };
+
+        this.dataSource = new MatTableDataSource(this.dataSource.data);
       }
       else {
         // success from api
@@ -219,6 +224,11 @@ export class UserManageComponent implements OnInit {
       if (res.error) {
         // error from api
         this.snackBar.open(res.message);
+        const updateditem = this.dataSource.data.find(e => e.email == email);
+        const index = this.dataSource.data.indexOf(updateditem);
+        this.dataSource.data[index] = { ...{ status: 1 } };
+
+        this.dataSource = new MatTableDataSource(this.dataSource.data);
       }
       else {
         // success from api
