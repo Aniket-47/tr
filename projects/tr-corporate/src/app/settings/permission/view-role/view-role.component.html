@@ -69,7 +69,8 @@
                     'nh': element?.roletypeid === 9 ,
                     'hr': element?.roletypeid === 3
                 }">
-                <span>{{element.rolename | translate}}</span>
+                <span *ngIf="element.isdefaultrole === 1">{{element.rolename | translate}}</span>
+                <span *ngIf="element.isdefaultrole === 0">{{element.name}}</span>
               </mat-label>
             </td>
           </ng-container>
