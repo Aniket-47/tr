@@ -1,6 +1,6 @@
 <mat-drawer-container>
   <mat-drawer #drawer mode="over" [autoFocus]="false">
-    <tr-m-header (logOutEvent)="logout()">
+    <tr-m-header (logOutEvent)="logout()" (navigateEvent)="drawer.close()">
       <img class="circle" src="assets/img/profile.png" image>
       <!-- <span class="user-avatar" *ngIf="userName" image>{{userName.split('')[0] }}</span> -->
       <span name> {{userName }} </span>
@@ -87,8 +87,7 @@
       </a>
     </div>
     <div top class="border-bottom side-nav-hvr">
-      <a [routerLink]="routerConfig.DASHBOARD" routerLinkActive="active" 
-        [routerLinkActiveOptions]="{exact: true}"
+      <a [routerLink]="routerConfig.DASHBOARD" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
         matTooltip="{{ln.TXT_HOME | translate}}" matTooltipPosition='right'>
         <span class="icon-mc mc-home"></span>
       </a>
@@ -103,7 +102,7 @@
       <a matTooltip="{{ln.TXT_ANALYTICS | translate}}" matTooltipPosition='right'>
         <span class="icon-mc mc-pie_chart_outlined"></span>
       </a>
-      <a [routerLink]="routerConfig.SETTINGS_DASHBOARD" routerLinkActive="active" 
+      <a [routerLink]="routerConfig.SETTINGS_DASHBOARD" routerLinkActive="active"
         matTooltip="{{ln.TXT_SETTINGS | translate}}" matTooltipPosition='right'>
         <span class="icon-mc mc-sliders"></span>
       </a>

@@ -1,6 +1,6 @@
 <mat-drawer-container autosize>
   <mat-drawer #drawer [mode]="drawerMode">
-    <app-settings-side-menu></app-settings-side-menu>
+    <app-settings-side-menu (navigateEvent)="drawer.close()"></app-settings-side-menu>
   </mat-drawer>
   <div class="sidenav-content">
     <router-outlet></router-outlet>
