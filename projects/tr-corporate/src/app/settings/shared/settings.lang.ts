@@ -31,6 +31,7 @@ export enum SETTINGS_LN {
   TXT_SUBMIT = "TXT_SUBMIT",
   TXT_SHOW_ALL = "TXT_SHOW_ALL",
   TXT_OK = "TXT_OK",
+  TXT_ACTION = "TXT_ACTION",
   TXT_ACTIONS = "TXT_ACTIONS",
 
   //permission > add-user

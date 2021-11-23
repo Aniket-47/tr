@@ -2,15 +2,20 @@
   <tr-page-header class="add-role">
     <div page-title>
       <!-- <h5 class="mobile-only">Permissions</h5> -->
-      <h2 *ngIf="!isRoleView && !isEdit">
-        {{ ln.TXT_CREATE_NEW_ROLE | translate }}
-      </h2>
-      <h2 *ngIf="isEdit">{{ ln.TXT_UPDATE_ROLE | translate }}</h2>
-      <h2 *ngIf="isRoleView">{{ selectedRoleInfo?.rolename || '' | translate }}</h2>
+      <div class="d-flex align-items-center">
+        <h2 *ngIf="!isRoleView && !isEdit">
+          {{ ln.TXT_CREATE_NEW_ROLE | translate }}
+        </h2>
+        <h2 *ngIf="isEdit">{{ ln.TXT_UPDATE_ROLE | translate }}</h2>
+        <h2 *ngIf="isRoleView">{{ selectedRoleInfo?.rolename || '' | translate }}</h2>
+        <button mat-icon-button (click)="enableEdit()"
+          *ngIf="selectedRoleInfo?.isCustom && rightsArray.controls.length">
+          <i class="icon-mc mc-create"></i></button>
+      </div>
     </div>
     <div page-action class="header-action">
       <button *ngIf="!isRoleView" mat-stroked-button class="default" (click)="resetToDefault()">
-       <span class="icon-mc mc-star-2"></span> Set Default 
+        <span class="icon-mc mc-star-2"></span> Set Default
       </button>
     </div>
   </tr-page-header>
@@ -53,11 +58,11 @@
                 <mat-panel-title>
                   <div class="accordion-title">
                     <div>
-                      {{ eachRight.get("name")?.value || "test" | titlecase }}
+                      {{ eachRight.get("name")?.value || "" | titlecase }}
                     </div>
                     <div class="accordion-indicator">
                       {{ln.TXT_SHOW_ALL | translate}} {{eachRight.get('level2')?.value.length}}
-                      {{ln.TXT_ACTIONS | translate}}
+                      {{ (eachRight.get('level2')?.value.length === 1 ? ln.TXT_ACTION : ln.TXT_ACTIONS)  | translate}}
                       <span class="mat-expansion-indicator"></span>
                     </div>
                   </div>
@@ -110,9 +115,9 @@
         </mat-accordion>
       </ng-container>
     </perfect-scrollbar>
-    <div class="action-bottom" *ngIf="!isRoleView">
+    <div class="action-bottom" *ngIf="!isRoleView && rightsArray.controls.length">
       <button mat-flat-button color="primary" (click)="submitHandler()" [disabled]="isLoading">
-        <span>{{ isEdit ? ln.TXT_UPDATE : (ln.TXT_SUBMIT | translate) }}</span>
+        <span>{{ (isEdit ? ln.TXT_UPDATE : ln.TXT_SUBMIT) | translate | titlecase }}</span>
         <mat-spinner *ngIf="isLoading" diameter="20" class="btn-loader"></mat-spinner>
       </button>
     </div>

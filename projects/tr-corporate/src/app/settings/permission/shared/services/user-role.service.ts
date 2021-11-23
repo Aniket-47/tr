@@ -11,6 +11,7 @@ interface IroleData {
         roletypeid: number;
         rolename: string;
         accountroleid?: string
+        isCustom?: boolean
     } | null
 }
 
