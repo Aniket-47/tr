@@ -29,7 +29,7 @@ export class AddRoleComponent implements OnInit, OnDestroy {
   accountId!: string;
   isLoading = false;
 
-  selectedRoleInfo?: { roletypeid: number, rolename: string, accountroleid?: string } | null;
+  selectedRoleInfo?: { roletypeid: number, rolename: string, accountroleid?: string, isCustom?: boolean } | null;
   isEdit: boolean = false;
   isRoleView: boolean = false;
   rightsData: any[] = [];
@@ -82,13 +82,8 @@ export class AddRoleComponent implements OnInit, OnDestroy {
         this.selectedRoleInfo = data.selectedRole;
         if (this.selectedRoleInfo?.roletypeid && this.accountId) {
 
-          if (this.isEdit) {
-            // update form 
-            this.roleForm.patchValue({
-              roleType: this.selectedRoleInfo.roletypeid,
-              roleName: this.selectedRoleInfo.rolename
-            });
-          }
+          // update form 
+          if (this.isEdit) this.updateForm();
 
           // remove extra api call bcz we already update form
           // on form value chage it will get call
@@ -111,6 +106,22 @@ export class AddRoleComponent implements OnInit, OnDestroy {
       roleType: ['', [Validators.required]],
       roleName: ['', [Validators.required]],
       rights: this.fb.array([]),
+    });
+  }
+
+  enableEdit() {
+    if (this.selectedRoleInfo?.isCustom) {
+      this.isEdit = true;
+      this.isRoleView = false;
+      this.updateForm();
+    }
+  }
+
+  updateForm() {
+    // update form 
+    this.roleForm.patchValue({
+      roleType: this.selectedRoleInfo?.roletypeid,
+      roleName: this.selectedRoleInfo?.rolename
     });
   }
 
@@ -227,6 +238,7 @@ export class AddRoleComponent implements OnInit, OnDestroy {
 
   resetToDefault() {
     if (this.rightsData) {
+      this.updateForm();
       this.clearRightsForm();
       this.buildRights(this.rightsData);
     }
