@@ -19,6 +19,7 @@ export enum SETTINGS_LN {
   TXT_EMPLOYEE_PORTAL = "TXT_EMPLOYEE_PORTAL",
   TXT_CAREER_PAGE_BUILDER = "TXT_CAREER_PAGE_BUILDER",
   TXT_GDPR = "TXT_GDPR",
+  TXT_SEARCH = "TXT_SEARCH",
 
   //permission > add-role
   TXT_CREATE_NEW_ROLE = "TXT_CREATE_NEW_ROLE",
@@ -33,6 +34,7 @@ export enum SETTINGS_LN {
   TXT_OK = "TXT_OK",
   TXT_ACTION = "TXT_ACTION",
   TXT_ACTIONS = "TXT_ACTIONS",
+  TXT_SET_DEFAULT = "TXT_SET_DEFAULT",
 
   //permission > add-user
   TXT_ADD_USER = "TXT_ADD_USER",
@@ -76,6 +78,7 @@ export enum SETTINGS_LN {
   TXT_NAME = "TXT_NAME",
   TXT_USER_INFO = "TXT_USER_INFO",
   TXT_EDIT_USER_INFO = "TXT_EDIT_USER_INFO",
+  TXT_EMAIL_SAMPLE = "TXT_EMAIL_SAMPLE",
 
   //permissions > user-manage
   TXT_USER_MANAGEMENT = "TXT_USER_MANAGEMENT",
@@ -137,14 +140,3 @@ export enum SETTINGS_LN {
   TXT_SUCCESSFULLY_DELETED = "TXT_SUCCESSFULLY_DELETED",
   TXT_DEFAULT_ROLE_CANNOT_UPDATE = "TXT_DEFAULT_ROLE_CANNOT_UPDATE",
 }
-
-// export default ln = Translator(SETTINGS_LN)
-// export obj = {
-//   TXT_CSV : 'TXT_CSV'
-// }
-
-// import { TranslatePipe} from '@mucrest/ng-core'
-
-// var translatePipe = new TranslatePipe;
-
-// translatePipe.transform()

@@ -208,7 +208,7 @@
           <div class="mat-form-field-flex">
             <mat-label>{{ln.TXT_EMAIL | translate}}</mat-label>
             <mat-form-field appearance="outline">
-              <input matInput formControlName="email" placeholder="abc123@gmail.com">
+              <input matInput formControlName="email" placeholder="{{ln.TXT_EMAIL_SAMPLE | translate}}">
               <mat-error *ngIf="email.invalid && email.touched">
                 <span *ngIf="email.errors?.required">
                   {{ln.TXT_EMAIL_REQUIRED | translate}}
@@ -246,10 +246,11 @@
           <div class="mat-form-field-flex">
             <mat-label>{{ln.TXT_BUSINESS_VERTICAL | translate}}</mat-label>
             <mat-form-field appearance="outline">
-              <mat-select formControlName="businessverticalid" placeholder="{{ln.TXT_BUSINESS_VERTICAL | translate}}">
+              <mat-select formControlName="businessverticalid" 
+                placeholder="{{ln.TXT_BUSINESS_VERTICAL | translate}}">
                 <mat-option *ngFor="let businessvertical of businessverticals;"
                   [value]="businessvertical.businessverticalid">
-                  {{businessvertical.name}}
+                  {{businessvertical.name | translate}}
                 </mat-option>
               </mat-select>
             </mat-form-field>
