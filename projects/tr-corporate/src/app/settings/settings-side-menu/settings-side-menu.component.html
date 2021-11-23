@@ -13,12 +13,12 @@
           <mat-expansion-panel-header>
             <mat-panel-title class="font-600">           
               <span [ngClass]="parent.icon" class="icon"></span>
-              <span class="name">{{parent.name | translate}}</span>
+              <span class="name">{{parent.name | translate | titlecase}}</span>
             </mat-panel-title>
           </mat-expansion-panel-header>
           <mat-list *ngFor='let item of parent.child'>
             <mat-list-item  [routerLink]="item.link" routerLinkActive="active">
-              <span class="name">{{item.name | translate}}</span> 
+              <span class="name">{{item.name | translate | titlecase}}</span> 
             </mat-list-item>
            </mat-list>
         </mat-expansion-panel>

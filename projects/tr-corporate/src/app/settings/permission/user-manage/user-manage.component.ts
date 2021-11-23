@@ -235,12 +235,12 @@ export class UserManageComponent implements OnInit {
 
 
         this.userServ.deleteUser({ 'email': email }).subscribe(res => {
-          if (res.error) {
+          if (res.error) this.snackBar.open(res.message);
+          else {
             this.snackBar.open(res.message);
             this.dataSource.data.splice(i, 1);
             this.dataSource = new MatTableDataSource(this.dataSource.data);
           }
-          else this.snackBar.open(res.message);
         });
       }
     });
@@ -290,6 +290,15 @@ export class UserManageComponent implements OnInit {
 
   changeStatus(emitted: { status: number, email: string }) {
     emitted.status == 0 ? this.deactivateUser(emitted.email) : this.activateUser(emitted.email);
+  }
+
+  userUpdated(emitted: { userEmail: string, firstname: string, middlename: string, lastname: string, roletypeid: number, email: string }) {
+
+    const updateditem = this.dataSource.data.find(e => e.email == emitted.userEmail);
+    const index = this.dataSource.data.indexOf(updateditem);
+    this.dataSource.data[index] = { ...emitted };
+
+    this.dataSource = new MatTableDataSource(this.dataSource.data);
   }
 
 }

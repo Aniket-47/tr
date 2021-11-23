@@ -1,6 +1,6 @@
 import { getBusinessVerticle } from './../../../utility/store/selectors/business-vertical.selector';
 import { Store } from '@ngrx/store';
-import { Component, Input, OnChanges, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { fadeAnimation } from '../../../animations';
 import { ValidationConstants } from '../../../utility/configs/app.constants';
@@ -13,6 +13,8 @@ import { Irole } from '../../../utility/store/interfaces/role';
 import { getRoles } from '../../../utility/store/selectors/roles.selector';
 import { SETTINGS_LN } from '../../shared/settings.lang';
 import { GetUser_response } from './../shared/interfaces/get-user';
+import { getUserEmail } from '../../../utility/store/selectors/user.selector';
+import { MatSidenav } from '@angular/material/sidenav';
 
 
 @Component({
@@ -36,12 +38,15 @@ export class UserDetailComponent implements OnInit, OnChanges {
   @Input() userEmail!: string;
 
   @Output() statusChange = new EventEmitter();
+  @Output() userUpdate = new EventEmitter();
 
 
   user!: GetUser_response["data"] | null;
   accountID!: string;
+  isCurrentUser!: boolean;
 
   ln = SETTINGS_LN;
+
 
   constructor(private fb: FormBuilder, private userServ: UserService, private snackBar: SnackBarService, private store: Store<State>) {
 
@@ -133,10 +138,11 @@ export class UserDetailComponent implements OnInit, OnChanges {
     this.store.select(getBusinessVerticle).subscribe(businessverticals => {
       this.businessverticals = businessverticals;
     })
+
   }
 
   ngOnChanges() {
-    this.user = null
+    this.user = null;
     this.initForm();
     if (this.userEmail)
       this.prefillUser();
@@ -155,13 +161,14 @@ export class UserDetailComponent implements OnInit, OnChanges {
       if (!res.error) {
         this.user = res.data;
         this.editUserForm.patchValue(res.data);
-
+        this.store.select(getUserEmail).subscribe(email => {
+          this.isCurrentUser = (email == this.userEmail);
+        })
       }
     })
   }
 
   editUser() {
-    this.isLoading = true;
     // const payload: UpdateUser_request = {
     //   firstname: this.firstName.value,
     //   middlename: this.middleName.value,
@@ -186,6 +193,7 @@ export class UserDetailComponent implements OnInit, OnChanges {
         else {
           // success from api
           this.snackBar.open(res.message);
+          this.userUpdated();
         }
 
       })
@@ -196,5 +204,13 @@ export class UserDetailComponent implements OnInit, OnChanges {
     this.statusChange.emit({ status: status, email: this.userEmail })
   }
 
+  userUpdated() {
+    this.userUpdate.emit({ userEmail: this.userEmail, firstname: this.newUser.firstname, middlename: this.newUser.middlename, lastname: this.newUser.lastname, roletypeid: this.newUser.roletypeid, email: this.newUser.email })
+  }
+
+  reloadForm() {
+    this.editUserForm.reset();
+    this.prefillUser();
+  }
 
 }

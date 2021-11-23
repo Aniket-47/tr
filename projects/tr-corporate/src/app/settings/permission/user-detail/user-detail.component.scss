@@ -146,12 +146,6 @@
           &:first-child {
             margin: 10px 0 15px 0;
           }
-          .icon-mc,
-          .icon-mcf {
-            color: gray;
-            font-size: 18px;
-            margin-right: 14px;
-          }
           div span {
             display: inline-block;
             margin: 10px 0;
@@ -224,4 +218,14 @@
 .update-field-icon {
   margin-right: 14px;
   vertical-align: top;
+}
+
+.user_detail_list,
+.editUserForm{
+  .icon-mc,
+  .icon-mcf {
+      color: gray;
+      font-size: 18px;
+      margin-right: 14px;
+  }
 }

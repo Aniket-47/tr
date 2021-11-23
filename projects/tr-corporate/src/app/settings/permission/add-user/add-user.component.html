@@ -1,9 +1,12 @@
 <div class="add-user" [@fadeInOut]>
   <div class="border-0">
     <div class="d-flex justify-content-between">
-      <h2 class="text-dark">
-        {{ln.TXT_ADD_USER | translate}}
-      </h2>
+      <div class="form-title">
+        <span class="icon-mc mc-person_add_alt_1"></span>
+        <h2 class="text-dark">
+          {{ln.TXT_ADD_USER | translate | titlecase}}
+        </h2>
+      </div>
       <button mat-icon-button mat-dialog-close>
         <i class="icon-mc mc-x"></i>
       </button>
