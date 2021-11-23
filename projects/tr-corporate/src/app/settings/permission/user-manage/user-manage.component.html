@@ -34,7 +34,7 @@
     <!-- Desktop view -->
     <div class="user-management">
       <div class="table-header">
-        <div class="table-info" *ngIf="selection.selected.length > 0" class="selected-user">
+        <div class="table-info" *ngIf="selection.selected.length > 0" >
           {{ selection.selected.length }}
           <span *ngIf="selection.selected.length<=1">
             {{ln.TXT_USER_SELECTED | translate | lowercase}}
@@ -61,28 +61,37 @@
         </div>
         <div class="table-action cloud-only">
           <mat-form-field appearance="outline">
-            <mat-select disableOptionCentering [(ngModel)]="selectedStatus" placeholder="{{ln.TXT_SELECT_STATUS | translate}}"
-              (ngModelChange)="loadUsers()">
+            <mat-select disableOptionCentering [(ngModel)]="selectedStatus"
+              placeholder="{{ln.TXT_SELECT_STATUS | translate}}" (ngModelChange)="loadUsers()">
               <mat-option *ngFor="let item of status" [value]="item.value">
                 {{item.viewValue | translate}}
               </mat-option>
             </mat-select>
           </mat-form-field>
           <mat-form-field appearance="outline">
-            <mat-select disableOptionCentering [(ngModel)]="selectedRole" placeholder="{{ln.TXT_SELECT_ROLE | translate}}"
-              (ngModelChange)="loadUsers()">
+            <mat-select disableOptionCentering [(ngModel)]="selectedRole"
+              placeholder="{{ln.TXT_SELECT_ROLE | translate}}" (ngModelChange)="loadUsers()">
               <mat-option *ngFor="let item of role" [value]="item.roletypeid">
                 {{item.name | translate}}
               </mat-option>
             </mat-select>
           </mat-form-field>
           <mat-form-field appearance="outline" class="short-wrapper">
-            <span class="sort-by font-600">{{ln.TXT_SORT_BY | translate}}:</span>
             <!-- <mat-label *ngIf="selectedSort=='status'">Status</mat-label> -->
             <mat-select disableOptionCentering [(ngModel)]="selectedSort" (ngModelChange)="onHeaderSort()">
+              <mat-select-trigger>
+                <span class="sort-by font-600">{{ln.TXT_SORT_BY | translate}} : </span>
+                <span *ngIf="selectedSort===sorts[0].value" class="font-500 text-muted">
+                  {{ sorts[0].viewValue | translate }}
+                </span>
+                <span *ngIf="selectedSort===sorts[1].value" class="font-500 text-muted">
+                  {{ sorts[1].viewValue | translate }}
+                </span>
+              </mat-select-trigger>
               <mat-option *ngFor="let item of sorts" [value]="item.value">
                 <!-- <span class="font-500 text-muted">{{ln.TXT_SORT_BY | translate}}:</span> -->
-                 <span class="font-500 text-muted">{{item.viewValue | translate}}</span>
+                <span class="sort-by font-500">{{ln.TXT_SORT_BY | translate}} </span>
+                <span class="font-500 ">{{item.viewValue | translate}}</span>
               </mat-option>
             </mat-select>
           </mat-form-field>
@@ -194,8 +203,8 @@
                     <i class="icon-mc mc-how_to_reg"></i>
                   </button>
                   <button mat-icon-button *ngIf="element.status>0" [disabled]="element.email==loggedinUserEmail"
-                    (click)="deactivateUser(element.email)" matTooltip="{{(ln.TXT_DEACTIVATE_USER | translate)  | titlecase}}"
-                    matTooltipPosition="left">
+                    (click)="deactivateUser(element.email)"
+                    matTooltip="{{(ln.TXT_DEACTIVATE_USER | translate)  | titlecase}}" matTooltipPosition="left">
                     <i class="icon-mc mc-do_not_disturb_on"></i>
                   </button>
                   <!-- <button class="red fs20" mat-icon-button (click)="viewPermission(element)"
@@ -208,13 +217,15 @@
                   <mat-menu #tableMenu="matMenu" backdropClass="profile-dropdown">
                     <div class="user-dropdown-submenu">
                       <button mat-menu-item (click)="viewDetails(element)">
-                        <i class="icon-mc mc-visibility"></i> <span>{{(ln.TXT_VIEW_DETAILS | translate) | titlecase}}</span>
+                        <i class="icon-mc mc-visibility"></i> <span>{{(ln.TXT_VIEW_DETAILS | translate) |
+                          titlecase}}</span>
                       </button>
                       <button mat-menu-item (click)="viewPermission(element)">
-                        <i class="icon-mc mc-preview"></i> <span>{{(ln.TXT_VIEW_PERMISSION | translate)  | titlecase}} </span>
+                        <i class="icon-mc mc-preview"></i> <span>{{(ln.TXT_VIEW_PERMISSION | translate) | titlecase}}
+                        </span>
                       </button>
                       <button *ngIf="element.status==0" mat-menu-item (click)="deleteUser(element.email, i)">
-                        <i class="icon-mc mc-user-x"></i> <span>{{(ln.TXT_DELETE_USER | translate)  | titlecase}}</span>
+                        <i class="icon-mc mc-user-x"></i> <span>{{(ln.TXT_DELETE_USER | translate) | titlecase}}</span>
                       </button>
                     </div>
                   </mat-menu>
@@ -224,27 +235,27 @@
                       class="icon-mc mc-more_vert"></span></button>
                   <mat-menu #menu="matMenu" backdropClass="profile-dropdown">
                     <div class="user-dropdown-submenu">
-                      <button mat-menu-item
-                        (click)="viewDetails(element)">
-                        <i class="icon-mc mc-visibility"></i> <span>{{(ln.TXT_VIEW_DETAILS | translate) | titlecase}}</span>
+                      <button mat-menu-item (click)="viewDetails(element)">
+                        <i class="icon-mc mc-visibility"></i> <span>{{(ln.TXT_VIEW_DETAILS | translate) |
+                          titlecase}}</span>
                       </button>
                       <button mat-menu-item (click)="viewPermission(element)">
                         <i class="icon-mcf mcf-chrome_reader_mode"></i> <span>{{(ln.TXT_VIEW_PERMISSION |
-                          translate  ) | titlecase}}</span>
+                          translate ) | titlecase}}</span>
                       </button>
-                      <button mat-menu-item
-                        (click)="editUser(element)">
-                        <i class="icon-mc mc-create"></i> <span>{{ln.TXT_EDIT_USER | translate  | titlecase}}</span>
+                      <button mat-menu-item (click)="editUser(element)">
+                        <i class="icon-mc mc-create"></i> <span>{{ln.TXT_EDIT_USER | translate | titlecase}}</span>
                       </button>
                       <button mat-menu-item *ngIf="element.status==0" (click)="activateUser(element.email)">
-                        <i class="icon-mc mc-how_to_reg"></i> <span>{{ln.TXT_ACTIVATE_USER | translate  | titlecase}}</span>
+                        <i class="icon-mc mc-how_to_reg"></i> <span>{{ln.TXT_ACTIVATE_USER | translate |
+                          titlecase}}</span>
                       </button>
                       <button mat-menu-item *ngIf="element.status==1 && element.email!=loggedinUserEmail"
                         (click)="deactivateUser(element.email)">
                         <i class="icon-mc mc-do_not_disturb_on"></i> <span>{{ln.TXT_DEACTIVATE_USER | translate}}</span>
                       </button>
                       <button *ngIf="element.status==0" mat-menu-item (click)="deleteUser(element.email, i)">
-                        <i class="icon-mc mc-user-x"></i> <span>{{ln.TXT_DELETE_USER | translate  | titlecase}}</span>
+                        <i class="icon-mc mc-user-x"></i> <span>{{ln.TXT_DELETE_USER | translate | titlecase}}</span>
                       </button>
                     </div>
                   </mat-menu>
