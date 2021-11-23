@@ -54,6 +54,7 @@ export class AddRoleComponent implements OnInit, OnDestroy {
 
     this.roleForm.get('roleType')?.valueChanges.subscribe((roletypeid) => {
       if (roletypeid) {
+        this.clearRightsForm();
         this.userRoleService.getPermissions(this.accountId, roletypeid)
           .subscribe((res: any) => {
             if (!res.error) this.buildRights(res?.data?.roles?.rights);
@@ -238,7 +239,6 @@ export class AddRoleComponent implements OnInit, OnDestroy {
 
   resetToDefault() {
     if (this.rightsData) {
-      this.updateForm();
       this.clearRightsForm();
       this.buildRights(this.rightsData);
     }
