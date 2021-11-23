@@ -61,7 +61,7 @@
         </div>
         <div class="table-action cloud-only">
           <mat-form-field appearance="outline">
-            <mat-select [(ngModel)]="selectedStatus" placeholder="{{ln.TXT_SELECT_STATUS | translate}}"
+            <mat-select disableOptionCentering [(ngModel)]="selectedStatus" placeholder="{{ln.TXT_SELECT_STATUS | translate}}"
               (ngModelChange)="loadUsers()">
               <mat-option *ngFor="let item of status" [value]="item.value">
                 {{item.viewValue | translate}}
@@ -69,7 +69,7 @@
             </mat-select>
           </mat-form-field>
           <mat-form-field appearance="outline">
-            <mat-select [(ngModel)]="selectedRole" placeholder="{{ln.TXT_SELECT_ROLE | translate}}"
+            <mat-select disableOptionCentering [(ngModel)]="selectedRole" placeholder="{{ln.TXT_SELECT_ROLE | translate}}"
               (ngModelChange)="loadUsers()">
               <mat-option *ngFor="let item of role" [value]="item.roletypeid">
                 {{item.name | translate}}
@@ -79,7 +79,7 @@
           <mat-form-field appearance="outline" class="short-wrapper">
             <span class="sort-by font-600">{{ln.TXT_SORT_BY | translate}}:</span>
             <!-- <mat-label *ngIf="selectedSort=='status'">Status</mat-label> -->
-            <mat-select [(ngModel)]="selectedSort" (ngModelChange)="onHeaderSort()">
+            <mat-select disableOptionCentering [(ngModel)]="selectedSort" (ngModelChange)="onHeaderSort()">
               <mat-option *ngFor="let item of sorts" [value]="item.value">
                 <!-- <span class="font-500 text-muted">{{ln.TXT_SORT_BY | translate}}:</span> -->
                  <span class="font-500 text-muted">{{item.viewValue | translate}}</span>
