@@ -9,6 +9,20 @@
   }
 }
 .add-user{
+    .form-title{
+      h2{
+        font-weight: 700;
+        display: inline-block;
+        vertical-align: inherit;
+        margin-left: 0.5rem;
+        font-size: 1.1rem;
+      }
+      span::before{
+        font-size: 1.1rem;
+        color: #1F47F5;
+      }
+    }
+
     h2 {
         font-family: 'Manrope', sans-serif;
         @include font-size(1.2rem);    

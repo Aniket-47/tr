@@ -12,7 +12,11 @@
             class="icon-mc mc-create"></i></button>
       </div>
     </div>
-    <!-- <div page-action class="header-action" *ngIf="!isRoleView"></div> -->
+    <div page-action class="header-action">
+      <button *ngIf="!isRoleView" mat-stroked-button class="default" (click)="resetToDefault()">
+       <span class="icon-mc mc-star-2"></span> Set Default 
+      </button>
+    </div>
   </tr-page-header>
 
   <div class="accordion-container" [@fadeInOut]>

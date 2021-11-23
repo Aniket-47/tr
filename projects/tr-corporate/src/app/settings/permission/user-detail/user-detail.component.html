@@ -148,7 +148,7 @@
 
       <ng-template #displayInput>
 
-        <form [formGroup]="editUserForm">
+        <form [formGroup]="editUserForm" class="editUserForm">
 
 
           <!-- <div class="common-div"> -->
@@ -281,7 +281,7 @@
 
           <div class="buttons">
             <button mat-flat-button color="primary" (click)="editUser()" [disabled]="isLoading" class="update-btn">
-              <span>{{ln.TXT_UPDATED | translate}}</span>
+              <span>{{ln.TXT_UPDATE | translate | titlecase}}</span>
               <mat-spinner diameter="20" *ngIf="isLoading" class="btn-loader"></mat-spinner>
             </button>
             <button type="button" mat-stroked-button (click)="reloadForm()" class="cancel-btn">{{ln.TXT_CANCEL | translate}}</button>

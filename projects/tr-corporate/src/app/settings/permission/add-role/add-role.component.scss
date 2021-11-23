@@ -90,7 +90,7 @@
 .header-action {
     display: flex;
     justify-content: flex-end;
-    width: 100%;
+    // width: 100%;
     align-items: center;
     gap: 15px;
     .action-item {
@@ -198,4 +198,16 @@
 .action-bottom{
     text-align: right;
     margin-top: 15px;
+}
+.default{
+    color: #25364D;
+    padding: 0 18px;
+    .icon-mc{
+        font-size: 14px;
+        margin-right: 5px;
+        &::before{
+            color: #25364D;
+        }
+    }
+    font-size: 14px;
 }
