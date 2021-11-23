@@ -220,6 +220,8 @@ export class AddRoleComponent implements OnInit, OnDestroy {
   }
 
   onLvl1Toggle(rightIndex: number) {
+    if (this.roleForm.disabled) return;
+
     const currentRightStatus = !!this.rightsArray.controls[rightIndex].get('isOn')?.value;
     const isThereLevel2 = !!this.rightsArray.controls[rightIndex].get('level2')?.value;
     console.log({ currentRightStatus })
@@ -246,6 +248,8 @@ export class AddRoleComponent implements OnInit, OnDestroy {
 
 
   toggleAllLvl(rightIndex: number, lvl2Index: number, lvl3Index: number) {
+    if (this.roleForm.disabled) return;
+
     const isLvl3StatusOn: boolean = this.getLvl3Array(rightIndex, lvl2Index).controls[lvl3Index].get('isOn')?.value;
 
     if (!isLvl3StatusOn) {
@@ -255,6 +259,8 @@ export class AddRoleComponent implements OnInit, OnDestroy {
   }
 
   onToggleLvl2(rightIndex: number, lvl2Index: number) {
+    if (this.roleForm.disabled) return;
+
     const isLvl2StatusOn: boolean = this.getLvl2Array(rightIndex).controls[lvl2Index].get('isOn')?.value;
 
     if (!isLvl2StatusOn) {
@@ -263,6 +269,8 @@ export class AddRoleComponent implements OnInit, OnDestroy {
   }
 
   toggleLvl3(rightIndex: number, lvl2Index: number, status: boolean) {
+    if (this.roleForm.disabled) return;
+
     const lvl3Arr = this.getLvl3Array(rightIndex, lvl2Index);
     lvl3Arr.controls.forEach(e => {
       e.get('isOn')?.setValue(status);

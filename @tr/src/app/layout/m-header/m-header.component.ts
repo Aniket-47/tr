@@ -14,15 +14,20 @@ export class MHeaderComponent implements OnInit {
   routerConfig = ROUTE_CONFIGS;
 
   @Output() logOutEvent = new EventEmitter<"">();
+  @Output() navigateEvent = new EventEmitter<any>();
 
   constructor() { }
 
   ngOnInit(): void {
-    
+
   }
 
   mLogOut() {
-    this.logOutEvent.emit();    
+    this.logOutEvent.emit();
+  }
+
+  onNavigate() {
+    this.navigateEvent.emit();
   }
 
 }

@@ -169,9 +169,15 @@ export class ViewRoleComponent implements OnInit, AfterViewInit {
   }
 
   viewRoleDeatils(role: Irole) {
-    const selectedRoleInfo = { roletypeid: role.roletypeid, rolename: role.rolename, isCustom: role.isdefaultrole === 0 };
+    const selectedRoleInfo = {
+      roletypeid: role.roletypeid,
+      rolename: role.rolename,
+      isCustom: role.isdefaultrole === 0,
+      accountroleid: role.accountroleid
+    };
     let roleData = { selectedRole: selectedRoleInfo, isEdit: false, isView: true, isNew: false };
-    if (role.isdefaultrole === 1) selectedRoleInfo.rolename = role.name;
+    // for custom role pass name as custom 
+    if (role.isdefaultrole === 0) selectedRoleInfo.rolename = role.name;
     this.userRoleService.setCurrentRole(roleData);
     this.router.navigateByUrl(ROUTE_CONFIGS.VIEW_ROLE);
   }
@@ -181,9 +187,14 @@ export class ViewRoleComponent implements OnInit, AfterViewInit {
       this.snackbarServ.open(this.ln.TXT_DEFAULT_ROLE_CANNOT_UPDATE, this.ln.TXT_OK);
       return;
     }
-    let selectedRoleInfo = { roletypeid: role.roletypeid, rolename: role.rolename, accountroleid: role.accountroleid };
-
-    if (role.isdefaultrole === 1) selectedRoleInfo.rolename = role.name;
+    let selectedRoleInfo = {
+      roletypeid: role.roletypeid,
+      rolename: role.rolename,
+      accountroleid: role.accountroleid,
+      isCustom: true
+    };
+    // for custom role pass name as custom 
+    if (role.isdefaultrole === 0) selectedRoleInfo.rolename = role.name;
 
     this.userRoleService.setCurrentRole({ isEdit: true, isView: false, selectedRole: selectedRoleInfo, isNew: false });
     this.router.navigate([ROUTE_CONFIGS.VIEW_ROLE]);
