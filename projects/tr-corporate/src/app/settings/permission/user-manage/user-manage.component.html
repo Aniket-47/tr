@@ -251,7 +251,7 @@
                         <i class="icon-mc mc-visibility"></i> <span>{{(ln.TXT_VIEW_DETAILS | translate) |
                           titlecase}}</span>
                       </button>
-                      <button mat-menu-item (click)="viewPermission(element)">
+                      <button mat-menu-item class="cloud-only" (click)="viewPermission(element)">
                         <i class="icon-mcf mcf-chrome_reader_mode"></i> <span>{{(ln.TXT_VIEW_PERMISSION |
                           translate ) | titlecase}}</span>
                       </button>
@@ -287,7 +287,7 @@
     <!-- Mobile View -->
     <div class="floating-button page-action  mobile-only">
       <div class="more-float-action-btn" [class.active]="toggle">
-        <button mat-flat-button color="primary" (click)="addUserModal()"><span class="icon-mc  mc-user-plus"></span>
+        <button mat-flat-button color="primary" (click)="addUserModal()"><span class="icon-mc  mc-plus"></span>
           {{ln.TXT_ADD_USER | translate | titlecase}}
         </button>
         <button mat-stroked-button color="primary" [matMenuTriggerFor]="menu">{{ln.TXT_EXPORT | translate}} <span
