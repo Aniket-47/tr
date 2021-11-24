@@ -34,7 +34,7 @@
     <!-- Desktop view -->
     <div class="user-management">
       <div class="table-header">
-        <div class="table-info" *ngIf="selection.selected.length > 0" >
+        <div class="table-info" *ngIf="selection.selected.length > 0">
           {{ selection.selected.length }}
           <span *ngIf="selection.selected.length<=1">
             {{ln.TXT_USER_SELECTED | translate | lowercase}}
@@ -63,20 +63,25 @@
           <mat-form-field appearance="outline">
             <mat-select disableOptionCentering [(ngModel)]="selectedStatus"
               placeholder="{{ln.TXT_SELECT_STATUS | translate}}" (ngModelChange)="loadUsers()">
-              <mat-option *ngFor="let item of status" [value]="item.value">
-                {{item.viewValue | translate}}
-              </mat-option>
+              <ng-container *ngFor="let item of status; let last = last">
+                <mat-option [value]="item.value">
+                  {{item.viewValue | translate}}
+                </mat-option>
+                <mat-divider *ngIf="!last"></mat-divider>
+              </ng-container>
             </mat-select>
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-select disableOptionCentering [(ngModel)]="selectedRole"
               placeholder="{{ln.TXT_SELECT_ROLE | translate}}" (ngModelChange)="loadUsers()">
-              <perfect-scrollbar style="height: 210px;">
-                <!-- <perfect-scrollbar> -->
-                <mat-option *ngFor="let item of role" [value]="item.roletypeid">
-                  {{item.name | translate}}
-                </mat-option>
-              </perfect-scrollbar>
+              <ng-container *ngFor="let item of role; let last = last">
+                <perfect-scrollbar style="height: 210px">
+                  <mat-option [value]="item.roletypeid">
+                    {{item.name | translate}}
+                  </mat-option>
+                </perfect-scrollbar>
+                <mat-divider *ngIf="!last"></mat-divider>
+              </ng-container>
             </mat-select>
           </mat-form-field>
           <mat-form-field appearance="outline" class="short-wrapper">
@@ -90,12 +95,18 @@
                 <span *ngIf="selectedSort===sorts[1].value" class="font-500 text-muted">
                   {{ sorts[1].viewValue | translate }}
                 </span>
+                <span *ngIf="selectedSort===sorts[2].value" class="font-500 text-muted">
+                  {{ sorts[2].viewValue | translate }}
+                </span>
               </mat-select-trigger>
-              <mat-option *ngFor="let item of sorts" [value]="item.value">
-                <!-- <span class="font-500 text-muted">{{ln.TXT_SORT_BY | translate}}:</span> -->
-                <span class="sort-by font-500">{{ln.TXT_SORT_BY | translate}} </span>
-                <span class="font-500 ">{{item.viewValue | translate}}</span>
-              </mat-option>
+              <ng-container *ngFor="let item of sorts; let last = last">
+                <mat-option [value]="item.value">
+                  <!-- <span class="font-500 text-muted">{{ln.TXT_SORT_BY | translate}}:</span> -->
+                  <span class="sort-by font-500">{{ln.TXT_SORT_BY | translate}} </span>
+                  <span class="font-500 ">{{item.viewValue | translate}}</span>
+                </mat-option>
+                <mat-divider *ngIf="!last"></mat-divider>
+              </ng-container>
             </mat-select>
           </mat-form-field>
 
@@ -103,7 +114,7 @@
       </div>
       <div class="table-container">
         <perfect-scrollbar>
-          <table mat-table [dataSource]="dataSource" matSort matSortActive="status" matSortDirection="asc">
+          <table mat-table [dataSource]="dataSource" matSort matSortActive="lastupdated" matSortDirection="desc">
             <!-- Position Column -->
             <ng-container matColumnDef="check">
               <th mat-header-cell *matHeaderCellDef>
@@ -185,7 +196,7 @@
 
             <!-- Last Updated Column -->
             <ng-container matColumnDef="lastupdated">
-              <th mat-header-cell *matHeaderCellDef> {{ln.TXT_LAST_UPDATED | translate}} </th>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ln.TXT_LAST_UPDATED | translate}} </th>
               <td mat-cell class="font-500" *matCellDef="let element">
                 <span class="mobile-only grey-text"> {{ln.TXT_UPDATED | translate}} :</span>
                 {{element.last_updated | date}}
