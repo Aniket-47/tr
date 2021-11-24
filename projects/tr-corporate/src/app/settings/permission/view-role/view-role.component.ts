@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
@@ -22,6 +22,7 @@ import { AddRoleComponent } from '../add-role/add-role.component';
 import { ConfirmationComponent } from '../../../utility/components/confirmation/confirmation.component';
 import { SETTINGS_LN } from '../../shared/settings.lang';
 import { ROUTE_CONFIGS } from '../../../utility/configs/routerConfig';
+import { MatTableDataSource } from '@angular/material/table';
 
 
 export interface Irole {
@@ -66,20 +67,20 @@ export class ViewRoleComponent implements OnInit, AfterViewInit {
   selectedSort = this.sortby[1].value;
   displayedColumns: string[] = ['rolename', 'usercount', 'modifiedDatetime', 'action'];
   // dataSource = new MatTableDataSource<any>(ELEMENT_DATA);
-  dataSource = new Observable<Irole[]>();
-  isRateLimitReached: boolean = false;
+  dataSource!: MatTableDataSource<any>;
+  isRateLimitReached: boolean = true;
   showUserActionMenu = true;
   accountid!: string;
 
   // pagination
   offset: number = 0;
+  limit: number = 10;
   resultsLength: number = 0;
-  pageSize = 10; // limit
+  pageSize = 10;
 
   @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort!: MatSort;
-  // @ViewChild('moreMenu', { static: false }) moreMenu!: ElementRef;
-  // @ViewChild('tblRow', { static: false }) tblRow!: ElementRef;
+  isLoadingMore: boolean = false;
 
   tblRowClick$!: Observable<any>;
   moreMenuClick$!: Observable<any>;
@@ -90,11 +91,15 @@ export class ViewRoleComponent implements OnInit, AfterViewInit {
     private snackbarServ: SnackBarService,
     private configServ: RouterConfigService,
     private router: Router,
+    private cdRef: ChangeDetectorRef,
     private store: Store<State>) {
     this.config = configServ.routerconfig;
   }
 
   ngOnInit(): void {
+    // fromEvent(window, 'resize').pipe(
+    //   map(e => e.currentTarget?.innerWidth)
+    // ).subscribe(console.log)
   }
 
   ngAfterViewInit(): void {
@@ -104,14 +109,12 @@ export class ViewRoleComponent implements OnInit, AfterViewInit {
         this.loadUserRoles(accountid);
       }
     });
-    // this.tblRowClick$ = fromEvent(this.tblRow.nativeElement, 'click');
-    // this.moreMenuClick$ = fromEvent(this.rowContainers., 'click');
-
-    // this.tblRowClick$.subscribe(console.log)
   }
 
   resetPaging(): void {
     this.paginator.pageIndex = 0;
+    this.offset = 0;
+    this.limit = 10;
   }
 
   onHeaderSort() {
@@ -120,37 +123,51 @@ export class ViewRoleComponent implements OnInit, AfterViewInit {
 
   loadUserRoles(accountid: string) {
     // If the user changes the sort order, reset back to the first page.
-    this.sort.sortChange.subscribe(() => {
-      this.paginator.pageIndex = 0;
-      this.offset = 0;
-    });
-
+    this.sort.sortChange.subscribe(() => this.resetPaging());
 
     merge(this.sort.sortChange, this.paginator.page)
       .pipe(
         startWith({}),
         switchMap(() => {
-          if (this.paginator.pageIndex > 0) this.offset = this.pageSize * this.paginator.pageIndex;
+          if (this.paginator.pageIndex > 0) this.offset = this.limit * this.paginator.pageIndex;
           else this.offset = 0;
+          console.log(this.paginator.pageIndex)
 
           return this.userRoleService.getUserRoles(
             accountid,
             this.offset,
-            this.pageSize,
+            this.limit,
             this.sort.active,
             this.sort.direction == "desc" ? "desc" : "asc");
         }),
         map((res: any) => {
-          // Flip flag to show that loading has finished.
-          this.isRateLimitReached = false;
           this.resultsLength = res?.data?.totalcount;
-          return res?.data?.roles;
+          this.pageSize = this.resultsLength || 10;
+          return res?.data?.roles
         }),
         catchError(() => {
           this.isRateLimitReached = true;
+          this.isLoadingMore = false;
           return observableOf([]);
         })
-      ).subscribe(data => this.dataSource = data);
+      ).subscribe((data) => {
+        const newData = this.isLoadingMore ? [...this.dataSource.data, ...data] : data;
+        this.dataSource = new MatTableDataSource(newData);
+
+        // Flip flag to show that loading has finished.
+        this.isRateLimitReached = this.dataSource.data.length === this.resultsLength;
+        this.isLoadingMore = false;
+        this.cdRef.detectChanges();
+      });
+  }
+
+  contentScrollYEvt() {
+    if (!this.isRateLimitReached && !this.isLoadingMore) {
+      console.log('Loading more data...')
+      this.paginator.pageIndex++;
+      this.isLoadingMore = true;
+      this.loadUserRoles(this.accountid);
+    }
   }
 
   toggleFab() {

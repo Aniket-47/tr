@@ -63,6 +63,7 @@ export class AddRoleComponent implements OnInit, OnDestroy {
     });
 
     this.getUserSelectedRole();
+    if (this.isRoleView) this.roleForm.disable();
   }
 
   ngOnDestroy() {
