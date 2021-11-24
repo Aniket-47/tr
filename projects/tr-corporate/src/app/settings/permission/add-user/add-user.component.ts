@@ -1,7 +1,7 @@
 import { getBusinessVerticle } from './../../../utility/store/selectors/business-vertical.selector';
 import { Store } from '@ngrx/store';
 import { AddUser_request } from '../shared/interfaces/add-user';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
@@ -38,6 +38,8 @@ export class AddUserComponent implements OnInit {
   isLoading = false;
 
   ln = SETTINGS_LN;
+
+  @Output() userAdded = new EventEmitter();
 
   constructor(private fb: FormBuilder, private userServ: UserService, private snackBar: SnackBarService, public dialogRef: MatDialogRef<AddUserComponent>, private store: Store<State>) { }
 
@@ -189,9 +191,9 @@ export class AddUserComponent implements OnInit {
           // success from api
           this.snackBar.open(res.message);
           setTimeout(() => {
-            this.dialogRef.close();
+            this.dialogRef.close({ added: true });
             this.addUserForm.reset();
-          }, 4000)
+          }, 2000)
         }
 
       })

@@ -1,5 +1,5 @@
 import { Location } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'tr-page-header',
@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./page-header.component.scss']
 })
 export class PageHeaderComponent implements OnInit {
+
+  @Input() showBackBtn = true;
 
   constructor(private location: Location) { }
 
