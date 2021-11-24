@@ -8,14 +8,11 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class PageHeaderComponent implements OnInit {
 
-  @Input() showBackBtn:boolean = true;
+  @Input() showBackBtn: boolean = true;
 
   constructor(private location: Location) { }
 
-  ngOnInit(): void {
-    console.log(this.showBackBtn);
-
-  }
+  ngOnInit(): void { }
 
   goToPreviousPage() {
     this.location.back();

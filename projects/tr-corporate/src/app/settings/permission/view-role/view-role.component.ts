@@ -1,3 +1,4 @@
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
@@ -22,6 +23,7 @@ import { AddRoleComponent } from '../add-role/add-role.component';
 import { ConfirmationComponent } from '../../../utility/components/confirmation/confirmation.component';
 import { SETTINGS_LN } from '../../shared/settings.lang';
 import { ROUTE_CONFIGS } from '../../../utility/configs/routerConfig';
+import { MFilterComponent } from '../m-filter/m-filter.component';
 
 
 export interface Irole {
@@ -90,7 +92,8 @@ export class ViewRoleComponent implements OnInit, AfterViewInit {
     private snackbarServ: SnackBarService,
     private configServ: RouterConfigService,
     private router: Router,
-    private store: Store<State>) {
+    private store: Store<State>,
+    private _bottomSheet: MatBottomSheet) {
     this.config = configServ.routerconfig;
   }
 
@@ -176,7 +179,7 @@ export class ViewRoleComponent implements OnInit, AfterViewInit {
       accountroleid: role.accountroleid
     };
     let roleData = { selectedRole: selectedRoleInfo, isEdit: false, isView: true, isNew: false };
-    // for custom role pass name as custom 
+    // for custom role pass name as custom
     if (role.isdefaultrole === 0) selectedRoleInfo.rolename = role.name;
     this.userRoleService.setCurrentRole(roleData);
     this.router.navigateByUrl(ROUTE_CONFIGS.VIEW_ROLE);
@@ -193,7 +196,7 @@ export class ViewRoleComponent implements OnInit, AfterViewInit {
       accountroleid: role.accountroleid,
       isCustom: true
     };
-    // for custom role pass name as custom 
+    // for custom role pass name as custom
     if (role.isdefaultrole === 0) selectedRoleInfo.rolename = role.name;
 
     this.userRoleService.setCurrentRole({ isEdit: true, isView: false, selectedRole: selectedRoleInfo, isNew: false });
@@ -226,4 +229,17 @@ export class ViewRoleComponent implements OnInit, AfterViewInit {
       });
     }
   }
+
+  openBottomSheet(): void {
+    const appliedFilterData = { sort: this.sort.active, forRoles: true }
+    this._bottomSheet.open(MFilterComponent, { data: appliedFilterData }).afterDismissed()
+      .subscribe(result => {
+        if (result) {
+          this.selectedSort = result.sort;
+          // console.log(this.selectedSort);
+          this.onHeaderSort();
+        }
+      })
+  }
+
 }

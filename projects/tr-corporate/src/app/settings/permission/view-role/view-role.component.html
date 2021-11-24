@@ -4,11 +4,16 @@
       <h5 class="mobile-only">{{ln.TXT_PERMISSIONS | translate | titlecase}}</h5>
       <h2>{{ln.TXT_ACCOUNT_ROLE | translate | titlecase}}</h2>
     </div>
-    <div page-action class="page-action cloud-only">
-      <button mat-flat-button color="primary" (click)="createNewRole()">
+    <div page-action class="page-action">
+      <button mat-flat-button color="primary" class="cloud-only" (click)="createNewRole()">
         <i class="add-new-role-btn-icon icon-mc mc-plus"></i>
         <span> {{ln.TXT_ADD_ROLE | translate | titlecase}}</span>
       </button>
+      <div class="mobile-only">
+        <button type="button" mat-icon-button (click)="openBottomSheet()" class="open-bottombtn">
+          <span class="icon-mc mc-filter_list"></span>
+        </button>
+      </div>
     </div>
   </tr-page-header>
 
