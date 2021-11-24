@@ -27,7 +27,7 @@
           <mat-label>{{ ln.TXT_ROLE_TYPE | translate }}</mat-label>
           <mat-select placeholder="Select any default role" formControlName="roleType">
             <!-- TODO: needs to remove the inline css -->
-            <perfect-scrollbar style="height: 240px;">
+            <perfect-scrollbar style="height: 250px;">
               <mat-option *ngFor="let role of defaultRoles" [value]="role?.roletypeid">
                 {{ role?.name || "" | translate }}
               </mat-option>     
