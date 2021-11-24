@@ -15,7 +15,7 @@
     </div>
     <div page-action class="header-action">
       <button *ngIf="!isRoleView" mat-stroked-button class="default" (click)="resetToDefault()">
-        <span class="icon-mc mc-star-2"></span> Set Default
+        <span class="icon-mc mc-star-2"></span> {{ln.TXT_SET_DEFAULT | translate}}
       </button>
     </div>
   </tr-page-header>
@@ -35,20 +35,20 @@
             </perfect-scrollbar>     
           </mat-select>
           <mat-error *ngIf="roleType.invalid && roleType?.errors">
-            <span *ngIf="roleType?.errors?.required">{{
-              ln.TXT_FIELD_REQUIRED | translate
-            }}</span>
+            <span *ngIf="roleType?.errors?.required">
+              {{ ln.TXT_FIELD_REQUIRED | translate }}
+            </span>
           </mat-error>
         </mat-form-field>   
       </div>
       <div>
         <mat-form-field appearance="outline">
           <mat-label>{{ ln.TXT_NEW_ROLE_NAME | translate }}</mat-label>
-          <input matInput placeholder="Placeholder" formControlName="roleName" />
+          <input matInput placeholder="{{ln.TXT_NEW_ROLE | translate}}" formControlName="roleName" />
           <mat-error *ngIf="roleName.invalid && roleName?.errors">
-            <span *ngIf="roleName?.errors?.required">{{
-              ln.TXT_FIELD_REQUIRED | translate
-            }}</span>
+            <span *ngIf="roleName?.errors?.required">
+              {{ ln.TXT_FIELD_REQUIRED | translate }}
+            </span>
           </mat-error>
         </mat-form-field>
       </div>
@@ -79,10 +79,8 @@
 
               <div class="inner-content" *ngIf="eachRight.get('level2')">
                 <ng-container formArrayName="level2">
-                  <ng-container *ngFor="
-                    let eachLvl2 of getLvl2Array(i)?.controls;
-                    let l2 = index
-                  " [formGroupName]="l2">
+                  <ng-container 
+                    *ngFor="let eachLvl2 of getLvl2Array(i)?.controls; let l2 = index" [formGroupName]="l2">
                     <mat-expansion-panel>
                       <mat-expansion-panel-header>
                         <mat-panel-title>
@@ -96,15 +94,15 @@
                       </mat-expansion-panel-header>
                       <ng-container *ngIf="eachLvl2.get('level3')">
                         <ng-container formArrayName="level3">
-                          <div class="role-list bg-light" *ngFor="
-                            let eachLvl3 of getLvl3Array(i, l2)?.controls;
-                            let l3 = index
-                          " [formGroupName]="l3">
+                          <div class="role-list bg-light" 
+                            *ngFor="let eachLvl3 of getLvl3Array(i, l2)?.controls; let l3 = index" 
+                            [formGroupName]="l3">
                             <div class="role-title">
                               {{ eachLvl3.get("name")?.value | titlecase }}
                             </div>
                             <div class="header-action">
-                              <mat-slide-toggle color="green" formControlName="isOn" (click)="toggleAllLvl(i, l2, l3)">
+                              <mat-slide-toggle color="green" formControlName="isOn" 
+                                (click)="toggleAllLvl(i, l2, l3)">
                               </mat-slide-toggle>
                             </div>
                           </div>
