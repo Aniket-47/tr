@@ -22,20 +22,24 @@
 
   <div class="accordion-container" [@fadeInOut]>
     <div class="input-container" *ngIf="!isRoleView">
-      <div>
+      <div>    
         <mat-form-field appearance="outline">
           <mat-label>{{ ln.TXT_ROLE_TYPE | translate }}</mat-label>
           <mat-select placeholder="Select any default role" formControlName="roleType">
-            <mat-option *ngFor="let role of defaultRoles" [value]="role?.roletypeid">
-              {{ role?.name || "" | translate }}
-            </mat-option>
+            <!-- <perfect-scrollbar class="perfect-scroll"> -->
+            <perfect-scrollbar style="height: 240px;">
+            <!-- <perfect-scrollbar> -->
+              <mat-option *ngFor="let role of defaultRoles" [value]="role?.roletypeid">
+                {{ role?.name || "" | translate }}
+              </mat-option>     
+            </perfect-scrollbar>     
           </mat-select>
           <mat-error *ngIf="roleType.invalid && roleType?.errors">
             <span *ngIf="roleType?.errors?.required">{{
               ln.TXT_FIELD_REQUIRED | translate
             }}</span>
           </mat-error>
-        </mat-form-field>
+        </mat-form-field>   
       </div>
       <div>
         <mat-form-field appearance="outline">
