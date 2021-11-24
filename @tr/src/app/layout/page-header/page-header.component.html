@@ -1,6 +1,6 @@
 <div class="page-header">
   <div class="page-title">
-    <button mat-icon-button (click)="goToPreviousPage()">
+    <button *ngIf="showBackBtn" mat-icon-button (click)="goToPreviousPage()">
       <span class="icon-mc mc-back-arrow"></span>
     </button>
     <ng-content select="[page-title]"></ng-content>
