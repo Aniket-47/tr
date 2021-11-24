@@ -103,7 +103,7 @@
             <mat-form-field appearance="outline" class="w-100">
               <mat-label>{{ln.TXT_USER_ROLE | translate}}</mat-label>
               <mat-select formControlName="roletypeid">
-                <!-- TODO: change the inline css -->
+                <!-- TODO: needs to remove the inline css -->
                 <perfect-scrollbar style="height: 250px;">
                   <ng-container *ngFor="let role of roles; let last = last">
                     <mat-option [value]="role">
