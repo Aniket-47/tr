@@ -123,11 +123,10 @@ export class UserManageComponent implements OnInit {
     this._bottomSheet.open(MFilterComponent, { data: appliedFilterData }).afterDismissed()
       .subscribe(result => {
         if (result) {
-          console.log(result);
 
-          this.selectedRole = result.filter_roletypeid[0] === '' ? undefined : result.filter_roletypeid;
-          this.selectedStatus = result.filter_status[0] === '' ? undefined : result.filter_status;
-          this.sort.active = result.sort;
+          this.selectedRole = result.filter_roletypeid ? result.filter_roletypeid[0] : undefined;
+          this.selectedStatus = result.filter_status ? result.filter_status[0] : undefined;
+          this.selectedSort = result.sort;
           this.loadUsers();
         }
       })

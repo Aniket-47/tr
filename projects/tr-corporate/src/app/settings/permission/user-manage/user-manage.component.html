@@ -74,12 +74,14 @@
           <mat-form-field appearance="outline">
             <mat-select disableOptionCentering [(ngModel)]="selectedRole"
               placeholder="{{ln.TXT_SELECT_ROLE | translate}}" (ngModelChange)="loadUsers()">
-              <ng-container *ngFor="let item of role; let last = last">
-                <mat-option [value]="item.roletypeid">
-                  {{item.name | translate}}
-                </mat-option>
-                <mat-divider *ngIf="!last"></mat-divider>
-              </ng-container>
+              <perfect-scrollbar style="height: 210px">
+                <ng-container *ngFor="let item of role; let last = last">
+                  <mat-option [value]="item.roletypeid">
+                    {{item.name | translate}}
+                  </mat-option>
+                  <mat-divider *ngIf="!last"></mat-divider>
+                </ng-container>
+              </perfect-scrollbar>
             </mat-select>
           </mat-form-field>
           <mat-form-field appearance="outline" class="short-wrapper">

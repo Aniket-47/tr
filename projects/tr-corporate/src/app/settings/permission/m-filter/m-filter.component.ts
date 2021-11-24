@@ -20,8 +20,9 @@ export class MFilterComponent implements OnInit {
 
   // Filter data
   sortTypes = [
-    { value: 'status', viewValue: this.ln.TXT_SORT_BY_STATUS},
-    { value: 'roletypeid', viewValue: this.ln.TXT_SORT_BY }
+    { value: 'lastupdated', viewValue: this.ln.TXT_LAST_UPDATED},
+    { value: 'status', viewValue: this.ln.TXT_STATUS},
+    { value: 'roletypeid', viewValue: this.ln.TXT_ROLE }
   ];
   status = [
     { value: '', viewValue: this.ln.TXT_ALL },
@@ -33,9 +34,9 @@ export class MFilterComponent implements OnInit {
 
 
   // Applied filter data
-  selectedSort!: string;
   selectedStatus!: number;
   selectedRole!: number;
+  selectedSort = "lastupdated";
 
 
   constructor(
@@ -65,6 +66,7 @@ export class MFilterComponent implements OnInit {
     // this.filterserv.SelectedStatus = this.selectedStatus;
     // this.bottomsheetRef.afterDismissed({ 'sort': this.selectedSort, 'filter_roletypeid': this.selectedRole, 'filter_status': this.selectedStatus })
     const filterData = { 'sort': this.selectedSort, 'filter_roletypeid': this.selectedRole, 'filter_status': this.selectedStatus }
+    // console.log(filterData);
     this.dismiss(filterData)
   }
 
