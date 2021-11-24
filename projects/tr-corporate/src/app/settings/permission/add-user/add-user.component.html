@@ -17,7 +17,7 @@
           <div>
             <mat-form-field appearance="outline" class="w-100">
               <mat-label>{{ln.TXT_FIRST_NAME | translate}}</mat-label>
-              <input matInput formControlName="firstname" placeholder="xyz">
+              <input matInput formControlName="firstname" placeholder="{{ln.TXT_FIRST_NAME | translate}}">
               <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
               <mat-error *ngIf="firstname.invalid && firstname.touched">
                 <span *ngIf="firstname.errors?.required">
@@ -38,7 +38,7 @@
           <div>
             <mat-form-field appearance="outline" class="w-100">
               <mat-label>{{ln.TXT_MIDDLE_NAME | translate}}</mat-label>
-              <input matInput formControlName="middlename" placeholder="xyz">
+              <input matInput formControlName="middlename" placeholder="{{ln.TXT_MIDDLE_NAME | translate}}">
               <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
               <mat-error *ngIf="middlename.invalid && middlename.touched">
 
@@ -56,7 +56,7 @@
           <div>
             <mat-form-field appearance="outline" class="w-100">
               <mat-label>{{ln.TXT_LAST_NAME | translate}}</mat-label>
-              <input matInput formControlName="lastname" placeholder="xyz">
+              <input matInput formControlName="lastname" placeholder="{{ln.TXT_LAST_NAME | translate}}">
               <!--<mat-icon class="text-muted h5" matSuffix>person</mat-icon>-->
               <mat-error *ngIf="lastname.invalid && lastname.touched">
                 <span *ngIf="lastname.errors?.required">
@@ -84,7 +84,8 @@
           <div>
             <mat-form-field appearance="outline" class="w-100">
               <mat-label>{{ln.TXT_EMAIL | translate}}</mat-label>
-              <input type="email" matInput formControlName="email" placeholder="pat@example.com">
+              <input type="email" matInput formControlName="email" 
+                placeholder="{{ln.TXT_EMAIL_SAMPLE | translate}}">
               <!--<mat-icon class="text-muted h5" matSuffix>email</mat-icon>-->
               <mat-error *ngIf="email.invalid && email.touched">
                 <span *ngIf="email.errors?.required">
@@ -113,7 +114,7 @@
           <div>
             <mat-form-field appearance="outline" class="w-100">
               <mat-label>{{ln.TXT_DESIGNATION | translate}}</mat-label>
-              <input matInput formControlName="designationname" placeholder="Designation">
+              <input matInput formControlName="designationname" placeholder="{{ln.TXT_DESIGNATION | translate}}">
             </mat-form-field>
           </div>
         </div>
@@ -124,7 +125,7 @@
               <mat-select formControlName="businessverticalid">
                 <mat-option *ngFor="let businessvertical of businessverticals;"
                   [value]="businessvertical.businessverticalid">
-                  {{businessvertical.name}}
+                  {{businessvertical.name | translate}}
                 </mat-option>
               </mat-select>
             </mat-form-field>
@@ -134,7 +135,7 @@
           <div>
             <mat-form-field appearance="outline" class="w-100">
               <mat-label>{{ln.TXT_PRACTICE | translate}}</mat-label>
-              <input matInput formControlName="practicename" placeholder="Practice">
+              <input matInput formControlName="practicename" placeholder="{{ln.TXT_PRACTICE | translate}}">
             </mat-form-field>
           </div>
         </div>
@@ -150,7 +151,7 @@
           <div>
             <mat-form-field appearance="outline" class="w-100">
               <mat-label>{{ln.TXT_LOCATION | translate}}</mat-label>
-              <input matInput formControlName="locationname" placeholder="Location">
+              <input matInput formControlName="locationname" placeholder="{{ln.TXT_LOCATION | translate}}">
             </mat-form-field>
           </div>
         </div>
