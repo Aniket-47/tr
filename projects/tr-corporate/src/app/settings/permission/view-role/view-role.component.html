@@ -1,13 +1,13 @@
 <div [@fadeInOut]>
   <tr-page-header>
     <div page-title>
-      <h5 class="mobile-only">{{ln.TXT_PERMISSIONS | translate}}</h5>
-      <h2>{{ln.TXT_ACCOUNT_ROLE | translate}}</h2>
+      <h5 class="mobile-only">{{ln.TXT_PERMISSIONS | translate | titlecase}}</h5>
+      <h2>{{ln.TXT_ACCOUNT_ROLE | translate | titlecase}}</h2>
     </div>
     <div page-action class="page-action cloud-only">
       <button mat-flat-button color="primary" (click)="createNewRole()">
         <i class="add-new-role-btn-icon icon-mc mc-plus"></i>
-        <span> {{ln.TXT_ADD_ROLE | translate}}</span>
+        <span> {{ln.TXT_ADD_ROLE | translate | titlecase}}</span>
       </button>
     </div>
   </tr-page-header>
@@ -139,7 +139,7 @@
                       <span class="icon-mc mc-visibility"></span>
                       <span class="mx-3">{{ln.TXT_VIEW | translate}}</span>
                     </button>
-                    <button mat-menu-item (click)="editRole(element)" [disabled]="element?.isdefaultrole==1">
+                    <button mat-menu-item class="cloud-only" (click)="editRole(element)" [disabled]="element?.isdefaultrole==1">
                       <span class="icon-mc mc-create"></span>
                       <span class="mx-3">{{ln.TXT_EDIT | translate}}</span>
                     </button>
@@ -170,9 +170,9 @@
     <div class="more-float-action-btn" [class.active]="toggle">
       <!-- <button mat-stroked-button color="primary" [matMenuTriggerFor]="menu">Export <span
                 class="icon-mc mc-expand_more"></span></button> -->
-      <button mat-flat-button color="primary" (click)="createNewRole()"><span class="icon-mc mc-plus"></span>
-        {{ln.TXT_NEW_ROLE | translate}}
-      </button>
+      <!-- <button mat-flat-button color="primary" (click)="createNewRole()"><span class="icon-mc mc-plus"></span>
+        {{ln.TXT_ADD_ROLE | translate | titlecase}}
+      </button> -->
       <!-- <mat-menu #menu="matMenu">
             <button mat-menu-item>PDF</button>
             <button mat-menu-item>Excel</button>
