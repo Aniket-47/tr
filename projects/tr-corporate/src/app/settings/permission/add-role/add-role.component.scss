@@ -189,22 +189,9 @@
         @include media-breakpoint-up(md) {
             width: 320px;
         }
-        
-        .mat-select{
-            .perfect-scrollbar{
-                height: 240px;
-            }
-        }
-        .perfect-scrollbar{
-            height: 240px;
-        }
     }
     ::ng-deep .mat-form-field-appearance-outline .mat-form-field-wrapper {
         margin: 0;
-    }
-
-    .perfect-scrollbar{
-        height: 240px !important;
     }
 }   
 
@@ -223,8 +210,4 @@
         }
     }
     font-size: 14px;
-}
-
-.perfect-scrollbar{
-    height: 240px !important;
 }
