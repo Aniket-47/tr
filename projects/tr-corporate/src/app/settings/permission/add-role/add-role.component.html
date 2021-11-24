@@ -25,10 +25,16 @@
       <div>
         <mat-form-field appearance="outline">
           <mat-label>{{ ln.TXT_ROLE_TYPE | translate }}</mat-label>
-          <mat-select placeholder="Select any default role" formControlName="roleType">
-            <mat-option *ngFor="let role of defaultRoles" [value]="role?.roletypeid">
-              {{ role?.name || "" | translate }}
-            </mat-option>
+          <mat-select disableOptionCentering placeholder="Select any default role" formControlName="roleType">
+            <!-- TODO: needs to remove the inline css -->
+            <perfect-scrollbar style="height: 250px;">
+              <ng-container *ngFor="let role of defaultRoles let last = last">
+                <mat-option [value]="role?.roletypeid">
+                  {{ role?.name || "" | translate }}
+                </mat-option>
+                <mat-divider *ngIf="!last"></mat-divider>
+              </ng-container>
+            </perfect-scrollbar>
           </mat-select>
           <mat-error *ngIf="roleType.invalid && roleType?.errors">
             <span *ngIf="roleType?.errors?.required">
@@ -75,7 +81,7 @@
 
               <div class="inner-content" *ngIf="eachRight.get('level2')">
                 <ng-container formArrayName="level2">
-                  <ng-container 
+                  <ng-container
                     *ngFor="let eachLvl2 of getLvl2Array(i)?.controls; let l2 = index" [formGroupName]="l2">
                     <mat-expansion-panel>
                       <mat-expansion-panel-header>
@@ -90,14 +96,14 @@
                       </mat-expansion-panel-header>
                       <ng-container *ngIf="eachLvl2.get('level3')">
                         <ng-container formArrayName="level3">
-                          <div class="role-list bg-light" 
-                            *ngFor="let eachLvl3 of getLvl3Array(i, l2)?.controls; let l3 = index" 
+                          <div class="role-list bg-light"
+                            *ngFor="let eachLvl3 of getLvl3Array(i, l2)?.controls; let l3 = index"
                             [formGroupName]="l3">
                             <div class="role-title">
                               {{ eachLvl3.get("name")?.value | titlecase }}
                             </div>
                             <div class="header-action">
-                              <mat-slide-toggle color="green" formControlName="isOn" 
+                              <mat-slide-toggle color="green" formControlName="isOn"
                                 (click)="toggleAllLvl(i, l2, l3)">
                               </mat-slide-toggle>
                             </div>

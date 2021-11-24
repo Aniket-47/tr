@@ -123,11 +123,10 @@ export class UserManageComponent implements OnInit {
     this._bottomSheet.open(MFilterComponent, { data: appliedFilterData }).afterDismissed()
       .subscribe(result => {
         if (result) {
-          console.log(result);
 
-          this.selectedRole = result.filter_roletypeid[0] === '' ? undefined : result.filter_roletypeid;
-          this.selectedStatus = result.filter_status[0] === '' ? undefined : result.filter_status;
-          this.sort.active = result.sort;
+          this.selectedRole = result.filter_roletypeid ? result.filter_roletypeid[0] : undefined;
+          this.selectedStatus = result.filter_status ? result.filter_status[0] : undefined;
+          this.selectedSort = result.sort;
           this.loadUsers();
         }
       })
@@ -211,16 +210,16 @@ export class UserManageComponent implements OnInit {
     this.userServ.updateUserStatus({ 'email': email, 'status': 0 }).subscribe(res => {
       if (res.error) {
         // error from api
-        this.snackBar.open(res.message);
-        const updateditem = this.dataSource.data.find(e => e.email == email);
-        const index = this.dataSource.data.indexOf(updateditem);
-        this.dataSource.data[index] = { ...{ status: 0 } };
-
-        this.dataSource = new MatTableDataSource(this.dataSource.data);
       }
       else {
         // success from api
         this.snackBar.open(res.message);
+        this.snackBar.open(res.message);
+        const updateditem = this.dataSource.data.find(e => e.email == email);
+        const index = this.dataSource.data.indexOf(updateditem);
+        this.dataSource.data[index] = { ...this.dataSource.data[index], status: 0 };
+
+        this.dataSource = new MatTableDataSource(this.dataSource.data);
       }
     })
   }
@@ -231,15 +230,15 @@ export class UserManageComponent implements OnInit {
       if (res.error) {
         // error from api
         this.snackBar.open(res.message);
-        const updateditem = this.dataSource.data.find(e => e.email == email);
-        const index = this.dataSource.data.indexOf(updateditem);
-        this.dataSource.data[index] = { ...{ status: 1 } };
-
-        this.dataSource = new MatTableDataSource(this.dataSource.data);
       }
       else {
         // success from api
         this.snackBar.open(res.message);
+        const updateditem = this.dataSource.data.find(e => e.email == email);
+        const index = this.dataSource.data.indexOf(updateditem);
+        this.dataSource.data[index] = { ...this.dataSource.data[index], status: 1 };
+
+        this.dataSource = new MatTableDataSource(this.dataSource.data);
       }
     })
   }
@@ -313,7 +312,7 @@ export class UserManageComponent implements OnInit {
 
     const updateditem = this.dataSource.data.find(e => e.email == emitted.userEmail);
     const index = this.dataSource.data.indexOf(updateditem);
-    this.dataSource.data[index] = { ...emitted };
+    this.dataSource.data[index] = { ...this.dataSource.data[index], ...emitted };
 
     this.dataSource = new MatTableDataSource(this.dataSource.data);
   }

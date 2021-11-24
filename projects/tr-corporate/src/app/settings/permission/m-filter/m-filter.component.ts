@@ -18,24 +18,23 @@ export class MFilterComponent implements OnInit {
 
   ln = SETTINGS_LN;
 
+  forRoles = false;
+
   // Filter data
-  sortTypes = [
-    { value: 'status', viewValue: this.ln.TXT_SORT_BY_STATUS},
-    { value: 'roletypeid', viewValue: this.ln.TXT_SORT_BY }
-  ];
+  sortTypes: any[] = [];
   status = [
     { value: '', viewValue: this.ln.TXT_ALL },
     { value: '0', viewValue: this.ln.TXT_DEACTIVE },
     { value: '1', viewValue: this.ln.TXT_ACTIVE },
     { value: '2', viewValue: this.ln.TXT_PENDING }
   ];
-  role!: any[];
+  role: any[] = [];
 
 
   // Applied filter data
-  selectedSort!: string;
   selectedStatus!: number;
   selectedRole!: number;
+  selectedSort !: string;
 
 
   constructor(
@@ -49,9 +48,19 @@ export class MFilterComponent implements OnInit {
     this.store.select(getRoles).subscribe(roles => this.role = [{ roletypeid: '', name: this.ln.TXT_ALL }, ...roles]);
 
     if (this.data) {
+      if (this.data.forRoles) this.forRoles = this.data.forRoles;
       if (this.data.sort) this.selectedSort = this.data.sort;
       if (this.data.filter_roletypeid) this.selectedRole = this.data.filter_roletypeid;
       if (this.data.filter_status) this.selectedStatus = this.data.filter_status;
+
+      this.sortTypes = this.forRoles ? [
+        { value: 'rolename', viewValue: this.ln.TXT_ROLE_NAME },
+        { value: 'modifiedDatetime', viewValue: this.ln.TXT_LAST_UPDATED }
+      ] : [
+        { value: 'lastupdated', viewValue: this.ln.TXT_LAST_UPDATED },
+        { value: 'status', viewValue: this.ln.TXT_STATUS },
+        { value: 'roletypeid', viewValue: this.ln.TXT_ROLE }
+      ];
     }
   }
 
@@ -64,8 +73,15 @@ export class MFilterComponent implements OnInit {
     // this.filterserv.SelectedSort = this.selectedSort;
     // this.filterserv.SelectedStatus = this.selectedStatus;
     // this.bottomsheetRef.afterDismissed({ 'sort': this.selectedSort, 'filter_roletypeid': this.selectedRole, 'filter_status': this.selectedStatus })
-    const filterData = { 'sort': this.selectedSort, 'filter_roletypeid': this.selectedRole, 'filter_status': this.selectedStatus }
-    this.dismiss(filterData)
+    if (this.forRoles) {
+      const filterData = { 'sort': this.selectedSort };
+      this.dismiss(filterData)
+    }
+    else {
+      const filterData = { 'sort': this.selectedSort, 'filter_roletypeid': this.selectedRole, 'filter_status': this.selectedStatus }
+      // console.log(filterData);
+      this.dismiss(filterData)
+    }
   }
 
   onReset() {

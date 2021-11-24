@@ -13,8 +13,8 @@
       <div page-title class="page-title">
 
         <div>
-          <h5 class="mobile-only">{{ln.TXT_PERMISSIONS | translate}}</h5>
-          <h2>{{ln.TXT_USER_MANAGEMENT | translate}}</h2>
+          <h5 class="mobile-only">{{ln.TXT_PERMISSIONS | translate | titlecase}}</h5>
+          <h2>{{ln.TXT_USER_MANAGEMENT | translate | titlecase}}</h2>
         </div>
 
       </div>
@@ -74,12 +74,15 @@
           <mat-form-field appearance="outline">
             <mat-select disableOptionCentering [(ngModel)]="selectedRole"
               placeholder="{{ln.TXT_SELECT_ROLE | translate}}" (ngModelChange)="loadUsers()">
-              <ng-container *ngFor="let item of role; let last = last">
-                <mat-option [value]="item.roletypeid">
-                  {{item.name | translate}}
-                </mat-option>
-                <mat-divider *ngIf="!last"></mat-divider>
-              </ng-container>
+              <!-- TODO: needs to remove the inline css -->
+              <perfect-scrollbar style="height: 210px">
+                <ng-container *ngFor="let item of role; let last = last">
+                  <mat-option [value]="item.roletypeid">
+                    {{item.name | translate}}
+                  </mat-option>
+                  <mat-divider *ngIf="!last"></mat-divider>
+                </ng-container>
+              </perfect-scrollbar>
             </mat-select>
           </mat-form-field>
           <mat-form-field appearance="outline" class="short-wrapper">
@@ -251,7 +254,7 @@
                         <i class="icon-mc mc-visibility"></i> <span>{{(ln.TXT_VIEW_DETAILS | translate) |
                           titlecase}}</span>
                       </button>
-                      <button mat-menu-item (click)="viewPermission(element)">
+                      <button mat-menu-item class="cloud-only" (click)="viewPermission(element)">
                         <i class="icon-mcf mcf-chrome_reader_mode"></i> <span>{{(ln.TXT_VIEW_PERMISSION |
                           translate ) | titlecase}}</span>
                       </button>
@@ -281,18 +284,18 @@
         </perfect-scrollbar>
       </div>
 
-      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
+      <mat-paginator class="cloud-only" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
       </mat-paginator>
     </div>
     <!-- Mobile View -->
     <div class="floating-button page-action  mobile-only">
       <div class="more-float-action-btn" [class.active]="toggle">
-        <button mat-flat-button color="primary" (click)="addUserModal()"><span class="icon-mc  mc-user-plus"></span>
+        <button mat-flat-button color="primary" (click)="addUserModal()"><span class="icon-mc  mc-plus"></span>
           {{ln.TXT_ADD_USER | translate | titlecase}}
         </button>
-        <button mat-stroked-button color="primary" [matMenuTriggerFor]="menu">{{ln.TXT_EXPORT | translate}} <span
+        <button mat-stroked-button color="primary" [matMenuTriggerFor]="export_menu">{{ln.TXT_EXPORT | translate}} <span
             class="icon-mc mc-expand_more"></span></button>
-        <mat-menu #menu="matMenu">
+        <mat-menu #export_menu="matMenu">
           <button mat-menu-item>{{ln.TXT_PDF | translate}}</button>
           <button mat-menu-item>{{ln.TXT_EXCEL | translate}}</button>
           <button mat-menu-item>{{ln.TXT_CSV | translate}}</button>

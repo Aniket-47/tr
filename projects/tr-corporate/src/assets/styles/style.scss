@@ -45,12 +45,14 @@ header {
       font-weight: 500;
       @include media-breakpoint-down(md) {
         font-size: 1.2rem;
+        font-weight: bold;
       }
     }
     h5 {
       @include font-size($fs-xs);
       @include media-breakpoint-down(md) {
         @include font-size(0.688rem);
+        font-weight: 600;
       }
       margin-bottom: 0.3rem;
       color: #84818a;
@@ -623,4 +625,10 @@ button{
 
 .mat-select-panel-wrap{
   margin-top: 1.9rem !important;
+
+  .mat-option{
+    font-size: 14px !important;
+    font-family: 'Manrope' !important;
+    font-weight: 500;
+  }
 }
