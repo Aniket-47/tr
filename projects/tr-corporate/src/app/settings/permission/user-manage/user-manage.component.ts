@@ -53,6 +53,7 @@ export class UserManageComponent implements OnInit {
   ];
 
   sorts = [
+    { value: 'lastupdated', viewValue: this.ln.TXT_LAST_UPDATED },
     { value: 'status', viewValue: this.ln.TXT_STATUS },
     { value: 'roletypeid', viewValue: this.ln.TXT_ROLE }
   ]
@@ -61,7 +62,7 @@ export class UserManageComponent implements OnInit {
 
   selectedStatus!: number;
   selectedRole!: number;
-  selectedSort = "status";
+  selectedSort = "lastupdated";
   displayedColumns: string[] = ['check', 'name', 'roletypeid', 'email', 'status', 'lastupdated', 'action'];
   dataSource!: MatTableDataSource<any>;
   selection = new SelectionModel<any>(true, []);
@@ -140,6 +141,11 @@ export class UserManageComponent implements OnInit {
     this.addUserModalRef = this.dialog.open(AddUserComponent, {
       autoFocus: false, panelClass: 'modal'
     })
+    this.addUserModalRef.afterClosed().subscribe(res => {
+      if (res) {
+        this.userAdded();
+      }
+    })
   }
 
 
@@ -169,7 +175,6 @@ export class UserManageComponent implements OnInit {
   loadUsers() {
     // If the user changes the sort order, reset back to the first page.
     this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
-
     merge(this.sort.sortChange, this.paginator.page)
       .pipe(
         startWith({}),
@@ -180,7 +185,7 @@ export class UserManageComponent implements OnInit {
             this.paginator.pageSize,
             this.paginator.pageIndex * this.paginator.pageSize,
             {
-              sort: this.sort.active,
+              sort: this.selectedSort,
               sortOrder: this.sort.direction == "desc" ? "desc" : "asc",
               filter_roletypeid: this.selectedRole,
               filter_status: this.selectedStatus
@@ -194,7 +199,9 @@ export class UserManageComponent implements OnInit {
         catchError(() => {
           return observableOf([]);
         })
-      ).subscribe((data: any) => this.dataSource = new MatTableDataSource(data));
+      ).subscribe((data: any) => {
+        this.dataSource = new MatTableDataSource(data)
+      });
   }
 
 
@@ -311,4 +318,11 @@ export class UserManageComponent implements OnInit {
     this.dataSource = new MatTableDataSource(this.dataSource.data);
   }
 
+  userAdded() {
+    this.paginator.pageIndex = 0;
+    this.selectedRole = 0;
+    this.selectedStatus = 0;
+    this.selectedSort = "lastupdated";
+    this.loadUsers();
+  }
 }
