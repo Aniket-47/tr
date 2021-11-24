@@ -185,7 +185,7 @@ export class SettingsSideMenuComponent implements OnInit {
   ]
 
   panelOpenState = false;
-
+  autoFocusVal = false;
   constructor() { }
 
   ngOnInit(): void {

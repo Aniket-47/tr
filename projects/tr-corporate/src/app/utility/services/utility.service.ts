@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class UtilityService {
-
+  
   constructor() { }
   urlReplace(url: string, ...values: string[]) {
     let newUrl = url.split('/');

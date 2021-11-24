@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ROUTE_CONFIGS } from '../utility/configs/routerConfig';
 import { fadeAnimation } from '../animations';
 import { MFilterComponent } from './permission/m-filter/m-filter.component';
+import { DesignService } from '../utility/services/design.service';
 
 @Component({
   selector: 'app-settings',
@@ -21,13 +22,17 @@ export class SettingsComponent implements OnInit {
   ROUTE_CONFIGS = ROUTE_CONFIGS;
   @ViewChild('drawer', { static: true }) drawer!: MatDrawer;
 
-  constructor(private router: Router, private _bottomSheet: MatBottomSheet) {
+  constructor(private router: Router, private _bottomSheet: MatBottomSheet, public designService: DesignService) {
     this.currentUrlPath = router.url;
     router.events.subscribe(res => {
       this.currentUrlPath = router.url;
       if (this.currentUrlPath === ROUTE_CONFIGS.SETTINGS_DASHBOARD) {
         this.drawer.close()
       }
+    })
+    this.designService.isDrawerOpen$.subscribe(res=>{
+      console.log(res);
+      
     })
   }
 

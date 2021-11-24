@@ -1,6 +1,6 @@
 <mat-drawer-container autosize class="right-drawer" [class.drawer-lg]="viewUserPermission">
   <mat-drawer #drawer mode="over" class="drawer-container" position="end" [autoFocus]="false">
-    <button mat-icon-button (click)="drawer.toggle()" class="close-btn">
+    <button mat-icon-button (click)="drawer.toggle(); showSideMenu()" class="close-btn">
       <span class="icon-mc mc-x"></span>
     </button>
     <app-user-detail *ngIf="!viewUserPermission" [edit]="currentUserEdit" [userEmail]="currentUser?.email"
@@ -11,12 +11,10 @@
   <div class="example-sidenav-content" [@fadeInOut]>
     <tr-page-header>
       <div page-title class="page-title">
-
         <div>
           <h5 class="mobile-only">{{ln.TXT_PERMISSIONS | translate | titlecase}}</h5>
           <h2>{{ln.TXT_USER_MANAGEMENT | translate | titlecase}}</h2>
         </div>
-
       </div>
       <div page-action>
         <button mat-flat-button color="primary" class="cloud-only" (click)="addUserModal()">

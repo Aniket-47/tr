@@ -9,10 +9,9 @@
 <button *ngIf="currentUrlPath !== routerConfig.SETTINGS_DASHBOARD" type="button" mat-icon-button
   (click)="drawer.toggle()" class="togglebtn" [ngClass]="
       drawer.opened ? 'right' : 'left'
-    ">
+    " [class.hide-sidemenu-btn]="designService?.isDrawerOpen$ | async">
   <span class="icon-mc" [ngClass]="
-      drawer.opened ? 'mc-keyboard_arrow_left' : 'mc-keyboard_arrow_right'
+      drawer.opened ? 'mc-keyboard_arrow_right' : 'mc-keyboard_arrow_left'
     "></span>
 </button>
-
 <!-- <div *ngIf="currentUrlPath === '/dashboard/settings'"> {{ drawer.close() }} </div> -->

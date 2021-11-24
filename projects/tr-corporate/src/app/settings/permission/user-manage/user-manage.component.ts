@@ -34,6 +34,7 @@ import { ConfirmationComponent } from '../../../utility/components/confirmation/
 import { SETTINGS_LN } from '../../shared/settings.lang';
 import { ROUTE_CONFIGS } from '../../../utility/configs/routerConfig';
 import { UserRoleService } from '../shared/services/user-role.service';
+import { DesignService } from '../../../utility/services/design.service';
 
 @Component({
   selector: 'app-user-manage',
@@ -94,6 +95,7 @@ export class UserManageComponent implements OnInit {
     private snackBar: SnackBarService,
     private _bottomSheet: MatBottomSheet,
     private userRoleService: UserRoleService,
+    private designService: DesignService,
     private router: Router) {
   }
 
@@ -273,6 +275,7 @@ export class UserManageComponent implements OnInit {
     this.currentUser = userData;
     this.currentUserEdit = false;
     if (this.hideUserActionMenu) this.drawer.toggle();
+    this.designService.setDrawerOpen(true);
     setTimeout(() => {
       this.hideUserActionMenu = true;
     }, 100)
@@ -289,6 +292,7 @@ export class UserManageComponent implements OnInit {
     this.currentUserEdit = false;
     this.viewUserPermission = false;
     this.drawer.open();
+    this.designService.setDrawerOpen(true);
   }
 
   editUser(element: any, evt?: Event) {
@@ -297,6 +301,7 @@ export class UserManageComponent implements OnInit {
     this.currentUserEdit = true;
     this.viewUserPermission = false;
     this.drawer.open();
+    this.designService.setDrawerOpen(true);
     console.log("Called", this.drawer)
   }
 
@@ -323,5 +328,8 @@ export class UserManageComponent implements OnInit {
     this.selectedStatus = 0;
     this.selectedSort = "lastupdated";
     this.loadUsers();
+  }
+  showSideMenu(){
+    this.designService.setDrawerOpen(false)
   }
 }

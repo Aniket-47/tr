@@ -129,6 +129,14 @@ table.mat-table {
         font-weight: 400;
     }
 }
+.open-bottombtn {
+    .icon-mc {
+        font-size: 27px;
+    }
+}
+::ng-deep .page-header {
+    padding-right: 20px;
+}
 // .user-dropdown-submenu {
 //     ::ng-deep {
 //         .mat-menu-item[disabled] {
