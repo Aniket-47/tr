@@ -52,8 +52,8 @@
         vertical-align: top;
     }
     @include media-breakpoint-down(md) {
-        left: -8px;
-        top: 75px;
+        left: -2px;
+        top: 60px;
         background: $theme;
         border-color: $theme;
         border-radius: 0 4px 4px 0;
