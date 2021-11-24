@@ -281,7 +281,7 @@
         </perfect-scrollbar>
       </div>
 
-      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
+      <mat-paginator class="cloud-only" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
       </mat-paginator>
     </div>
     <!-- Mobile View -->
@@ -290,9 +290,9 @@
         <button mat-flat-button color="primary" (click)="addUserModal()"><span class="icon-mc  mc-plus"></span>
           {{ln.TXT_ADD_USER | translate | titlecase}}
         </button>
-        <button mat-stroked-button color="primary" [matMenuTriggerFor]="menu">{{ln.TXT_EXPORT | translate}} <span
+        <button mat-stroked-button color="primary" [matMenuTriggerFor]="export_menu">{{ln.TXT_EXPORT | translate}} <span
             class="icon-mc mc-expand_more"></span></button>
-        <mat-menu #menu="matMenu">
+        <mat-menu #export_menu="matMenu">
           <button mat-menu-item>{{ln.TXT_PDF | translate}}</button>
           <button mat-menu-item>{{ln.TXT_EXCEL | translate}}</button>
           <button mat-menu-item>{{ln.TXT_CSV | translate}}</button>
