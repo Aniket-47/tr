@@ -246,12 +246,16 @@
           <div class="mat-form-field-flex">
             <mat-label>{{ln.TXT_BUSINESS_VERTICAL | translate}}</mat-label>
             <mat-form-field appearance="outline">
-              <mat-select formControlName="businessverticalid" 
-                placeholder="{{ln.TXT_BUSINESS_VERTICAL | translate}}">
-                <mat-option *ngFor="let businessvertical of businessverticals;"
-                  [value]="businessvertical.businessverticalid">
-                  {{businessvertical.name | translate}}
-                </mat-option>
+              <mat-select formControlName="businessverticalid" placeholder="{{ln.TXT_BUSINESS_VERTICAL | translate}}">
+                <!-- TODO: change the inline css -->
+                <perfect-scrollbar style="height: 250px;">
+                  <ng-container *ngFor="let businessvertical of businessverticals; let last = last">
+                    <mat-option [value]="businessvertical.businessverticalid">
+                      {{businessvertical.name | translate}}
+                    </mat-option>
+                    <mat-divider *ngIf="!last"></mat-divider>
+                  </ng-container>
+                </perfect-scrollbar>
               </mat-select>
             </mat-form-field>
           </div>

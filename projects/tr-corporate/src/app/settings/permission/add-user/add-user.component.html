@@ -103,9 +103,15 @@
             <mat-form-field appearance="outline" class="w-100">
               <mat-label>{{ln.TXT_USER_ROLE | translate}}</mat-label>
               <mat-select formControlName="roletypeid">
-                <mat-option *ngFor="let role of roles;" [value]="role">
-                  {{role.name | translate}}
-                </mat-option>
+                <!-- TODO: needs to remove the inline css -->
+                <perfect-scrollbar style="height: 250px;">
+                  <ng-container *ngFor="let role of roles; let last = last">
+                    <mat-option [value]="role">
+                      {{role.name | translate}}
+                    </mat-option>
+                    <mat-divider *ngIf="!last"></mat-divider>
+                  </ng-container>
+                </perfect-scrollbar>
               </mat-select>
             </mat-form-field>
           </div>
@@ -123,10 +129,15 @@
             <mat-form-field appearance="outline" class="w-100">
               <mat-label>{{ln.TXT_BUSINESS_VERTICAL | translate}}</mat-label>
               <mat-select formControlName="businessverticalid">
-                <mat-option *ngFor="let businessvertical of businessverticals;"
-                  [value]="businessvertical.businessverticalid">
-                  {{businessvertical.name | translate}}
-                </mat-option>
+                <!-- TODO: change the inline css -->
+                <perfect-scrollbar style="height: 250px;">
+                  <ng-container *ngFor="let businessvertical of businessverticals; let last = last">
+                    <mat-option [value]="businessvertical.businessverticalid">
+                      {{businessvertical.name | translate}}
+                    </mat-option>
+                    <mat-divider *ngIf="!last"></mat-divider>
+                  </ng-container>
+                </perfect-scrollbar>
               </mat-select>
             </mat-form-field>
           </div>
