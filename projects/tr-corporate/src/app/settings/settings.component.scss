@@ -6,7 +6,7 @@
     }
     .mat-drawer-container, ::ng-deep .mat-drawer-content {
         height: 100%;
-        overflow: auto;
+        // overflow: auto;
         z-index: 0;
         .sidenav-content {
             padding:0 2rem;
@@ -53,7 +53,7 @@
     }
     @include media-breakpoint-down(md) {
         left: 92%;
-        top: 82px;
+        top: 78px;
         background: $theme;
         border-color: $theme;
         border-radius: 4px 0 0 4px;

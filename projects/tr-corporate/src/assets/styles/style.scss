@@ -455,7 +455,7 @@ header {
 }
 
 .mat-expansion-panel-body {
-  @include padding(0 10px 0 30px !important); //!important ;
+  @include padding(0 10px 0 40px !important); //!important ;
 }
 
 .mat-list-base {
@@ -631,4 +631,8 @@ button{
     font-family: 'Manrope' !important;
     font-weight: 500;
   }
+}
+
+.floating-button{
+  z-index: 2 !important;
 }

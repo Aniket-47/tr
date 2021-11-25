@@ -187,4 +187,5 @@
       <span class="icon-mc " [ngClass]="{'mc-plus': toggle === true, 'mc-more_vert': toggle === false }"></span>
     </button>
   </div>
+  <mat-progress-bar mode="query" *ngIf="isLoadingMore"></mat-progress-bar>
 </div>

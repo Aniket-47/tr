@@ -113,8 +113,10 @@
   .mid-sec {
     padding: 0;
     height: calc(100vh - 180px);
-    @include media-breakpoint-down(md) {
-      // b: calc(100vh - 240px);
+    .user-details{
+      @include media-breakpoint-down(md) {
+        padding-bottom: 8rem;
+      }
     }
     overflow: auto;
     .personal__details__heading {

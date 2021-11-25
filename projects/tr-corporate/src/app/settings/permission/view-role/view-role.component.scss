@@ -135,7 +135,9 @@ table.mat-table {
     }
 }
 ::ng-deep .page-header {
-    padding-right: 20px;
+    @include media-breakpoint-down(md) {
+        padding-right: 20px;
+    }
 }
 // .user-dropdown-submenu {
 //     ::ng-deep {

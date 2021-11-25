@@ -3,7 +3,7 @@ import { getUserEmail } from './../../../utility/store/selectors/user.selector';
 import { MatSort } from '@angular/material/sort';
 import { Store } from '@ngrx/store';
 import { MatDrawer } from '@angular/material/sidenav';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 // ngrx
 import { State } from '../../../utility/store/reducers';
@@ -35,6 +35,7 @@ import { SETTINGS_LN } from '../../shared/settings.lang';
 import { ROUTE_CONFIGS } from '../../../utility/configs/routerConfig';
 import { UserRoleService } from '../shared/services/user-role.service';
 import { DesignService } from '../../../utility/services/design.service';
+import { UtilityService } from '../../../utility/services/utility.service';
 
 @Component({
   selector: 'app-user-manage',
@@ -85,6 +86,8 @@ export class UserManageComponent implements OnInit {
   @ViewChild(MatSort, { static: false }) sort!: MatSort;
   @ViewChild(MatDrawer, { static: false }) drawer!: MatDrawer;
   @ViewChild('modalRefElement', { static: false }) modalRefElement!: ElementRef;
+  isLoadingMore: boolean = false;
+  isRateLimitReached: boolean = true;
 
 
   constructor(
@@ -96,7 +99,10 @@ export class UserManageComponent implements OnInit {
     private _bottomSheet: MatBottomSheet,
     private userRoleService: UserRoleService,
     private designService: DesignService,
-    private router: Router) {
+    private router: Router,
+    private cdRef: ChangeDetectorRef,
+    private util: UtilityService
+    ) {
   }
 
   ngOnInit(): void {
@@ -112,7 +118,7 @@ export class UserManageComponent implements OnInit {
   ngAfterViewInit(): void {
     this.store.select(getDefaultAccountId).subscribe((accountid: any) => {
       this.accountID = accountid;
-      if (accountid) this.loadUsers();
+      if (accountid) this.loadUsers(this.accountID);
     });
   }
 
@@ -129,7 +135,7 @@ export class UserManageComponent implements OnInit {
           this.selectedRole = result.filter_roletypeid ? result.filter_roletypeid[0] : undefined;
           this.selectedStatus = result.filter_status ? result.filter_status[0] : undefined;
           this.selectedSort = result.sort;
-          this.loadUsers();
+          this.loadUsers(this.accountID);
         }
       })
   }
@@ -173,7 +179,7 @@ export class UserManageComponent implements OnInit {
   }
 
 
-  loadUsers() {
+  loadUsers(accountId:string) {
     // If the user changes the sort order, reset back to the first page.
     this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
     merge(this.sort.sortChange, this.paginator.page)
@@ -182,7 +188,7 @@ export class UserManageComponent implements OnInit {
         switchMap(() => {
 
           return this.userlistServ.getUserList(
-            this.accountID,
+            accountId,
             this.paginator.pageSize,
             this.paginator.pageIndex * this.paginator.pageSize,
             {
@@ -198,10 +204,15 @@ export class UserManageComponent implements OnInit {
           return res?.data.userslist;
         }),
         catchError(() => {
+          this.isLoadingMore = false;
           return observableOf([]);
         })
       ).subscribe((data: any) => {
-        this.dataSource = new MatTableDataSource(data)
+        const newData = this.isLoadingMore ? [...this.dataSource.data, ...data] : data;
+        this.dataSource = new MatTableDataSource(newData);
+        this.isRateLimitReached = this.dataSource.data.length === this.paginator.length;
+        this.isLoadingMore = false;
+        this.cdRef.detectChanges();
       });
   }
 
@@ -276,6 +287,7 @@ export class UserManageComponent implements OnInit {
     this.currentUserEdit = false;
     if (this.hideUserActionMenu) this.drawer.toggle();
     this.designService.setDrawerOpen(true);
+    console.log("Opened " ,this.drawer.opened)
     setTimeout(() => {
       this.hideUserActionMenu = true;
     }, 100)
@@ -302,7 +314,6 @@ export class UserManageComponent implements OnInit {
     this.viewUserPermission = false;
     this.drawer.open();
     this.designService.setDrawerOpen(true);
-    console.log("Called", this.drawer)
   }
 
   onHeaderSort() {
@@ -327,9 +338,20 @@ export class UserManageComponent implements OnInit {
     this.selectedRole = 0;
     this.selectedStatus = 0;
     this.selectedSort = "lastupdated";
-    this.loadUsers();
+    this.loadUsers(this.accountID);
   }
-  showSideMenu(){
+
+  toggleSideMenu(){
     this.designService.setDrawerOpen(false)
+  }
+
+  contentScrollYEvt() {
+    if (!this.isRateLimitReached && !this.isLoadingMore && this.util.isMobile()) {
+      console.log('Loading more data...')
+      this.paginator.pageIndex++;
+      this.isLoadingMore = true;
+      this.loadUsers(this.accountID);
+      this.cdRef.detectChanges();
+    }
   }
 }

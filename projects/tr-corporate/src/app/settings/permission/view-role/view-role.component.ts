@@ -25,6 +25,7 @@ import { SETTINGS_LN } from '../../shared/settings.lang';
 import { ROUTE_CONFIGS } from '../../../utility/configs/routerConfig';
 import { MatTableDataSource } from '@angular/material/table';
 import { MFilterComponent } from '../m-filter/m-filter.component';
+import { UtilityService } from '../../../utility/services/utility.service';
 
 
 export interface Irole {
@@ -95,7 +96,8 @@ export class ViewRoleComponent implements OnInit, AfterViewInit {
     private router: Router,
     private cdRef: ChangeDetectorRef,
     private store: Store<State>,
-    private _bottomSheet: MatBottomSheet) {
+    private _bottomSheet: MatBottomSheet,
+    private util: UtilityService) {
     this.config = configServ.routerconfig;
   }
 
@@ -145,7 +147,7 @@ export class ViewRoleComponent implements OnInit, AfterViewInit {
         }),
         map((res: any) => {
           this.resultsLength = res?.data?.totalcount;
-          this.pageSize = this.resultsLength || 10;
+          // this.pageSize = 10;
           return res?.data?.roles
         }),
         catchError(() => {
@@ -165,11 +167,12 @@ export class ViewRoleComponent implements OnInit, AfterViewInit {
   }
 
   contentScrollYEvt() {
-    if (!this.isRateLimitReached && !this.isLoadingMore) {
+    if (!this.isRateLimitReached && !this.isLoadingMore && this.util.isMobile()) {
       console.log('Loading more data...')
       this.paginator.pageIndex++;
       this.isLoadingMore = true;
       this.loadUserRoles(this.accountid);
+      this.cdRef.detectChanges();
     }
   }
 

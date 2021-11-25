@@ -88,7 +88,7 @@
       </div>
       <ng-template #hideEditBtn> </ng-template>
 
-      <ng-container *ngIf="!edit; else displayInput">
+      <div *ngIf="!edit; else displayInput" class="user-details">
         <div class="personal__details__content">
           <div class="user_detail_list">
             <div class="common-div">
@@ -163,7 +163,7 @@
             </div>
           </div>
         </div>
-      </ng-container>
+      </div>
 
       <ng-template #displayInput>
         <form [formGroup]="editUserForm" class="editUserForm">
@@ -373,7 +373,9 @@
         </form>
       </ng-template>
     </perfect-scrollbar>
-    <div class="buttons">
+    
+  </div>
+  <div class="buttons" *ngIf="edit">
       <button
         mat-flat-button
         color="primary"
@@ -398,5 +400,4 @@
         {{ ln.TXT_RESET | translate }}
       </button>
     </div>
-  </div>
 </div>

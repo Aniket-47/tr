@@ -13,4 +13,11 @@ export class UtilityService {
 
     }).join('/')
   }
+
+  isMobile(strict: boolean = false) {
+    const isMobileScreen = window.matchMedia("only screen and (max-width: 760px)").matches;
+    const isMobileAgent = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    const isMobileTouch = 'ontouchstart' in document.documentElement;
+    return strict ? (isMobileScreen && isMobileAgent && isMobileTouch) : (isMobileScreen || isMobileAgent || isMobileTouch);
+  }
 }

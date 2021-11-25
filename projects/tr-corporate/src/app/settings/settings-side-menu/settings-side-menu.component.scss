@@ -4,7 +4,9 @@
 .settings-wrap{
   width: 250px;
   padding: 0 1rem 1em;
-
+  // @include media-breakpoint-down(md) {
+  //   width: 70vw;
+  // }
   .nav-search {
     position: sticky;
     top: 0;
