@@ -21,20 +21,20 @@ export class MFilterComponent implements OnInit {
   forRoles = false;
 
   // Filter data
-  sortTypes:any[]=[];
+  sortTypes: any[] = [];
   status = [
     { value: '', viewValue: this.ln.TXT_ALL },
     { value: '0', viewValue: this.ln.TXT_DEACTIVE },
     { value: '1', viewValue: this.ln.TXT_ACTIVE },
     { value: '2', viewValue: this.ln.TXT_PENDING }
   ];
-  role!: any[];
+  role: any[] = [];
 
 
   // Applied filter data
   selectedStatus!: number;
   selectedRole!: number;
-  selectedSort !:string;
+  selectedSort !: string;
 
 
   constructor(

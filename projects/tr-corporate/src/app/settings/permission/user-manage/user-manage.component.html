@@ -1,22 +1,24 @@
 <mat-drawer-container autosize class="right-drawer" [class.drawer-lg]="viewUserPermission">
   <mat-drawer #drawer mode="over" class="drawer-container" position="end" [autoFocus]="false">
-    <button mat-icon-button (click)="drawer.toggle()" class="close-btn">
+    <button mat-icon-button (click)="drawer.toggle(); toggleSideMenu()" class="close-btn">
       <span class="icon-mc mc-x"></span>
     </button>
-    <app-user-detail *ngIf="!viewUserPermission" [edit]="currentUserEdit" [userEmail]="currentUser?.email"
-      (statusChange)="changeStatus($event)" (userUpdate)="userUpdated($event)">
+    <app-user-detail *ngIf="!viewUserPermission" 
+        [edit]="currentUserEdit" 
+        [userEmail]="currentUser?.email"
+        (statusChange)="changeStatus($event)" 
+        (userUpdate)="userUpdated($event)" 
+        [isOpen]="drawer.opened">
     </app-user-detail>
   </mat-drawer>
 
   <div class="example-sidenav-content" [@fadeInOut]>
     <tr-page-header>
       <div page-title class="page-title">
-
         <div>
           <h5 class="mobile-only">{{ln.TXT_PERMISSIONS | translate | titlecase}}</h5>
           <h2>{{ln.TXT_USER_MANAGEMENT | translate | titlecase}}</h2>
         </div>
-
       </div>
       <div page-action>
         <button mat-flat-button color="primary" class="cloud-only" (click)="addUserModal()">
@@ -62,21 +64,18 @@
         <div class="table-action cloud-only">
           <mat-form-field appearance="outline">
             <mat-select disableOptionCentering [(ngModel)]="selectedStatus"
-              placeholder="{{ln.TXT_SELECT_STATUS | translate}}" (ngModelChange)="loadUsers()">
-              <!-- TODO: needs to remove the inline css -->
-              <perfect-scrollbar style="height: 210px">
-                <ng-container *ngFor="let item of status; let last = last">
-                  <mat-option [value]="item.value">
-                    {{item.viewValue | translate}}
-                  </mat-option>
-                  <mat-divider *ngIf="!last"></mat-divider>
-                </ng-container>
-              </perfect-scrollbar>
+              placeholder="{{ln.TXT_SELECT_STATUS | translate}}" (ngModelChange)="loadUsers(accountID)">
+              <ng-container *ngFor="let item of status; let last = last">
+                <mat-option [value]="item.value">
+                  {{item.viewValue | translate}}
+                </mat-option>
+                <mat-divider *ngIf="!last"></mat-divider>
+              </ng-container>
             </mat-select>
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-select disableOptionCentering [(ngModel)]="selectedRole"
-              placeholder="{{ln.TXT_SELECT_ROLE | translate}}" (ngModelChange)="loadUsers()">
+              placeholder="{{ln.TXT_SELECT_ROLE | translate}}" (ngModelChange)="loadUsers(accountID)">
               <!-- TODO: needs to remove the inline css -->
               <perfect-scrollbar style="height: 210px">
                 <ng-container *ngFor="let item of role; let last = last">
@@ -117,7 +116,7 @@
         </div>
       </div>
       <div class="table-container">
-        <perfect-scrollbar>
+        <perfect-scrollbar (psYReachEnd)="contentScrollYEvt()">
           <table mat-table [dataSource]="dataSource" matSort matSortActive="lastupdated" matSortDirection="desc">
             <!-- Position Column -->
             <ng-container matColumnDef="check">
@@ -282,7 +281,7 @@
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="openTblItem(row)"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
           </table>
         </perfect-scrollbar>
       </div>
@@ -308,5 +307,6 @@
         <span class="icon-mc " [ngClass]="{'mc-plus': toggle === true, 'mc-more_vert': toggle === false }"></span>
       </button>
     </div>
+  <mat-progress-bar mode="query" *ngIf="isLoadingMore"></mat-progress-bar>
   </div>
 </mat-drawer-container>

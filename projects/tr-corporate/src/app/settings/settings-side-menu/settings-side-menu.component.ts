@@ -43,14 +43,7 @@ export class SettingsSideMenuComponent implements OnInit {
       link: "./",
       activeOption: true,
       child: [
-        {
-          name: this.ln.TXT_USER_MANAGEMENT,
-          link: "./permission/users",
-        },
-        {
-          name: this.ln.TXT_ACCOUNT_ROLE,
-          link: "./permission/users",
-        },
+        
       ],
       icon: 'icon-mcf mcf-book',
     },
@@ -59,14 +52,6 @@ export class SettingsSideMenuComponent implements OnInit {
       link: "./",
       activeOption: true,
       child: [
-        {
-          name: this.ln.TXT_USER_MANAGEMENT,
-          link: "./permission/users",
-        },
-        {
-          name: this.ln.TXT_ACCOUNT_ROLE,
-          link: "./permission/users",
-        }
       ],
       icon: 'icon-mcf mcf-add_task',
     },
@@ -75,14 +60,7 @@ export class SettingsSideMenuComponent implements OnInit {
       link: "./",
       activeOption: true,
       child: [
-        {
-          name: this.ln.TXT_USER_MANAGEMENT,
-          link: './permission/users',
-        },
-        {
-          name: this.ln.TXT_ACCOUNT_ROLE,
-          link: './permission/users',
-        }
+        
       ],
       icon: 'icon-mc mc-settings_brightness',
     },
@@ -91,14 +69,7 @@ export class SettingsSideMenuComponent implements OnInit {
       link: "./",
       activeOption: true,
       child: [
-        {
-          name: this.ln.TXT_USER_MANAGEMENT,
-          link: './permission/users',
-        },
-        {
-          name: this.ln.TXT_ACCOUNT_ROLE,
-          link: './permission/users',
-        },
+        
       ],
       icon: 'icon-mc mc-money',
     },
@@ -107,14 +78,7 @@ export class SettingsSideMenuComponent implements OnInit {
       link: "./",
       activeOption: true,
       child: [
-        {
-          name: this.ln.TXT_USER_MANAGEMENT,
-          link: './permission/users',
-        },
-        {
-          name: this.ln.TXT_ACCOUNT_ROLE,
-          link: './permission/users',
-        },
+        
       ],
       icon: 'icon-mcf mcf-account_circle',
     },
@@ -123,14 +87,7 @@ export class SettingsSideMenuComponent implements OnInit {
       link: "./",
       activeOption: true,
       child: [
-        {
-          name: this.ln.TXT_USER_MANAGEMENT,
-          link: "./permission/users",
-        },
-        {
-          name: this.ln.TXT_ACCOUNT_ROLE,
-          link: "./permission/users",
-        },
+        
       ],
       icon: 'icon-mc mc-thumbs_up_down',
     },
@@ -139,14 +96,7 @@ export class SettingsSideMenuComponent implements OnInit {
       link: "./",
       activeOption: true,
       child: [
-        {
-          name: this.ln.TXT_USER_MANAGEMENT,
-          link: "./permission/users",
-        },
-        {
-          name: this.ln.TXT_ACCOUNT_ROLE,
-          link: "./permission/users",
-        },
+        
       ],
       icon: 'icon-mcf mcf-card_travel',
     },
@@ -155,14 +105,7 @@ export class SettingsSideMenuComponent implements OnInit {
       link: "./",
       activeOption: true,
       child: [
-        {
-          name: this.ln.TXT_USER_MANAGEMENT,
-          link: "./permission/users",
-        },
-        {
-          name: this.ln.TXT_ACCOUNT_ROLE,
-          link: "./permission/users",
-        },
+        
       ],
       icon: 'icon-mcf mcf-file_present',
     },
@@ -171,21 +114,14 @@ export class SettingsSideMenuComponent implements OnInit {
       link: "./",
       activeOption: true,
       child: [
-        {
-          name: this.ln.TXT_USER_MANAGEMENT,
-          link: "./permission/users",
-        },
-        {
-          name: this.ln.TXT_ACCOUNT_ROLE,
-          link: "./permission/users",
-        },
+        
       ],
       icon: 'icon-mc mc-corporate_fare',
     }
   ]
 
   panelOpenState = false;
-
+  autoFocusVal = false;
   constructor() { }
 
   ngOnInit(): void {

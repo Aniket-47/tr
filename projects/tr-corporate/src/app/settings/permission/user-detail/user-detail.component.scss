@@ -113,8 +113,10 @@
   .mid-sec {
     padding: 0;
     height: calc(100vh - 180px);
-    @include media-breakpoint-down(md) {
-      bottom: calc(100vh - 120px);
+    .user-details{
+      @include media-breakpoint-down(md) {
+        padding-bottom: 8rem;
+      }
     }
     overflow: auto;
     .personal__details__heading {
@@ -163,15 +165,19 @@
           }
         }
         mat-label {
-          color: gray;
+          color: #84818A;
           margin-bottom: 5px;
           font-size: 14px;
+          font-weight: 500;
         }
       }
     }
     form {
       margin-top: 1rem;
-      padding-bottom: 3rem;
+      padding-bottom: 5rem;
+      @include media-breakpoint-down(md) {
+        padding-bottom: 12rem;
+      }
     }
     // this mat-icon styles for edit page part
     mat-icon {
@@ -204,18 +210,14 @@
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 0px;
-    width: 100%;
-    background-color: $white;
+    bottom: 0;
+    background-color: #fff;
     padding: 0 0 10px;
     display: flex;
+    grid-gap: 10px;
     gap: 10px;
-  
-    // display: flex;
-    // justify-content: space-between;
-    // button {
-    //   width: 48%;
-    // }
+    width: 100%;
+    padding: 16px;
   }
 }
 
@@ -235,8 +237,13 @@
 .editUserForm{
   .icon-mc,
   .icon-mcf {
-      color: gray;
       font-size: 18px;
-      margin-right: 14px;
+      margin-right: 7px;
+      &::before{
+        color: #B6B4BA;
+      }
+  }
+  ::ng-deep .mat-form-field-wrapper{
+    padding-bottom: 0 !important;
   }
 }

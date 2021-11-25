@@ -6,7 +6,7 @@
     }
     .mat-drawer-container, ::ng-deep .mat-drawer-content {
         height: 100%;
-        overflow: auto;
+        // overflow: auto;
         z-index: 0;
         .sidenav-content {
             padding:0 2rem;
@@ -52,13 +52,17 @@
         vertical-align: top;
     }
     @include media-breakpoint-down(md) {
-        left: -2px;
-        top: 60px;
+        left: 92%;
+        top: 78px;
         background: $theme;
         border-color: $theme;
-        border-radius: 0 4px 4px 0;
+        border-radius: 4px 0 0 4px;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
         .icon-mc {  
-            margin-left: 5px;
+            margin-left: 3px;
+            font-size: 24px;
             &::before {
                 color: $white;
             } 
@@ -91,6 +95,7 @@
 .open-bottombtn {
     .icon-mc {
         vertical-align: bottom;
+        font-size: 27px;
     }
     @include media-breakpoint-up(md) { 
         display: none;
@@ -114,3 +119,9 @@
 ::ng-deep .mat-drawer-container.right-drawer.mat-drawer-container-has-open ~ .btn-menu-filter {
         display: none;
     } 
+
+.hide-sidemenu-btn{
+    @include media-breakpoint-down(md) { 
+        display: none;
+     }
+}    

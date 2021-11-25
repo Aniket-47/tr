@@ -18,18 +18,22 @@
         </div> -->
     <!-- <i class="icon-mc mc-x"></i> -->
     <div *ngIf="!edit">
-      <h4><span class="icon-mc mc-person"></span>{{ln.TXT_USER_INFO | translate}}</h4>
+      <h4>
+        <span class="icon-mc mc-person"></span
+        >{{ ln.TXT_USER_INFO | translate }}
+      </h4>
     </div>
     <div *ngIf="edit">
-      <h4><span class="icon-mc mc-create"></span> {{ln.TXT_EDIT_USER_INFO | translate}}</h4>
+      <h4>
+        <span class="icon-mc mc-create"></span>
+        {{ ln.TXT_EDIT_USER_INFO | translate }}
+      </h4>
     </div>
   </div>
 
   <!-- <ng-template #editIcon>
     <mat-icon>mode_edit</mat-icon>
   </ng-template> -->
-
-
 
   <!-- <div class="upper-sec__right">
       <mat-icon class="close_icon">close</mat-icon>
@@ -40,7 +44,8 @@
     <div class="about-user__left">
       <img
         src="https://img.freepik.com/free-photo/cheerful-curly-business-girl-wearing-glasses_176420-206.jpg?size=626&ext=jpg"
-        alt="" />
+        alt=""
+      />
       <div class="about-user__name">
         <h4>{{ user?.firstname }}</h4>
         <span>{{ user?.email }}</span>
@@ -50,42 +55,55 @@
     <div class="about-user__right">
       <!-- <mat-label *ngIf="!edit">Admin</mat-label> -->
       <div *ngIf="user" class="mat-form-field">
-        <mat-label *ngIf="user?.status==0">{{ln.TXT_DEACTIVE | translate}}</mat-label>
-        <mat-label *ngIf="user?.status==1">{{ln.TXT_ACTIVE | translate}}</mat-label>
-        <mat-label *ngIf="user?.status==2">{{ln.TXT_PENDING | translate}}</mat-label>
-        <mat-select matNativeControl [(ngModel)]="user.status" [disabled]="!edit || isCurrentUser"
-          (selectionChange)="statusChanged(user.status)">
-          <mat-option value="0">{{ln.TXT_DEACTIVE | translate}}</mat-option>
-          <mat-option value="1">{{ln.TXT_ACTIVE | translate}}</mat-option>
+        <mat-label *ngIf="user?.status == 0">{{
+          ln.TXT_DEACTIVE | translate
+        }}</mat-label>
+        <mat-label *ngIf="user?.status == 1">{{
+          ln.TXT_ACTIVE | translate
+        }}</mat-label>
+        <mat-label *ngIf="user?.status == 2">{{
+          ln.TXT_PENDING | translate
+        }}</mat-label>
+        <mat-select
+          matNativeControl
+          [(ngModel)]="user.status"
+          [disabled]="!edit || isCurrentUser"
+          (selectionChange)="statusChanged(user.status)"
+        >
+          <mat-option value="0">{{ ln.TXT_DEACTIVE | translate }}</mat-option>
+          <mat-option value="1">{{ ln.TXT_ACTIVE | translate }}</mat-option>
         </mat-select>
         <!-- <span class="icon-mc mc-keyboard_arrow_down"></span> -->
       </div>
-
     </div>
   </div>
 
   <div class="mid-sec">
     <perfect-scrollbar>
       <div class="personal__details__heading">
-        <h3>{{ln.TXT_USER_DETAILS | translate}}</h3>
+        <h3>{{ ln.TXT_USER_DETAILS | translate }}</h3>
         <!-- <button mat-button color="primary" (click)="edit = !edit" *ngIf="!edit; else hideEditBtn">
         Edit
       </button> -->
       </div>
       <ng-template #hideEditBtn> </ng-template>
 
-
-      <ng-container *ngIf="!edit; else displayInput">
+      <div *ngIf="!edit; else displayInput" class="user-details">
         <div class="personal__details__content">
           <div class="user_detail_list">
-
             <div class="common-div">
               <span class="icon-mc mc-person"></span>
               <div class="d-flex flex-column">
                 <mat-label>{{ ln.TXT_FULL_NAME | translate }}</mat-label>
                 <span class="value">
                   <ng-container *ngIf="user">
-                    {{ user?.firstname +' '+ user?.middlename+' '+user?.lastname }}
+                    {{
+                      user?.firstname +
+                        " " +
+                        user?.middlename +
+                        " " +
+                        user?.lastname
+                    }}
                   </ng-container>
                 </span>
               </div>
@@ -102,200 +120,284 @@
             <div class="common-div">
               <span class="icon-mcf mcf-work"></span>
               <div class="d-flex flex-column">
-                <mat-label>{{ln.TXT_USER_ROLE | translate}}</mat-label>
+                <mat-label>{{ ln.TXT_USER_ROLE | translate }}</mat-label>
                 <span class="value">{{ user?.roletypename }}</span>
               </div>
             </div>
             <div class="common-div">
               <span class="icon-mc mc-school"></span>
               <div class="d-flex flex-column">
-                <mat-label>{{ln.TXT_DESIGNATION | translate}}</mat-label>
+                <mat-label>{{ ln.TXT_DESIGNATION | translate }}</mat-label>
                 <span class="value">{{ user?.designationname }}</span>
               </div>
             </div>
             <div class="common-div">
               <span class="icon-mc mc-layers"></span>
               <div class="d-flex flex-column">
-                <mat-label>{{ln.TXT_BUSINESS_VERTICAL | translate}}</mat-label>
+                <mat-label>{{
+                  ln.TXT_BUSINESS_VERTICAL | translate
+                }}</mat-label>
                 <span class="value">{{ user?.businessverticalid }}</span>
               </div>
             </div>
             <div class="common-div">
               <span class="icon-mc mc-nature"></span>
               <div class="d-flex flex-column">
-                <mat-label>{{ln.TXT_PRACTICE | translate}}</mat-label>
-                <span class="value">{{ user?.practicename}}</span>
+                <mat-label>{{ ln.TXT_PRACTICE | translate }}</mat-label>
+                <span class="value">{{ user?.practicename }}</span>
               </div>
             </div>
             <div class="common-div">
               <span class="icon-mc mc-local_phone"></span>
               <div class="d-flex flex-column">
-                <mat-label>{{ln.TXT_PHONE | translate}}</mat-label>
+                <mat-label>{{ ln.TXT_PHONE | translate }}</mat-label>
                 <span class="value">{{ user?.mobilenumber }}</span>
               </div>
             </div>
             <div class="common-div">
               <span class="icon-mc mc-location_pin"></span>
               <div class="d-flex flex-column">
-                <mat-label>{{ln.TXT_LOCATION | translate}}</mat-label>
+                <mat-label>{{ ln.TXT_LOCATION | translate }}</mat-label>
                 <span class="value">{{ user?.locationname }}</span>
               </div>
             </div>
           </div>
         </div>
-      </ng-container>
-
+      </div>
 
       <ng-template #displayInput>
-
         <form [formGroup]="editUserForm" class="editUserForm">
-
-
           <!-- <div class="common-div"> -->
-          <span class="update-field-icon icon-mc mc-person"></span>
-          <div class="mat-form-field-flex">
-            <mat-label>{{ln.TXT_NAME | translate}}</mat-label>
-            <mat-form-field appearance="outline">
-              <input matInput formControlName="firstname" placeholder="{{ln.TXT_FIRST_NAME | translate}}">
-              <mat-error *ngIf="firstname.invalid && firstname.touched">
-                <span *ngIf="firstname.errors?.required">
-                  {{ln.TXT_FIRST_NAME_REQUIRED | translate}}
-                </span>
-                <span *ngIf="!firstname.errors?.required && firstname.errors?.minlength">
-                  {{ln.TXT_FIRST_NAME_3ATLEAST_LETTERS | translate}}
-                </span>
-                <span *ngIf="firstname.errors?.maxlength">
-                  {{ln.TXT_FIRST_NAME_20MAX_LETTERS | translate}}
-                </span>
-              </mat-error>
-            </mat-form-field>
-            <!-- </div> -->
+          <div class="p-b-15">
+            <span class="update-field-icon icon-mc mc-person"></span>
+            <div class="mat-form-field-flex">
+              <mat-label>{{ ln.TXT_NAME | translate }}</mat-label>
+              <mat-form-field appearance="outline">
+                <input
+                  matInput
+                  formControlName="firstname"
+                  placeholder="{{ ln.TXT_FIRST_NAME | translate }}"
+                />
+                <mat-error *ngIf="firstname.invalid && firstname.touched">
+                  <span *ngIf="firstname.errors?.required">
+                    {{ ln.TXT_FIRST_NAME_REQUIRED | translate }}
+                  </span>
+                  <span
+                    *ngIf="
+                      !firstname.errors?.required && firstname.errors?.minlength
+                    "
+                  >
+                    {{ ln.TXT_FIRST_NAME_3ATLEAST_LETTERS | translate }}
+                  </span>
+                  <span *ngIf="firstname.errors?.maxlength">
+                    {{ ln.TXT_FIRST_NAME_20MAX_LETTERS | translate }}
+                  </span>
+                </mat-error>
+              </mat-form-field>
+              <!-- </div> -->
 
-            <mat-form-field appearance="outline">
-              <!-- <mat-label>{{ln.TXT_MIDDLE_NAME | translate}}</mat-label> -->
-              <input matInput formControlName="middlename" placeholder="{{ln.TXT_MIDDLE_NAME | translate}}">
-              <mat-error *ngIf="middlename.invalid && middlename.touched">
-                <span *ngIf="middlename.errors?.minlength">
-                  {{ln.TXT_MIDDLE_NAME_3_LETTERS | translate}}
-                </span>
-                <span *ngIf="middlename.errors?.maxlength">
-                  {{ln.TXT_MIDDLE_NAME_20_LETTERS | translate}}
-                </span>
-              </mat-error>
-            </mat-form-field>
+              <mat-form-field appearance="outline">
+                <!-- <mat-label>{{ln.TXT_MIDDLE_NAME | translate}}</mat-label> -->
+                <input
+                  matInput
+                  formControlName="middlename"
+                  placeholder="{{ ln.TXT_MIDDLE_NAME | translate }}"
+                />
+                <mat-error *ngIf="middlename.invalid && middlename.touched">
+                  <span *ngIf="middlename.errors?.minlength">
+                    {{ ln.TXT_MIDDLE_NAME_3_LETTERS | translate }}
+                  </span>
+                  <span *ngIf="middlename.errors?.maxlength">
+                    {{ ln.TXT_MIDDLE_NAME_20_LETTERS | translate }}
+                  </span>
+                </mat-error>
+              </mat-form-field>
 
-            <mat-form-field appearance="outline">
-              <!-- <mat-label>{{ln.TXT_LAST_NAME | translate}}</mat-label> -->
-              <input matInput formControlName="lastname" placeholder="{{ln.TXT_LAST_NAME | translate}}">
-              <mat-error *ngIf="lastname.invalid && lastname.touched">
-                <span *ngIf="lastname.errors?.required">
-                  {{ln.TXT_LAST_NAME_REQUIRED | translate}}
-                </span>
-                <span *ngIf="!lastname.errors?.required && lastname.errors?.minlength">
-                  {{ln.TXT_LAST_NAME_3_LETTERS | translate}}
-                </span>
-                <span *ngIf="lastname.errors?.maxlength">
-                  {{ln.TXT_LAST_NAME_20_LETTERS | translate}}
-                </span>
-              </mat-error>
-            </mat-form-field>
-
+              <mat-form-field appearance="outline">
+                <!-- <mat-label>{{ln.TXT_LAST_NAME | translate}}</mat-label> -->
+                <input
+                  matInput
+                  formControlName="lastname"
+                  placeholder="{{ ln.TXT_LAST_NAME | translate }}"
+                />
+                <mat-error *ngIf="lastname.invalid && lastname.touched">
+                  <span *ngIf="lastname.errors?.required">
+                    {{ ln.TXT_LAST_NAME_REQUIRED | translate }}
+                  </span>
+                  <span
+                    *ngIf="
+                      !lastname.errors?.required && lastname.errors?.minlength
+                    "
+                  >
+                    {{ ln.TXT_LAST_NAME_3_LETTERS | translate }}
+                  </span>
+                  <span *ngIf="lastname.errors?.maxlength">
+                    {{ ln.TXT_LAST_NAME_20_LETTERS | translate }}
+                  </span>
+                </mat-error>
+              </mat-form-field>
+            </div>
           </div>
 
-
-
-          <span class="update-field-icon icon-mc mc-local_post_office"></span>
-          <div class="mat-form-field-flex">
-            <mat-label>{{ln.TXT_EMAIL | translate}}</mat-label>
-            <mat-form-field appearance="outline">
-              <input matInput formControlName="email" placeholder="{{ln.TXT_EMAIL_SAMPLE | translate}}">
-              <mat-error *ngIf="email.invalid && email.touched">
-                <span *ngIf="email.errors?.required">
-                  {{ln.TXT_EMAIL_REQUIRED | translate}}
-                </span>
-                <span *ngIf="!email.errors?.required && email.errors?.email">
-                  {{ln.TXT_EMAIL_NOT_VALID | translate}}
-                </span>
-              </mat-error>
-            </mat-form-field>
+          <div class="p-b-15">
+            <span class="update-field-icon icon-mc mc-local_post_office"></span>
+            <div class="mat-form-field-flex">
+              <mat-label>{{ ln.TXT_EMAIL | translate }}</mat-label>
+              <mat-form-field appearance="outline">
+                <input
+                  matInput
+                  formControlName="email"
+                  placeholder="{{ ln.TXT_EMAIL_SAMPLE | translate }}"
+                />
+                <mat-error *ngIf="email.invalid && email.touched">
+                  <span *ngIf="email.errors?.required">
+                    {{ ln.TXT_EMAIL_REQUIRED | translate }}
+                  </span>
+                  <span *ngIf="!email.errors?.required && email.errors?.email">
+                    {{ ln.TXT_EMAIL_NOT_VALID | translate }}
+                  </span>
+                </mat-error>
+              </mat-form-field>
+            </div>
           </div>
-
-
-          <span class="update-field-icon icon-mc mc-work"></span>
-          <div class="mat-form-field-flex">
-            <mat-label>{{ln.TXT_ROLE | translate}}</mat-label>
-            <mat-form-field appearance="outline">
-              <mat-select *ngIf="user?.roletypeid!=1" [disabled]="isCurrentUser" formControlName="roletypeid">
-                <mat-option *ngFor="let role of roles;" [value]="role.roletypeid">
-                  {{role.name | translate}}
-                </mat-option>
-              </mat-select>
-              <input *ngIf="user?.roletypeid==1" matInput value="{{ ln.TXT_ROLE_OWNER | translate }}" disabled>
-            </mat-form-field>
+          <div class="p-b-15">
+            <span class="update-field-icon icon-mc mc-work"></span>
+            <div class="mat-form-field-flex">
+              <mat-label>{{ ln.TXT_ROLE | translate }}</mat-label>
+              <mat-form-field appearance="outline">
+                <mat-select
+                  disableOptionCentering
+                  *ngIf="user?.roletypeid != 1"
+                  [disabled]="isCurrentUser"
+                  formControlName="roletypeid"
+                >
+                  <!-- TODO: change the inline css -->
+                  <perfect-scrollbar style="height: 250px">
+                    <ng-container *ngFor="let role of roles; let last = last">
+                      <mat-option [value]="role.roletypeid">
+                        {{ role.name | translate }}
+                      </mat-option>
+                      <mat-divider *ngIf="!last"></mat-divider>
+                    </ng-container>
+                  </perfect-scrollbar>
+                </mat-select>
+                <input
+                  *ngIf="user?.roletypeid == 1"
+                  matInput
+                  value="{{ ln.TXT_ROLE_OWNER | translate }}"
+                  disabled
+                />
+              </mat-form-field>
+            </div>
           </div>
-
-          <span class="update-field-icon icon-mc mc-school"></span>
-          <div class="mat-form-field-flex">
-            <mat-label>{{ln.TXT_DESIGNATION | translate}}</mat-label>
-            <mat-form-field appearance="outline">
-              <input matInput formControlName="designationname" placeholder="{{ln.TXT_DESIGNATION | translate}}">
-            </mat-form-field>
+          <div class="p-b-15">
+            <span class="update-field-icon icon-mc mc-school"></span>
+            <div class="mat-form-field-flex">
+              <mat-label>{{ ln.TXT_DESIGNATION | translate }}</mat-label>
+              <mat-form-field appearance="outline">
+                <input
+                  matInput
+                  formControlName="designationname"
+                  placeholder="{{ ln.TXT_DESIGNATION | translate }}"
+                />
+              </mat-form-field>
+            </div>
           </div>
-
-          <span class="update-field-icon icon-mc mc-layers"></span>
-          <div class="mat-form-field-flex">
-            <mat-label>{{ln.TXT_BUSINESS_VERTICAL | translate}}</mat-label>
-            <mat-form-field appearance="outline">
-              <mat-select formControlName="businessverticalid" placeholder="{{ln.TXT_BUSINESS_VERTICAL | translate}}">
-                <!-- TODO: change the inline css -->
-                <perfect-scrollbar style="height: 250px;">
-                  <ng-container *ngFor="let businessvertical of businessverticals; let last = last">
-                    <mat-option [value]="businessvertical.businessverticalid">
-                      {{businessvertical.name | translate}}
-                    </mat-option>
-                    <mat-divider *ngIf="!last"></mat-divider>
-                  </ng-container>
-                </perfect-scrollbar>
-              </mat-select>
-            </mat-form-field>
+          <div class="p-b-15">
+            <span class="update-field-icon icon-mc mc-layers"></span>
+            <div class="mat-form-field-flex">
+              <mat-label>{{ ln.TXT_BUSINESS_VERTICAL | translate }}</mat-label>
+              <mat-form-field appearance="outline">
+                <mat-select
+                  disableOptionCentering
+                  formControlName="businessverticalid"
+                  placeholder="{{ ln.TXT_BUSINESS_VERTICAL | translate }}"
+                >
+                  <!-- TODO: change the inline css -->
+                  <perfect-scrollbar style="height: 250px">
+                    <ng-container
+                      *ngFor="
+                        let businessvertical of businessverticals;
+                        let last = last
+                      "
+                    >
+                      <mat-option [value]="businessvertical.businessverticalid">
+                        {{ businessvertical.name | translate }}
+                      </mat-option>
+                      <mat-divider *ngIf="!last"></mat-divider>
+                    </ng-container>
+                  </perfect-scrollbar>
+                </mat-select>
+              </mat-form-field>
+            </div>
           </div>
-
-          <span class="update-field-icon icon-mc mc-nature"></span>
-          <div class="mat-form-field-flex">
-            <mat-label>{{ln.TXT_PRACTICE | translate}}</mat-label>
-            <mat-form-field appearance="outline">
-              <input matInput formControlName="practicename" placeholder="{{ln.TXT_PRACTICE | translate}}">
-            </mat-form-field>
+          <div class="p-b-15">
+            <span class="update-field-icon icon-mc mc-nature"></span>
+            <div class="mat-form-field-flex">
+              <mat-label>{{ ln.TXT_PRACTICE | translate }}</mat-label>
+              <mat-form-field appearance="outline">
+                <input
+                  matInput
+                  formControlName="practicename"
+                  placeholder="{{ ln.TXT_PRACTICE | translate }}"
+                />
+              </mat-form-field>
+            </div>
           </div>
-
-          <span class="update-field-icon icon-mc mc-local_phone"></span>
-          <div class="mat-form-field-flex">
-            <mat-label>{{ln.TXT_PHONE | translate}}</mat-label>
-            <mat-form-field appearance="outline">
-              <input matInput formControlName="mobilenumber" placeholder="{{ln.TXT_PHONE_SAMPLE | translate}}">
-            </mat-form-field>
+          <div class="p-b-15">
+            <span class="update-field-icon icon-mc mc-local_phone"></span>
+            <div class="mat-form-field-flex">
+              <mat-label>{{ ln.TXT_PHONE | translate }}</mat-label>
+              <mat-form-field appearance="outline">
+                <input
+                  matInput
+                  formControlName="mobilenumber"
+                  placeholder="{{ ln.TXT_PHONE_SAMPLE | translate }}"
+                />
+              </mat-form-field>
+            </div>
           </div>
-
-          <span class="update-field-icon icon-mc mc-location_pin"></span>
-          <div class="mat-form-field-flex">
-            <mat-label>{{ln.TXT_LOCATION | translate}}</mat-label>
-            <mat-form-field appearance="outline">
-              <input matInput formControlName="locationname" placeholder="{{ln.TXT_LOCATION | translate}}">
-            </mat-form-field>
-          </div>
-
-          <div class="buttons">
-            <button mat-flat-button color="primary" (click)="editUser()" [disabled]="isLoading || isDisabled"
-              class="update-btn">
-              <span>{{ln.TXT_UPDATE | translate | titlecase}}</span>
-              <mat-spinner diameter="20" *ngIf="isLoading" class="btn-loader"></mat-spinner>
-            </button>
-            <button [disabled]="isDisabled" type="button" mat-stroked-button (click)="reloadForm()"
-              class="cancel-btn">{{ln.TXT_RESET | translate}}</button>
+          <div class="p-b-15">
+            <span class="update-field-icon icon-mc mc-location_pin"></span>
+            <div class="mat-form-field-flex">
+              <mat-label>{{ ln.TXT_LOCATION | translate }}</mat-label>
+              <mat-form-field appearance="outline">
+                <input
+                  matInput
+                  formControlName="locationname"
+                  placeholder="{{ ln.TXT_LOCATION | translate }}"
+                />
+              </mat-form-field>
+            </div>
           </div>
         </form>
-
       </ng-template>
     </perfect-scrollbar>
+    
   </div>
+  <div class="buttons" *ngIf="edit">
+      <button
+        mat-flat-button
+        color="primary"
+        (click)="editUser()"
+        [disabled]="isLoading || isDisabled"
+        class="update-btn"
+      >
+        <span>{{ ln.TXT_UPDATE | translate | titlecase }}</span>
+        <mat-spinner
+          diameter="20"
+          *ngIf="isLoading"
+          class="btn-loader"
+        ></mat-spinner>
+      </button>
+      <button
+        [disabled]="isDisabled"
+        type="button"
+        mat-stroked-button
+        (click)="reloadForm()"
+        class="cancel-btn"
+      >
+        {{ ln.TXT_RESET | translate }}
+      </button>
+    </div>
 </div>

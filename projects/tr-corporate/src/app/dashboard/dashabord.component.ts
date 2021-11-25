@@ -17,6 +17,7 @@ import { IaccountDetials } from '../utility/store/interfaces/account';
 import { DASHBOARD_LN } from './shared/dashboard.lang';
 import { setBusinessVerticle } from '../utility/store/actions/business-vertical.action';
 import { IBusVert } from '../utility/store/interfaces/business-vertical';
+import { TranslatePipe } from '@mucrest/ng-core';
 
 
 @Component({
@@ -57,6 +58,9 @@ export class DashabordComponent implements OnInit {
   ngOnInit(): void {
     const preloadData: any[] = this.route.snapshot.data?.data;
     this.setDataInStore(preloadData);
+    /** Set Language */
+    const languageData = this.lsServ.getItem(LSkeys.LANGUAGE);
+    if (languageData) TranslatePipe.setLanguagePack(JSON.parse(languageData));
 
     this.date = new Date();
     this.store.select(getAccountIds).subscribe(accounts => this.accountList = accounts);
@@ -97,6 +101,9 @@ export class DashabordComponent implements OnInit {
       if (!data[3]?.error) {
         this.lsServ.remove(LSkeys.LANGUAGE);
         this.lsServ.store(LSkeys.LANGUAGE, JSON.stringify(data[3]?.data));
+        /** Set Language(Ensured) */
+        const languageData = this.lsServ.getItem(LSkeys.LANGUAGE);
+        if (languageData) TranslatePipe.setLanguagePack(JSON.parse(languageData));
       }
 
       if (!data[4]?.error) {

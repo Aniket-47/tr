@@ -1,6 +1,6 @@
 import { getBusinessVerticle } from './../../../utility/store/selectors/business-vertical.selector';
 import { Store } from '@ngrx/store';
-import { Component, Input, OnChanges, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, Output, EventEmitter, ViewChild, OnDestroy, SimpleChange, SimpleChanges } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { fadeAnimation } from '../../../animations';
 import { ValidationConstants } from '../../../utility/configs/app.constants';
@@ -15,6 +15,7 @@ import { SETTINGS_LN } from '../../shared/settings.lang';
 import { GetUser_response } from './../shared/interfaces/get-user';
 import { getUserEmail } from '../../../utility/store/selectors/user.selector';
 import { MatSidenav } from '@angular/material/sidenav';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -23,7 +24,7 @@ import { MatSidenav } from '@angular/material/sidenav';
   styleUrls: ['./user-detail.component.scss'],
   animations: [fadeAnimation]
 })
-export class UserDetailComponent implements OnInit, OnChanges {
+export class UserDetailComponent implements OnInit, OnChanges, OnDestroy {
 
   editUserForm!: FormGroup;
   newUser!: any;
@@ -36,6 +37,7 @@ export class UserDetailComponent implements OnInit, OnChanges {
 
   @Input() edit: boolean = false;
   @Input() userEmail!: string;
+  @Input() isOpen:boolean = false;
 
   @Output() statusChange = new EventEmitter();
   @Output() userUpdate = new EventEmitter();
@@ -48,6 +50,7 @@ export class UserDetailComponent implements OnInit, OnChanges {
   ln = SETTINGS_LN;
 
   isDisabled = false;
+  userAPISubscription!: Subscription;
 
   constructor(private fb: FormBuilder, private userServ: UserService, private snackBar: SnackBarService, private store: Store<State>) {
 
@@ -142,11 +145,20 @@ export class UserDetailComponent implements OnInit, OnChanges {
 
   }
 
-  ngOnChanges() {
-    this.user = null;
-    this.initForm();
-    if (this.userEmail)
-      this.prefillUser();
+  ngOnChanges(changes: SimpleChanges) {
+    for (let key in changes) {
+      if(key === 'userEmail'){
+        if(this.userEmail && this.userEmail !== this.user?.email){
+          this.user = null;
+          this.initForm();
+          this.prefillUser();
+        }
+      }else if( key === 'isOpen'){
+        if(!this.isOpen){
+          this.userAPISubscription && this.userAPISubscription.unsubscribe()
+        }
+      }
+    }
   }
 
   prefillUser() {
@@ -159,7 +171,7 @@ export class UserDetailComponent implements OnInit, OnChanges {
     //   }
     // )
 
-    this.userServ.getUser(this.userEmail).subscribe(res => {
+   this.userAPISubscription = this.userServ.getUser(this.userEmail).subscribe(res => {
       if (!res.error) {
         this.isDisabled = false;
         this.user = res.data;
@@ -214,6 +226,10 @@ export class UserDetailComponent implements OnInit, OnChanges {
   reloadForm() {
     this.editUserForm.reset();
     this.prefillUser();
+  }
+
+  ngOnDestroy(){
+    this.userAPISubscription && this.userAPISubscription.unsubscribe()
   }
 
 }
