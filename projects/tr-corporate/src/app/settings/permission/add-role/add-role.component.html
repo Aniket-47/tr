@@ -53,6 +53,14 @@
             <span *ngIf="roleName?.errors?.required">
               {{ ln.TXT_FIELD_REQUIRED | translate }}
             </span>
+            <span *ngIf="roleName.errors?.minlength">
+              {{ln.TXT_ROLE_MIN_LENGTH | translate}}
+              <!-- Role name should be atlest 5 letters -->
+            </span>
+            <span *ngIf="roleName.errors?.maxlength">
+              {{ln.TXT_ROLE_MAX_LENGTH | translate}}
+              <!-- Role name should be maximum of 15 letters -->
+            </span>
           </mat-error>
         </mat-form-field>
       </div>

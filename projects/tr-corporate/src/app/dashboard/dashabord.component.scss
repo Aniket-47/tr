@@ -90,6 +90,10 @@ mc-side-navbar {
         font-size: 0.9rem;
         font-weight: 600;
         padding-left: .5rem;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        width: 130px;
         &::after {
             font-family: 'mucrest' !important;
             content: "\eacf";

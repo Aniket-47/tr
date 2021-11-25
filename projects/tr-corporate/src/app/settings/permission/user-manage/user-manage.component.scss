@@ -124,9 +124,9 @@ table.mat-table {
     .user-img {
       margin-right: 1rem;
     }
-    .name {
+    .name {      
       @include rfs(1rem);
-    }
+    }    
     .email {
       margin-top: 0.3rem;
       color: rgba($color: $black, $alpha: 0.5);
