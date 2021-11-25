@@ -1,17 +1,21 @@
-import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+
+// store
 import { Store } from '@ngrx/store';
-import { filter, map } from 'rxjs/operators';
-import { fadeAnimation } from '../../../animations';
-import { ROUTE_CONFIGS } from '../../../utility/configs/routerConfig';
-import { SnackBarService } from '../../../utility/services/snack-bar.service';
-import { Irole } from '../../../utility/store/interfaces/role';
 import { State } from '../../../utility/store/reducers';
 import { getDefaultAccountId } from '../../../utility/store/selectors/account.selector';
 import { getRoles } from '../../../utility/store/selectors/roles.selector';
-import { SETTINGS_LN } from '../../shared/settings.lang';
+
+import { SnackBarService } from '../../../utility/services/snack-bar.service';
 import { UserRoleService } from '../shared/services/user-role.service';
+
+import { fadeAnimation } from '../../../animations';
+import { SETTINGS_LN } from '../../shared/settings.lang';
+import { ROUTE_CONFIGS } from '../../../utility/configs/routerConfig';
+import { Irole } from '../shared/interfaces/role.model';
+
 
 @Component({
   selector: 'app-add-role',
@@ -21,36 +25,47 @@ import { UserRoleService } from '../shared/services/user-role.service';
 })
 export class AddRoleComponent implements OnInit, OnDestroy {
 
-  panelOpenState = false;
-
-  defaultRoles!: Irole[];
+  defaultRoles!: {
+    name: string;
+    roletypeid: string;
+  }[];
   rights: any[] = [];
+  rightsData: any[] = [];
+
   roleForm!: FormGroup;
   accountId!: string;
-  isLoading = false;
 
-  selectedRoleInfo?: { roletypeid: number, rolename: string, accountroleid?: string, isCustom?: boolean } | null;
+  selectedRoleInfo!: { roletypeid: number, rolename: string, accountroleid?: string, isCustom?: boolean, name: string } | null;
   isEdit: boolean = false;
   isRoleView: boolean = false;
-  rightsData: any[] = [];
+  isLoading = false;
+  panelOpenState = false;
 
   ln = SETTINGS_LN;
 
   constructor(
-    private userRoleService: UserRoleService,
-    private store: Store<State>,
-    private snackbarService: SnackBarService,
     private router: Router,
-    private fb: FormBuilder) {
+    private route: ActivatedRoute,
+    private fb: FormBuilder,
+    private store: Store<State>,
+    private userRoleService: UserRoleService,
+    private snackbarService: SnackBarService,) {
     this.initForm();
   }
 
   ngOnInit(): void {
-    this.store.select(getRoles).subscribe(roles => {
-      // remove owner, because for one account there is only one owner.
-      if (roles && roles.length) this.defaultRoles = roles.slice(1, roles.length);
-    })
-    this.store.select(getDefaultAccountId).subscribe(accountid => this.accountId = accountid);
+    this.loadStoreData();
+    const { id: accountroleid } = this.route.snapshot.params;
+    if (accountroleid) this.getRoleDeatils(accountroleid);
+
+    if (this.router.url.includes('edit')) {
+      this.isEdit = true;
+      this.isRoleView = false;
+    } else if (this.router.url.includes('view')) {
+      this.isEdit = false;
+      this.isRoleView = true;
+      this.roleForm.disable();
+    }
 
     this.roleForm.get('roleType')?.valueChanges.subscribe((roletypeid) => {
       if (roletypeid) {
@@ -61,46 +76,44 @@ export class AddRoleComponent implements OnInit, OnDestroy {
           });
       }
     });
-
-    this.getUserSelectedRole();
-    if (this.isRoleView) this.roleForm.disable();
   }
 
   ngOnDestroy() {
     this.userRoleService.resetSelectedRole();
   }
 
-  getUserSelectedRole() {
-    this.userRoleService.currentRoleData.subscribe(data => {
-      const { isNew, isEdit, isView } = data;
-      if (isNew === false && isEdit === false && isView === false) {
-        this.router.navigate([ROUTE_CONFIGS.ROLES]);
-      }
-
-      if (data) {
-        console.log(data)
-        this.isRoleView = data.isView;
-        this.isEdit = data.isEdit;
-        this.selectedRoleInfo = data.selectedRole;
-        if (this.selectedRoleInfo?.roletypeid && this.accountId) {
-
-          // update form
-          if (this.isEdit) this.updateForm();
-
-          // remove extra api call bcz we already update form
-          // on form value chage it will get call
-          if (!this.isEdit) {
-            this.userRoleService.getPermissions(this.accountId, `${this.selectedRoleInfo.roletypeid}`)
-              .subscribe((res: any) => {
-                if (!res.error) {
-                  this.buildRights(res?.data?.roles?.rights);
-                  this.rightsArray.disable();
-                }
-              });
-          }
-        }
-      }
+  loadStoreData() {
+    this.store.select(getRoles).subscribe(roles => {
+      // remove owner, because for one account there is only one owner.
+      if (roles && roles.length) this.defaultRoles = roles.slice(1, roles.length);
     });
+    this.store.select(getDefaultAccountId).subscribe(accountid => this.accountId = accountid);
+  }
+
+  getRoleDeatils(accountroleid: number) {
+    this.userRoleService.getRole(accountroleid).subscribe((res: any) => {
+      if (!res?.error) this.loadRole(res?.data);
+    });
+  }
+
+  loadRole(data: Irole) {
+    this.selectedRoleInfo = { ...data, isCustom: data.isdefaultrole === 0 };
+    if (this.accountId) {
+      // update form
+      if (this.isEdit) this.updateForm();
+
+      // remove extra api call bcz we already update form
+      // on form value chage it will get call
+      if (!this.isEdit) {
+        this.userRoleService.getPermissions(this.accountId, `${data.roletypeid}`)
+          .subscribe((res: any) => {
+            if (!res.error) {
+              this.buildRights(res?.data?.roles?.rights);
+              this.rightsArray.disable();
+            }
+          });
+      }
+    }
   }
 
   initForm() {
@@ -113,9 +126,7 @@ export class AddRoleComponent implements OnInit, OnDestroy {
 
   enableEdit() {
     if (this.selectedRoleInfo?.isCustom) {
-      this.isEdit = true;
-      this.isRoleView = false;
-      this.updateForm();
+      this.router.navigate([ROUTE_CONFIGS.EDIT_ROLE, this.selectedRoleInfo?.accountroleid]);
     }
   }
 
@@ -123,7 +134,7 @@ export class AddRoleComponent implements OnInit, OnDestroy {
     // update form
     this.roleForm.patchValue({
       roleType: this.selectedRoleInfo?.roletypeid,
-      roleName: this.selectedRoleInfo?.rolename
+      roleName: this.selectedRoleInfo?.name
     });
   }
 
@@ -311,11 +322,14 @@ export class AddRoleComponent implements OnInit, OnDestroy {
         });
       }
     });
+
+    // role create
     const payload: any = {
       roletypeid: value.roleType,
       rolename: value.roleName
     }
 
+    // permisssion update 
     const payload2 = {
       roletypeid: value.roleType,
       rights
@@ -326,6 +340,7 @@ export class AddRoleComponent implements OnInit, OnDestroy {
 
     this.isLoading = true;
 
+    // new role create
     if (!this.isEdit) {
       this.userRoleService.saveRole(payload, this.accountId).subscribe((res: any) => {
         if (!res?.error)
@@ -335,6 +350,7 @@ export class AddRoleComponent implements OnInit, OnDestroy {
         this.isLoading = false;
       }, (err) => this.isLoading = false);
     } else {
+      // update role
       this.userRoleService.updateRole(payload).subscribe((res: any) => {
         if (!res?.error)
           this.updatePermission(payload2);
@@ -354,22 +370,5 @@ export class AddRoleComponent implements OnInit, OnDestroy {
         this.router.navigate([ROUTE_CONFIGS.ROLES]);
       }
     });
-  }
-
-  step = 0;
-
-  setStep(index: number) {
-    this.step = index;
-  }
-
-  nextStep() {
-    this.step++;
-  }
-
-  prevStep() {
-    this.step--;
-  }
-  onEvent(event: any) {
-    event.stopPropagation();
   }
 }

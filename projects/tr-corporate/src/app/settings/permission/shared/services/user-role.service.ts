@@ -54,13 +54,14 @@ export class UserRoleService {
         return this.http.get<any>(url, { headers: { 'accountID': accountID } })
     }
 
+    getRole(accountroleid: number) {
+        const url = `${secure_api_routes.GET_ROLE}?accountroleid=${accountroleid}`
+        return this.http.get(url);
+    }
+
     getPermissions(accountID: string, roletypeid: string) {
         const url = `${secure_api_routes.PERMISSIONS_LIST}?roletypeid=${roletypeid}`
         return this.http.get(url, { headers: { 'accountID': accountID } });
-    }
-
-    getDummyData() {
-        return this.http.get('assets/dummy_fetch_update.json');
     }
 
     saveRole(payload: any, accountID: string) {
