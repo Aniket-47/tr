@@ -38,6 +38,7 @@ import { Irole } from '../shared/interfaces/role.model';
 export class ViewRoleComponent implements OnInit, AfterViewInit {
 
   ln = SETTINGS_LN;
+  route_conf = ROUTE_CONFIGS;
 
   toggle = false;
   config: any;
