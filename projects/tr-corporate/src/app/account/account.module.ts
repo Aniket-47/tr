@@ -10,6 +10,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AccountSecurityComponent } from './account-security/account-security.component';
 import { McCoreModule } from '@mucrest/ng-core';
 
+// Perfect Scrollbar
+import { PerfectScrollbarModule, PerfectScrollbarConfigInterface,
+  PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
+// import { McCoreModule } from '@mucrest/ng-core';
+//   const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+//     wheelPropagation: true
+// };
+
 
 @NgModule({
   declarations: [
@@ -23,7 +31,8 @@ import { McCoreModule } from '@mucrest/ng-core';
     McCoreModule,
     AccountRoutingModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PerfectScrollbarModule
   ]
 })
 export class AccountModule { }

@@ -63,12 +63,15 @@
           <mat-form-field appearance="outline">
             <mat-select disableOptionCentering [(ngModel)]="selectedStatus"
               placeholder="{{ln.TXT_SELECT_STATUS | translate}}" (ngModelChange)="loadUsers()">
-              <ng-container *ngFor="let item of status; let last = last">
-                <mat-option [value]="item.value">
-                  {{item.viewValue | translate}}
-                </mat-option>
-                <mat-divider *ngIf="!last"></mat-divider>
-              </ng-container>
+              <!-- TODO: needs to remove the inline css -->
+              <perfect-scrollbar style="height: 210px">
+                <ng-container *ngFor="let item of status; let last = last">
+                  <mat-option [value]="item.value">
+                    {{item.viewValue | translate}}
+                  </mat-option>
+                  <mat-divider *ngIf="!last"></mat-divider>
+                </ng-container>
+              </perfect-scrollbar>
             </mat-select>
           </mat-form-field>
           <mat-form-field appearance="outline">
