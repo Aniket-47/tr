@@ -42,6 +42,7 @@ export class AddRoleComponent implements OnInit, OnDestroy {
   panelOpenState = false;
 
   ln = SETTINGS_LN;
+  route_conf = ROUTE_CONFIGS;
 
   constructor(
     private router: Router,
