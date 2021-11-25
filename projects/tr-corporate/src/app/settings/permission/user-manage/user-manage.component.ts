@@ -295,7 +295,7 @@ export class UserManageComponent implements OnInit {
   }
 
   viewPermission(element: any) {
-    // this.router.navigate([ROUTE_CONFIGS.VIEW_ROLE, element.accountroleid]);
+     this.router.navigate([ROUTE_CONFIGS.VIEW_ROLE, element.accountroleid]);
   }
 
   viewDetails(element: any) {

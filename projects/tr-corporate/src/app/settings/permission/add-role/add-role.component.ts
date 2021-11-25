@@ -95,6 +95,9 @@ export class AddRoleComponent implements OnInit, OnDestroy {
   getRoleDeatils(accountroleid: number) {
     this.userRoleService.getRole(accountroleid).subscribe((res: any) => {
       if (!res?.error) this.loadRole(res?.data);
+    },
+    (err: any) =>{
+      this.router.navigate([ROUTE_CONFIGS.ROLES]);
     });
   }
 

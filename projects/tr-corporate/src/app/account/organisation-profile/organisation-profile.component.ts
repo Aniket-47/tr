@@ -207,7 +207,7 @@ export class OrganisationProfileComponent implements OnInit, OnChanges {
         this.snackbarServ.open(res?.message, this.ln.TXT_OK);
       } else {
         // update store
-        this.store.dispatch(setAccountDeatils({ data: payload }));
+        this.store.dispatch(setAccountDeatils({ data: {shortname: this.shortname.value, ...payload} }));
         this.snackbarServ.open(this.ln.TXT_SUCCESSFULLY_ADDED, this.ln.TXT_OK);
         // this.orgProfileForm.reset();
       }
@@ -217,8 +217,10 @@ export class OrganisationProfileComponent implements OnInit, OnChanges {
 
   // ShortName Validation
   checkValidity() {
-    if (this.shortname.value.length > 4) {
+    if (this.shortname.value.length > 4 && !(this.shortname.value === this.currentShortName)) {
       this.shortNameValidation.next(this.shortname.value);
+    }else{
+      this.resShortMessage = '';
     }
   }
 
@@ -228,13 +230,15 @@ export class OrganisationProfileComponent implements OnInit, OnChanges {
     this.accoutService.getShortName(sName)
       .subscribe(res => {
         this.isLoading = false;
-        if (res.error && sName != this.currentShortName) {
+        if (res.error) {
           this.resShortMessage = res.message;
           this.shortname.markAllAsTouched();
           this.shortname.setErrors({ 'customError': true });
         }
-        else {
-          this.resShortMessage = this.ln.TXT_SHORTNAME_AVAILABLE;
+        else if(this.shortname.value === this.currentShortName){
+          this.resShortMessage = '';
+        }else {
+          this.resShortMessage = this.ln.TXT_SHORTNAME_AVAILABLE
         }
 
       })

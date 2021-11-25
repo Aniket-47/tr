@@ -36,7 +36,7 @@
     <a [matMenuTriggerFor]="menu" class="user-dropdown">
       <span class="icon-mcf mcf-account_circle" *ngIf="!userName"></span>
       <span class="user-avatar" *ngIf="userName">{{userName.split('')[0] }}</span>
-      <span class="user-name">{{userName.split(' ')[0]}}</span>
+      <span class="user-name">{{userName}}</span>
     </a>
     <mat-menu #menu="matMenu" backdropClass="profile-dropdown">
       <div class="user-dropdown-submenu" (click)="onEvent($event)">
