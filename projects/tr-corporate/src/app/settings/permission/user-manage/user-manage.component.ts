@@ -102,7 +102,7 @@ export class UserManageComponent implements OnInit {
     private router: Router,
     private cdRef: ChangeDetectorRef,
     private util: UtilityService
-    ) {
+  ) {
   }
 
   ngOnInit(): void {
@@ -179,7 +179,7 @@ export class UserManageComponent implements OnInit {
   }
 
 
-  loadUsers(accountId:string) {
+  loadUsers(accountId: string) {
     // If the user changes the sort order, reset back to the first page.
     this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
     merge(this.sort.sortChange, this.paginator.page)
@@ -287,16 +287,14 @@ export class UserManageComponent implements OnInit {
     this.currentUserEdit = false;
     if (this.hideUserActionMenu) this.drawer.toggle();
     this.designService.setDrawerOpen(true);
-    console.log("Opened " ,this.drawer.opened)
+    console.log("Opened ", this.drawer.opened)
     setTimeout(() => {
       this.hideUserActionMenu = true;
     }, 100)
   }
 
   viewPermission(element: any) {
-    const data = { selectedRole: { rolename: element.role, roletypeid: element.roletypeid }, isView: true, isEdit: false, isNew: false };
-    this.userRoleService.setCurrentRole(data);
-    this.router.navigate([ROUTE_CONFIGS.VIEW_ROLE]);
+    // this.router.navigate([ROUTE_CONFIGS.VIEW_ROLE, element.accountroleid]);
   }
 
   viewDetails(element: any) {
@@ -341,17 +339,19 @@ export class UserManageComponent implements OnInit {
     this.loadUsers(this.accountID);
   }
 
-  toggleSideMenu(){
+  toggleSideMenu() {
     this.designService.setDrawerOpen(false)
   }
 
   contentScrollYEvt() {
-    if (!this.isRateLimitReached && !this.isLoadingMore && this.util.isMobile()) {
-      console.log('Loading more data...')
-      this.paginator.pageIndex++;
-      this.isLoadingMore = true;
-      this.loadUsers(this.accountID);
-      this.cdRef.detectChanges();
+    if (window.innerWidth < 750) {
+      if (!this.isRateLimitReached && !this.isLoadingMore && this.util.isMobile()) {
+        console.log('Loading more data...')
+        this.paginator.pageIndex++;
+        this.isLoadingMore = true;
+        this.loadUsers(this.accountID);
+        this.cdRef.detectChanges();
+      }
     }
   }
 }
