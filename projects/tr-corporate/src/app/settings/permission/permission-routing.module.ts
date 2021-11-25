@@ -8,34 +8,42 @@ import { ViewRoleComponent } from './view-role/view-role.component';
 
 const routes: Routes = [
   {
-    path:'users',
+    path: 'users',
     component: UserManageComponent
   },
   {
-    path:'userdetail',
+    path: 'userdetail',
     component: UserDetailComponent
   },
   {
-    path:'roles',
+    path: 'roles',
     component: ViewRoleComponent
   },
   {
-    path:'filter',
+    path: 'filter',
     component: MFilterComponent
   },
   {
-    path:'role',
+    path: 'role',
     component: AddRoleComponent
   },
   {
-    path:'',
-    pathMatch:'full',
+    path: 'role/edit/:id',
+    component: AddRoleComponent
+  },
+  {
+    path: 'role/view/:id',
+    component: AddRoleComponent
+  },
+  {
+    path: '',
+    pathMatch: 'full',
     redirectTo: 'users'
   },
   {
-    path:'**',
-    redirectTo:'users',
-    pathMatch:'full'
+    path: '**',
+    redirectTo: 'users',
+    pathMatch: 'full'
   }
 ];
 

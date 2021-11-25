@@ -26,17 +26,8 @@ import { ROUTE_CONFIGS } from '../../../utility/configs/routerConfig';
 import { MatTableDataSource } from '@angular/material/table';
 import { MFilterComponent } from '../m-filter/m-filter.component';
 import { UtilityService } from '../../../utility/services/utility.service';
+import { Irole } from '../shared/interfaces/role.model';
 
-
-export interface Irole {
-  accountroleid: string;
-  isdefaultrole: number; // 1 -dafault, 0 - custom
-  roletypeid: number;
-  name: string;
-  rolename: string;
-  usercount: number;
-  modifiedDatetime: Date | string;
-}
 
 @Component({
   selector: 'app-view-role',
@@ -102,9 +93,6 @@ export class ViewRoleComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    // fromEvent(window, 'resize').pipe(
-    //   map(e => e.currentTarget?.innerWidth)
-    // ).subscribe(console.log)
   }
 
   ngAfterViewInit(): void {
@@ -167,12 +155,14 @@ export class ViewRoleComponent implements OnInit, AfterViewInit {
   }
 
   contentScrollYEvt() {
-    if (!this.isRateLimitReached && !this.isLoadingMore && this.util.isMobile()) {
-      console.log('Loading more data...')
-      this.paginator.pageIndex++;
-      this.isLoadingMore = true;
-      this.loadUserRoles(this.accountid);
-      this.cdRef.detectChanges();
+    if (window.innerWidth < 750) {
+      if (!this.isRateLimitReached && !this.isLoadingMore && this.util.isMobile()) {
+        console.log('Loading more data...')
+        this.paginator.pageIndex++;
+        this.isLoadingMore = true;
+        this.loadUserRoles(this.accountid);
+        this.cdRef.detectChanges();
+      }
     }
   }
 
@@ -188,21 +178,11 @@ export class ViewRoleComponent implements OnInit, AfterViewInit {
       isEdit: false,
       selectedRole: null
     });
-    this.router.navigate([ROUTE_CONFIGS.VIEW_ROLE]);
+    this.router.navigate([ROUTE_CONFIGS.ADD_ROLE]);
   }
 
   viewRoleDeatils(role: Irole) {
-    const selectedRoleInfo = {
-      roletypeid: role.roletypeid,
-      rolename: role.rolename,
-      isCustom: role.isdefaultrole === 0,
-      accountroleid: role.accountroleid
-    };
-    let roleData = { selectedRole: selectedRoleInfo, isEdit: false, isView: true, isNew: false };
-    // for custom role pass name as custom
-    if (role.isdefaultrole === 0) selectedRoleInfo.rolename = role.name;
-    this.userRoleService.setCurrentRole(roleData);
-    this.router.navigateByUrl(ROUTE_CONFIGS.VIEW_ROLE);
+    this.router.navigate([ROUTE_CONFIGS.VIEW_ROLE, role.accountroleid]);
   }
 
   editRole(role: Irole) {
@@ -210,17 +190,7 @@ export class ViewRoleComponent implements OnInit, AfterViewInit {
       this.snackbarServ.open(this.ln.TXT_DEFAULT_ROLE_CANNOT_UPDATE, this.ln.TXT_OK);
       return;
     }
-    let selectedRoleInfo = {
-      roletypeid: role.roletypeid,
-      rolename: role.rolename,
-      accountroleid: role.accountroleid,
-      isCustom: true
-    };
-    // for custom role pass name as custom
-    if (role.isdefaultrole === 0) selectedRoleInfo.rolename = role.name;
-
-    this.userRoleService.setCurrentRole({ isEdit: true, isView: false, selectedRole: selectedRoleInfo, isNew: false });
-    this.router.navigate([ROUTE_CONFIGS.VIEW_ROLE]);
+    this.router.navigate([ROUTE_CONFIGS.EDIT_ROLE, role.accountroleid]);
   }
 
   deleteRole(role: Irole) {
