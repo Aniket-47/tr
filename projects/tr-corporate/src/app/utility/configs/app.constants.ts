@@ -5,7 +5,8 @@ export const enum LSkeys {
   DEVICE_GUID = "deviceGuid",
   LANGUAGE = 'language',
   DEFAULT_ACCOUNT = 'defaultAccount',
-  REGISTERED_EMAIL = 'registeredEmail'
+  REGISTERED_EMAIL = 'registeredEmail',
+  INVITE_TOKEN = 'inviteToken'
 }
 
 export const ValidationConstants = {

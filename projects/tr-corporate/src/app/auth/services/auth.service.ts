@@ -15,6 +15,7 @@ import { Guid } from 'guid-typescript';
 import { LstorageService } from '@tr/src/app/utility/services/lstorage.service';
 import { LSkeys } from '../../utility/configs/app.constants';
 import { ForgotPassword_response } from '../interfaces/forgot-password';
+import { NewInvitedUser_request, NewInvitedUser_response } from '../interfaces/invited-user';
 
 @Injectable({
   providedIn: 'root'
@@ -56,5 +57,11 @@ export class AuthService {
     return this.http.put<ResetPassword_response>(apiUrl, data)
   }
 
+  inviteSetPassword(data:NewInvitedUser_request)
+  {
+    const guid = (Guid.create()).toString();
+    this.lsServ.store(LSkeys.DEVICE_GUID, guid);
+    return this.http.post<NewInvitedUser_response>(this.api_routes.INVTE_SET_PASWORD, data, { headers: { 'clientuniqueid': guid, 'skipError': 'true' } });
+  }
 
 }

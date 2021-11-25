@@ -38,6 +38,10 @@ const routes: Routes = [
         component: ResetPasswordComponent
       },
       {
+        path: 'r-password/invite/:type/:token',
+        component: ResetPasswordComponent
+      },
+      {
         path: 'register-success',
         component: RegisterSuccessComponent
       },

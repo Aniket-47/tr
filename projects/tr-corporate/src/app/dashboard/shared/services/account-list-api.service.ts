@@ -7,6 +7,7 @@ import { UtilityService } from '../../../utility/services/utility.service';
 
 // Interfaces
 import { AccountList_response } from '../../shared/interfaces/account-list';
+import { ExistingInvitedUser_request, ExistingInvitedUser_response } from '../interfaces/invited-user';
 
 
 @Injectable({
@@ -23,5 +24,9 @@ export class AccountListApiService {
 
   getAccountList() {
     return this.http.get<AccountList_response>(secure_api_routes.ACCOUNT_LIST)
+  }
+
+  validateInvite(data: ExistingInvitedUser_request) {
+    return this.http.post<ExistingInvitedUser_response>(api_routes.VERIFICATION, data)
   }
 }

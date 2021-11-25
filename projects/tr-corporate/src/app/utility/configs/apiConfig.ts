@@ -15,6 +15,7 @@ export const api_routes = {
   LOGIN: `${auth}/login`,
   FORGOT_PASSWORD: `${auth}/forgotpassword`,
   RESET_PASSWORD: `${auth}/resetpassword/$resetPassToken`,
+  INVTE_SET_PASWORD: `${user}/newuserregister`
 };
 
 export const secure_api_routes = {
