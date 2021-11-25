@@ -45,6 +45,7 @@ import { UtilityService } from '../../../utility/services/utility.service';
 })
 export class UserManageComponent implements OnInit {
   ln = SETTINGS_LN;
+  route_conf = ROUTE_CONFIGS;
 
   toggle = false;
   status = [

@@ -1,5 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'tr-page-header',
@@ -9,13 +10,14 @@ import { Component, Input, OnInit } from '@angular/core';
 export class PageHeaderComponent implements OnInit {
 
   @Input() showBackBtn: boolean = true;
+  @Input() backUrl: string = '../'
 
-  constructor(private location: Location) { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void { }
 
   goToPreviousPage() {
-    this.location.back();
+    this.router.navigateByUrl(this.backUrl)
   }
 
 }
