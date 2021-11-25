@@ -18,7 +18,10 @@ export const ValidationConstants = {
     NAME_MIN_LENGTH: 3,
     NAME_MAX_LENGTH: 20,
     PHONE_MIN_LENGTH: 8,
-  }
+  },
+  userEmailStrategy: {
+    EMAIL_PATTERN: "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"
+  },
 }
 export const userRoles = [
   { id: 1, name: 'Corporate' },

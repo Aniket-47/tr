@@ -79,7 +79,14 @@ export class RegisterComponent implements OnInit, OnDestroy {
         Validators.maxLength(ValidationConstants.userAccountStrategy.NAME_MAX_LENGTH)
       ],
     ],
-    email: ['', [Validators.required, Validators.email]],
+    email: [
+      '', 
+      [
+        Validators.required, 
+        // Validators.email,
+        Validators.pattern(ValidationConstants.userEmailStrategy.EMAIL_PATTERN)
+      ],
+    ],
     company: ['', [Validators.required]],
     phone: ['',
       [
