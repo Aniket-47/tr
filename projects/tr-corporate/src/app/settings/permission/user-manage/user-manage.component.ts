@@ -136,6 +136,7 @@ export class UserManageComponent implements OnInit {
           this.selectedRole = result.filter_roletypeid ? result.filter_roletypeid[0] : undefined;
           this.selectedStatus = result.filter_status ? result.filter_status[0] : undefined;
           this.selectedSort = result.sort;
+          this.sort.active = result.sort;
           this.loadUsers(this.accountID);
         }
       })
@@ -193,7 +194,7 @@ export class UserManageComponent implements OnInit {
             this.paginator.pageSize,
             this.paginator.pageIndex * this.paginator.pageSize,
             {
-              sort: this.selectedSort,
+              sort: this.sort.active,
               sortOrder: this.sort.direction == "desc" ? "desc" : "asc",
               filter_roletypeid: this.selectedRole,
               filter_status: this.selectedStatus
