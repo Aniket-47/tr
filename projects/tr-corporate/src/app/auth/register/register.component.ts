@@ -84,7 +84,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
     phone: ['',
       [
         Validators.required,
-        Validators.minLength(ValidationConstants.userAccountStrategy.PHONE_MIN_LENGTH)
+        Validators.minLength(ValidationConstants.userAccountStrategy.PHONE_MIN_LENGTH),
+        Validators.pattern(ValidationConstants.userAccountStrategy.PHONE_PATTERN)
       ]
     ],
     password: ['', [Validators.required]],

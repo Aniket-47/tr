@@ -103,6 +103,7 @@
             <span *ngIf="!phone.errors?.required && phone.errors?.minlength">
               Phone number should be of minimum of 8 digits
             </span>
+            <span *ngIf="phone.errors?.pattern">Phone number is not valid</span>
           </mat-error>
         </mat-form-field>
       </div>
