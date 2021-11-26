@@ -39,7 +39,7 @@ export class PostLoginService {
     const apis = [
       this.http.get(secure_api_routes.ACCOUNT),
       this.http.get(secure_api_routes.USER),
-      this.http.get(secure_api_routes.DEFAULT_ROLES),
+      this.http.get(secure_api_routes.USER_ROLES),
       this.http.get(secure_api_routes.TRANSLATION),
       this.http.get(secure_api_routes.BUSINESS_VERTICLE),
     ];

@@ -107,7 +107,7 @@ export class DashabordComponent implements OnInit {
 
 
       if (!data[2]?.error) {
-        const roles = data[2]?.data.map((e: any) => ({ roletypeid: e?.roletypeid, name: e?.name }));
+        const roles = data[2]?.data?.roles.map((e: any) => ({ roletypeid: e?.roletypeid, name: e?.name }));
         this.store.dispatch(setUserRoles({ data: roles }));
       }
 
