@@ -41,7 +41,12 @@ export class AddUserComponent implements OnInit {
 
   @Output() userAdded = new EventEmitter();
 
-  constructor(private fb: FormBuilder, private userServ: UserService, private snackBar: SnackBarService, public dialogRef: MatDialogRef<AddUserComponent>, private store: Store<State>) { }
+  constructor(
+    private fb: FormBuilder, 
+    private userServ: UserService, 
+    private snackBar: SnackBarService, 
+    public dialogRef: MatDialogRef<AddUserComponent>, 
+    private store: Store<State>,) { }
 
   // selecter
   foods: Food[] = [
@@ -121,14 +126,22 @@ export class AddUserComponent implements OnInit {
       email: ['',
         [
           Validators.required,
-          Validators.email
+          // Validators.email,
+          Validators.pattern(ValidationConstants.userEmailStrategy.EMAIL_PATTERN)
         ]
       ],
       roletypeid: ['', [Validators.required]],
       designationname: [''],
       businessverticalid: ['', [Validators.required]],
       practicename: [''],
-      mobilenumber: [''],
+      mobilenumber: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(ValidationConstants.userAccountStrategy.PHONE_MIN_LENGTH),
+          Validators.pattern(ValidationConstants.userAccountStrategy.PHONE_PATTERN)
+        ],
+      ],
       locationname: ['']
     });
   }

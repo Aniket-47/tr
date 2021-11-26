@@ -13,12 +13,16 @@ export const ValidationConstants = {
   passwordStrategy: {
     PASSWORD_MIN_LENGTH: 6,
     PASSWORD_MAX_LENGTH: 15,
-    PASSWORD_PATTON: ""
+    PASSWORD_PATTERN: ""
   },
   userAccountStrategy: {
     NAME_MIN_LENGTH: 3,
     NAME_MAX_LENGTH: 20,
     PHONE_MIN_LENGTH: 8,
+    PHONE_PATTERN: "^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$"
+  },
+  userEmailStrategy: {
+    EMAIL_PATTERN: "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"
   },
   newRoleNameStrategy: {
     ROLE_MIN_LENGTH: 5,

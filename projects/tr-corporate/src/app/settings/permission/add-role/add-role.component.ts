@@ -1,3 +1,4 @@
+import { TranslatePipe } from '@mucrest/ng-core';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -51,7 +52,8 @@ export class AddRoleComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private store: Store<State>,
     private userRoleService: UserRoleService,
-    private snackbarService: SnackBarService,) {
+    private snackbarService: SnackBarService,
+    private translate: TranslatePipe,) {
     this.initForm();
   }
 
@@ -358,7 +360,7 @@ export class AddRoleComponent implements OnInit, OnDestroy {
         if (!res?.error)
           this.updatePermission(payload2);
 
-        this.snackbarService.open(res?.message, this.ln.TXT_OK);
+        this.snackbarService.open(res?.message, this.translate.transform(this.ln.TXT_OK));
         this.isLoading = false;
       }, (err) => this.isLoading = false);
     } else {
@@ -367,7 +369,7 @@ export class AddRoleComponent implements OnInit, OnDestroy {
         if (!res?.error)
           this.updatePermission(payload2);
 
-        this.snackbarService.open(res?.message, this.ln.TXT_OK);
+        this.snackbarService.open(res?.message, this.translate.transform(this.ln.TXT_OK));
         this.isLoading = false;
       }, (err) => this.isLoading = false);
     }
@@ -376,7 +378,7 @@ export class AddRoleComponent implements OnInit, OnDestroy {
   updatePermission(payload: any) {
     this.userRoleService.updatePersmissions(payload, this.accountId).subscribe((res: any) => {
       if (!res?.error) {
-        this.snackbarService.open(res?.message, this.ln.TXT_OK);
+        this.snackbarService.open(res?.message, this.translate.transform(this.ln.TXT_OK));
         this.roleForm.reset();
         this.rightsArray.clear();
         this.router.navigate([ROUTE_CONFIGS.ROLES]);
