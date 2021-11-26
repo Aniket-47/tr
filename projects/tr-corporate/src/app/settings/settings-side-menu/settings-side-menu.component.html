@@ -2,7 +2,7 @@
   <div class="nav-search">
     <mat-form-field floatLabel="never">
       <span matPrefix class="icon-mcf mcf-search"></span>
-      <input matInput [autofocus]="autoFocusVal"  placeholder="{{ln.TXT_SEARCH | translate}}...">
+      <input matInput [autofocus]="autoFocusVal" placeholder="{{ln.TXT_SEARCH | translate}}...">
     </mat-form-field>
   </div>
   <div class="settings__element">
@@ -12,7 +12,7 @@
           *ngFor="let parent of parents">
           <mat-expansion-panel-header>
             <mat-panel-title [routerLink]="parent.link" routerLinkActive="active"
-              [routerLinkActiveOptions]="{exact: parent.activeOption}" class="font-600">
+              [routerLinkActiveOptions]="{exact: parent.activeOption}" class="font-600 disable">
               <span [ngClass]="parent.icon" class="icon"></span>
               <span class="name">{{parent.name | translate | titlecase}}</span>
             </mat-panel-title>

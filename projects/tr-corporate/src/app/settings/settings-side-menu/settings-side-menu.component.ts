@@ -43,7 +43,7 @@ export class SettingsSideMenuComponent implements OnInit {
       link: "./",
       activeOption: true,
       child: [
-        
+
       ],
       icon: 'icon-mcf mcf-book',
     },
@@ -60,7 +60,7 @@ export class SettingsSideMenuComponent implements OnInit {
       link: "./",
       activeOption: true,
       child: [
-        
+
       ],
       icon: 'icon-mc mc-settings_brightness',
     },
@@ -69,7 +69,7 @@ export class SettingsSideMenuComponent implements OnInit {
       link: "./",
       activeOption: true,
       child: [
-        
+
       ],
       icon: 'icon-mc mc-money',
     },
@@ -78,7 +78,7 @@ export class SettingsSideMenuComponent implements OnInit {
       link: "./",
       activeOption: true,
       child: [
-        
+
       ],
       icon: 'icon-mcf mcf-account_circle',
     },
@@ -87,7 +87,7 @@ export class SettingsSideMenuComponent implements OnInit {
       link: "./",
       activeOption: true,
       child: [
-        
+
       ],
       icon: 'icon-mc mc-thumbs_up_down',
     },
@@ -96,7 +96,7 @@ export class SettingsSideMenuComponent implements OnInit {
       link: "./",
       activeOption: true,
       child: [
-        
+
       ],
       icon: 'icon-mcf mcf-card_travel',
     },
@@ -105,7 +105,7 @@ export class SettingsSideMenuComponent implements OnInit {
       link: "./",
       activeOption: true,
       child: [
-        
+
       ],
       icon: 'icon-mcf mcf-file_present',
     },
@@ -114,7 +114,7 @@ export class SettingsSideMenuComponent implements OnInit {
       link: "./",
       activeOption: true,
       child: [
-        
+
       ],
       icon: 'icon-mc mc-corporate_fare',
     }
