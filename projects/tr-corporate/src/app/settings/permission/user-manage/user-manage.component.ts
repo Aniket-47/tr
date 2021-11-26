@@ -222,7 +222,7 @@ export class UserManageComponent implements OnInit {
     this.toggleUserActionMenu();
 
     if (this.isActionDoing) {
-      this.snackBar.open('Please wait...', "Ok");
+      this.snackBar.open( this.ln.TXT_PLEASE_WAIT, this.ln.TXT_OK );
       return;
     }
 
@@ -248,7 +248,7 @@ export class UserManageComponent implements OnInit {
     this.toggleUserActionMenu();
 
     if (this.isActionDoing) {
-      this.snackBar.open('Please wait...', "Ok");
+      this.snackBar.open( this.ln.TXT_PLEASE_WAIT, this.ln.TXT_OK );
       return;
     }
 
