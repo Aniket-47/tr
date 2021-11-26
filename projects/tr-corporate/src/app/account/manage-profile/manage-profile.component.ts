@@ -85,7 +85,7 @@ export class ManageProfileComponent implements OnInit {
       mobilenumber: ['',
         [
           Validators.required,
-          Validators.minLength(10),
+          Validators.minLength(ValidationConstants.userAccountStrategy.PHONE_MIN_LENGTH),
           Validators.pattern(ValidationConstants.userAccountStrategy.PHONE_PATTERN)
         ],
       ],

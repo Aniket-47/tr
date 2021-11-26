@@ -95,7 +95,7 @@
       <div class="col-md-6 pr-5">
         <mat-form-field class="example-full-width" appearance="outline">
           <mat-label>Phone Number</mat-label>
-          <input type="tel" matInput placeholder="000-000-0000" formControlName="phone">
+          <input matInput placeholder="000-000-0000" formControlName="phone">
           <mat-error *ngIf="phone.touched && !phone.valid">
             <span *ngIf="phone.errors?.required">
               Phone number is required
@@ -103,7 +103,7 @@
             <span *ngIf="!phone.errors?.required && phone.errors?.minlength">
               Phone number should be of minimum of 8 digits
             </span>
-            <span *ngIf="phone.errors?.pattern">Phone number is not valid</span>
+            <span *ngIf="phone.errors?.pattern && !phone.errors?.minlength">Phone number is not valid</span>
           </mat-error>
         </mat-form-field>
       </div>
