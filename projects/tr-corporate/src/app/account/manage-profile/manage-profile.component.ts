@@ -50,16 +50,7 @@ export class ManageProfileComponent implements OnInit {
   }
 
   initForm() {
-    this.userForm = this.fb.group({
-      // firstName: ['', [Validators.required]],
-      // middleName: [''],
-      // lastName: ['', [Validators.required]],
-      // email: [''],
-      // mobilenumber: ['',
-      //   [
-      //     Validators.required,
-      //     Validators.minLength(10)
-      //   ]]
+    this.userForm = this.fb.group({      
 
       firstName: [
         '',
@@ -94,7 +85,8 @@ export class ManageProfileComponent implements OnInit {
       mobilenumber: ['',
         [
           Validators.required,
-          Validators.minLength(10)
+          Validators.minLength(10),
+          Validators.pattern(ValidationConstants.userAccountStrategy.PHONE_PATTERN)
         ],
       ],
     });
