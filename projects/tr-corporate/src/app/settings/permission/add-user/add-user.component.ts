@@ -41,7 +41,12 @@ export class AddUserComponent implements OnInit {
 
   @Output() userAdded = new EventEmitter();
 
-  constructor(private fb: FormBuilder, private userServ: UserService, private snackBar: SnackBarService, public dialogRef: MatDialogRef<AddUserComponent>, private store: Store<State>) { }
+  constructor(
+    private fb: FormBuilder, 
+    private userServ: UserService, 
+    private snackBar: SnackBarService, 
+    public dialogRef: MatDialogRef<AddUserComponent>, 
+    private store: Store<State>,) { }
 
   // selecter
   foods: Food[] = [

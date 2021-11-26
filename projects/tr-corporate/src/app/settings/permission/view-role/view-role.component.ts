@@ -1,3 +1,4 @@
+import { TranslatePipe } from '@mucrest/ng-core';
 import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { Router } from '@angular/router';
@@ -52,9 +53,9 @@ export class ViewRoleComponent implements OnInit, AfterViewInit {
   //   { value: '1', viewValue: 'Super Admin' }
   // ];
   sortby = [
-    { value: 'rolename', viewValue: this.ln.TXT_ROLE_NAME },
+    { value: 'rolename', viewValue: this.translate.transform(this.ln.TXT_ROLE_NAME) },
     // { value: 'usercount', viewValue: this.ln.TXT_SORT_BY_ADDED_USER_COUNT },
-    { value: 'modifiedDatetime', viewValue: this.ln.TXT_LAST_UPDATED }
+    { value: 'modifiedDatetime', viewValue: this.translate.transform(this.ln.TXT_LAST_UPDATED) }
   ];
   // selectedStatus = this.status[0].value;
   // selectedRole = this.role[0].value;
@@ -83,6 +84,7 @@ export class ViewRoleComponent implements OnInit, AfterViewInit {
     private dialog: MatDialog,
     private userRoleService: UserRoleService,
     private snackbarServ: SnackBarService,
+    private translate: TranslatePipe,
     private configServ: RouterConfigService,
     private router: Router,
     private cdRef: ChangeDetectorRef,
@@ -187,7 +189,7 @@ export class ViewRoleComponent implements OnInit, AfterViewInit {
 
   editRole(role: Irole) {
     if (role.isdefaultrole) {
-      this.snackbarServ.open(this.ln.TXT_DEFAULT_ROLE_CANNOT_UPDATE, this.ln.TXT_OK);
+      this.snackbarServ.open(this.translate.transform(this.ln.TXT_DEFAULT_ROLE_CANNOT_UPDATE, this.ln.TXT_OK));
       return;
     }
     this.router.navigate([ROUTE_CONFIGS.EDIT_ROLE, role.accountroleid]);
@@ -195,12 +197,12 @@ export class ViewRoleComponent implements OnInit, AfterViewInit {
 
   deleteRole(role: Irole) {
     if (role.isdefaultrole) {
-      this.snackbarServ.open(this.ln.TXT_DEFAULT_ROLE_CANNOT_DELETE, this.ln.TXT_OK);
+      this.snackbarServ.open(this.translate.transform(this.ln.TXT_DEFAULT_ROLE_CANNOT_DELETE, this.ln.TXT_OK));
       return;
     }
 
     if (role.usercount > 0) {
-      this.snackbarServ.open(this.ln.TXT_USERS_ASSOCIATED_TO_ROLE, this.ln.TXT_OK);
+      this.snackbarServ.open(this.translate.transform(this.ln.TXT_USERS_ASSOCIATED_TO_ROLE, this.ln.TXT_OK));
       return;
     }
 
@@ -211,7 +213,7 @@ export class ViewRoleComponent implements OnInit, AfterViewInit {
         if (isConfirmed) {
           this.userRoleService.deleteRole(+role.accountroleid).subscribe((res: any) => {
             if (!res.error) {
-              this.snackbarServ.open(this.ln.TXT_SUCCESSFULLY_DELETED, this.ln.TXT_OK);
+              this.snackbarServ.open(this.translate.transform(this.ln.TXT_SUCCESSFULLY_DELETED, this.ln.TXT_OK));
               this.loadUserRoles(this.accountid);
             } else this.snackbarServ.open(res?.message);
           });
