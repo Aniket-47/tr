@@ -50,6 +50,9 @@
         <input matInput type="email" formControlName="email">
         <mat-error *ngIf="email.invalid && email.touched">
           <span *ngIf="email.errors?.required">{{ln.TXT_FIELD_REQUIRED | translate}}</span>
+          <span *ngIf="!email.errors?.required && email.errors?.pattern">
+            {{ln.TXT_EMAIL_NOT_VALID | translate}}
+          </span>
         </mat-error>
       </mat-form-field>
     </div>

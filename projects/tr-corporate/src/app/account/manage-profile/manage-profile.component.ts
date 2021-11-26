@@ -78,7 +78,8 @@ export class ManageProfileComponent implements OnInit {
         '',
         [
           Validators.required,
-          Validators.email
+          // Validators.email,
+          Validators.pattern(ValidationConstants.userEmailStrategy.EMAIL_PATTERN)
         ],
       ],
       mobilenumber: ['',
