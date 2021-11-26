@@ -9,6 +9,7 @@ import { RouterConfigService } from './utility/services/router-config.service';
 import { State } from './utility/store/reducers';
 import { setUserLoginStatus } from './utility/store/actions/user.action';
 import { fadeAnimation } from './animations';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -25,9 +26,15 @@ export class AppComponent implements OnInit {
     private router: Router,
     private lstorageService: LstorageService,
     private configServ: RouterConfigService) {
+
+    if (environment.production) {
+      console.log = function () { };
+      console.error = () => { };
+    }
+
+
     this.configServ.routerconfig = ROUTE_CONFIGS;
     this.configServ.routerPermission = ROUTE_PERMISSION;
-
     this.router.events.subscribe((event: any) => {
       this.checkRouterEvent(event);
     });
