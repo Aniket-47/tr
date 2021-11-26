@@ -61,47 +61,42 @@ export class ManageProfileComponent implements OnInit {
       //     Validators.minLength(10)
       //   ]]
 
-        firstName: [
-          '',
-          [
-            Validators.required,
-            Validators.minLength(ValidationConstants.userAccountStrategy.NAME_MIN_LENGTH),
-            Validators.maxLength(ValidationConstants.userAccountStrategy.NAME_MAX_LENGTH)
-          ],
+      firstName: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(ValidationConstants.userAccountStrategy.NAME_MIN_LENGTH),
+          Validators.maxLength(ValidationConstants.userAccountStrategy.NAME_MAX_LENGTH)
         ],
-        middleName: [
-          '',
-          [
-            Validators.minLength(ValidationConstants.userAccountStrategy.NAME_MIN_LENGTH),
-            Validators.maxLength(ValidationConstants.userAccountStrategy.NAME_MAX_LENGTH)
-          ],
+      ],
+      middleName: [
+        '',
+        [
+          Validators.minLength(ValidationConstants.userAccountStrategy.NAME_MIN_LENGTH),
+          Validators.maxLength(ValidationConstants.userAccountStrategy.NAME_MAX_LENGTH)
         ],
-        lastName: [
-          '',
-          [
-            Validators.required,
-            Validators.minLength(ValidationConstants.userAccountStrategy.NAME_MIN_LENGTH),
-            Validators.maxLength(ValidationConstants.userAccountStrategy.NAME_MAX_LENGTH)
-          ],
+      ],
+      lastName: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(ValidationConstants.userAccountStrategy.NAME_MIN_LENGTH),
+          Validators.maxLength(ValidationConstants.userAccountStrategy.NAME_MAX_LENGTH)
         ],
-        email: [
-          '', 
-          [
-            Validators.required, 
-            Validators.email
-          ],
+      ],
+      email: [
+        '',
+        [
+          Validators.required,
+          Validators.email
         ],
-        // email: [''],
-        company: [
-          '', 
-          [Validators.required],
+      ],
+      mobilenumber: ['',
+        [
+          Validators.required,
+          Validators.minLength(10)
         ],
-        mobilenumber: ['',
-          [
-            Validators.required,
-            Validators.minLength(10)
-          ],
-        ],
+      ],
     });
   }
 
@@ -122,6 +117,7 @@ export class ManageProfileComponent implements OnInit {
   }
 
   updateUser() {
+    console.log(this.userForm)
     const { value, invalid } = this.userForm;
     if (invalid) {
       for (const key in this.userForm.controls) {
