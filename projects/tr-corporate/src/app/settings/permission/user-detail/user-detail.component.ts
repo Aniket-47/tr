@@ -52,7 +52,11 @@ export class UserDetailComponent implements OnInit, OnChanges, OnDestroy {
   isDisabled = false;
   userAPISubscription!: Subscription;
 
-  constructor(private fb: FormBuilder, private userServ: UserService, private snackBar: SnackBarService, private store: Store<State>) {
+  constructor(
+    private fb: FormBuilder, 
+    private userServ: UserService, 
+    private snackBar: SnackBarService, 
+    private store: Store<State>) {
 
   }
 

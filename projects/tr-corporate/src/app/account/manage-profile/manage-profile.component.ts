@@ -1,3 +1,4 @@
+import { TranslatePipe } from '@mucrest/ng-core';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
@@ -28,7 +29,8 @@ export class ManageProfileComponent implements OnInit {
     private fb: FormBuilder,
     private store: Store<State>,
     private accoutService: AccountService,
-    private snackbarServ: SnackBarService) {
+    private snackbarServ: SnackBarService,
+    private translate: TranslatePipe,) {
   }
 
   ngOnInit(): void {
@@ -128,14 +130,14 @@ export class ManageProfileComponent implements OnInit {
     this.isLoading = true;
     this.accoutService.updateUser(payload).subscribe((res: any) => {
       if (res?.error) {
-        this.snackbarServ.open(res?.message, this.ln.TXT_OK);
+        this.snackbarServ.open(res?.message, this.translate.transform(this.ln.TXT_OK));
 
       } else {
         // update store
         this.store.dispatch(setUserMobile({ data: value.mobilenumber }));
         this.store.dispatch(setUserFullName({ data: `${value.firstName} ${value.middleName} ${value.lastName}` }))
         this.store.dispatch(setUserName({ data: { firstName: value.firstName, middleName: value.middleName, lastName: value.lastName } }));
-        this.snackbarServ.open(this.ln.TXT_SUCCESSFULLY_ADDED, this.ln.TXT_OK);
+        this.snackbarServ.open(this.translate.transform(this.ln.TXT_SUCCESSFULLY_ADDED, this.ln.TXT_OK));
         // this.userForm.reset();        
       }
       this.isLoading = false;
