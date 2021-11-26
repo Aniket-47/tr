@@ -1,5 +1,5 @@
 <ng-container [formGroup]="roleForm" [@fadeInOut]>
-  <tr-page-header class="add-role">
+  <tr-page-header class="add-role" [backUrl]="route_conf.ROLES">
     <div page-title>
       <!-- <h5 class="mobile-only">Permissions</h5> -->
       <div class="d-flex align-items-center">
@@ -52,6 +52,14 @@
           <mat-error *ngIf="roleName.invalid && roleName?.errors">
             <span *ngIf="roleName?.errors?.required">
               {{ ln.TXT_FIELD_REQUIRED | translate }}
+            </span>
+            <span *ngIf="roleName.errors?.minlength">
+              {{ln.TXT_ROLE_MIN_LENGTH | translate}}
+              <!-- Role name should be atlest 5 letters -->
+            </span>
+            <span *ngIf="roleName.errors?.maxlength">
+              {{ln.TXT_ROLE_MAX_LENGTH | translate}}
+              <!-- Role name should be maximum of 15 letters -->
             </span>
           </mat-error>
         </mat-form-field>

@@ -6,6 +6,7 @@ export const ROUTE_CONFIGS = {
   REGISTER1: '/auth/selectrole',
   REGISTER2: '/auth/register',
   REGISTER_SUCCESS: '/auth/register-success',
+  USER_INVITED: '/auth/r-password/invite',
   SETTINGS_DASHBOARD: '/dashboard/settings',
   ROLES: '/dashboard/settings/permission/roles',
   ADD_ROLE: '/dashboard/settings/permission/role',

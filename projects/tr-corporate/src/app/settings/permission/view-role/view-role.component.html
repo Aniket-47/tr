@@ -1,5 +1,5 @@
 <div [@fadeInOut]>
-  <tr-page-header>
+  <tr-page-header [backUrl]="route_conf.SETTINGS_DASHBOARD">
     <div page-title>
       <h5 class="mobile-only">{{ln.TXT_PERMISSIONS | translate | titlecase}}</h5>
       <h2>{{ln.TXT_ACCOUNT_ROLE | translate | titlecase}}</h2>
@@ -144,7 +144,8 @@
                       <span class="icon-mc mc-visibility"></span>
                       <span class="mx-3">{{ln.TXT_VIEW | translate}}</span>
                     </button>
-                    <button mat-menu-item class="cloud-only" (click)="editRole(element)" [disabled]="element?.isdefaultrole==1">
+                    <button mat-menu-item class="cloud-only" (click)="editRole(element)"
+                      [disabled]="element?.isdefaultrole==1">
                       <span class="icon-mc mc-create"></span>
                       <span class="mx-3">{{ln.TXT_EDIT | translate}}</span>
                     </button>

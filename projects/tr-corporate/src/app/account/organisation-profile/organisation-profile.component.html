@@ -28,8 +28,14 @@
     <div class="col-md-6">
       <mat-form-field appearance="standard">
         <mat-label>{{ln.TXT_COUNTRY | translate}}</mat-label>
-        <mat-select formControlName="countryid">
-          <mat-option [value]="each?.iso2" *ngFor="let each of countries">{{each?.name}}</mat-option>
+        <mat-select disableOptionCentering formControlName="countryid">
+          <!-- TODO: needs to remove the inline css -->
+          <perfect-scrollbar style="height: 250px">
+            <ng-container *ngFor="let each of countries; let last = last">
+              <mat-option [value]="each?.iso2">{{each?.name}}</mat-option>
+              <mat-divider *ngIf="!last"></mat-divider>
+            </ng-container>
+          </perfect-scrollbar>
         </mat-select>
         <mat-error *ngIf="countryid.invalid && countryid.touched">
           <span *ngIf="countryid.errors?.required">{{ln.TXT_FIELD_REQUIRED | translate}}</span>
@@ -50,8 +56,14 @@
     <div class="col-md-6">
       <mat-form-field appearance="standard">
         <mat-label>{{ln.TXT_STATE | translate}}</mat-label>
-        <mat-select formControlName="stateid">
-          <mat-option [value]="each?.stateCode" *ngFor="let each of states">{{each?.name}}</mat-option>
+        <mat-select disableOptionCentering formControlName="stateid">
+          <!-- TODO: needs to remove the inline css -->
+          <perfect-scrollbar style="height: 250px">
+            <ng-container *ngFor="let each of states; let last = last">
+              <mat-option [value]="each?.stateCode">{{each?.name}}</mat-option>
+              <mat-divider *ngIf="!last"></mat-divider>
+            </ng-container>
+          </perfect-scrollbar>
         </mat-select>
         <mat-error *ngIf="stateid.invalid && stateid.touched">
           <span *ngIf="stateid.errors?.required">{{ln.TXT_FIELD_REQUIRED | translate}}</span>
@@ -61,8 +73,14 @@
     <div class="col-md-6">
       <mat-form-field appearance="standard">
         <mat-label>{{ln.TXT_CITY | translate}}</mat-label>
-        <mat-select formControlName="cityid">
-          <mat-option [value]="each?.id" *ngFor="let each of cities">{{each?.name}}</mat-option>
+        <mat-select disableOptionCentering formControlName="cityid">
+          <!-- TODO: needs to remove the inline css -->
+          <perfect-scrollbar style="height: 250px">
+            <ng-container *ngFor="let each of cities; let last = last">
+              <mat-option [value]="each?.id">{{each?.name}}</mat-option>
+              <mat-divider *ngIf="!last"></mat-divider>
+            </ng-container>
+          </perfect-scrollbar>
         </mat-select>
         <mat-error *ngIf="cityid.invalid && cityid.touched">
           <span *ngIf="cityid.errors?.required">{{ln.TXT_FIELD_REQUIRED | translate}}</span>
@@ -74,8 +92,14 @@
     <div class="col-md-6">
       <mat-form-field appearance="standard">
         <mat-label>{{ln.TXT_INDUSTRY | translate}}</mat-label>
-        <mat-select formControlName="industryid">
-          <mat-option [value]="each?.code" *ngFor="let each of industries">{{each?.name}}</mat-option>
+        <mat-select disableOptionCentering formControlName="industryid">
+          <!-- TODO: needs to remove the inline css -->
+          <perfect-scrollbar style="height: 250px">
+            <ng-container *ngFor="let each of industries; let last = last">
+              <mat-option [value]="each?.code">{{each?.name}}</mat-option>
+              <mat-divider *ngIf="!last"></mat-divider>
+            </ng-container>
+          </perfect-scrollbar>
         </mat-select>
         <mat-error *ngIf="name.invalid && name.touched">
           <span *ngIf="name.errors?.required">{{ln.TXT_FIELD_REQUIRED | translate}}</span>

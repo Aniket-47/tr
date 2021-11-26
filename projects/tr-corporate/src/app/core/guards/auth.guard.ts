@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {
+  ActivatedRoute,
   ActivatedRouteSnapshot,
   CanActivate,
   Router,
@@ -21,11 +22,11 @@ export class AuthGuard implements CanActivate {
   constructor(
     private router: Router,
     private configServ: RouterConfigService,
-    private LsService: LstorageService
+    private LsService: LstorageService,
   ) { }
   canActivate(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
+    state: RouterStateSnapshot,
   ):
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree>
@@ -34,17 +35,42 @@ export class AuthGuard implements CanActivate {
     this.config = this.configServ.routerconfig;
     this.loggedin = !!this.LsService.getItem(LSkeys.BEARER_TOKEN);
 
-    if (state.url.startsWith(this.config.DASHBOARD)) {
-      if (this.loggedin) return true;
-      else {
-        this.router.navigate([this.config.AUTH]);
-        return false;
+    // For Invited user (e=existing, n=new)
+    if (state.url.startsWith(this.config.USER_INVITED)) {
+
+      const type = state.url.split('/')[4];
+      const token = state.url.split('/')[5];
+
+      if (type && token) {
+        if (type === 'n') {
+          this.LsService.clear();
+          return true;
+        }
+        else if (type === 'e') {
+          this.LsService.store(LSkeys.INVITE_TOKEN, token);
+          this.router.navigate([this.config.AUTH])
+        }
       }
-    } else {
-      if (this.loggedin) {
-        this.router.navigate([this.config.DASHBOARD]);
-        return false;
-      } else return true;
+      return false
+
     }
+
+    // For all routes
+    else {
+      if (state.url.startsWith(this.config.DASHBOARD)) {
+        if (this.loggedin) return true;
+        else {
+          this.router.navigate([this.config.AUTH]);
+          return false;
+        }
+      } else {
+        if (this.loggedin) {
+          this.router.navigate([this.config.DASHBOARD]);
+          return false;
+        } else return true;
+      }
+    }
+
+
   }
 }

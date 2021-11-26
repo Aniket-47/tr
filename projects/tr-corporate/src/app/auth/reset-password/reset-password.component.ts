@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { LstorageService } from '@tr/src/app/utility/services/lstorage.service';
 import { fadeAnimation } from '../../animations';
-import { ValidationConstants } from '../../utility/configs/app.constants';
+import { LSkeys, ValidationConstants } from '../../utility/configs/app.constants';
 import { ROUTE_CONFIGS } from '../../utility/configs/routerConfig';
 import { SnackBarService } from '../../utility/services/snack-bar.service';
 import { AuthService } from '../services/auth.service';
@@ -26,14 +27,17 @@ function passwordMatcher(c: AbstractControl): { [key: string]: boolean } | null 
 export class ResetPasswordComponent implements OnInit {
   hidepassword = true;
   hidecnfpass = true;
-  token: string | null = "";
   isLoading = false;
   routerConfig = ROUTE_CONFIGS;
 
+  token!: string | null;
+  type!: string | null;
 
-  constructor(private route: ActivatedRoute, private authServ: AuthService, private fb: FormBuilder, private snackBar: SnackBarService) { }
+  constructor(private route: ActivatedRoute, private authServ: AuthService, private fb: FormBuilder, private snackBar: SnackBarService, private lsServ: LstorageService, private router: Router) { }
 
   ngOnInit(): void {
+    this.type = this.route.snapshot.paramMap.get('type');
+    this.token = this.route.snapshot.paramMap.get('token');
   }
 
   // Form
@@ -53,10 +57,6 @@ export class ResetPasswordComponent implements OnInit {
   get cnfPass(): AbstractControl {
     return this.resetForm.get('cnfPass') as FormControl;
   }
-  logme() {
-    console.log(this.cnfPass)
-  }
-
 
   resetPassword() {
     // this.authServ.passwordReset(this.token,)
@@ -67,25 +67,45 @@ export class ResetPasswordComponent implements OnInit {
       }
       return;
     }
-
-
-    this.isLoading = true;
-    const { value } = this.resetForm;
-    const token = this.route.snapshot.paramMap.get('token') || "";
-    const payload = {
-      newPassword: value.password,
-      confirmPassword: value.cnfPass,
-    };
-    this.authServ.passwordReset(token, payload).subscribe(res => {
-      this.isLoading = false;
-      if (!res.error) {
-        const message = "Password reset successfull, redircting to login"
-        this.snackBar.open(message)
+    if (this.token) {
+      this.isLoading = true;
+      const { value } = this.resetForm;
+      if (this.type) {
+        const payload = {
+          userpassword: value.password,
+          inviteKey: this.token
+        }
+        this.authServ.inviteSetPassword(payload).subscribe(res => {
+          this.isLoading = false;
+          if (!res.error) {
+            const message = "Password set successfull, redircting to login"
+            this.snackBar.open(message)
+            this.router.navigate([this.routerConfig.LOGIN])
+          }
+          else {
+            this.snackBar.open(res.message)
+          }
+        });
       }
       else {
-        this.snackBar.open(res.message)
+        const payload = {
+          newPassword: value.password,
+          confirmPassword: value.cnfPass,
+        };
+        this.authServ.passwordReset(this.token, payload).subscribe(res => {
+          this.isLoading = false;
+          if (!res.error) {
+            const message = "Password reset successfull, redircting to login"
+            this.snackBar.open(message);
+            this.router.navigate([this.routerConfig.LOGIN])
+          }
+          else {
+            this.snackBar.open(res.message)
+          }
+        });
       }
-    });
+    }
+
   }
 
 }

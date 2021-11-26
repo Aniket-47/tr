@@ -130,22 +130,18 @@
       <div class="col-md-6">
         <mat-form-field appearance="outline" class="w-100 brd">
           <mat-label>Confirm Password</mat-label>
-          <input matInput [type]="hidecnfpass ? 'password' : 'text'" formControlName="cnfPass"
-            [errorStateMatcher]="matcher">
+          <input matInput [type]="hidecnfpass ? 'password' : 'text'" formControlName="cnfPass">
           <button type="button" mat-icon-button matSuffix (click)="hidecnfpass = !hidecnfpass"
             [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidecnfpass" class="btn-show-hide">
             <span class="icon-mc" [ngClass]="{'mc-eye-off' : hidecnfpass, 'mc-eye': !hidecnfpass}"></span>
           </button>
-          <mat-error *ngIf="cnfPass.touched">
+          <mat-error *ngIf="(cnfPass.touched && !cnfPass.valid)">
             <span *ngIf="cnfPass.errors?.required">
               Confirm Password is required
             </span>
-            <span *ngIf="!registerForm.errors?.passMatch && !cnfPass.errors?.required">
+            <span *ngIf="cnfPass.errors?.passMatch">
               Confirm Password does not match.
             </span>
-            <!-- <span *ngIf="!cnfPass.errors?.required && (cnfPass.value!=password.value)">
-              Confirm Password doesn't match
-            </span> -->
           </mat-error>
         </mat-form-field>
       </div>

@@ -18,6 +18,8 @@ import { DASHBOARD_LN } from './shared/dashboard.lang';
 import { setBusinessVerticle } from '../utility/store/actions/business-vertical.action';
 import { IBusVert } from '../utility/store/interfaces/business-vertical';
 import { TranslatePipe } from '@mucrest/ng-core';
+import { AccountListApiService } from './shared/services/account-list-api.service';
+import { SnackBarService } from '../utility/services/snack-bar.service';
 
 
 @Component({
@@ -51,6 +53,8 @@ export class DashabordComponent implements OnInit {
     private store: Store<State>,
     private route: ActivatedRoute,
     private router: Router,
+    private accountServ: AccountListApiService,
+    private snackbar: SnackBarService
   ) {
     this.isLoading$ = this.store.select(getIsLoading);
   }
@@ -65,6 +69,15 @@ export class DashabordComponent implements OnInit {
     this.date = new Date();
     this.store.select(getAccountIds).subscribe(accounts => this.accountList = accounts);
     this.store.select(getUserFullName).subscribe(name => this.userName = name);
+
+    const inviteToken = this.lsServ.getItem(LSkeys.INVITE_TOKEN);
+    if (inviteToken) {
+      this.accountServ.validateInvite({ inviteKey: inviteToken })
+        .subscribe(res => {
+          this.snackbar.open(res.message)
+          this.lsServ.remove(LSkeys.INVITE_TOKEN);
+        })
+    }
   }
 
   setDataInStore(data: any[]) {
@@ -88,7 +101,7 @@ export class DashabordComponent implements OnInit {
         this.store.dispatch(setUserRole({ data: { roletypename: user?.roletypename, roletypeid: user?.roletypeid } }));
         this.store.dispatch(setUserStatus({ data: user?.status }));
 
-        // store user name 
+        // store user name
         this.lsServ.store(LSkeys.USER_NAME, `${user?.firstname}`);
       }
 
