@@ -28,17 +28,11 @@ function passwordMatcher(c: AbstractControl): { [key: string]: boolean } | null 
 
   if (passwordControl.pristine || cnfPassControl.pristine) return null;
   if (passwordControl.value === cnfPassControl.value) return null;
-  return { match: true };
+  cnfPassControl.setErrors({ passMatch: true })
+  return { passMatch: true };
 }
 
-export class cnfPasswordMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const invalidCtrl = !!(control?.invalid && control?.parent?.dirty);
-    const invalidParent = !!(control?.parent?.invalid && control?.parent?.dirty);
 
-    return invalidCtrl || invalidParent;
-  }
-}
 
 @Component({
   selector: 'app-register',
@@ -54,7 +48,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
   routerConfig = ROUTE_CONFIGS;
 
   // Form
-  matcher = new cnfPasswordMatcher();
   registerForm: FormGroup = this.fb.group({
     firstName: [
       '',

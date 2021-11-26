@@ -6,6 +6,12 @@
         <input matInput formControlName="firstName">
         <mat-error *ngIf="firstName.invalid && firstName.touched">
           <span *ngIf="firstName.errors?.required">{{ln.TXT_FIELD_REQUIRED | translate}}</span>
+          <span *ngIf="!firstName.errors?.required && firstName.errors?.minlength">
+            {{ln.TXT_FIRST_NAME_3ATLEAST_LETTERS | translate}}
+          </span>
+          <span *ngIf="firstName.errors?.maxlength">
+            {{ln.TXT_FIRST_NAME_20MAX_LETTERS | translate}}
+          </span>
         </mat-error>
       </mat-form-field>
     </div>
@@ -13,9 +19,14 @@
       <mat-form-field appearance="standard">
         <mat-label>{{ln.TXT_MIDDLE_NAME | translate}}</mat-label>
         <input matInput formControlName="middleName">
-        <!-- <mat-error *ngIf="lastName.invalid && lastName.touched">
-          <span *ngIf="lastName.errors?.required">This filed is required.</span>
-        </mat-error> -->
+        <mat-error *ngIf="middleName.touched && !middleName.valid">
+          <span *ngIf="!middleName.errors?.required && middleName.errors?.minlength">
+            {{ln.TXT_MIDDLE_NAME_3_LETTERS | translate}}
+          </span>
+          <span *ngIf="middleName.errors?.maxlength">
+            {{ln.TXT_MIDDLE_NAME_20_LETTERS | translate}}
+          </span>
+        </mat-error>
       </mat-form-field>
     </div>
     <div>
@@ -24,6 +35,12 @@
         <input matInput formControlName="lastName">
         <mat-error *ngIf="lastName.invalid && lastName.touched">
           <span *ngIf="lastName.errors?.required">{{ln.TXT_FIELD_REQUIRED | translate}}</span>
+          <span *ngIf="!lastName.errors?.required && lastName.errors?.minlength">
+            {{ln.TXT_LAST_NAME_3_LETTERS | translate}}
+          </span>
+          <span *ngIf="lastName.errors?.maxlength">
+            {{ln.TXT_LAST_NAME_20_LETTERS | translate}}
+          </span>
         </mat-error>
       </mat-form-field>
     </div>

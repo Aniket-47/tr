@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { fadeAnimation } from '../../animations';
-import { userRoles } from '../../utility/configs/app.constants';
+import { userRoles, ValidationConstants } from '../../utility/configs/app.constants';
 import { SnackBarService } from '../../utility/services/snack-bar.service';
 import { setUserFullName, setUserMobile, setUserName } from '../../utility/store/actions/user.action';
 import { State } from '../../utility/store/reducers';
@@ -40,7 +40,6 @@ export class ManageProfileComponent implements OnInit {
 
   loadUser() {
     this.store.select(getUserDeatils).subscribe(user => {
-      console.log(user)
       this.userForm.patchValue({
         firstName: user?.name.firstName,
         middleName: user?.name.middleName,
@@ -53,15 +52,52 @@ export class ManageProfileComponent implements OnInit {
 
   initForm() {
     this.userForm = this.fb.group({
-      firstName: ['', [Validators.required]],
-      middleName: [''],
-      lastName: ['', [Validators.required]],
-      email: [''],
+      // firstName: ['', [Validators.required]],
+      // middleName: [''],
+      // lastName: ['', [Validators.required]],
+      // email: [''],
+      // mobilenumber: ['',
+      //   [
+      //     Validators.required,
+      //     Validators.minLength(10)
+      //   ]]
+
+      firstName: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(ValidationConstants.userAccountStrategy.NAME_MIN_LENGTH),
+          Validators.maxLength(ValidationConstants.userAccountStrategy.NAME_MAX_LENGTH)
+        ],
+      ],
+      middleName: [
+        '',
+        [
+          Validators.minLength(ValidationConstants.userAccountStrategy.NAME_MIN_LENGTH),
+          Validators.maxLength(ValidationConstants.userAccountStrategy.NAME_MAX_LENGTH)
+        ],
+      ],
+      lastName: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(ValidationConstants.userAccountStrategy.NAME_MIN_LENGTH),
+          Validators.maxLength(ValidationConstants.userAccountStrategy.NAME_MAX_LENGTH)
+        ],
+      ],
+      email: [
+        '',
+        [
+          Validators.required,
+          Validators.email
+        ],
+      ],
       mobilenumber: ['',
         [
           Validators.required,
           Validators.minLength(10)
-        ]]
+        ],
+      ],
     });
   }
 
@@ -82,6 +118,7 @@ export class ManageProfileComponent implements OnInit {
   }
 
   updateUser() {
+    console.log(this.userForm)
     const { value, invalid } = this.userForm;
     if (invalid) {
       for (const key in this.userForm.controls) {

@@ -88,6 +88,8 @@ export class LoginComponent implements OnInit {
 
   changeAccount() {
     this.isFirstStep = true;
+    this.userEmail = null;
+    this.userName = null;
     this.lsServ.remove(LSkeys.USER_NAME);
     this.lsServ.remove(LSkeys.USER_EMAIL);
   }

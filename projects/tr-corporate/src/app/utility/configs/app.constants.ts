@@ -5,7 +5,8 @@ export const enum LSkeys {
   DEVICE_GUID = "deviceGuid",
   LANGUAGE = 'language',
   DEFAULT_ACCOUNT = 'defaultAccount',
-  REGISTERED_EMAIL = 'registeredEmail'
+  REGISTERED_EMAIL = 'registeredEmail',
+  INVITE_TOKEN = 'inviteToken'
 }
 
 export const ValidationConstants = {
@@ -18,6 +19,10 @@ export const ValidationConstants = {
     NAME_MIN_LENGTH: 3,
     NAME_MAX_LENGTH: 20,
     PHONE_MIN_LENGTH: 8,
+  },
+  newRoleNameStrategy: {
+    ROLE_MIN_LENGTH: 5,
+    ROLE_MAX_LENGTH: 15,
   }
 }
 export const userRoles = [

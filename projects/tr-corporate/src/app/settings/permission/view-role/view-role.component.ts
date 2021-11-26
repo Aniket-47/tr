@@ -28,6 +28,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MFilterComponent } from '../m-filter/m-filter.component';
 import { UtilityService } from '../../../utility/services/utility.service';
 import { Irole } from '../shared/interfaces/role.model';
+import { DesignService } from '../../../utility/services/design.service';
 
 
 @Component({
@@ -39,6 +40,7 @@ import { Irole } from '../shared/interfaces/role.model';
 export class ViewRoleComponent implements OnInit, AfterViewInit {
 
   ln = SETTINGS_LN;
+  route_conf = ROUTE_CONFIGS;
 
   toggle = false;
   config: any;
@@ -90,6 +92,7 @@ export class ViewRoleComponent implements OnInit, AfterViewInit {
     private cdRef: ChangeDetectorRef,
     private store: Store<State>,
     private _bottomSheet: MatBottomSheet,
+    public designService: DesignService,
     private util: UtilityService) {
     this.config = configServ.routerconfig;
   }

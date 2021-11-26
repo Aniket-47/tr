@@ -3,17 +3,13 @@
     <button mat-icon-button (click)="drawer.toggle(); toggleSideMenu()" class="close-btn">
       <span class="icon-mc mc-x"></span>
     </button>
-    <app-user-detail *ngIf="!viewUserPermission" 
-        [edit]="currentUserEdit" 
-        [userEmail]="currentUser?.email"
-        (statusChange)="changeStatus($event)" 
-        (userUpdate)="userUpdated($event)" 
-        [isOpen]="drawer.opened">
+    <app-user-detail *ngIf="!viewUserPermission" [edit]="currentUserEdit" [userEmail]="currentUser?.email"
+      (statusChange)="changeStatus($event)" (userUpdate)="userUpdated($event)" [isOpen]="drawer.opened">
     </app-user-detail>
   </mat-drawer>
 
   <div class="example-sidenav-content" [@fadeInOut]>
-    <tr-page-header>
+    <tr-page-header [backUrl]="route_conf.SETTINGS_DASHBOARD">
       <div page-title class="page-title">
         <div>
           <h5 class="mobile-only">{{ln.TXT_PERMISSIONS | translate | titlecase}}</h5>
@@ -148,7 +144,8 @@
                   }"></mat-label>
                   </div>
                   <div>
-                    <div class="name">{{element.firstname + ' ' + element.middlename + ' ' + element.lastname}}</div>
+                    <div class="name truncate">{{element.firstname + ' ' + element.middlename + ' ' + element.lastname}}
+                    </div>
                     <!-- <div class="email">{{element.email}}</div> -->
                   </div>
                 </div>
@@ -159,17 +156,8 @@
             <ng-container matColumnDef="roletypeid">
               <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ln.TXT_ROLE | translate}} </th>
               <td mat-cell *matCellDef="let element">
-                <mat-label class="role" [ngClass]="{
-                  'success': element?.roletypeid === 2,
-                  'info': element?.roletypeid === 1,
-                  'rm': element?.roletypeid === 4 ,
-                  'dm': element?.roletypeid === 5 ,
-                  'bm': element?.roletypeid === 6 ,
-                  'bl': element?.roletypeid === 7,
-                  'vn': element?.roletypeid === 8 ,
-                  'nh': element?.roletypeid === 9 ,
-                  'hr': element?.roletypeid === 3
-            }">{{element.role | translate}} </mat-label>
+                <mat-label class="role" [ngClass]="designService.getRoleClass(element?.roletypeid)">
+                  {{element.role | translate}} </mat-label>
               </td>
             </ng-container>
 
@@ -286,7 +274,8 @@
         </perfect-scrollbar>
       </div>
 
-      <mat-paginator class="cloud-only" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
+      <mat-paginator class="cloud-only" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+        aria-label="Select page of periodic elements">
       </mat-paginator>
     </div>
     <!-- Mobile View -->
@@ -307,6 +296,6 @@
         <span class="icon-mc " [ngClass]="{'mc-plus': toggle === true, 'mc-more_vert': toggle === false }"></span>
       </button>
     </div>
-  <mat-progress-bar mode="query" *ngIf="isLoadingMore"></mat-progress-bar>
+    <mat-progress-bar mode="query" *ngIf="isLoadingMore"></mat-progress-bar>
   </div>
 </mat-drawer-container>

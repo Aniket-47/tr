@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MessageComponent } from '@tr/src/app/tr-feature/message/message.component';
+import { AuthGuard } from '../core/guards/auth.guard';
 import { AuthComponent } from './auth.component';
 import { FPasswordComponent } from './f-password/f-password.component';
 import { LoginComponent } from './login/login.component';
@@ -13,7 +14,7 @@ import { VerifyAccountComponent } from './verify-account/verify-token.component'
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'auth',
     component: AuthComponent,
     children: [
       {
@@ -38,6 +39,10 @@ const routes: Routes = [
         component: ResetPasswordComponent
       },
       {
+        path: 'r-password/invite/:type/:token',
+        component: ResetPasswordComponent
+      },
+      {
         path: 'register-success',
         component: RegisterSuccessComponent
       },
@@ -55,7 +60,8 @@ const routes: Routes = [
         redirectTo: 'login',
         pathMatch: 'full'
       }
-    ]
+    ],
+    canActivate: [AuthGuard],
   }
 ];
 

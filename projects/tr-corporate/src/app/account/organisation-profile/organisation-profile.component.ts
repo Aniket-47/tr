@@ -1,3 +1,4 @@
+import { TranslatePipe } from '@mucrest/ng-core';
 import { ChangeDetectorRef, Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
@@ -24,6 +25,7 @@ export class OrganisationProfileComponent implements OnInit, OnChanges {
   shortNameValidation = new Subject();
   resShortMessage: string = "";
   currentShortName!: string;
+  account!: any;
 
   shortnameValidation!: string;
 
@@ -41,7 +43,8 @@ export class OrganisationProfileComponent implements OnInit, OnChanges {
     private fb: FormBuilder,
     private accoutService: AccountService,
     private snackbarServ: SnackBarService,
-    private store: Store<State>) {
+    private store: Store<State>,
+    private translate: TranslatePipe) {
     this.initForm();
     this.store.select(getDefaultAccountId).subscribe(accountid => {
       this.accountId = accountid;
@@ -130,7 +133,7 @@ export class OrganisationProfileComponent implements OnInit, OnChanges {
       if (account) {
         // shortName Validation
         this.currentShortName = account.shortname || "";
-
+        this.account = account;
         this.orgProfileForm.patchValue({
           name: account?.name,
           shortname: account?.shortname,
@@ -174,7 +177,6 @@ export class OrganisationProfileComponent implements OnInit, OnChanges {
 
 
   saveOrgProfile() {
-    this.orgProfileForm.enable();
     const { value, invalid } = this.orgProfileForm;
     if (invalid) {
       for (const key in this.orgProfileForm.controls) {
@@ -182,6 +184,7 @@ export class OrganisationProfileComponent implements OnInit, OnChanges {
       }
       return;
     }
+
     const cityname = this.cities.find(c => c.id === value.cityid)?.name;
     const statename = this.states.find(s => s.stateCode === value.stateid)?.name;
     const countryname = this.countries.find(c => c.iso2 === value.countryid)?.name;
@@ -194,7 +197,8 @@ export class OrganisationProfileComponent implements OnInit, OnChanges {
       stateid: `${value.stateid}`,
       statename,
       countryname,
-      industryname
+      industryname,
+      accounttype: this.account.accounttype
     }
 
     if (this.shortname.value === this.currentShortName)
@@ -204,11 +208,12 @@ export class OrganisationProfileComponent implements OnInit, OnChanges {
     this.isLoading = true;
     this.accoutService.updateAccount(payload, this.accountId).subscribe((res: any) => {
       if (res?.error) {
-        this.snackbarServ.open(res?.message, this.ln.TXT_OK);
+        this.snackbarServ.open(res?.message, this.translate.transform(this.ln.TXT_OK));
       } else {
         // update store
-        this.store.dispatch(setAccountDeatils({ data: payload }));
-        this.snackbarServ.open(this.ln.TXT_SUCCESSFULLY_ADDED, this.ln.TXT_OK);
+        this.store.dispatch(setAccountDeatils({ data: { shortname: this.shortname.value, ...payload } }));
+
+        this.snackbarServ.open(this.translate.transform(this.ln.TXT_SUCCESSFULLY_ADDED), this.translate.transform(this.ln.TXT_OK));
         // this.orgProfileForm.reset();
       }
       this.isLoading = false;
@@ -217,8 +222,10 @@ export class OrganisationProfileComponent implements OnInit, OnChanges {
 
   // ShortName Validation
   checkValidity() {
-    if (this.shortname.value.length > 4) {
+    if (this.shortname.value.length > 4 && !(this.shortname.value === this.currentShortName)) {
       this.shortNameValidation.next(this.shortname.value);
+    } else {
+      this.resShortMessage = '';
     }
   }
 
@@ -228,13 +235,15 @@ export class OrganisationProfileComponent implements OnInit, OnChanges {
     this.accoutService.getShortName(sName)
       .subscribe(res => {
         this.isLoading = false;
-        if (res.error && sName != this.currentShortName) {
+        if (res.error) {
           this.resShortMessage = res.message;
           this.shortname.markAllAsTouched();
           this.shortname.setErrors({ 'customError': true });
         }
-        else {
-          this.resShortMessage = this.ln.TXT_SHORTNAME_AVAILABLE;
+        else if (this.shortname.value === this.currentShortName) {
+          this.resShortMessage = '';
+        } else {
+          this.resShortMessage = this.ln.TXT_SHORTNAME_AVAILABLE
         }
 
       })

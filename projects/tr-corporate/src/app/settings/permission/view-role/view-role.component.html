@@ -1,5 +1,5 @@
 <div [@fadeInOut]>
-  <tr-page-header>
+  <tr-page-header [backUrl]="route_conf.SETTINGS_DASHBOARD">
     <div page-title>
       <h5 class="mobile-only">{{ln.TXT_PERMISSIONS | translate | titlecase}}</h5>
       <h2>{{ln.TXT_ACCOUNT_ROLE | translate | titlecase}}</h2>
@@ -63,17 +63,7 @@
           <ng-container matColumnDef="rolename">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ln.TXT_ACCOUNTS_ROLES | translate}} </th>
             <td mat-cell *matCellDef="let element">
-              <mat-label class="role" [ngClass]="{
-                    'success': element?.roletypeid === 2,
-                    'info': element?.roletypeid === 1,
-                    'rm': element?.roletypeid === 4 ,
-                    'dm': element?.roletypeid === 5 ,
-                    'bm': element?.roletypeid === 6 ,
-                    'bl': element?.roletypeid === 7,
-                    'vn': element?.roletypeid === 8 ,
-                    'nh': element?.roletypeid === 9 ,
-                    'hr': element?.roletypeid === 3
-                }">
+              <mat-label class="role" [ngClass]="designService.getRoleClass(element?.roletypeid)">
                 <span *ngIf="element.isdefaultrole === 1">{{element.rolename | translate}}</span>
                 <span *ngIf="element.isdefaultrole === 0">{{element.name}}</span>
               </mat-label>
@@ -144,7 +134,8 @@
                       <span class="icon-mc mc-visibility"></span>
                       <span class="mx-3">{{ln.TXT_VIEW | translate}}</span>
                     </button>
-                    <button mat-menu-item class="cloud-only" (click)="editRole(element)" [disabled]="element?.isdefaultrole==1">
+                    <button mat-menu-item class="cloud-only" (click)="editRole(element)"
+                      [disabled]="element?.isdefaultrole==1">
                       <span class="icon-mc mc-create"></span>
                       <span class="mx-3">{{ln.TXT_EDIT | translate}}</span>
                     </button>

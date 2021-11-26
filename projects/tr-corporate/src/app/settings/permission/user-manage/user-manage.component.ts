@@ -45,6 +45,7 @@ import { UtilityService } from '../../../utility/services/utility.service';
 })
 export class UserManageComponent implements OnInit {
   ln = SETTINGS_LN;
+  route_conf = ROUTE_CONFIGS;
 
   toggle = false;
   status = [
@@ -77,6 +78,7 @@ export class UserManageComponent implements OnInit {
 
   viewUserPermission = false;
   hideUserActionMenu = true;
+  isActionDoing = false;
 
   accountID!: string;
 
@@ -98,7 +100,7 @@ export class UserManageComponent implements OnInit {
     private snackBar: SnackBarService,
     private _bottomSheet: MatBottomSheet,
     private userRoleService: UserRoleService,
-    private designService: DesignService,
+    public designService: DesignService,
     private router: Router,
     private cdRef: ChangeDetectorRef,
     private util: UtilityService
@@ -111,8 +113,7 @@ export class UserManageComponent implements OnInit {
     });
     this.store.select(getUserEmail).subscribe(email => {
       this.loggedinUserEmail = email;
-    })
-
+    });
   }
 
   ngAfterViewInit(): void {
@@ -135,6 +136,7 @@ export class UserManageComponent implements OnInit {
           this.selectedRole = result.filter_roletypeid ? result.filter_roletypeid[0] : undefined;
           this.selectedStatus = result.filter_status ? result.filter_status[0] : undefined;
           this.selectedSort = result.sort;
+          this.sort.active = result.sort;
           this.loadUsers(this.accountID);
         }
       })
@@ -181,7 +183,11 @@ export class UserManageComponent implements OnInit {
 
   loadUsers(accountId: string) {
     // If the user changes the sort order, reset back to the first page.
-    this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
+
+    this.sort.sortChange.subscribe(() => {
+      this.paginator.pageIndex = 0
+      this.selectedSort = this.sort.active;
+    });
     merge(this.sort.sortChange, this.paginator.page)
       .pipe(
         startWith({}),
@@ -192,7 +198,7 @@ export class UserManageComponent implements OnInit {
             this.paginator.pageSize,
             this.paginator.pageIndex * this.paginator.pageSize,
             {
-              sort: this.selectedSort,
+              sort: this.sort.active,
               sortOrder: this.sort.direction == "desc" ? "desc" : "asc",
               filter_roletypeid: this.selectedRole,
               filter_status: this.selectedStatus
@@ -220,6 +226,12 @@ export class UserManageComponent implements OnInit {
   deactivateUser(email: string) {
     this.toggleUserActionMenu();
 
+    if (this.isActionDoing) {
+      this.snackBar.open('Please wait...', "Ok");
+      return;
+    }
+
+    this.isActionDoing = true;
     this.userServ.updateUserStatus({ 'email': email, 'status': 0 }).subscribe(res => {
       if (res.error) {
         // error from api
@@ -234,11 +246,18 @@ export class UserManageComponent implements OnInit {
 
         this.dataSource = new MatTableDataSource(this.dataSource.data);
       }
-    })
+      this.isActionDoing = false;
+    }, err => this.isActionDoing = false)
   }
   activateUser(email: string) {
     this.toggleUserActionMenu();
 
+    if (this.isActionDoing) {
+      this.snackBar.open('Please wait...', "Ok");
+      return;
+    }
+
+    this.isActionDoing = true;
     this.userServ.updateUserStatus({ 'email': email, 'status': 1 }).subscribe(res => {
       if (res.error) {
         // error from api
@@ -253,7 +272,8 @@ export class UserManageComponent implements OnInit {
 
         this.dataSource = new MatTableDataSource(this.dataSource.data);
       }
-    })
+      this.isActionDoing = false;
+    }, err => this.isActionDoing = false)
   }
 
   deleteUser(email: string, i: number) {
@@ -294,7 +314,7 @@ export class UserManageComponent implements OnInit {
   }
 
   viewPermission(element: any) {
-    // this.router.navigate([ROUTE_CONFIGS.VIEW_ROLE, element.accountroleid]);
+    this.router.navigate([ROUTE_CONFIGS.VIEW_ROLE, element.accountroleid]);
   }
 
   viewDetails(element: any) {
@@ -315,7 +335,7 @@ export class UserManageComponent implements OnInit {
   }
 
   onHeaderSort() {
-    this.sort.sort({ id: this.selectedSort, disableClear: false, start: 'asc' })
+    this.sort.sort({ id: this.selectedSort, disableClear: false, start: 'asc' });
   }
 
   changeStatus(emitted: { status: number, email: string }) {

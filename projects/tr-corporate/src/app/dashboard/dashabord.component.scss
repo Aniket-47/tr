@@ -90,12 +90,16 @@ mc-side-navbar {
         font-size: 0.9rem;
         font-weight: 600;
         padding-left: .5rem;
-        &::after {
-            font-family: 'mucrest' !important;
-            content: "\eacf";
-            color: #84818a;
-          }
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        max-width: 130px;
     }
+    &::after {
+        font-family: 'mucrest' !important;
+        content: "\eacf";
+        color: #84818a;
+      }
 }
 ::ng-deep .profile-dropdown+* .cdk-overlay-pane {
     font-size: .8rem;

@@ -16,6 +16,7 @@ import { fadeAnimation } from '../../../animations';
 import { SETTINGS_LN } from '../../shared/settings.lang';
 import { ROUTE_CONFIGS } from '../../../utility/configs/routerConfig';
 import { Irole } from '../shared/interfaces/role.model';
+import { ValidationConstants } from '../../../utility/configs/app.constants';
 
 
 @Component({
@@ -43,6 +44,7 @@ export class AddRoleComponent implements OnInit, OnDestroy {
   panelOpenState = false;
 
   ln = SETTINGS_LN;
+  route_conf = ROUTE_CONFIGS;
 
   constructor(
     private router: Router,
@@ -95,6 +97,9 @@ export class AddRoleComponent implements OnInit, OnDestroy {
   getRoleDeatils(accountroleid: number) {
     this.userRoleService.getRole(accountroleid).subscribe((res: any) => {
       if (!res?.error) this.loadRole(res?.data);
+    },
+    (err: any) =>{
+      this.router.navigate([ROUTE_CONFIGS.ROLES]);
     });
   }
 
@@ -121,7 +126,14 @@ export class AddRoleComponent implements OnInit, OnDestroy {
   initForm() {
     this.roleForm = this.fb.group({
       roleType: ['', [Validators.required]],
-      roleName: ['', [Validators.required]],
+      roleName: [
+        '', 
+        [
+          Validators.required,
+          Validators.minLength(ValidationConstants.newRoleNameStrategy.ROLE_MIN_LENGTH),
+          Validators.maxLength(ValidationConstants.newRoleNameStrategy.ROLE_MAX_LENGTH)
+        ],
+      ],
       rights: this.fb.array([]),
     });
   }
