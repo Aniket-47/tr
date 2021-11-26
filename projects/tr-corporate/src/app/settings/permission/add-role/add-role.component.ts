@@ -89,7 +89,7 @@ export class AddRoleComponent implements OnInit, OnDestroy {
   loadStoreData() {
     this.store.select(getRoles).subscribe(roles => {
       // remove owner, because for one account there is only one owner.
-      if (roles && roles.length) this.defaultRoles = roles.slice(1, roles.length);
+      if (roles && roles.length) this.defaultRoles = roles.filter(e => e.isdefaultrole === 1).slice(1, roles.length);
     });
     this.store.select(getDefaultAccountId).subscribe(accountid => this.accountId = accountid);
   }
@@ -98,9 +98,9 @@ export class AddRoleComponent implements OnInit, OnDestroy {
     this.userRoleService.getRole(accountroleid).subscribe((res: any) => {
       if (!res?.error) this.loadRole(res?.data);
     },
-    (err: any) =>{
-      this.router.navigate([ROUTE_CONFIGS.ROLES]);
-    });
+      (err: any) => {
+        this.router.navigate([ROUTE_CONFIGS.ROLES]);
+      });
   }
 
   loadRole(data: Irole) {
@@ -127,7 +127,7 @@ export class AddRoleComponent implements OnInit, OnDestroy {
     this.roleForm = this.fb.group({
       roleType: ['', [Validators.required]],
       roleName: [
-        '', 
+        '',
         [
           Validators.required,
           Validators.minLength(ValidationConstants.newRoleNameStrategy.ROLE_MIN_LENGTH),
