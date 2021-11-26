@@ -183,7 +183,11 @@ export class UserManageComponent implements OnInit {
 
   loadUsers(accountId: string) {
     // If the user changes the sort order, reset back to the first page.
-    this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
+
+    this.sort.sortChange.subscribe(() => {
+      this.paginator.pageIndex = 0
+      this.selectedSort = this.sort.active;
+    });
     merge(this.sort.sortChange, this.paginator.page)
       .pipe(
         startWith({}),
