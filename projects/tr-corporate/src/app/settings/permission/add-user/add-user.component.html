@@ -163,12 +163,12 @@
                   {{ln.TXT_FIELD_REQUIRED | translate}}
                 </span>
                 <span *ngIf="!mobilenumber.errors?.required && mobilenumber.errors?.minlength">
-                  Mobile number should be of minimum 8 digits
-                  {{ln.TXT_MOBILE_8DIGITS | translate}}
+                  <!-- Mobile number should be of minimum 8 digits -->
+                  {{ln.TXT_MINIMUM_8_DIGITS_REQUIRED | translate}}
                 </span>
                 <span *ngIf="mobilenumber.errors?.pattern && !mobilenumber.errors?.minlength">
-                  Mobile number is not valid
-                  <!-- {{ln.TXT_MOBILE_INVALID | translate}} -->
+                  <!-- Mobile number is not valid -->
+                  {{ln.TXT_MOBILE_INVALID | translate}}
                 </span>
               </mat-error>
             </mat-form-field>

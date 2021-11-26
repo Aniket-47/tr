@@ -63,7 +63,7 @@
             {{ln.TXT_MINIMUM_8_DIGITS | translate}}
           </span>
           <span *ngIf="mobilenumber.errors?.pattern && !mobilenumber.errors?.minlength">
-            Mobile number is invalid
+            <!-- Mobile number is invalid -->
             {{ln.TXT_MOBILE_INVALID | translate}}
           </span>
         </mat-error>
