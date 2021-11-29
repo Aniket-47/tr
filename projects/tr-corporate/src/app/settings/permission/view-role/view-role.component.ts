@@ -151,6 +151,7 @@ export class ViewRoleComponent implements OnInit, AfterViewInit {
       ).subscribe((data) => {
         const newData = this.isLoadingMore ? [...this.dataSource.data, ...data] : data;
         this.dataSource = new MatTableDataSource(newData);
+        this.paginator.length = this.resultsLength;
 
         // Flip flag to show that loading has finished.
         this.isRateLimitReached = this.dataSource.data.length === this.resultsLength;
