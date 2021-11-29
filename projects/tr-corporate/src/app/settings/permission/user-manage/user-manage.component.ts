@@ -36,6 +36,7 @@ import { ROUTE_CONFIGS } from '../../../utility/configs/routerConfig';
 import { UserRoleService } from '../shared/services/user-role.service';
 import { DesignService } from '../../../utility/services/design.service';
 import { UtilityService } from '../../../utility/services/utility.service';
+import { TranslatePipe } from '@mucrest/ng-core';
 
 @Component({
   selector: 'app-user-manage',
@@ -98,12 +99,13 @@ export class UserManageComponent implements OnInit {
     private store: Store<State>,
     public dialog: MatDialog,
     private snackBar: SnackBarService,
+    private translater: TranslatePipe,
     private _bottomSheet: MatBottomSheet,
     private userRoleService: UserRoleService,
     public designService: DesignService,
     private router: Router,
     private cdRef: ChangeDetectorRef,
-    private util: UtilityService
+    private util: UtilityService,
   ) {
   }
 
@@ -373,5 +375,13 @@ export class UserManageComponent implements OnInit {
         this.cdRef.detectChanges();
       }
     }
+  }
+
+  exportCsv() {
+    this.userServ.exportCsv(1).subscribe( res=> {
+      const message = "Successfully email sent";
+      // const message = String(this.translater.transform(this.ln.TXT_SUCCESSFULLY_EMAIL_SENT));
+      this.snackBar.open(message);
+    })
   }
 }

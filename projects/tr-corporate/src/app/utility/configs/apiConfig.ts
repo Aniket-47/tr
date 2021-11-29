@@ -50,6 +50,7 @@ export const secure_api_routes = {
   DELETE_ROLE: `${account}/role`,
   UPDATE_ROLE: `${account}/role`,
   GET_ROLE: `${account}/roledetail`,
+  EXPORT_CSV:  `${account}/userslist/export`,
 
   // User Management
   GET_USER: `${user}/userdetailbyemail`,

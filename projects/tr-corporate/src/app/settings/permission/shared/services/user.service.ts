@@ -10,6 +10,7 @@ import { AddUser_response, AddUser_request } from '../interfaces/add-user';
 import { UpdateUser_request, UpdateUser_response } from '../interfaces/update-user';
 import { DeleteUser_request, DeleteUser_response } from '../interfaces/delete-user';
 import { UpdateUserStatus_request, UpdateUserStatus_response } from '../interfaces/update-user-status';
+import { ExportCSV_reponse } from '../interfaces/export-csv';
 
 @Injectable({
   providedIn: 'root'
@@ -37,4 +38,11 @@ export class UserService {
   deleteUser(data: DeleteUser_request) {
     return this.http.patch<DeleteUser_response>(this.secure_api_routes.DELETE_USER, data)
   }
+
+  //for export data in csv format
+  exportCsv (downloadType: number) {
+    const url = `${secure_api_routes.EXPORT_CSV}?exporttype=${downloadType}`;
+    return this.http.post<ExportCSV_reponse>(url, {})
+  } 
+
 }

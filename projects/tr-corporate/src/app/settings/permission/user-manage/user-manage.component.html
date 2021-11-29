@@ -302,7 +302,7 @@
         <mat-menu #export_menu="matMenu">
           <button mat-menu-item>{{ln.TXT_PDF | translate}}</button>
           <button mat-menu-item>{{ln.TXT_EXCEL | translate}}</button>
-          <button mat-menu-item>{{ln.TXT_CSV | translate}}</button>
+          <button mat-menu-item (click)="exportCsv()">{{ln.TXT_CSV | translate}}</button>
         </mat-menu>
       </div>
       <button mat-fab color="primary" (click)="toggleFab()">
