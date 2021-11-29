@@ -191,10 +191,10 @@ export class ViewRoleComponent implements OnInit, AfterViewInit {
   }
 
   editRole(role: Irole) {
-    if (role.isdefaultrole) {
-      this.snackbarServ.open(this.translate.transform(this.ln.TXT_DEFAULT_ROLE_CANNOT_UPDATE, this.ln.TXT_OK));
-      return;
-    }
+    // if (role.isdefaultrole) {
+    //   this.snackbarServ.open(this.translate.transform(this.ln.TXT_DEFAULT_ROLE_CANNOT_UPDATE, this.ln.TXT_OK));
+    //   return;
+    // }
     this.router.navigate([ROUTE_CONFIGS.EDIT_ROLE, role.accountroleid]);
   }
 
