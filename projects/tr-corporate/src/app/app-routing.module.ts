@@ -9,6 +9,12 @@ import { PostLoginResolver } from './core/resolvers/post-login.resolver';
 const routes: Routes = [
 
   {
+    path: 'auth',
+    loadChildren: () =>
+      import('./auth/auth.module').then((m) => m.AuthModule),
+    canActivate: [AuthGuard],
+  },
+  {
     path: 'dashboard',
     loadChildren: () =>
       import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
