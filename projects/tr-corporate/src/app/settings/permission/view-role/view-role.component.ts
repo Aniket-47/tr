@@ -134,7 +134,7 @@ export class ViewRoleComponent implements OnInit, AfterViewInit {
           return this.userRoleService.getUserRoles(
             accountid,
             this.offset,
-            this.limit,
+            this.paginator.pageSize,
             this.sort.active,
             this.sort.direction == "desc" ? "desc" : "asc");
         }),
