@@ -9,7 +9,6 @@ import { State } from '../../utility/store/reducers';
 import { AuthService } from '../services/auth.service';
 import { fadeAnimation } from '../../animations';
 
-// Interfaces
 
 @Component({
   selector: 'app-login',
@@ -17,6 +16,7 @@ import { fadeAnimation } from '../../animations';
   styleUrls: ['./login.component.scss'],
   animations: [fadeAnimation]
 })
+
 export class LoginComponent implements OnInit {
   isFirstStep: boolean = true;
   emailValidationError: string | null = null;
@@ -83,7 +83,7 @@ export class LoginComponent implements OnInit {
           const { error } = res_error;
           this.isLoading = false;
           this.passwordValidationError = error.message;
-        })
+        });
   }
 
   changeAccount() {

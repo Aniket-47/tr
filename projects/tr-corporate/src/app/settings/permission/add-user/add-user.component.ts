@@ -1,6 +1,5 @@
 import { getBusinessVerticle } from './../../../utility/store/selectors/business-vertical.selector';
 import { Store } from '@ngrx/store';
-import { AddUser_request } from '../shared/interfaces/add-user';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
@@ -42,10 +41,10 @@ export class AddUserComponent implements OnInit {
   @Output() userAdded = new EventEmitter();
 
   constructor(
-    private fb: FormBuilder, 
-    private userServ: UserService, 
-    private snackBar: SnackBarService, 
-    public dialogRef: MatDialogRef<AddUserComponent>, 
+    private fb: FormBuilder,
+    private userServ: UserService,
+    private snackBar: SnackBarService,
+    public dialogRef: MatDialogRef<AddUserComponent>,
     private store: Store<State>,) { }
 
   // selecter
@@ -126,7 +125,6 @@ export class AddUserComponent implements OnInit {
       email: ['',
         [
           Validators.required,
-          // Validators.email,
           Validators.pattern(ValidationConstants.userEmailStrategy.EMAIL_PATTERN)
         ]
       ],
@@ -178,21 +176,12 @@ export class AddUserComponent implements OnInit {
   }
 
   addUser() {
-
-    // const payload: AddUser_request = {
-    //   firstname: this.firstName.value,
-    //   middlename: this.middleName.value,
-    //   lastname: this.lastName.value,
-    //   email: this.email.value,
-    //   roletypeid: this.userRole.value
-    // }
     this.addUserForm.markAllAsTouched();
     if (this.addUserForm.valid) {
       this.isLoading = true;
       this.newUser = this.addUserForm.value;
       this.newUser.roletypename = this.roletypeid.value.name;
       this.newUser.roletypeid = this.roletypeid.value.roletypeid;
-      // console.log(this.newUser);
 
       this.userServ.createUser(this.newUser).subscribe(res => {
         this.isLoading = false;
@@ -208,8 +197,7 @@ export class AddUserComponent implements OnInit {
             this.addUserForm.reset();
           }, 2000)
         }
-
-      })
+      });
     }
   }
 

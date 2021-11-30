@@ -24,6 +24,7 @@ export const enum UserActions {
     USER_ROLE_ACTION = "[USER] Set user role",
     USER_EMAIL_ACTION = "[USER] Set user email",
     USER_STATUS_ACTION = "[USER] Set user status",
+    USER_IMAGE_ACTION = "[USER] Set user image",
 }
 
 // Account

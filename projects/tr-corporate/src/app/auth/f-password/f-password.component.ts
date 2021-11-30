@@ -18,6 +18,10 @@ export class FPasswordComponent implements OnInit {
   isLoading = false;
   routerConfig = ROUTE_CONFIGS;
 
+  emailFormControl = new FormControl('', [
+    Validators.required,
+    Validators.email
+  ]);
 
   constructor(
     private authServ: AuthService,
@@ -26,35 +30,19 @@ export class FPasswordComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  emailFormControl = new FormControl('', [
-    Validators.required,
-    Validators.email
-  ])
-
   fpassword() {
-
     if (this.emailFormControl.valid) {
       this.resMessage = "";
       this.isLoading = true;
 
       this.authServ.passwordForget(this.emailFormControl.value)
         .subscribe(res => {
-
           this.isLoading = false;
-
           this.resMessage = res.message;
 
-
-          if (res.error)
-            this.emailFormControl.setErrors({ 'customError': true });
-
-          else
-            this.snackbar.open(this.resMessage, "Okay", 0);
-
-        })
+          if (res.error) this.emailFormControl.setErrors({ 'customError': true });
+          else this.snackbar.open(this.resMessage, "Okay", 0);
+        });
     }
-
   }
-
-
 }

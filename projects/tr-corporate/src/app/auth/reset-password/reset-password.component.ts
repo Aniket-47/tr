@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LstorageService } from '@tr/src/app/utility/services/lstorage.service';
 import { fadeAnimation } from '../../animations';
 import { LSkeys, ValidationConstants } from '../../utility/configs/app.constants';
 import { ROUTE_CONFIGS } from '../../utility/configs/routerConfig';
@@ -33,7 +32,12 @@ export class ResetPasswordComponent implements OnInit {
   token!: string | null;
   type!: string | null;
 
-  constructor(private route: ActivatedRoute, private authServ: AuthService, private fb: FormBuilder, private snackBar: SnackBarService, private lsServ: LstorageService, private router: Router) { }
+  constructor(
+    private route: ActivatedRoute,
+    private authServ: AuthService,
+    private fb: FormBuilder,
+    private snackBar: SnackBarService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.type = this.route.snapshot.paramMap.get('type');
@@ -67,6 +71,8 @@ export class ResetPasswordComponent implements OnInit {
       }
       return;
     }
+
+
     if (this.token) {
       this.isLoading = true;
       const { value } = this.resetForm;
@@ -82,9 +88,7 @@ export class ResetPasswordComponent implements OnInit {
             this.snackBar.open(message)
             this.router.navigate([this.routerConfig.LOGIN])
           }
-          else {
-            this.snackBar.open(res.message)
-          }
+          else this.snackBar.open(res.message);
         });
       }
       else {
@@ -99,9 +103,7 @@ export class ResetPasswordComponent implements OnInit {
             this.snackBar.open(message);
             this.router.navigate([this.routerConfig.LOGIN])
           }
-          else {
-            this.snackBar.open(res.message)
-          }
+          else this.snackBar.open(res.message);
         });
       }
     }

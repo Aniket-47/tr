@@ -14,6 +14,8 @@ export const initialState: Iuser = {
 	role: { roletypeid: 0, roletypename: '' },
 	email: '',
 	practicename: '',
+	picturename: '',
+	profileimagepath: '',
 	locationname: '',
 	designationname: '',
 	businessverticalid: '',
@@ -102,6 +104,14 @@ export const userReducer = createReducer(
 		return {
 			...state,
 			status: action.data
+		};
+	}),
+
+	on(UserActions.setUserImage, (state, action) => {
+		return {
+			...state,
+			profileimagepath: action.data.url,
+			picturename: action.data.name
 		};
 	}),
 );

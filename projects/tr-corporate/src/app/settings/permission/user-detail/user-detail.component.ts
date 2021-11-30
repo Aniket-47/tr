@@ -1,6 +1,6 @@
 import { getBusinessVerticle } from './../../../utility/store/selectors/business-vertical.selector';
 import { Store } from '@ngrx/store';
-import { Component, Input, OnChanges, OnInit, Output, EventEmitter, OnDestroy,  SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, Output, EventEmitter, OnDestroy, SimpleChanges } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { fadeAnimation } from '../../../animations';
 import { ValidationConstants } from '../../../utility/configs/app.constants';
@@ -86,7 +86,6 @@ export class UserDetailComponent implements OnInit, OnChanges, OnDestroy {
       email: ['',
         [
           Validators.required,
-          // Validators.email,
           Validators.pattern(ValidationConstants.userEmailStrategy.EMAIL_PATTERN)
         ]
       ],
@@ -186,13 +185,12 @@ export class UserDetailComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   editUser() {
-
     this.editUserForm.markAllAsTouched();
+
     if (this.editUserForm.valid) {
       this.isLoading = true;
       this.newUser = this.editUserForm.value;
       this.newUser.roletypename = this.roles.find(e => e.roletypeid == this.newUser.roletypeid)?.name;
-      // console.log(this.newUser);
 
       this.userServ.updateUser(this.newUser).subscribe(res => {
         this.isLoading = false;
@@ -206,12 +204,12 @@ export class UserDetailComponent implements OnInit, OnChanges, OnDestroy {
           this.userUpdated();
         }
 
-      })
+      });
     }
   }
 
   statusChanged(status: number) {
-    this.statusChange.emit({ status: status, email: this.userEmail })
+    this.statusChange.emit({ status: status, email: this.userEmail });
   }
 
   userUpdated() {

@@ -129,7 +129,6 @@ export class ViewRoleComponent implements OnInit, AfterViewInit {
         switchMap(() => {
           if (this.paginator.pageIndex > 0) this.offset = this.limit * this.paginator.pageIndex;
           else this.offset = 0;
-          console.log(this.paginator.pageIndex)
 
           return this.userRoleService.getUserRoles(
             accountid,
@@ -163,7 +162,6 @@ export class ViewRoleComponent implements OnInit, AfterViewInit {
   contentScrollYEvt() {
     if (window.innerWidth < 750) {
       if (!this.isRateLimitReached && !this.isLoadingMore && this.util.isMobile()) {
-        console.log('Loading more data...')
         this.paginator.pageIndex++;
         this.isLoadingMore = true;
         this.loadUserRoles(this.accountid);
@@ -192,10 +190,6 @@ export class ViewRoleComponent implements OnInit, AfterViewInit {
   }
 
   editRole(role: Irole) {
-    // if (role.isdefaultrole) {
-    //   this.snackbarServ.open(this.translate.transform(this.ln.TXT_DEFAULT_ROLE_CANNOT_UPDATE, this.ln.TXT_OK));
-    //   return;
-    // }
     this.router.navigate([ROUTE_CONFIGS.EDIT_ROLE, role.accountroleid]);
   }
 
@@ -232,7 +226,6 @@ export class ViewRoleComponent implements OnInit, AfterViewInit {
       .subscribe(result => {
         if (result) {
           this.selectedSort = result.sort;
-          // console.log(this.selectedSort);
           this.onHeaderSort();
         }
       })

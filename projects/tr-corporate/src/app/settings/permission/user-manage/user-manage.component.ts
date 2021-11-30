@@ -232,7 +232,7 @@ export class UserManageComponent implements OnInit {
     this.toggleUserActionMenu();
 
     if (this.isActionDoing) {
-      this.snackBar.open( this.ln.TXT_PLEASE_WAIT, this.ln.TXT_OK );
+      this.snackBar.open(this.ln.TXT_PLEASE_WAIT, this.ln.TXT_OK);
       return;
     }
 
@@ -258,7 +258,7 @@ export class UserManageComponent implements OnInit {
     this.toggleUserActionMenu();
 
     if (this.isActionDoing) {
-      this.snackBar.open( this.ln.TXT_PLEASE_WAIT, this.ln.TXT_OK );
+      this.snackBar.open(this.ln.TXT_PLEASE_WAIT, this.ln.TXT_OK);
       return;
     }
 
@@ -308,16 +308,6 @@ export class UserManageComponent implements OnInit {
     }, 100);
   }
 
-  openTblItem(userData: any) {
-    this.currentUser = userData;
-    this.currentUserEdit = false;
-    if (this.hideUserActionMenu) this.drawer.toggle();
-    this.designService.setDrawerOpen(true);
-    console.log("Opened ", this.drawer.opened)
-    setTimeout(() => {
-      this.hideUserActionMenu = true;
-    }, 100)
-  }
 
   viewPermission(element: any) {
     this.router.navigate([ROUTE_CONFIGS.VIEW_ROLE, element.accountroleid]);
@@ -384,7 +374,7 @@ export class UserManageComponent implements OnInit {
   }
 
   exportCsv() {
-    this.userServ.exportCsv(1).subscribe( res=> {
+    this.userServ.exportCsv(1).subscribe(res => {
       const message = "Successfully email sent";
       // const message = String(this.translater.transform(this.ln.TXT_SUCCESSFULLY_EMAIL_SENT));
       this.snackBar.open(message);

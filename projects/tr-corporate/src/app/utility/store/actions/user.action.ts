@@ -72,3 +72,9 @@ export const setUserLoginStatus = createAction(
 	UserActions.USER_LOGIN_STATUS_ACTION,
 	props<{ data: boolean }>()
 );
+
+// user login status
+export const setUserImage = createAction(
+	UserActions.USER_IMAGE_ACTION,
+	props<{ data: { name: string, url: string } }>()
+);

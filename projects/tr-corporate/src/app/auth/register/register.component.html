@@ -66,9 +66,6 @@
             <span *ngIf="email.errors?.required">
               Email Id is required
             </span>
-            <!-- <span *ngIf="!email.errors?.required && email.errors?.email">
-              Email Id is not valid
-            </span> -->
             <span *ngIf="!email.errors?.required && email.errors?.pattern">
               Email Id is not valid
             </span>

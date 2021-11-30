@@ -149,7 +149,11 @@ export class VerifyAccountComponent implements OnInit {
   isLoading = false;
   message = 'Verifying your account';
   isVerified = false;
-  constructor(private route: ActivatedRoute, private router: Router, private authService: AuthService,
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private authService: AuthService,
     private store: Store<Iauth>) {
     this.store.dispatch(setStepperShow({ data: true }));
   }
@@ -170,7 +174,7 @@ export class VerifyAccountComponent implements OnInit {
         this.isLoading = false
         this.message = 'Account verification failed';
         this.isVerified = false;
-      //  this.afterVerify()
+        //  this.afterVerify()
         this.store.dispatch(setStepper({ data: 3 }));
       })
     }

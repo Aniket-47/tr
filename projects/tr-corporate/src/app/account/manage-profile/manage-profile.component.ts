@@ -1,14 +1,17 @@
 import { TranslatePipe } from '@mucrest/ng-core';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+
 import { Store } from '@ngrx/store';
-import { fadeAnimation } from '../../animations';
-import { userRoles, ValidationConstants } from '../../utility/configs/app.constants';
-import { SnackBarService } from '../../utility/services/snack-bar.service';
 import { setUserFullName, setUserMobile, setUserName } from '../../utility/store/actions/user.action';
 import { State } from '../../utility/store/reducers';
 import { getUserDeatils } from '../../utility/store/selectors/user.selector';
+
+import { fadeAnimation } from '../../animations';
 import { ACCOUNT_LN } from '../shared/account.lang';
+import { userRoles, ValidationConstants } from '../../utility/configs/app.constants';
+
+import { SnackBarService } from '../../utility/services/snack-bar.service';
 import { AccountService } from '../shared/account.service';
 
 @Component({
@@ -17,6 +20,7 @@ import { AccountService } from '../shared/account.service';
   styleUrls: ['./manage-profile.component.scss'],
   animations: [fadeAnimation]
 })
+
 export class ManageProfileComponent implements OnInit {
   url: any;
   userForm!: FormGroup;
@@ -40,6 +44,8 @@ export class ManageProfileComponent implements OnInit {
 
   loadUser() {
     this.store.select(getUserDeatils).subscribe(user => {
+      this.url = user.profileimagepath;
+
       this.userForm.patchValue({
         firstName: user?.name.firstName,
         middleName: user?.name.middleName,
@@ -51,7 +57,7 @@ export class ManageProfileComponent implements OnInit {
   }
 
   initForm() {
-    this.userForm = this.fb.group({      
+    this.userForm = this.fb.group({
 
       firstName: [
         '',

@@ -250,7 +250,6 @@ export class AddRoleComponent implements OnInit, OnDestroy {
 
     const currentRightStatus = !!this.rightsArray.controls[rightIndex].get('isOn')?.value;
     const isThereLevel2 = !!this.rightsArray.controls[rightIndex].get('level2')?.value;
-    console.log({ currentRightStatus })
 
     if (isThereLevel2 && currentRightStatus) {
       // level 2 toggle

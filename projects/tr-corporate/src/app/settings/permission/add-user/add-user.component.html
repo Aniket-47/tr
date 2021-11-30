@@ -84,16 +84,12 @@
           <div>
             <mat-form-field appearance="outline" class="w-100">
               <mat-label>{{ln.TXT_EMAIL | translate}}</mat-label>
-              <input type="email" matInput formControlName="email"
-                placeholder="{{ln.TXT_EMAIL_SAMPLE | translate}}">
+              <input type="email" matInput formControlName="email" placeholder="{{ln.TXT_EMAIL_SAMPLE | translate}}">
               <!--<mat-icon class="text-muted h5" matSuffix>email</mat-icon>-->
               <mat-error *ngIf="email.invalid && email.touched">
                 <span *ngIf="email.errors?.required">
                   {{ln.TXT_EMAIL_REQUIRED | translate}}
                 </span>
-                <!-- <span *ngIf="!email.errors?.required && email.errors?.email">
-                  {{ln.TXT_EMAIL_NOT_VALID | translate}}
-                </span> -->
                 <span *ngIf="!email.errors?.required && email.errors?.pattern">
                   {{ln.TXT_EMAIL_NOT_VALID | translate}}
                 </span>

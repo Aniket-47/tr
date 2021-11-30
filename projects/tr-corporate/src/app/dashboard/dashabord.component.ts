@@ -1,25 +1,32 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Store } from '@ngrx/store';
-import { LstorageService } from '@tr/src/app/utility/services/lstorage.service';
 import { Observable } from 'rxjs';
-import { LSkeys } from '../utility/configs/app.constants';
-import { ROUTE_CONFIGS } from '../utility/configs/routerConfig';
+
+// store
+import { Store } from '@ngrx/store';
 import { setAccountDeatils } from '../utility/store/actions/account.action';
+import { setUserFullName, setUserImage, setUserMail, setUserMobile, setUserName, setUserRole, setUserStatus } from '../utility/store/actions/user.action';
+import { setBusinessVerticle } from '../utility/store/actions/business-vertical.action';
+import { setUserRoles } from '../utility/store/actions/roles.action';
 import { State } from '../utility/store/reducers';
 import { getAccountIds } from '../utility/store/selectors/account.selector';
 import { getIsLoading } from '../utility/store/selectors/app.selector';
-import { getUserFirstName, getUserFullName } from '../utility/store/selectors/user.selector';
-import { LogoutService } from './shared/services/logout.service';
-import { setUserRoles } from '../utility/store/actions/roles.action';
-import { setUserAddress, setUserCity, setUserCountry, setUserFullName, setUserMail, setUserMobile, setUserName, setUserRole, setUserState, setUserStatus } from '../utility/store/actions/user.action';
-import { IaccountDetials } from '../utility/store/interfaces/account';
-import { DASHBOARD_LN } from './shared/dashboard.lang';
-import { setBusinessVerticle } from '../utility/store/actions/business-vertical.action';
-import { IBusVert } from '../utility/store/interfaces/business-vertical';
+import { getUserFullName } from '../utility/store/selectors/user.selector';
+
+import { LstorageService } from '@tr/src/app/utility/services/lstorage.service';
 import { TranslatePipe } from '@mucrest/ng-core';
+
+// config and constant and models
+import { LSkeys } from '../utility/configs/app.constants';
+import { ROUTE_CONFIGS } from '../utility/configs/routerConfig';
+import { DASHBOARD_LN } from './shared/dashboard.lang';
+import { IBusVert } from '../utility/store/interfaces/business-vertical';
+import { IaccountDetials } from '../utility/store/interfaces/account';
+
+// services
 import { AccountListApiService } from './shared/services/account-list-api.service';
 import { SnackBarService } from '../utility/services/snack-bar.service';
+import { LogoutService } from './shared/services/logout.service';
 
 
 @Component({
@@ -30,22 +37,18 @@ import { SnackBarService } from '../utility/services/snack-bar.service';
 export class DashabordComponent implements OnInit {
 
   panelOpenState = false;
-  date: any;
   hidden = false;
   colorActivation = false;
   msgColorActivation = false;
   searchToggle = false;
+
   resMsgLogout: string = "";
   isLoading$!: Observable<boolean>;
-  routerConfig = ROUTE_CONFIGS;
-
   accountList: { accountid: string; name: string; }[] = [];
   userName!: string;
 
   ln = DASHBOARD_LN;
-  toggleBadgeVisibility() {
-    this.hidden = !this.hidden;
-  }
+  routerConfig = ROUTE_CONFIGS;
 
   constructor(
     private logoutServ: LogoutService,
@@ -60,13 +63,15 @@ export class DashabordComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // get resolve data from route
     const preloadData: any[] = this.route.snapshot.data?.data;
     this.setDataInStore(preloadData);
+
     /** Set Language */
     const languageData = this.lsServ.getItem(LSkeys.LANGUAGE);
     if (languageData) TranslatePipe.setLanguagePack(JSON.parse(languageData));
 
-    this.date = new Date();
+    // set accounts and fullname
     this.store.select(getAccountIds).subscribe(accounts => this.accountList = accounts);
     this.store.select(getUserFullName).subscribe(name => this.userName = name);
 
@@ -76,19 +81,20 @@ export class DashabordComponent implements OnInit {
         .subscribe(res => {
           this.snackbar.open(res.message)
           this.lsServ.remove(LSkeys.INVITE_TOKEN);
-        })
+        });
     }
   }
 
   setDataInStore(data: any[]) {
     if (data.length) {
+      // set account detaiils
       if (!data[0]?.error) {
         const account: IaccountDetials = data[0]?.data;
         this.store.dispatch(setAccountDeatils({ data: account }));
       }
 
+      // set user details
       if (!data[1]?.error) {
-        // console.log(data[1])
         const user = data[1].data;
         this.store.dispatch(setUserFullName({ data: `${user?.firstname} ${user?.lastname}` }));
         // this.store.dispatch(setUserAddress({ data: user?.address }));
@@ -100,17 +106,20 @@ export class DashabordComponent implements OnInit {
         this.store.dispatch(setUserMail({ data: user?.email }));
         this.store.dispatch(setUserRole({ data: { roletypename: user?.roletypename, roletypeid: user?.roletypeid } }));
         this.store.dispatch(setUserStatus({ data: user?.status }));
+        this.store.dispatch(setUserImage({ data: { name: user?.picturename, url: user?.profileimagepath } }));
+
 
         // store user name
         this.lsServ.store(LSkeys.USER_NAME, `${user?.firstname}`);
       }
 
-
+      // set user roles
       if (!data[2]?.error) {
         const roles = data[2]?.data?.roles.map((e: any) => ({ roletypeid: e?.roletypeid, name: e?.name, isdefaultrole: e?.isdefaultrole }));
         this.store.dispatch(setUserRoles({ data: roles }));
       }
 
+      // set Language
       if (!data[3]?.error) {
         this.lsServ.remove(LSkeys.LANGUAGE);
         this.lsServ.store(LSkeys.LANGUAGE, JSON.stringify(data[3]?.data));
@@ -119,6 +128,7 @@ export class DashabordComponent implements OnInit {
         if (languageData) TranslatePipe.setLanguagePack(JSON.parse(languageData));
       }
 
+      // set business verticales
       if (!data[4]?.error) {
         const buildData = data[4].data.map((e: IBusVert) => ({ businessverticalid: e.businessverticalid, name: e.name, parentid: e.parentid, parentname: e.parentname }))
         this.store.dispatch(setBusinessVerticle({ data: buildData }))
@@ -130,12 +140,17 @@ export class DashabordComponent implements OnInit {
     this.searchToggle = !this.searchToggle;
   }
 
+  toggleBadgeVisibility() {
+    this.hidden = !this.hidden;
+  }
+
   logout() {
     this.resMsgLogout = "";
     this.logoutServ.logout();
     this.logoutServ.clearSavedData();
     this.router.navigate(["./"])
   }
+
   onEvent(event: any) {
     event.stopPropagation();
   }

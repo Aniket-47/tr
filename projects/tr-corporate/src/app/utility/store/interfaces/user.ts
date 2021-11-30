@@ -10,6 +10,8 @@ export interface Iuser {
     state: Istate;
     role: Irole;
     practicename: string;
+    profileimagepath: string;
+    picturename: string;
     locationname: string;
     designationname: string;
     businessverticalid: string;

@@ -193,9 +193,6 @@
                   <span *ngIf="email.errors?.required">
                     {{ ln.TXT_EMAIL_REQUIRED | translate }}
                   </span>
-                  <!-- <span *ngIf="!email.errors?.required && email.errors?.email">
-                    {{ ln.TXT_EMAIL_NOT_VALID | translate }}
-                  </span> -->
                   <span *ngIf="!email.errors?.required && email.errors?.pattern">
                     {{ ln.TXT_EMAIL_NOT_VALID | translate }}
                   </span>

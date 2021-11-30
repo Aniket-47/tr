@@ -28,11 +28,9 @@ function passwordMatcher(c: AbstractControl): { [key: string]: boolean } | null 
 
   if (passwordControl.pristine || cnfPassControl.pristine) return null;
   if (passwordControl.value === cnfPassControl.value) return null;
-  cnfPassControl.setErrors({ passMatch: true })
+  cnfPassControl.setErrors({ passMatch: true });
   return { passMatch: true };
 }
-
-
 
 @Component({
   selector: 'app-register',
@@ -73,10 +71,9 @@ export class RegisterComponent implements OnInit, OnDestroy {
       ],
     ],
     email: [
-      '', 
+      '',
       [
-        Validators.required, 
-        // Validators.email,
+        Validators.required,
         Validators.pattern(ValidationConstants.userEmailStrategy.EMAIL_PATTERN)
       ],
     ],
@@ -95,14 +92,12 @@ export class RegisterComponent implements OnInit, OnDestroy {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    // private configServ: RouterConfigService,
     private authService: AuthService,
     private route: ActivatedRoute,
     private snackbarServie: SnackBarService,
     private store: Store<Iauth>,
     private lsServ: LstorageService) {
     this.store.dispatch(setStepperShow({ data: true }));
-    // this.config = configServ.routerconfig;
   }
 
   ngOnInit(): void {
@@ -169,14 +164,14 @@ export class RegisterComponent implements OnInit, OnDestroy {
         if (!res.error) {
           this.router.navigate([ROUTE_CONFIGS.REGISTER_SUCCESS]);
           this.lsServ.store(LSkeys.REGISTERED_EMAIL, payload.email);
-          this.lsServ.store(LSkeys.USER_EMAIL,payload.email);
-          this.lsServ.store(LSkeys.USER_NAME,payload.firstname);
+          this.lsServ.store(LSkeys.USER_EMAIL, payload.email);
+          this.lsServ.store(LSkeys.USER_NAME, payload.firstname);
         }
         if (res.error) {
           this.snackbarServie.open(res?.message, "Ok", 0);
         }
       }
-    }, (err) => this.isLoading = false)
+    }, (err) => this.isLoading = false);
   }
 
   goToPrev() {

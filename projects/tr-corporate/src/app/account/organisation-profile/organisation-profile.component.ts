@@ -1,15 +1,19 @@
 import { TranslatePipe } from '@mucrest/ng-core';
-import { ChangeDetectorRef, Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+
 import { Store } from '@ngrx/store';
-import { Subject } from 'rxjs';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
-import { fadeAnimation } from '../../animations';
-import { SnackBarService } from '../../utility/services/snack-bar.service';
 import { setAccountDeatils } from '../../utility/store/actions/account.action';
 import { State } from '../../utility/store/reducers';
 import { getAccountDeatils, getDefaultAccountId } from '../../utility/store/selectors/account.selector';
+
+import { Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+
+import { fadeAnimation } from '../../animations';
 import { ACCOUNT_LN } from '../shared/account.lang';
+
+import { SnackBarService } from '../../utility/services/snack-bar.service';
 import { AccountService } from '../shared/account.service';
 
 @Component({
@@ -18,15 +22,15 @@ import { AccountService } from '../shared/account.service';
   styleUrls: ['./organisation-profile.component.scss'],
   animations: [fadeAnimation]
 })
+
 export class OrganisationProfileComponent implements OnInit, OnChanges {
 
   accountId!: string;
   orgProfileForm!: FormGroup;
-  shortNameValidation = new Subject();
+  shortNameValidation = new Subject<string>();
   resShortMessage: string = "";
   currentShortName!: string;
   account!: any;
-
   shortnameValidation!: string;
 
   // List
@@ -36,7 +40,6 @@ export class OrganisationProfileComponent implements OnInit, OnChanges {
   industries: { code: number, name: string }[] = [];
 
   isLoading = false;
-
   ln = ACCOUNT_LN;
 
   constructor(
@@ -56,11 +59,10 @@ export class OrganisationProfileComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    this.countryid.valueChanges.subscribe(c => {
-      console.log(c)
+    this.countryid.valueChanges.pipe(distinctUntilChanged()).subscribe(c => {
       if (c) this.getStates(c);
     });
-    this.stateid.valueChanges.subscribe(s => {
+    this.stateid.valueChanges.pipe(distinctUntilChanged()).subscribe(s => {
       if (s) this.getCities(s);
     });
 
@@ -68,7 +70,7 @@ export class OrganisationProfileComponent implements OnInit, OnChanges {
       .pipe(
         debounceTime(300),
         distinctUntilChanged())
-      .subscribe(val => {
+      .subscribe((val: string) => {
         this.checkShortNameAvailability(val)
         // this.shortname.setErrors({ 'customError': true });
       });
@@ -201,10 +203,8 @@ export class OrganisationProfileComponent implements OnInit, OnChanges {
       accounttype: this.account.accounttype
     }
 
-    if (this.shortname.value === this.currentShortName)
-      delete payload.shortname;
+    if (this.shortname.value === this.currentShortName) delete payload.shortname;
 
-    // if (payload.shortname) delete payload.shortname;
     this.isLoading = true;
     this.accoutService.updateAccount(payload, this.accountId).subscribe((res: any) => {
       if (res?.error) {
@@ -224,12 +224,10 @@ export class OrganisationProfileComponent implements OnInit, OnChanges {
   checkValidity() {
     if (this.shortname.value.length > 4 && !(this.shortname.value === this.currentShortName)) {
       this.shortNameValidation.next(this.shortname.value);
-    } else {
-      this.resShortMessage = '';
-    }
+    } else this.resShortMessage = '';
   }
 
-  checkShortNameAvailability(sName: any) {
+  checkShortNameAvailability(sName: string) {
     this.isLoading = true;
     this.resShortMessage = '';
     this.accoutService.getShortName(sName)
@@ -240,17 +238,12 @@ export class OrganisationProfileComponent implements OnInit, OnChanges {
           this.shortname.markAllAsTouched();
           this.shortname.setErrors({ 'customError': true });
         }
-        else if (this.shortname.value === this.currentShortName) {
-          this.resShortMessage = '';
-        } else {
-          this.resShortMessage = this.ln.TXT_SHORTNAME_AVAILABLE
-        }
-
-      })
+        else if (this.shortname.value === this.currentShortName) this.resShortMessage = '';
+        else this.resShortMessage = this.ln.TXT_SHORTNAME_AVAILABLE
+      });
   }
 
   resetHandler() {
-    // this.orgProfileForm.reset();
     this.loadAccountDeatails();
     this.resShortMessage = ''
   }
