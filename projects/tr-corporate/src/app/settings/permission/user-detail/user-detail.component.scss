@@ -246,4 +246,12 @@
   ::ng-deep .mat-form-field-wrapper{
     padding-bottom: 0 !important;
   }
+  ::ng-deep .mat-form-field-subscript-wrapper {
+    top: 3.2rem;
+  }
+  ::ng-deep .mat-form-field{
+    padding-bottom: 10px;
+  }
 }
+
+

@@ -35,7 +35,7 @@ export class UserDetailComponent implements OnInit, OnChanges, OnDestroy {
 
   @Input() edit: boolean = false;
   @Input() userEmail!: string;
-  @Input() isOpen:boolean = false;
+  @Input() isOpen: boolean = false;
 
   @Output() statusChange = new EventEmitter();
   @Output() userUpdate = new EventEmitter();
@@ -86,14 +86,21 @@ export class UserDetailComponent implements OnInit, OnChanges, OnDestroy {
       email: ['',
         [
           Validators.required,
-          Validators.email
+          // Validators.email,
+          Validators.pattern(ValidationConstants.userEmailStrategy.EMAIL_PATTERN)
         ]
       ],
       roletypeid: [''],
       designationname: [''],
       businessverticalid: [''],
       practicename: [''],
-      mobilenumber: [''],
+      mobilenumber: ['',
+        [
+          Validators.required,
+          Validators.minLength(ValidationConstants.userAccountStrategy.PHONE_MIN_LENGTH),
+          Validators.pattern(ValidationConstants.userAccountStrategy.PHONE_PATTERN)
+        ],
+      ],
       locationname: ['']
     });
   }
@@ -149,14 +156,14 @@ export class UserDetailComponent implements OnInit, OnChanges, OnDestroy {
 
   ngOnChanges(changes: SimpleChanges) {
     for (let key in changes) {
-      if(key === 'userEmail'){
-        if(this.userEmail && this.userEmail !== this.user?.email){
+      if (key === 'userEmail') {
+        if (this.userEmail && this.userEmail !== this.user?.email) {
           this.user = null;
           this.initForm();
           this.prefillUser();
         }
-      }else if( key === 'isOpen'){
-        if(!this.isOpen){
+      } else if (key === 'isOpen') {
+        if (!this.isOpen) {
           this.userAPISubscription && this.userAPISubscription.unsubscribe()
         }
       }
@@ -166,7 +173,7 @@ export class UserDetailComponent implements OnInit, OnChanges, OnDestroy {
   prefillUser() {
     this.isDisabled = true;
 
-   this.userAPISubscription = this.userServ.getUser(this.userEmail).subscribe(res => {
+    this.userAPISubscription = this.userServ.getUser(this.userEmail).subscribe(res => {
       if (!res.error) {
         this.isDisabled = false;
         this.user = res.data;
@@ -216,7 +223,7 @@ export class UserDetailComponent implements OnInit, OnChanges, OnDestroy {
     this.prefillUser();
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.userAPISubscription && this.userAPISubscription.unsubscribe()
   }
 

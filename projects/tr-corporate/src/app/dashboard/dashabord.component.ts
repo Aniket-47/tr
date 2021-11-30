@@ -82,45 +82,45 @@ export class DashabordComponent implements OnInit {
 
   setDataInStore(data: any[]) {
     if (data.length) {
+      // if (!data[0]?.error) {
+      //   const account: IaccountDetials = data[0]?.data;
+      //   this.store.dispatch(setAccountDeatils({ data: account }));
+      // }
+
+      // if (!data[1]?.error) {
+      //   // console.log(data[1])
+      //   const user = data[1].data;
+      //   this.store.dispatch(setUserFullName({ data: `${user?.firstname} ${user?.lastname}` }));
+      //   // this.store.dispatch(setUserAddress({ data: user?.address }));
+      //   // this.store.dispatch(setUserCity({ data: { cityId: user?.cityid, cityName: user?.cityname } }));
+      //   // this.store.dispatch(setUserState({ data: { stateId: user?.stateid, stateName: user?.statename } }));
+      //   // this.store.dispatch(setUserCountry({ data: { countryId: user?.countryid, countryName: user?.countryname } }));
+      //   this.store.dispatch(setUserMobile({ data: user?.mobilenumber }));
+      //   this.store.dispatch(setUserName({ data: { firstName: user.firstname, middleName: user?.middlename, lastName: user?.lastname } }))
+      //   this.store.dispatch(setUserMail({ data: user?.email }));
+      //   this.store.dispatch(setUserRole({ data: { roletypename: user?.roletypename, roletypeid: user?.roletypeid } }));
+      //   this.store.dispatch(setUserStatus({ data: user?.status }));
+
+      //   // store user name
+      //   this.lsServ.store(LSkeys.USER_NAME, `${user?.firstname}`);
+      // }
+
+
       if (!data[0]?.error) {
-        const account: IaccountDetials = data[0]?.data;
-        this.store.dispatch(setAccountDeatils({ data: account }));
-      }
-
-      if (!data[1]?.error) {
-        // console.log(data[1])
-        const user = data[1].data;
-        this.store.dispatch(setUserFullName({ data: `${user?.firstname} ${user?.lastname}` }));
-        // this.store.dispatch(setUserAddress({ data: user?.address }));
-        // this.store.dispatch(setUserCity({ data: { cityId: user?.cityid, cityName: user?.cityname } }));
-        // this.store.dispatch(setUserState({ data: { stateId: user?.stateid, stateName: user?.statename } }));
-        // this.store.dispatch(setUserCountry({ data: { countryId: user?.countryid, countryName: user?.countryname } }));
-        this.store.dispatch(setUserMobile({ data: user?.mobilenumber }));
-        this.store.dispatch(setUserName({ data: { firstName: user.firstname, middleName: user?.middlename, lastName: user?.lastname } }))
-        this.store.dispatch(setUserMail({ data: user?.email }));
-        this.store.dispatch(setUserRole({ data: { roletypename: user?.roletypename, roletypeid: user?.roletypeid } }));
-        this.store.dispatch(setUserStatus({ data: user?.status }));
-
-        // store user name
-        this.lsServ.store(LSkeys.USER_NAME, `${user?.firstname}`);
-      }
-
-
-      if (!data[2]?.error) {
-        const roles = data[2]?.data?.roles.map((e: any) => ({ roletypeid: e?.roletypeid, name: e?.name, isdefaultrole: e?.isdefaultrole }));
+        const roles = data[0]?.data?.roles.map((e: any) => ({ roletypeid: e?.roletypeid, name: e?.name, isdefaultrole: e?.isdefaultrole }));
         this.store.dispatch(setUserRoles({ data: roles }));
       }
 
-      if (!data[3]?.error) {
+      if (!data[1]?.error) {
         this.lsServ.remove(LSkeys.LANGUAGE);
-        this.lsServ.store(LSkeys.LANGUAGE, JSON.stringify(data[3]?.data));
+        this.lsServ.store(LSkeys.LANGUAGE, JSON.stringify(data[1]?.data));
         /** Set Language(Ensured) */
         const languageData = this.lsServ.getItem(LSkeys.LANGUAGE);
         if (languageData) TranslatePipe.setLanguagePack(JSON.parse(languageData));
       }
 
-      if (!data[4]?.error) {
-        const buildData = data[4].data.map((e: IBusVert) => ({ businessverticalid: e.businessverticalid, name: e.name, parentid: e.parentid, parentname: e.parentname }))
+      if (!data[2]?.error) {
+        const buildData = data[2].data.map((e: IBusVert) => ({ businessverticalid: e.businessverticalid, name: e.name, parentid: e.parentid, parentname: e.parentname }))
         this.store.dispatch(setBusinessVerticle({ data: buildData }))
       }
     }
