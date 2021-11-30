@@ -17,18 +17,9 @@
         </div>
       </div>
       <div page-action>
-        <button mat-flat-button color="primary" class="cloud-only" (click)="addUserModal()">
-          <i class="add-new-role-btn-icon icon-mc mc-plus"></i>
-          {{ln.TXT_ADD_USER | translate | titlecase}}
-        </button>
-        <div class="mobile-only">
-          <button type="button" mat-icon-button (click)="openBottomSheet()" class="open-bottombtn">
-            <span class="icon-mc mc-filter_list"></span>
-          </button>
-        </div>
-        <button mat-stroked-button color="primary"  class="cloud-only ms-3" [matMenuTriggerFor]="menu">
-          {{ln.TXT_EXPORT | translate}}
-          <span class="icon-mc mc-expand_more"></span>
+        <button mat-stroked-button color="primary"  class="cloud-only" [matMenuTriggerFor]="menu">
+          {{ln.TXT_EXPORT | translate | titlecase}}
+          <span class="add-expand-btn-icon icon-mc mc-expand_more"></span>
         </button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item>{{ln.TXT_PDF | translate}}</button>
@@ -37,6 +28,15 @@
           <mat-divider></mat-divider>
           <button mat-menu-item (click)="exportCsv()">{{ln.TXT_CSV | translate}}</button>          
         </mat-menu>
+        <button mat-flat-button color="primary" class="cloud-only ms-3" (click)="addUserModal()">
+          <i class="add-new-role-btn-icon icon-mc mc-plus"></i>
+          {{ln.TXT_ADD_USER | translate | titlecase}}
+        </button>
+        <div class="mobile-only">
+          <button type="button" mat-icon-button (click)="openBottomSheet()" class="open-bottombtn">
+            <span class="icon-mc mc-filter_list"></span>
+          </button>
+        </div>        
       </div>
     </tr-page-header>
 

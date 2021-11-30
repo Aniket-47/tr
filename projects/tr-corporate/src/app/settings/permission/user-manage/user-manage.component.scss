@@ -162,6 +162,13 @@ table.mat-table {
   }
 }
 
+.add-expand-btn-icon {
+  &::before {
+    color: #3f51b5;
+    font-size: 1.2rem;
+  }
+}
+
 .blue {
   color: $primary;
   & i::before {
