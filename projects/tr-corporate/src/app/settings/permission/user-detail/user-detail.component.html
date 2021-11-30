@@ -1,22 +1,6 @@
 <div class="box-container" [@fadeInOut]>
   <div class="upper-sec">
-    <!-- <div class="upper-sec__left">
-            <mat-icon *ngIf="!edit; else editIcon">person</mat-icon>
-            <h4 *ngIf="!edit; else editUserInfo">User Info</h4>
-        </div> -->
 
-    <!-- <ng-template #editIcon>
-            <mat-icon>mode_edit</mat-icon>
-        </ng-template>
-
-        <ng-template #editUserInfo>
-            <h4>edit user info</h4>
-        </ng-template> -->
-
-    <!-- <div class="upper-sec__right pull-right">
-            <mat-icon class="close_icon">close</mat-icon>
-        </div> -->
-    <!-- <i class="icon-mc mc-x"></i> -->
     <div *ngIf="!edit">
       <h4>
         <span class="icon-mc mc-person"></span>{{ ln.TXT_USER_INFO | translate }}
@@ -30,14 +14,7 @@
     </div>
   </div>
 
-  <!-- <ng-template #editIcon>
-    <mat-icon>mode_edit</mat-icon>
-  </ng-template> -->
 
-  <!-- <div class="upper-sec__right">
-      <mat-icon class="close_icon">close</mat-icon>
-    </div> -->
-  <!-- </div> -->
 
   <div class="about-user my-1">
     <div class="about-user__left">
@@ -51,7 +28,6 @@
     </div>
 
     <div class="about-user__right">
-      <!-- <mat-label *ngIf="!edit">Admin</mat-label> -->
       <div *ngIf="user" class="mat-form-field">
         <mat-label *ngIf="user?.status == 0">{{
           ln.TXT_DEACTIVE | translate
@@ -76,9 +52,6 @@
     <perfect-scrollbar>
       <div class="personal__details__heading">
         <h3>{{ ln.TXT_USER_DETAILS | translate }}</h3>
-        <!-- <button mat-button color="primary" (click)="edit = !edit" *ngIf="!edit; else hideEditBtn">
-        Edit
-      </button> -->
       </div>
       <ng-template #hideEditBtn> </ng-template>
 
@@ -159,7 +132,8 @@
 
       <ng-template #displayInput>
         <form [formGroup]="editUserForm" class="editUserForm">
-          <!-- <div class="common-div"> -->
+
+          <!-- Name -->
           <div class="p-b-15">
             <span class="update-field-icon icon-mc mc-person"></span>
             <div class="mat-form-field-flex">
@@ -178,12 +152,9 @@
                   </span>
                 </mat-error>
               </mat-form-field>
-              <!-- </div> -->
 
               <mat-form-field appearance="outline">
-                <!-- <mat-label>{{ln.TXT_MIDDLE_NAME | translate}}</mat-label> -->
-                <input matInput formControlName="middlename" 
-                  placeholder="{{ ln.TXT_MIDDLE_NAME | translate }}" />
+                <input matInput formControlName="middlename" placeholder="{{ ln.TXT_MIDDLE_NAME | translate }}" />
                 <mat-error *ngIf="middlename.invalid && middlename.touched">
                   <span *ngIf="middlename.errors?.minlength">
                     {{ ln.TXT_MIDDLE_NAME_3_LETTERS | translate }}
@@ -195,7 +166,6 @@
               </mat-form-field>
 
               <mat-form-field appearance="outline">
-                <!-- <mat-label>{{ln.TXT_LAST_NAME | translate}}</mat-label> -->
                 <input matInput formControlName="lastname" placeholder="{{ ln.TXT_LAST_NAME | translate }}" />
                 <mat-error *ngIf="lastname.invalid && lastname.touched">
                   <span *ngIf="lastname.errors?.required">
@@ -212,6 +182,7 @@
             </div>
           </div>
 
+          <!-- Email -->
           <div class="p-b-15">
             <span class="update-field-icon icon-mc mc-local_post_office"></span>
             <div class="mat-form-field-flex">
@@ -229,6 +200,8 @@
               </mat-form-field>
             </div>
           </div>
+
+          <!-- Role -->
           <div class="p-b-15">
             <span class="update-field-icon icon-mc mc-work"></span>
             <div class="mat-form-field-flex">
@@ -250,6 +223,8 @@
               </mat-form-field>
             </div>
           </div>
+
+          <!-- Designation -->
           <div class="p-b-15">
             <span class="update-field-icon icon-mc mc-school"></span>
             <div class="mat-form-field-flex">
@@ -259,6 +234,8 @@
               </mat-form-field>
             </div>
           </div>
+
+          <!-- Business Vertical -->
           <div class="p-b-15">
             <span class="update-field-icon icon-mc mc-layers"></span>
             <div class="mat-form-field-flex">
@@ -282,6 +259,8 @@
               </mat-form-field>
             </div>
           </div>
+
+          <!-- Practice -->
           <div class="p-b-15">
             <span class="update-field-icon icon-mc mc-nature"></span>
             <div class="mat-form-field-flex">
@@ -291,6 +270,8 @@
               </mat-form-field>
             </div>
           </div>
+
+          <!-- Phone -->
           <div class="p-b-15">
             <span class="update-field-icon icon-mc mc-local_phone"></span>
             <div class="mat-form-field-flex">
@@ -300,6 +281,8 @@
               </mat-form-field>
             </div>
           </div>
+
+          <!-- Location -->
           <div class="p-b-15">
             <span class="update-field-icon icon-mc mc-location_pin"></span>
             <div class="mat-form-field-flex">
@@ -309,6 +292,7 @@
               </mat-form-field>
             </div>
           </div>
+
         </form>
       </ng-template>
     </perfect-scrollbar>

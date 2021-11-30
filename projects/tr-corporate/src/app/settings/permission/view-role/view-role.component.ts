@@ -133,8 +133,8 @@ export class ViewRoleComponent implements OnInit, AfterViewInit {
 
           return this.userRoleService.getUserRoles(
             accountid,
-            this.offset,
-            this.limit,
+            this.paginator.pageIndex * this.paginator.pageSize,
+            this.paginator.pageSize,
             this.sort.active,
             this.sort.direction == "desc" ? "desc" : "asc");
         }),
@@ -151,6 +151,7 @@ export class ViewRoleComponent implements OnInit, AfterViewInit {
       ).subscribe((data) => {
         const newData = this.isLoadingMore ? [...this.dataSource.data, ...data] : data;
         this.dataSource = new MatTableDataSource(newData);
+        this.paginator.length = this.resultsLength;
 
         // Flip flag to show that loading has finished.
         this.isRateLimitReached = this.dataSource.data.length === this.resultsLength;
@@ -191,10 +192,10 @@ export class ViewRoleComponent implements OnInit, AfterViewInit {
   }
 
   editRole(role: Irole) {
-    if (role.isdefaultrole) {
-      this.snackbarServ.open(this.translate.transform(this.ln.TXT_DEFAULT_ROLE_CANNOT_UPDATE, this.ln.TXT_OK));
-      return;
-    }
+    // if (role.isdefaultrole) {
+    //   this.snackbarServ.open(this.translate.transform(this.ln.TXT_DEFAULT_ROLE_CANNOT_UPDATE, this.ln.TXT_OK));
+    //   return;
+    // }
     this.router.navigate([ROUTE_CONFIGS.EDIT_ROLE, role.accountroleid]);
   }
 
