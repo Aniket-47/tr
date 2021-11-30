@@ -21,7 +21,6 @@ import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { ConfirmationComponent } from './utility/components/confirmation/confirmation.component';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { BusyInterceptor } from './core/interceptors/busy.interceptor';
-import { AuthModule } from './auth/auth.module';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -38,7 +37,6 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     MaterialModule,
     AdvanceSearchModule,
     HttpClientModule,
-    AuthModule,
     AppRoutingModule,
     PerfectScrollbarModule,
     StoreModule.forRoot(reducers, {}),

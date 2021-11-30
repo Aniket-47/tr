@@ -14,7 +14,7 @@ import { VerifyAccountComponent } from './verify-account/verify-token.component'
 
 const routes: Routes = [
   {
-    path: 'auth',
+    path: '',
     component: AuthComponent,
     children: [
       {
