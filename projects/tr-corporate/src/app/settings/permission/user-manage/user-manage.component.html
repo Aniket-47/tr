@@ -1,4 +1,5 @@
 <mat-drawer-container autosize class="right-drawer" [class.drawer-lg]="viewUserPermission">
+  <!-- View/Edit user drawer -->
   <mat-drawer #drawer mode="over" class="drawer-container" position="end" [autoFocus]="false">
     <button mat-icon-button (click)="drawer.toggle(); toggleSideMenu()" class="close-btn">
       <span class="icon-mc mc-x"></span>
@@ -43,6 +44,7 @@
     <!-- Desktop view -->
     <div class="user-management">
       <div class="table-header">
+
         <div class="table-info" *ngIf="selection.selected.length > 0">
           {{ selection.selected.length }}
           <span *ngIf="selection.selected.length<=1">
@@ -58,16 +60,16 @@
           <button mat-menu-item> <i class="icon-mc mc-do_not_disturb_on"></i> {{ln.TXT_DEACTIVATE | translate}}</button>
           <button mat-menu-item> <i class="icon-mc mc-user-x"></i> {{ln.TXT_DELETE | translate}}</button>
         </mat-menu>
+
         <div class="table-info" *ngIf="selection.selected.length == 0">{{ totalUsers }}
-          <!-- <div class="table-info">{{ totalUsers }} -->
           <span *ngIf="totalUsers<=1">
             {{ln.TXT_TOTAL_USER | translate | lowercase}}
           </span>
           <span *ngIf="totalUsers>1">
             {{ln.TXT_TOTAL_USERS | translate | lowercase}}
           </span>
-
         </div>
+
         <div class="table-action cloud-only">
           <mat-form-field appearance="outline">
             <mat-select disableOptionCentering [(ngModel)]="selectedStatus"
@@ -95,7 +97,6 @@
             </mat-select>
           </mat-form-field>
           <mat-form-field appearance="outline" class="short-wrapper">
-            <!-- <mat-label *ngIf="selectedSort=='status'">Status</mat-label> -->
             <mat-select disableOptionCentering [(ngModel)]="selectedSort" (ngModelChange)="onHeaderSort()">
               <mat-select-trigger>
                 <span class="sort-by font-600">{{ln.TXT_SORT_BY | translate}} : </span>
@@ -111,8 +112,7 @@
               </mat-select-trigger>
               <ng-container *ngFor="let item of sorts; let last = last">
                 <mat-option [value]="item.value">
-                  <!-- <span class="font-500 text-muted">{{ln.TXT_SORT_BY | translate}}:</span> -->
-                  <span class="sort-by font-500">{{ln.TXT_SORT_BY | translate}} </span>
+                   <span class="sort-by font-500">{{ln.TXT_SORT_BY | translate}} </span>
                   <span class="font-500 ">{{item.viewValue | translate}}</span>
                 </mat-option>
                 <mat-divider *ngIf="!last"></mat-divider>
@@ -157,7 +157,6 @@
                   <div>
                     <div class="name truncate">{{element.firstname + ' ' + element.middlename + ' ' + element.lastname}}
                     </div>
-                    <!-- <div class="email">{{element.email}}</div> -->
                   </div>
                 </div>
               </td>
@@ -218,28 +217,11 @@
                     matTooltip="{{ln.TXT_EDIT_USER | translate | titlecase}}" matTooltipPosition="left">
                     <i class="icon-mc mc-create"></i>
                   </button>
-                  <!-- <button mat-icon-button *ngIf="element.status==0" (click)="activateUser(element.email)"
-                    matTooltip="{{(ln.TXT_ACTIVATE_USER | translate)  | titlecase}}" matTooltipPosition="left">
-                    <i class="icon-mc mc-how_to_reg"></i>
-                  </button>
-                  <button mat-icon-button *ngIf="element.status>0" [disabled]="element.email==loggedinUserEmail"
-                    (click)="deactivateUser(element.email)"
-                    matTooltip="{{(ln.TXT_DEACTIVATE_USER | translate)  | titlecase}}" matTooltipPosition="left">
-                    <i class="icon-mc mc-do_not_disturb_on"></i>
-                  </button> -->
-                  <!-- <button class="red fs20" mat-icon-button (click)="viewPermission(element)"
-                    matTooltip="{{ln.TXT_VIEW_PERMISSION | translate}}" matTooltipPosition="left">
-                    <i class="icon-mc mc-preview"></i>
-                  </button> -->
                   <button mat-icon-button [matMenuTriggerFor]="tableMenu" (click)="hideUserActionMenu = false">
                     <span class="icon-mc mc-more_vert"></span>
                   </button>
                   <mat-menu #tableMenu="matMenu" backdropClass="profile-dropdown">
                     <div class="user-dropdown-submenu">
-                      <!-- <button mat-menu-item (click)="viewDetails(element)">
-                        <i class="icon-mc mc-visibility"></i> <span>{{(ln.TXT_VIEW_DETAILS | translate) |
-                          titlecase}}</span>
-                      </button> -->
                       <button mat-menu-item *ngIf="element.status==0" (click)="activateUser(element.email)">
                         <i class="icon-mc mc-how_to_reg"></i>
                         <span>{{(ln.TXT_ACTIVATE_USER | translate) | titlecase}}</span>
@@ -302,6 +284,8 @@
         aria-label="Select page of periodic elements">
       </mat-paginator>
     </div>
+
+
     <!-- Mobile View -->
     <div class="floating-button page-action  mobile-only">
       <div class="more-float-action-btn" [class.active]="toggle">
@@ -323,4 +307,5 @@
     </div>
     <mat-progress-bar mode="query" *ngIf="isLoadingMore"></mat-progress-bar>
   </div>
+
 </mat-drawer-container>

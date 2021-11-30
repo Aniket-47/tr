@@ -1,11 +1,10 @@
 import { getBusinessVerticle } from './../../../utility/store/selectors/business-vertical.selector';
 import { Store } from '@ngrx/store';
-import { Component, Input, OnChanges, OnInit, Output, EventEmitter, ViewChild, OnDestroy, SimpleChange, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, Output, EventEmitter, OnDestroy,  SimpleChanges } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { fadeAnimation } from '../../../animations';
 import { ValidationConstants } from '../../../utility/configs/app.constants';
 import { SnackBarService } from '../../../utility/services/snack-bar.service';
-import { UpdateUser_request } from '../shared/interfaces/update-user';
 import { UserService } from '../shared/services/user.service';
 import { State } from '../../../utility/store/reducers';
 import { getDefaultAccountId } from '../../../utility/store/selectors/account.selector';
@@ -14,7 +13,6 @@ import { getRoles } from '../../../utility/store/selectors/roles.selector';
 import { SETTINGS_LN } from '../../shared/settings.lang';
 import { GetUser_response } from './../shared/interfaces/get-user';
 import { getUserEmail } from '../../../utility/store/selectors/user.selector';
-import { MatSidenav } from '@angular/material/sidenav';
 import { Subscription } from 'rxjs';
 
 
@@ -174,13 +172,6 @@ export class UserDetailComponent implements OnInit, OnChanges, OnDestroy {
 
   prefillUser() {
     this.isDisabled = true;
-    // this.editUserForm.patchValue(
-    //   {
-    //     firstname: this.user.fullname,
-    //     email: this.user.email,
-    //     userRole: this.user.roletypeid
-    //   }
-    // )
 
     this.userAPISubscription = this.userServ.getUser(this.userEmail).subscribe(res => {
       if (!res.error) {
@@ -195,14 +186,7 @@ export class UserDetailComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   editUser() {
-    // const payload: UpdateUser_request = {
-    //   firstname: this.firstName.value,
-    //   middlename: this.middleName.value,
-    //   lastname: this.lastName.value,
-    //   email: this.email.value,
-    //   roletypeid: this.userRole.value,
-    //   accountroleid: this.userID
-    // }
+
     this.editUserForm.markAllAsTouched();
     if (this.editUserForm.valid) {
       this.isLoading = true;

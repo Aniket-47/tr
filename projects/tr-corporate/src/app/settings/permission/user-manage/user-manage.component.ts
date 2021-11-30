@@ -33,7 +33,6 @@ import { getRoles } from '../../../utility/store/selectors/roles.selector';
 import { ConfirmationComponent } from '../../../utility/components/confirmation/confirmation.component';
 import { SETTINGS_LN } from '../../shared/settings.lang';
 import { ROUTE_CONFIGS } from '../../../utility/configs/routerConfig';
-import { UserRoleService } from '../shared/services/user-role.service';
 import { DesignService } from '../../../utility/services/design.service';
 import { UtilityService } from '../../../utility/services/utility.service';
 import { TranslatePipe } from '@mucrest/ng-core';
@@ -89,6 +88,8 @@ export class UserManageComponent implements OnInit {
   @ViewChild(MatSort, { static: false }) sort!: MatSort;
   @ViewChild(MatDrawer, { static: false }) drawer!: MatDrawer;
   @ViewChild('modalRefElement', { static: false }) modalRefElement!: ElementRef;
+
+  // Mobile View
   isLoadingMore: boolean = false;
   isRateLimitReached: boolean = true;
 
@@ -101,7 +102,6 @@ export class UserManageComponent implements OnInit {
     private snackBar: SnackBarService,
     private translater: TranslatePipe,
     private _bottomSheet: MatBottomSheet,
-    private userRoleService: UserRoleService,
     public designService: DesignService,
     private router: Router,
     private cdRef: ChangeDetectorRef,
@@ -129,6 +129,7 @@ export class UserManageComponent implements OnInit {
     e.preventDefault();
   }
 
+  // Mobile filter & sorting
   openBottomSheet(): void {
     const appliedFilterData = { sort: this.sort.active, filter_status: this.selectedStatus, filter_roletypeid: this.selectedRole }
     this._bottomSheet.open(MFilterComponent, { data: appliedFilterData }).afterDismissed()
@@ -144,6 +145,7 @@ export class UserManageComponent implements OnInit {
       })
   }
 
+  // Mobile floating icon
   toggleFab() {
     this.toggle = !this.toggle;
   }
@@ -166,6 +168,7 @@ export class UserManageComponent implements OnInit {
     return numSelected === numRows;
   }
 
+  // Select all
   masterToggle() {
     if (this.isAllSelected()) {
       this.selection.clear();
@@ -297,6 +300,7 @@ export class UserManageComponent implements OnInit {
     });
   }
 
+  // Desktop more btn
   toggleUserActionMenu() {
     this.hideUserActionMenu = false;
     setTimeout(() => {
@@ -344,6 +348,7 @@ export class UserManageComponent implements OnInit {
     emitted.status == 0 ? this.deactivateUser(emitted.email) : this.activateUser(emitted.email);
   }
 
+  // User update drawer closed
   userUpdated(emitted: { userEmail: string, firstname: string, middlename: string, lastname: string, roletypeid: number, email: string }) {
 
     const updateditem = this.dataSource.data.find(e => e.email == emitted.userEmail);
@@ -353,6 +358,7 @@ export class UserManageComponent implements OnInit {
     this.dataSource = new MatTableDataSource(this.dataSource.data);
   }
 
+  // User add drawer closed
   userAdded() {
     this.paginator.pageIndex = 0;
     this.selectedRole = 0;
