@@ -176,6 +176,7 @@ export class UserDetailComponent implements OnInit, OnChanges, OnDestroy {
       if (!res.error) {
         this.isDisabled = false;
         this.user = res.data;
+        this.user["businessverticalname"] = this.businessverticals.find(e => e.businessverticalid == this.user?.businessverticalid)?.name;
         this.editUserForm.patchValue(res.data);
         this.store.select(getUserEmail).subscribe(email => {
           this.isCurrentUser = (email == this.userEmail);

@@ -49,7 +49,7 @@
       <div>
         <mat-form-field appearance="outline">
           <mat-label>{{ ln.TXT_NEW_ROLE_NAME | translate }}</mat-label>
-          <input matInput placeholder="{{ln.TXT_NEW_ROLE | translate}}" formControlName="roleName" />
+          <input matInput placeholder="{{ln.TXT_NEW_ROLE_NAME | translate}}" formControlName="roleName" />
           <mat-error *ngIf="roleName.invalid && roleName?.errors">
             <span *ngIf="roleName?.errors?.required">
               {{ ln.TXT_FIELD_REQUIRED | translate }}
