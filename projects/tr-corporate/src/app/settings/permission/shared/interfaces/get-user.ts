@@ -8,6 +8,7 @@ export interface GetUser_response {
   message: string,
   data: {
     businessverticalid: string,
+    businessverticalname?: string,
     designationname: string,
     email: string,
     firstname: string,
